@@ -1,4 +1,4 @@
-# <center> The user manual for OpenBioMaps <center>
+# ecenter> The user manual for OpenBioMaps <center>
 #### <center> 2016-12-19 <center>
 #### <center> version 0.01 <center>
 
@@ -9,7 +9,7 @@
 ---
 
 ## 1. Introduction
-<p>
+<br>
 Par sor meghato szoveg az OBM - rol
 
 In this manual, I will attempt to do two things:
@@ -23,7 +23,7 @@ There will be several updates to this manual, and new topics will be added, base
 ---
 
 ## 2. Creating a database
-<p>
+<br>
 In this chapter I will focus on walking you trough the steps required, to found your own database.
 
 To be able to create a database, firs you need an invitation, from someone who is already an OBM user. If you don't have such an acquaintance, you can simply request one using the mailing list's mentioned in the previous chapter. If you receive an invitation, you will be able to register, and become an OBM user.
@@ -41,4 +41,4 @@ If you have done the previous step, you will be able to access your profile, aft
 <br>
 <br>
 
-
+Here, on the **Founding new progect** tab, you will find the creation form which you will have to fill out. If for you, the text doesn't appear in english, don't panic. At the bottom of the page, you can choose the language in which the text appears. Each field has a tooltip, in which essential information is displayed about the respective field. E.g in the first field, you can see that is is obligatory to compleat, it cannot contain whitespaces, and can contain lowercase letters only. You have a full list of descriptions regarding the fields, at the bottom of the page.
