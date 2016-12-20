@@ -1,14 +1,13 @@
-# ecenter> The user manual for OpenBioMaps <center>
-#### <center> 2016-12-19 <center>
-#### <center> version 0.01 <center>
+# <center> The user manual for OpenBioMaps <center>
 
----
+#### <center> 2016-12-19 <center>
+
+#### <center> version 0.01 <center>
 
 ## 0. Documentation
 
----
-
 ## 1. Introduction
+
 <br>
 Par sor meghato szoveg az OBM - rol
 
@@ -20,9 +19,8 @@ Most of the steps will be illustrated with screenshots, and I will also include 
 
 There will be several updates to this manual, and new topics will be added, based on request or big system changes/updates. These changes will be listed in the last chapter of the manual.
 
----
-
 ## 2. Creating a database
+
 <br>
 In this chapter I will focus on walking you trough the steps required, to found your own database.
 
@@ -41,4 +39,8 @@ If you have done the previous step, you will be able to access your profile, aft
 <br>
 <br>
 
-Here, on the **Founding new progect** tab, you will find the creation form which you will have to fill out. If for you, the text doesn't appear in english, don't panic. At the bottom of the page, you can choose the language in which the text appears. Each field has a tooltip, in which essential information is displayed about the respective field. E.g in the first field, you can see that is is obligatory to compleat, it cannot contain whitespaces, and can contain lowercase letters only. You have a full list of descriptions regarding the fields, at the bottom of the page.
+Here, on the **Founding new project** tab, you will find the creation form which you will have to fill out. If for you, the text doesn't appear in english, don't panic. At the bottom of the page, you can choose the language in which the text appears. Each field has a tooltip, in which essential information is displayed about the respective field. E.g in the first field, you can see that is is obligatory to compleat, it cannot contain whitespaces, and can contain lowercase letters only (it can however contain underscores). You have a full list of descriptions regarding the fields, at the bottom of the page.
+
+Please note, that the *'short description'* will be the public headline of the database, while the *'name of the database'* is a definition that the code uses and it's not public. It is good practice, to add a detailed *'Long description'*, when completing the *'data fields'* section (this is not obligatory by default). Another thing to note is, that when choosing the *'type'* in the *'data fields'* section, the difference between numeric and integer type is, that the numeric type can be a decimal number while the integer must be a whole number; and the difference between text and string type is, that the text can have an unlimited number of characters while the string can have a maximum of 255 characters.
+
+At this point, if you configured everything correctly, upon clicking on the create button, a window should pop up with a success message and a log of all the created files. You should reed the log, as it contains instructions on what to do next whit your project. 
