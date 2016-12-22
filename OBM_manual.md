@@ -1,6 +1,5 @@
 # <center> The user manual for OpenBioMaps <center>
 #### <center> 2016-12-19 <center>
-#### <center> version 0.01 <center>
 
 ## 0. Documentation
 
