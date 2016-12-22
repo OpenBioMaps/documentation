@@ -17,7 +17,6 @@ Most of the steps will be illustrated with screenshots, and I will also include 
 There will be several updates to this manual, and new topics will be added, based on request or big system changes/updates. These changes will be listed in the last chapter of the manual.
 
 ## 2. Creating a database
-a
 <br>
 In this chapter I will focus on walking you trough the steps required, to found your own database.
 
