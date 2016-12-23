@@ -144,4 +144,8 @@ Fig.8
 
 Any errors made in the steps above will cause pink squares on the map window.
 
-Reading the syslog and the mapserver log will help resolve these problems. (tail -f /var/log/syslog tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)
+Reading the web server, syslog and the mapserver log will help resolve these problems: 
+tail -f /var/log/apache2/error.log 
+tail -f /var/log/syslog OR /var/log/openbiomaps.log
+tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)
+
