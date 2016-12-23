@@ -108,8 +108,10 @@ OBM vendég (Debian Linux) operációs rendszer
 felhasználónév: gekko	  jelszó: gekko
 felhasználónév: root		jelszó: gekko
 
+```html
 <span style='color:red'>Ha nem csak saját magad használod a rendszered, 
 a jelszavakat változtasd meg!!!</span>
+```
 
 További információkat a rendszer konfigurálásáról itt találhatsz:
 http://openbiomaps.org/obwiki
