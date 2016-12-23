@@ -98,22 +98,25 @@ A postgresql adatbázis kezeléséhez telepítettük a phppgadmin webes postgres
 --
 
 
-A szükséges felhasználónevek és jelszavak az első használathoz:
+**A szükséges felhasználónevek és jelszavak az első használathoz:**
 
-**Webes felületen történő bejelentkezés:**
+*Webes felületen történő bejelentkezés:*
 
 felhasználónév: gekko@openbiomaps.org	jelszó: 12345
+\s\s
 
 
-**PostgreSQL**
+*PostgreSQL*
 
 felhasználónév: gisadmin		  jelszó: FeZaiw4e
 
 felhasználónév:biomapsadmin		jelszó: De8Eilu6
 
 felhasználónév:template_admin	jelszó: MaeS2dai
+\s\s
 
-**OBM vendég (Debian Linux) operációs rendszer**
+
+*OBM vendég (Debian Linux) operációs rendszer*
 
 felhasználónév: gekko	  jelszó: gekko
 
@@ -123,18 +126,19 @@ felhasználónév: root		jelszó: gekko
 
 **Ha nem csak saját magad használod a rendszered, a jelszavakat változtasd meg!!!**
 
-További információkat a rendszer konfigurálásáról itt találhatsz:
+--
+**További információkat a rendszer konfigurálásáról itt találhatsz:**
 
-[http://openbiomaps.org/obwiki](http://openbiomaps.org/obwiki)
-
+[http://openbiomaps.org/obwiki](http://openbiomaps.org/obwiki)\s\s
 [https://github.com/OpenBioMaps/documentation](https://github.com/OpenBioMaps/documentation)
 
 --
 
-
+\s\s
+\s\s
 A dokumentációt Ferenc Attila (ferenca@bnpi.hu) készítette 2016. augusztus 26-án. 
-
-
+\s\s
+\s\s
 
 
 Módosítások:
