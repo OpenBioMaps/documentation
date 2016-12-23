@@ -8,6 +8,8 @@
 3. Importáljad a letöltött virtuális gépet.
 4. Indítsd el a Gekko kiadást és jelentkezz be.
 
+--
+
 A [VirtualBox](http://virtualbox.org/) egy ingyenesen használható virtuális számítógép, amely Linux, OS X és Windows gépeken is futtatható. Ennek a szoftvernek a segítségével tudod elindítani az OBM Gekko kiadását.
 
 A [VirtualBox](http://download.virtualbox.org/virtualbox/5.1.4/VirtualBox-5.1.4-110228-Win.exe) és a telepítés után szükséges [kiegészítő
