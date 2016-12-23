@@ -114,4 +114,5 @@ Módosítások:
 Bán Miklós (banm@vocs.unideb.hu) 2016.augusztus 27, december.23.
 
 
-[fig1]: https://github.com/OpenBioMaps/documentation/images/fig1.png
+[fig1]: https://github.com/OpenBioMaps/documentation/blob/master/images/fig1.png
+[fig2]: https://github.com/OpenBioMaps/documentation/blob/master/images/fig2.png
