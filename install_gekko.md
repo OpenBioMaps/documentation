@@ -95,7 +95,7 @@ További hálózati elérési lehetőség az SSH használata. Windows alatt pél
 A Gekko Debian Linux rendszerbe bejelentkezve az adatbázis és az OBM rendszer működésének mélyebb rétegeit érheted el. Ezekről a lehetőségekről olvasd el fejlesztői és kezelői dokumentációkat, ill. a Debian Linux, Apache2, Mapserver és PostgreSQL kézikönyveket.
 A postgresql adatbázis kezeléséhez telepítettük a phppgadmin webes postgresql kliens programot. Ezt a [http://192.168.56.101/phppgadmin](http://192.168.56.101/phppgadmin) címen tudod elérni. A gisadmin felhasználó rendszergazdai joggal rendelkezik. Ezzel a felhasználóval bejelentkezve lehet alapvető beállításokat módosítani.
 
-
+--
 
 
 A szükséges felhasználónevek és jelszavak az első használathoz:
@@ -129,7 +129,7 @@ További információkat a rendszer konfigurálásáról itt találhatsz:
 
 [https://github.com/OpenBioMaps/documentation](https://github.com/OpenBioMaps/documentation)
 
-
+--
 
 
 A dokumentációt Ferenc Attila (ferenca@bnpi.hu) készítette 2016. augusztus 26-án. 
