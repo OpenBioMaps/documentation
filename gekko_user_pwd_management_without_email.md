@@ -1,6 +1,6 @@
-Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
-
---
+# Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
+===================================================================================
+2017.02.13
 
 Az OpenBioMaps keretrendszer gekko variánsa egy virtuális gépen fut, amelyet akár otthonra is telepíthető.
 A felhasználók és jelszavak beállítása, a felhasználó azonosítása az OpenBioMaps böngészőben elérhető felületén rendkívül
@@ -10,24 +10,21 @@ Otthoni, vagy irodai gépre telepített, a saját gépen vagy kis belső hálóz
 gyakran nem lehet, és/vagy nem akarjuk konfigurálni a gekko levelező kiszolgálóját. Hogyan lehet ebben az esetben a 
 felhasználókat és a hozzájuk tartozó jelszavakat kezelni?
 
---
 
-Alapfeltételek megteremtése
+## Alapfeltételek megteremtése
 
 A jelenlegi verzióban (1.24) a gekko-n nincs telepítve a php5-mcrypt csomag. Ezt a virtuális gépen a terminálban,
 rendszergazdaként, az alábbi parancs kiadásával kell megtenni:
 
-apt-get install php5-mcrypt
+*apt-get install php5-mcrypt*
 
 A telepítő megkérdezi, valóban elfogadjuk-e a kijelölt módosításokat, amelyet az ’Y’ leütésével tehetünk meg.
 A telepítés sikeres lefutása után az apache2 kiszolgáló újraindítása válhat szükségessé, amihez írjuk be a konzolba
 az alábbi parancsot:
 
-/etc/init.d/apache2 restart
+*/etc/init.d/apache2 restart*
 
---
-
-Új felhasználó hozzáadása
+## Új felhasználó hozzáadása
 
 Új felhasználót a bejelentkezés után lehet meghívni az adatbázisunkba. Ehhez a felhasználónevünkre kattintva
 felbukkanó menüből a Profile menüpontot kell választani.
@@ -54,13 +51,11 @@ A template adatbázishoz így nézhet ki egy ilyen meghívás hivatkozása:
 
 http://192.168.56.101/biomaps/projects/template/index.php?register=c4cc1951ed3664dde0264baa8a5f050b
 
-A hivatkozásra kattintva az új felhasználó profiljába kerülünk, ahol alapértelmezetten egy automatikusan
-létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót,
-majd elkezdheted az új felhasználóval is a gekko OBM felületének használatát.
+A megfelelő értékekkel behelyettesített hivatkozásra kattintva az új felhasználó profiljába kerülünk,
+ahol alapértelmezetten egy automatikusan létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót, majd elkezdheted az új felhasználóval is a gekko OBM felületének használatát.
 
---
 
-Teendők elfelejtett, vagy megújítandó jelszó esetén
+## Teendők elfelejtett, vagy megújítandó jelszó esetén
 
 Előfordulhat, hogy elfelejtjük a bejelentkezéshez használt jelszót, de egy autentikációs frissítés esetén is szükség
 lehet jelszófrissítésre.
@@ -81,11 +76,8 @@ Egy, a template adatbázisban regisztrált felhasználó jelszómódosításhoz 
 
 http://192.168.56.101/biomaps/projects/template/index.php?addrgekko@openbiomaps.org&activate=Dfg458hz87kl58e4
 
-A linkre kattintva az előzőekhez hasonlóan a felhasználó profiljába kerülünk, ahol jelszóként alapértelmezetten egy
-automatikusan létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót,
-majd elkezdheted a gekko OBM felületének használatát.
+A megfelelő értékekkel behelyettesített hivatkozásra kattintva az előzőekhez hasonlóan a felhasználó profiljába kerülünk, ahol jelszóként alapértelmezetten egy automatikusan létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót, majd elkezdheted a gekko OBM felületének használatát.
 
 --
 
-Fontos, hogy a fenti módszerrel csak az OBM grafikus felületén használt felhasználókra vonatkozó információkat lehet kezelni.
-A postgreSQL adatbázis (pl. gisadmin), vagy a virtuális gép (gekko) felhasználóit ilyen módon nem lehet manipulálni!
+**Fontos, hogy a fenti módszerrel csak az OBM grafikus felületén használt felhasználókra vonatkozó információkat lehet kezelni. A postgreSQL adatbázis (pl. gisadmin), vagy a virtuális gép (gekko) felhasználóit ilyen módon nem lehet manipulálni!**
