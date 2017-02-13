@@ -1,6 +1,5 @@
 Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
 
-
 Az OpenBioMaps keretrendszer gekko variánsa egy virtuális gépen fut, amelyet akár otthonra is telepíthető.
 A felhasználók és jelszavak beállítása, a felhasználó azonosítása az OpenBioMaps böngészőben elérhető felületén rendkívül
 egyszerű, levelezőrendszeren keresztül küldött linkek segítségével lehetséges.
