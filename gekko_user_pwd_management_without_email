@@ -1,4 +1,4 @@
-# <center> Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül <center>
+Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
 
 --
 
@@ -12,22 +12,22 @@ felhasználókat és a hozzájuk tartozó jelszavakat kezelni?
 
 --
 
-## <center> Alapfeltételek megteremtése <center>
+Alapfeltételek megteremtése
 
 A jelenlegi verzióban (1.24) a gekko-n nincs telepítve a php5-mcrypt csomag. Ezt a virtuális gépen a terminálban,
 rendszergazdaként, az alábbi parancs kiadásával kell megtenni:
 
-<center> apt-get install php5-mcrypt <center>
+apt-get install php5-mcrypt
 
 A telepítő megkérdezi, valóban elfogadjuk-e a kijelölt módosításokat, amelyet az ’Y’ leütésével tehetünk meg.
 A telepítés sikeres lefutása után az apache2 kiszolgáló újraindítása válhat szükségessé, amihez írjuk be a konzolba
 az alábbi parancsot:
 
-<center> /etc/init.d/apache2 restart <center>
+/etc/init.d/apache2 restart
 
 --
 
-## <center> Új felhasználó hozzáadása <center>
+Új felhasználó hozzáadása
 
 Új felhasználót a bejelentkezés után lehet meghívni az adatbázisunkba. Ehhez a felhasználónevünkre kattintva
 felbukkanó menüből a Profile menüpontot kell választani.
@@ -60,7 +60,7 @@ majd elkezdheted az új felhasználóval is a gekko OBM felületének használat
 
 --
 
-## <center> Teendők elfelejtett, vagy megújítandó jelszó esetén <center>
+Teendők elfelejtett, vagy megújítandó jelszó esetén
 
 Előfordulhat, hogy elfelejtjük a bejelentkezéshez használt jelszót, de egy autentikációs frissítés esetén is szükség
 lehet jelszófrissítésre.
