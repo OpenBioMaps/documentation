@@ -1,5 +1,7 @@
 # Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
 
+--
+
 Az OpenBioMaps keretrendszer gekko variánsa egy virtuális gépen fut, amelyet akár otthonra is telepíthető.
 A felhasználók és jelszavak beállítása, a felhasználó azonosítása az OpenBioMaps böngészőben elérhető felületén rendkívül
 egyszerű, levelezőrendszeren keresztül küldött linkek segítségével lehetséges.
@@ -7,6 +9,8 @@ egyszerű, levelezőrendszeren keresztül küldött linkek segítségével lehet
 Otthoni, vagy irodai gépre telepített, a saját gépen vagy kis belső hálózaton használt gekko virtuális gépen azonban
 gyakran nem lehet, és/vagy nem akarjuk konfigurálni a gekko levelező kiszolgálóját. Hogyan lehet ebben az esetben a 
 felhasználókat és a hozzájuk tartozó jelszavakat kezelni?
+
+--
 
 ## Alapfeltételek megteremtése
 
@@ -20,6 +24,8 @@ A telepítés sikeres lefutása után az apache2 kiszolgáló újraindítása v�
 az alábbi parancsot:
 
 /etc/init.d/apache2 restart
+
+--
 
 ## Új felhasználó hozzáadása
 
@@ -52,6 +58,8 @@ A hivatkozásra kattintva az új felhasználó profiljába kerülünk, ahol alap
 létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót,
 majd elkezdheted az új felhasználóval is a gekko OBM felületének használatát.
 
+--
+
 ## Teendők elfelejtett, vagy megújítandó jelszó esetén
 
 Előfordulhat, hogy elfelejtjük a bejelentkezéshez használt jelszót, de egy autentikációs frissítés esetén is szükség
@@ -75,6 +83,8 @@ http://192.168.56.101/biomaps/projects/template/index.php?addrgekko@openbiomaps.
 A linkre kattintva az előzőekhez hasonlóan a felhasználó profiljába kerülünk, ahol jelszóként alapértelmezetten egy automatikusan
 létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót, majd elkezdheted
 a gekko OBM felületének használatát.
+
+--
 
 Fontos, hogy a fenti módszerrel csak az OBM grafikus felületén használt felhasználókra vonatkozó információkat lehet kezelni.
 A postgreSQL adatbázis (pl. gisadmin), vagy a virtuális gép (gekko) felhasználóit ilyen módon nem lehet manipulálni!
