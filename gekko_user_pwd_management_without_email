@@ -74,15 +74,16 @@ http://__KISZOLGALO__/biomaps/projects/__ADATBAZIS_NEVE__/index.php?addr=__EMAIL
 
 A fenti hivatkozásban a __KISZOLGALO__ helyére a gekko hálózati elérési útját illeszd be,
 az __ADATBAZIS_NEVE__ kifejezés helyére annak az adatbázisnak a nevét, amelybe meghívtuk a felhasználót,
-az __EMAIL__ helyére a felhasználó regisztrált e-mail címét, a __CODE__ helyére pedig a fenti táblázat reactivate mezőjében található karakterláncot.
+az __EMAIL__ helyére a felhasználó regisztrált e-mail címét, a __CODE__ helyére pedig a fenti táblázat
+reactivate mezőjében található karakterláncot.
 
 Egy, a template adatbázisban regisztrált felhasználó jelszómódosításhoz használt linkje az alábbihoz hasonlóan kell kinézzen:
 
 http://192.168.56.101/biomaps/projects/template/index.php?addrgekko@openbiomaps.org&activate=Dfg458hz87kl58e4
 
-A linkre kattintva az előzőekhez hasonlóan a felhasználó profiljába kerülünk, ahol jelszóként alapértelmezetten egy automatikusan
-létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót, majd elkezdheted
-a gekko OBM felületének használatát.
+A linkre kattintva az előzőekhez hasonlóan a felhasználó profiljába kerülünk, ahol jelszóként alapértelmezetten egy
+automatikusan létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót,
+majd elkezdheted a gekko OBM felületének használatát.
 
 --
 
