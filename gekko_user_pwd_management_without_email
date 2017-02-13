@@ -1,4 +1,4 @@
-Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
+# Jelszókezelés a gekko OBM felületén levelezőkiszolgáló beállítása nélkül
 
 Az OpenBioMaps keretrendszer gekko variánsa egy virtuális gépen fut, amelyet akár otthonra is telepíthető.
 A felhasználók és jelszavak beállítása, a felhasználó azonosítása az OpenBioMaps böngészőben elérhető felületén rendkívül
@@ -8,7 +8,7 @@ Otthoni, vagy irodai gépre telepített, a saját gépen vagy kis belső hálóz
 gyakran nem lehet, és/vagy nem akarjuk konfigurálni a gekko levelező kiszolgálóját. Hogyan lehet ebben az esetben a 
 felhasználókat és a hozzájuk tartozó jelszavakat kezelni?
 
-Alapfeltételek megteremtése
+## Alapfeltételek megteremtése
 
 A jelenlegi verzióban (1.24) a gekko-n nincs telepítve a php5-mcrypt csomag. Ezt a virtuális gépen a terminálban,
 rendszergazdaként, az alábbi parancs kiadásával kell megtenni:
@@ -21,7 +21,7 @@ az alábbi parancsot:
 
 /etc/init.d/apache2 restart
 
-Új felhasználó hozzáadása
+## Új felhasználó hozzáadása
 
 Új felhasználót a bejelentkezés után lehet meghívni az adatbázisunkba. Ehhez a felhasználónevünkre kattintva
 felbukkanó menüből a Profile menüpontot kell választani.
@@ -52,7 +52,7 @@ A hivatkozásra kattintva az új felhasználó profiljába kerülünk, ahol alap
 létrehozott karakterláncot állít be a rendszer. Ezt megváltoztatva, vagy elfogadva állítsd be jelszót,
 majd elkezdheted az új felhasználóval is a gekko OBM felületének használatát.
 
-Teendők elfelejtett, vagy megújítandó jelszó esetén
+## Teendők elfelejtett, vagy megújítandó jelszó esetén
 
 Előfordulhat, hogy elfelejtjük a bejelentkezéshez használt jelszót, de egy autentikációs frissítés esetén is szükség
 lehet jelszófrissítésre.
