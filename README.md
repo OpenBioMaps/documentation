@@ -8,3 +8,6 @@
 
 ## gekko_user_pwd_management_without_email.md
 (hungarian) User and password management guide on gekko (OBM virtual image) without e-mail server by Attila Ferenc
+
+## query_scheme.
+Two slides about thw web application query scheme and modules
