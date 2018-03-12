@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>User interface &mdash; openbiomaps 2.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" />
+    <link rel="next" title="Administrative pages" href="server_settings.html" />
+    <link rel="prev" title="Tutorials" href="tutorial.html" /> 
+  </head>
+  <body>
+    <table style='background-color:white;padding:10px;margin:0;width:100%'>
+    <tr>
+        <td style='vertical-align:bottom'>
+            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
+        </td>
+        <td style='vertical-align:top;text-align:right'>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="server_settings.html" title="Administrative pages"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorials"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">openbiomaps 2.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="user-interface">
+<h1>User interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="log-in">
+<h2>Log in<a class="headerlink" href="#log-in" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lost-password">
+<h3>Lost password<a class="headerlink" href="#lost-password" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="profile">
+<h2>Profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="invitation">
+<h3>Invitation<a class="headerlink" href="#invitation" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="founding-new-a-project">
+<h2>Founding new a project<a class="headerlink" href="#founding-new-a-project" title="Permalink to this headline">¶</a></h2>
+<p><em>Section author: Róbert Veres (2016-12-19)</em></p>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>Most of the steps will be illustrated with screenshots, and I will also include a few code lines which I used in SQL and the Debian terminal.
+Even tough, in-depth SQL programming knowledge isn&#8217;t required to follow the steps of founding a database, some basic knowledge is recommended for a better understanding of the OBM system.
+The operating system that I&#8217;m using, is Ubuntu (Linux), but you should be able to follow along.
+If you have any questions regarding the discussed topics, or things I didn&#8217;t covered, you can ask them on the official OBM forums or on one of the developers [mailing lists](<a class="reference external" href="http://openbiomaps.org/community/?lang=en">http://openbiomaps.org/community/?lang=en</a>) (if you are new to OBM, the Biomaps mailing list is probably the best option).</p>
+<p>There will be several updates to this manual, and new topics will be added, based on request or big system changes/updates. These changes will be listed in the last chapter of the manual.</p>
+</div>
+<div class="section" id="creating-a-database">
+<h3>Creating a database<a class="headerlink" href="#creating-a-database" title="Permalink to this headline">¶</a></h3>
+<p>In this chapter I will focus on walking you trough the steps required, to found your own database.</p>
+<p>To be able to create a database, firs you need an invitation, from someone who is already an OBM user. If you don&#8217;t have such an acquaintance, you can simply request one using the mailing list&#8217;s mentioned in the previous chapter. If you receive an invitation, you will be able to register, and become an OBM user.</p>
+<p>If you have done the previous step, you will be able to access your profile, after you login (Fig.1).</p>
+<div class="figure align-center">
+<img alt="_images/img_1.png" src="_images/img_1.png" />
+<p class="caption">Fig 1.</p>
+</div>
+<p>Here, on the <strong>Founding new project</strong> tab, you will find the creation form which you will have to fill out. If for you, the text doesn&#8217;t appear in english, don&#8217;t panic. At the bottom of the page, you can choose the language in which the text appears. Each field has a tooltip, in which essential information is displayed about the respective field. E.g in the first field, you can see that is is obligatory to compleat, it cannot contain whitespaces, and can contain lowercase letters only (it can however contain underscores). You have a full list of descriptions regarding the fields, at the bottom of the page.</p>
+<p>Please note, that the <em>&#8216;short description&#8217;</em> will be the public headline of the database, while the <em>&#8216;name of the database&#8217;</em> is a definition that the code uses and it&#8217;s not public. It is good practice, to add a detailed <em>&#8216;Long description&#8217;</em>, when completing the <em>&#8216;data fields&#8217;</em> section (this is not obligatory by default). Another thing to note is, that when choosing the <em>&#8216;type&#8217;</em> in the <em>&#8216;data fields&#8217;</em> section, the difference between numeric and integer type is, that the numeric type can be a decimal number while the integer must be a whole number; and the difference between text and string type is, that the text can have an unlimited number of characters while the string can have a maximum of 255 characters.</p>
+<p>At this point, if you configured everything correctly, upon clicking on the create button, a window should pop up with a success message and a log of all the created files. You should read the log, as it contains instructions on what to do next with your project. The project will now be available at <em>&#8216;openbiomaps.org/biomaps/projects/YOUR_NEW_DATABASE&#8217;</em>.</p>
+</div>
+<div class="section" id="configuring-your-database">
+<h3>Configuring your database<a class="headerlink" href="#configuring-your-database" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>When you found a new project, the system create a skeleton, which has three parts:</dt>
+<dd><ul class="first last simple">
+<li>A directory tree in the file system (/var/www/html/biomaps/projects/YOUR_NEW_DATABASE), which is containing symlinks to the program files and local setting files (local_vars.php.inc .htaccess)</li>
+<li>A postgresql user (the postgresql, is the type of SQL our system uses) for the new project that has authorisation to access all necessary tables (the ones mentioned below, and other temporary ones). These information&#8217;s (the <em>&#8216;PostgreSQL user&#8217;</em> and <em>&#8216;PostgreSQL password&#8217;</em>) are generated automatically and you should save them, because you will need them to access your data tables for administration purposes. Fig.2</li>
+<li>3 tables within the <strong>gisdata</strong> database (this is where all the data tables are stored):
+* YOUR_NEW_DATABASE (by default this will contain all the data that you will store in your project)
+* YOUR_NEW_DATABASE_history (as the name implies, this will contain a list of changes that have occurred in your YOUR_NEW_DATABASE table)
+* YOUR_NEW_DATABASE_taxon (this table will be generated automatically; i will speak about this table in more detail later)
+* You can access all your data tables at <a class="reference external" href="http://openbiomaps.org/phppgadmin/">http://openbiomaps.org/phppgadmin/</a> While you can see the data tables of other OBM users, you can only access your own. Fig.3 - Fig.4. Note, that you are not limited to these 3 tables, and can create new ones. It is good practice to follow the naming pattern. Accordingly the new table should look like <em>&#8216;YOUR_NEW_DATABASE_new_table_name&#8217;</em>.</li>
+</ul>
+</dd>
+</dl>
+<div class="figure align-center">
+<img alt="_images/img_2.png" src="_images/img_2.png" />
+<p class="caption">Fig 2.</p>
+</div>
+<div class="figure align-center">
+<img alt="_images/img_3.png" src="_images/img_3.png" />
+<p class="caption">Fig 3.</p>
+</div>
+<div class="figure align-center">
+<img alt="_images/img_4.png" src="_images/img_4.png" />
+<p class="caption">Fig 4.</p>
+</div>
+<p>At this point you have a valid project, but this is not sufficient to start working with the new database. Additional settings have to be made in order to connect the SQL tables to the <strong>Mapserver</strong>, and let the <strong>web application</strong> use both your tables and the Mapserver. The configurations should be made in the following order: <strong>Database -&gt; SQL queries -&gt; Openlayers -&gt; Mapserver</strong>. All these changes must be done in the online interface of your project (Profile -&gt; <strong>Project administration</strong> tab).</p>
+</div>
+<div class="section" id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
+<p>First, you must &#8220;pick-up&#8221; your database columns (Profile -&gt; Project administration -&gt; <strong>Database columns</strong> tab) The OBM does not handle this step automatically. The chosen columns have to be marked for identity and type of use. They have to be provided with public names (these can be the same as the database column names or different: e.g <em>&#8216;dummy_date&#8217;</em> -&gt;  <em>&#8216;Dummy date&#8217;</em>) and must be marked as <em>&#8216;special column&#8217;</em> or <em>&#8216;common data&#8217;</em>. You cannot change the public names of the automatically generated columns, like <em>&#8216;obm_geometry&#8217;</em> or <em>&#8216;obm_id&#8217;</em>. The <em>&#8216;special columns&#8217;</em> are the special column types, that project users use a lot, and you will have a few extra options for the columns marked with thees types. Some of the types are: <strong>date</strong> type, different <strong>geometry</strong> types (which handles one ore more sets of coordinates), <strong>species</strong> type (you will want to mark the column containing species names with this one, because it will register the names, and store them in the YOUR_NEW_DATABASE_taxon table, which we will set up a little later. If this is set up correctly, the map search engine will offer option from the table, as you start typing in search fields), the <strong>number of individuals</strong> and <strong>citing person</strong> types. Note, that you can have only one of each of the special column type (except the <em>&#8216;date&#8217;</em> and <em>&#8216;cite person&#8217;</em> types), and the rest of the columns should be set to <em>&#8216;common data&#8217;</em>. Every column that you wish to use, must be &#8220;picked-up&#8221;, because the system will not have access to the one&#8217;s that aren&#8217;t. If you add new databases later, or expends the existing ones with additional columns, these have to be &#8220;picked up&#8221; again the same way. One of the columns, that the system generates automatically will appear here. This is the obm_id column. Usually you don&#8217;t want this column to be public, and it is very important to set this column&#8217;s type to <em>&#8216;special: id&#8217;</em>. Only after setting the type, will the web page be able to work with the data from your data tables. Fig.5</p>
+<div class="figure align-center">
+<img alt="_images/img_5.png" src="_images/img_5.png" />
+<p class="caption">Fig 5.</p>
+</div>
+</div>
+<div class="section" id="sql-queries">
+<h3>SQL queries<a class="headerlink" href="#sql-queries" title="Permalink to this headline">¶</a></h3>
+<p>Second, a number of SQL queries need to be made for the Mapserver and web application (Profile -&gt; Project administration -&gt; <strong>SQL query settings</strong> tab). In most of the cases, if you have simple data structure, only one data layer (simple collection data) and one user access level (no login restriction) in your new project, you will need to set up one query for the map visualisation (<em>&#8216;layer_data_points&#8217;</em>) and another for the query data(<em>&#8216;layer_query_points&#8217;</em>); in total 2 queries for the 2 layers, which are both public. <strong>&#8220;Base type&#8221;</strong> queries will only be used by the Mapserver but <strong>&#8220;query type&#8221;</strong> queries will be used by both the Mapserver and the web application. These queries can be accessed by their names (the defaults, these are <strong>&#8220;layer_data&#8221;</strong> and <strong>&#8220;layer_query&#8221;</strong>).</p>
+<p>In my example, I will have user restriction levels (you will have access to more detailed data if you are logged in), and so I will need a total of 4 queries, 2 for the Mapserver (one public, and one private) and 2 for the web applications (one public, and one private). Note, that when configuring the query layer, you will need to specify the type of geometry that you are using. In my case the geometry type is point, and I will name my layers <em>&#8216;layer_data_points&#8217;</em> and <em>&#8216;layer_query_points&#8217;</em>. If you have a simple data structure, you can go ahead, and use the queries automatically generated by the system. In case you need some more complex queries, you can always ask for help on the forums, or official mailing lists.
+Note, that the system can only register the changes made in one line at a time, so each change that you make, must be saved independently by clicking the <strong>modify it</strong> button. Also, don&#8217;t worry about the red warning text; we will fix it in the next step.</p>
+<p>Mi a web map layer? Meg kiegesziteni plusz informacioval.</p>
+<p>Fig 6.</p>
+<div class="figure align-center">
+<img alt="_images/img_6.png" src="_images/img_6.png" />
+<p class="caption">Fig 6.</p>
+</div>
+</div>
+<div class="section" id="openlayers">
+<h3>OpenLayers<a class="headerlink" href="#openlayers" title="Permalink to this headline">¶</a></h3>
+<p>In the next step, the access for Openlayers to Mapserver layers must be set up, through the names defined in the previous step (in my case these were <em>&#8216;layer_data_points&#8217;</em> and <em>&#8216;layer_query_points&#8217;</em>). This can be found under Profile -&gt; Project administration -&gt; <strong>Web map layers</strong> tab. This step is easy, because if we set up everything correctly int he previous step, the system dose everything for us. Also, because we already defined the names of the layers, we can just click the add button and everything is done. Note, that because we have 2 layers, we need to add both of them to the definition. Upon adding the firs layer, the second one is also generated automatically. Upon finishing this step, you return to the previous tab, you can see that the red warning message is gone. Fig.7</p>
+</div>
+<div class="section" id="mapserver">
+<h3>Mapserver<a class="headerlink" href="#mapserver" title="Permalink to this headline">¶</a></h3>
+<p>In the final step, the mapfile (private) has to be checked, and &#64;&#64;extent&#64;&#64; needs to be replaced with the corresponding real values (Profile -&gt; Project administration -&gt; <strong>Mapserver settings</strong> tab). For More information about the EXTENT see here: <a class="reference external" href="http://mapserver.org/mapfile/map.html">http://mapserver.org/mapfile/map.html</a> . Shortly..., ide kel egy rovid leiras.</p>
+<p>E.g.: Romania&#8217;s box is: 20.2155838012695 43.5630531311035 29.9736919403076 48.400691986084</p>
+<p>Fig.8</p>
+</div>
+<div class="section" id="fine-tunning-steps-and-bug-trackings">
+<h3>Fine tunning steps and bug trackings<a class="headerlink" href="#fine-tunning-steps-and-bug-trackings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Check your settings -&gt; if the map is not pink that is a good sign.</li>
+<li>Create an upload form &amp; upload some data.</li>
+<li>Go to the phppgadmin interface gisdata/YOUR_NEW_DATABASE and use the analyse function of postgresql</li>
+<li>Go back the mapserver settings to see your calculated bounding box of your data. This can be copied/pasted as EXTENT .....</li>
+<li>Query the records &amp; check the results</li>
+</ul>
+<p>Any errors made in the steps above will cause pink squares on the map window.</p>
+<p>Reading the web server, syslog and the mapserver log will help resolve these problems:
+tail -f /var/log/apache2/error.log
+tail -f /var/log/syslog OR /var/log/openbiomaps.log
+tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)</p>
+<p>At the bottom of the &#8216;Administrative menu&#8217; in the logs page you can read the openbiomaps.log and the mapserver log files.</p>
+</div>
+</div>
+<div class="section" id="map-page">
+<h2>Map page<a class="headerlink" href="#map-page" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="map-query">
+<h3>map query<a class="headerlink" href="#map-query" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="text-query">
+<h3>text query<a class="headerlink" href="#text-query" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="save-query">
+<h3>save query<a class="headerlink" href="#save-query" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="share-query">
+<h3>share query<a class="headerlink" href="#share-query" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="upload-data">
+<h2>Upload data<a class="headerlink" href="#upload-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="file-upload">
+<h3>File upload<a class="headerlink" href="#file-upload" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="web-upload">
+<h3>Web upload<a class="headerlink" href="#web-upload" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="saved-uploads">
+<h3>Saved uploads<a class="headerlink" href="#saved-uploads" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">User interface</a><ul>
+<li><a class="reference internal" href="#log-in">Log in</a><ul>
+<li><a class="reference internal" href="#lost-password">Lost password</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profile">Profile</a><ul>
+<li><a class="reference internal" href="#invitation">Invitation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#founding-new-a-project">Founding new a project</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#creating-a-database">Creating a database</a></li>
+<li><a class="reference internal" href="#configuring-your-database">Configuring your database</a></li>
+<li><a class="reference internal" href="#database">Database</a></li>
+<li><a class="reference internal" href="#sql-queries">SQL queries</a></li>
+<li><a class="reference internal" href="#openlayers">OpenLayers</a></li>
+<li><a class="reference internal" href="#mapserver">Mapserver</a></li>
+<li><a class="reference internal" href="#fine-tunning-steps-and-bug-trackings">Fine tunning steps and bug trackings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#map-page">Map page</a><ul>
+<li><a class="reference internal" href="#map-query">map query</a></li>
+<li><a class="reference internal" href="#text-query">text query</a></li>
+<li><a class="reference internal" href="#save-query">save query</a></li>
+<li><a class="reference internal" href="#share-query">share query</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upload-data">Upload data</a><ul>
+<li><a class="reference internal" href="#file-upload">File upload</a></li>
+<li><a class="reference internal" href="#web-upload">Web upload</a></li>
+<li><a class="reference internal" href="#saved-uploads">Saved uploads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="server_settings.html"
+                        title="next chapter">Administrative pages</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="server_settings.html" title="Administrative pages"
+             >next</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorials"
+             >previous</a> |</li>
+        <li><a href="index.html">openbiomaps 2.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2018, Bán Miklós.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
