@@ -17,6 +17,7 @@ Welcome to OpenBioMaps' documentation!
    user_interface.rst
    server_settings.rst
    gekko_install.rst
+   api.rst
    privacy.rst
    terms.rst
    faq.rst
