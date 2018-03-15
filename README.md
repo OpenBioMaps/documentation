@@ -1,4 +1,8 @@
-# This is a git repo for user contributed OBM documentations
+# Official OBM documentations
+Sphinx based documentation tree. The built html files are linked in: http://openbiomaps.org/documents
+
+
+# User contributed OBM documentations
 
 ## OBM_manual.md
 (english) Complete user manual of project founding and administration by Róbert Veres
