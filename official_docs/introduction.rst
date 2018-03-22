@@ -29,7 +29,7 @@ eszközkészletével megkönnyíti az adatok elérését és kezelését.
 **Main properties:**
 
    * Creating and managing custom databases
-   * Easy data import from varios formats (xls, gpx, shp, csv ...)
+   * Easy data import from varios formats (ods, xls, xlsx, gpx, shp, csv ...)
    * Repeatable and citable queries
    * DataCite DOI
    * Exporting data into various formats (csv, gpx)
