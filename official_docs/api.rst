@@ -6,11 +6,54 @@ HTTP methods:  GET, POST, PATCH
 Data methods:  Authentication, Data retrieval, Data push, Settings update
 
 
-GET types/scopes
+API handlers:
 -------------
-get_form_list:   query the list of available upload forms
+Authentication handler (oauth):
 
-get_form_data:   query the fields of the selected form
+/oatuh/token.php: Authentication
+
+Authentication based interface (pds):
+
+/projects/*projectname*/pds.php: Data retrieval, Data push, Settings update 
+
+Non authenticated requests (web):
+
+/projects/*projectname*/index.php
+
+
+OAUTH
+-----------
+grant_type:     password
+username:       a rergistered email address
+password:       password string
+scope:          list of requested scope access in the autenticated session
+access_token:   a valid access token
+
+html authentication of clients is nesessary
+
+Available clients are mobile,R,web
+
+
+PDS variables
+-----------
+scope:      data methods: see below
+
+value:      some scope uses it
+
+header:     (put data) JSON list of table columns' names
+
+ignore_warning: (put data) ignore upload warnings
+
+form_id:        (put_data) set form id
+
+data:           (put data) JSON array of upload data
+
+
+GET type scopes
+-------------
+get_form_list:   query the list of available upload forms, additional value=NULL
+
+get_form_data:   query the fields of the selected form, additional value=numeric id of a form
 
 get_profile:     get profile data of a selected user
 
@@ -24,16 +67,8 @@ get_report:      perform a predefined query and get the result
 
 get_tables:      get list of tables in a project
 
-query:           (non-authenticated data retreive)
 
-qtable:          (non-authenicated table setting for data retreive)
-
-report:          (non-authenticated data retreive using stored query)
-
-output:          (non-authenticated data output setting)
-
-
-POST types/scopes
+POST type scopes
 -------------
 put_data:        send/upload data using a selected form
 
@@ -43,19 +78,15 @@ PATCH types/scopes
 *set_rules:*     update specific settings
 
 
-API handlers:
+WEB API variable
 -------------
-Authentication handler:
+query:           (non-authenticated data retreive)
 
-/oatuh/token.php: Authentication
+qtable:          (non-authenicated table setting for data retreive)
 
-Authentication based interface:
+report:          (non-authenticated data retreive using stored query)
 
-/projects/*projectname*/pds.php: Data retrieval, Data push, Settings update
-
-Non authenticated requests:
-
-/projects/*projectname*/index.php
+output:          (non-authenticated data output setting)
 
 
 Examples
