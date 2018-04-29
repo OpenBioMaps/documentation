@@ -80,8 +80,8 @@ POST type scopes
 put_data:        send/upload data using a selected form
 
 
-PATCH types/scopes
-..................
+PATCH type scopes
+.................
 *set_rules:*     update specific settings
 
 
@@ -133,6 +133,9 @@ Data retrieval (non-authenticated report):
 
 General API answers
 -------------------
+Based on: https://labs.omniti.com/labs/jsend
+
 JSON:
     {"status":"X","data":"","message":""}
+
 X: success, error, fail
