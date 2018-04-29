@@ -35,7 +35,7 @@ Available clients are mobile,R,web
 
 
 PDS variables
------------
+-------------
 scope:      data methods: see below
 
 value:      some scope uses it
@@ -50,7 +50,7 @@ data:           (put data) JSON array of upload data
 
 
 GET type scopes
--------------
+---------------
 get_form_list:   query the list of available upload forms, additional value=NULL
 
 get_form_data:   query the fields of the selected form, additional value=numeric id of a form
@@ -69,17 +69,17 @@ get_tables:      get list of tables in a project
 
 
 POST type scopes
--------------
+----------------
 put_data:        send/upload data using a selected form
 
 
 PATCH types/scopes
--------------
+------------------
 *set_rules:*     update specific settings
 
 
 WEB API variable
--------------
+----------------
 query:           (non-authenticated data retreive)
 
 qtable:          (non-authenicated table setting for data retreive)
@@ -90,7 +90,7 @@ output:          (non-authenticated data output setting)
 
 
 Examples
--------------
+--------
 Authentication:
     curl -u mobile:123 http://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
 
