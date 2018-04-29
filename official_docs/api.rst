@@ -133,6 +133,6 @@ Data retrieval (non-authenticated report):
 
 General API answers
 -------------------
-JSON::
+JSON:
     {"status":"X","data":"","message":""}
 X: success, error, fail
