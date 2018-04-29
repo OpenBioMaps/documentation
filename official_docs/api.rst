@@ -1,9 +1,8 @@
 API documentation
 *****************
-
 HTTP methods:  GET, POST, PATCH
 
-Data methods:  Authentication, Data retrieval, Data push, Settings update
+API tools:  Authentication, Data retrieval, Data push, Settings update
 
 
 API handlers:
@@ -23,6 +22,10 @@ Non authenticated requests (web):
 
 OAUTH
 -----------
+An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-docs/. OAUTH used in the web interface and in the PDS as well.
+
+Variables
+.........
 grant_type:     password
 username:       a rergistered email address
 password:       password string
@@ -34,8 +37,12 @@ html authentication of clients is nesessary
 Available clients are mobile,R,web
 
 
-PDS variables
--------------
+PDS 
+----
+OBM API interface. Created for R and mobile interface. It uses the OAUTH interface for authentication.
+
+Variables
+.........
 scope:      data methods: see below
 
 value:      some scope uses it
@@ -50,7 +57,7 @@ data:           (put data) JSON array of upload data
 
 
 GET type scopes
----------------
+...............
 get_form_list:   query the list of available upload forms, additional value=NULL
 
 get_form_data:   query the fields of the selected form, additional value=numeric id of a form
@@ -69,24 +76,30 @@ get_tables:      get list of tables in a project
 
 
 POST type scopes
-----------------
+................
 put_data:        send/upload data using a selected form
 
 
 PATCH types/scopes
-------------------
+..................
 *set_rules:*     update specific settings
 
 
-WEB API variable
-----------------
-query:           (non-authenticated data retreive)
+WEB API
+-------
+Some kind of data access available on the web interface using stored unique URLs. These
 
-qtable:          (non-authenicated table setting for data retreive)
+Variables
+.........
+query:          (non-authenticated data retreive)
 
-report:          (non-authenticated data retreive using stored query)
+qtable:         (non-authenicated table setting for data retreive)
 
-output:          (non-authenticated data output setting)
+report:         (non-authenticated data retreive using stored query)
+
+output:         (non-authenticated data output setting)
+
+LQ:             (non-authenticated) display data from a stored query result
 
 
 Examples
@@ -117,8 +130,9 @@ Data push:
 Data retrieval (non-authenticated report):
     wget http://localhost/biomaps/projects/dinpi/?report=2@szamossag&output=csv
 
-API answers
------------
+
+General API answers
+-------------------
 JSON::
     {"status":"X","data":"","message":""}
 X: success, error, fail
