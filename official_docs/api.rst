@@ -111,8 +111,6 @@ Data retrieval (form list):
     curl -v http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list&value=NULL,table=checkitout"
 
 Result of a successful get_form_list call:
-    {"status":"success","data":[{"id":"93","visibility":"lepke űrlap"},{ ...
-    Ezt cseréljük majd le hogy így legyen:
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
 
 Data retrieval (form fields):
