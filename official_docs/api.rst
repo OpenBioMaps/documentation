@@ -20,7 +20,7 @@ Non authenticated requests (web):
 /projects/*projectname*/index.php
 
 PDS API version:
-.............
+................
 Example: http://openbiomaps.org/projects/dead_animals/v2.1/pds.php
 The default version setting (if the version string missing from the URL) is 1.1., which compatible with the 2.0 and backward compatible with the 1.0.
 
