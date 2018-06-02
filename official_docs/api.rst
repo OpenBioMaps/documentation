@@ -13,11 +13,16 @@ Authentication handler (oauth):
 
 Authentication based interface (pds):
 
-/projects/*projectname*/pds.php: Data retrieval, Data push, Settings update 
+/projects/*API_VERSION*/*projectname*/pds.php: Data retrieval, Data push, Settings update 
 
 Non authenticated requests (web):
 
 /projects/*projectname*/index.php
+
+PDS API version:
+.............
+Example: http://openbiomaps.org/projects/dead_animals/v2.1/pds.php
+The default version setting (if the version string missing from the URL) is 1.1., which compatible with the 2.0 and backward compatible with the 1.0.
 
 
 OAUTH
@@ -58,6 +63,8 @@ data:           (put data) JSON array of upload data
 
 GET type scopes
 ...............
+get_project_list: get list of database projects available on a server. Additional value=numeric (2), If provided and user already logined get the list of those projects where user has account and where there are public query/upload interfaces. If the user not logined query the public projects only. The default setting is to query all project available on a server.  
+
 get_form_list:   query the list of available upload forms, additional value=NULL
 
 get_form_data:   query the fields of the selected form, additional value=numeric id of a form
@@ -108,13 +115,13 @@ Authentication:
     curl -u mobile:123 http://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
 
 Data retrieval (form list):
-    curl -v http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list&value=NULL,table=checkitout"
+    curl -v http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list&value=NULL&table=checkitout"
 
 Result of a successful get_form_list call:
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
 
 Data retrieval (form fields):
-    curl -v http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93,table=checkitout"
+    curl -v http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93&table=checkitout"
 
 Result of a successful get_form_data call:
     {"status":"success",
