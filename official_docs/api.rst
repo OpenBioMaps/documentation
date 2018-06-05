@@ -122,10 +122,15 @@ Default value: Fix value for all observation. It can be controlled with some opt
 in any other case the value can not be changed by the user users and the field can be hidden.
 
 Column: The name of the column in the database
+
 Short_name: Visible name of the column for the users
+
 List: json array for menu items of a select menu. Can be {key:value} or [value,value] format
+
 Control: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
+
 Count: (json array) If the control='minmax' this field contains the limit values, e.g 1:100
+
 Type: column's openbiomaps type:
  
  - autocomplete	(json array)
