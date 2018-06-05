@@ -116,7 +116,8 @@ Form Data (get_form_data results) Explanations
 Description: Optional column description
 Default value: Fix value for all observation. It can be controlled with some options.
     - '_input' it works as any other field with sticky flag. 
-    - '_list' it works as any other list type field with sticky flag.  
+    - '_list' it works as any other list type field with sticky flag.
+
     in any other case the value can not be changed by the user users and the field can be hidden.
 
 Column: The name of the column in the database
