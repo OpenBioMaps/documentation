@@ -118,6 +118,7 @@ Default value: Fix value for all observation. It can be controlled with some opt
     - '_input' it works as any other field with sticky flag. 
     - '_list' it works as any other list type field with sticky flag.  
     in any other case the value can not be changed by the user users and the field can be hidden.
+
 Column: The name of the column in the database
 Short_name: Visible name of the column for the users
 List: json array for menu items of a select menu. Can be {key:value} or [value,value] format
@@ -140,6 +141,7 @@ Type: column's openbiomaps type:
     - timetominutes (numeric value between  0 and 1440)
     - tinterval idő intervallum (HH:mm - HH:mm)
     - wkt (WKT sting)
+
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 Obl: 1,2,3 (non obligatory, obligatory, soft error) Soft error can be handled as non obligatory.
 Api_params: jason array of control values. Currently only 'sticky'
