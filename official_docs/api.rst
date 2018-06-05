@@ -115,10 +115,10 @@ Form Data (get_form_data results) Explanations
 ----------------------------------------------
 Description: Optional column description
 Default value: Fix value for all observation. It can be controlled with some options.
-    - '_input' it works as any other field with sticky flag. 
-    - '_list' it works as any other list type field with sticky flag.
+- '_input' it works as any other field with sticky flag. 
+- '_list' it works as any other list type field with sticky flag.
 
-    in any other case the value can not be changed by the user users and the field can be hidden.
+in any other case the value can not be changed by the user users and the field can be hidden.
 
 Column: The name of the column in the database
 Short_name: Visible name of the column for the users
@@ -126,22 +126,22 @@ List: json array for menu items of a select menu. Can be {key:value} or [value,v
 Control: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
 Count: (json array) If the control='minmax' this field contains the limit values, e.g 1:100
 Type: column's openbiomaps type:
-    - autocomplete	(json array)
-    - boolen	
-    - crings (colour rings - text)	
-    - date (YYYY-MM-DD or other clear format)
-    - datetime (YYYY-MM-DD HH:mm:ss)
-    - file_id (file names as id by the server) 
-    - line (WKT geometry string)
-    - list (json array)
-    - numeric	
-    - point	(WKT geometry string)
-    - polygon (wkt geometry string)
-    - text 
-    - time (HH:mm)
-    - timetominutes (numeric value between  0 and 1440)
-    - tinterval idő intervallum (HH:mm - HH:mm)
-    - wkt (WKT sting)
+- autocomplete	(json array)
+- boolen	
+- crings (colour rings - text)	
+- date (YYYY-MM-DD or other clear format)
+- datetime (YYYY-MM-DD HH:mm:ss)
+- file_id (file names as id by the server) 
+- line (WKT geometry string)
+- list (json array)
+- numeric	
+- point	(WKT geometry string)
+- polygon (wkt geometry string)
+- text 
+- time (HH:mm)
+- timetominutes (numeric value between  0 and 1440)
+- tinterval idő intervallum (HH:mm - HH:mm)
+- wkt (WKT sting)
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 Obl: 1,2,3 (non obligatory, obligatory, soft error) Soft error can be handled as non obligatory.
