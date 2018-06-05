@@ -63,7 +63,9 @@ data:           (put data) JSON array of upload data
 
 GET type scopes
 ...............
-get_project_vars: query login url and other project variables (available for non logined users as well)
+get_project_vars: query general project variables (available for non logined users as well)
+ login_url: web address string
+ game: on/off
 
 get_project_list: get list of database projects available on a server. Additional value=numeric (2), If provided and user already logined get the list of those projects where user has account and where there are public query/upload interfaces. If the user not logined query the public projects only. The default setting is to query all project available on a server.  
 
