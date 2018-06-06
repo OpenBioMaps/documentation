@@ -1,3 +1,7 @@
+.. |br| raw:: html
+
+    <br>
+    
 API documentation
 *****************
 HTTP methods:  GET, POST, PATCH
@@ -161,27 +165,21 @@ Spatial_limit: WKT polygon string of spatial limit. It is used if the Control ty
 Examples
 --------
 Authentication:
-    curl \\
-    
-    -u mobile:123 http://openbiomaps.org/oauth/token.php \\
-    
+    curl \\ |br|
+    -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
     -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
 
 Data retrieval (form list):
-    curl \\
-    
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\
-    
+    curl \\ |br|
+    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list&value=NULL&table=checkitout"
 
 Result of a successful get_form_list call:
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
 
 Data retrieval (form fields):
-    curl \\
-    
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\
-    
+    curl \\ |br|
+    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93&table=checkitout"
 
 Result of a successful get_form_data call:
@@ -194,50 +192,30 @@ Result of a successful get_form_data call:
     {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{... ]}
 
 Data push:
-    curl \\
-    
-    -i \\
-    
-    -X POST \\
-    
-    -H "Content-Type:application/x-www-form-urlencoded" \\
-    
-    -H "Authorization:Bearer ..." \\
-    
-    -d "scope=put_data" \\
-    
-    -d "form_id=128" \\
-    
-    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\
-    
-    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\
-    
-    -d "ignore_warning=1" \\
-    
+    curl \\ |br|
+    -i \\ |br|
+    -X POST \\ |br|
+    -H "Content-Type:application/x-www-form-urlencoded" \\ |br|
+    -H "Authorization:Bearer ..." \\ |br|
+    -d "scope=put_data" \\ |br|
+    -d "form_id=128" \\ |br|
+    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
+    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
+    -d "ignore_warning=1" \\ |br|
     'http://openbiomaps.org/projects/checkitout/pds.php'
 
 Data push with attached files:
-    curl \\\n
-    -F "access_token=..." \\
-    
-    -F 'scope=put_data' \\
-    
-    -F 'form_id=58' \\
-    
-    -F 'header=["faj","obm_geometry","obm_files_id"]' \\
-    
-    -F 'batch=[\\
-    
-    {"data":[{"faj":"Sylvia curruca","obm_geometry":"POINT(22.0 46.3)"}],"attached_files":"file1,file2"},\\
-    
-    {"data":[{"faj":"Lanius Collurio","obm_geometry":"POINT(21.5 47.1)"}],"attached_files":"file3"}]' \\
-    
-    -F 'file1=@file1' \\
-    
-    -F 'file2=@file2' \\
-    
-    -F 'file3=@file3' \\
-    
+    curl \\ |br|
+    -F "access_token=..." \\ |br|
+    -F 'scope=put_data' \\ |br|
+    -F 'form_id=58' \\ |br|
+    -F 'header=["faj","obm_geometry","obm_files_id"]' \\ |br|
+    -F 'batch=[\\ |br|
+    {"data":[{"faj":"Sylvia curruca","obm_geometry":"POINT(22.0 46.3)"}],"attached_files":"file1,file2"},\\ |br|
+    {"data":[{"faj":"Lanius Collurio","obm_geometry":"POINT(21.5 47.1)"}],"attached_files":"file3"}]' \\ |br|
+    -F 'file1=@file1' \\ |br|
+    -F 'file2=@file2' \\ |br|
+    -F 'file3=@file3' \\ |br|
     http://localhost/biomaps/projects/template/pds.php
 
 Data retrieval (non-authenticated report):
