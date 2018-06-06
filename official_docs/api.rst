@@ -217,7 +217,7 @@ Data push:
     'http://openbiomaps.org/projects/checkitout/pds.php'
 
 Data push with attached files:
-    curl \\
+    curl \\\n
     -F "access_token=..." \\
     
     -F 'scope=put_data' \\
