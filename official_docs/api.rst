@@ -179,7 +179,31 @@ Result of a successful get_form_data call:
     {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{... ]}
 
 Data push:
-    curl -i -X POST -H "Content-Type:application/x-www-form-urlencoded" -H "Authorization:Bearer   84e2ccd56a9657f3ad768d289fe2c8f09e44203d" -d "scope=put_data" -d "form_id=128" -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" -d "ignore_warning=1" 'http://openbiomaps.org/projects/checkitout/pds.php'
+    curl \
+    -i \
+    -X POST \
+    -H "Content-Type:application/x-www-form-urlencoded" \
+    -H "Authorization:Bearer ..." \
+    -d "scope=put_data" \
+    -d "form_id=128" \
+    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \
+    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \
+    -d "ignore_warning=1" \
+    'http://openbiomaps.org/projects/checkitout/pds.php'
+
+Data push with attached files:
+    curl \
+    -F "access_token=..." \
+    -F 'scope=put_data' \
+    -F 'form_id=58' \
+    -F 'header=["faj","obm_geometry","obm_files_id"]' \
+    -F 'batch=[
+    {"data":[{"faj":"Sylvia curruca","obm_geometry":"POINT(22.0 46.3)"}],"attached_files":"file1,file2"},
+    {"data":[{"faj":"Lanius Collurio","obm_geometry":"POINT(21.5 47.1)"}],"attached_files":"file3"}]' \
+    -F 'file1=@file1' \
+    -F 'file2=@file2' \
+    -F 'file3=@file3' \
+    http://localhost/biomaps/projects/template/pds.php
 
 Data retrieval (non-authenticated report):
     wget http://localhost/biomaps/projects/dinpi/?report=2@szamossag&output=csv
