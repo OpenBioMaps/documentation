@@ -179,16 +179,16 @@ Result of a successful get_form_data call:
     {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{... ]}
 
 Data push:
-    curl \
-    -i \
-    -X POST \
-    -H "Content-Type:application/x-www-form-urlencoded" \
-    -H "Authorization:Bearer ..." \
-    -d "scope=put_data" \
-    -d "form_id=128" \
-    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \
-    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \
-    -d "ignore_warning=1" \
+    curl \\
+    -i \\
+    -X POST \\
+    -H "Content-Type:application/x-www-form-urlencoded" \\
+    -H "Authorization:Bearer ..." \\
+    -d "scope=put_data" \\
+    -d "form_id=128" \\
+    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\
+    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\
+    -d "ignore_warning=1" \\
     'http://openbiomaps.org/projects/checkitout/pds.php'
 
 Data push with attached files:
