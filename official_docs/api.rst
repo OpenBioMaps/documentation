@@ -68,15 +68,23 @@ data:           (put data) JSON array of upload data
 GET type scopes
 ...............
 get_project_vars: query general project variables (available for non logined users as well)
- login_url: web address string
- 
- game: on/off
 
-get_project_list: get list of database projects available on a server. Additional value=numeric (2), If provided and user already logined get the list of those projects where user has account and where there are public query/upload interfaces. If the user not logined query the public projects only. The default setting is to query all project available on a server.  
+-project_url: [url string] web address of the project
+-login_url: [url string] login address of the project
+-game: [on/off] game available for android mobile app
+-public_mapserv: [url string] url of publicly accessible map service
+-rserver_port: [numeric] numeric port number of R-Shiny server, accessible on project_url
 
-get_form_list:   query the list of available upload forms, additional value=NULL
+get_project_list: get list and basis info of database projects available on the server. 
 
-get_form_data:   query the fields of the selected form, additional value=numeric id of a form
+-Additional parameters: value [numeric], If "2" and user already logined, get list of those projects where user has account and where there are public query/upload interfaces. If the user not logined, query the public projects only. The default setting is to query all project available on a server.
+-Additional parameters: table [string] get only the selected project variables
+
+get_form_list:   query the list of available upload forms,
+
+get_form_data:   query the fields of the selected form, 
+
+-additional parameters: value [numeric] numeric id of a form
 
 get_profile:     get profile data of a selected user
 
