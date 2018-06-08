@@ -76,6 +76,7 @@ get_project_vars: query general project variables (available for non logined use
  - rserver_port: [numeric] numeric port number of R-Shiny server, accessible on project_url
 
 get_project_list: get list and basis info of database projects available on the server. Returns:
+
  - project_table: [string]
  - creation_date: [date string]
  - Creator: [string]
@@ -88,14 +89,14 @@ get_project_list: get list and basis info of database projects available on the 
  - collection_dates: [date range string],
  - subjects: [text]
 
- - Additional parameters: value [numeric], If "2" and user already logined, get list of those projects where user has account and where there are public query/upload interfaces. If the user not logined, query the public projects only. The default setting is to query all project available on a server.
+ Additional parameters: value [numeric], If "2" and user already logined, get list of those projects where user has account and where there are public query/upload interfaces. If the user not logined, query the public projects only. The default setting is to query all project available on a server.
  - Additional parameters: table [string] get only the selected project variables
 
 get_form_list:   query the list of available upload forms,
 
 get_form_data:   query the fields of the selected form, Returns: see below.
 
- - additional parameters: value [numeric] numeric id of a form
+ additional parameters: value [numeric] numeric id of a form
 
 get_profile:     get profile data of a selected user
 
