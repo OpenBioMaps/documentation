@@ -241,6 +241,18 @@ Data push with attached files:
 Data retrieval (non-authenticated report):
     wget http://localhost/biomaps/projects/dinpi/?report=2@szamossag&output=csv
 
+Refresh token (from R):
+    curl \\ |br|
+    -F 'grant_type=refresh_token' \\ |br|
+    -F 'refresh_token=...' \\ |br|
+    -F 'client_id=R' http://openbiomaps.org/oauth/token.php
+    
+    Returns: |br|
+    {"access_token":"...", |br|
+    "expires_in":3600, |br|
+    "token_type":"Bearer", |br|
+    "scope":"get_form_data ...", |br|
+    "refresh_token":"13289ddbe0cb9f69443e94b066999cf3ea3bee86"}
 
 General API answers
 -------------------
