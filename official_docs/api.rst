@@ -252,7 +252,7 @@ Refresh token (from R):
     "expires_in":3600, |br|
     "token_type":"Bearer", |br|
     "scope":"get_form_data ...", |br|
-    "refresh_token":"13289ddbe0cb9f69443e94b066999cf3ea3bee86"}
+    "refresh_token":"..."}
 
 General API answers
 -------------------
