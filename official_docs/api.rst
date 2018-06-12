@@ -81,12 +81,11 @@ get_project_vars: query general project variables (available for non logined use
 
 get_project_list: get list and basis info of database projects available on the server. 
  Additional parameters:
- 
-   - only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
-   - accessible [text]: all/**accessible**
-     If accessible parameter given and its value is "accessible" (default)
-        If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
-        If the user not logined, query public projects only.
+     only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
+     accessible [text]: all/**accessible**. If *accessible* parameter given and its value is "accessible" (default)
+     
+     - If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
+     - If the user not logined, query public projects only.
 
  Returns:
 
