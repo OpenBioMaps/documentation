@@ -89,8 +89,12 @@ get_project_list: get list and basis info of database projects available on the 
  - collection_dates: [date range string],
  - subjects: [text]
 
- Additional parameters: value [numeric], If "2" and user already logined, get list of those projects where user has account and where there are public query/upload interfaces. If the user not logined, query the public projects only. The default setting is to query all project available on a server.
- - Additional parameters: table [string] get only the selected project variables
+ Additional parameters: 
+    only-project [text], query project parameters only for the selected project, default is to query all accessible projects
+    accessible [text] all/**accessible**
+    If accessible parameter given and its value is "accessible" (default)
+        If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
+        If the user not logined, query public projects only.
 
 get_form_list:   query the list of available upload forms,
 
