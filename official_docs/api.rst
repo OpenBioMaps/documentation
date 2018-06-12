@@ -83,24 +83,24 @@ get_project_list: get list and basis info of database projects available on the 
  Additional parameters:
  
    - only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
-    accessible [text]: all/**accessible**
-   - If accessible parameter given and its value is "accessible" (default)
+   - accessible [text]: all/**accessible**
+     If accessible parameter given and its value is "accessible" (default)
         If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
         If the user not logined, query public projects only.
 
  Returns:
 
- - project_table: [string]
- - creation_date: [date string]
- - Creator: [string]
- - email: [string]
- - stage: [string] experimental/testing/stable
- - doi: [string]
- - running_date: [date string],
- - licence: [string],
- - rum: [string],
- - collection_dates: [date range string],
- - subjects: [text]
+ - project_table [string],
+ - creation_date [date string],
+ - Creator [string],
+ - email [string],
+ - stage [string] experimental/testing/stable,
+ - doi [string],
+ - running_date [date string],
+ - licence [string],
+ - rum [string],
+ - collection_dates [date range string],
+ - subjects [text],
 
 get_form_list:   query the list of available upload forms,
 
