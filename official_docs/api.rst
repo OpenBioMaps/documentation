@@ -249,7 +249,8 @@ Refresh token (from R):
     curl \\ |br|
     -F 'grant_type=refresh_token' \\ |br|
     -F 'refresh_token=...' \\ |br|
-    -F 'client_id=R' http://openbiomaps.org/oauth/token.php
+    -F 'client_id=R' \\ |br|
+    http://openbiomaps.org/oauth/token.php
     
     Returns: |br|
     {"access_token":"...", |br|
@@ -257,6 +258,14 @@ Refresh token (from R):
     "token_type":"Bearer", |br|
     "scope":"get_form_data ...", |br|
     "refresh_token":"..."}
+    
+Project list (using central pds):
+    curl \\ |br|
+    -F 'scope=get_project_list' \\ |br|
+    http://localhost/biomaps/pds.php
+    
+    Returns: |br|
+    JSON array of those project which has public upload forms, or the user (if logined) member of it.
 
 General API answers
 -------------------
