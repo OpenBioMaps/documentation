@@ -203,7 +203,7 @@ Authentication:
 Data retrieval (form list):
     curl \\ |br|
     -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
-    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list&value=NULL&table=checkitout"
+    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"
 
 Result of a successful get_form_list call:
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
@@ -211,7 +211,23 @@ Result of a successful get_form_list call:
 Data retrieval (form fields):
     curl \\ |br|
     -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
-    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93&table=checkitout"
+    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93"
+    
+  OR with central pds
+    curl \\ |br|
+    -F 'scope=get_form_data' \\ |br|
+    -F 'value=93' \\ |br|
+    -F 'project=checkitout' \\ |br|
+    http://openbiomaps.org/projects/checkitout/pds.php
+    
+  OR with access token to retrieve data of a restricted form
+    curl \\ |br|
+    -F 'access_token=...' \\ |br|
+    -F 'scope=get_form_data' \\ |br|
+    -F 'value=124' \\ |br|
+    -F 'project=checkitout' \\ |br|
+    http://openbiomaps.org/projects/checkitout/pds.php
+    
 
 Result of a successful get_form_data call:
     {"status":"success",
