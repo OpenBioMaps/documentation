@@ -140,6 +140,8 @@ Variables
 .........
 query:          (non-authenticated data retreive)
 
+query_api:      (non-authenticated data retreive, resulting JSON, XML, CSV output)
+
 qtable:         (non-authenicated table setting for data retreive)
 
 report:         (non-authenticated data retreive using stored query)
@@ -147,6 +149,10 @@ report:         (non-authenticated data retreive using stored query)
 output:         (non-authenticated data output setting)
 
 LQ:             (non-authenticated) display data from a stored query result
+
+Get list of active (known) OpenBioMaps servers using query_api:
+
+curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_api={"available":"up"}&output=json&filename='
 
 
 Form Data (get_form_data results) Explanations
