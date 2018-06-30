@@ -189,7 +189,7 @@ Type: column's openbiomaps type:
  - wkt (WKT sting)
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
-Obl: 1,2,3 (non obligatory, obligatory, soft error) Soft error can be handled as non obligatory.
+Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
 Api_params: jason array of control values. Currently only 'sticky'
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
