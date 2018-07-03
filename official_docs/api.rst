@@ -74,7 +74,7 @@ get_project_vars: query general project variables (available for non logined use
  Returns:
 
  - project_url [url string]: web address of the project
- - login_url [url string]: login address of the project
+ - project_description [text string]: short description of project 
  - game [on/off]: game available for android mobile app
  - public_mapserv [url string]: url of publicly accessible map service
  - rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
