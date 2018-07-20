@@ -121,6 +121,18 @@ get_report:      perform a predefined query and get the result
 
 get_tables:      get list of tables in a project
 
+get_trainings:  get list of available trainings/forms
+
+ Returns: set of traning titles, ids and descriptions,...
+
+get_training_questions: get list of questions for the selected training
+
+ Additional parameters: value [numeric] numeric id of a training.
+ 
+ Returns: set of questions,answers and settings
+
+training_results:   status list of users' trainings per forms
+
 
 POST type scopes
 ................
@@ -155,7 +167,7 @@ Get list of active (known) OpenBioMaps servers using query_api:
 curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_api={"available":"up"}&output=json&filename='
 
 
-Form Data (get_form_data results) Explanations
+Form Data (get_form_data results) explanations
 ----------------------------------------------
 Description: Optional column description
 Default value: Fix value for all observation. It can be controlled with some options.
@@ -198,6 +210,27 @@ Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} 
 Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
 Api_params: jason array of control values. Currently only 'sticky'
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+
+Training explanations and examples
+----------------------------------
+Examples:
+
+curl -F 'scope=get_trainings' -F 'access_token=9d456de50f3ff81cae3ac748aac5202a2e2d1182' -F 'project=dinpi' http://localhost/biomaps/pds.php
+
+Result of a successful call:
+    {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
+    
+curl -F 'scope=get_trainings' -F 'access_token=9d456de50f3ff81cae3ac748aac5202a2e2d1182' -F 'project=dinpi' http://localhost/biomaps/pds.php
+
+Result of a successful call:
+    {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
+    
+    qtype can be multiselect or singleselect
+    
+curl -F 'scope=training_results' -F 'value=1' -F 'access_token=9bb404cab65f2d84113097d701e9cbf0a219913f' -F 'project=dinpi' http://localhost/biomaps/pds.php
+
+Result of a successful call:
+    {"status":"success","data":"{"95":1,"96":0,"97":0,"98":0}"}
 
 Examples
 --------
