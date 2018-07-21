@@ -131,7 +131,7 @@ get_training_questions: get list of questions for the selected training
  
  Returns: set of questions,answers and settings
 
-training_results:   status list of users' trainings per forms
+training_results:   status list of users' trainings per forms. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok)
 
 
 POST type scopes
@@ -230,7 +230,9 @@ Result of a successful call:
 curl -F 'scope=training_results' -F 'value=1' -F 'access_token=9bb404cab65f2d84113097d701e9cbf0a219913f' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
-    {"status":"success","data":"{"95":1,"96":0,"97":0,"98":0}"}
+    {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
+    
+    Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
 
 Examples
 --------
