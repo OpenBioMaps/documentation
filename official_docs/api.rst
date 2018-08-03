@@ -227,7 +227,7 @@ Result of a successful call:
     
     qtype can be multiselect or singleselect
     
-curl -F 'scope=training_results' -F 'value=1' -F 'access_token=9bb404cab65f2d84113097d701e9cbf0a219913f' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=training_results' -F 'access_token=9bb404cab65f2d84113097d701e9cbf0a219913f' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
