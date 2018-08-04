@@ -220,7 +220,7 @@ curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http:
 Result of a successful call:
     {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
     
-curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=<b>get_training_questions</b>' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
