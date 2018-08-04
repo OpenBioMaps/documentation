@@ -215,24 +215,29 @@ Training explanations and examples
 ----------------------------------
 Examples:
 
-curl -F 'scope=get_trainings' -F 'access_token=9d456de50f3ff81cae3ac748aac5202a2e2d1182' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
     
-curl -F 'scope=get_trainings' -F 'access_token=9d456de50f3ff81cae3ac748aac5202a2e2d1182' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
     
     qtype can be multiselect or singleselect
     
-curl -F 'scope=training_results' -F 'access_token=9bb404cab65f2d84113097d701e9cbf0a219913f' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=training_results' -F 'access_token=9bb4...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
     
     Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
+    
+curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
+
+Result of a successful call:
+    {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
 
 Examples
 --------
