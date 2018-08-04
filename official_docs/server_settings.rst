@@ -28,11 +28,12 @@ Upload forms
     oszlop:	az adatbázis oszlopk felületen meghatározott - megjelenített oszlop név
     leírás:	rövid leírás a beírandó adatokról
     típus:
+    
         szöveg: tetszőleges szöveg - habár a minimum és maximum hossz megadható
         
         szám: tetszőleges szám - habár a minimum és maximum hossz megadható
         
-        lista: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A "név" amennyiben "str_" előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A "true" és "false" szavak str_true és str_false fordítás szerint fordulnak le. 
+        lista: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A "név" amennyiben "str\_" előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A "true" és "false" szavak str_true és str_false fordítás szerint fordulnak le. 
         Megadható több címke egy értékhez amikből webes űrlapesetén az első jelenik meg, file feltöltésnél pedig a fájl cella értékéből bármelyik cimke vagy az érték helyes egyezést ad. A cimkéket # karakterekkel tagolva kell megadni. Pl: female#tojó:f,male#hím#him:m,juvenil#fiatal:j,adult#öreg:a
         
         Ez esetben az "f" érték lehetséges cimkéi a "female", "tojo" és "tojó" szavak
@@ -88,6 +89,7 @@ rel_type is a function related with the field type
      datum:          year            extraxt year component from a datum string
      text,numeric:   minmax          minmax range check
      any type:       obligatory      change obligatory setting
+                     
                      inequality      check inequality with these symbols: <>= between index and current field. Causing error message.
 rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$ 
      If statement is regexp rel_value also can be a function
@@ -103,6 +105,7 @@ rel_value:
              +=.
              +<>.
              WHERE + is the matched rel_field value and . is the current cell value
+             
      Else can be anything - may be ignored - depending on the used function
 
 Példa:
