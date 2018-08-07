@@ -134,6 +134,7 @@ get_training_questions: get list of questions for the selected training
 training_results:   status list of users' trainings per forms. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok)
 
 training_toplist: toplist of trainings. Mean, Max, Count values for each forms.
+ Additional parameters: value [text] summary without names (nonames).
 
 
 POST type scopes
@@ -236,10 +237,19 @@ Result of a successful call:
     
     Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
     
-curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
+curl -F 'scope=training_toplist' -F 'value=nonames' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
     {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
+    
+curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
+
+    {"status":"success","data":{ \\ |br|
+        "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"}, \\ |br|
+              "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
+        "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
+        "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
+        "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
 
 Examples
 --------
