@@ -135,6 +135,9 @@ training_results:   status list of users' trainings per forms. Status can be -1 
 
 training_toplist: toplist of trainings. Mean, Max, Count values for each forms.
  Additional parameters: value [text] summary without names (nonames).
+ 
+get_mydata_rows: json array of uploaded data
+ Additional parameters: value [numeric] limit of array length. If 0, no limit, default is no limit.
 
 
 POST type scopes
