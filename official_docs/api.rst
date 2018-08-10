@@ -243,16 +243,19 @@ Result of a successful call:
 curl -F 'scope=training_toplist' -F 'value=nonames' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
 Result of a successful call:
-    {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
+    {"status":"success","data": { \\ |br|
+    "95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"}, \\ |br|
+    "96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}, \\ |br|
+    "97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}, \\ |br|
+    "98":{"mean":null,"count":"1","max":null} \\ |br|
+    }}
     
 curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
     {"status":"success","data":{ \\ |br|
-        "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"}, \\ |br|
-              "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
+    "Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"}, \\ |br|
+    "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"} \\ |br|
+    }}
 
 Examples
 --------
