@@ -5,7 +5,7 @@ Adatbázis oszlopok
 ------------------
 
 Csoportok
-------
+---------
 
 Feltöltő űrlapok
 ----------------
