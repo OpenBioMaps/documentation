@@ -2,7 +2,7 @@
 
     <br>
     
-API documentation
+API dokumentáció
 *****************
 HTTP methods:  GET, POST, PATCH
 
