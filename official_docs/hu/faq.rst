@@ -1,51 +1,51 @@
-Frequently Asked Questions
-**************************
+Gyakran Ismételt Kérdések
+*************************
 
-What is OpenBioMaps?
---------------------
+Mi az OpenBioMaps?
+------------------
 The OpenBioMaps is a framework for biological data with spatial attributes. In this framework it is allowed to create databases. The biological and spatial data in these databases are available for anyone.
 
 The framework contains several different databases which served by more servers. These applications are the UMN Mapserver (which serve the web maps), the PostgreSQL database server (where cthe framework's and the databases' data stored), the PostGIS library (which handle the spatial queries), the Apache webserver (which handle the web output), the OpenLayers Javascript library (which handle the web map displaying in the browsers) and finally the Debian Linux operating system which serves the backround for the whole system. 
 
-What is OpenBioMaps consortium?
--------------------------------
+Mi az OpenBioMaps konzorcium?
+-----------------------------
 The OpenBioMaps consortium has been established through cooperation between public institutions and social organizations. Their goal was to develop and operate the OpenBioMap community database framework. The members of the consortium are equal partners and they have all contributed to achievenig this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
 
 
-Current OpenBioMaps partners:
+Jelenlegi OpenBioMaps partnerek:
 
 
-**University of Debrecen**
+**Debreceni Egyetem**
 
-contact: Dr. Miklós Bán, banm@vocs.unideb.hu.
-
-
-**Danube-Ipoly National Park Directorate**
-
-contact: Zsolt Baranyai, baranyaizs@dinpi.hu.
+kapcsolat: Dr. Miklós Bán, banm@vocs.unideb.hu.
 
 
-**Eötvös Loránd University**
+**Duna-Ipoly Nemzeti Park Igazgatóság**
 
-contact: Dr. Tibor Standovár, standi@caesar.elte.hu
-
-
-**WWF World Wildlife Fund for Nature Hungary**
-
-contact: Katalin Sipos, katalin.sipos@wwf.hu
+kapcsolat: Zsolt Baranyai, baranyaizs@dinpi.hu.
 
 
-**Eszterházy Károly University**
+**Eötvös Loránd Tudományegyetem**
 
-contact: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
+kapcsolat: Dr. Tibor Standovár, standi@caesar.elte.hu
 
 
-**Milvus Group Association**
-contact: István Kovács, 
+**WWF Magyarország**
 
-**Danube-Dráva National Park Directorate**
+kapcsolat: Katalin Sipos, katalin.sipos@wwf.hu
 
-contact:
+
+**Eszterházy Károly Egyetem**
+
+kapcsolat: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
+
+
+**Milvus Csoport Egyesület**
+kapcsolat: István Kovács, 
+
+**Duna-Dráva Nemzeti Park Igazgatóság**
+
+kapcsolat:
 
 
 The OpenBioMaps consortium established at September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
