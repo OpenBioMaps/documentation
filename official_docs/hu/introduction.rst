@@ -1,7 +1,7 @@
-Introduction
-************
+Bevezetés
+*********
 
-**Aims of OpenBioMaps project**
+**Az OpenBioMaps céljai**
 
 **There are two objectives of the openbiomaps project:**
 
@@ -26,7 +26,7 @@ eszközkészletével megkönnyíti az adatok elérését és kezelését.
    * Az OpenBioMaps minden szolgáltatása ingyenesen vehető igénybe.
 
 
-**Main properties:**
+**Fő tulajdonságok:**
 
    * Creating and managing custom databases
    * Easy data import from varios formats (ods, xls, xlsx, gpx, shp, csv ...)
@@ -41,8 +41,8 @@ eszközkészletével megkönnyíti az adatok elérését és kezelését.
    * Open data
 
 
-OpenBioMaps overview
-====================
+OpenBioMaps áttekintés
+======================
 
 OpenBioMaps Query Workflow
 --------------------------
@@ -50,7 +50,7 @@ OpenBioMaps Query Workflow
 
 
 
-OpenBioMaps Consortium
+OpenBioMaps Konzorcium
 ----------------------
 :download:`OpenBioMaps<docs/consortium_2015.pdf>`
 
