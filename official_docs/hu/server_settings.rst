@@ -1,15 +1,15 @@
-Administrative pages
-********************
+Adminisztratív oldalak
+**********************
 
-Database columns
-----------------
+Adatbázis oszlopok
+------------------
 
-Groups
+Csoportok
 ------
 
-Upload forms
-------------
-Új form létrehozása
+Feltöltő űrlapok
+----------------
+Új űrlap létrehozása
 
 Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.
 
@@ -117,23 +117,23 @@ tarsus_length oszlopnál
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
 
 
-Form szerkesztése
-Új formot lehet létrehozni meglévő form új néven való elmentésével!
+Űrlap szerkesztése
+Új űrlapot lehet létrehozni meglévő űrlap új néven való elmentésével!
 
 
-Functions
+Függvények
+----------
+
+Faj nevek
 ---------
 
-Species names
+HOzzáférések
+------------
+
+Nyelvi fájlok
 -------------
 
-Access
-------
-
-Language files
---------------
-
-Modules
+Modulok
 -------
 specieslist
     specieslist summary above results
@@ -221,6 +221,13 @@ restricted_data
 form_list
 
 identify_point
+    A térképi lapon megjelenő adat információ lekérdező eszköz
+    
+    Általános leírás:
+        A modul engedélyezésével egy "i" ikon jelenik meg a térkép alatt funkciók mezőben. Ezzel az eszközzel egy adat pontra kattintava egy buborék ablakot jelenik meg a klikkelés közelében lévő adatokkal.
+    
+    Paraméterek:
+        oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban
 
 custom_notify
 
@@ -231,26 +238,35 @@ custom_filetype
     Custom file preparation. E.g. observado style CSV
 
 create_pg_user
-    Create limited postgres users for a project
+    Behatárolt hozzáférésű POSTGRES felhasználó létrehozása
+    
+    Általános leírás:
+        A modul engedélyezésével (akik kapnak jogot a modul használatára) a felhazsnálók tudnak maguknak saját postgres felhazsnálót készíteni. 
+        Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
+        Minden a projekthez rendelt adattáblát tud olvasni.
+        Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
+        Egy év után automatikusan lejár a hozzáférése.
+        Bármikor megújíthatja a hozzáférését a felhasználó.
+    
+    Paraméterek:
 
+Elmentett feltöltések
+---------------------
 
-Saves imports
--------------
-
-File manager
-------------
-
-SQL query settings
-------------------
-
-Web Map Layers
---------------
-
-Members
--------
-
-Mapserver settings
-------------------
-
-Server logs
+Fájl kezelő
 -----------
+
+SQL lekérdezés beállítások
+--------------------------
+
+Webes térképi rétegek
+---------------------
+
+Tagok
+-----
+
+Mapserver beállítások
+---------------------
+
+Szerver logok
+-------------
