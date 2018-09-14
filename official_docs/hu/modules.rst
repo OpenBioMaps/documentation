@@ -281,7 +281,7 @@ identify_point
 
             A fenti példa a következő hiperlinket fogja generálni:
 
-            <a href="//example.com?nest_id=2898&amp;species=" target="_blank" id="" class="pure-button button-href">Adat hozzáadása</a>
+            <a href="//example.com?nest_id=2898&species=Brachyramphus perdix" target="_blank" id="" class="pure-button button-href">Adat hozzáadása</a>
 
             A json-t egy sorosra kell tömöríteni!
 
