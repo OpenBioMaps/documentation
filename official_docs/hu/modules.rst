@@ -255,6 +255,31 @@ identify_point
     
     Paraméterek:
         oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban
+        json objektum: hiperlink megjelenítésére alkalmas. 
+            elemei:
+                type - kötelező, egyelőre csak a "link" érték működik
+                href - kötelező - hivatkozás címe
+                label - kötelező - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
+                class - opcionális - a linkhez rendelt osztályok
+                id - opcionális - a linkhez rendelt azonosító
+                target - opcionális - alapértelmezett "_blank"
+                params - opcionális - a href elem paraméterei 
+
+            A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
+
+            Példa:
+            {
+                "type": "link",
+                "href": "//example.com?nest_id=%1%&species=%2%",
+                "label": "str_add_data",
+                "class": "pure-button button-href",
+                "params": ["obm_id","species"]
+            }
+
+            A fenti példa a következő hiperlinket fogja generálni:
+            <a href="//example.com?nest_id=2898&amp;species=" target="_blank" id="" class="pure-button button-href">Adat hozzáadása</a>
+
+            A json-t egy sorosra kell tömöríteni!
 
 custom_notify
     

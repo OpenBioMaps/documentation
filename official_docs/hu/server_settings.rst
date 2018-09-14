@@ -139,6 +139,8 @@ Modulok
 Beépülő modulok hozzáadása, engedélyezése és paraméterezésének felülete.
 Az engedélyezett modulok használatát felhazsnálókhoz/csoportokhoz lehet rendelni.
 
+Paraméterként megadhatunk egyszerű karakterláncot, vagy JSON objektumot.
+
 Az elérhető modulok listája és leírásai itt találhatóak: 
     modules.rst
 
