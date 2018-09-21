@@ -9,6 +9,7 @@ Elfelejtett jelszó
 
 Profil lap
 ==========
+:doc:`profil lap beállításai <../profile>`
 
 
 Meghívások
@@ -16,8 +17,17 @@ Meghívások
 Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
 
 
-Új projekt alapítása
-====================
+Projekt adminisztráció
+======================
+:doc:`adminisztrációs beállítások <../project_admin>`
+
+
+Üzenetek
+========
+
+
+Új adatbázis alapítása
+======================
 .. sectionauthor:: Róbert Veres (2016-12-19)
 
 Bevezetés
