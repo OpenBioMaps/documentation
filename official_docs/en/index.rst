@@ -14,11 +14,13 @@ Welcome to OpenBioMaps' documentation!
 
    introduction.rst
    tutorial.rst
+   profile.rst
    user_interface.rst
-   server_settings.rst
+   admin_pages.rst
    modules.rst
    gekko_install.rst
    api.rst
+   server_install.rst
    privacy.rst
    terms.rst
    faq.rst
