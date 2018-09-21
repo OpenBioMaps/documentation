@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adminisztratív oldalak &#8212; openbiomaps 2.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" />
+    <link rel="next" title="Modulok" href="modules.html" />
+    <link rel="prev" title="User interface" href="user_interface.html" /> 
+  </head>
+  <body role="document">
+    <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
+    <tr>
+        <td style='vertical-align:bottom'>
+            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
+        </td>
+        <td style='vertical-align:top;text-align:right'>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github"> Edit on GitHub</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="modules.html" title="Modulok"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="user_interface.html" title="User interface"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="adminisztrativ-oldalak">
+<h1>Adminisztratív oldalak<a class="headerlink" href="#adminisztrativ-oldalak" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="adatbazis-oszlopok">
+<h2>Adatbázis oszlopok<a class="headerlink" href="#adatbazis-oszlopok" title="Permalink to this headline">¶</a></h2>
+<p>Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űralpok készítéséhez és lekérdezéshez a webes felületen.</p>
+<p>Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve ill. ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop &#8220;adat&#8221; típusúra kell beállítani.</p>
+</div>
+<div class="section" id="csoportok">
+<h2>Csoportok<a class="headerlink" href="#csoportok" title="Permalink to this headline">¶</a></h2>
+<p>Felhasználói jogosultság kezelés része. Űrlapok, modulok és adatok eléréséhez csoportokat lehet létrehozni. Az egyes felhasználók is lehetnek csoportok.</p>
+</div>
+<div class="section" id="feltolto-urlapok">
+<h2>Feltöltő űrlapok<a class="headerlink" href="#feltolto-urlapok" title="Permalink to this headline">¶</a></h2>
+<p>Itt lehet feltöltő űrlapokat létrehozni és módosítani.
+Az űrlapok kezelésének részletes leírása itt található:</p>
+<blockquote>
+<div>upload_forms.rst</div></blockquote>
+</div>
+<div class="section" id="fuggvenyek">
+<h2>Függvények<a class="headerlink" href="#fuggvenyek" title="Permalink to this headline">¶</a></h2>
+<p>Táblatörténet, elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.</p>
+</div>
+<div class="section" id="faj-nevek">
+<h2>Faj nevek<a class="headerlink" href="#faj-nevek" title="Permalink to this headline">¶</a></h2>
+<p>Faj nevek karbantartása. Faj nevek összekapcsolása, javítása és státuszának beállítása.</p>
+</div>
+<div class="section" id="hozzaferesek">
+<h2>Hozzáférések<a class="headerlink" href="#hozzaferesek" title="Permalink to this headline">¶</a></h2>
+<p>A projekt általános hozzáférési beállításának megtekintése. Itt ez nem konfogurálható!</p>
+</div>
+<div class="section" id="nyelvi-fajlok">
+<h2>Nyelvi fájlok<a class="headerlink" href="#nyelvi-fajlok" title="Permalink to this headline">¶</a></h2>
+<p>Elavult.</p>
+</div>
+<div class="section" id="modulok">
+<h2>Modulok<a class="headerlink" href="#modulok" title="Permalink to this headline">¶</a></h2>
+<p>Beépülő modulok hozzáadása, engedélyezése és paraméterezésének felülete.
+Az engedélyezett modulok használatát felhazsnálókhoz/csoportokhoz lehet rendelni.</p>
+<p>Paraméterként megadhatunk egyszerű karakterláncot, vagy JSON objektumot.</p>
+<dl class="docutils">
+<dt>Az elérhető modulok listája és leírásai itt találhatóak:</dt>
+<dd>modules.rst</dd>
+</dl>
+</div>
+<div class="section" id="elmentett-feltoltesek">
+<h2>Elmentett feltöltések<a class="headerlink" href="#elmentett-feltoltesek" title="Permalink to this headline">¶</a></h2>
+<p>A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen.</p>
+</div>
+<div class="section" id="fajl-kezelo">
+<h2>Fájl kezelő<a class="headerlink" href="#fajl-kezelo" title="Permalink to this headline">¶</a></h2>
+<p>Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése.</p>
+</div>
+<div class="section" id="sql-lekerdezes-beallitasok">
+<h2>SQL lekérdezés beállítások<a class="headerlink" href="#sql-lekerdezes-beallitasok" title="Permalink to this headline">¶</a></h2>
+<p>Adatlekérdezésekhez az alap SQL lekérdezés beállítása. Mapserver rétgenként lehet egyet létrehozni.</p>
+</div>
+<div class="section" id="webes-terkepi-retegek">
+<h2>Webes térképi rétegek<a class="headerlink" href="#webes-terkepi-retegek" title="Permalink to this headline">¶</a></h2>
+<p>Az egyes SQL lekérdezésekhez tartozó openlayers beállítások helye.</p>
+</div>
+<div class="section" id="tagok">
+<h2>Tagok<a class="headerlink" href="#tagok" title="Permalink to this headline">¶</a></h2>
+<p>A projektbe regisztrált tagok listája. Státuszokat és csoport tagságokat lehet itt állítgatni</p>
+</div>
+<div class="section" id="mapserver-beallitasok">
+<h2>Mapserver beállítások<a class="headerlink" href="#mapserver-beallitasok" title="Permalink to this headline">¶</a></h2>
+<p>A projekthez tartozó mapserver mapfájlok konfigurálhatóak itt.</p>
+</div>
+<div class="section" id="szerver-logok">
+<h2>Szerver logok<a class="headerlink" href="#szerver-logok" title="Permalink to this headline">¶</a></h2>
+<p>Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üzenetei tekinthetők meg itt.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Adminisztratív oldalak</a><ul>
+<li><a class="reference internal" href="#adatbazis-oszlopok">Adatbázis oszlopok</a></li>
+<li><a class="reference internal" href="#csoportok">Csoportok</a></li>
+<li><a class="reference internal" href="#feltolto-urlapok">Feltöltő űrlapok</a></li>
+<li><a class="reference internal" href="#fuggvenyek">Függvények</a></li>
+<li><a class="reference internal" href="#faj-nevek">Faj nevek</a></li>
+<li><a class="reference internal" href="#hozzaferesek">Hozzáférések</a></li>
+<li><a class="reference internal" href="#nyelvi-fajlok">Nyelvi fájlok</a></li>
+<li><a class="reference internal" href="#modulok">Modulok</a></li>
+<li><a class="reference internal" href="#elmentett-feltoltesek">Elmentett feltöltések</a></li>
+<li><a class="reference internal" href="#fajl-kezelo">Fájl kezelő</a></li>
+<li><a class="reference internal" href="#sql-lekerdezes-beallitasok">SQL lekérdezés beállítások</a></li>
+<li><a class="reference internal" href="#webes-terkepi-retegek">Webes térképi rétegek</a></li>
+<li><a class="reference internal" href="#tagok">Tagok</a></li>
+<li><a class="reference internal" href="#mapserver-beallitasok">Mapserver beállítások</a></li>
+<li><a class="reference internal" href="#szerver-logok">Szerver logok</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="user_interface.html"
+                        title="previous chapter">User interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">Modulok</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="modules.html" title="Modulok"
+             >next</a></li>
+        <li class="right" >
+          <a href="user_interface.html" title="User interface"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright OpenBioMaps Consortium 2015 - 2018.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

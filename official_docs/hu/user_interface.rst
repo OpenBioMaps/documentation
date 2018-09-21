@@ -1,17 +1,17 @@
-User interface
-**************
+Felhasználói felület
+********************
 
-Log in
+Bejelentkezés
+=============
+
+Elfelejtett jelszó
+------------------
+
+Profil
 ======
 
-Lost password
--------------
-
-Profile
-=======
-
-Interrupted imports
--------------------
+Megszakított feltöltések
+------------------------
 While uploading new data using the web forms or file uploads there is an option to save the actual state of the prepared data.
 
 When you save the uploading process your data and settings will be stored in the OBM server. You can restore the saved state by loading its identifier.
@@ -20,12 +20,12 @@ The identifiers are generating automatically. In one SESSION and one form there 
 
 You can follow your saved imports in the profile page, by click on the "interrupted imports" link. 
 
-Invitation
+Meghívások
 ----------
 Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
 
 
-Custom geometries
+Egyéni geometriák
 -----------------
 It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
 
@@ -35,20 +35,20 @@ Following the own geometries link you can delete or share, rename and modify the
 
 Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
-Saved queries
--------------
+Elmentett lekérdezések
+----------------------
 It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.
 
 The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.
 
 On the administrative pages you can follow your saved queries by clicking on the "stored queries" link. 
 
-Founding new a project
-======================
+Új projekt alapítása
+====================
 .. sectionauthor:: Róbert Veres (2016-12-19)
 
-Introduction
-------------
+Bevezetés
+---------
 Most of the steps will be illustrated with screenshots, and I will also include a few code lines which I used in SQL and the Debian terminal. 
 Even tough, in-depth SQL programming knowledge isn't required to follow the steps of founding a database, some basic knowledge is recommended for a better understanding of the OBM system.
 The operating system that I'm using, is Ubuntu (Linux), but you should be able to follow along. 

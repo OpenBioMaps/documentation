@@ -1,8 +1,8 @@
-Tutorials
-*********
+Gyakorlatok
+***********
 
-Upload data
-===========
+Adatfeltöltés
+=============
 `Upload interface usage: Video tutorial (balkanherps example) english <https://youtu.be/qsu-0UeC46g>`_
 
 `Upload interface usage: Video tutorial (Milvus general forms) română <https://www.youtube.com/watch?v=BknizNC8pvc&t=102s>`_
@@ -11,14 +11,12 @@ Upload data
 
 `Upload interface usage: Video tutorial (Milvus nocturnal birds form) română <https://www.youtube.com/watch?v=NmuIdfsXYjk>`_
 
-Query Data
-==========
+Adatlekérések
+=============
 
-Share Data
-==========
+Adatmegosztás
+=============
 
-New project
-===========
+Új projekt alapítás
+===================
 
-Database access
-===============

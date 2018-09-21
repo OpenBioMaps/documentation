@@ -1,5 +1,3 @@
-.. _new-upload-form:
-
 Új adatfeltöltő űrlap létrehozása
 ---------------------------------
 Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.
@@ -116,7 +114,6 @@ tarsus_length oszlopnál
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
 
-.. _edit-upload-form:
 
 Űrlapok szerkesztése
 --------------------

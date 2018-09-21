@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Új adatfeltöltő űrlap létrehozása &#8212; openbiomaps 2.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
+    <tr>
+        <td style='vertical-align:bottom'>
+            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
+        </td>
+        <td style='vertical-align:top;text-align:right'>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github"> Edit on GitHub</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="uj-adatfeltolto-urlap-letrehozasa">
+<h1>Új adatfeltöltő űrlap létrehozása<a class="headerlink" href="#uj-adatfeltolto-urlap-letrehozasa" title="Permalink to this headline">¶</a></h1>
+<p>Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.</p>
+<div class="section" id="urlap-neve">
+<h2>Űrlap neve<a class="headerlink" href="#urlap-neve" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="urlap-hozzaferes">
+<h2>Űrlap hozzáférés<a class="headerlink" href="#urlap-hozzaferes" title="Permalink to this headline">¶</a></h2>
+<p>Azoknak a meghatározása akik láthatják/használhatják az űrlapot: bárki, bejelentkezett felhasználóknak, meghatározott csoport.</p>
+</div>
+<div class="section" id="urlap-tipusa">
+<h2>Űrlap típusa<a class="headerlink" href="#urlap-tipusa" title="Permalink to this headline">¶</a></h2>
+<p>webes felület, fájl feltöltés, programozott felület</p>
+</div>
+<div class="section" id="urlap-leiras">
+<h2>Űrlap leírás<a class="headerlink" href="#urlap-leiras" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="urlap-oszlopok">
+<h2>Űrlap oszlopok<a class="headerlink" href="#urlap-oszlopok" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>tartalmazza?:       ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
+kötelező:   ha igen (bordó), akkor az űrlap nem küldhető el, ha nincs kitöltve itt érték
+oszlop:     az adatbázis oszlopk felületen meghatározott - megjelenített oszlop név
+leírás:     rövid leírás a beírandó adatokról
+típus:</p>
+<blockquote>
+<div><p>szöveg: tetszőleges szöveg - habár a minimum és maximum hossz megadható</p>
+<p>szám: tetszőleges szám - habár a minimum és maximum hossz megadható</p>
+<p>lista: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A &#8220;név&#8221; amennyiben &#8220;str_&#8221; előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A &#8220;true&#8221; és &#8220;false&#8221; szavak str_true és str_false fordítás szerint fordulnak le.
+Megadható több címke egy értékhez amikből webes űrlapesetén az első jelenik meg, file feltöltésnél pedig a fájl cella értékéből bármelyik cimke vagy az érték helyes egyezést ad. A cimkéket # karakterekkel tagolva kell megadni. Pl: female#tojó:f,male#hím#him:m,juvenil#fiatal:j,adult#öreg:a</p>
+<p>Ez esetben az &#8220;f&#8221; érték lehetséges cimkéi a &#8220;female&#8221;, &#8220;tojo&#8221; és &#8220;tojó&#8221; szavak</p>
+<p>Ha formátuma SELECT:táblanév.oszlopnév, akkor a public.gisdata adatbázis megadott oszlopából készít DISTINCT listát.</p>
+<p>igaz-hamis: boolen false/true érték. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: &#8220;false,true&#8221;</p>
+<p>dátum: tetszőleges karakterrel elválasztva év hónap nap sorrendben. Adatbázisban date típusként tárolva.</p>
+<p>dátum és idő: üres karektert követően a dátum után óra:perc:másodperc formátumban. Ha hiányzik a másodperc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Ha hiányzik a perc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Adatbázisban datetime típusként tárolva.</p>
+<p>idő (timetominutes): óra:perc formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.</p>
+<p>idő: óra:perc formátum. Adatbázuisban time típusként tárolva.</p>
+<p>idő intervallum: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.</p>
+<p>autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.</p>
+<p>photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.</p>
+<p>geometria: pont: WKT POINT()</p>
+<p>geometria: vonal: WKT LINE()</p>
+<p>geometria: polygon: WKT POLYGON()</p>
+<p>geometria: bármi: WKT</p>
+<p>colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G</p>
+</div></blockquote>
+<p>bevitel hossz:      ellenőrzés a bevitt karakterek számára</p>
+<p>lista definíció:    lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusnál adatbázis és oszlop megadása &#8220;SELECT:&#8221; előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.</p>
+<p>alap értékek:       A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.</p>
+<p>Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.</p>
+<p>api-params:
+relations: Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}</p>
+</div></blockquote>
+<p>Oszlopok tartalmának ellenőrzése más oszlopok tartalmának függvényében</p>
+</div>
+</div>
+<div class="section" id="relations-pseudolanguage-definition">
+<h1>Relations pseudolanguage definition<a class="headerlink" href="#relations-pseudolanguage-definition" title="Permalink to this headline">¶</a></h1>
+<p>( rel_field = rel_statement ) { rel_type = rel_value } , ( rel_field = rel_statement ) { rel_type = rel_value } , ...</p>
+<p>IF an other cell value (rel_field) match to (rel_statement) THEN  this cell (rel_type) value should be (rel_value)</p>
+<dl class="docutils">
+<dt>rel_type is a function related with the field type</dt>
+<dd><p class="first">datum:          year            extraxt year component from a datum string
+text,numeric:   minmax          minmax range check
+any type:       obligatory      change obligatory setting</p>
+<blockquote class="last">
+<div>inequality      check inequality with these symbols: &lt;&gt;= between index and current field. Causing error message.</div></blockquote>
+</dd>
+<dt>rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(d{2})$</dt>
+<dd>If statement is regexp rel_value also can be a function
+.       means replace current cell value with matched string from the matched string from the rel_field
+.+      means append current cell value to matched string from the rel_field
++.      means append matched string from the rel_field to the current cell value</dd>
+<dt>rel_value:</dt>
+<dd><dl class="first docutils">
+<dt>IF rel_type is inequality according to php comparison operators</dt>
+<dd>+&lt;.
++&lt;=.
++&gt;=.
++=.
++&lt;&gt;.
+WHERE + is the matched rel_field value and . is the current cell value</dd>
+</dl>
+<p class="last">Else can be anything - may be ignored - depending on the used function</p>
+</dd>
+</dl>
+<p>Példa:</p>
+<p>tarsus_length oszlopnál</p>
+<p>(clutch_size=!!^([123])$) {obligatory(1)}</p>
+<p>Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3</p>
+</div>
+<div class="section" id="urlapok-szerkesztese">
+<h1>Űrlapok szerkesztése<a class="headerlink" href="#urlapok-szerkesztese" title="Permalink to this headline">¶</a></h1>
+<p>Meglévő űralpokat lehet kiválasztani szerkesztésre. Űralpokat lehet törölni vagy letiltani.
+Az űralpok átnevezésével az űralpról az új néven egy másolat készül!</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Új adatfeltöltő űrlap létrehozása</a><ul>
+<li><a class="reference internal" href="#urlap-neve">Űrlap neve</a></li>
+<li><a class="reference internal" href="#urlap-hozzaferes">Űrlap hozzáférés</a></li>
+<li><a class="reference internal" href="#urlap-tipusa">Űrlap típusa</a></li>
+<li><a class="reference internal" href="#urlap-leiras">Űrlap leírás</a></li>
+<li><a class="reference internal" href="#urlap-oszlopok">Űrlap oszlopok</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relations-pseudolanguage-definition">Relations pseudolanguage definition</a></li>
+<li><a class="reference internal" href="#urlapok-szerkesztese">Űrlapok szerkesztése</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright OpenBioMaps Consortium 2015 - 2018.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
