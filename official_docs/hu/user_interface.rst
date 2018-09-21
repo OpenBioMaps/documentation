@@ -19,7 +19,7 @@ Send invitation to join the project/database to someone (name and email adsress)
 
 Projekt adminisztráció
 ======================
-:doc:`adminisztrációs beállítások <../project_admin>`
+:doc:`adminisztrációs beállítások <../admin_pages>`
 
 
 Üzenetek
