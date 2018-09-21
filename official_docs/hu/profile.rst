@@ -15,18 +15,27 @@ ORCID profil
     ORCID profil adatok beolvasása
 
 
+Postgres felhasználói fiók készítése
+------------------------------------
+Ez a funkció csak akkor látható ha apostgres modul engedélyezve van.
+
+
 Felhasználói információk
 ------------------------
+
 
 Más adatbázisok
 ---------------
 
+
 Aktivitás
 ---------
+
 
 Egyéni geometriák kezelése
 --------------------------
 Ez a menüpont csak akkor látszik, ha shared_geoms modul engedélyezve van.
+
 
 Megszakított feltöltések
 ------------------------
@@ -38,14 +47,18 @@ The identifiers are generating automatically. In one SESSION and one form there 
 
 You can follow your saved imports in the profile page, by click on the "interrupted imports" link. 
 
+
 Eltárolt lekérdezések
 ---------------------
+
 
 Elmentett eredmények
 --------------------
 
+
 Api kulcsok
 -----------
+
 
 Vélemények
 ----------
