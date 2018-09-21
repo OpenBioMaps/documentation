@@ -16,24 +16,6 @@ Meghívások
 Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
 
 
-Egyéni geometriák
------------------
-It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
-
-You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
-
-Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
-
-Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
-
-Elmentett lekérdezések
-----------------------
-It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.
-
-The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.
-
-On the administrative pages you can follow your saved queries by clicking on the "stored queries" link. 
-
 Új projekt alapítása
 ====================
 .. sectionauthor:: Róbert Veres (2016-12-19)
