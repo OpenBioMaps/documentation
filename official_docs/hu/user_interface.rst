@@ -143,30 +143,39 @@ tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)
 At the bottom of the 'Administrative menu' in the logs page you can read the openbiomaps.log and the mapserver log files.
 
 
-
-Map page
-========
-
-map query
----------
-
-text query
-----------
-
-save query
-----------
-
-share query
------------
-
-Upload data
+Térképi lap
 ===========
 
-File upload
------------
+térképi lekérdezések
+--------------------
 
-Web upload
-----------
+szöveges lekérdezések
+---------------------
 
-Saved uploads
--------------
+lekérdezés eltárolása
+---------------------
+
+lekérdezés megosztása
+---------------------
+
+Adat feltöltés
+==============
+
+Fájl feltöltés
+--------------
+    sablonok
+    extra argumentumok
+    url cím beolvasása
+
+
+Webes űrlap kitöltés
+--------------------
+
+Feltöltés mentése
+-----------------
+
+Adatbázis összefoglaló oldal
+============================
+
+Nyitó oldal
+===========
