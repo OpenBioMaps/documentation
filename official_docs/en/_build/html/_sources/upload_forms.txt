@@ -1,11 +1,9 @@
-.. _new-upload-form:
-
 Create new data upload form
 ---------------------------
 Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.
 
 Name of the form
-................
+...............
 
 Form access
 ...........
@@ -116,7 +114,6 @@ tarsus_length oszlopnál
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
 
-.. _edit-upload-form:
 
 Edit forms
 ----------

@@ -34,8 +34,9 @@ sys.path.insert(0, os.path.abspath('_ext'))
 #edit_on_github_branch = 'master'
 extensions = [
         'sphinxcontrib.srclinks',
+        'sphinx.ext.intersphinx',
 ]
-srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs'
+srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs/en/'
 srclink_src_path = 'docs/'
 srclink_branch = 'master'
 
