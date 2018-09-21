@@ -19,6 +19,7 @@ Welcome to OpenBioMaps' documentation!
    modules.rst
    gekko_install.rst
    api.rst
+   server_install.rst
    privacy.rst
    terms.rst
    faq.rst
