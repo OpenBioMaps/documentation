@@ -7,21 +7,12 @@ Bejelentkezés
 Elfelejtett jelszó
 ------------------
 
-Profil
-======
+Profil lap
+==========
 
-Megszakított feltöltések
-------------------------
-While uploading new data using the web forms or file uploads there is an option to save the actual state of the prepared data.
-
-When you save the uploading process your data and settings will be stored in the OBM server. You can restore the saved state by loading its identifier.
-
-The identifiers are generating automatically. In one SESSION and one form there is only one identifier. So, there is no incremental backup!
-
-You can follow your saved imports in the profile page, by click on the "interrupted imports" link. 
 
 Meghívások
-----------
+==========
 Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
 
 
