@@ -11,8 +11,8 @@ specieslist
 
     Parameters:
 
-summary
--------
+results_summary
+---------------
     Summary of results.
 
 results_table
@@ -76,8 +76,8 @@ results_asSHP
     
     Parameters:
     
-nuttons
--------
+results_buttons
+---------------
     Save and other button above results section, under map.
     
     Calls:
@@ -86,8 +86,8 @@ nuttons
     
     Parameters:
 
-photo_div
----------
+photos
+------
     Photo or other attachment box.
     
     Calls:
@@ -165,8 +165,8 @@ transform_data
     
     Parameters:
     
-results_stable
---------------
+results_asStable
+----------------
     Compact results table Stable.
     
     Calls:
@@ -196,9 +196,10 @@ bold_yellow
     Parameters:
       column names
 
-extra_form_input_parameters
----------------------------
-    
+extra_params
+------------
+    Extra input paramaters for forms.
+
     Calls:
     
     General description:
@@ -263,9 +264,10 @@ restricted_data
     
     Parameters:
     
-form_list
----------
-    
+form_choose
+-----------
+    List of available forms.
+
     Calls:
     
     Functions: form_list()
@@ -316,9 +318,10 @@ identify_point
 
             A json-t egy sorosra kell tömöríteni!
 
-custom_notify
--------------
-    
+notify
+------
+    Creates custom postgres based notify events.
+
     Calls:
     
     Functions: listen(), unlisten(), notify(), email()
@@ -351,8 +354,8 @@ custom_filetype
     
     Parameters:
   
-create_pg_user
---------------
+create_postgres_user
+--------------------
     Create a restricted access postgres user
     
     Calls:
