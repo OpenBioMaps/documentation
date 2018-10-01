@@ -2,41 +2,53 @@ Modules
 *******
 
 specieslist
-    specieslist summary above results
+-----------
+    Specieslist summary above results.
+    
+    Calls:
+    
+    General description:
+
+    Parameters:
 
 summary
-    results summary
+-------
+    Summary of results.
 
 results_table
-    create a full html table of the results
+-------------
+    Create a full html table of the results.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
-        Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
-        Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.
+    General description:
+        Not used!!
     
-    Paraméterek:
+    Parameters:
 
 results_asList
-    Create foldable slides like results
-    Hívások: results_builder()
+--------------
+    Create foldable slides like results.
+
+    Calls: results_builder()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
 
 results_asGPX
-    Eredmények GPX formátumba
+-------------
+    Save results as a GPX file.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 results_asCSV
-    Results as csv
+-------------
+    Save results as a csv file.
     
     Hívások:
     
@@ -45,234 +57,253 @@ results_asCSV
     Paraméterek:
 
 results_asJSON
-    Results as JSON
+--------------
+    Save results as a JSON file.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
 
 results_asSHP
-    Results as csv
+-------------
+    Save results as a shp file.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 nuttons
-    save and other button above results section - under map
+-------
+    Save and other button above results section, under map.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
 
 photo_div
-    photo or file uploader toggle div
+---------
+    Photo or other attachment box.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 box_load_selection
-    Map Filter Functions
+------------------
+    Map filter functions
+
     These functions returns with a html table which displayed beside the map window
     These are optional boxes. Setting are in the biomaps db projects' table.
     
     Load prevously saved spatial queries' polygons
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 box_load_coord
+--------------
     Show given coordinates position on the map
     
-    Hívások: print_box, limits, ajax, print_js
+    Calls: print_box, limits, ajax, print_js
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 box_load_last_data
-    Query last data
+------------------
+    Query last data or last uploads.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 box_custom
-    Custom box - only user defined version exists
+----------
+    Custom box - only user defined version exists.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 text_filter
-    Taxon and other text filters
-    create boxes
-    assemble WHERE part of query string
+-----------
+    Taxon and other text filters.
+
+    Calls:
     
-    Hívások:
+    General description:
+        create boxes
+        assemble WHERE part of query string
     
-    Általános leírás:
-    
-    Paraméterek:
+    Parameters:
     
 transform_data
+--------------
     Transform data
-    In result list it can transform data as need
-    E.g. geometry to wkt
+
+    Calls:
     
-    Hívások:
+    General description:
+        In result list it transform data as need
+        E.g. geometry to wkt
     
-    Általános leírás:
-    
-    Paraméterek:
+    Parameters:
     
 results_stable
-    compact results table Stable
+--------------
+    Compact results table Stable.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 allowed_columns
-    columns visible for users in different access level
+---------------
+    Columns visible for users in different access level
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 bold_yellow
-    vastag betűvel sárgán írt oszlop nevek az eredmény listákban
+-----------
+    Bold yellow text for some columns in the results lists.
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
-      oszlop nevek
+    Parameters:
+      column names
 
 extra_form_input_parameters
+---------------------------
     
-    Hívások:
+    Calls:
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 additional_columns
-    additional columns
-    use it together with the join_tables module
-    return with an array:
-    co [0] columns array
-    c  [1] column name assoc array
+------------------
+    Additional columns
     
-    Hívások:
+    Calls:
     
-    Függvények: return_columns()
+    Functions: return_columns()
     
-    Általános leírás:
+    General description:
+        use it together with the join_tables module
+        return with an array:
+        co [0] columns array
+        c  [1] column name assoc array
     
-    Paraméterek:
+    Parameters:
     
 join_tables
-    join table to use additional columns
-    use it together with the additional_columns module
-    RETURN: join command and column list and visible names list
-    [0] column name , separated list
-    [1] prefixed column names array: all column which defined in the database columns
-    [2] visible names array of array by JOIN
+-----------
+    Join table to use additional columns
     
-    Hívások:
+    Calls:
     
-    Függvények: return_joins()
+    Functions: return_joins()
     
-    Általános leírás:
+    General description:
+        use it together with the additional_columns module
+        RETURN: join command and column list and visible names list
+        [0] column name , separated list
+        [1] prefixed column names array: all column which defined in the database columns
+        [2] visible names array of array by JOIN
     
-    Paraméterek:
+    Parameters:
 
 snap_to_grid
-    project specified sanp to grid points on the map
-    not recommended to use!
+------------
+    Project specified sanp to grid points on the map
     
-    Hívások:
+    Calls:
     
-    Függvények: geom_column(), geom_column_join(), rules_join()
+    Functions: geom_column(), geom_column_join(), rules_join()
     
-    Általános leírás:
+    General description:
+        not recommended to use!
     
-    Paraméterek:
-    
+    Parameters:
 
 restricted_data
+---------------
     Rule based data restriction
     
-    Hívások:
+    alls
     
-    Függvények: rule_data()
+    Functions: rule_data()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 form_list
+---------
     
-    Hívások:
+    Calls:
     
-    Függvények: form_list()
+    Functions: form_list()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
 identify_point
-    A térképi lapon megjelenő adat információ lekérdező eszköz
+--------------
+    A tool for identify one or more data elements on the map
     
-    Hívások:
+    Calls:
     
-    Függvények: return_data(), print_button()
+    Functions: return_data(), print_button()
     
-    Általános leírás:
-        A modul engedélyezésével egy "i" ikon jelenik meg a térkép alatt funkciók mezőben. Ezzel az eszközzel egy adat pontra kattintava egy buborék ablakot jelenik meg a klikkelés közelében lévő adatokkal.
+    General description:
     
-    Paraméterek:
-        oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban
-        
-        json objektum: hiperlink megjelenítésére alkalmas. 
+    Parameters:
+        column names
+
+        json object: shows a hyperlink. 
        
-            elemei:
+            elements:
                 
-                type - kötelező, egyelőre csak a "link" érték működik
+                type - obligatory, egyelőre csak a "link" érték működik
                 
-                href - kötelező - hivatkozás címe
+                href - obligatory - hivatkozás címe
                 
-                label - kötelező - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
+                label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
                 
-                class - opcionális - a linkhez rendelt osztályok
+                class - optional - a linkhez rendelt osztályok
                 
-                id - opcionális - a linkhez rendelt azonosító
+                id - optional - a linkhez rendelt azonosító
                 
-                target - opcionális - alapértelmezett "_blank"
+                target - optional - alapértelmezett "_blank"
                 
-                params - opcionális - a href elem paraméterei 
+                params - optional - a href elem paraméterei 
 
             A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
 
@@ -286,72 +317,77 @@ identify_point
             A json-t egy sorosra kell tömöríteni!
 
 custom_notify
+-------------
     
-    Hívások:
+    Calls:
     
-    Függvények: listen(), unlisten(), notify(), email()
+    Functions: listen(), unlisten(), notify(), email()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
   
 custom_data_check
-    Custom data checks of upload data
+-----------------
+    Custom data checks of upload data.
     
-    Hívások:
+    Calls:
     
-    Függvények: list(), check()
+    Functions: list(), check()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
   
 custom_filetype
+---------------
     Custom file preparation. E.g. observado style CSV
     
-    Hívások:
+    Calls:
     
-    Függvények: option_list(), custom_read()
+    Functions: option_list(), custom_read()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
   
 create_pg_user
-    Behatárolt hozzáférésű POSTGRES felhasználó létrehozása
+--------------
+    Create a restricted access postgres user
     
-    Hívások:
+    Calls:
     
-    Függvények: create_pg_user(), show_button()
+    Functions: create_pg_user(), show_button()
         
-    Általános leírás:
-        A modul engedélyezésével (akik kapnak jogot a modul használatára) a felhazsnálók tudnak maguknak saját postgres felhazsnálót készíteni. 
-        Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
-        Minden a projekthez rendelt adattáblát tud olvasni.
-        Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-        Egy év után automatikusan lejár a hozzáférése.
-        Bármikor megújíthatja a hozzáférését a felhasználó.
+    General description:
+        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
+        It can read all the data tables assigned to the project.
+        It can only connect to a database from one client program at a time.
+        After one year, Its access expires automatically.
+        Users can renew their access at any time.
     
-    Paraméterek:
+    Parameters:
 
-custom_admin_pages:
-    ...
+custom_admin_pages
+------------------
+
     
-    Hívások:
+    Calls:
     
-    Függvények: nincsenek föggvények.
+    Functions: no functions.
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:
     
-grid_view:
+grid_view
+---------
     Custom file preparation. E.g. observado style CSV
     
-    Hívások: 
+    Calls: 
     
-    Függvények: print_box()
+    Functions: print_box()
     
-    Általános leírás:
+    General description:
     
-    Paraméterek:
+    Parameters:

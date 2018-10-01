@@ -60,202 +60,284 @@
             
   <div class="section" id="modules">
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt>specieslist</dt>
-<dd>specieslist summary above results</dd>
-<dt>summary</dt>
-<dd>results summary</dd>
-<dt>results_table</dt>
-<dd><p class="first">create a full html table of the results</p>
-<p>Hívások:</p>
-<dl class="docutils">
-<dt>Általános leírás:</dt>
-<dd>Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
-Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.</dd>
-</dl>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_asList</dt>
-<dd><p class="first">Create foldable slides like results
-Hívások: results_builder()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_asGPX</dt>
-<dd><p class="first">Eredmények GPX formátumba</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_asCSV</dt>
-<dd><p class="first">Results as csv</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_asJSON</dt>
-<dd><p class="first">Results as JSON</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_asSHP</dt>
-<dd><p class="first">Results as csv</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>nuttons</dt>
-<dd><p class="first">save and other button above results section - under map</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>photo_div</dt>
-<dd><p class="first">photo or file uploader toggle div</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>box_load_selection</dt>
-<dd><p class="first">Map Filter Functions
-These functions returns with a html table which displayed beside the map window
-These are optional boxes. Setting are in the biomaps db projects&#8217; table.</p>
-<p>Load prevously saved spatial queries&#8217; polygons</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>box_load_coord</dt>
-<dd><p class="first">Show given coordinates position on the map</p>
-<p>Hívások: print_box, limits, ajax, print_js</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>box_load_last_data</dt>
-<dd><p class="first">Query last data</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>box_custom</dt>
-<dd><p class="first">Custom box - only user defined version exists</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>text_filter</dt>
-<dd><p class="first">Taxon and other text filters
-create boxes
-assemble WHERE part of query string</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>transform_data</dt>
-<dd><p class="first">Transform data
-In result list it can transform data as need
-E.g. geometry to wkt</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>results_stable</dt>
-<dd><p class="first">compact results table Stable</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>allowed_columns</dt>
-<dd><p class="first">columns visible for users in different access level</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>bold_yellow</dt>
-<dd><p class="first">vastag betűvel sárgán írt oszlop nevek az eredmény listákban</p>
-<p>Hívások:</p>
-<p>Általános leírás:</p>
-<dl class="last docutils">
-<dt>Paraméterek:</dt>
-<dd>oszlop nevek</dd>
-</dl>
-</dd>
-</dl>
-<p>extra_form_input_parameters</p>
+<div class="section" id="specieslist">
+<h2>specieslist<a class="headerlink" href="#specieslist" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Hívások:</p>
+<div><p>Specieslist summary above results.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="summary">
+<h2>summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Summary of results.</div></blockquote>
+</div>
+<div class="section" id="results-table">
+<h2>results_table<a class="headerlink" href="#results-table" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Create a full html table of the results.</p>
+<p>Calls:</p>
+<dl class="docutils">
+<dt>General description:</dt>
+<dd>Not used!!</dd>
+</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="results-aslist">
+<h2>results_asList<a class="headerlink" href="#results-aslist" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Create foldable slides like results.</p>
+<p>Calls: results_builder()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="results-asgpx">
+<h2>results_asGPX<a class="headerlink" href="#results-asgpx" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Save results as a GPX file.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="results-ascsv">
+<h2>results_asCSV<a class="headerlink" href="#results-ascsv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Save results as a csv file.</p>
+<p>Hívások:</p>
 <p>Általános leírás:</p>
 <p>Paraméterek:</p>
 </div></blockquote>
+</div>
+<div class="section" id="results-asjson">
+<h2>results_asJSON<a class="headerlink" href="#results-asjson" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Save results as a JSON file.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="results-asshp">
+<h2>results_asSHP<a class="headerlink" href="#results-asshp" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Save results as a shp file.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="nuttons">
+<h2>nuttons<a class="headerlink" href="#nuttons" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Save and other button above results section, under map.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="photo-div">
+<h2>photo_div<a class="headerlink" href="#photo-div" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Photo or other attachment box.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="box-load-selection">
+<h2>box_load_selection<a class="headerlink" href="#box-load-selection" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Map filter functions</p>
+<p>These functions returns with a html table which displayed beside the map window
+These are optional boxes. Setting are in the biomaps db projects&#8217; table.</p>
+<p>Load prevously saved spatial queries&#8217; polygons</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="box-load-coord">
+<h2>box_load_coord<a class="headerlink" href="#box-load-coord" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Show given coordinates position on the map</p>
+<p>Calls: print_box, limits, ajax, print_js</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="box-load-last-data">
+<h2>box_load_last_data<a class="headerlink" href="#box-load-last-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Query last data or last uploads.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="box-custom">
+<h2>box_custom<a class="headerlink" href="#box-custom" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Custom box - only user defined version exists.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="text-filter">
+<h2>text_filter<a class="headerlink" href="#text-filter" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Taxon and other text filters.</p>
+<p>Calls:</p>
 <dl class="docutils">
-<dt>additional_columns</dt>
-<dd><p class="first">additional columns
-use it together with the join_tables module
+<dt>General description:</dt>
+<dd>create boxes
+assemble WHERE part of query string</dd>
+</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="transform-data">
+<h2>transform_data<a class="headerlink" href="#transform-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Transform data</p>
+<p>Calls:</p>
+<dl class="docutils">
+<dt>General description:</dt>
+<dd>In result list it transform data as need
+E.g. geometry to wkt</dd>
+</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="results-stable">
+<h2>results_stable<a class="headerlink" href="#results-stable" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Compact results table Stable.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="allowed-columns">
+<h2>allowed_columns<a class="headerlink" href="#allowed-columns" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Columns visible for users in different access level</p>
+<p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="bold-yellow">
+<h2>bold_yellow<a class="headerlink" href="#bold-yellow" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Bold yellow text for some columns in the results lists.</p>
+<p>Calls:</p>
+<p>General description:</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>column names</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="extra-form-input-parameters">
+<h2>extra_form_input_parameters<a class="headerlink" href="#extra-form-input-parameters" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="additional-columns">
+<h2>additional_columns<a class="headerlink" href="#additional-columns" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Additional columns</p>
+<p>Calls:</p>
+<p>Functions: return_columns()</p>
+<dl class="docutils">
+<dt>General description:</dt>
+<dd>use it together with the join_tables module
 return with an array:
 co [0] columns array
-c  [1] column name assoc array</p>
-<p>Hívások:</p>
-<p>Függvények: return_columns()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>join_tables</dt>
-<dd><p class="first">join table to use additional columns
-use it together with the additional_columns module
+c  [1] column name assoc array</dd>
+</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="join-tables">
+<h2>join_tables<a class="headerlink" href="#join-tables" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Join table to use additional columns</p>
+<p>Calls:</p>
+<p>Functions: return_joins()</p>
+<dl class="docutils">
+<dt>General description:</dt>
+<dd>use it together with the additional_columns module
 RETURN: join command and column list and visible names list
 [0] column name , separated list
 [1] prefixed column names array: all column which defined in the database columns
-[2] visible names array of array by JOIN</p>
-<p>Hívások:</p>
-<p>Függvények: return_joins()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>snap_to_grid</dt>
-<dd><p class="first">project specified sanp to grid points on the map
-not recommended to use!</p>
-<p>Hívások:</p>
-<p>Függvények: geom_column(), geom_column_join(), rules_join()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>restricted_data</dt>
-<dd><p class="first">Rule based data restriction</p>
-<p>Hívások:</p>
-<p>Függvények: rule_data()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
+[2] visible names array of array by JOIN</dd>
 </dl>
-<p>form_list</p>
-<blockquote>
-<div><p>Hívások:</p>
-<p>Függvények: form_list()</p>
-<p>Általános leírás:</p>
-<p>Paraméterek:</p>
+<p>Parameters:</p>
 </div></blockquote>
-<dl class="docutils">
-<dt>identify_point</dt>
-<dd><p class="first">A térképi lapon megjelenő adat információ lekérdező eszköz</p>
-<p>Hívások:</p>
-<p>Függvények: return_data(), print_button()</p>
-<dl class="last docutils">
-<dt>Általános leírás:</dt>
-<dd>A modul engedélyezésével egy &#8220;i&#8221; ikon jelenik meg a térkép alatt funkciók mezőben. Ezzel az eszközzel egy adat pontra kattintava egy buborék ablakot jelenik meg a klikkelés közelében lévő adatokkal.</dd>
-<dt>Paraméterek:</dt>
-<dd><p class="first">oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban</p>
-<p>json objektum: hiperlink megjelenítésére alkalmas.</p>
-<blockquote class="last">
-<div><p>elemei:</p>
+</div>
+<div class="section" id="snap-to-grid">
+<h2>snap_to_grid<a class="headerlink" href="#snap-to-grid" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>type - kötelező, egyelőre csak a &#8220;link&#8221; érték működik</p>
-<p>href - kötelező - hivatkozás címe</p>
-<p>label - kötelező - a link/gomb szövege/cimkéje - többnyelvűséget támogatja</p>
-<p>class - opcionális - a linkhez rendelt osztályok</p>
-<p>id - opcionális - a linkhez rendelt azonosító</p>
-<p>target - opcionális - alapértelmezett &#8220;_blank&#8221;</p>
-<p>params - opcionális - a href elem paraméterei</p>
+<div><p>Project specified sanp to grid points on the map</p>
+<p>Calls:</p>
+<p>Functions: geom_column(), geom_column_join(), rules_join()</p>
+<dl class="docutils">
+<dt>General description:</dt>
+<dd>not recommended to use!</dd>
+</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="restricted-data">
+<h2>restricted_data<a class="headerlink" href="#restricted-data" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Rule based data restriction</p>
+<p>alls</p>
+<p>Functions: rule_data()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="form-list">
+<h2>form_list<a class="headerlink" href="#form-list" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>Functions: form_list()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="identify-point">
+<h2>identify_point<a class="headerlink" href="#identify-point" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A tool for identify one or more data elements on the map</p>
+<p>Calls:</p>
+<p>Functions: return_data(), print_button()</p>
+<p>General description:</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><p class="first">column names</p>
+<p>json object: shows a hyperlink.</p>
+<blockquote class="last">
+<div><p>elements:</p>
+<blockquote>
+<div><p>type - obligatory, egyelőre csak a &#8220;link&#8221; érték működik</p>
+<p>href - obligatory - hivatkozás címe</p>
+<p>label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja</p>
+<p>class - optional - a linkhez rendelt osztályok</p>
+<p>id - optional - a linkhez rendelt azonosító</p>
+<p>target - optional - alapértelmezett &#8220;_blank&#8221;</p>
+<p>params - optional - a href elem paraméterei</p>
 </div></blockquote>
 <p>A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:</p>
 <p>Példa:
@@ -266,60 +348,73 @@ not recommended to use!</p>
 </div></blockquote>
 </dd>
 </dl>
-</dd>
-</dl>
-<p>custom_notify</p>
-<blockquote>
-<div><p>Hívások:</p>
-<p>Függvények: listen(), unlisten(), notify(), email()</p>
-<p>Általános leírás:</p>
-<p>Paraméterek:</p>
 </div></blockquote>
+</div>
+<div class="section" id="custom-notify">
+<h2>custom_notify<a class="headerlink" href="#custom-notify" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>Functions: listen(), unlisten(), notify(), email()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="custom-data-check">
+<h2>custom_data_check<a class="headerlink" href="#custom-data-check" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Custom data checks of upload data.</p>
+<p>Calls:</p>
+<p>Functions: list(), check()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="custom-filetype">
+<h2>custom_filetype<a class="headerlink" href="#custom-filetype" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Custom file preparation. E.g. observado style CSV</p>
+<p>Calls:</p>
+<p>Functions: option_list(), custom_read()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="create-pg-user">
+<h2>create_pg_user<a class="headerlink" href="#create-pg-user" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Create a restricted access postgres user</p>
+<p>Calls:</p>
+<p>Functions: create_pg_user(), show_button()</p>
 <dl class="docutils">
-<dt>custom_data_check</dt>
-<dd><p class="first">Custom data checks of upload data</p>
-<p>Hívások:</p>
-<p>Függvények: list(), check()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>custom_filetype</dt>
-<dd><p class="first">Custom file preparation. E.g. observado style CSV</p>
-<p>Hívások:</p>
-<p>Függvények: option_list(), custom_read()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>create_pg_user</dt>
-<dd><p class="first">Behatárolt hozzáférésű POSTGRES felhasználó létrehozása</p>
-<p>Hívások:</p>
-<p>Függvények: create_pg_user(), show_button()</p>
-<dl class="docutils">
-<dt>Általános leírás:</dt>
-<dd>A modul engedélyezésével (akik kapnak jogot a modul használatára) a felhazsnálók tudnak maguknak saját postgres felhazsnálót készíteni.
-Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem.
-Minden a projekthez rendelt adattáblát tud olvasni.
-Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-Egy év után automatikusan lejár a hozzáférése.
-Bármikor megújíthatja a hozzáférését a felhasználó.</dd>
+<dt>General description:</dt>
+<dd>By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
+It can read all the data tables assigned to the project.
+It can only connect to a database from one client program at a time.
+After one year, Its access expires automatically.
+Users can renew their access at any time.</dd>
 </dl>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>custom_admin_pages:</dt>
-<dd><p class="first">...</p>
-<p>Hívások:</p>
-<p>Függvények: nincsenek föggvények.</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-<dt>grid_view:</dt>
-<dd><p class="first">Custom file preparation. E.g. observado style CSV</p>
-<p>Hívások:</p>
-<p>Függvények: print_box()</p>
-<p>Általános leírás:</p>
-<p class="last">Paraméterek:</p>
-</dd>
-</dl>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="custom-admin-pages">
+<h2>custom_admin_pages<a class="headerlink" href="#custom-admin-pages" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>Functions: no functions.</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="grid-view">
+<h2>grid_view<a class="headerlink" href="#grid-view" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Custom file preparation. E.g. observado style CSV</p>
+<p>Calls:</p>
+<p>Functions: print_box()</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -328,6 +423,45 @@ Bármikor megújíthatja a hozzáférését a felhasználó.</dd>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modules</a><ul>
+<li><a class="reference internal" href="#specieslist">specieslist</a></li>
+<li><a class="reference internal" href="#summary">summary</a></li>
+<li><a class="reference internal" href="#results-table">results_table</a></li>
+<li><a class="reference internal" href="#results-aslist">results_asList</a></li>
+<li><a class="reference internal" href="#results-asgpx">results_asGPX</a></li>
+<li><a class="reference internal" href="#results-ascsv">results_asCSV</a></li>
+<li><a class="reference internal" href="#results-asjson">results_asJSON</a></li>
+<li><a class="reference internal" href="#results-asshp">results_asSHP</a></li>
+<li><a class="reference internal" href="#nuttons">nuttons</a></li>
+<li><a class="reference internal" href="#photo-div">photo_div</a></li>
+<li><a class="reference internal" href="#box-load-selection">box_load_selection</a></li>
+<li><a class="reference internal" href="#box-load-coord">box_load_coord</a></li>
+<li><a class="reference internal" href="#box-load-last-data">box_load_last_data</a></li>
+<li><a class="reference internal" href="#box-custom">box_custom</a></li>
+<li><a class="reference internal" href="#text-filter">text_filter</a></li>
+<li><a class="reference internal" href="#transform-data">transform_data</a></li>
+<li><a class="reference internal" href="#results-stable">results_stable</a></li>
+<li><a class="reference internal" href="#allowed-columns">allowed_columns</a></li>
+<li><a class="reference internal" href="#bold-yellow">bold_yellow</a></li>
+<li><a class="reference internal" href="#extra-form-input-parameters">extra_form_input_parameters</a></li>
+<li><a class="reference internal" href="#additional-columns">additional_columns</a></li>
+<li><a class="reference internal" href="#join-tables">join_tables</a></li>
+<li><a class="reference internal" href="#snap-to-grid">snap_to_grid</a></li>
+<li><a class="reference internal" href="#restricted-data">restricted_data</a></li>
+<li><a class="reference internal" href="#form-list">form_list</a></li>
+<li><a class="reference internal" href="#identify-point">identify_point</a></li>
+<li><a class="reference internal" href="#custom-notify">custom_notify</a></li>
+<li><a class="reference internal" href="#custom-data-check">custom_data_check</a></li>
+<li><a class="reference internal" href="#custom-filetype">custom_filetype</a></li>
+<li><a class="reference internal" href="#create-pg-user">create_pg_user</a></li>
+<li><a class="reference internal" href="#custom-admin-pages">custom_admin_pages</a></li>
+<li><a class="reference internal" href="#grid-view">grid_view</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="admin_pages.html"
                         title="previous chapter">Administrative pages</a></p>

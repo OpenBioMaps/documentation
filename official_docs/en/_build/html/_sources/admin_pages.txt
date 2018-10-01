@@ -9,8 +9,8 @@ Groups
 
 Upload forms
 ------------
-Create and edit data upload forms. Read the manual here: 
-    upload_forms.rst
+:ref:`new-upload-form` and :ref:`edit-upload-form`.
+
 
 Functions
 ---------
@@ -26,8 +26,8 @@ Language files
 
 Modules
 -------
-The list and manuals of available modules is here: 
-    modules.rst
+The list and manuals of available modules is here: :doc:`modules <../modules>`.
+
 
 Saves imports
 -------------
