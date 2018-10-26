@@ -397,7 +397,7 @@ grid_view
     
     Example trigger function:
 
-```
+        ```
 BEGIN
 
 IF tg_op = 'INSERT' THEN
