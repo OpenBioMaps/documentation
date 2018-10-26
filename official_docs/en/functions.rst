@@ -1,5 +1,4 @@
-```
-
+´´´
 BEGIN
 
 IF tg_op = 'INSERT' THEN
@@ -82,5 +81,4 @@ RETURN OLD;
 END IF;
 
 END;
-
-```
+´´´
