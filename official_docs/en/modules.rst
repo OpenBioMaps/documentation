@@ -396,6 +396,7 @@ grid_view
     Parameters:
     
     Example trigger function:
+
 ```sql
 BEGIN
 
