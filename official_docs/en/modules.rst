@@ -396,7 +396,7 @@ grid_view
     Parameters:
     
     Example trigger function:
-
+```sql
 BEGIN
 
 IF tg_op = 'INSERT' THEN
@@ -479,3 +479,4 @@ RETURN OLD;
 END IF;
 
 END;
+```
