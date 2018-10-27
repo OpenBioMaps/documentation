@@ -1,6 +1,3 @@
-Modules
-*******
-
 specieslist
 -----------
     Specieslist summary above results.
