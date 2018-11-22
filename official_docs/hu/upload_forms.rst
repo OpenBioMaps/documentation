@@ -52,6 +52,8 @@ webes felület, fájl feltöltés, programozott felület
         
         autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.
         
+        autocompletelist: hasonló az autocomplet-hez, de egymás után több, vesszővel elválasztott értéket is bevihetünk a mezőbe
+        
         photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
         
         geometria: pont: WKT POINT()

@@ -51,6 +51,8 @@ Form columns
         idő intervallum: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.
         
         autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.
+
+        autocompletelist: Similar to the autocomplete field, just here it is possible autocompleting multiple values into a single field
         
         photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
         
