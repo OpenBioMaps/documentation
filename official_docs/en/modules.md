@@ -174,7 +174,8 @@ results_asStable
     
 allowed_columns
 ---------------
-    Columns visible for users in different access level
+    Columns visibility for users in different access levels
+    It depends on the existence of _rules table
     
     Calls:
     
