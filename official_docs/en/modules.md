@@ -177,11 +177,16 @@ allowed_columns
     Columns visibility for users in different access levels
     It depends on the existence of _rules table
     
-    Calls:
+    Calls: 
+       
+    Functions:
+       return_columns(), return_gcolumns()
     
     General description:
     
-    Parameters:
+    Parameters: 
+       column names
+       *column names
     
 bold_yellow
 -----------
