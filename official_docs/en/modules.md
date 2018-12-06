@@ -1,13 +1,101 @@
-specieslist
+additional_columns
+------------------
+    Additional columns
+    
+    Calls:
+    
+    Functions: return_columns()
+    
+    General description:
+        use it together with the join_tables module
+        return with an array:
+        co [0] columns array
+        c  [1] column name assoc array
+    
+    Parameters:
+
+allowed_columns
+---------------
+    Columns visibility for users in different access levels
+    It depends on the existence of _rules table
+    
+    Calls: 
+       
+    Functions:
+       return_columns(), return_gcolumns()
+    
+    General description:
+    
+    Parameters: 
+       column names
+       *column names
+
+bold_yellow
 -----------
-    Specieslist summary above results.
+    Bold yellow text for some columns in the results lists.
     
     Calls:
     
     General description:
+    
+    Parameters:
+      column names
 
+box_load_selection
+------------------
+    Map filter functions
+
+    These functions returns with a html table which displayed beside the map window
+    These are optional boxes. Setting are in the biomaps db projects' table.
+    
+    Load prevously saved spatial queries' polygons
+    
+    Calls:
+    
+    General description:
+    
+    Parameters:
+    
+box_load_coord
+--------------
+    Show given coordinates position on the map
+    
+    Calls: print_box, limits, ajax, print_js
+    
+    General description:
+    
+    Parameters:
+    
+box_load_last_data
+------------------
+    Query last data or last uploads.
+    
+    Calls:
+    
+    General description:
+    
+    Parameters:
+    
+box_custom
+----------
+    Custom box - only user defined version exists.
+    
+    Calls:
+    
+    General description:
+    
     Parameters:
 
+photos
+------
+    Photo or other attachment box.
+    
+    Calls:
+    
+    General description:
+    
+    Parameters:
+    
 results_summary
 ---------------
     Summary of results.
@@ -82,60 +170,25 @@ results_buttons
     General description:
     
     Parameters:
+    
+results_asStable
+----------------
+    Compact results table Stable.
+    
+    Calls:
+    
+    General description:
+    
+    Parameters:
 
-photos
-------
-    Photo or other attachment box.
+specieslist
+-----------
+    Specieslist summary above results.
     
     Calls:
     
     General description:
-    
-    Parameters:
-    
-box_load_selection
-------------------
-    Map filter functions
 
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
-    
-    Load prevously saved spatial queries' polygons
-    
-    Calls:
-    
-    General description:
-    
-    Parameters:
-    
-box_load_coord
---------------
-    Show given coordinates position on the map
-    
-    Calls: print_box, limits, ajax, print_js
-    
-    General description:
-    
-    Parameters:
-    
-box_load_last_data
-------------------
-    Query last data or last uploads.
-    
-    Calls:
-    
-    General description:
-    
-    Parameters:
-    
-box_custom
-----------
-    Custom box - only user defined version exists.
-    
-    Calls:
-    
-    General description:
-    
     Parameters:
     
 text_filter
@@ -162,43 +215,6 @@ transform_data
     
     Parameters:
     
-results_asStable
-----------------
-    Compact results table Stable.
-    
-    Calls:
-    
-    General description:
-    
-    Parameters:
-    
-allowed_columns
----------------
-    Columns visibility for users in different access levels
-    It depends on the existence of _rules table
-    
-    Calls: 
-       
-    Functions:
-       return_columns(), return_gcolumns()
-    
-    General description:
-    
-    Parameters: 
-       column names
-       *column names
-    
-bold_yellow
------------
-    Bold yellow text for some columns in the results lists.
-    
-    Calls:
-    
-    General description:
-    
-    Parameters:
-      column names
-
 extra_params
 ------------
     Extra input paramaters for forms.
@@ -206,22 +222,6 @@ extra_params
     Calls:
     
     General description:
-    
-    Parameters:
-    
-additional_columns
-------------------
-    Additional columns
-    
-    Calls:
-    
-    Functions: return_columns()
-    
-    General description:
-        use it together with the join_tables module
-        return with an array:
-        co [0] columns array
-        c  [1] column name assoc array
     
     Parameters:
     
