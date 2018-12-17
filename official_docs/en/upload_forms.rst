@@ -27,7 +27,7 @@ Form columns
     
     - column:	az adatbázis oszlopk felületen meghatározott - megjelenített oszlop név
     
-    - description:	rövid leírás a beírandó adatokról
+    - description:	short description about the field
     
     - type:
     
@@ -40,17 +40,17 @@ Form columns
         
         Ez esetben az "f" érték lehetséges cimkéi a "female", "tojo" és "tojó" szavak
         
-        Ha formátuma SELECT:táblanév.oszlopnév, akkor a public.gisdata adatbázis megadott oszlopából készít DISTINCT listát.
+        Ha formátuma SELECT:table-name.column-name, akkor a public.gisdata adatbázis megadott oszlopából készít DISTINCT listát.
         
-        - true-false: boolen false/true érték. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
+        - true-false: boolen false/true value. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
         
         - date: tetszőleges karakterrel elválasztva év hónap nap sorrendben. Adatbázisban date típusként tárolva.
         
         - date and time: üres karektert követően a dátum után óra:perc:másodperc formátumban. Ha hiányzik a másodperc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Ha hiányzik a perc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Adatbázisban datetime típusként tárolva.
         
-        - time: (timetominutes): óra:perc formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.
+        - time: (timetominutes): hours:minutes formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.
         
-        - time: óra:perc formátum. Adatbázuisban time típusként tárolva.
+        - time: hours:minutes. As time type in the database.
         
         - time interval: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.
         
@@ -60,13 +60,13 @@ Form columns
         
         - photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
         
-        - geometria: pont: WKT POINT()
+        - geometria: point: WKT POINT()
         
-        - geometria: vonal: WKT LINE()
+        - geometria: line: WKT LINE()
         
         - geometria: polygon: WKT POLYGON()
         
-        - geometria: bármi: WKT
+        - geometria: any: WKT
         
         - colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
         
