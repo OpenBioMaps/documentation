@@ -79,6 +79,25 @@ webes felület, fájl feltöltés, programozott felület
         - egyéni ellenőrzés
     
     - lista definíció:	lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusnál adatbázis és oszlop megadása "SELECT:" előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.
+    {
+      "list": {
+            "val1": ["label1", "label2"]
+      },
+      "optionsTable": "",
+      "valueColumn": "",
+      "labelColumn": "",
+      "filterColumn": "",
+      "pictures": {
+            "val1": "url-string"
+      },
+      "triggerTargetColumn": "",
+      "Function": "",
+      "disabled": ["val1"],
+      "preFilterColumn": "",
+      "preFilterValue": "",
+      "multiselect":"true or false, default is false",
+      "selected":["val1"],
+    }
     
     - alap értékek:	A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
 
