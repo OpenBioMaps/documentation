@@ -396,7 +396,9 @@ grid_view
     
     General description:
     
-    Parameters:
+    Parameters: layer_options
+    
+    Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
     
     Example trigger function:
     
