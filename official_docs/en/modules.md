@@ -399,88 +399,58 @@ grid_view
     Parameters:
     
     Example trigger function:
-
+    
+    Trigger on nnn_qgrids:
+```sql    
+    CREATE TRIGGER self_update BEFORE INSERT OR UPDATE ON dinpi_qgrids FOR EACH ROW EXECUTE PROCEDURE update_qgrids_geometries()
+```
+    Trigger on nnn table:
+```sql
+    CREATE TRIGGER update_qgrids AFTER INSERT OR DELETE OR UPDATE ON dinpi FOR EACH ROW EXECUTE PROCEDURE grid_geometries()
+```
+Function grid_geometries()
 ```sql
 BEGIN
-
 IF tg_op = 'INSERT' THEN
 
     EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
-
-    EXECUTE format('UPDATE %I_qgrids SET "kef_5" = foo.geom FROM ( 
-        SELECT obm_geometry AS geom
-        FROM shared."kef_5x5"
-        WHERE st_within(%L::geometry,obm_geometry)
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "kef_10" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom
-        FROM shared."kef_10x10"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_2.5" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geometry as geom
-        FROM shared."utm_2.5x2.5"
-        WHERE st_within(%L::geometry,st_transform(geometry,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_10" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom 
-        FROM shared."utm_10x10"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_100" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom 
-        FROM shared."utm_100x100"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
 
 RETURN NEW;
 END IF;
 
 IF tg_op = 'UPDATE' THEN
-
+    -- create original at first
+    --EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
     EXECUTE format('UPDATE %I_qgrids SET "original"=%L::geometry WHERE row_id=%L', TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "kef_5" = foo.geom FROM ( 
-        SELECT obm_geometry AS geom
-        FROM shared."kef_5x5"
-        WHERE st_within(%L::geometry,obm_geometry)
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "kef_10" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom
-        FROM shared."kef_10x10"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_2.5" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geometry as geom
-        FROM shared."utm_2.5x2.5"
-        WHERE st_within(%L::geometry,st_transform(geometry,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_10" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom 
-        FROM shared."utm_10x10"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-    EXECUTE format('UPDATE %I_qgrids SET "utm_100" = st_transform(foo.geom,4326) FROM ( 
-        SELECT geom 
-        FROM shared."utm_100x100"
-        WHERE st_within(%L::geometry,st_transform(geom,4326))
-    ) as foo WHERE row_id=%L',TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
 
 RETURN NEW;
 END IF;
 
 IF tg_op = 'DELETE' THEN
+
     EXECUTE format('DELETE FROM %I_qgrids WHERE row_id=%L',TG_TABLE_NAME,OLD.obm_id);
+
 RETURN OLD;
 END IF;
+
+END;
+```
+
+Function update_qgrids_geometries()
+```sql
+BEGIN
+-- Available shared grids tables: kef_5, kef_10, utm_2.5, utm_10, etrs
+-- Required output grids e.g.: kef_10x10, utm_10x10, etrs, snap
+
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_5x5"     WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_5";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_10";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_2.5x2.5" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_2.5";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_10";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_100x100" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_100";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."etrs"        WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."etrs";
+    EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,0.13,0.09)',NEW.original) INTO NEW."snap";
+
+    RETURN NEW;
 
 END;
 ```
