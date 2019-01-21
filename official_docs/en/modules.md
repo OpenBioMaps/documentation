@@ -27,8 +27,9 @@ allowed_columns
     General description:
     
     Parameters: 
-       column names
-       *column names
+       for_sensitive_data: comma separated list of column names
+       for_no-geom_data: comma separated list of column names
+       for_general: comma separated list of column names
 
 bold_yellow
 -----------
