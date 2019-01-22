@@ -69,6 +69,22 @@ Form columns
         - geometria: any: WKT
         
         - colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
+        Megengedett színek és jelölések: 
+            R = 'red'
+            P = 'pink'
+            G = 'green'
+            g = 'lightgreen'
+            O = 'orange'
+            Y = 'yellow'
+            B = 'blue'
+            b = 'lightblue'
+            W = 'white'
+            K = 'black'
+            N = 'brown'
+            U = 'purple'
+            V = 'violet'
+            M = 'silver'
+
         
     - input control: a bevitt karakterek számának ellenőrzése
         - no check

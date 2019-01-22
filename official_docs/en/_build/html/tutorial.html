@@ -121,7 +121,8 @@
 <p><a class="reference external" href="http://localhost:9880/biomaps/projects/sablon/">http://localhost:9880/biomaps/projects/sablon/</a></p>
 <p>Log in your template databse using <em>valaki&#64;openbiomaps.org</em> user name and <em>abc123</em> password;</p>
 <p>You can access your postgres database at</p>
-<p><a class="reference external" href="http://localhost:9880/adminer/">http://localhost:9880/adminer/</a></p>
+<p><a class="reference external" href="http://localhost:9881/adminer/">http://localhost:9881/adminer/</a></p>
+<p><a class="reference external" href="http://localhost:9882/phppgadmin/">http://localhost:9882/phppgadmin/</a></p>
 <p>with <em>sablon_admin</em> username and <em>12345</em> password. You can manage your database with <em>biomapsadmin</em> user and <em>abcd1234</em> password.</p>
 <p>If you change these passwords, should be updated the following places:</p>
 <p>/etc/openbiomaps/system_vars.php.inc</p>
@@ -176,6 +177,13 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="restart-app">
+<h4>Restart app<a class="headerlink" href="#restart-app" title="Permalink to this headline">¶</a></h4>
+<p>Do not restart apache from docker shell, but from outside</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose restart app
+</pre></div>
+</div>
+</div>
 <div class="section" id="resources">
 <h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -220,6 +228,7 @@
 <li><a class="reference internal" href="#drop-everything-including-data-and-databases">Drop everything (including data and databases)</a></li>
 <li><a class="reference internal" href="#shell-access-of-web-app">Shell access of web app</a></li>
 <li><a class="reference internal" href="#reading-logs">Reading logs</a></li>
+<li><a class="reference internal" href="#restart-app">Restart app</a></li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>

@@ -74,7 +74,9 @@ Log in your template databse using *valaki@openbiomaps.org* user name and *abc12
 
 You can access your postgres database at
 
-[http://localhost:9880/adminer/](http://localhost:9880/adminer/)
+[http://localhost:9881/adminer/](http://localhost:9881/adminer/)
+
+[http://localhost:9882/phppgadmin/](http://localhost:9882/phppgadmin/)
 
 with *sablon_admin* username and *12345* password. You can manage your database with *biomapsadmin* user and *abcd1234* password.
 
@@ -136,6 +138,13 @@ Reading logs
 ............
 ```console
 foo@bar:~$ docker-compose logs -f app
+```
+
+Restart app
+...........
+Do not restart apache from docker shell, but from outside
+```console
+foo@bar:~$ docker-compose restart app
 ```
 
 Resources
