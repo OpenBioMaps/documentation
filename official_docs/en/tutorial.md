@@ -99,6 +99,7 @@ with *supervisor* username and *12345* password. This password is located at /et
 Updates: update application with Docker
 .......................................
 ```console
+foo@bar:~$ git pull git@gitlab.com:openbiomaps/docker/obm-composer.git
 foo@bar:~$ docker-compose pull 
 Pulling gisdata    ... done
 Pulling biomaps    ... done
