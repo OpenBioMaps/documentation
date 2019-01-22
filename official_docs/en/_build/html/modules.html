@@ -60,9 +60,111 @@
             
   <div class="section" id="modules">
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="specieslist">
-<h2>specieslist<a class="headerlink" href="#specieslist" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Specieslist summary above results.
+<div class="section" id="additional-columns">
+<h2>additional_columns<a class="headerlink" href="#additional-columns" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Additional columns
+
+Calls:
+
+Functions: return_columns()
+
+General description:
+    use it together with the join_tables module
+    return with an array:
+    co [0] columns array
+    c  [1] column name assoc array
+
+Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="allowed-columns">
+<h2>allowed_columns<a class="headerlink" href="#allowed-columns" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Columns visibility for users in different access levels
+It depends on the existence of _rules table
+
+Calls:
+
+Functions:
+   return_columns(), return_gcolumns()
+
+General description:
+
+Parameters:
+   column names
+   *column names
+</pre></div>
+</div>
+</div>
+<div class="section" id="bold-yellow">
+<h2>bold_yellow<a class="headerlink" href="#bold-yellow" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Bold yellow text for some columns in the results lists.
+
+Calls:
+
+General description:
+
+Parameters:
+  column names
+</pre></div>
+</div>
+</div>
+<div class="section" id="box-load-selection">
+<h2>box_load_selection<a class="headerlink" href="#box-load-selection" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre><span class="nx">Map</span> <span class="nx">filter</span> <span class="nx">functions</span>
+
+<span class="nx">These</span> <span class="nx">functions</span> <span class="nx">returns</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">html</span> <span class="nx">table</span> <span class="nx">which</span> <span class="nx">displayed</span> <span class="nx">beside</span> <span class="nx">the</span> <span class="nx">map</span> <span class="nb">window</span>
+<span class="nx">These</span> <span class="nx">are</span> <span class="nx">optional</span> <span class="nx">boxes</span><span class="p">.</span> <span class="nx">Setting</span> <span class="nx">are</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">biomaps</span> <span class="nx">db</span> <span class="nx">projects</span><span class="s1">&#39; table.</span>
+
+<span class="s1">Load prevously saved spatial queries&#39;</span> <span class="nx">polygons</span>
+
+<span class="nx">Calls</span><span class="o">:</span>
+
+<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
+
+<span class="nx">Parameters</span><span class="o">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="box-load-coord">
+<h2>box_load_coord<a class="headerlink" href="#box-load-coord" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Show given coordinates position on the map
+
+Calls: print_box, limits, ajax, print_js
+
+General description:
+
+Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="box-load-last-data">
+<h2>box_load_last_data<a class="headerlink" href="#box-load-last-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Query last data or last uploads.
+
+Calls:
+
+General description:
+
+Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="box-custom">
+<h2>box_custom<a class="headerlink" href="#box-custom" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Custom box - only user defined version exists.
+
+Calls:
+
+General description:
+
+Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="photos">
+<h2>photos<a class="headerlink" href="#photos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Photo or other attachment box.
 
 Calls:
 
@@ -163,9 +265,9 @@ Parameters:
 </pre></div>
 </div>
 </div>
-<div class="section" id="photos">
-<h2>photos<a class="headerlink" href="#photos" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Photo or other attachment box.
+<div class="section" id="results-asstable">
+<h2>results_asStable<a class="headerlink" href="#results-asstable" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Compact results table Stable.
 
 Calls:
 
@@ -175,50 +277,9 @@ Parameters:
 </pre></div>
 </div>
 </div>
-<div class="section" id="box-load-selection">
-<h2>box_load_selection<a class="headerlink" href="#box-load-selection" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre><span class="nx">Map</span> <span class="nx">filter</span> <span class="nx">functions</span>
-
-<span class="nx">These</span> <span class="nx">functions</span> <span class="nx">returns</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">html</span> <span class="nx">table</span> <span class="nx">which</span> <span class="nx">displayed</span> <span class="nx">beside</span> <span class="nx">the</span> <span class="nx">map</span> <span class="nb">window</span>
-<span class="nx">These</span> <span class="nx">are</span> <span class="nx">optional</span> <span class="nx">boxes</span><span class="p">.</span> <span class="nx">Setting</span> <span class="nx">are</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">biomaps</span> <span class="nx">db</span> <span class="nx">projects</span><span class="s1">&#39; table.</span>
-
-<span class="s1">Load prevously saved spatial queries&#39;</span> <span class="nx">polygons</span>
-
-<span class="nx">Calls</span><span class="o">:</span>
-
-<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
-
-<span class="nx">Parameters</span><span class="o">:</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="box-load-coord">
-<h2>box_load_coord<a class="headerlink" href="#box-load-coord" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Show given coordinates position on the map
-
-Calls: print_box, limits, ajax, print_js
-
-General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="box-load-last-data">
-<h2>box_load_last_data<a class="headerlink" href="#box-load-last-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Query last data or last uploads.
-
-Calls:
-
-General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="box-custom">
-<h2>box_custom<a class="headerlink" href="#box-custom" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Custom box - only user defined version exists.
+<div class="section" id="specieslist">
+<h2>specieslist<a class="headerlink" href="#specieslist" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Specieslist summary above results.
 
 Calls:
 
@@ -256,43 +317,6 @@ Parameters:
 </pre></div>
 </div>
 </div>
-<div class="section" id="results-asstable">
-<h2>results_asStable<a class="headerlink" href="#results-asstable" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Compact results table Stable.
-
-Calls:
-
-General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="allowed-columns">
-<h2>allowed_columns<a class="headerlink" href="#allowed-columns" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Columns visible for users in different access level
-
-Calls:
-
-General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="bold-yellow">
-<h2>bold_yellow<a class="headerlink" href="#bold-yellow" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Bold yellow text for some columns in the results lists.
-
-Calls:
-
-General description:
-
-Parameters:
-  column names
-</pre></div>
-</div>
-</div>
 <div class="section" id="extra-params">
 <h2>extra_params<a class="headerlink" href="#extra-params" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-guess"><div class="highlight"><pre>Extra input paramaters for forms.
@@ -300,24 +324,6 @@ Parameters:
 Calls:
 
 General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="additional-columns">
-<h2>additional_columns<a class="headerlink" href="#additional-columns" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Additional columns
-
-Calls:
-
-Functions: return_columns()
-
-General description:
-    use it together with the join_tables module
-    return with an array:
-    co [0] columns array
-    c  [1] column name assoc array
 
 Parameters:
 </pre></div>
@@ -512,91 +518,65 @@ Parameters:
 
 <span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
 
-<span class="nx">Parameters</span><span class="o">:</span>
+<span class="nx">Parameters</span><span class="o">:</span> <span class="nx">layer_options</span>
+
+<span class="nx">Parameters</span> <span class="nx">example</span><span class="o">:</span> <span class="nx">layer_options</span><span class="o">:</span><span class="nx">kef_5</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_2</span><span class="p">.</span><span class="mi">5</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_10</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_100</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">original</span> <span class="p">(</span><span class="nx">dinpi_points</span><span class="p">,</span><span class="nx">dinpi_grid</span><span class="p">),</span><span class="nx">etrs</span><span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">)</span>
 
 <span class="nx">Example</span> <span class="nx">trigger</span> <span class="kd">function</span><span class="o">:</span>
+
+<span class="nx">Trigger</span> <span class="nx">on</span> <span class="nx">nnn_qgrids</span><span class="o">:</span>
 </pre></div>
 </div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">self_update</span> <span class="k">BEFORE</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">dinpi_qgrids</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">update_qgrids_geometries</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-guess"><div class="highlight"><pre>Trigger on nnn table:
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">update_qgrids</span> <span class="k">AFTER</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">DELETE</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">dinpi</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">grid_geometries</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Function grid_geometries()</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">BEGIN</span>
-
 <span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;INSERT&#39;</span> <span class="k">THEN</span>
 
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;kef_5&quot; = foo.geom FROM (</span>
-<span class="s1">        SELECT obm_geometry AS geom</span>
-<span class="s1">        FROM shared.&quot;kef_5x5&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,obm_geometry)</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;kef_10&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;kef_10x10&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_2.5&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geometry as geom</span>
-<span class="s1">        FROM shared.&quot;utm_2.5x2.5&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geometry,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_10&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;utm_10x10&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_100&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;utm_100x100&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
 
 <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
 <span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
 
 <span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="k">THEN</span>
-
+    <span class="c1">-- create original at first</span>
+    <span class="c1">--EXECUTE format(&#39;INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry&#39;,TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);</span>
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;original&quot;=%L::geometry WHERE row_id=%L&#39;</span><span class="p">,</span> <span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;kef_5&quot; = foo.geom FROM (</span>
-<span class="s1">        SELECT obm_geometry AS geom</span>
-<span class="s1">        FROM shared.&quot;kef_5x5&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,obm_geometry)</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;kef_10&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;kef_10x10&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_2.5&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geometry as geom</span>
-<span class="s1">        FROM shared.&quot;utm_2.5x2.5&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geometry,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_10&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;utm_10x10&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-    <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;utm_100&quot; = st_transform(foo.geom,4326) FROM (</span>
-<span class="s1">        SELECT geom</span>
-<span class="s1">        FROM shared.&quot;utm_100x100&quot;</span>
-<span class="s1">        WHERE st_within(%L::geometry,st_transform(geom,4326))</span>
-<span class="s1">    ) as foo WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
 
 <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
 <span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
 
 <span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;DELETE&#39;</span> <span class="k">THEN</span>
+
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;DELETE FROM %I_qgrids WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">OLD</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
+
 <span class="k">RETURN</span> <span class="k">OLD</span><span class="p">;</span>
 <span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
+
+<span class="k">END</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Function update_qgrids_geometries()</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">BEGIN</span>
+<span class="c1">-- Available shared grids tables: kef_5, kef_10, utm_2.5, utm_10, etrs</span>
+<span class="c1">-- Required output grids e.g.: kef_10x10, utm_10x10, etrs, snap</span>
+
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;kef_5x5&quot;     WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_5&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;kef_10x10&quot;   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_10&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_2.5x2.5&quot; WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_2.5&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_10x10&quot;   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_10&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_100x100&quot; WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_100&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;etrs&quot;        WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;etrs&quot;</span><span class="p">;</span>
+    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_SnapToGrid(%L::geometry,0.13,0.09)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap&quot;</span><span class="p">;</span>
+
+    <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
 
 <span class="k">END</span><span class="p">;</span>
 </pre></div>
@@ -613,7 +593,14 @@ Parameters:
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Modules</a><ul>
-<li><a class="reference internal" href="#specieslist">specieslist</a></li>
+<li><a class="reference internal" href="#additional-columns">additional_columns</a></li>
+<li><a class="reference internal" href="#allowed-columns">allowed_columns</a></li>
+<li><a class="reference internal" href="#bold-yellow">bold_yellow</a></li>
+<li><a class="reference internal" href="#box-load-selection">box_load_selection</a></li>
+<li><a class="reference internal" href="#box-load-coord">box_load_coord</a></li>
+<li><a class="reference internal" href="#box-load-last-data">box_load_last_data</a></li>
+<li><a class="reference internal" href="#box-custom">box_custom</a></li>
+<li><a class="reference internal" href="#photos">photos</a></li>
 <li><a class="reference internal" href="#results-summary">results_summary</a></li>
 <li><a class="reference internal" href="#results-table">results_table</a></li>
 <li><a class="reference internal" href="#results-aslist">results_asList</a></li>
@@ -622,18 +609,11 @@ Parameters:
 <li><a class="reference internal" href="#results-asjson">results_asJSON</a></li>
 <li><a class="reference internal" href="#results-asshp">results_asSHP</a></li>
 <li><a class="reference internal" href="#results-buttons">results_buttons</a></li>
-<li><a class="reference internal" href="#photos">photos</a></li>
-<li><a class="reference internal" href="#box-load-selection">box_load_selection</a></li>
-<li><a class="reference internal" href="#box-load-coord">box_load_coord</a></li>
-<li><a class="reference internal" href="#box-load-last-data">box_load_last_data</a></li>
-<li><a class="reference internal" href="#box-custom">box_custom</a></li>
+<li><a class="reference internal" href="#results-asstable">results_asStable</a></li>
+<li><a class="reference internal" href="#specieslist">specieslist</a></li>
 <li><a class="reference internal" href="#text-filter">text_filter</a></li>
 <li><a class="reference internal" href="#transform-data">transform_data</a></li>
-<li><a class="reference internal" href="#results-asstable">results_asStable</a></li>
-<li><a class="reference internal" href="#allowed-columns">allowed_columns</a></li>
-<li><a class="reference internal" href="#bold-yellow">bold_yellow</a></li>
 <li><a class="reference internal" href="#extra-params">extra_params</a></li>
-<li><a class="reference internal" href="#additional-columns">additional_columns</a></li>
 <li><a class="reference internal" href="#join-tables">join_tables</a></li>
 <li><a class="reference internal" href="#snap-to-grid">snap_to_grid</a></li>
 <li><a class="reference internal" href="#restricted-data">restricted_data</a></li>

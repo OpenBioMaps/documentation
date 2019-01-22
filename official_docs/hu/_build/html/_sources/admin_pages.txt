@@ -15,7 +15,7 @@ Feltöltő űrlapok
 ----------------
 Itt lehet feltöltő űrlapokat létrehozni és módosítani. 
 Az űrlapok kezelésének részletes leírása itt található:
-    upload_forms.rst 
+:ref:`new-upload-form` and :ref:`edit-upload-form`.
 
 Függvények
 ----------
@@ -41,7 +41,7 @@ Az engedélyezett modulok használatát felhazsnálókhoz/csoportokhoz lehet ren
 Paraméterként megadhatunk egyszerű karakterláncot, vagy JSON objektumot.
 
 Az elérhető modulok listája és leírásai itt találhatóak: 
-    modules.rst
+:doc:`modulok <../modules>`
 
 
 Elmentett feltöltések

@@ -79,6 +79,121 @@
 <div class="section" id="database-access">
 <h2>Database access<a class="headerlink" href="#database-access" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="virtual-servers">
+<h2>Virtual servers<a class="headerlink" href="#virtual-servers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h3>
+<p>It is the currently supported up-to-date virtual environment release of OpenBioMaps.</p>
+<p>It is good for testing, developing or it can be applied in production environment after some updates.</p>
+<p>Using docker is easy! Only 3 steps needed:</p>
+<ol class="arabic simple">
+<li>Install docker compose</li>
+<li>Get obm-docker image</li>
+<li>start your docker environment</li>
+</ol>
+<div class="section" id="prepare-install-docker-compose">
+<h4>Prepare/Install Docker &amp; Compose<a class="headerlink" href="#prepare-install-docker-compose" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-<span class="sb">`</span>uname -s<span class="sb">`</span>-<span class="sb">`</span>uname -m<span class="sb">`</span> -o /usr/local/bin/docker-compose
+
+<span class="gp">foo@bar:~$</span> sudo chmod +x /usr/local/bin/docker-compose
+
+<span class="gp">foo@bar:~$</span> docker-compose --version
+
+<span class="go">docker-compose version 1.22.0, build f46880fe</span>
+</pre></div>
+</div>
+<p>Visit this page for further inforamtion about installing docker
+<a class="reference external" href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+</div>
+<div class="section" id="obm-docker-install">
+<h4>OBM docker install<a class="headerlink" href="#obm-docker-install" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git clone git@gitlab.com:openbiomaps/docker/obm-composer.git
+
+<span class="gp">foo@bar:~$</span> <span class="nb">cd </span>obm-composer/
+
+<span class="gp">foo@bar:~$</span> docker-compose up -d
+</pre></div>
+</div>
+</div>
+<div class="section" id="visit-these-pages-on-your-browser">
+<h4>Visit these pages on your browser<a class="headerlink" href="#visit-these-pages-on-your-browser" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="http://localhost:9880/biomaps/">http://localhost:9880/biomaps/</a></p>
+<p><a class="reference external" href="http://localhost:9880/biomaps/projects/sablon/">http://localhost:9880/biomaps/projects/sablon/</a></p>
+<p>Log in your template databse using <em>valaki&#64;openbiomaps.org</em> user name and <em>abc123</em> password;</p>
+<p>You can access your postgres database at</p>
+<p><a class="reference external" href="http://localhost:9880/adminer/">http://localhost:9880/adminer/</a></p>
+<p>with <em>sablon_admin</em> username and <em>12345</em> password. You can manage your database with <em>biomapsadmin</em> user and <em>abcd1234</em> password.</p>
+<p>If you change these passwords, should be updated the following places:</p>
+<p>/etc/openbiomaps/system_vars.php.inc</p>
+<p>/var/www/html/biomaps/projects/sablon/local_vars.php.inc</p>
+<p>/var/www/html/biomaps/projects/sablon/private/private.map</p>
+<p>In the mapfile, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key</p>
+<p>You can access OBM server admin interface:
+<a class="reference external" href="http://localhost:9880/biomaps/supervisor.php">http://localhost:9880/biomaps/supervisor.php</a></p>
+<p>with <em>supervisor</em> username and <em>12345</em> password. This password is located at /etc/openbiomaps/.htaccess.</p>
+</div>
+<div class="section" id="updates-update-application-with-docker">
+<h4>Updates: update application with Docker<a class="headerlink" href="#updates-update-application-with-docker" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose pull
+<span class="go">Pulling gisdata    ... done</span>
+<span class="go">Pulling biomaps    ... done</span>
+<span class="go">Pulling mapserver  ... done</span>
+<span class="go">Pulling app        ... done</span>
+<span class="go">Pulling phppgadmin ... done</span>
+<span class="go">Pulling adminer    ... done</span>
+
+<span class="gp">foo@bar:~$</span> docker-compose up -d
+<span class="go">Starting obm-composer_gisdata_1 ... done</span>
+<span class="go">Starting obm-composer_biomaps_1 ... done</span>
+<span class="go">Starting obm-composer_mapserver_1  ... done</span>
+<span class="go">Starting obm-composer_adminer_1    ... done</span>
+<span class="go">Starting obm-composer_phppgadmin_1 ... done</span>
+<span class="go">Recreating obm-composer_app_1      ... done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stopping-docker">
+<h4>Stopping docker<a class="headerlink" href="#stopping-docker" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose down
+</pre></div>
+</div>
+</div>
+<div class="section" id="drop-everything-including-data-and-databases">
+<h4>Drop everything (including data and databases)<a class="headerlink" href="#drop-everything-including-data-and-databases" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose down -v
+</pre></div>
+</div>
+</div>
+<div class="section" id="shell-access-of-web-app">
+<h4>Shell access of web app<a class="headerlink" href="#shell-access-of-web-app" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose <span class="nb">exec </span>app bash
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-logs">
+<h4>Reading logs<a class="headerlink" href="#reading-logs" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose logs -f app
+</pre></div>
+</div>
+</div>
+<div class="section" id="resources">
+<h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><a class="reference external" href="https://gitlab.com/openbiomaps/web-app">https://gitlab.com/openbiomaps/web-app</a></li>
+<li><a class="reference external" href="https://gitlab.com/openbiomaps/docker">https://gitlab.com/openbiomaps/docker</a></li>
+<li><a class="reference external" href="https://hub.docker.com/r/gaspara/obm-web-app">https://hub.docker.com/r/gaspara/obm-web-app</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="virtualbox">
+<h3>VirtualBox<a class="headerlink" href="#virtualbox" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download virtualbox from <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Download the latest .ova image from <a class="reference external" href="http://openbiomaps.org/downloads/virtual-image/">http://openbiomaps.org/downloads</a></li>
+<li>Read this readme for the the next steps: <a class="reference external" href="http://openbiomaps.org/downloads/virtual-image/README">http://openbiomaps.org/downloads/virtual-image/README</a></li>
+</ol>
+</div>
+</div>
 </div>
 
 
@@ -95,6 +210,22 @@
 <li><a class="reference internal" href="#share-data">Share Data</a></li>
 <li><a class="reference internal" href="#new-project">New project</a></li>
 <li><a class="reference internal" href="#database-access">Database access</a></li>
+<li><a class="reference internal" href="#virtual-servers">Virtual servers</a><ul>
+<li><a class="reference internal" href="#docker">Docker</a><ul>
+<li><a class="reference internal" href="#prepare-install-docker-compose">Prepare/Install Docker &amp; Compose</a></li>
+<li><a class="reference internal" href="#obm-docker-install">OBM docker install</a></li>
+<li><a class="reference internal" href="#visit-these-pages-on-your-browser">Visit these pages on your browser</a></li>
+<li><a class="reference internal" href="#updates-update-application-with-docker">Updates: update application with Docker</a></li>
+<li><a class="reference internal" href="#stopping-docker">Stopping docker</a></li>
+<li><a class="reference internal" href="#drop-everything-including-data-and-databases">Drop everything (including data and databases)</a></li>
+<li><a class="reference internal" href="#shell-access-of-web-app">Shell access of web app</a></li>
+<li><a class="reference internal" href="#reading-logs">Reading logs</a></li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#virtualbox">VirtualBox</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

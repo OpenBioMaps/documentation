@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User interface &#8212; openbiomaps 2.2 documentation</title>
+    <title>Felhasználói felület &#8212; openbiomaps 2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -58,46 +58,34 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="user-interface">
-<h1>User interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="log-in">
-<h2>Log in<a class="headerlink" href="#log-in" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="lost-password">
-<h3>Lost password<a class="headerlink" href="#lost-password" title="Permalink to this headline">¶</a></h3>
+  <div class="section" id="felhasznaloi-felulet">
+<h1>Felhasználói felület<a class="headerlink" href="#felhasznaloi-felulet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bejelentkezes">
+<h2>Bejelentkezés<a class="headerlink" href="#bejelentkezes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="elfelejtett-jelszo">
+<h3>Elfelejtett jelszó<a class="headerlink" href="#elfelejtett-jelszo" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
-<div class="section" id="profile">
-<h2>Profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="interrupted-imports">
-<h3>Interrupted imports<a class="headerlink" href="#interrupted-imports" title="Permalink to this headline">¶</a></h3>
-<p>While uploading new data using the web forms or file uploads there is an option to save the actual state of the prepared data.</p>
-<p>When you save the uploading process your data and settings will be stored in the OBM server. You can restore the saved state by loading its identifier.</p>
-<p>The identifiers are generating automatically. In one SESSION and one form there is only one identifier. So, there is no incremental backup!</p>
-<p>You can follow your saved imports in the profile page, by click on the &#8220;interrupted imports&#8221; link.</p>
+<div class="section" id="profil-lap">
+<h2>Profil lap<a class="headerlink" href="#profil-lap" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="profile.html"><span class="doc">profil lap beállításai</span></a></p>
 </div>
-<div class="section" id="invitation">
-<h3>Invitation<a class="headerlink" href="#invitation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="meghivasok">
+<h2>Meghívások<a class="headerlink" href="#meghivasok" title="Permalink to this headline">¶</a></h2>
 <p>Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).</p>
 </div>
-<div class="section" id="custom-geometries">
-<h3>Custom geometries<a class="headerlink" href="#custom-geometries" title="Permalink to this headline">¶</a></h3>
-<p>It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.</p>
-<p>You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.</p>
-<p>Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.</p>
-<p>Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!</p>
+<div class="section" id="projekt-adminisztracio">
+<h2>Projekt adminisztráció<a class="headerlink" href="#projekt-adminisztracio" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="admin_pages.html"><span class="doc">adminisztrációs beállítások</span></a></p>
 </div>
-<div class="section" id="saved-queries">
-<h3>Saved queries<a class="headerlink" href="#saved-queries" title="Permalink to this headline">¶</a></h3>
-<p>It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.</p>
-<p>The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.</p>
-<p>On the administrative pages you can follow your saved queries by clicking on the &#8220;stored queries&#8221; link.</p>
+<div class="section" id="uzenetek">
+<h2>Üzenetek<a class="headerlink" href="#uzenetek" title="Permalink to this headline">¶</a></h2>
 </div>
-</div>
-<div class="section" id="founding-new-a-project">
-<h2>Founding new a project<a class="headerlink" href="#founding-new-a-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uj-adatbazis-alapitasa">
+<h2>Új adatbázis alapítása<a class="headerlink" href="#uj-adatbazis-alapitasa" title="Permalink to this headline">¶</a></h2>
 <p><em>Section author: Róbert Veres (2016-12-19)</em></p>
-<div class="section" id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="bevezetes">
+<h3>Bevezetés<a class="headerlink" href="#bevezetes" title="Permalink to this headline">¶</a></h3>
 <p>Most of the steps will be illustrated with screenshots, and I will also include a few code lines which I used in SQL and the Debian terminal.
 Even tough, in-depth SQL programming knowledge isn&#8217;t required to follow the steps of founding a database, some basic knowledge is recommended for a better understanding of the OBM system.
 The operating system that I&#8217;m using, is Ubuntu (Linux), but you should be able to follow along.
@@ -193,32 +181,42 @@ tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)</p>
 <p>At the bottom of the &#8216;Administrative menu&#8217; in the logs page you can read the openbiomaps.log and the mapserver log files.</p>
 </div>
 </div>
-<div class="section" id="map-page">
-<h2>Map page<a class="headerlink" href="#map-page" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="map-query">
-<h3>map query<a class="headerlink" href="#map-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="terkepi-lap">
+<h2>Térképi lap<a class="headerlink" href="#terkepi-lap" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="terkepi-lekerdezesek">
+<h3>térképi lekérdezések<a class="headerlink" href="#terkepi-lekerdezesek" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="text-query">
-<h3>text query<a class="headerlink" href="#text-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="szoveges-lekerdezesek">
+<h3>szöveges lekérdezések<a class="headerlink" href="#szoveges-lekerdezesek" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="save-query">
-<h3>save query<a class="headerlink" href="#save-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lekerdezes-eltarolasa">
+<h3>lekérdezés eltárolása<a class="headerlink" href="#lekerdezes-eltarolasa" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="share-query">
-<h3>share query<a class="headerlink" href="#share-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="lekerdezes-megosztasa">
+<h3>lekérdezés megosztása<a class="headerlink" href="#lekerdezes-megosztasa" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
-<div class="section" id="upload-data">
-<h2>Upload data<a class="headerlink" href="#upload-data" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="file-upload">
-<h3>File upload<a class="headerlink" href="#file-upload" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="adat-feltoltes">
+<h2>Adat feltöltés<a class="headerlink" href="#adat-feltoltes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fajl-feltoltes">
+<h3>Fájl feltöltés<a class="headerlink" href="#fajl-feltoltes" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>sablonok
+extra argumentumok
+url cím beolvasása</div></blockquote>
 </div>
-<div class="section" id="web-upload">
-<h3>Web upload<a class="headerlink" href="#web-upload" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="webes-urlap-kitoltes">
+<h3>Webes űrlap kitöltés<a class="headerlink" href="#webes-urlap-kitoltes" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="saved-uploads">
-<h3>Saved uploads<a class="headerlink" href="#saved-uploads" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="feltoltes-mentese">
+<h3>Feltöltés mentése<a class="headerlink" href="#feltoltes-mentese" title="Permalink to this headline">¶</a></h3>
 </div>
+</div>
+<div class="section" id="adatbazis-osszefoglalo-oldal">
+<h2>Adatbázis összefoglaló oldal<a class="headerlink" href="#adatbazis-osszefoglalo-oldal" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="nyito-oldal">
+<h2>Nyitó oldal<a class="headerlink" href="#nyito-oldal" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -230,20 +228,17 @@ tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">User interface</a><ul>
-<li><a class="reference internal" href="#log-in">Log in</a><ul>
-<li><a class="reference internal" href="#lost-password">Lost password</a></li>
+<li><a class="reference internal" href="#">Felhasználói felület</a><ul>
+<li><a class="reference internal" href="#bejelentkezes">Bejelentkezés</a><ul>
+<li><a class="reference internal" href="#elfelejtett-jelszo">Elfelejtett jelszó</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#profile">Profile</a><ul>
-<li><a class="reference internal" href="#interrupted-imports">Interrupted imports</a></li>
-<li><a class="reference internal" href="#invitation">Invitation</a></li>
-<li><a class="reference internal" href="#custom-geometries">Custom geometries</a></li>
-<li><a class="reference internal" href="#saved-queries">Saved queries</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#founding-new-a-project">Founding new a project</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#profil-lap">Profil lap</a></li>
+<li><a class="reference internal" href="#meghivasok">Meghívások</a></li>
+<li><a class="reference internal" href="#projekt-adminisztracio">Projekt adminisztráció</a></li>
+<li><a class="reference internal" href="#uzenetek">Üzenetek</a></li>
+<li><a class="reference internal" href="#uj-adatbazis-alapitasa">Új adatbázis alapítása</a><ul>
+<li><a class="reference internal" href="#bevezetes">Bevezetés</a></li>
 <li><a class="reference internal" href="#creating-a-database">Creating a database</a></li>
 <li><a class="reference internal" href="#configuring-your-database">Configuring your database</a></li>
 <li><a class="reference internal" href="#database">Database</a></li>
@@ -253,19 +248,21 @@ tail -f /tmp/YOUR_NEW_DATABASE_private_ms_error.txt)</p>
 <li><a class="reference internal" href="#fine-tunning-steps-and-bug-trackings">Fine tunning steps and bug trackings</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#map-page">Map page</a><ul>
-<li><a class="reference internal" href="#map-query">map query</a></li>
-<li><a class="reference internal" href="#text-query">text query</a></li>
-<li><a class="reference internal" href="#save-query">save query</a></li>
-<li><a class="reference internal" href="#share-query">share query</a></li>
+<li><a class="reference internal" href="#terkepi-lap">Térképi lap</a><ul>
+<li><a class="reference internal" href="#terkepi-lekerdezesek">térképi lekérdezések</a></li>
+<li><a class="reference internal" href="#szoveges-lekerdezesek">szöveges lekérdezések</a></li>
+<li><a class="reference internal" href="#lekerdezes-eltarolasa">lekérdezés eltárolása</a></li>
+<li><a class="reference internal" href="#lekerdezes-megosztasa">lekérdezés megosztása</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#upload-data">Upload data</a><ul>
-<li><a class="reference internal" href="#file-upload">File upload</a></li>
-<li><a class="reference internal" href="#web-upload">Web upload</a></li>
-<li><a class="reference internal" href="#saved-uploads">Saved uploads</a></li>
+<li><a class="reference internal" href="#adat-feltoltes">Adat feltöltés</a><ul>
+<li><a class="reference internal" href="#fajl-feltoltes">Fájl feltöltés</a></li>
+<li><a class="reference internal" href="#webes-urlap-kitoltes">Webes űrlap kitöltés</a></li>
+<li><a class="reference internal" href="#feltoltes-mentese">Feltöltés mentése</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#adatbazis-osszefoglalo-oldal">Adatbázis összefoglaló oldal</a></li>
+<li><a class="reference internal" href="#nyito-oldal">Nyitó oldal</a></li>
 </ul>
 </li>
 </ul>
