@@ -115,27 +115,35 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="visit-these-pages-on-your-browser">
-<h4>Visit these pages on your browser<a class="headerlink" href="#visit-these-pages-on-your-browser" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="visit-your-obm-app">
+<h4>Visit your OBM app<a class="headerlink" href="#visit-your-obm-app" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="http://localhost:9880/biomaps/">http://localhost:9880/biomaps/</a></p>
 <p><a class="reference external" href="http://localhost:9880/biomaps/projects/sablon/">http://localhost:9880/biomaps/projects/sablon/</a></p>
 <p>Log in your template databse using <em>valaki&#64;openbiomaps.org</em> user name and <em>abc123</em> password;</p>
-<p>You can access your postgres database at</p>
-<p><a class="reference external" href="http://localhost:9881/adminer/">http://localhost:9881/adminer/</a></p>
-<p><a class="reference external" href="http://localhost:9882/phppgadmin/">http://localhost:9882/phppgadmin/</a></p>
+</div>
+<div class="section" id="id1">
+<h4>Database access<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>You can access your postgres database on the following preconfigured online database manager applications:</p>
+<p><a class="reference external" href="http://localhost:9881/">phppgadmin</a></p>
+<p><a class="reference external" href="http://localhost:9882/">adminer</a></p>
 <p>with <em>sablon_admin</em> username and <em>12345</em> password. You can manage your database with <em>biomapsadmin</em> user and <em>abcd1234</em> password.</p>
 <p>If you change these passwords, should be updated the following places:</p>
 <p>/etc/openbiomaps/system_vars.php.inc</p>
 <p>/var/www/html/biomaps/projects/sablon/local_vars.php.inc</p>
 <p>/var/www/html/biomaps/projects/sablon/private/private.map</p>
 <p>In the mapfile, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key</p>
+<p>The two databases &#8216;biomaps&#8217; and &#8216;gisdata&#8217; have root postgres users respectively <em>biomaps</em> and <em>gisdata</em> (instead of the ususal <em>postgres</em>) and both password is <em>changeMe</em>.</p>
+</div>
+<div class="section" id="obm-maintenance">
+<h4>OBM maintenance<a class="headerlink" href="#obm-maintenance" title="Permalink to this headline">¶</a></h4>
 <p>You can access OBM server admin interface:
 <a class="reference external" href="http://localhost:9880/biomaps/supervisor.php">http://localhost:9880/biomaps/supervisor.php</a></p>
 <p>with <em>supervisor</em> username and <em>12345</em> password. This password is located at /etc/openbiomaps/.htaccess.</p>
 </div>
 <div class="section" id="updates-update-application-with-docker">
 <h4>Updates: update application with Docker<a class="headerlink" href="#updates-update-application-with-docker" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> docker-compose pull
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git pull git@gitlab.com:openbiomaps/docker/obm-composer.git
+<span class="gp">foo@bar:~$</span> docker-compose pull
 <span class="go">Pulling gisdata    ... done</span>
 <span class="go">Pulling biomaps    ... done</span>
 <span class="go">Pulling mapserver  ... done</span>
@@ -195,6 +203,7 @@
 </div>
 <div class="section" id="virtualbox">
 <h3>VirtualBox<a class="headerlink" href="#virtualbox" title="Permalink to this headline">¶</a></h3>
+<p>The VirtualBox edition currently is outdated, not recommended to use it!</p>
 <ol class="arabic simple">
 <li>Download virtualbox from <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
 <li>Download the latest .ova image from <a class="reference external" href="http://openbiomaps.org/downloads/virtual-image/">http://openbiomaps.org/downloads</a></li>
@@ -222,7 +231,9 @@
 <li><a class="reference internal" href="#docker">Docker</a><ul>
 <li><a class="reference internal" href="#prepare-install-docker-compose">Prepare/Install Docker &amp; Compose</a></li>
 <li><a class="reference internal" href="#obm-docker-install">OBM docker install</a></li>
-<li><a class="reference internal" href="#visit-these-pages-on-your-browser">Visit these pages on your browser</a></li>
+<li><a class="reference internal" href="#visit-your-obm-app">Visit your OBM app</a></li>
+<li><a class="reference internal" href="#id1">Database access</a></li>
+<li><a class="reference internal" href="#obm-maintenance">OBM maintenance</a></li>
 <li><a class="reference internal" href="#updates-update-application-with-docker">Updates: update application with Docker</a></li>
 <li><a class="reference internal" href="#stopping-docker">Stopping docker</a></li>
 <li><a class="reference internal" href="#drop-everything-including-data-and-databases">Drop everything (including data and databases)</a></li>

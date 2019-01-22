@@ -64,19 +64,22 @@ foo@bar:~$ cd obm-composer/
 foo@bar:~$ docker-compose up -d
 ```
 
-Visit these pages on your browser
-.................................
+Visit your OBM app
+..................
 [http://localhost:9880/biomaps/](http://localhost:9880/biomaps/)
 
 [http://localhost:9880/biomaps/projects/sablon/](http://localhost:9880/biomaps/projects/sablon/)
 
 Log in your template databse using *valaki@openbiomaps.org* user name and *abc123* password;
 
-You can access your postgres database at
 
-[http://localhost:9881/adminer/](http://localhost:9881/adminer/)
+Database access
+...............
+You can access your postgres database on the following preconfigured online database manager applications:
 
-[http://localhost:9882/phppgadmin/](http://localhost:9882/phppgadmin/)
+[phppgadmin](http://localhost:9881/)
+
+[adminer](http://localhost:9882/)
 
 with *sablon_admin* username and *12345* password. You can manage your database with *biomapsadmin* user and *abcd1234* password.
 
@@ -90,6 +93,11 @@ If you change these passwords, should be updated the following places:
 
 In the mapfile, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key
 
+The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the ususal *postgres*) and both password is *changeMe*.
+
+
+OBM maintenance
+...............
 You can access OBM server admin interface: 
 [http://localhost:9880/biomaps/supervisor.php](http://localhost:9880/biomaps/supervisor.php)
 
@@ -156,6 +164,7 @@ Resources
 
 VirtualBox
 ----------
+The VirtualBox edition currently is outdated, not recommended to use it!
 
 1. Download virtualbox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 2. Download the latest .ova image from [http://openbiomaps.org/downloads](http://openbiomaps.org/downloads/virtual-image/)
