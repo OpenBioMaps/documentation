@@ -57,7 +57,7 @@ OBM docker install
 ..................
 
 ```console
-foo@bar:~$ git clone git@gitlab.com:openbiomaps/docker/obm-composer.git
+foo@bar:~$ git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
 
 foo@bar:~$ cd obm-composer/
 
