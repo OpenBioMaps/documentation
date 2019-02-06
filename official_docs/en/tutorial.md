@@ -155,6 +155,52 @@ Do not restart apache from docker shell, but from outside
 ```console
 foo@bar:~$ docker-compose restart app
 ```
+Set up mailing
+..............
+Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
+
+These config files as a template can be accessed from your "obm-composer" directory:
+```console
+ls -l obm-composer/econf/
+-rw-r--r-- 1 foo bar 2059 Feb  5 20:59 local_vars-sablon.php.inc
+-rw-r--r-- 1 foo bar  417 Feb  5 20:45 server_vars.php.inc
+-rw-r--r-- 1 foo bar  819 Feb  5 20:36 system_vars.php.inc
+```
+To be able to apply a new setting here in the running system, you have to edit your Docker config file
+```console
+vi obm-composer/docker-compose.yml
+ 20       # comment out to enable local config files
+ 21       # - ./econf/system_vars.php.inc:/etc/openbiomaps/system_vars.php.inc
+ 22       # - ./econf/server_vars.php.inc:/var/www/html/biomaps/server_vars.php.inc
+ 23       # - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/projects/sablon/local_vars.php.inc
+```
+As you can see, there are commented references for these external files which will be included "on the fly" in your running system. 
+
+So, you have to edit your obm-composer/econf/local_vars-sablon.php.inc file for the default "sablon" project.
+
+Find the Mail Settings section
+```console
+ 45 // Mail settings
+ 46 define('SMTP_AUTH',false); # true
+ 47 define('SMTP_HOST','...');
+ 48 define('SMTP_USERNAME','...');
+ 49 define('SMTP_PASSWORD','...');
+ 50 define('SMTP_SECURE','tls'); # ssl
+ 51 define('SMTP_PORT','587'); # 465
+ 52 define('SMTP_SENDER','openbiomaps@...');
+```
+Set these variables as you need. E.g.
+```console
+ 45 // Mail settings
+ 46 define('SMTP_AUTH',false); # true
+ 47 define('SMTP_HOST','mail.my-mail-server.com');
+ 48 define('SMTP_USERNAME','my-name@my-mail-server.com');
+ 49 define('SMTP_PASSWORD','something');
+ 50 define('SMTP_SECURE','tls'); # ssl
+ 51 define('SMTP_PORT','587'); # 465
+ 52 define('SMTP_SENDER','openbiomaps@my-mail-server.com');
+```
+If SMTP_SENDER is not set the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
 
 Resources
 .........
