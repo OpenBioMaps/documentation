@@ -202,6 +202,19 @@ Set these variables as you need. E.g.
 ```
 If SMTP_SENDER is not set the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
 
+Docker maintenance
+..................
+Remove huge amount of old, not used docker images...
+
+Do we have a lot?
+```console
+docker images | grep "<none>"
+```
+Let drop them....
+```console
+docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
+```
+
 Resources
 .........
 * https://gitlab.com/openbiomaps/web-app
