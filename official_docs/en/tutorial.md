@@ -215,6 +215,15 @@ Let drop them....
 docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
 ```
 
+Founding a new project in Docker
+................................
+Some updates....
+```console
+docker cp obm-composer_app_1:/var/www/html/biomaps/projects/YOUR_PROJECT/local_vars.php.inc ./econf/local_vars-YOUR_PROJECT.inc
+```
+Include this econf path below the app volumes as like sablon example.
+
+
 Resources
 .........
 * https://gitlab.com/openbiomaps/web-app
