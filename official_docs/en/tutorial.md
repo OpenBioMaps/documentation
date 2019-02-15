@@ -61,6 +61,12 @@ foo@bar:~$ git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
 
 foo@bar:~$ cd obm-composer/
 
+foo@bar:~$ sudo groupadd -g 996 docker
+
+foo@bar:~$ sudo adduser foo docker
+
+foo@bar:~$ docker network create obm_web
+
 foo@bar:~$ docker-compose up -d
 ```
 
