@@ -180,6 +180,12 @@ Default value: Fix value for all observation. It can be controlled with some opt
  
  - '_input' it works as any other field with sticky flag. 
  - '_list' it works as any other list type field with sticky flag.
+ - '_geometry'
+ - '_login_name'
+ - '_email'
+ - '_autocomplete' alias of input
+ - '_boolean'
+ 
 
 in any other case the value can not be changed by the user users and the field can be hidden.
 
