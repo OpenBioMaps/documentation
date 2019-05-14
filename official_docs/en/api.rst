@@ -176,6 +176,7 @@ curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_
 Form Data (get_form_data results) explanations
 ----------------------------------------------
 Description: Optional column description
+
 Default value: Fix value for all observation. It can be controlled with the following options:
  
  - '_input' it works as any other field with sticky flag. 
@@ -189,8 +190,6 @@ Default value: Fix value for all observation. It can be controlled with the foll
  - '_datum' display as normal date field
  - '_none' not used
  
-If default_value's value is not a list of values and not a special value from the list above, the field should be hidden.
-
 Column: The name of the column in the database
 
 Short_name: Visible name of the column for the users
@@ -221,10 +220,26 @@ Type: column's openbiomaps type:
  - wkt (WKT sting)
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+
 Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
+
 Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. Above API v2.1:
 {"sticky":"off","numeric":"off","list_elements_as_buttons":"off"} where sticky and list_elements_as_button can be "on" and numeric can be a number.
+
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+
+List_definition: JSON array of complex list definition
+
+Custom_function: null
+
+permanent_sample_plots: 
+
+API < v.2.1
+    JSON array: [{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
+
+API >= v.2.1
+    in "form_header":{...,"permanent_sample_plots":[{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
+    
 
 Training explanations and examples
 ----------------------------------
