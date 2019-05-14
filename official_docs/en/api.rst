@@ -180,11 +180,14 @@ Default value: Fix value for all observation. It can be controlled with some opt
  
  - '_input' it works as any other field with sticky flag. 
  - '_list' it works as any other list type field with sticky flag.
- - '_geometry'
- - '_login_name'
- - '_email'
+ - '_geometry' it works as geometry type field
+ - '_login_name' this value overriden by the user's name if logged in or returns as _input
+ - '_email' this value overriden by the user's email address if logged in or returns as _input
  - '_autocomplete' alias of input
- - '_boolean'
+ - '_boolean' display as normal boolean list
+ - '_attachment' display as normal attachments field
+ - '_datum' display as normal date field
+ - '_none' not used
  
 
 in any other case the value can not be changed by the user users and the field can be hidden.
@@ -202,7 +205,7 @@ Count: (json array) If the control='minmax' this field contains the limit values
 Type: column's openbiomaps type:
  
  - autocomplete	(json array)
- - boolen	
+ - boolean (two elements list)	
  - crings (colour rings - text)	
  - date (YYYY-MM-DD or other clear format)
  - datetime (YYYY-MM-DD HH:mm:ss)
