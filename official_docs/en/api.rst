@@ -176,7 +176,7 @@ curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_
 Form Data (get_form_data results) explanations
 ----------------------------------------------
 Description: Optional column description
-Default value: Fix value for all observation. It can be controlled with some options.
+Default value: Fix value for all observation. It can be controlled with the following options:
  
  - '_input' it works as any other field with sticky flag. 
  - '_list' it works as any other list type field with sticky flag.
@@ -189,8 +189,7 @@ Default value: Fix value for all observation. It can be controlled with some opt
  - '_datum' display as normal date field
  - '_none' not used
  
-
-in any other case the value can not be changed by the user users and the field can be hidden.
+If default_value's value is not a list of values and not a special value from the list above, the field should be hidden.
 
 Column: The name of the column in the database
 
@@ -223,7 +222,8 @@ Type: column's openbiomaps type:
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
-Api_params: jason array of control values. Currently only 'sticky'
+Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. Above API v2.1:
+{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"} where sticky and list_elements_as_button can be "on" and numeric can be a number.
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
 Training explanations and examples
@@ -300,13 +300,26 @@ Data retrieval (form fields):
     
 
 Result of a successful get_form_data call:
+
+API < v.2.1
+
+    {"status":"success",
+    
+    "data":[    
+    {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
+    
+    {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{...}]}
+    
+API >= v.2.1
+
     {"status":"success",
     
     "data":[
     
-    {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
+    "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
+    "form_data":[
+        {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"}},{...}]]}
     
-    {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{... ]}
 
 Data upload:
     curl \\ |br|
