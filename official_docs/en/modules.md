@@ -56,6 +56,12 @@ box_load_selection
     General description:
     
     Parameters:
+
+        available spatial relationships (optional, if no parameter is given, all relationships are available)
+            contains
+            intersects
+            crosses
+            disjoint
     
 box_load_coord
 --------------
