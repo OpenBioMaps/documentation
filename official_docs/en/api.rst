@@ -223,8 +223,9 @@ Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} 
 
 Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
 
-Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. Above API v2.1:
-{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"} where sticky and list_elements_as_button can be "on" and numeric can be a number.
+Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. 
+Above API v2.0:
+{"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off"}.
 
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
