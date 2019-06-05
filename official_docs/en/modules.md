@@ -12,7 +12,7 @@ additional_columns
         co [0] columns array
         c  [1] column name assoc array
     
-    Parameters:
+    Parameters: New line separated list of column names
 
 allowed_columns
 ---------------
@@ -40,7 +40,7 @@ bold_yellow
     General description:
     
     Parameters:
-      column names
+      New line separated list of column names
 
 box_load_selection
 ------------------
@@ -71,7 +71,10 @@ box_load_coord
     
     General description:
     
-    Parameters:
+    Parameters: example:
+    
+    wgs84:4326
+    eov=23700
     
 box_load_last_data
 ------------------
@@ -81,7 +84,7 @@ box_load_last_data
     
     General description:
     
-    Parameters:
+    Parameters: Number of records in last uploads, default is 10
     
 box_custom
 ----------
@@ -91,7 +94,11 @@ box_custom
     
     General description:
     
-    Parameters:
+    Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
+    
+    Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
+    
+    This Class should include at least print_box() and print_js() functions.
 
 photos
 ------
@@ -102,6 +109,21 @@ photos
     General description:
     
     Parameters:
+    
+read_table
+----------
+    Present a table or an sql view as a rollable html table. This table is available with a unique link.
+    
+    Calls:
+    
+    General description:
+        Add these lines to .htaccess file where  .... should replaced with your project table name
+        # read table module
+        RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
+    
+    Parameters: schema.table
+        or
+        schema.table:default-order-column
     
 results_summary
 ---------------
@@ -208,7 +230,31 @@ text_filter
         create boxes
         assemble WHERE part of query string
     
-    Parameters:
+    Parameters: complex example:
+    
+    magyar
+    obm_taxon
+    megj::colour_rings
+    obm_datum
+    obm_uploading_date
+    obm_uploader_user
+    d.szamossag:nested(d.egyedszam):autocomplete
+    d.egyedszam:values():
+    obm_files_id
+    faj::autocomplete
+
+text_filter2
+-----------
+    Advanced taxon and other text filters.
+
+    Calls:
+    
+    General description:
+        create boxes
+        assemble WHERE part of query string
+    
+    Parameters: example:
+   
     
 transform_data
 --------------
@@ -220,7 +266,11 @@ transform_data
         In result list it transform data as need
         E.g. geometry to wkt
     
-    Parameters:
+    Parameters: example:
+    
+    obm_geometry:geom
+    obm_uploading_id:uplid
+    tema:mmm
     
 extra_params
 ------------
@@ -247,7 +297,9 @@ join_tables
         [1] prefixed column names array: all column which defined in the database columns
         [2] visible names array of array by JOIN
     
-    Parameters:
+    Parameters: example:
+    
+    LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&dinpi_mirror.objectid>1:1
 
 snap_to_grid
 ------------
@@ -364,8 +416,8 @@ custom_filetype
     
     Parameters:
   
-create_postgres_user
---------------------
+create_pg_user
+--------------
     Create a restricted access postgres user
     
     Calls:
@@ -378,18 +430,6 @@ create_postgres_user
         It can only connect to a database from one client program at a time.
         After one year, Its access expires automatically.
         Users can renew their access at any time.
-    
-    Parameters:
-
-custom_admin_pages
-------------------
-
-    
-    Calls:
-    
-    Functions: no functions.
-    
-    General description:
     
     Parameters:
     
@@ -463,3 +503,29 @@ BEGIN
 
 END;
 ```
+    
+massive_edit
+------------
+
+   Allows you to edit the selected data massively on the file upload interface
+   
+   Calls:
+    
+   Functions:
+    
+   General description:
+    
+   Parameters:
+
+download_restricted
+-------------------
+
+   Admin-controlled download authorization
+       
+   Calls:
+    
+   Functions:
+    
+   General description:
+    
+   Parameters:
