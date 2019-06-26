@@ -62,13 +62,17 @@
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="upload-data">
 <h2>Upload data<a class="headerlink" href="#upload-data" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://youtu.be/qsu-0UeC46g">Upload interface usage: Video tutorial (balkanherps example) english</a></p>
+<p><a class="reference external" href="https://youtu.be/qsu-0UeC46g">Upload interface usage: Video tutorial (Balkanherps, Edvárd Mizsei) english</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=BknizNC8pvc&amp;t=102s">Upload interface usage: Video tutorial (Milvus general forms) română</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=kFnSxYp4zNM&amp;t=33s">Upload interface usage: Video tutorial (Milvus atlas form) română</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=NmuIdfsXYjk">Upload interface usage: Video tutorial (Milvus nocturnal birds form) română</a></p>
+<p><a class="reference external" href="https://youtu.be/48QPn0KqveA">Belépés és adatfeltöltés űrlapról (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul</a></p>
+<p><a class="reference external" href="https://youtu.be/wrJH8c4BARM">Adatfeltöltés fájlból (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul</a></p>
+<p><a class="reference external" href="https://youtu.be/cVaDpJL-wWw">Mobilos adatgyűjtő alkalmazás használata (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul</a></p>
 </div>
 <div class="section" id="query-data">
 <h2>Query Data<a class="headerlink" href="#query-data" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://youtu.be/elDJqiolyFg">Adatlekérdezés, javítás (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul</a></p>
 </div>
 <div class="section" id="share-data">
 <h2>Share Data<a class="headerlink" href="#share-data" title="Permalink to this headline">¶</a></h2>
@@ -78,6 +82,7 @@
 </div>
 <div class="section" id="database-access">
 <h2>Database access<a class="headerlink" href="#database-access" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://youtu.be/8zRgGNOYDxg">OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul</a></p>
 </div>
 <div class="section" id="virtual-servers">
 <h2>Virtual servers<a class="headerlink" href="#virtual-servers" title="Permalink to this headline">¶</a></h2>
@@ -107,9 +112,15 @@
 </div>
 <div class="section" id="obm-docker-install">
 <h4>OBM docker install<a class="headerlink" href="#obm-docker-install" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git clone git@gitlab.com:openbiomaps/docker/obm-composer.git
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
 
 <span class="gp">foo@bar:~$</span> <span class="nb">cd </span>obm-composer/
+
+<span class="gp">foo@bar:~$</span> sudo groupadd -g <span class="m">996</span> docker
+
+<span class="gp">foo@bar:~$</span> sudo adduser foo docker
+
+<span class="gp">foo@bar:~$</span> docker network create obm_web
 
 <span class="gp">foo@bar:~$</span> docker-compose up -d
 </pre></div>
@@ -142,7 +153,7 @@
 </div>
 <div class="section" id="updates-update-application-with-docker">
 <h4>Updates: update application with Docker<a class="headerlink" href="#updates-update-application-with-docker" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git pull git@gitlab.com:openbiomaps/docker/obm-composer.git
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">foo@bar:~$</span> git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
 <span class="gp">foo@bar:~$</span> docker-compose pull
 <span class="go">Pulling gisdata    ... done</span>
 <span class="go">Pulling biomaps    ... done</span>
@@ -192,6 +203,70 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="set-up-mailing">
+<h4>Set up mailing<a class="headerlink" href="#set-up-mailing" title="Permalink to this headline">¶</a></h4>
+<p>Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)</p>
+<p>These config files as a template can be accessed from your &#8220;obm-composer&#8221; directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">ls -l obm-composer/econf/</span>
+<span class="go">-rw-r--r-- 1 foo bar 2059 Feb  5 20:59 local_vars-sablon.php.inc</span>
+<span class="go">-rw-r--r-- 1 foo bar  417 Feb  5 20:45 server_vars.php.inc</span>
+<span class="go">-rw-r--r-- 1 foo bar  819 Feb  5 20:36 system_vars.php.inc</span>
+</pre></div>
+</div>
+<p>To be able to apply a new setting here in the running system, you have to edit your Docker config file</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">vi obm-composer/docker-compose.yml</span>
+<span class="go"> 20       # comment out to enable local config files</span>
+<span class="go"> 21       # - ./econf/system_vars.php.inc:/etc/openbiomaps/system_vars.php.inc</span>
+<span class="go"> 22       # - ./econf/server_vars.php.inc:/var/www/html/biomaps/server_vars.php.inc</span>
+<span class="go"> 23       # - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/projects/sablon/local_vars.php.inc</span>
+</pre></div>
+</div>
+<p>As you can see, there are commented references for these external files which will be included &#8220;on the fly&#8221; in your running system.</p>
+<p>So, you have to edit your obm-composer/econf/local_vars-sablon.php.inc file for the default &#8220;sablon&#8221; project.</p>
+<p>Find the Mail Settings section</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">45 // Mail settings</span>
+<span class="go">46 define(&#39;SMTP_AUTH&#39;,false); # true</span>
+<span class="go">47 define(&#39;SMTP_HOST&#39;,&#39;...&#39;);</span>
+<span class="go">48 define(&#39;SMTP_USERNAME&#39;,&#39;...&#39;);</span>
+<span class="go">49 define(&#39;SMTP_PASSWORD&#39;,&#39;...&#39;);</span>
+<span class="go">50 define(&#39;SMTP_SECURE&#39;,&#39;tls&#39;); # ssl</span>
+<span class="go">51 define(&#39;SMTP_PORT&#39;,&#39;587&#39;); # 465</span>
+<span class="go">52 define(&#39;SMTP_SENDER&#39;,&#39;openbiomaps@...&#39;);</span>
+</pre></div>
+</div>
+<p>Set these variables as you need. E.g.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">45 // Mail settings</span>
+<span class="go">46 define(&#39;SMTP_AUTH&#39;,false); # true</span>
+<span class="go">47 define(&#39;SMTP_HOST&#39;,&#39;mail.my-mail-server.com&#39;);</span>
+<span class="go">48 define(&#39;SMTP_USERNAME&#39;,&#39;my-name@my-mail-server.com&#39;);</span>
+<span class="go">49 define(&#39;SMTP_PASSWORD&#39;,&#39;something&#39;);</span>
+<span class="go">50 define(&#39;SMTP_SECURE&#39;,&#39;tls&#39;); # ssl</span>
+<span class="go">51 define(&#39;SMTP_PORT&#39;,&#39;587&#39;); # 465</span>
+<span class="go">52 define(&#39;SMTP_SENDER&#39;,&#39;openbiomaps@my-mail-server.com&#39;);</span>
+</pre></div>
+</div>
+<p>If SMTP_SENDER is not set the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!</p>
+</div>
+<div class="section" id="docker-maintenance">
+<h4>Docker maintenance<a class="headerlink" href="#docker-maintenance" title="Permalink to this headline">¶</a></h4>
+<p>Remove huge amount of old, not used docker images...</p>
+<p>Do we have a lot?</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">docker images | grep &quot;&lt;none&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Let drop them....</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">docker images | grep &quot;&lt;none&gt;&quot; | awk &#39;{print $3}&#39; | sed -e &#39;s/^/docker rmi /&#39; | bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="founding-a-new-project-in-docker">
+<h4>Founding a new project in Docker<a class="headerlink" href="#founding-a-new-project-in-docker" title="Permalink to this headline">¶</a></h4>
+<p>Some updates....</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">docker cp obm-composer_app_1:/var/www/html/biomaps/projects/YOUR_PROJECT/local_vars.php.inc ./econf/local_vars-YOUR_PROJECT.inc</span>
+</pre></div>
+</div>
+<p>Include this econf path below the app volumes as like sablon example.</p>
+</div>
 <div class="section" id="resources">
 <h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -240,6 +315,9 @@
 <li><a class="reference internal" href="#shell-access-of-web-app">Shell access of web app</a></li>
 <li><a class="reference internal" href="#reading-logs">Reading logs</a></li>
 <li><a class="reference internal" href="#restart-app">Restart app</a></li>
+<li><a class="reference internal" href="#set-up-mailing">Set up mailing</a></li>
+<li><a class="reference internal" href="#docker-maintenance">Docker maintenance</a></li>
+<li><a class="reference internal" href="#founding-a-new-project-in-docker">Founding a new project in Docker</a></li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>

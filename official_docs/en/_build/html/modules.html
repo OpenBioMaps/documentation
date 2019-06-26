@@ -74,7 +74,7 @@ General description:
     co [0] columns array
     c  [1] column name assoc array
 
-Parameters:
+Parameters: New line separated list of column names
 </pre></div>
 </div>
 </div>
@@ -106,7 +106,7 @@ Calls:
 General description:
 
 Parameters:
-  column names
+  New line separated list of column names
 </pre></div>
 </div>
 </div>
@@ -124,6 +124,12 @@ Parameters:
 <span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
 
 <span class="nx">Parameters</span><span class="o">:</span>
+
+    <span class="nx">available</span> <span class="nx">spatial</span> <span class="nx">relationships</span> <span class="p">(</span><span class="nx">optional</span><span class="p">,</span> <span class="k">if</span> <span class="nx">no</span> <span class="nx">parameter</span> <span class="nx">is</span> <span class="nx">given</span><span class="p">,</span> <span class="nx">all</span> <span class="nx">relationships</span> <span class="nx">are</span> <span class="nx">available</span><span class="p">)</span>
+        <span class="nx">contains</span>
+        <span class="nx">intersects</span>
+        <span class="nx">crosses</span>
+        <span class="nx">disjoint</span>
 </pre></div>
 </div>
 </div>
@@ -135,7 +141,10 @@ Calls: print_box, limits, ajax, print_js
 
 General description:
 
-Parameters:
+Parameters: example:
+
+wgs84:4326
+eov=23700
 </pre></div>
 </div>
 </div>
@@ -147,19 +156,23 @@ Calls:
 
 General description:
 
-Parameters:
+Parameters: Number of records in last uploads, default is 10
 </pre></div>
 </div>
 </div>
 <div class="section" id="box-custom">
 <h2>box_custom<a class="headerlink" href="#box-custom" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Custom box - only user defined version exists.
+<div class="highlight-guess"><div class="highlight"><pre><span class="nx">Custom</span> <span class="nx">box</span> <span class="o">-</span> <span class="nx">only</span> <span class="nx">user</span> <span class="nx">defined</span> <span class="nx">version</span> <span class="nx">exists</span><span class="p">.</span>
 
-Calls:
+<span class="nx">Calls</span><span class="o">:</span>
 
-General description:
+<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
 
-Parameters:
+<span class="nx">Parameters</span><span class="o">:</span> <span class="nx">a</span> <span class="nx">file</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">basename</span> <span class="k">in</span> <span class="nx">includes</span><span class="o">/</span><span class="nx">modules</span><span class="o">/</span><span class="kr">private</span> <span class="nx">folder</span><span class="p">.</span> <span class="nx">E</span><span class="p">.</span><span class="nx">g</span><span class="p">.</span> <span class="nx">hrsz_query</span>
+
+<span class="nx">Where</span> <span class="nx">hrsz_query_Class</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kr">class</span> <span class="k">in</span> <span class="nx">hrsz_query</span><span class="p">.</span><span class="nx">php</span> <span class="k">in</span> <span class="nx">includes</span><span class="o">/</span><span class="nx">modules</span><span class="o">/</span><span class="kr">private</span><span class="o">/</span> <span class="nx">folder</span><span class="p">.</span>
+
+<span class="nx">This</span> <span class="nx">Class</span> <span class="nx">should</span> <span class="nx">include</span> <span class="nx">at</span> <span class="nx">least</span> <span class="nx">print_box</span><span class="p">()</span> <span class="nx">and</span> <span class="nx">print_js</span><span class="p">()</span> <span class="nx">functions</span><span class="p">.</span>
 </pre></div>
 </div>
 </div>
@@ -172,6 +185,23 @@ Calls:
 General description:
 
 Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-table">
+<h2>read_table<a class="headerlink" href="#read-table" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Present a table or an sql view as a rollable html table. This table is available with a unique link.
+
+Calls:
+
+General description:
+    Add these lines to .htaccess file where  .... should replaced with your project table name
+    # read table module
+    RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&amp;table=$1&amp;%{QUERY_STRING} [NC,L]
+
+Parameters: schema.table
+    or
+    schema.table:default-order-column
 </pre></div>
 </div>
 </div>
@@ -300,7 +330,32 @@ General description:
     create boxes
     assemble WHERE part of query string
 
-Parameters:
+Parameters: complex example:
+
+magyar
+obm_taxon
+megj::colour_rings
+obm_datum
+obm_uploading_date
+obm_uploader_user
+d.szamossag:nested(d.egyedszam):autocomplete
+d.egyedszam:values():
+obm_files_id
+faj::autocomplete
+</pre></div>
+</div>
+</div>
+<div class="section" id="text-filter2">
+<h2>text_filter2<a class="headerlink" href="#text-filter2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess"><div class="highlight"><pre>Advanced taxon and other text filters.
+
+Calls:
+
+General description:
+    create boxes
+    assemble WHERE part of query string
+
+Parameters: example:
 </pre></div>
 </div>
 </div>
@@ -314,7 +369,11 @@ General description:
     In result list it transform data as need
     E.g. geometry to wkt
 
-Parameters:
+Parameters: example:
+
+obm_geometry:geom
+obm_uploading_id:uplid
+tema:mmm
 </pre></div>
 </div>
 </div>
@@ -345,7 +404,9 @@ General description:
     [1] prefixed column names array: all column which defined in the database columns
     [2] visible names array of array by JOIN
 
-Parameters:
+Parameters: example:
+
+LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&amp;dinpi_mirror.objectid&gt;1:1
 </pre></div>
 </div>
 </div>
@@ -478,8 +539,8 @@ Parameters:
 </pre></div>
 </div>
 </div>
-<div class="section" id="create-postgres-user">
-<h2>create_postgres_user<a class="headerlink" href="#create-postgres-user" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-pg-user">
+<h2>create_pg_user<a class="headerlink" href="#create-pg-user" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-guess"><div class="highlight"><pre>Create a restricted access postgres user
 
 Calls:
@@ -494,18 +555,6 @@ General description:
     Users can renew their access at any time.
 
 Parameters:
-</pre></div>
-</div>
-</div>
-<div class="section" id="custom-admin-pages">
-<h2>custom_admin_pages<a class="headerlink" href="#custom-admin-pages" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre><span class="n">Calls</span><span class="o">:</span>
-
-<span class="n">Functions</span><span class="o">:</span> <span class="n">no</span> <span class="n">functions</span><span class="o">.</span>
-
-<span class="n">General</span> <span class="n">description</span><span class="o">:</span>
-
-<span class="n">Parameters</span><span class="o">:</span>
 </pre></div>
 </div>
 </div>
@@ -583,6 +632,26 @@ Parameters:
 </pre></div>
 </div>
 </div>
+<div class="section" id="massive-edit">
+<h2>massive_edit<a class="headerlink" href="#massive-edit" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Allows you to edit the selected data massively on the file upload interface</p>
+<p>Calls:</p>
+<p>Functions:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="download-restricted">
+<h2>download_restricted<a class="headerlink" href="#download-restricted" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Admin-controlled download authorization</p>
+<p>Calls:</p>
+<p>Functions:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -602,6 +671,7 @@ Parameters:
 <li><a class="reference internal" href="#box-load-last-data">box_load_last_data</a></li>
 <li><a class="reference internal" href="#box-custom">box_custom</a></li>
 <li><a class="reference internal" href="#photos">photos</a></li>
+<li><a class="reference internal" href="#read-table">read_table</a></li>
 <li><a class="reference internal" href="#results-summary">results_summary</a></li>
 <li><a class="reference internal" href="#results-table">results_table</a></li>
 <li><a class="reference internal" href="#results-aslist">results_asList</a></li>
@@ -613,6 +683,7 @@ Parameters:
 <li><a class="reference internal" href="#results-asstable">results_asStable</a></li>
 <li><a class="reference internal" href="#specieslist">specieslist</a></li>
 <li><a class="reference internal" href="#text-filter">text_filter</a></li>
+<li><a class="reference internal" href="#text-filter2">text_filter2</a></li>
 <li><a class="reference internal" href="#transform-data">transform_data</a></li>
 <li><a class="reference internal" href="#extra-params">extra_params</a></li>
 <li><a class="reference internal" href="#join-tables">join_tables</a></li>
@@ -623,9 +694,10 @@ Parameters:
 <li><a class="reference internal" href="#notify">notify</a></li>
 <li><a class="reference internal" href="#custom-data-check">custom_data_check</a></li>
 <li><a class="reference internal" href="#custom-filetype">custom_filetype</a></li>
-<li><a class="reference internal" href="#create-postgres-user">create_postgres_user</a></li>
-<li><a class="reference internal" href="#custom-admin-pages">custom_admin_pages</a></li>
+<li><a class="reference internal" href="#create-pg-user">create_pg_user</a></li>
 <li><a class="reference internal" href="#grid-view">grid_view</a></li>
+<li><a class="reference internal" href="#massive-edit">massive_edit</a></li>
+<li><a class="reference internal" href="#download-restricted">download_restricted</a></li>
 </ul>
 </li>
 </ul>

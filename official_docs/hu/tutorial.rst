@@ -1,22 +1,25 @@
 Gyakorlatok
 ***********
 
-Adatfeltöltés
-=============
-`Upload interface usage: Video tutorial (balkanherps example) english <https://youtu.be/qsu-0UeC46g>`_
+Felhasználók által készített videó gyakorlatok
+==============================================
+`Feltöltési felület használata (Balkanherps, Mizsei Edvárd) english <https://youtu.be/qsu-0UeC46g>`_
 
-`Upload interface usage: Video tutorial (Milvus general forms) română <https://www.youtube.com/watch?v=BknizNC8pvc&t=102s>`_
+`Feltöltési felület használata (Milvus általános űrlap) română <https://www.youtube.com/watch?v=BknizNC8pvc&t=102s>`_
 
-`Upload interface usage: Video tutorial (Milvus atlas form) română <https://www.youtube.com/watch?v=kFnSxYp4zNM&t=33s>`_
+`Feltöltési felület használata (Milvus atlas űrlap) română <https://www.youtube.com/watch?v=kFnSxYp4zNM&t=33s>`_
 
-`Upload interface usage: Video tutorial (Milvus nocturnal birds form) română <https://www.youtube.com/watch?v=NmuIdfsXYjk>`_
+`Feltöltési felület használata (Milvus éjszakai madarak űrlap) română <https://www.youtube.com/watch?v=NmuIdfsXYjk>`_
 
-Adatlekérések
-=============
+`Első bejelentkezés (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/z6K3y_WA4h0>`_
 
-Adatmegosztás
-=============
+`Belépés és adatfeltöltés űrlapról (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/48QPn0KqveA>`_
 
-Új projekt alapítás
-===================
+`Adatfeltöltés fájlból (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/wrJH8c4BARM>`_
+
+`Mobilos adatgyűjtő alkalmazás használata (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/cVaDpJL-wWw>`_
+
+`Adatlekérdezés, javítás (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/elDJqiolyFg>`_
+
+`OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/8zRgGNOYDxg>`_
 

@@ -200,15 +200,22 @@ accessible [text]: all/<strong>accessible</strong>. If <em>accessible</em> param
 </div>
 <div class="section" id="form-data-get-form-data-results-explanations">
 <h2>Form Data (get_form_data results) explanations<a class="headerlink" href="#form-data-get-form-data-results-explanations" title="Permalink to this headline">¶</a></h2>
-<p>Description: Optional column description
-Default value: Fix value for all observation. It can be controlled with some options.</p>
+<p>Description: Optional column description</p>
+<p>Default value: Fix value for all observation. It can be controlled with the following options:</p>
 <blockquote>
 <div><ul class="simple">
 <li>&#8216;_input&#8217; it works as any other field with sticky flag.</li>
 <li>&#8216;_list&#8217; it works as any other list type field with sticky flag.</li>
+<li>&#8216;_geometry&#8217; it works as geometry type field</li>
+<li>&#8216;_login_name&#8217; this value overriden by the user&#8217;s name if logged in or returns as _input</li>
+<li>&#8216;_email&#8217; this value overriden by the user&#8217;s email address if logged in or returns as _input</li>
+<li>&#8216;_autocomplete&#8217; alias of input</li>
+<li>&#8216;_boolean&#8217; display as normal boolean list</li>
+<li>&#8216;_attachment&#8217; display as normal attachments field</li>
+<li>&#8216;_datum&#8217; display as normal date field</li>
+<li>&#8216;_none&#8217; not used</li>
 </ul>
 </div></blockquote>
-<p>in any other case the value can not be changed by the user users and the field can be hidden.</p>
 <p>Column: The name of the column in the database</p>
 <p>Short_name: Visible name of the column for the users</p>
 <p>List: json array for menu items of a select menu. Can be {key:value} or [value,value] format</p>
@@ -218,7 +225,7 @@ Default value: Fix value for all observation. It can be controlled with some opt
 <blockquote>
 <div><ul class="simple">
 <li>autocomplete (json array)</li>
-<li>boolen</li>
+<li>boolean (two elements list)</li>
 <li>crings (colour rings - text)</li>
 <li>date (YYYY-MM-DD or other clear format)</li>
 <li>datetime (YYYY-MM-DD HH:mm:ss)</li>
@@ -235,10 +242,21 @@ Default value: Fix value for all observation. It can be controlled with some opt
 <li>wkt (WKT sting)</li>
 </ul>
 </div></blockquote>
-<p>Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
-Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
-Api_params: jason array of control values. Currently only &#8216;sticky&#8217;
-Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.</p>
+<p>Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format</p>
+<p>Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.</p>
+<p>Api_params: json array of control values. Till API v2.0 only &#8216;sticky&#8217; as an array element.
+Above API v2.0:
+{&#8220;sticky&#8221;:&#8221;off&#8221;,&#8221;hidden&#8221;:&#8221;off&#8221;,&#8221;readonly&#8221;:&#8221;off&#8221;,&#8221;list_elements_as_buttons&#8221;:&#8221;off&#8221;,&#8221;once&#8221;:&#8221;off&#8221;}.</p>
+<p>Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.</p>
+<p>List_definition: JSON array of complex list definition</p>
+<p>Custom_function: null</p>
+<p>permanent_sample_plots:</p>
+<dl class="docutils">
+<dt>API &lt; v.2.1</dt>
+<dd>JSON array: [{&#8220;id&#8221;:&#8221;1110&#8221;,&#8221;name&#8221;:&#8221;Standard plots&#8221;,&#8221;geometry&#8221;:&#8221;POLYGON((16.5625...</dd>
+<dt>API &gt;= v.2.1</dt>
+<dd>in &#8220;form_header&#8221;:{...,&#8221;permanent_sample_plots&#8221;:[{&#8220;id&#8221;:&#8221;1110&#8221;,&#8221;name&#8221;:&#8221;Standard plots&#8221;,&#8221;geometry&#8221;:&#8221;POLYGON((16.5625...</dd>
+</dl>
 </div>
 <div class="section" id="training-explanations-and-examples">
 <h2>Training explanations and examples<a class="headerlink" href="#training-explanations-and-examples" title="Permalink to this headline">¶</a></h2>
@@ -316,12 +334,25 @@ Spatial_limit: WKT polygon string of spatial limit. It is used if the Control ty
 <a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a></dd>
 </dl>
 </dd>
-<dt>Result of a successful get_form_data call:</dt>
-<dd><p class="first">{&#8220;status&#8221;:&#8221;success&#8221;,</p>
+</dl>
+<p>Result of a successful get_form_data call:</p>
+<p>API &lt; v.2.1</p>
+<blockquote>
+<div><p>{&#8220;status&#8221;:&#8221;success&#8221;,</p>
+<p>&#8220;data&#8221;:[
+{&#8220;description&#8221;:null,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;egyedszam&#8221;,&#8221;short_name&#8221;:&#8221;egyedszam&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;minmax&#8221;,&#8221;count&#8221;:&#8221;{30,40}&#8221;,&#8221;type&#8221;:&#8221;numeric&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;3&#8221;,&#8221;api_params&#8221;:null},</p>
+<p>{&#8220;description&#8221;:&#8221;faj neve&#8221;,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;faj&#8221;,&#8221;short_name&#8221;:&#8221;faj&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;nocheck&#8221;,&#8221;count&#8221;:&#8221;{}&#8221;,&#8221;type&#8221;:&#8221;text&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;1&#8221;,&#8221;api_params&#8221;:null},{...}]}</p>
+</div></blockquote>
+<p>API &gt;= v.2.1</p>
+<blockquote>
+<div><p>{&#8220;status&#8221;:&#8221;success&#8221;,</p>
 <p>&#8220;data&#8221;:[</p>
-<p>{&#8220;description&#8221;:null,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;egyedszam&#8221;,&#8221;short_name&#8221;:&#8221;egyedszam&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;minmax&#8221;,&#8221;count&#8221;:&#8221;{30,40}&#8221;,&#8221;type&#8221;:&#8221;numeric&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;3&#8221;,&#8221;api_params&#8221;:null},</p>
-<p class="last">{&#8220;description&#8221;:&#8221;faj neve&#8221;,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;faj&#8221;,&#8221;short_name&#8221;:&#8221;faj&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;nocheck&#8221;,&#8221;count&#8221;:&#8221;{}&#8221;,&#8221;type&#8221;:&#8221;text&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;1&#8221;,&#8221;api_params&#8221;:null},{... ]}</p>
-</dd>
+<p>&#8220;form_header&#8221;:{&#8220;login_name&#8221;:&#8221;John Smith&#8221;,&#8221;login_email&#8221;:&#8221;<a class="reference external" href="mailto:jsmith&#37;&#52;&#48;openbiomaps&#46;org">jsmith<span>&#64;</span>openbiomaps<span>&#46;</span>org</a>&#8220;},
+&#8220;form_data&#8221;:[</p>
+<blockquote>
+<div>{&#8220;description&#8221;:&#8221;faj neve&#8221;,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;faj&#8221;,&#8221;short_name&#8221;:&#8221;faj&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;nocheck&#8221;,&#8221;count&#8221;:&#8221;{}&#8221;,&#8221;type&#8221;:&#8221;text&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;1&#8221;,&#8221;api_params&#8221;:{&#8220;sticky&#8221;:&#8221;off&#8221;,&#8221;numeric&#8221;:&#8221;off&#8221;,&#8221;list_elements_as_buttons&#8221;:&#8221;off&#8221;}},{...}]]}</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
 <dt>Data upload:</dt>
 <dd>curl \ <br>
 -i \ <br>
