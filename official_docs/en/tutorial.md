@@ -84,9 +84,9 @@ foo@bar:~$ docker-compose up -d
 
 Visit your OBM app
 ..................
-[http://localhost:9880/biomaps/](http://localhost:9880/biomaps/)
+[http://localhost:9880/](http://localhost:9880/)
 
-[http://localhost:9880/biomaps/projects/sablon/](http://localhost:9880/biomaps/projects/sablon/)
+[http://localhost:9880/projects/sablon/](http://localhost:9880/projects/sablon/)
 
 Log in your template databse using *valaki@openbiomaps.org* user name and *abc123* password;
 
@@ -117,7 +117,7 @@ The two databases 'biomaps' and 'gisdata' have root postgres users respectively 
 OBM maintenance
 ...............
 You can access OBM server admin interface: 
-[http://localhost:9880/biomaps/supervisor.php](http://localhost:9880/biomaps/supervisor.php)
+[http://localhost:9880/supervisor.php](http://localhost:9880/supervisor.php)
 
 with *supervisor* username and *12345* password. This password is located at /etc/openbiomaps/.htaccess.
 
