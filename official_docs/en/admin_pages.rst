@@ -21,8 +21,16 @@ Species names
 Access
 ------
 
-Language files
---------------
+Translations
+------------
+Global translations: global translations are periodically updated from this github repository: 
+https://github.com/OpenBioMaps/translations
+Feel free to improve translations!
+
+Local translations:
+Use the str_ prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
+
+When you change the language of a web page, you can set other translations for the same terms.
 
 Modules
 -------
