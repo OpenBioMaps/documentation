@@ -6,6 +6,8 @@ Create new data upload form
 
 Name of the form
 ................
+Please enter a name for your upload form!
+This name can be multilingual, if you use the "str_" tag. See more about translations ..here...
 
 Form access
 ...........
@@ -13,21 +15,25 @@ Azoknak a meghatározása akik láthatják/használhatják az űrlapot: bárki, 
 
 Form type
 .........
-webes felület, fájl feltöltés, programozott felület
+Should be at least one from the following three options:
+web form, file upload form, externally accessible form
 
 Form description
 ................
+A shorter or longer description of the form. This can be used to give instructions for uploaders.
 
 Form columns
 ............
 
-    - included?:	ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
+    - included?:	If checked, the column will appear on the form.
     
-    - obligatory:	ha igen (bordó), akkor az űrlap nem küldhető el, ha nincs kitöltve itt érték
+    - column order: It is a small empty input box (by default) next to "included" option.
     
-    - column:	az adatbázis oszlopk felületen meghatározott - megjelenített oszlop név
+    - obligatory:	If yes (burgundy), then the form cannot be submitted without filling in the column cell.
     
-    - description:	short description about the field
+    - column:	The visible name of the column.
+    
+    - description:	Short description of the field.
     
     - type:
     
