@@ -2,7 +2,7 @@
 
 Create new data upload form
 ---------------------------
-Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.
+Form Table Selection: Which project table the upload form applies to.
 
 Name of the form
 ................
@@ -11,12 +11,13 @@ This name can be multilingual, if you use the "str_" tag. See more about transla
 
 Form access
 ...........
-Azoknak a meghatározása akik láthatják/használhatják az űrlapot: bárki, bejelentkezett felhasználóknak, meghatározott csoport.
+Define who can see / use the form: anyone, logged in users, specific group.
 
 Form type
 .........
 Should be at least one from the following three options:
-web form, file upload form, externally accessible form
+
+web form, file upload form, API (externally accessible form, e.g. mobile app)
 
 Form description
 ................
