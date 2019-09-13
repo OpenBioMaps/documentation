@@ -30,7 +30,7 @@ https://github.com/OpenBioMaps/translations
 Feel free to improve translations!
 
 Local translations:
-Use the str_ prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
+Use the "str_" prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
 When you change the language of a web page, you can set other translations for the same terms.
 
