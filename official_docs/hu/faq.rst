@@ -11,19 +11,15 @@ Mi az OpenBioMaps konzorcium?
 -----------------------------
 The OpenBioMaps consortium has been established through cooperation between public institutions and social organizations. Their goal was to develop and operate the OpenBioMap community database framework. The members of the consortium are equal partners and they have all contributed to achievenig this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
 
-
 Jelenlegi OpenBioMaps partnerek:
-
 
 **Debreceni Egyetem**
 
 kapcsolat: Dr. Miklós Bán, banm@vocs.unideb.hu.
 
-
 **Duna-Ipoly Nemzeti Park Igazgatóság**
 
 kapcsolat: Zsolt Baranyai, baranyaizs@dinpi.hu.
-
 
 **Eötvös Loránd Tudományegyetem**
 
@@ -34,48 +30,51 @@ kapcsolat: Dr. Tibor Standovár, standi@caesar.elte.hu
 
 kapcsolat: Katalin Sipos, katalin.sipos@wwf.hu
 
-
 **Eszterházy Károly Egyetem**
 
 kapcsolat: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
 
 
 **Milvus Csoport Egyesület**
+
 kapcsolat: István Kovács, 
 
 **Duna-Dráva Nemzeti Park Igazgatóság**
 
-kapcsolat:
+kapcsolat: Gáborik Ákos
 
+**Fertő-Hnaság Nemzeti Park Igazgatóság**
+
+kapcsolat: Takács Gábor
 
 The OpenBioMaps consortium established at September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
 
-How can I contact the consortium?
----------------------------------
-By email:
+Hogyan léphetek kapcsolatba a konzorciummal?
+--------------------------------------------
+email-en keresztül:
 
 management@lists.openbiomaps.org
 
-How can I create a new database?
---------------------------------
+Hogyan tudok saját adatbázist készíteni?
+----------------------------------------
 Bármilyen biológiai, térbeli információkkal is rendelkező adatok tárolására és kezelésére létre lehet hozni új adatbázist. Ez lehet egy tudományos projekt napi használatban lévő adatbázisa, vagy archív célú adatbázis, lehet tudományos cikk, vagy pályázati adatmegjelenítési kötelezettség kapcsán létrehozott adatbázis is.
 
 Új adatbázis projektet minden regisztrált felhasználó alapíthat, de az adatbázis csak az OpenBioMaps irányító testület jóváhagyása után kaphat végleges státuszt. Új adatbázist a bejelentkezett felhasználók az erre létrehozott webes sablon segítségével hozhatnak létre. Egy új, üres adatbázis létrehozása pár perc.
 
-How can I upload data?
-----------------------
+Hogyan tudok adatot feltölteni?
+-------------------------------
 Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatbázisok projekt gazdája tudja meghatározni kik tölthetnek be adatokat az adatbázisba. Az adatok feltöltése közvetlenül is történhet az adatbázisba, vagy történhet egyedileg definiált adatfeltöltő sablonok segítségével pl. gpx, vagy excel fájlokból. Minden adatbázisnak egyedi adatfeltöltő felülete van.
 
-How can I store queries and how can I refere them?
---------------------------------------------------
+Hogyan tudok eltárolni lekérdezéseket és hivatkozni őket?
+---------------------------------------------------------
 A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Az elmentett lekérdezések egyedi azonosítóval hivatkozhatók és később bármikor megismételhetőek. A lekérdezések wfs/wms url-je is tárolásra kerül, így egy lekérdezés és ismétlése közötti adatbázis változások is könnyen nyomonkövethetőek.
 
 A hivatkozások formátuma ilyen: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
 
 A hivatkozás böngészőben való betöltésére a projekt térkép töltődik be a lekérdezett pontokat kiemelve és a hozzá tartozó adatokat megjelenítve.
 
-How can I sign up for OpenBioMaps?
-----------------------------------
+Hogyan tudok regisztrálni az OpenBioMaps-ba?
+--------------------------------------------
 A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
 
 A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
@@ -84,8 +83,8 @@ A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek
 
 A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait.
 
-Is there any programming interface for developers?
---------------------------------------------------
+Van programozható felület fejlesztőknek?
+----------------------------------------
 A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok jogosultságfüggően projektenként lekérdezhetők webes kérésekkel az adatbázisokból.
 
 Példa: http://openbiomaps.org/pds/service.php?project=fishdb
@@ -102,38 +101,39 @@ A PDS figyelembe veszi a lekérdező jogosultságát. Ha nincs bejelentkezve a l
 
 A PDS még fejlesztés alatt áll, a meglévő funkciók dokumentációja érdekében keresse Bán Miklóst [biomaps 'at' vocs.unideb.hu]
 
-What languages are supported?
------------------------------
+Milyen nyelvek támogatottak?
+----------------------------
 Nincsenek nyelvi korlátok, az oldal jelenleg Magyarul és Angolul és részben Románul elérhető.
 
 Az adatbázisoknak egymástól független egyedi nyelvi fájljai vannak. 
 
-Which operating systems are compatible width OpenBioMaps?
----------------------------------------------------------
+Milyen operációs rendszerekkel kompatibilis az OpenBioMaps?
+-----------------------------------------------------------
 A webes portál és a térkép és adatbázis szolgáltatások egyaránt kompatibilisek a legtöbb operációs rendszerrel.
 
 A fejlesztések során viszont ezt nem szoktuk ellenőrizni. 
 
-How can I contribute to OpenBioMaps?
-------------------------------------
+Hogyan tudok hozzájárulni az OpenBioMaps-hoz?
+---------------------------------------------
  *   Adatbázisok létrhozásával
  *   Adatok közlésével
- *   Adatbázis szerverek hostolásával, adományozásával
+ *   Adatbázis szerverek létrehozásával
  *   Nyelvi fordításokkal
  *   Programozással
+ *   Adományozásával
 
-Shoud I pay for anything?
--------------------------
+Kell fizetni valamiért?
+-----------------------
 Az OpenBioMaps minden szolgáltatása teljesen ingyenes!
 
-How and where the OpenBioMaps strore the data?
-----------------------------------------------
+Hol és hogyan tárolja az OpenBioMaps az adatokat? 
+-------------------------------------------------
 Jelenleg két szerverünk van Debrecenben a Debreceni Egyetem számítóközpontjában és 1 szerverünk van az ELTE infoparkjában. 1 szerver  Marosvásárhelyen egy a DINPI-nél.
 
 A szerverek között adatbázis szintű szinkronizáció van. Az adatbázisok tartalma naponta le van mentve. 
 
-How can I join to the OpenBioMaps?
-----------------------------------
+Hogyan tudok az OpenBioMaps-hoz csatlakozni?
+--------------------------------------------
 A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
 
 A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
@@ -142,8 +142,8 @@ A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek
 
 A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait. 
 
-I lost my password, how can I get a new?
-----------------------------------------
+Elfelejtettem a jelszavamat, most mi lesz?
+------------------------------------------
 Don't worry, It is very easy to get a new password.
 
 Follow the "lost password" link on the login page.
@@ -152,12 +152,12 @@ There you can type your login email address. After you sent it the system will s
 
 Following this link you will be log in temporarily and you can change your password. 
 
-Pink squares appear on the map page
------------------------------------
+Rózsaszín négyzetek vannak a térkép helyén
+------------------------------------------
 It can be related with the layers or the mapfile settings.
 
-How can I control the shared polygons?
---------------------------------------
+Megosztott polygonok hogyan?
+----------------------------
 On the profile page there are two links
 
     Own polygons
@@ -173,8 +173,8 @@ In both pages you can control, where would you like to see these polygons (as ma
 
 In both pages you can rename polygons. You can delete only your not shared polygons.
 
-What is the RUM?
-----------------
+Mi az a RUM?
+------------
 RUM is acronym of database openness classes:
 
 Read Upload Modify
@@ -191,8 +191,8 @@ e.g.
 
 RUM partial public read, public upload and no public modify 
 
-Are there DOI for databases?
-----------------------------
+DOI?
+----
 Every accepted database can get DOI through the DataCite DOI Service.
 
 The OBM Consortium ask the DOI if the database is accepted and provide all the necessary information for DOI registration.
