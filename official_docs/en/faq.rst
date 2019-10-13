@@ -175,7 +175,7 @@ RUM is acronym of database openness classes:
 
 Read Upload Modify
 
-All levels can be - 0 +
+Each element can have a value of - 0 +.
 
 where
 
