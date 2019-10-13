@@ -27,7 +27,7 @@ contact: Zsolt Baranyai, baranyaizs@dinpi.hu.
 
 **Eötvös Loránd University**
 
-contact: Dr. Tibor Standovár, standi@caesar.elte.hu
+contact: Dávid Ritter
 
 
 **WWF World Wildlife Fund for Nature Hungary**
@@ -41,11 +41,16 @@ contact: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
 
 
 **Milvus Group Association**
+
 contact: István Kovács, 
 
 **Danube-Dráva National Park Directorate**
 
-contact:
+contact: Ákos Gáborik
+
+**Fertő-Hanság National Park Directorate**
+
+contact: Gábor Takács
 
 
 The OpenBioMaps consortium established at September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
@@ -76,37 +81,29 @@ A hivatkozás böngészőben való betöltésére a projekt térkép töltődik 
 
 How can I sign up for OpenBioMaps?
 ----------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
+Invitation is required to register. Any registered user can invite anyone.
 
-A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
+For more information about registration, invitations, contact the creators, managers, or members of the databases.
 
-A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetők, amiket a különböző projektek adatgazdái állítanak be.
-
-A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait.
-
-Is there any programming interface for developers?
+Is there a programmable interface for developers?
 --------------------------------------------------
-A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok jogosultságfüggően projektenként lekérdezhetők webes kérésekkel az adatbázisokból.
+The Project Data Service (PDS) allows you to query projects and user data on a per-project basis through URL requests from databases.
 
-Példa: http://openbiomaps.org/pds/service.php?project=fishdb
+Example: http://openbiomaps.org/pds.php?scope=get_project_list
 
-Ebben a példában a Halas adatbázis project információs lapját kérdeztük le.
+In this example, we list the projects available from the openbiomaps.org server in JSON format.
 
-A PDS JSON formában adja vissza a lekérdezett adatokat.
+PDS returns the requested data in JSON format.
 
-Szintaktikailag hibás lekérdezés esetén, hibaüzenetet ad vissza.
+Returns an error message when a query is syntactically incorrect or invalid.
 
-Érvénytelen adat kérés esetén, üres objektumot kapunk válaszként.
-
-A PDS figyelembe veszi a lekérdező jogosultságát. Ha nincs bejelentkezve a lekérdező, alap jogosultság szerinti lekérdezésekre kap választ.
-
-A PDS még fejlesztés alatt áll, a meglévő funkciók dokumentációja érdekében keresse Bán Miklóst [biomaps 'at' vocs.unideb.hu]
+PDS takes into account the query authority. If the poller is not logged in, he / she will receive a response for basic authority queries
 
 What languages are supported?
 -----------------------------
-Nincsenek nyelvi korlátok, az oldal jelenleg Magyarul és Angolul és részben Románul elérhető.
+There are no language restrictions, the site is currently available in Hungarian and English in Romanian and partially in Russian. Additional languages can be added by editing the https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv file.
 
-Az adatbázisoknak egymástól független egyedi nyelvi fájljai vannak. 
+Databases also have independent language files that are independent of each other.
 
 Which operating systems are compatible width OpenBioMaps?
 ---------------------------------------------------------
@@ -116,31 +113,30 @@ A fejlesztések során viszont ezt nem szoktuk ellenőrizni.
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
- *   Adatbázisok létrhozásával
- *   Adatok közlésével
- *   Adatbázis szerverek hostolásával, adományozásával
- *   Nyelvi fordításokkal
- *   Programozással
+ *   Creating databases
+ *   Uploading data
+ *   Creating new database servers, 
+ *   Hosting databases in your servers
+ *   Adding new and improving translations
+ *   Programmming
+ *   With financial support
 
 Shoud I pay for anything?
 -------------------------
-Az OpenBioMaps minden szolgáltatása teljesen ingyenes!
+All OpenBioMaps features are completely free!
 
 How and where the OpenBioMaps strore the data?
 ----------------------------------------------
-Jelenleg két szerverünk van Debrecenben a Debreceni Egyetem számítóközpontjában és 1 szerverünk van az ELTE infoparkjában. 1 szerver  Marosvásárhelyen egy a DINPI-nél.
+Currently we have two servers in Debrecen at the University of Debrecen's computer center and one server in the ELTE Information Park. 1 server at MILVUS in Târgu Mureș and one at DINPI.
 
-A szerverek között adatbázis szintű szinkronizáció van. Az adatbázisok tartalma naponta le van mentve. 
+There is database-level synchronization between servers. The contents of the databases are saved daily.
 
 How can I join to the OpenBioMaps?
 ----------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
+Invitation is required to register. Any registered user can invite anyone.
 
-A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
+For more information about registration, invitations, contact the creators, managers, or members of the databases.
 
-A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetők, amiket a különböző projektek adatgazdái állítanak be.
-
-A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait. 
 
 I lost my password, how can I get a new?
 ----------------------------------------
@@ -189,7 +185,7 @@ and the colors are: - black 0 red + green
 
 e.g.
 
-RUM partial public read, public upload and no public modify 
+<span style='color:red'>R</span>UM partial public read, public upload and no public modify 
 
 Are there DOI for databases?
 ----------------------------
