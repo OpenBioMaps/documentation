@@ -15,29 +15,29 @@ Jelenlegi OpenBioMaps partnerek:
 
 **Debreceni Egyetem**
 
-kapcsolat: Dr. Miklós Bán, banm@vocs.unideb.hu.
+kapcsolat: Dr. Bán Miklós
 
 **Duna-Ipoly Nemzeti Park Igazgatóság**
 
-kapcsolat: Zsolt Baranyai, baranyaizs@dinpi.hu.
+kapcsolat: Baranyai Zsolt
 
 **Eötvös Loránd Tudományegyetem**
 
-kapcsolat: Dr. Tibor Standovár, standi@caesar.elte.hu
+kapcsolat: Ritter Dávid
 
 
 **WWF Magyarország**
 
-kapcsolat: Katalin Sipos, katalin.sipos@wwf.hu
+kapcsolat: Sipos Katalin
 
 **Eszterházy Károly Egyetem**
 
-kapcsolat: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
+kapcsolat: Dr. Pénzesné Kónya Erika
 
 
 **Milvus Csoport Egyesület**
 
-kapcsolat: István Kovács, 
+kapcsolat: Kovács István, 
 
 **Duna-Dráva Nemzeti Park Igazgatóság**
 
@@ -87,25 +87,23 @@ Van programozható felület fejlesztőknek?
 ----------------------------------------
 A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok jogosultságfüggően projektenként lekérdezhetők webes kérésekkel az adatbázisokból.
 
-Példa: http://openbiomaps.org/pds/service.php?project=fishdb
+Példa: http://openbiomaps.org/pds.php?scope=get_project_list
 
-Ebben a példában a Halas adatbázis project információs lapját kérdeztük le.
+Ebben a példában az openbiomaps.org-on elérhető projektek listáját kérdeztük le.
 
 A PDS JSON formában adja vissza a lekérdezett adatokat.
 
 Szintaktikailag hibás lekérdezés esetén, hibaüzenetet ad vissza.
 
-Érvénytelen adat kérés esetén, üres objektumot kapunk válaszként.
 
 A PDS figyelembe veszi a lekérdező jogosultságát. Ha nincs bejelentkezve a lekérdező, alap jogosultság szerinti lekérdezésekre kap választ.
 
-A PDS még fejlesztés alatt áll, a meglévő funkciók dokumentációja érdekében keresse Bán Miklóst [biomaps 'at' vocs.unideb.hu]
 
 Milyen nyelvek támogatottak?
 ----------------------------
-Nincsenek nyelvi korlátok, az oldal jelenleg Magyarul és Angolul és részben Románul elérhető.
+Nincsenek nyelvi korlátok, az oldal jelenleg Magyarul és Angolul Románul és részben Oroszul elérhető. További nyelvek vagy javítások hozzáadhatóak a rendszerhez https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv fájl szerkesztésével.
 
-Az adatbázisoknak egymástól független egyedi nyelvi fájljai vannak. 
+Az adatbázisoknak egymástól független egyedi nyelvi fájljai is vannak. 
 
 Milyen operációs rendszerekkel kompatibilis az OpenBioMaps?
 -----------------------------------------------------------
@@ -138,23 +136,19 @@ A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meg
 
 A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
 
-A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetők, amiket a különböző projektek adatgazdái állítanak be.
-
 A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait. 
 
 Elfelejtettem a jelszavamat, most mi lesz?
 ------------------------------------------
-Don't worry, It is very easy to get a new password.
+Nem kell aggódni, új jelszót könnyű beállítani!
 
 Follow the "lost password" link on the login page.
 
-There you can type your login email address. After you sent it the system will send and email for you which contains a link.
-
-Following this link you will be log in temporarily and you can change your password. 
+A bejelentkezési lapon van egy "elfelejtett jelszó" link, azt követve meg kell adni a regisztrált email címed és a rendszer küldeni fog egy linket amit követve meg lehet újítani a jelszót.
 
 Rózsaszín négyzetek vannak a térkép helyén
 ------------------------------------------
-It can be related with the layers or the mapfile settings.
+Bármilyen rendszer beállítási hiba rózsaszín négyzetekhez vezethet.
 
 Megosztott polygonok hogyan?
 ----------------------------
@@ -175,25 +169,25 @@ In both pages you can rename polygons. You can delete only your not shared polyg
 
 Mi az a RUM?
 ------------
-RUM is acronym of database openness classes:
+A RUM egy angol nyelvű akroním ami a projekt nyitottságát fejezi ki. Magyarul OFM lenne.
 
-Read Upload Modify
+Read Upload Modify az Olvasás Feltöltés Módosítás
 
-All levels can be - 0 +
+Minden eleme - 0 + értékű lehet.
 
-where
+ahol
 
-[-] is not public, [0] is partially public and the [+] is public
+[-] zárt, [0] részben nyitott [+] publikus
 
-and the colors are: - black 0 red + green
+a hozzá kapcsolódó színek pedig: - fekete 0 piros + zöld
 
-e.g.
+például:
 
-RUM partial public read, public upload and no public modify 
+<font color="red">R</font><font color="green">U</font>M : részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
-Every accepted database can get DOI through the DataCite DOI Service.
+Minden stabil adatbázis kaphat DOI-t. Továbbá lekérdezések vagy egyes adatok is kaphatnak DOI-t.
 
 The OBM Consortium ask the DOI if the database is accepted and provide all the necessary information for DOI registration.
 
