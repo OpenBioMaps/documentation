@@ -185,7 +185,7 @@ and the colors are: - black 0 red + green
 
 e.g.
 
-<span style='color:red'>R</span>UM partial public read, public upload and no public modify 
+![#f03c15]R</span>UM partial public read, public upload and no public modify 
 
 Are there DOI for databases?
 ----------------------------
