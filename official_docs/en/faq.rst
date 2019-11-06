@@ -63,25 +63,25 @@ management@lists.openbiomaps.org
 
 How can I create a new database?
 --------------------------------
-Bármilyen biológiai, térbeli információkkal is rendelkező adatok tárolására és kezelésére létre lehet hozni új adatbázist. Ez lehet egy tudományos projekt napi használatban lévő adatbázisa, vagy archív célú adatbázis, lehet tudományos cikk, vagy pályázati adatmegjelenítési kötelezettség kapcsán létrehozott adatbázis is.
+You can set up new database to store biological data which contain geometrical data as well. That could be a database of a scientific project, which is used everyday, or that could be archive. Furthermore in the light of Open Access agreements of a scientific journal or grant you can use that database to store and present your data.
 
-Új adatbázis projektet minden regisztrált felhasználó alapíthat, de az adatbázis csak az OpenBioMaps irányító testület jóváhagyása után kaphat végleges státuszt. Új adatbázist a bejelentkezett felhasználók az erre létrehozott webes sablon segítségével hozhatnak létre. Egy új, üres adatbázis létrehozása pár perc.
+Every registered user can set up new database, but the database can get its final status only after the ratification of the OpenBioMaps consortium. The logined users can set up new database with the online templates. You can set up a new, empty database during couple of minutes.
 
 How can I upload data?
 ----------------------
-Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatbázisok projekt gazdája tudja meghatározni kik tölthetnek be adatokat az adatbázisba. Az adatok feltöltése közvetlenül is történhet az adatbázisba, vagy történhet egyedileg definiált adatfeltöltő sablonok segítségével pl. gpx, vagy excel fájlokból. Minden adatbázisnak egyedi adatfeltöltő felülete van.
+Data are stored in a PostgreSQL/PostGIS database. Every database has a project manager, and the project manager can decide who can upload data to the given database. You can type your data row by row into the database, or you can upload data eg. from gpx or excel files into the database with previously defined uploading templates.
 
 How can I store queries and how can I refere them?
 --------------------------------------------------
-A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Az elmentett lekérdezések egyedi azonosítóval hivatkozhatók és később bármikor megismételhetőek. A lekérdezések wfs/wms url-je is tárolásra kerül, így egy lekérdezés és ismétlése közötti adatbázis változások is könnyen nyomonkövethetőek.
+The logined users can save their queries on the web page. The saved queries have unique thread-mark and you can refer them, furthermore you can repeat those queries at any time. The wfs/wms url will be saved as well, therefore you can easily follow the database changes between the first query and its repeat.
 
-A hivatkozások formátuma ilyen: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
+The type of the reference: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
 
-A hivatkozás böngészőben való betöltésére a projekt térkép töltődik be a lekérdezett pontokat kiemelve és a hozzá tartozó adatokat megjelenítve.
+If you load your reference into the browser, you will see the data points on a project map, furthermore the webpage will present the other values of the specific data points.
 
 How can I sign up for OpenBioMaps?
 ----------------------------------
-Invitation is required to register. Any registered user can invite anyone.
+Invitation is required to registration. Any registered user can invite anyone.
 
 For more information about registration, invitations, contact the creators, managers, or members of the databases.
 
@@ -101,21 +101,21 @@ PDS takes into account the query authority. If the poller is not logged in, he /
 
 What languages are supported?
 -----------------------------
-There are no language restrictions, the site is currently available in Hungarian and English in Romanian and partially in Russian. Additional languages can be added by editing the https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv file.
+There are no language restrictions, the site is currently available in Hungarian, in English and in Romanian and partially in Russian. Additional languages can be added by editing the https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv file.
 
 Databases also have independent language files that are independent of each other.
 
-Which operating systems are compatible width OpenBioMaps?
+Which operating systems are compatible with OpenBioMaps?
 ---------------------------------------------------------
-A webes portál és a térkép és adatbázis szolgáltatások egyaránt kompatibilisek a legtöbb operációs rendszerrel.
+The web portal, map and database services are compatible with most of the operating systems.
 
-A fejlesztések során viszont ezt nem szoktuk ellenőrizni. 
+During the developments we are not test compatibility.
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
  *   Creating databases
  *   Uploading data
- *   Creating new database servers, 
+ *   Creating new database servers 
  *   Hosting databases in your servers
  *   Adding new and improving translations
  *   Programmming
@@ -127,16 +127,15 @@ All OpenBioMaps features are completely free!
 
 How and where the OpenBioMaps strore the data?
 ----------------------------------------------
-Currently we have two servers in Debrecen at the University of Debrecen's computer center and one server in the ELTE Information Park. 1 server at MILVUS in Târgu Mureș and one at DINPI.
+Currently we have two servers in Debrecen at the University of Debrecen's computer center and one server in the ELTE Information Park. 1 server at MILVUS group in Târgu Mureș in Romania and one at Duna-Ipoly National Park Directorate.
 
 There is database-level synchronization between servers. The contents of the databases are saved daily.
 
-How can I join to the OpenBioMaps?
+How can I join OpenBioMaps?
 ----------------------------------
-Invitation is required to register. Any registered user can invite anyone.
+Invitation is required to registration. Any registered user can invite anyone.
 
-For more information about registration, invitations, contact the creators, managers, or members of the databases.
-
+For more information about registration, invitations, contact the owners, managers, or members of the databases.
 
 I lost my password, how can I get a new?
 ----------------------------------------
@@ -159,9 +158,9 @@ On the profile page there are two links
     Own polygons
     Shared polygons
 
-Following the first one, you see those polygons that you uploaded or saved (using the save selection option)
+Following the first one, you will see those polygons that you uploaded or saved (using the save selection option).
 
-Following the second link, you see all the shared polygons including your own polygons.
+Following the second link, you will see all the shared polygons including your own polygons.
 
 In the own polygon page there is an option to share polygons with all users in the project or all logined users or anybody.
 
@@ -173,15 +172,15 @@ What is the RUM?
 ----------------
 RUM is acronym of database openness classes:
 
-Read Upload Modify
+Read - Upload - Modify
 
-Each element can have a value of - 0 +.
+Each element can have a value of [-] or [0] or [+].
 
 where
 
 [-] is not public, [0] is partially public and the [+] is public
 
-and the colors are: - black 0 red + green
+and the colors are: [-] black, [0] red and [+] green
 
 e.g.
 
