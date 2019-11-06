@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modulok &#8212; openbiomaps 2.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" />
+    <link rel="next" title="Virtual server" href="gekko_install.html" />
+    <link rel="prev" title="Adminisztratív oldalak" href="admin_pages.html" /> 
+  </head>
+  <body role="document">
+    <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
+    <tr>
+        <td style='vertical-align:bottom'>
+            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
+        </td>
+        <td style='vertical-align:top;text-align:right'>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github"> Edit on GitHub</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gekko_install.html" title="Virtual server"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="admin_pages.html" title="Adminisztratív oldalak"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modulok">
+<h1>Modulok<a class="headerlink" href="#modulok" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>specieslist</dt>
+<dd>specieslist summary above results</dd>
+<dt>summary</dt>
+<dd>results summary</dd>
+<dt>results_table</dt>
+<dd><p class="first">create a full html table of the results</p>
+<p>Hívások:</p>
+<dl class="docutils">
+<dt>Általános leírás:</dt>
+<dd>Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
+Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.</dd>
+</dl>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_asList</dt>
+<dd><p class="first">Create foldable slides like results
+Hívások: results_builder()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_asGPX</dt>
+<dd><p class="first">Eredmények GPX formátumba</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_asCSV</dt>
+<dd><p class="first">Results as csv</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_asJSON</dt>
+<dd><p class="first">Results as JSON</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_asSHP</dt>
+<dd><p class="first">Results as csv</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>nuttons</dt>
+<dd><p class="first">save and other button above results section - under map</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>photo_div</dt>
+<dd><p class="first">photo or file uploader toggle div</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>box_load_selection</dt>
+<dd><p class="first">Map Filter Functions
+These functions returns with a html table which displayed beside the map window
+These are optional boxes. Setting are in the biomaps db projects&#8217; table.</p>
+<p>Load prevously saved spatial queries&#8217; polygons</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>box_load_coord</dt>
+<dd><p class="first">Show given coordinates position on the map</p>
+<p>Hívások: print_box, limits, ajax, print_js</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>box_load_last_data</dt>
+<dd><p class="first">Query last data</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>box_custom</dt>
+<dd><p class="first">Custom box - only user defined version exists</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>text_filter</dt>
+<dd><p class="first">Taxon and other text filters
+create boxes
+assemble WHERE part of query string</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>transform_data</dt>
+<dd><p class="first">Transform data
+In result list it can transform data as need
+E.g. geometry to wkt</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>results_stable</dt>
+<dd><p class="first">compact results table Stable</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>allowed_columns</dt>
+<dd><p class="first">columns visible for users in different access level</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>bold_yellow</dt>
+<dd><p class="first">vastag betűvel sárgán írt oszlop nevek az eredmény listákban</p>
+<p>Hívások:</p>
+<p>Általános leírás:</p>
+<dl class="last docutils">
+<dt>Paraméterek:</dt>
+<dd>oszlop nevek</dd>
+</dl>
+</dd>
+</dl>
+<p>extra_form_input_parameters</p>
+<blockquote>
+<div><p>Hívások:</p>
+<p>Általános leírás:</p>
+<p>Paraméterek:</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>additional_columns</dt>
+<dd><p class="first">additional columns
+use it together with the join_tables module
+return with an array:
+co [0] columns array
+c  [1] column name assoc array</p>
+<p>Hívások:</p>
+<p>Függvények: return_columns()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>join_tables</dt>
+<dd><p class="first">join table to use additional columns
+use it together with the additional_columns module
+RETURN: join command and column list and visible names list
+[0] column name , separated list
+[1] prefixed column names array: all column which defined in the database columns
+[2] visible names array of array by JOIN</p>
+<p>Hívások:</p>
+<p>Függvények: return_joins()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>snap_to_grid</dt>
+<dd><p class="first">project specified sanp to grid points on the map
+not recommended to use!</p>
+<p>Hívások:</p>
+<p>Függvények: geom_column(), geom_column_join(), rules_join()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>restricted_data</dt>
+<dd><p class="first">Rule based data restriction</p>
+<p>Hívások:</p>
+<p>Függvények: rule_data()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+</dl>
+<p>form_list</p>
+<blockquote>
+<div><p>Hívások:</p>
+<p>Függvények: form_list()</p>
+<p>Általános leírás:</p>
+<p>Paraméterek:</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>identify_point</dt>
+<dd><p class="first">A térképi lapon megjelenő adat információ lekérdező eszköz</p>
+<p>Hívások:</p>
+<p>Függvények: return_data(), print_button()</p>
+<dl class="last docutils">
+<dt>Általános leírás:</dt>
+<dd>A modul engedélyezésével egy &#8220;i&#8221; ikon jelenik meg a térkép alatt funkciók mezőben. Ezzel az eszközzel egy adat pontra kattintava egy buborék ablakot jelenik meg a klikkelés közelében lévő adatokkal.</dd>
+<dt>Paraméterek:</dt>
+<dd><p class="first">oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban</p>
+<p>json objektum: hiperlink megjelenítésére alkalmas.</p>
+<blockquote class="last">
+<div><p>elemei:</p>
+<blockquote>
+<div><p>type - kötelező, egyelőre csak a &#8220;link&#8221; érték működik</p>
+<p>href - kötelező - hivatkozás címe</p>
+<p>label - kötelező - a link/gomb szövege/cimkéje - többnyelvűséget támogatja</p>
+<p>class - opcionális - a linkhez rendelt osztályok</p>
+<p>id - opcionális - a linkhez rendelt azonosító</p>
+<p>target - opcionális - alapértelmezett &#8220;_blank&#8221;</p>
+<p>params - opcionális - a href elem paraméterei</p>
+</div></blockquote>
+<p>A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:</p>
+<p>Példa:
+{ &#8220;type&#8221;: &#8220;link&#8221;, &#8220;href&#8221;: &#8220;//example.com?nest_id=%1%&amp;species=%2%&#8221;, &#8220;label&#8221;: &#8220;str_add_data&#8221;, &#8220;class&#8221;: &#8220;pure-button button-href&#8221;, &#8220;params&#8221;: [&#8220;obm_id&#8221;,&#8221;species&#8221;] }</p>
+<p>A fenti példa a következő hiperlinket fogja generálni:</p>
+<p>&lt;a href=&#8221;//example.com?nest_id=2898&amp;species=Brachyramphus perdix&#8221; target=&#8221;_blank&#8221; id=&#8221;&#8221; class=&#8221;pure-button button-href&#8221;&gt;Adat hozzáadása&lt;/a&gt;</p>
+<p>A json-t egy sorosra kell tömöríteni!</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>custom_notify</p>
+<blockquote>
+<div><p>Hívások:</p>
+<p>Függvények: listen(), unlisten(), notify(), email()</p>
+<p>Általános leírás:</p>
+<p>Paraméterek:</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>custom_data_check</dt>
+<dd><p class="first">Custom data checks of upload data</p>
+<p>Hívások:</p>
+<p>Függvények: list(), check()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>custom_filetype</dt>
+<dd><p class="first">Custom file preparation. E.g. observado style CSV</p>
+<p>Hívások:</p>
+<p>Függvények: option_list(), custom_read()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>create_pg_user</dt>
+<dd><p class="first">Behatárolt hozzáférésű POSTGRES felhasználó létrehozása</p>
+<p>Hívások:</p>
+<p>Függvények: create_pg_user(), show_button()</p>
+<dl class="docutils">
+<dt>Általános leírás:</dt>
+<dd>A modul engedélyezésével (akik kapnak jogot a modul használatára) a felhazsnálók tudnak maguknak saját postgres felhazsnálót készíteni.
+Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem.
+Minden a projekthez rendelt adattáblát tud olvasni.
+Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
+Egy év után automatikusan lejár a hozzáférése.
+Bármikor megújíthatja a hozzáférését a felhasználó.</dd>
+</dl>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>custom_admin_pages:</dt>
+<dd><p class="first">...</p>
+<p>Hívások:</p>
+<p>Függvények: nincsenek föggvények.</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+<dt>grid_view:</dt>
+<dd><p class="first">Custom file preparation. E.g. observado style CSV</p>
+<p>Hívások:</p>
+<p>Függvények: print_box()</p>
+<p>Általános leírás:</p>
+<p class="last">Paraméterek:</p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="admin_pages.html"
+                        title="previous chapter">Adminisztratív oldalak</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gekko_install.html"
+                        title="next chapter">Virtual server</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gekko_install.html" title="Virtual server"
+             >next</a></li>
+        <li class="right" >
+          <a href="admin_pages.html" title="Adminisztratív oldalak"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright OpenBioMaps Consortium 2015 - 2018.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>

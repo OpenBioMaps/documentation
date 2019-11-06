@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API documentation &#8212; openbiomaps 2.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" />
+    <link rel="next" title="Install new OBM Server guide" href="server_install.html" />
+    <link rel="prev" title="Virtual server" href="gekko_install.html" /> 
+  </head>
+  <body role="document">
+    <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
+    <tr>
+        <td style='vertical-align:bottom'>
+            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
+        </td>
+        <td style='vertical-align:top;text-align:right'>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github"> Edit on GitHub</a>
+        </td>
+    </tr>
+    </table>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="server_install.html" title="Install new OBM Server guide"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="gekko_install.html" title="Virtual server"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-documentation">
+<h1>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>HTTP methods:  GET, POST, PATCH</p>
+<p>API tools:  Authentication, Data retrieval, Data push, Settings update</p>
+<div class="section" id="api-handlers">
+<h2>API handlers:<a class="headerlink" href="#api-handlers" title="Permalink to this headline">¶</a></h2>
+<p>Authentication handler (oauth):</p>
+<p>/oatuh/token.php: Authentication</p>
+<p>Authentication based interface (pds):</p>
+<p>/projects/<em>API_VERSION</em>/<em>projectname</em>/pds.php: Data retrieval, Data push, Settings update</p>
+<p>Non authenticated requests (web):</p>
+<p>/projects/<em>projectname</em>/index.php</p>
+<div class="section" id="pds-api-version">
+<h3>PDS API version:<a class="headerlink" href="#pds-api-version" title="Permalink to this headline">¶</a></h3>
+<p>Example: <a class="reference external" href="http://openbiomaps.org/projects/dead_animals/v2.1/pds.php">http://openbiomaps.org/projects/dead_animals/v2.1/pds.php</a>
+The default version setting (if the version string missing from the URL) is 1.1., which compatible with the 2.0 and backward compatible with the 1.0.</p>
+</div>
+</div>
+<div class="section" id="oauth">
+<h2>OAUTH<a class="headerlink" href="#oauth" title="Permalink to this headline">¶</a></h2>
+<p>An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-docs/. OAUTH used in the web interface and in the PDS as well.</p>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>grant_type:     password
+username:       a rergistered email address
+password:       password string
+scope:          list of requested scope access in the autenticated session
+access_token:   a valid access token</p>
+<p>html authentication of clients is nesessary</p>
+<p>Available clients are mobile,R,web</p>
+</div>
+</div>
+<div class="section" id="pds">
+<h2>PDS<a class="headerlink" href="#pds" title="Permalink to this headline">¶</a></h2>
+<p>OBM API interface. Created for R and mobile interface. It uses the OAUTH interface for authentication.</p>
+<div class="section" id="id1">
+<h3>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>scope:      data methods: see below</p>
+<p>value:      some scope uses it</p>
+<p>header:     (put data) JSON list of table columns&#8217; names</p>
+<p>ignore_warning: (put data) ignore upload warnings</p>
+<p>form_id:        (put_data) set form id</p>
+<p>data:           (put data) JSON array of upload data</p>
+</div>
+<div class="section" id="get-type-scopes">
+<h3>GET type scopes<a class="headerlink" href="#get-type-scopes" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>get_project_vars: query general project variables (available for non logined users as well).</dt>
+<dd><dl class="first docutils">
+<dt>Additional parameters:</dt>
+<dd>project [text]: if not set default is the <em>template</em> project</dd>
+</dl>
+<p>Returns:</p>
+<ul class="last simple">
+<li>project_url [url string]: web address of the project</li>
+<li>project_description [text string]: short description of project</li>
+<li>game [on/off]: game available for android mobile app</li>
+<li>public_mapserv [url string]: url of publicly accessible map service</li>
+<li>rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url</li>
+</ul>
+</dd>
+<dt>get_project_list: get list and basis info of database projects available on the server.</dt>
+<dd><dl class="first docutils">
+<dt>Additional parameters:</dt>
+<dd><p class="first">only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
+accessible [text]: all/<strong>accessible</strong>. If <em>accessible</em> parameter given and its value is &#8220;accessible&#8221; (default)</p>
+<ul class="last simple">
+<li>If user already logined, get list of those projects where user has account and where there are public query/upload interfaces.</li>
+<li>If the user not logined, query public projects only.</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<ul class="last simple">
+<li>project_table [string],</li>
+<li>creation_date [date string],</li>
+<li>Creator [string],</li>
+<li>email [string],</li>
+<li>stage [string] experimental/testing/stable,</li>
+<li>doi [string],</li>
+<li>running_date [date string],</li>
+<li>licence [string],</li>
+<li>rum [string],</li>
+<li>collection_dates [date range string],</li>
+<li>subjects [text],</li>
+</ul>
+</dd>
+</dl>
+<p>get_form_list:   query the list of available upload forms,</p>
+<p>get_form_data:   query the fields of the selected form</p>
+<blockquote>
+<div><p>Additional parameters: value [numeric] numeric id of a form.</p>
+<p>Returns: see below.</p>
+</div></blockquote>
+<p>get_profile:     get profile data of a selected user</p>
+<p>get_data:        get data rows from a selected data table (observation data)</p>
+<p>get_specieslist: get species list from a project</p>
+<p>get_history:     get history of a selected data row</p>
+<p>get_report:      perform a predefined query and get the result</p>
+<p>get_tables:      get list of tables in a project</p>
+<p>get_trainings:  get list of available trainings/forms</p>
+<blockquote>
+<div>Returns: set of traning titles, ids and descriptions,...</div></blockquote>
+<p>get_training_questions: get list of questions for the selected training</p>
+<blockquote>
+<div><p>Additional parameters: value [numeric] numeric id of a training.</p>
+<p>Returns: set of questions,answers and settings</p>
+</div></blockquote>
+<p>training_results:   status list of users&#8217; trainings per forms. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok)</p>
+<dl class="docutils">
+<dt>training_toplist: toplist of trainings. Mean, Max, Count values for each forms.</dt>
+<dd>Additional parameters: value [text] summary without names (nonames).</dd>
+<dt>get_mydata_rows: json array of uploaded data</dt>
+<dd>Additional parameters: value [numeric] limit of array length. If 0, no limit, default is no limit.</dd>
+</dl>
+</div>
+<div class="section" id="post-type-scopes">
+<h3>POST type scopes<a class="headerlink" href="#post-type-scopes" title="Permalink to this headline">¶</a></h3>
+<p>put_data:        send/upload data using a selected form</p>
+</div>
+<div class="section" id="patch-type-scopes">
+<h3>PATCH type scopes<a class="headerlink" href="#patch-type-scopes" title="Permalink to this headline">¶</a></h3>
+<p><em>set_rules:</em>     update specific settings</p>
+</div>
+</div>
+<div class="section" id="web-api">
+<h2>WEB API<a class="headerlink" href="#web-api" title="Permalink to this headline">¶</a></h2>
+<p>Some kind of data access available on the web interface using stored unique URLs. These</p>
+<div class="section" id="id2">
+<h3>Variables<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>query:          (non-authenticated data retreive)</p>
+<p>query_api:      (non-authenticated data retreive, resulting JSON, XML, CSV output)</p>
+<p>qtable:         (non-authenicated table setting for data retreive)</p>
+<p>report:         (non-authenticated data retreive using stored query)</p>
+<p>output:         (non-authenticated data output setting)</p>
+<p>LQ:             (non-authenticated) display data from a stored query result</p>
+<p>Get list of active (known) OpenBioMaps servers using query_api:</p>
+<p>curl <a class="reference external" href="http://openbiomaps.org/projects/openbiomaps_network/index.php">http://openbiomaps.org/projects/openbiomaps_network/index.php</a> -G -d &#8216;query_api={&#8220;available&#8221;:&#8221;up&#8221;}&amp;output=json&amp;filename=&#8217;</p>
+</div>
+</div>
+<div class="section" id="form-data-get-form-data-results-explanations">
+<h2>Form Data (get_form_data results) explanations<a class="headerlink" href="#form-data-get-form-data-results-explanations" title="Permalink to this headline">¶</a></h2>
+<p>Description: Optional column description</p>
+<p>Default value: Fix value for all observation. It can be controlled with the following options:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;_input&#8217; it works as any other field with sticky flag.</li>
+<li>&#8216;_list&#8217; it works as any other list type field with sticky flag.</li>
+<li>&#8216;_geometry&#8217; it works as geometry type field</li>
+<li>&#8216;_login_name&#8217; this value overriden by the user&#8217;s name if logged in or returns as _input</li>
+<li>&#8216;_email&#8217; this value overriden by the user&#8217;s email address if logged in or returns as _input</li>
+<li>&#8216;_autocomplete&#8217; alias of input</li>
+<li>&#8216;_boolean&#8217; display as normal boolean list</li>
+<li>&#8216;_attachment&#8217; display as normal attachments field</li>
+<li>&#8216;_datum&#8217; display as normal date field</li>
+<li>&#8216;_none&#8217; not used</li>
+</ul>
+</div></blockquote>
+<p>Column: The name of the column in the database</p>
+<p>Short_name: Visible name of the column for the users</p>
+<p>List: json array for menu items of a select menu. Can be {key:value} or [value,value] format</p>
+<p>Control: Data checking commands: custom_check, minmax, spatial, nocheck, NULL</p>
+<p>Count: (json array) If the control=&#8217;minmax&#8217; this field contains the limit values, e.g 1:100</p>
+<p>Type: column&#8217;s openbiomaps type:</p>
+<blockquote>
+<div><ul class="simple">
+<li>autocomplete (json array)</li>
+<li>boolean (two elements list)</li>
+<li>crings (colour rings - text)</li>
+<li>date (YYYY-MM-DD or other clear format)</li>
+<li>datetime (YYYY-MM-DD HH:mm:ss)</li>
+<li>file_id (file names as id by the server)</li>
+<li>line (WKT geometry string)</li>
+<li>list (json array)</li>
+<li>numeric</li>
+<li>point        (WKT geometry string)</li>
+<li>polygon (wkt geometry string)</li>
+<li>text</li>
+<li>time (HH:mm)</li>
+<li>timetominutes (numeric value between  0 and 1440)</li>
+<li>tinterval idő intervallum (HH:mm - HH:mm)</li>
+<li>wkt (WKT sting)</li>
+</ul>
+</div></blockquote>
+<p>Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format</p>
+<p>Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.</p>
+<p>Api_params: json array of control values. Till API v2.0 only &#8216;sticky&#8217; as an array element.
+Above API v2.0:
+{&#8220;sticky&#8221;:&#8221;off&#8221;,&#8221;hidden&#8221;:&#8221;off&#8221;,&#8221;readonly&#8221;:&#8221;off&#8221;,&#8221;list_elements_as_buttons&#8221;:&#8221;off&#8221;,&#8221;once&#8221;:&#8221;off&#8221;}.</p>
+<p>Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.</p>
+<p>List_definition: JSON array of complex list definition</p>
+<p>Custom_function: null</p>
+<p>permanent_sample_plots:</p>
+<dl class="docutils">
+<dt>API &lt; v.2.1</dt>
+<dd>JSON array: [{&#8220;id&#8221;:&#8221;1110&#8221;,&#8221;name&#8221;:&#8221;Standard plots&#8221;,&#8221;geometry&#8221;:&#8221;POLYGON((16.5625...</dd>
+<dt>API &gt;= v.2.1</dt>
+<dd>in &#8220;form_header&#8221;:{...,&#8221;permanent_sample_plots&#8221;:[{&#8220;id&#8221;:&#8221;1110&#8221;,&#8221;name&#8221;:&#8221;Standard plots&#8221;,&#8221;geometry&#8221;:&#8221;POLYGON((16.5625...</dd>
+</dl>
+</div>
+<div class="section" id="training-explanations-and-examples">
+<h2>Training explanations and examples<a class="headerlink" href="#training-explanations-and-examples" title="Permalink to this headline">¶</a></h2>
+<p>Examples:</p>
+<p>curl -F &#8216;scope=get_trainings&#8217; -F &#8216;access_token=9d45...&#8217; -F &#8216;project=dinpi&#8217; <a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<dl class="docutils">
+<dt>Result of a successful call:</dt>
+<dd>{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:[{&#8220;id&#8221;:&#8221;1&#8221;,&#8221;form_id&#8221;:&#8221;95&#8221;,&#8221;html&#8221;:&#8221;&lt;div&gt;...&#8221;,,&#8221;task_description&#8221;:&#8221;&lt;div&gt;...&#8221;,&#8221;enabled&#8221;:&#8221;t&#8221;,&#8221;title&#8221;:&#8221;Gyakorlás I.&#8221;,&#8221;qorder&#8221;:&#8221;1&#8221;,&#8221;project_table&#8221;:&#8221;dinpi&#8221;},{</dd>
+</dl>
+<p>curl -F &#8216;scope=get_training_questions&#8217; -F &#8216;access_token=9d45...&#8217; -F &#8216;project=dinpi&#8217; <a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<dl class="docutils">
+<dt>Result of a successful call:</dt>
+<dd><p class="first">{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:[{&#8220;qid&#8221;:&#8221;1&#8221;,&#8221;training_id&#8221;:&#8221;1&#8221;,&#8221;caption&#8221;:&#8221;...?&#8221;,&#8221;answers&#8221;:&#8221;[{&#8220;Answer&#8221;: &#8221;...&#8221;,&#8221;isRight&#8221;: &#8220;false&#8221; }, ]&#8221;,&#8221;qtype&#8221;:&#8221;multiselect&#8221;}]}</p>
+<p class="last">qtype can be multiselect or singleselect</p>
+</dd>
+</dl>
+<p>curl -F &#8216;scope=training_results&#8217; -F &#8216;access_token=9bb4...&#8217; -F &#8216;project=dinpi&#8217; <a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<dl class="docutils">
+<dt>Result of a successful call:</dt>
+<dd><p class="first">{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:&#8221;{&#8220;95&#8221;:1,&#8221;96&#8221;:0,&#8221;97&#8221;:-1,&#8221;98&#8221;:-1}&#8221;}</p>
+<p class="last">Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet</p>
+</dd>
+</dl>
+<p>curl -F &#8216;scope=training_toplist&#8217; -F &#8216;value=nonames&#8217; -F &#8216;access_token=5ac3...&#8217; -F &#8216;project=dinpi&#8217; <a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<dl class="docutils">
+<dt>Result of a successful call:</dt>
+<dd>{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:{&#8220;95&#8221;:{&#8220;mean&#8221;:&#8221;0.50000000000000000000&#8221;,&#8221;count&#8221;:&#8221;2&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;},&#8221;96&#8221;:{&#8220;mean&#8221;:&#8221;0.70000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;},&#8221;97&#8221;:{&#8220;mean&#8221;:&#8221;0.70000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;},&#8221;98&#8221;:{&#8220;mean&#8221;:null,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:null}}}</dd>
+</dl>
+<p>curl -F &#8216;scope=training_toplist&#8217; -F &#8216;access_token=5ac3...&#8217; -F &#8216;project=dinpi&#8217; <a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:{ \ <br></dt>
+<dd><dl class="first docutils">
+<dt>&#8220;95&#8221;:{&#8220;Bán Miki&#8221;:{&#8220;mean&#8221;:&#8221;0.30000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.3&#8221;}, \ <br></dt>
+<dd>&#8220;Dr. Bán Miklós&#8221;:{&#8220;mean&#8221;:&#8221;0.70000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;}}, \ <br></dd>
+</dl>
+<p class="last">&#8220;96&#8221;:{&#8220;Dr. Bán Miklós&#8221;:{&#8220;mean&#8221;:&#8221;0.70000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;}}, \ <br>
+&#8220;97&#8221;:{&#8220;Dr. Bán Miklós&#8221;:{&#8220;mean&#8221;:&#8221;0.70000000000000000000&#8221;,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:&#8221;0.7&#8221;}}, \ <br>
+&#8220;98&#8221;:{&#8220;Dr. Bán Miklós&#8221;:{&#8220;mean&#8221;:null,&#8221;count&#8221;:&#8221;1&#8221;,&#8221;max&#8221;:null}}}}</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Authentication:</dt>
+<dd>curl \ <br>
+-u mobile:123 http://openbiomaps.org/oauth/token.php \ <br>
+-d &#8220;<a class="reference external" href="mailto:grant_type=password&amp;username=foo&#37;&#52;&#48;foobar&#46;hu&amp;password=abc123&amp;scope=get_form_data+get_form_list+put_data">grant_type=password&amp;username=foo<span>&#64;</span>foobar<span>&#46;</span>hu&amp;password=abc123&amp;scope=get_form_data+get_form_list+put_data</a>&#8220;</dd>
+<dt>Data retrieval (form list):</dt>
+<dd>curl \ <br>
+-v <a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a> \ <br>
+-d &#8220;access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&amp;scope=get_form_list&#8221;</dd>
+<dt>Result of a successful get_form_list call:</dt>
+<dd>{&#8220;status&#8221;:&#8221;success&#8221;,&#8221;data&#8221;:[{&#8220;form_id&#8221;:&#8221;93&#8221;,&#8221;form_name&#8221;:&#8221;lepke űrlap&#8221;},{ …</dd>
+<dt>Data retrieval (form fields):</dt>
+<dd><blockquote class="first">
+<div>curl \ <br>
+-v <a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a> \ <br>
+-d &#8220;access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&amp;scope=get_form_data&amp;value=93&#8221;</div></blockquote>
+<dl class="last docutils">
+<dt>OR with central pds</dt>
+<dd>curl \ <br>
+-F &#8216;scope=get_form_data&#8217; \ <br>
+-F &#8216;value=93&#8217; \ <br>
+-F &#8216;project=checkitout&#8217; \ <br>
+<a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a></dd>
+<dt>OR with access token to retrieve data of a restricted form</dt>
+<dd>curl \ <br>
+-F &#8216;access_token=...&#8217; \ <br>
+-F &#8216;scope=get_form_data&#8217; \ <br>
+-F &#8216;value=124&#8217; \ <br>
+-F &#8216;project=checkitout&#8217; \ <br>
+<a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a></dd>
+</dl>
+</dd>
+</dl>
+<p>Result of a successful get_form_data call:</p>
+<p>API &lt; v.2.1</p>
+<blockquote>
+<div><p>{&#8220;status&#8221;:&#8221;success&#8221;,</p>
+<p>&#8220;data&#8221;:[
+{&#8220;description&#8221;:null,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;egyedszam&#8221;,&#8221;short_name&#8221;:&#8221;egyedszam&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;minmax&#8221;,&#8221;count&#8221;:&#8221;{30,40}&#8221;,&#8221;type&#8221;:&#8221;numeric&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;3&#8221;,&#8221;api_params&#8221;:null},</p>
+<p>{&#8220;description&#8221;:&#8221;faj neve&#8221;,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;faj&#8221;,&#8221;short_name&#8221;:&#8221;faj&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;nocheck&#8221;,&#8221;count&#8221;:&#8221;{}&#8221;,&#8221;type&#8221;:&#8221;text&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;1&#8221;,&#8221;api_params&#8221;:null},{...}]}</p>
+</div></blockquote>
+<p>API &gt;= v.2.1</p>
+<blockquote>
+<div><p>{&#8220;status&#8221;:&#8221;success&#8221;,</p>
+<p>&#8220;data&#8221;:[</p>
+<p>&#8220;form_header&#8221;:{&#8220;login_name&#8221;:&#8221;John Smith&#8221;,&#8221;login_email&#8221;:&#8221;<a class="reference external" href="mailto:jsmith&#37;&#52;&#48;openbiomaps&#46;org">jsmith<span>&#64;</span>openbiomaps<span>&#46;</span>org</a>&#8220;},
+&#8220;form_data&#8221;:[</p>
+<blockquote>
+<div>{&#8220;description&#8221;:&#8221;faj neve&#8221;,&#8221;default_value&#8221;:null,&#8221;column&#8221;:&#8221;faj&#8221;,&#8221;short_name&#8221;:&#8221;faj&#8221;,&#8221;list&#8221;:&#8221;&#8221;,&#8221;control&#8221;:&#8221;nocheck&#8221;,&#8221;count&#8221;:&#8221;{}&#8221;,&#8221;type&#8221;:&#8221;text&#8221;,&#8221;genlist&#8221;:null,&#8221;obl&#8221;:&#8221;1&#8221;,&#8221;api_params&#8221;:{&#8220;sticky&#8221;:&#8221;off&#8221;,&#8221;numeric&#8221;:&#8221;off&#8221;,&#8221;list_elements_as_buttons&#8221;:&#8221;off&#8221;}},{...}]]}</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>Data upload:</dt>
+<dd>curl \ <br>
+-i \ <br>
+-X POST \ <br>
+-H &#8220;Content-Type:application/x-www-form-urlencoded&#8221; \ <br>
+-H &#8220;Authorization:Bearer ...&#8221; \ <br>
+-d &#8220;scope=put_data&#8221; \ <br>
+-d &#8220;form_id=128&#8221; \ <br>
+-d &#8220;header=[&#8220;obm_geometry&#8221;,&#8221;obm_datum&#8221;,&#8221;time&#8221;,&#8221;datum&#8221;,&#8221;comment&#8221;,&#8221;longitude&#8221;,&#8221;latitude&#8221;,&#8221;observer&#8221;]&#8221; \ <br>
+-d &#8220;data=[{&#8220;obm_geometr     y&#8221;:&#8221;point(48.071187 19.293714)&#8221;,&#8221;obm_datum&#8221;:&#8221;2018-04-03 23:05&#8221;,&#8221;time&#8221;:&#8221;12&#8221;,&#8221;datum&#8221;:&#8221;2018-04-03&#8221;,&#8221;comment&#8221;:&#8221;asdad&#8221;,&#8221;longitude&#8221;:&#8221;0&#8221;,&#8221;latitude&#8221;:&#8221;0&#8221;,&#8221;observer&#8221;:&#8221;sdsaada&#8221;}]&#8221; \ <br>
+-d &#8220;ignore_warning=1&#8221; \ <br>
+&#8216;<a class="reference external" href="http://openbiomaps.org/projects/checkitout/pds.php">http://openbiomaps.org/projects/checkitout/pds.php</a>&#8216;</dd>
+<dt>Data upload with multiple attachments (files):</dt>
+<dd>curl \ <br>
+-F &#8220;access_token=...&#8221; \ <br>
+-F &#8216;scope=put_data&#8217; \ <br>
+-F &#8216;form_id=58&#8217; \ <br>
+-F &#8216;header=[&#8220;faj&#8221;,&#8221;obm_geometry&#8221;,&#8221;obm_files_id&#8221;]&#8217; \ <br>
+-F &#8216;batch=[\ <br>
+{&#8220;data&#8221;:[{&#8220;faj&#8221;:&#8221;Sylvia curruca&#8221;,&#8221;obm_geometry&#8221;:&#8221;POINT(22.0 46.3)&#8221;}],&#8221;attached_files&#8221;:&#8221;file1,file2&#8221;},\ <br>
+{&#8220;data&#8221;:[{&#8220;faj&#8221;:&#8221;Lanius Collurio&#8221;,&#8221;obm_geometry&#8221;:&#8221;POINT(21.5 47.1)&#8221;}],&#8221;attached_files&#8221;:&#8221;file3&#8221;}]&#8217; \ <br>
+-F <a class="reference external" href="mailto:'file1=&#37;&#52;&#48;file1">'file1=<span>&#64;</span>file1</a>&#8216; \ <br>
+-F <a class="reference external" href="mailto:'file2=&#37;&#52;&#48;file2">'file2=<span>&#64;</span>file2</a>&#8216; \ <br>
+-F <a class="reference external" href="mailto:'file3=&#37;&#52;&#48;file3">'file3=<span>&#64;</span>file3</a>&#8216; \ <br>
+<a class="reference external" href="http://localhost/biomaps/projects/template/pds.php">http://localhost/biomaps/projects/template/pds.php</a></dd>
+<dt>Packed data upload. Data line in ZIP archive. This is the old mobile app&#8217;s export format. The ZIP file contains the following files: <br></dt>
+<dd>geometry.wkt <br>
+PICT01.JPG <br>
+PICT02.JPG <br>
+note.txt <br></dd>
+</dl>
+<p>The ZIP file name is &#8216;Sun May 13 08:52:51 CEST 2018.zip&#8217; which created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example it is the &#8216;faj&#8217;. The other 3 columns shouldn&#8217;t be replaced or neglected. If there are some obligatory column in the form, those can be filled by the default_value parameter. In this example the &#8216;egyedszam&#8217; column is an obligatory field which will be filled with &#8216;1&#8217;. Packed lines can be super packed. In this case &#8216;packed_line&#8217; parameter should be changed to &#8216;multipacked_lines&#8217; and the zip archive should contains zip files detailed above.</p>
+<blockquote>
+<div>curl \ <br>
+-F &#8216;scope=put_data&#8217; \ <br>
+-F &#8216;table=dinpi&#8217; \ <br>
+-F &#8216;form_id=58&#8217; \ <br>
+-F &#8216;header=[&#8220;obm_geometry&#8221;,&#8221;obm_files_id&#8221;,&#8221;faj&#8221;,&#8221;dt_to&#8221;]&#8217; \ <br>
+-F &#8216;default_values={&#8220;egyedszam&#8221;:&#8221;1&#8221;}&#8217; \ <br>
+-F <a class="reference external" href="mailto:'packed_line=&#37;&#52;&#48;Sun">'packed_line=<span>&#64;</span>Sun</a> May 13 08:52:51 CEST 2018.zip&#8217; \ <br>
+<a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></div></blockquote>
+<dl class="docutils">
+<dt>Data retrieval (non-authenticated report):</dt>
+<dd>wget <a class="reference external" href="http://localhost/biomaps/projects/dinpi/?report=2&#64;szamossag&amp;output=csv">http://localhost/biomaps/projects/dinpi/?report=2&#64;szamossag&amp;output=csv</a></dd>
+<dt>Refresh token (from R):</dt>
+<dd><p class="first">curl \ <br>
+-F &#8216;grant_type=refresh_token&#8217; \ <br>
+-F &#8216;refresh_token=...&#8217; \ <br>
+-F &#8216;client_id=R&#8217; \ <br>
+<a class="reference external" href="http://openbiomaps.org/oauth/token.php">http://openbiomaps.org/oauth/token.php</a></p>
+<p class="last">Returns: <br>
+{&#8220;access_token&#8221;:&#8221;...&#8221;, <br>
+&#8220;expires_in&#8221;:3600, <br>
+&#8220;token_type&#8221;:&#8221;Bearer&#8221;, <br>
+&#8220;scope&#8221;:&#8221;get_form_data ...&#8221;, <br>
+&#8220;refresh_token&#8221;:&#8221;...&#8221;}</p>
+</dd>
+<dt>Project list (using central pds):</dt>
+<dd><p class="first">curl \ <br>
+-F &#8216;scope=get_project_list&#8217; \ <br>
+<a class="reference external" href="http://localhost/biomaps/pds.php">http://localhost/biomaps/pds.php</a></p>
+<p class="last">Returns: <br>
+JSON array of those project which has public upload forms, or the user (if logined) member of it.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="general-api-answers">
+<h2>General API answers<a class="headerlink" href="#general-api-answers" title="Permalink to this headline">¶</a></h2>
+<p>Based on: <a class="reference external" href="https://labs.omniti.com/labs/jsend">https://labs.omniti.com/labs/jsend</a></p>
+<dl class="docutils">
+<dt>JSON:</dt>
+<dd>{&#8220;status&#8221;:&#8221;X&#8221;,&#8221;data&#8221;:&#8221;&#8221;,&#8221;message&#8221;:&#8221;&#8220;}</dd>
+</dl>
+<p>X: success, error, fail</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API documentation</a><ul>
+<li><a class="reference internal" href="#api-handlers">API handlers:</a><ul>
+<li><a class="reference internal" href="#pds-api-version">PDS API version:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#oauth">OAUTH</a><ul>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pds">PDS</a><ul>
+<li><a class="reference internal" href="#id1">Variables</a></li>
+<li><a class="reference internal" href="#get-type-scopes">GET type scopes</a></li>
+<li><a class="reference internal" href="#post-type-scopes">POST type scopes</a></li>
+<li><a class="reference internal" href="#patch-type-scopes">PATCH type scopes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web-api">WEB API</a><ul>
+<li><a class="reference internal" href="#id2">Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-data-get-form-data-results-explanations">Form Data (get_form_data results) explanations</a></li>
+<li><a class="reference internal" href="#training-explanations-and-examples">Training explanations and examples</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#general-api-answers">General API answers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gekko_install.html"
+                        title="previous chapter">Virtual server</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="server_install.html"
+                        title="next chapter">Install new OBM Server guide</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="server_install.html" title="Install new OBM Server guide"
+             >next</a></li>
+        <li class="right" >
+          <a href="gekko_install.html" title="Virtual server"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright OpenBioMaps Consortium 2015 - 2018.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+    </div>
+  </body>
+</html>
