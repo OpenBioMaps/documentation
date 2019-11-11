@@ -6,13 +6,14 @@ User data
 
 Settings
 --------
-    email address
-    delete profile
+    Visible email address for project members: 
+    Receiv e-mails from the project:
+    Drop profile
     
 
 ORCID profile
 ------------
-    Read ORCID profile data
+    Load ORCID profile data
 
 
 Create Postgres user account
@@ -26,23 +27,12 @@ User information
 
 Other databases
 ----------------
+List of all databases manage by yourself.
 
 
 Activity
 ---------
-
-
-Usage of custom geometries
---------------------------
-This function is only available when the shared_geoms modul allows.
-
-It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
-
-You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
-
-Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
-
-Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
+This part shows the number of uploads and data by yourself.
 
 
 Interrupted imports
@@ -74,5 +64,18 @@ Api keys
 -----------
 
 
-Comments
+Manage custom geometries
+--------------------------
+This function is only available when the shared_geoms modul allows.
+
+It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
+
+You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
+
+Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
+
+Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
+
+
+Opinions
 --------
