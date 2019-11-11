@@ -10,20 +10,17 @@ Introduction
     
        The openbiomaps project thus provides a stable background for open and free biological databases, specifically for scientists and conservationists, and its customizable toolset allows for the easy access and management of data.
 
-*objectives in hungarian*
+**Minor objectives**
 
-Az openbiomaps projekt célja szabadon elérhető tudományos és természetvédelmi célú biológiai térképi adatbázisok számára biztosítani egy megbízható keretrendszert ami az egyedi igényekre szabható 
-eszközkészletével megkönnyíti az adatok elérését és kezelését.
-
-   * Az OpenBioMaps célja élő szervezetekre vonatkozó (természetvédelmi jelentőségű vagy biodiverzitás kutatásban használható) előfordulási és kapcsolódó adatok (biotikai adatok) nyilvántartása, 
-   * közzététele és GIS (Geographic Information System) felhasználásra alkalmas szolgáltatása nem közhiteles módon, a közösségi tudás önkéntes összegyűjtésén alapulva.
-   * Az OpenBioMaps további kifejezett célja a felsőfokú oktatás támogatása a keretrendszer, valamint az adattartalom nyitott használata, fejleszthetősége útján.
-   * Az OpenBioMaps nyílt forráskódú alkalmazásokra támaszkodó, decentralizált, minimalizált költségigényű, központi ellenőrzés nélküli részadatbázisokból álló adatbázis és keretrendszer.
-   * Az OpenBioMaps elsődleges célközönsége a természettudományos és természetvédelmi szakma, valamint a környezetügyet is érintő tervek, stratégiák, döntések előkészítői.
-   * Az OpenBioMaps olyan önkéntes részvételen alapuló közösségi tudásmegosztó eszköz, mely a teljes adatnyilvánosságot elfogadó és erősítő felhasználókra alapoz.
-   * A rendszer kifejezett elvei a nyitottság a legkülönfélébb biotikai adatok befogadására, valamint a kapcsolatépítés más adatbázisok felé.
-   * Az OpenBioMaps kifejezett célja olyan módon szolgáltatni az adatokat, hogy az interneten keresztül webes és asztali alkalmazásban is használható legyen.
-   * Az OpenBioMaps minden szolgáltatása ingyenesen vehető igénybe.
+   * Aim of the OpenBioMaps project register,
+   * share and present occurrence data of organisms with biotical and abiotical informations (for nature conservation or biodiversity research)  in GIS format (Geographic Information System) based on several citizen science projects
+   * The further aim of OpenBioMaps is support the higher education with the framework, with the open utilization of its data and with the developmental capacity of the system.
+   * OpenBioMaps use applications with open source code, furthermore OpenBiomaps is a database and framework, which contains decentralized, minor databases with low cost claim.
+   * The target audience of OpenBioMaps is the natural science and nature conservation profession, as well as the preparatory bodies of plans, strategies, and decisions concern nature conservation.
+   * Az OpenBioMaps knowledge sharing tool based on volounteering, which builds upon people who are recipient to complete data publicity and they amplify it.
+   * The database is open to the different biotical data, as well as it is open to collaborations with other databases.
+   * OpenBioMaps can serve data so that these data could be use across the webpage or in desktop applications.
+   * All of the OpenBioMaps services are freely available.
 
 
 **Main properties:**
