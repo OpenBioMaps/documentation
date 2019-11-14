@@ -16,39 +16,40 @@ Loged-in surface
 After login you will see your profile. See details about functions and features in the following link: https://github.com/OpenBioMaps/documentation/blob/master/official_docs/en/profile.rst
 
 
-That surface is divided to three main part: Main headline, sub-headline and working surface (see in Fig 1.)
+That surface is divided to three main part: Main headline, sub-headline and working surface (see in Fig 1.).
 
 .. figure::  images/img_7.png
    :align:   center
 
-   Fig 1.
+   Fig 1. The loged-in surface.
 
 
+You can see in the sub-headline gear-wheels, if you click on them several button will appear between the main- and sub-headline: Profile, Invites, Project administration, Messages, Founding new project (see in Fig 2.).
+
+.. figure::  images/img_8.png
+   :align:   center
+
+   Fig 2. The loged-in surface after you clicked on the gear-wheels.
 
 
+Profile
+-------
+See: https://github.com/OpenBioMaps/documentation/blob/master/official_docs/en/profile.rst
 
-Invitation
-----------
+
+Invites
+-------
 Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
 
 
-Custom geometries
------------------
-It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
+Project administration
+----------------------
 
-You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
 
-Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
+Messages
+--------
+Across this feature you can send e-mail to the users of the database.
 
-Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
-
-Saved queries
--------------
-It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.
-
-The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.
-
-On the administrative pages you can follow your saved queries by clicking on the "stored queries" link. 
 
 Founding new a project
 ======================
@@ -69,12 +70,12 @@ In this chapter I will focus on walking you trough the steps required, to found 
 
 To be able to create a database, firs you need an invitation, from someone who is already an OBM user. If you don't have such an acquaintance, you can simply request one using the mailing list's mentioned in the previous chapter. If you receive an invitation, you will be able to register, and become an OBM user.
 
-If you have done the previous step, you will be able to access your profile, after you login (Fig.1).
+If you have done the previous step, you will be able to access your profile, after you login (Fig.3).
 
 .. figure::  images/img_1.png
    :align:   center
 
-   Fig 1.
+   Fig 3.
 
 
 Here, on the **Founding new project** tab, you will find the creation form which you will have to fill out. If for you, the text doesn't appear in english, don't panic. At the bottom of the page, you can choose the language in which the text appears. Each field has a tooltip, in which essential information is displayed about the respective field. E.g in the first field, you can see that is is obligatory to compleat, it cannot contain whitespaces, and can contain lowercase letters only (it can however contain underscores). You have a full list of descriptions regarding the fields, at the bottom of the page.
