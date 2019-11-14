@@ -13,17 +13,13 @@ Settings
 
 ORCID profile
 ------------
-    Load ORCID profile data
-
-
-Create Postgres user account
-----------------------------
-This function is only available when the apostgres modul allows.
+   Add ORCID profile ID, Load ORCID profile data (if filled correctly)
 
 
 User information
 ----------------
-
+state: normal or master
+evaluation: A value between 0 and 1; this value comes from data evaluation and user evaluations that apply to us.
 
 Other databases
 ----------------
@@ -32,7 +28,8 @@ List of all databases manage by yourself.
 
 Activity
 ---------
-This part shows the number of uploads and data by yourself.
+This part shows the number of uploads and data by yourself. Number of modified records as well.
+Species statistics: This is a list of species from your uploads and an evaluation of this list.
 
 
 Interrupted imports
@@ -48,7 +45,6 @@ You can follow your saved imports in the profile page, by click on the "interrup
 
 Stored queries
 --------------
-
 It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.
 
 The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.
@@ -58,10 +54,14 @@ On the administrative pages you can follow your saved queries by clicking on the
 
 Saved results
 -------------
+It is possible to save queries and repeat them by using these ID-s.
 
 
 Api keys
 -----------
+Active API keys. It is an authentication related function. You can follow your connections and manually close them. Mostly the developers use it.
+
+The following page items are optional and related to specific modules allowed in your project.
 
 
 Manage custom geometries
@@ -76,6 +76,13 @@ Following the own geometries link you can delete or share, rename and modify the
 
 Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
+Create PostgreSQL user
+----------------------
+
+Manage downloads
+----------------
+
 
 Opinions
 --------
+User opinions about your activities.
