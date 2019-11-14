@@ -6,14 +6,14 @@ Log in
 
 This button moves you to the "sign in" surface. If you already signed user you can use your own account. If not, you can ask invitation across the "registration" button.
 
-	Registration
+   Registration
 
-	Lost password
+   Lost password
 
 
 Loged-in surface
 ================
-After login you will see your profile. See details about functions and features in [profile](documentation/official_docs/en/profile.rst).
+After login you will see your profile. See details about functions and features in [profile][documentation/official_docs/en/profile.rst].
 
 
 That surface is divided to three main part: Main headline, sub-headline and working surface (see in Fig 1.)
