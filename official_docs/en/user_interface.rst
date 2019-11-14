@@ -6,9 +6,9 @@ Log in
 
 This button moves you to the "sign in" surface. If you already signed user you can use your own account. If not, you can ask invitation across the "registration" button.
 
-### Registration
+>Registration
 
-### Lost password
+>Lost password
 
 
 Loged-in surface
