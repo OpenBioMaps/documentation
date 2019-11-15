@@ -1,6 +1,6 @@
 .. _profile:
 Profile page
-**********
+************
 
 User data
 ---------
