@@ -15,7 +15,6 @@ Welcome to OpenBioMaps' documentation!
    introduction.rst
    tutorial.rst
    user_interface.rst
-   admin_pages.rst
    gekko_install.rst
    api.rst
    server_install.rst
