@@ -44,7 +44,7 @@ See: :ref:`invitations`
 
 Project administration
 ----------------------
-
+See: :ref:`project_administration`
 
 Messages
 --------
