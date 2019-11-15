@@ -18,7 +18,6 @@ Welcome to OpenBioMaps' documentation!
    profile.rst
    inviations.rst
    admin_pages.rst
-   functions.rst
    modules.rst
    gekko_install.rst
    api.rst
