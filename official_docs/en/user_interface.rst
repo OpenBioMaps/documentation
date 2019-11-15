@@ -1,5 +1,11 @@
 .. _user-interface:
 
+User interfaces
+***************
+
+**Contents:**
+
+
 .. toctree::
    :maxdepth: 2
 
@@ -9,9 +15,6 @@
    modules.rst
    upload_forms.rst
    data_query_interface.rst
-
-User interfaces
-***************
 
 Log in
 ======
