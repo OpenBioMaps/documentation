@@ -10,7 +10,7 @@ Welcome to OpenBioMaps' documentation!
 **Contents:**
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 0
 
    introduction.rst
    tutorial.rst
