@@ -13,7 +13,7 @@ Lost password
 
 Loged-in surface
 ================
-After login you will see your profile. See details about functions and features in the following link: https://github.com/OpenBioMaps/documentation/blob/master/official_docs/en/profile.rst
+After login you will see your profile. See details about functions and features in the following link: :ref:`profile`
 
 
 That surface is divided to three main part: Main headline, sub-headline and working surface (see in Fig 1.).
@@ -34,12 +34,12 @@ You can see in the sub-headline gear-wheels, if you click on them several button
 
 Profile
 -------
-See: https://github.com/OpenBioMaps/documentation/blob/master/official_docs/en/profile.rst
+See: :ref:`profile`
 
 
 Invites
 -------
-Send invitation to join the project/database to someone (name and email adsress). The number of active invitation can be limited (typically 11).
+See: :ref:`invitations`
 
 
 Project administration
