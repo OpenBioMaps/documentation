@@ -1,4 +1,5 @@
 .. _project_administration:
+
 Administrative pages
 ********************
 
