@@ -13,7 +13,7 @@ Settings
     
 
 ORCID profile
-------------
+-------------
    Add ORCID profile ID, Load ORCID profile data (if filled correctly)
 
 
@@ -23,18 +23,18 @@ state: normal or master
 evaluation: A value between 0 and 1; this value comes from data evaluation and user evaluations that apply to us.
 
 Other databases
-----------------
+---------------
 List of all databases manage by yourself.
 
 
 Activity
----------
+--------
 This part shows the number of uploads and data by yourself. Number of modified records as well.
 Species statistics: This is a list of species from your uploads and an evaluation of this list.
 
 
 Interrupted imports
---------------------
+-------------------
 While uploading new data using the web forms or file uploads there is an option to save the actual state of the prepared data.
 
 When you save the uploading process your data and settings will be stored in the OBM server. You can restore the saved state by loading its identifier.
@@ -59,14 +59,14 @@ It is possible to save queries and repeat them by using these ID-s.
 
 
 Api keys
------------
+--------
 Active API keys. It is an authentication related function. You can follow your connections and manually close them. Mostly the developers use it.
 
 The following page items are optional and related to specific modules allowed in your project.
 
 
 Manage custom geometries
---------------------------
+------------------------
 This function is only available when the shared_geoms modul allows.
 
 It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
