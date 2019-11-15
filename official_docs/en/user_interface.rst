@@ -1,5 +1,5 @@
-User interface
-**************
+User interfaces
+***************
 
 Log in
 ======
