@@ -4,9 +4,11 @@
    :maxdepth: 2
 
    profile.rst
+   invitations.rst
    admin_pages.rst
    modules.rst
    upload_forms.rst
+   data_query_interface.rst
 
 User interfaces
 ***************
