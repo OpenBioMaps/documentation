@@ -1,3 +1,20 @@
-# Spatial queries
+Spatial queries
+===============
 
-# Text queries
+map query
+---------
+
+
+Text queries
+============
+
+text query
+----------
+
+
+save query
+==========
+
+
+share query
+===========
