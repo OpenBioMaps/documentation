@@ -1,5 +1,4 @@
 .. _profile:
-
 Profile page
 **********
 
