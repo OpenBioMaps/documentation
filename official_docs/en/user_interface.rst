@@ -181,23 +181,12 @@ At the bottom of the 'Administrative menu' in the logs page you can read the ope
 
 
 
-Map page
-========
+Map page interface
+==================
 
-map query
----------
 
-text query
-----------
-
-save query
-----------
-
-share query
------------
-
-Upload data
-===========
+Upload data interface
+=====================
 
 File upload
 -----------
