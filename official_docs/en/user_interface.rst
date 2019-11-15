@@ -1,5 +1,13 @@
 .. _user-interface:
 
+.. toctree::
+   :maxdepth: 2
+
+   profile.rst
+   admin_pages.rst
+   modules.rst
+   upload_forms.rst
+
 User interfaces
 ***************
 
