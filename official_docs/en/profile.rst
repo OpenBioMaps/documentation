@@ -1,3 +1,5 @@
+.. _profile:
+
 Profile page
 **********
 
