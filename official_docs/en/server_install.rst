@@ -6,6 +6,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
 local_vars.php.inc
 ..................
 . code-block:: php
+
   // Database connection definitions
   // Please change the passwords for an other random string
   define('gisdb_user','YOUR_PROJECT_ADMIN');
