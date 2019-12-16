@@ -3,13 +3,19 @@ Gyakran Ismételt Kérdések
 
 Mi az OpenBioMaps?
 ------------------
-The OpenBioMaps is a framework for biological data with spatial attributes. In this framework it is allowed to create databases. The biological and spatial data in these databases are available for anyone.
+Az OpenBioMaps (OBM) egy olyan nyílt adatbázis keretrendszer, amely georeferált biológiai adatok tárolását és kezelését teszi lehetővé.
 
-The framework contains several different databases which served by more servers. These applications are the UMN Mapserver (which serve the web maps), the PostgreSQL database server (where cthe framework's and the databases' data stored), the PostGIS library (which handle the spatial queries), the Apache webserver (which handle the web output), the OpenLayers Javascript library (which handle the web map displaying in the browsers) and finally the Debian Linux operating system which serves the backround for the whole system. 
+A keretrendszer több különböző ingyenesen hozzáférhető szerverből épül fel:
+* UMN Mapserver - az online térképet szolgáltatja
+* PostgreSQL adatbázis szerver - tárolja a keretrendszert és a feltöltött adatokat
+* PostGIS könyvtár - kezeli a térbeli lekérdezéseket
+* Apache webserver - az online kimenetet kezeli
+* OpenLayers Javascript könyvtár - az online térkép megjelenítését kezeli a böngészőben
+* Debian Linux operációs rendszer - biztosítja a hátteret az egész rendszer számára. 
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-The OpenBioMaps consortium has been established through cooperation between public institutions and social organizations. Their goal was to develop and operate the OpenBioMap community database framework. The members of the consortium are equal partners and they have all contributed to achievenig this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
+Az OpenBioMaps konzorciumot közintézmények és civil szervezetek hozták létre 2015 szeptember elsején. A konzorcium célja, hogy az OpenBioMaps közösségi adatbázist fejlessze és működtesse. A konzorcium tagjai egyenlő partnerek, akik valamilyen módon hozzájárulnak mind a fejlesztéshez mind a működtetéshez. A konzorciumhoz bárki csatlakozhat, aki elfogadja az OpenBioMaps alaptételeit, eleget tesz annak kitételének és a már jelenlegi konzorciumi partnerek elfogadják a belépését.
 
 Jelenlegi OpenBioMaps partnerek:
 
@@ -17,9 +23,11 @@ Jelenlegi OpenBioMaps partnerek:
 
 kapcsolat: Dr. Bán Miklós
 
+
 **Duna-Ipoly Nemzeti Park Igazgatóság**
 
 kapcsolat: Baranyai Zsolt
+
 
 **Eötvös Loránd Tudományegyetem**
 
@@ -30,6 +38,7 @@ kapcsolat: Ritter Dávid
 
 kapcsolat: Sipos Katalin
 
+
 **Eszterházy Károly Egyetem**
 
 kapcsolat: Dr. Pénzesné Kónya Erika
@@ -39,15 +48,18 @@ kapcsolat: Dr. Pénzesné Kónya Erika
 
 kapcsolat: Kovács István, 
 
+
 **Duna-Dráva Nemzeti Park Igazgatóság**
 
 kapcsolat: Gáborik Ákos
 
-**Fertő-Hnaság Nemzeti Park Igazgatóság**
+
+**Fertő-Hanság Nemzeti Park Igazgatóság**
 
 kapcsolat: Takács Gábor
 
-The OpenBioMaps consortium established at September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
+
+Az OpenBioMaps konzorcium nyilatkozata `itt <docs/consortium_agreement_2015.pdf>`_ elérhető.
 
 Hogyan léphetek kapcsolatba a konzorciummal?
 --------------------------------------------
@@ -63,29 +75,29 @@ Bármilyen biológiai, térbeli információkkal is rendelkező adatok tárolás
 
 Hogyan tudok adatot feltölteni?
 -------------------------------
-Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatbázisok projekt gazdája tudja meghatározni kik tölthetnek be adatokat az adatbázisba. Az adatok feltöltése közvetlenül is történhet az adatbázisba, vagy történhet egyedileg definiált adatfeltöltő sablonok segítségével pl. gpx, vagy excel fájlokból. Minden adatbázisnak egyedi adatfeltöltő felülete van.
+Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatbázisok projekt gazdája tudja meghatározni kik tölthetnek be adatokat az adatbázisba. Az adatok adatbázisba történő feltöltése történhet közvetlenül, vagy egyedileg definiált adatfeltöltő sablonok segítségével pl. gpx, vagy excel fájlokból. Minden adatbázisnak egyedi adatfeltöltő felülete van.
 
 Hogyan tudok eltárolni lekérdezéseket és hivatkozni őket?
 ---------------------------------------------------------
-A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Az elmentett lekérdezések egyedi azonosítóval hivatkozhatók és később bármikor megismételhetőek. A lekérdezések wfs/wms url-je is tárolásra kerül, így egy lekérdezés és ismétlése közötti adatbázis változások is könnyen nyomonkövethetőek.
+A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Az elmentett lekérdezések egyedi azonosítóval hivatkozhatóak és később bármikor megismételhetőek. A lekérdezések wfs/wms url-je is tárolásra kerül, így egy lekérdezés és ismétlése közötti adatbázis változások is könnyen nyomonkövethetőek.
 
 A hivatkozások formátuma ilyen: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
 
 A hivatkozás böngészőben való betöltésére a projekt térkép töltődik be a lekérdezett pontokat kiemelve és a hozzá tartozó adatokat megjelenítve.
 
-Hogyan tudok regisztrálni az OpenBioMaps-ba?
+Hogyan tudok regisztrálni az OpenBioMaps-be?
 --------------------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
+A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó tetszőlegesen meghívhat bárkit.
 
 A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
 
-A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetők, amiket a különböző projektek adatgazdái állítanak be.
+A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetőek, amiket a különböző projektek adatgazdái állítanak be.
 
 A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait.
 
 Van programozható felület fejlesztőknek?
 ----------------------------------------
-A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok jogosultságfüggően projektenként lekérdezhetők webes kérésekkel az adatbázisokból.
+A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok az adatbázisokból webes kérésekkel - jogosultságtól függően - projektenként lekérdezhetőek.
 
 Példa: http://openbiomaps.org/pds.php?scope=get_project_list
 
@@ -101,13 +113,13 @@ A PDS figyelembe veszi a lekérdező jogosultságát. Ha nincs bejelentkezve a l
 
 Milyen nyelvek támogatottak?
 ----------------------------
-Nincsenek nyelvi korlátok, az oldal jelenleg Magyarul és Angolul Románul és részben Oroszul elérhető. További nyelvek vagy javítások hozzáadhatóak a rendszerhez https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv fájl szerkesztésével.
+Nincsenek nyelvi korlátok, az oldal jelenleg magyarul,angolul, románul és részben oroszul elérhető. További nyelvek vagy javítások hozzáadhatóak a rendszerhez https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv fájl szerkesztésével.
 
 Az adatbázisoknak egymástól független egyedi nyelvi fájljai is vannak. 
 
 Milyen operációs rendszerekkel kompatibilis az OpenBioMaps?
 -----------------------------------------------------------
-A webes portál és a térkép és adatbázis szolgáltatások egyaránt kompatibilisek a legtöbb operációs rendszerrel.
+A webes portál, a térkép és adatbázis szolgáltatások egyaránt kompatibilisek a legtöbb operációs rendszerrel.
 
 A fejlesztések során viszont ezt nem szoktuk ellenőrizni. 
 
@@ -118,7 +130,7 @@ Hogyan tudok hozzájárulni az OpenBioMaps-hoz?
  *   Adatbázis szerverek létrehozásával
  *   Nyelvi fordításokkal
  *   Programozással
- *   Adományozásával
+ *   Adományozással
 
 Kell fizetni valamiért?
 -----------------------
@@ -126,9 +138,9 @@ Az OpenBioMaps minden szolgáltatása teljesen ingyenes!
 
 Hol és hogyan tárolja az OpenBioMaps az adatokat? 
 -------------------------------------------------
-Jelenleg két szerverünk van Debrecenben a Debreceni Egyetem számítóközpontjában és 1 szerverünk van az ELTE infoparkjában. 1 szerver  Marosvásárhelyen egy a DINPI-nél.
+Jelenleg négy szerverünk van. Egy szerverünk van Debrecenben a Debreceni Egyetem informatikai központjában, egy az Eötvös Lóránd Tudományegyetem infoparkjában, egy Marosvásárhelyen a MILVUS csoport és egy a Duna-Ipoly Nemzeti Park Igazgatóság kezelésében.
 
-A szerverek között adatbázis szintű szinkronizáció van. Az adatbázisok tartalma naponta le van mentve. 
+A szerverek között adatbázis szintű szinkronizáció van. Az adatbázisok tartalma naponta mentésre kerül. 
 
 Hogyan tudok az OpenBioMaps-hoz csatlakozni?
 --------------------------------------------
@@ -142,9 +154,7 @@ Elfelejtettem a jelszavamat, most mi lesz?
 ------------------------------------------
 Nem kell aggódni, új jelszót könnyű beállítani!
 
-Follow the "lost password" link on the login page.
-
-A bejelentkezési lapon van egy "elfelejtett jelszó" link, azt követve meg kell adni a regisztrált email címed és a rendszer küldeni fog egy linket amit követve meg lehet újítani a jelszót.
+Kattintson az "elfelejtett jelszó" mezőre a bejelentkezési oldalon. Adja meg a regisztrált e-mail címét, és a rendszer küldeni fog egy linket, amint keresztül új jelszót állíthat be.
 
 Rózsaszín négyzetek vannak a térkép helyén
 ------------------------------------------
@@ -169,9 +179,9 @@ In both pages you can rename polygons. You can delete only your not shared polyg
 
 Mi az a RUM?
 ------------
-A RUM egy angol nyelvű akroním ami a projekt nyitottságát fejezi ki. Magyarul OFM lenne.
+A RUM egy angol nyelvű akroním ami a projekt nyitottságát fejezi ki magyarul OFM lenne.
 
-Read Upload Modify az Olvasás Feltöltés Módosítás
+Read Upload Modify magyarul Olvasás Feltöltés Módosítás
 
 Minden eleme - 0 + értékű lehet.
 
@@ -189,16 +199,16 @@ DOI?
 ----
 Minden stabil adatbázis kaphat DOI-t. Továbbá lekérdezések vagy egyes adatok is kaphatnak DOI-t.
 
-The OBM Consortium ask the DOI if the database is accepted and provide all the necessary information for DOI registration.
+The OBM konzorcium megkéri a DOI számot, ha az adatbázis elfogadott és biztosítja a szükséges információkat a DOI szám igényléshez.
 
-All databases has a DOI metadata page like:
+Az összes adatbázis DOI metaadat oldala ilyen:
 
 http://danubedata.org/index.php?metadata
 
-We create an alias of this page as http://danubedata.org/doi/ after the database got its doi.
+Az adatbázishoz készítünk egy alternatív elérési útvonalat, ahol a "/"-jel után az adatbázis saját DOI száma található. Pl.: http://danubedata.org/doi/xxxxx.
 
-Our DOI prefix is: 10.18426
+Az OBM saját DOI elő száma: 10.18426
 
-The DOI suffixes are automatically generated and they are unique.
+Az egyéni adatbáziskora mutató DOI utószámok egyediek és automatikusan generálódnak.
 
-In every database it is possible to ask additional DOI-s for data subsets. These DOI-s will be extend the original database DOI after a /
+Minden adatbázis számára elérhető, hogy DOI számot igényeljen a specifikus lekérdezései számára. Ez azt jelenti, hogy az adatbázis DOI számát kibővítik egy "/"-jel után.
