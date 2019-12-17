@@ -3,33 +3,35 @@ Profil lap
 
 Felhasználói adatok
 -------------------
+A felhasználói adatok az e-mail cím kivételével szabadon megváltoztathatóak. Az e-mail cím megváltoztatásához --- szintű megerősítés szükséges. 
+
 
 Beállítások
 -----------
-    email cím kezelése
-    profil törlése
+* Itt állítható be, hogy az e-mail címe látható legyen a projekt többi tagjának. 
+* Be állíthatja, hogy szeretne-e e-maileket kapni a projektről.
+* Megszűntetheti a felhasználói fiókját.
+
     
 
 ORCID profil
 ------------
-    ORCID profil adatok beolvasása
-
-
-Postgres felhasználói fiók készítése
-------------------------------------
-Ez a funkció csak akkor látható ha apostgres modul engedélyezve van.
+Az ORCID azonosítóval rendelkezők számára lehetőség van a ORCID profil adatok beolvasására.
 
 
 Felhasználói információk
 ------------------------
+Itt ellenőrizhető, hogy milyen státusszal (üzemeltető, stb..) rendelkezik az adott adatbázisban.
+Értékelés?
 
 
 Más adatbázisok
 ---------------
-
+Itt találja azokat az adatbázisokat felsorolva, amelyekben tag. Az adatbázis nevére kattintva átléphet egy másik adatbázisba. Minden eggyes átlépés után újra be kell jelentkeznie.
 
 Aktivitás
 ---------
+
 
 
 Egyéni geometriák kezelése
@@ -71,6 +73,10 @@ Elmentett eredmények
 
 Api kulcsok
 -----------
+
+Postgres felhasználói fiók készítése
+------------------------------------
+Ez a funkció csak akkor látható ha apostgres modul engedélyezve van.
 
 
 Vélemények
