@@ -160,23 +160,6 @@ Rózsaszín négyzetek vannak a térkép helyén
 ------------------------------------------
 Bármilyen rendszer beállítási hiba rózsaszín négyzetekhez vezethet.
 
-Megosztott polygonok hogyan?
-----------------------------
-On the profile page there are two links
-
-    Own polygons
-    Shared polygons
-
-Following the first one, you see those polygons that you uploaded or saved (using the save selection option)
-
-Following the second link, you see all the shared polygons including your own polygons.
-
-In the own polygon page there is an option to share polygons with all users in the project or all logined users or anybody.
-
-In both pages you can control, where would you like to see these polygons (as map selection or as uploading area). These options are marked by "eye" and "X" pictograms.
-
-In both pages you can rename polygons. You can delete only your not shared polygons.
-
 Mi az a RUM?
 ------------
 A RUM egy angol nyelvű akroním ami a projekt nyitottságát fejezi ki magyarul OFM lenne.
