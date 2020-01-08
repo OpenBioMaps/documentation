@@ -301,6 +301,19 @@ join_tables
     
     LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&dinpi_mirror.objectid>1:1
 
+shared_geom
+-----------
+Engedélyezés után megjelenik a profil oldalon "Egyéni geometriák kezelése" néven.
+
+It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
+
+You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
+
+Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
+
+Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
+
+
 snap_to_grid
 ------------
     Project specified sanp to grid points on the map
@@ -418,13 +431,16 @@ custom_filetype
   
 create_pg_user
 --------------
-    Create a restricted access postgres user
+Enegedélyezés után megjelenik a profil oldalon "Postgres felhasználó készítése" néven.
+ 
+   Create a restricted access postgres user
     
     Calls:
     
     Functions: create_pg_user(), show_button()
         
     General description:
+
         By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
         It can read all the data tables assigned to the project.
         It can only connect to a database from one client program at a time.
