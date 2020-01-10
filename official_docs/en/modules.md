@@ -303,7 +303,7 @@ join_tables
 
 shared_geom
 -----------
-Engedélyezés után megjelenik a profil oldalon "Egyéni geometriák kezelése" néven.
+If this module is enabled "Manage custom geometries" option will appear on your profile page.
 
 It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
 
@@ -431,7 +431,7 @@ custom_filetype
   
 create_pg_user
 --------------
-Enegedélyezés után megjelenik a profil oldalon "Postgres felhasználó készítése" néven.
+If this module is enabled "Create postgres user" option will appear on your profile page.
  
    Create a restricted access postgres user
     
