@@ -8,7 +8,7 @@ Saját OSM szerverekkel azonban kikerülhető ez a probléma.
 
 A szerver létrehozása docker környezetben gyorsan és egyszerűen kivitelezhető.
 
-1.1.: A docker telepítése
+1.1. A docker telepítése
 
 Számos szerveren már telepítve van a docker.
 A docker -v parancs segítségével megtudhatjuk, milyen verzió fut a szerveren.
@@ -18,7 +18,7 @@ Debian 9 esetében kövessük az alábbi linken található leírást.
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-debian-9
 
-1.2.: A docker munkakönyvtár áthelyezése
+1.2. A docker munkakönyvtár áthelyezése
 
 Alapértelmezetten a docker a a konténereket és köteteket a /var/lib mappában tárolja, ezért, különösen, ha az adott partíción kevés tárhelyünk van, célszerű a minkakönyvtárát megváltoztani, és ezeket áthelyezni.
 
@@ -34,11 +34,11 @@ Az alábbi paranccsal tölthetjük le a szervert:
 
 docker pull overv/openstreetmap-tile-server
 
-2.2: Létre kell hozni egy kötetet az alábbi paranccsal:
+2.2 Létre kell hozni egy kötetet az alábbi paranccsal:
 
 docker volume create openstreetmap-data
 
-2.3.: Le kell tölteni egy .osm.pbf fájlt, amely tartalmazza a számunkra érdekes terület állományait. Ilyen adatokhoz férünk hozzá például a download.geofabrik.de weboldalon.
+2.3. Le kell tölteni egy .osm.pbf fájlt, amely tartalmazza a számunkra érdekes terület állományait. Ilyen adatokhoz férünk hozzá például a download.geofabrik.de weboldalon.
 Magyarországot például az alábbi linken érhetjük el: http://download.geofabrik.de/europe/hungary.html. A szükséges állomány pedig a http://download.geofabrik.de/europe/hungary-latest.osm.pbf linken található.
 
 Az adatállomány mellett a szolgáltatott terület határát is megadhatjuk a szervernek, így az adatállomány automatikus frissítési is lehetővé válik.
