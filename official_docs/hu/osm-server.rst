@@ -41,36 +41,31 @@ docker volume create openstreetmap-data
 2.3.: Le kell tölteni egy .osm.pbf fájlt, amely tartalmazza a számunkra érdekes terület állományait. Ilyen adatokhoz férünk hozzá például a download.geofabrik.de weboldalon.
 Magyarországot például az alábbi linken érhetjük el: http://download.geofabrik.de/europe/hungary.html. A szükséges állomány pedig a http://download.geofabrik.de/europe/hungary-latest.osm.pbf linken található.
 
-A letöltött állományt importálni kell a szerver PotgreSQL adatbázisába:
+Az adatállomány mellett a szolgáltatott terület határát is megadhatjuk a szervernek, így az adatállomány automatikus frissítési is lehetővé válik.
 
-docker run \
-    -v /absolute/path/to/hungary-latest.osm.pbf:/data.osm.pbf \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
-    overv/openstreetmap-tile-server \
-    import
+Ehhez a fenti példa alapján a http://download.geofabrik.de/europe/hungary.poly
 
-Ha a konténer hibaüzenet nélkül kilép, akkor az állomány importálása sikeresen megtörtént.
+A letöltött állományokat importálni kell a szerver PotgreSQL adatbázisába:
 
-akkor az állomány importálása sikeresen megtörtént.
+docker run -v /home/bnpadmin/hungary-latest.osm.pbf:/data.osm.pbf -v /home/bnpadmin/hungary.poly:/data.poly -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server import
 
-akkor az állomány importálása sikeresen megtörtént.
+Ha a konténer hibaüzenet nélkül kilép, akkor az állomány importálása sikeresen megtörtént (Magyarország esetében is eltarthat akár 10-15 percig is az import.
 
 2.4 A szerver futtatása.
 
-A kiszolgáló a csempéket az első megjelenítés során rendereli, amely ilyenkor lassabb megjelenítést eredményez. Annak érdekében, hogy a csempék egy újraindítást követően is megmaradjanak, egy önálló köteten kell elhelyezni, az alábbi parancs kiadásával:
+A kiszolgáló a csempéket az első megjelenítés során rendereli, amely ilyenkor lassabb megjelenítést eredményez. Annak érdekében, hogy a csempék egy esetleges újraindítást követően is megmaradjanak, egy önálló köteten kell elhelyezni, az alábbi parancs kiadásával:
 
 docker volume create openstreetmap-rendered-tiles
 
+A későbbiekben az indítás során adjuk meg a csempék mentésének helyét a szervernek.
+
 Ha olyan szerverre telepítjük, ahol már fut egy webkiszolgáló (például az OBM szerver), akkor másik portra kell irányítanunk a konténert.
+
+Az automatikus frissítéseket is az indítás során engedélyezzük.
 
 A fentiek alapján a szervert az alábbi parancs segítségével futassuk:
 
-docker run \
-    -p 83:80 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
-    -v openstreetmap-rendered-tiles:/var/lib/mod_tile \
-    -d overv/openstreetmap-tile-server \
-    run
+docker run -p 83:80 -e UPDATES=enabled -v openstreetmap-data:/var/lib/postgresql/12/main -v openstreetmap-rendered-tiles:/var/lib/mod_tile -d overv/openstreetmap-tile-server run
 
 Így a 83-as portot használja majd kifelé az osm szerverünk, az elérési út tehát az alábbi lesz: myserver:83. Pl. obm.bnpi.hu:83
 
