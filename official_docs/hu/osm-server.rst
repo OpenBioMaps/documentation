@@ -20,7 +20,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 1.2.: A docker munkakönyvtár áthelyezése
 
-Alapértelmezetten a docker a a konténereket és köteteket a /var/lib mappában tárolja, ezért célszerű a minkakönyvtárát megváltoztani, és ezeket áthelyezni.
+Alapértelmezetten a docker a a konténereket és köteteket a /var/lib mappában tárolja, ezért, különösen, ha az adott partíción kevés tárhelyünk van, célszerű a minkakönyvtárát megváltoztani, és ezeket áthelyezni.
 
 Ehhez segítséget nyújthat az alábbi bejegyzés
 
@@ -47,7 +47,7 @@ Ehhez a fenti példa alapján a http://download.geofabrik.de/europe/hungary.poly
 
 A letöltött állományokat importálni kell a szerver PotgreSQL adatbázisába:
 
-docker run -v /home/bnpadmin/hungary-latest.osm.pbf:/data.osm.pbf -v /home/bnpadmin/hungary.poly:/data.poly -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server import
+docker run -v /path/to/hungary-latest.osm.pbf:/data.osm.pbf -v /path/to/hungary.poly:/data.poly -v openstreetmap-data:/var/lib/postgresql/12/main overv/openstreetmap-tile-server import
 
 Ha a konténer hibaüzenet nélkül kilép, akkor az állomány importálása sikeresen megtörtént (Magyarország esetében is eltarthat akár 10-15 percig is az import.
 
@@ -70,6 +70,3 @@ docker run -p 83:80 -e UPDATES=enabled -v openstreetmap-data:/var/lib/postgresql
 Így a 83-as portot használja majd kifelé az osm szerverünk, az elérési út tehát az alábbi lesz: myserver:83. Pl. obm.bnpi.hu:83
 
 A böngészőben a világtérképet látjuk majd, ahonnan a megfelelő területre nagyítva jelenthetjük meg a csempéinket.
-
-
-
