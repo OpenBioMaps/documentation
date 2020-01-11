@@ -51,7 +51,7 @@ docker run -v /path/to/hungary-latest.osm.pbf:/data.osm.pbf -v /path/to/hungary.
 
 Ha a konténer hibaüzenet nélkül kilép, akkor az állomány importálása sikeresen megtörtént (Magyarország esetében is eltarthat akár 10-15 percig is az import.
 
-2.4 A szerver futtatása.
+3. A szerver futtatása.
 
 A kiszolgáló a csempéket az első megjelenítés során rendereli, amely ilyenkor lassabb megjelenítést eredményez. Annak érdekében, hogy a csempék egy esetleges újraindítást követően is megmaradjanak, egy önálló köteten kell elhelyezni, az alábbi parancs kiadásával:
 
