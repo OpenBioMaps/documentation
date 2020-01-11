@@ -92,7 +92,7 @@ box_custom
     
     Calls:
     
-    General description:
+    General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it's not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
     
     Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
     
