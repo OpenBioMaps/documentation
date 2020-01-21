@@ -99,16 +99,61 @@ webes felület, fájl feltöltés, programozott felület
       "selected":["val1"],
     }
     
-    - kapcsolt listák kezelése: az adott mezőben kiválasztunk egy értéket, ami alapján a következő mezőt szűrjük. Tehát ha például kiválasztunk egy adott helyszínt, akkor a faj mezőben csak az adott helyszínhez kapcsolódó fajokat jeleníti meg. "optionsTable" = milyen táblából vegye ki az oszlopot; "valueColumn" = az oszlop amiben keresünk; "labelColumn" = az oszlop látható neve; "preFilterColumn" = az oszlop neve, amit a szűréshez használunk; "preFilterValue" = az oszlopon belül a szűréshez használt érték.
-	{
-    "optionsTable": "",
-    "valueColumn": "",
-    "labelColumn": "",
-    "preFilterColumn": "",
-    "preFilterValue": ""
-	}
+    - kapcsolt listák kezelése: lista létrehozása egy oszlopban (indító oszlop), ami megszűri milyen lista jöhet létre az általunk kiválasztott oszlopban ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
+
+A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. A kód első fele határozza meg, hogy az indító oszlopunk melyik másik oszlop listáját befolyásolja:
+    {
+    "triggerTargetColumn": [
+        "befolyásolt_lista_neve"
+    ],
+   "Function": "select_list",
+    "optionsSchema": "shared",
+    "optionsTable": "allat_csoportok",
+    "valueColumn": "allat_szupercsoport",
+    "labelColumn": "allat_csoport_nev",
+    "labelAsValue": true
+    }
+
+Kód magyarázat:
+	"Function" - mindig "select_list"
+	"optionsSchema" - mindig "shared"
+	"optionsTable" - "háttér_tábla_neve"
+	"valueColumn" - a háttér táblából kiválasztott oszlop, aminek a változóiból létrejön a legördülő lista, abban az oszlopban ahova a kód kerül (indító oszlop)
+	"labelColumn" - a befolyásolt oszlopban hoz létre egy olyan listát, ami függ attól hogy melyik opciót választottuk az indító oszlop listájából
+
+A fent leírt kóddal olyan "lista a listában" szerkezetet hoztunk létre, ami két oszlopot köt össze. Következő lépésként meg kell határozzuk a "befolyásolt oszlopunkban", hogy a szükséges listához honnan kell ki venni az értékeket:
+
+    {
+    "optionsTable": "allat_csoportok",
+    "valueColumn": "allat_csoport_név",
+    "labelColumn": "allat_csoport_név",
+    "filterColumn": "allat_szupercsoport",
+    "Function": "select_list",
+    "optionsSchema": "shared"
+    }
+
+Kód magyarázat (csak az új változókat határozom itt meg):
+	"filterColumn" - meghatározza, hogy melyik oszlop volt az indító oszlop
+
+
+A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni, hanem több oszlopét is. Tehát ha a háttér táblánkban azt is definiáltuk, hogy a kisebb állatcsoportokhoz (állat_csoport_név) mely fajok tartoznak, akár kétszeres de több változó bevonásával akár ötszörös vagy tízszeres kapcsoltsági hálót is létre tudunk hozni. Az indító és a végső oszlop közötti oszlopokhoz a következő kód tartozik:
+
+    {
+    "optionsSchema": "shared",
+    "optionsTable": "allat_csoportok",
+    "filterColumn": "allat_szupercsoport",
+    "Function": "select_list",
+    "valueColumn": "allat_csoport_nev",
+    "triggerTargetColumn": [
+        "species"
+    ],
+    "labelColumn": "allat_csoport_nev"
+    }
 
     
+A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterColumn" mindig előző oszlopra mutasson. A "valueColumn" és a "labelColumn" mindig az aktuális oszlopra mutasson.
+
+
     - alap értékek:	A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
 
         Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.
