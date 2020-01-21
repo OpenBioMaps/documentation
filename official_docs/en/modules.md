@@ -1,32 +1,32 @@
 additional_columns
 ------------------
     Additional columns
-    
+
     Calls:
-    
+
     Functions: return_columns()
-    
+
     General description:
         use it together with the join_tables module
         return with an array:
         co [0] columns array
         c  [1] column name assoc array
-    
+
     Parameters: New line separated list of column names
 
 allowed_columns
 ---------------
     Columns visibility for users in different access levels
     It depends on the existence of _rules table
-    
-    Calls: 
-       
+
+    Calls:
+
     Functions:
        return_columns(), return_gcolumns()
-    
+
     General description:
-    
-    Parameters: 
+
+    Parameters:
        for_sensitive_data: comma separated list of column names
        for_no-geom_data: comma separated list of column names
        for_general: comma separated list of column names
@@ -34,11 +34,11 @@ allowed_columns
 bold_yellow
 -----------
     Bold yellow text for some columns in the results lists.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
       New line separated list of column names
 
@@ -48,13 +48,13 @@ box_load_selection
 
     These functions returns with a html table which displayed beside the map window
     These are optional boxes. Setting are in the biomaps db projects' table.
-    
+
     Load prevously saved spatial queries' polygons
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
 
         available spatial relationships (optional, if no parameter is given, all relationships are available)
@@ -62,69 +62,69 @@ box_load_selection
             intersects
             crosses
             disjoint
-    
+
 box_load_coord
 --------------
     Show given coordinates position on the map
-    
+
     Calls: print_box, limits, ajax, print_js
-    
+
     General description:
-    
+
     Parameters: example:
-    
+
     wgs84:4326
     eov=23700
-    
+
 box_load_last_data
 ------------------
     Query last data or last uploads.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters: Number of records in last uploads, default is 10
-    
+
 box_custom
 ----------
     Custom box - only user defined version exists.
-    
+
     Calls:
-    
-    General description:
-    
+
+    General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it's not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
+
     Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
-    
+
     Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
-    
+
     This Class should include at least print_box() and print_js() functions.
 
 photos
 ------
     Photo or other attachment box.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
-    
+
 read_table
 ----------
     Present a table or an sql view as a rollable html table. This table is available with a unique link.
-    
+
     Calls:
-    
+
     General description:
         Add these lines to .htaccess file where  .... should replaced with your project table name
         # read table module
         RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
-    
+
     Parameters: schema.table
         or
         schema.table:default-order-column
-    
+
 results_summary
 ---------------
     Summary of results.
@@ -132,12 +132,12 @@ results_summary
 results_table
 -------------
     Create a full html table of the results.
-    
+
     Calls:
-    
+
     General description:
         Not used!!
-    
+
     Parameters:
 
 results_asList
@@ -145,93 +145,93 @@ results_asList
     Create foldable slides like results.
 
     Calls: results_builder()
-    
+
     General description:
-    
+
     Parameters:
 
 results_asGPX
 -------------
     Save results as a GPX file.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
-    
+
 results_asCSV
 -------------
     Save results as a csv file.
-    
+
     Hívások:
-    
+
     Általános leírás:
-    
+
     Paraméterek:
 
 results_asJSON
 --------------
     Save results as a JSON file.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
 
 results_asSHP
 -------------
     Save results as a shp file.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
-    
+
 results_buttons
 ---------------
     Save and other button above results section, under map.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
-    
+
 results_asStable
 ----------------
     Compact results table Stable.
-    
+
     Calls:
-    
+
     General description:
-    
+
     Parameters:
 
 specieslist
 -----------
     Specieslist summary above results.
-    
+
     Calls:
-    
+
     General description:
 
     Parameters:
-    
+
 text_filter
 -----------
     Taxon and other text filters.
 
     Calls:
-    
+
     General description:
         create boxes
         assemble WHERE part of query string
-    
+
     Parameters: complex example:
-    
+
     magyar
     obm_taxon
     megj::colour_rings
@@ -248,57 +248,57 @@ text_filter2
     Advanced taxon and other text filters.
 
     Calls:
-    
+
     General description:
         create boxes
         assemble WHERE part of query string
-    
+
     Parameters: example:
-   
-    
+
+
 transform_data
 --------------
     Transform data
 
     Calls:
-    
+
     General description:
         In result list it transform data as need
         E.g. geometry to wkt
-    
+
     Parameters: example:
-    
+
     obm_geometry:geom
     obm_uploading_id:uplid
     tema:mmm
-    
+
 extra_params
 ------------
     Extra input paramaters for forms.
 
     Calls:
-    
+
     General description:
-    
+
     Parameters:
-    
+
 join_tables
 -----------
     Join table to use additional columns
-    
+
     Calls:
-    
+
     Functions: return_joins()
-    
+
     General description:
         use it together with the additional_columns module
         RETURN: join command and column list and visible names list
         [0] column name , separated list
         [1] prefixed column names array: all column which defined in the database columns
         [2] visible names array of array by JOIN
-    
+
     Parameters: example:
-    
+
     LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&dinpi_mirror.objectid>1:1
 
 shared_geom
@@ -317,70 +317,70 @@ Following the shared geometries link you can rename the geometries and modify th
 snap_to_grid
 ------------
     Project specified sanp to grid points on the map
-    
+
     Calls:
-    
+
     Functions: geom_column(), geom_column_join(), rules_join()
-    
+
     General description:
         not recommended to use!
-    
+
     Parameters:
 
 restricted_data
 ---------------
     Rule based data restriction
-    
+
     alls
-    
+
     Functions: rule_data()
-    
+
     General description:
-    
+
     Parameters:
-    
+
 form_choose
 -----------
     List of available forms.
 
     Calls:
-    
+
     Functions: form_list()
-    
+
     General description:
-    
+
     Parameters:
-    
+
 identify_point
 --------------
     A tool for identify one or more data elements on the map
-    
+
     Calls:
-    
+
     Functions: return_data(), print_button()
-    
+
     General description:
-    
+
     Parameters:
         column names
 
-        json object: shows a hyperlink. 
-       
+        json object: shows a hyperlink.
+
             elements:
-                
+
                 type - obligatory, egyelőre csak a "link" érték működik
-                
+
                 href - obligatory - hivatkozás címe
-                
+
                 label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
-                
+
                 class - optional - a linkhez rendelt osztályok
-                
+
                 id - optional - a linkhez rendelt azonosító
-                
+
                 target - optional - alapértelmezett "_blank"
-                
-                params - optional - a href elem paraméterei 
+
+                params - optional - a href elem paraméterei
 
             A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
 
@@ -398,47 +398,47 @@ notify
     Creates custom postgres based notify events.
 
     Calls:
-    
+
     Functions: listen(), unlisten(), notify(), email()
-    
+
     General description:
-    
+
     Parameters:
-  
+
 custom_data_check
 -----------------
     Custom data checks of upload data.
-    
+
     Calls:
-    
+
     Functions: list(), check()
-    
+
     General description:
-    
+
     Parameters:
-  
+
 custom_filetype
 ---------------
     Custom file preparation. E.g. observado style CSV
-    
+
     Calls:
-    
+
     Functions: option_list(), custom_read()
-    
+
     General description:
-    
+
     Parameters:
-  
+
 create_pg_user
 --------------
 If this module is enabled "Create postgres user" option will appear on your profile page.
- 
+
    Create a restricted access postgres user
-    
+
     Calls:
-    
+
     Functions: create_pg_user(), show_button()
-        
+
     General description:
 
         By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
@@ -446,25 +446,25 @@ If this module is enabled "Create postgres user" option will appear on your prof
         It can only connect to a database from one client program at a time.
         After one year, Its access expires automatically.
         Users can renew their access at any time.
-    
+
     Parameters:
-    
+
 grid_view
 ---------
     View data on selected polygon grid
-    
-    Calls: 
-    
+
+    Calls:
+
     Functions: print_box(), default_grid_geom(), get_grid_layer()
-    
+
     General description:
-    
+
     Parameters: layer_options
-    
+
     Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
-    
+
     Example trigger function:
-    
+
     Trigger on nnn_qgrids:
 ```sql    
     CREATE TRIGGER self_update BEFORE INSERT OR UPDATE ON dinpi_qgrids FOR EACH ROW EXECUTE PROCEDURE update_qgrids_geometries()
@@ -519,29 +519,62 @@ BEGIN
 
 END;
 ```
-    
+
 massive_edit
 ------------
 
    Allows you to edit the selected data massively on the file upload interface
-   
+
    Calls:
-    
+
    Functions:
-    
+
    General description:
-    
+
    Parameters:
 
 download_restricted
 -------------------
 
    Admin-controlled download authorization
-       
+
    Calls:
-    
+
    Functions:
-    
+
    General description:
-    
+
+   Parameters:
+
+job_manager
+-----------
+
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
+
+list_manager
+------------
+
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
+
+move_project
+------------
+
+   Calls:
+
+   Functions:
+
+   General description:
+
    Parameters:
