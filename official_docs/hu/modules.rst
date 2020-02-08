@@ -1,186 +1,21 @@
 Modulok
 *******
 
-specieslist
-    specieslist summary above results
+Ezen az oldalon lehet bekapcsolni azokat a plusz funkciókat, amik nincsenek automatikusan hozzárendelve az OpenBioMaps alap keretrendszeréhez.
 
-summary
-    results summary
+A modul oldalon már látható egy lista, amiről szabadon eldönthetjük, hogy bekapcsoljuk-e vagy sem. Ezt úgy lehet megtenni, hogy az "engedélyezett" fejlécű oszlopban választunk az "igen" vagy "nem" opcióból.
 
-results_table
-    create a full html table of the results
-    
-    Hívások:
-    
-    Általános leírás:
-        Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
-        Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.
-    
-    Paraméterek:
 
-results_asList
-    Create foldable slides like results
-    Hívások: results_builder()
-    
-    Általános leírás:
-    
-    Paraméterek:
 
-results_asGPX
-    Eredmények GPX formátumba
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-results_asCSV
-    Results as csv
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-
-results_asJSON
-    Results as JSON
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-
-results_asSHP
-    Results as csv
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-nuttons
-    save and other button above results section - under map
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-
-photo_div
-    photo or file uploader toggle div
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-box_load_selection
-    Map Filter Functions
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
-    
-    Load prevously saved spatial queries' polygons
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-box_load_coord
-    Show given coordinates position on the map
-    
-    Hívások: print_box, limits, ajax, print_js
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-box_load_last_data
-    Query last data
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-box_custom
-    Custom box - only user defined version exists
-    Egyénileg létrehozott modulok betöltését teszi lehetővé.
-    Hívások:
-    
-    Általános leírás: Az egyénileg létrehozott modult a projekt könyvtárban az includes/modules/private mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
-    
-    Paraméterek: A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
-    Pl. hrsz_query, ahol a hrsz_query_Class egy osztály a hrsz_query.php fájlban. Az osztályt legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
-    
-text_filter
-    Taxon and other text filters
-    create boxes
-    assemble WHERE part of query string
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-transform_data
-    Transform data
-    In result list it can transform data as need
-    E.g. geometry to wkt
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-results_stable
-    compact results table Stable
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-allowed_columns
-    columns visible for users in different access level
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-bold_yellow
-    vastag betűvel sárgán írt oszlop nevek az eredmény listákban
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-      oszlop nevek
-
-extra_form_input_parameters
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
 additional_columns
-    additional columns
+------------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:    
+
+Parameters: New line separated list of column names
+
     use it together with the join_tables module
     return with an array:
     co [0] columns array
@@ -193,87 +28,459 @@ additional_columns
     Általános leírás:
     
     Paraméterek:
-    
-join_tables
-    join table to use additional columns
-    use it together with the additional_columns module
-    RETURN: join command and column list and visible names list
-    [0] column name , separated list
-    [1] prefixed column names array: all column which defined in the database columns
-    [2] visible names array of array by JOIN
+
+allowed_columns
+---------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Columns visibility for users in different access levels
+    It depends on the existence of _rules table
+
+    Calls:
+
+    Functions:
+       return_columns(), return_gcolumns()
+
+    General description:
+
+    Parameters:
+       for_sensitive_data: comma separated list of column names
+       for_no-geom_data: comma separated list of column names
+       for_general: comma separated list of column names
+
+bold_yellow
+-----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    vastag betűvel sárgán írt oszlop nevek az eredmény listákban
     
     Hívások:
     
-    Függvények: return_joins()
+    Általános leírás:
+    
+    Paraméterek:
+      oszlop nevek
+
+box_load_selection
+------------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Map filter functions
+
+    These functions returns with a html table which displayed beside the map window
+    These are optional boxes. Setting are in the biomaps db projects' table.
+
+    Load prevously saved spatial queries' polygons
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+        available spatial relationships (optional, if no parameter is given, all relationships are available)
+            contains
+            intersects
+            crosses
+            disjoint
+
+box_load_coord
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Show given coordinates position on the map
+
+    Hívások: print_box, limits, ajax, print_js
     
     Általános leírás:
     
     Paraméterek:
 
-snap_to_grid
-    project specified sanp to grid points on the map
-    not recommended to use!
+    Map Filter Functions
+    These functions returns with a html table which displayed beside the map window
+    These are optional boxes. Setting are in the biomaps db projects' table.
+    
+    Load prevously saved spatial queries' polygons
+    
+    Paraméterek:
+    wgs84:4326
+    eov=23700
+
+
+box_load_last_data
+------------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Query last data or last uploads.
+
+    Calls:
+
+    General description:
+
+    Parameters: Number of records in last uploads, default is 10
+
+box_custom
+----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Custom box - only user defined version exists.
+
+    Calls:
+
+    General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it's not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
+
+    Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
+
+    Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
+
+    This Class should include at least print_box() and print_js() functions.
+
+    Custom box - only user defined version exists
+    Egyénileg létrehozott modulok betöltését teszi lehetővé.
+    Hívások:
+    
+    Általános leírás: Az egyénileg létrehozott modult a projekt könyvtárban az includes/modules/private mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
+    
+    Paraméterek: A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
+    Pl. hrsz_query, ahol a hrsz_query_Class egy osztály a hrsz_query.php fájlban. Az osztályt legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
+
+
+photos
+------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Photo or other attachment box.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+read_table
+----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Present a table or an sql view as a rollable html table. This table is available with a unique link.
+
+    Calls:
+
+    General description:
+        Add these lines to .htaccess file where  .... should replaced with your project table name
+        # read table module
+        RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
+
+    Parameters: schema.table
+        or
+        schema.table:default-order-column
+
+results_summary
+---------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Summary of results.
+
+results_table
+-------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    create a full html table of the results
     
     Hívások:
     
-    Függvények: geom_column(), geom_column_join(), rules_join()
-    
     Általános leírás:
+        Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
+        Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.
     
     Paraméterek:
-    
+
+    Create a full html table of the results.
+
+    Calls:
+
+    General description:
+        Not used!!
+
+    Parameters:
+
+results_asList
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Create foldable slides like results.
+
+    Calls: results_builder()
+
+    General description:
+
+    Parameters:
+
+results_asGPX
+-------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Save results as a GPX file.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_asCSV
+-------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Save results as a csv file.
+
+    Hívások:
+
+    Általános leírás:
+
+    Paraméterek:
+
+results_asJSON
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Save results as a JSON file.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_asSHP
+-------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Save results as a shp file.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_buttons
+---------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Save and other button above results section, under map.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_asStable
+----------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Compact results table Stable.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_specieslist
+-----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Specieslist summary above results.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+text_filter
+-----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Taxon and other text filters.
+
+    Calls:
+
+    General description:
+        create boxes
+        assemble WHERE part of query string
+
+    Parameters: complex example:
+
+    magyar
+    obm_taxon
+    megj::colour_rings
+    obm_datum
+    obm_uploading_date
+    obm_uploader_user
+    d.szamossag:nested(d.egyedszam):autocomplete
+    d.egyedszam:values():
+    obm_files_id
+    faj::autocomplete
+
+text_filter2
+-----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Advanced taxon and other text filters.
+
+    Calls:
+
+    General description:
+        create boxes
+        assemble WHERE part of query string
+
+    Parameters: example:
+
+
+transform_data
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Transform data
+
+    Calls:
+
+    General description:
+        In result list it transform data as need
+        E.g. geometry to wkt
+
+    Parameters: example:
+
+    obm_geometry:geom
+    obm_uploading_id:uplid
+    tema:mmm
+
+extra_params
+------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Extra input paramaters for forms.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+box_load_selection
+-----------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+
+If this module is enabled "Manage custom geometries" option will appear on your profile page.
+
+It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
+
+You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
+
+Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
+
+Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
 restricted_data
+---------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
     Rule based data restriction
-    
-    Hívások:
-    
-    Függvények: rule_data()
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-form_list
-    
-    Hívások:
-    
-    Függvények: form_list()
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
+
+    alls
+
+    Functions: rule_data()
+
+    General description:
+
+    Parameters:
+
+
 identify_point
-    A térképi lapon megjelenő adat információ lekérdező eszköz
-    
-    Hívások:
-    
-    Függvények: return_data(), print_button()
-    
-    Általános leírás:
-        A modul engedélyezésével egy "i" ikon jelenik meg a térkép alatt funkciók mezőben. Ezzel az eszközzel egy adat pontra kattintava egy buborék ablakot jelenik meg a klikkelés közelében lévő adatokkal.
-    
-    Paraméterek:
-        oszlop nevek amelyeket meg kívánunk jeleníteni az infó ablakban
-        
-        json objektum: hiperlink megjelenítésére alkalmas. 
-       
-            elemei:
-                
-                type - kötelező, egyelőre csak a "link" érték működik
-                
-                href - kötelező - hivatkozás címe
-                
-                label - kötelező - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
-                
-                class - opcionális - a linkhez rendelt osztályok
-                
-                id - opcionális - a linkhez rendelt azonosító
-                
-                target - opcionális - alapértelmezett "_blank"
-                
-                params - opcionális - a href elem paraméterei 
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    A tool for identify one or more data elements on the map
+
+    Calls:
+
+    Functions: return_data(), print_button()
+
+    General description:
+
+    Parameters:
+        column names
+
+        json object: shows a hyperlink.
+
+            elements:
+
+                type - obligatory, egyelőre csak a "link" érték működik
+
+                href - obligatory - hivatkozás címe
+
+                label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
+
+                class - optional - a linkhez rendelt osztályok
+
+                id - optional - a linkhez rendelt azonosító
+
+                target - optional - alapértelmezett "_blank"
+
+                params - optional - a href elem paraméterei
 
             A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
 
@@ -286,39 +493,78 @@ identify_point
 
             A json-t egy sorosra kell tömöríteni!
 
-custom_notify
-    
-    Hívások:
-    
-    Függvények: listen(), unlisten(), notify(), email()
-    
-    Általános leírás:
-    
-    Paraméterek:
-  
+notify
+------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Creates custom postgres based notify events.
+
+    Calls:
+
+    Functions: listen(), unlisten(), notify(), email()
+
+    General description:
+
+    Parameters:
+
 custom_data_check
-    Custom data checks of upload data
-    
-    Hívások:
-    
-    Függvények: list(), check()
-    
-    Általános leírás:
-    
-    Paraméterek:
-  
+-----------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    Custom data checks of upload data.
+
+    Calls:
+
+    Functions: list(), check()
+
+    General description:
+
+    Parameters:
+
 custom_filetype
+---------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
     Custom file preparation. E.g. observado style CSV
-    
-    Hívások:
-    
-    Függvények: option_list(), custom_read()
-    
-    Általános leírás:
-    
-    Paraméterek:
-  
+
+    Calls:
+
+    Functions: option_list(), custom_read()
+
+    General description:
+
+    Parameters:
+
 create_pg_user
+--------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+If this module is enabled "Create postgres user" option will appear on your profile page.
+
+   Create a restricted access postgres user
+
+    Calls:
+
+    Functions: create_pg_user(), show_button()
+
+    General description:
+
+        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
+        It can read all the data tables assigned to the project.
+        It can only connect to a database from one client program at a time.
+        After one year, Its access expires automatically.
+        Users can renew their access at any time.
+
+    Parameters:
+
     Behatárolt hozzáférésű POSTGRES felhasználó létrehozása
     
     Hívások:
@@ -335,24 +581,137 @@ create_pg_user
     
     Paraméterek:
 
-custom_admin_pages:
-    ...
-    
-    Hívások:
-    
-    Függvények: nincsenek föggvények.
-    
-    Általános leírás:
-    
-    Paraméterek:
-    
-grid_view:
-    Custom file preparation. E.g. observado style CSV
-    
-    Hívások: 
-    
-    Függvények: print_box()
-    
-    Általános leírás:
-    
-    Paraméterek:
+grid_view
+---------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+    View data on selected polygon grid
+
+    Calls:
+
+    Functions: print_box(), default_grid_geom(), get_grid_layer()
+
+    General description:
+
+    Parameters: layer_options
+
+    Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
+
+    Example trigger function:
+
+    Trigger on nnn_qgrids:
+```sql    
+    CREATE TRIGGER self_update BEFORE INSERT OR UPDATE ON dinpi_qgrids FOR EACH ROW EXECUTE PROCEDURE update_qgrids_geometries()
+```
+    Trigger on nnn table:
+```sql
+    CREATE TRIGGER update_qgrids AFTER INSERT OR DELETE OR UPDATE ON dinpi FOR EACH ROW EXECUTE PROCEDURE grid_geometries()
+```
+Function grid_geometries()
+```sql
+BEGIN
+IF tg_op = 'INSERT' THEN
+
+    EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
+
+RETURN NEW;
+END IF;
+
+IF tg_op = 'UPDATE' THEN
+    -- create original at first
+    --EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
+    EXECUTE format('UPDATE %I_qgrids SET "original"=%L::geometry WHERE row_id=%L', TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
+
+RETURN NEW;
+END IF;
+
+IF tg_op = 'DELETE' THEN
+
+    EXECUTE format('DELETE FROM %I_qgrids WHERE row_id=%L',TG_TABLE_NAME,OLD.obm_id);
+
+RETURN OLD;
+END IF;
+
+END;
+```
+
+Function update_qgrids_geometries()
+```sql
+BEGIN
+-- Available shared grids tables: kef_5, kef_10, utm_2.5, utm_10, etrs
+-- Required output grids e.g.: kef_10x10, utm_10x10, etrs, snap
+
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_5x5"     WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_5";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_10";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_2.5x2.5" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_2.5";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_10";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_100x100" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_100";
+    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."etrs"        WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."etrs";
+    EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,0.13,0.09)',NEW.original) INTO NEW."snap";
+
+    RETURN NEW;
+
+END;
+```
+
+massive_edit
+------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+   Allows you to edit the selected data massively on the file upload interface
+
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
+
+download_restricted
+-------------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+   Admin-controlled download authorization
+
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
+
+list_manager
+------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
+
+move_project
+------------
+Általános leírás:
+Paraméterezés:
+Függvények:
+Hívások:
+   Calls:
+
+   Functions:
+
+   General description:
+
+   Parameters:
