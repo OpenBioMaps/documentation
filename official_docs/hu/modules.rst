@@ -1,17 +1,40 @@
 Modulok
 *******
 
-Ezen az oldalon lehet bekapcsolni azokat a plusz funkciókat, amik nincsenek automatikusan hozzárendelve az OpenBioMaps alap keretrendszeréhez.
+Általános modul kezelés:  
+========================
 
-A modul oldalon már látható egy lista, amiről szabadon eldönthetjük, hogy bekapcsoljuk-e vagy sem. Ezt úgy lehet megtenni, hogy az "engedélyezett" fejlécű oszlopban választunk az "igen" vagy "nem" opcióból.
+A modul oldalon lehet bekapcsolni azokat a plusz funkciókat, amik nincsenek automatikusan hozzárendelve az OpenBioMaps alap keretrendszeréhez.
 
+Modul hozzáadása a saját listánkhoz:
+------------------------------------
+A modul oldal felkínál nekünk előre behozott modulokat ezekről dönthetünk, hogy bekapcsoljuk vagy töröljük őket a saját listánkból, lásd lentebb. Ezenfelül a saját listánkhoz hozzáadhatunk további modulokat is, ehhez a modul lap aljára kell görgetni. A világos kék sáv első cellájában duplán kattintva felugrik egy legördülő lista a jelneleg aktív modulokkal. Rákattintunk a nekünk szükséges modul nevére, majd a *"hozzáad"* gombra kattintva már hozzá is adtuk a modult a saját listánkhoz.
 
+Modul hozzáférés beállítások:
+-----------------------------
+Az egyes modulokat akár többször is hozzáadhatjuk a listánkhoz. Ez lehetővé teszi számunkra, hogy az egyes modulokhoz többféle hozzáférést adjunk meg. Ez azoknál a moduloknál lényeges, ahol az egyes felhasználóknak, vagy csoportoknak (ide kell egy link a csoport létrehozás eléréséhez) különböző hozzáférést szeretnénk adni, például: allowed_columns modul. Egy másik példa, hogy ha több adattáblánk van, akkor minden táblára külön megadhatjuk, hogy a lekérdezésnél melyik oszlopok értékei alapján tudjunk szűrni, például: text_filter modul.  
+A **"Hozzáférés"** oszlopban kiválaszthatjuk, hogy publikusak-e a beállításaink *(everybody)*, vagy csak az adatbázisunkba bejelentkezett felhasználók *(logined users)* használhatják az adott opciót. A **"Csoport hozzáférés"** oszlopban tovább finomíthatjuk a hozzáférési opciókat, azáltal hogy kiválasztjuk az előre definiált csoportjainkat, vagy akár egyes személyeket is hozzárendelhetünk az adott beállításhoz.
+
+Modul törlés a saját listánkból:
+--------------------------------
+A nem használt modulokat ki tudjuk törölni a saját listánkból úgy, hogy a **"Module name"** oszlopban kitöröljük az adatbázis nevét és rákattintunk a **"Műveletek"** oszlopban található *"módosít"* gombra.
+
+Modul ki/be kapcsolás:
+----------------------
+Miután kialakítottuk a saját modul listánkat, az egyes modulokat ki és be tudjuk kapcsolni. Ezt úgy lehet megtenni, hogy az **"Engedélyezett"** fejlécű oszlopban választunk az *"igen"* vagy *"nem"* opcióból. 
+
+Modulok személyre szabása:
+--------------------------
+A **"Function"** oszlopban kiválaszthatjuk, hogy a modul gyári beállításait szeretnénk használni *"default"* opció választásával, vagy ha egyéni beállításokat szeretnénk használni választhatjuk a *"private"* opciót is. Az utóbbi esetben lehetőség van az egyes modulok forráskódjának a letöltésére, amit az adatbázisunk igényei szerint kiegészíthetünk még további funkciókkal. A modul forráskódját a **"Modul cseréje"** oszlopból tudjuk letölteni az *"export"* gombra kattintva. A módosított modult *"Fájl kiválasztása"* opción keresztül tudjuk visszatölteni és aktiválni az adatbázisunkhoz.
+
+Modul leírások:
+===============
 
 additional_columns
 ------------------
 Általános leírás:
 Paraméterezés:
-Függvények:
+Függvények: return_columns()
 Hívások:    
 
 Parameters: New line separated list of column names
@@ -20,14 +43,6 @@ Parameters: New line separated list of column names
     return with an array:
     co [0] columns array
     c  [1] column name assoc array
-    
-    Hívások:
-    
-    Függvények: return_columns()
-    
-    Általános leírás:
-    
-    Paraméterek:
 
 allowed_columns
 ---------------
