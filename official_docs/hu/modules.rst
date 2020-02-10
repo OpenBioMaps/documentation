@@ -27,6 +27,11 @@ Modulok személyre szabása:
 --------------------------
 A **"Function"** oszlopban kiválaszthatjuk, hogy a modul gyári beállításait szeretnénk használni *"default"* opció választásával, vagy ha egyéni beállításokat szeretnénk használni választhatjuk a *"private"* opciót is. Az utóbbi esetben lehetőség van az egyes modulok forráskódjának a letöltésére, amit az adatbázisunk igényei szerint kiegészíthetünk még további funkciókkal. A modul forráskódját a **"Modul cseréje"** oszlopból tudjuk letölteni az *"export"* gombra kattintva. A módosított modult *"Fájl kiválasztása"* opción keresztül tudjuk visszatölteni és aktiválni az adatbázisunkhoz.
 
+Modulok paraméterezése:
+-----------------------
+Be tudjuk állítani, hogy a különböző modulok milyen feltételek mellett működjenek, vagy akár azt is, hogy melyik oszlopokra legyen érvényes. Ezt a **"Parameters"** oszlopon keresztül tudjuk megtenni. A modulok paraméterezését modulonkra lebontva megtalálhatod alább a *"Modul leírások"* részben.
+
+
 Modul leírások:
 ===============
 
@@ -46,64 +51,45 @@ Parameters: New line separated list of column names
 
 allowed_columns
 ---------------
-Általános leírás:
+Általános leírás: 
+	* Itt lehet beállítani, hogy melyik oszlop legyen látható a különböző hozzáférési szinteken, akkor lehet használni ha az adattáblához van *"rules"* tábla is rendelve.
 Paraméterezés:
+	* for_sensitive_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni. Nem mutatja az adathoz tartozó geometriát.
+	* for_no-geom_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
+	* for_general: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
+
 Függvények:
+	* return_columns() 
+	* return_gcolumns()
 Hívások:
-    Columns visibility for users in different access levels
-    It depends on the existence of _rules table
-
-    Calls:
-
-    Functions:
-       return_columns(), return_gcolumns()
-
-    General description:
-
-    Parameters:
-       for_sensitive_data: comma separated list of column names
-       for_no-geom_data: comma separated list of column names
-       for_general: comma separated list of column names
 
 bold_yellow
 -----------
-Általános leírás:
+Általános leírás: 
+	* Vastag betűvel sárgán írt oszlop nevek az eredmény listákban.
+	* Ezzel a modullal határozható meg az is, hogy az aplikációban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
 Paraméterezés:
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
+										megfigyelő
+										dátum
 Függvények:
 Hívások:
-    vastag betűvel sárgán írt oszlop nevek az eredmény listákban
-    
-    Hívások:
-    
-    Általános leírás:
-    
-    Paraméterek:
-      oszlop nevek
 
 box_load_selection
 ------------------
 Általános leírás:
+	* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
+	* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy ráklikkelünk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez, csoportokhoz rendeljük.
+	* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
+	* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a xxx, aminek a legördülő menüjében megtalálhatóak az előre deifiniált koordinátáink. 
 Paraméterezés:
+	* Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
+		* contains -
+		* intersects -
+		* crosses -
+		* disjoint -
 Függvények:
 Hívások:
-    Map filter functions
-
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
-
-    Load prevously saved spatial queries' polygons
-
-    Calls:
-
-    General description:
-
-    Parameters:
-
-        available spatial relationships (optional, if no parameter is given, all relationships are available)
-            contains
-            intersects
-            crosses
-            disjoint
 
 box_load_coord
 --------------
