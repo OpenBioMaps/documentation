@@ -1,6 +1,9 @@
+Server configuration
+********************
+
 The system settings for OpenBioMaps are located in
 
-/etc/openbiomaps/system_vars.php.inc
+`/etc/openbiomaps/system_vars.php.inc`
 
 
 define("OB_DOMAIN",".../biomaps");
