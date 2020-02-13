@@ -81,7 +81,8 @@ box_load_selection
 	* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
 	* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy ráklikkelünk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez, csoportokhoz rendeljük.
 	* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
-	* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a xxx, aminek a legördülő menüjében megtalálhatóak az előre deifiniált koordinátáink. 
+	* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre deifiniált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
+	* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvhetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattinta poligonként, akár egy nagyobb területet is körbe jelölhetünk.
 Paraméterezés:
 	* Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
 		* contains -
@@ -94,27 +95,14 @@ Hívások:
 box_load_coord
 --------------
 Általános leírás:
+	* 
+	* 
 Paraméterezés:
+	* Különböző koordináta rendszerek vetületeit adhatjuk itt meg, pl.:
+				* wgs84:4326
+				* eov=23700
 Függvények:
-Hívások:
-    Show given coordinates position on the map
-
-    Hívások: print_box, limits, ajax, print_js
-    
-    Általános leírás:
-    
-    Paraméterek:
-
-    Map Filter Functions
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
-    
-    Load prevously saved spatial queries' polygons
-    
-    Paraméterek:
-    wgs84:4326
-    eov=23700
-
+Hívások: print_box, limits, ajax, print_js
 
 box_load_last_data
 ------------------
