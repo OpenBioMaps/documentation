@@ -128,16 +128,11 @@ Hívások:
 photos
 ------
 Általános leírás:
+	* Lehetővé teszi a fájl feltöltés funkciót, azáltal hogy létrehozza a **obm_files_id** oszloptípust, ami az OpenBioMaps saját oszloptípusa.
+	* Bekapcsolás utáni elérési útvonal: Projekt adminisztráció -> Adatbázis oszlopok. Hozzáadjuk az adattáblánkhoz az **obm_files_id** oszlopot, majd ennek az oszlopnak az *OpenBioMaps* típusát *"csatolmánynak"* állítjuk a legördülő menüből.
 Paraméterezés:
 Függvények:
 Hívások:
-    Photo or other attachment box.
-
-    Calls:
-
-    General description:
-
-    Parameters:
 
 read_table
 ----------
