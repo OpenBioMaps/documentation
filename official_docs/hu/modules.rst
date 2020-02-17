@@ -488,43 +488,25 @@ Hívások:
 download_restricted
 -------------------
 Általános leírás:
+	* A lekérdezett adatok letöltése az adatbázis adminok jóváhagyásával lehetséges.
 Paraméterezés:
 Függvények:
 Hívások:
-   Admin-controlled download authorization
-
-   Calls:
-
-   Functions:
-
-   General description:
-
-   Parameters:
 
 list_manager
 ------------
 Általános leírás:
+	* Az adatbázis oszlopoknál bekapcsol egy plusz funkciót, ami meghatározza a listát. ?
 Paraméterezés:
 Függvények:
 Hívások:
-   Calls:
 
-   Functions:
-
-   General description:
-
-   Parameters:
 
 move_project
 ------------
 Általános leírás:
+	* A projekt költöztetése egyik szerverről a másikra.
 Paraméterezés:
 Függvények:
 Hívások:
-   Calls:
 
-   Functions:
-
-   General description:
-
-   Parameters:
