@@ -294,26 +294,17 @@ Paraméterezés:
 Függvények:
 Hívások:
 
-
 transform_data
 --------------
 Általános leírás:
+	* Lekérdezésnél átalakítja a kimeneti adatot pl.: geometria -> wkt
 Paraméterezés:
+	* Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:
+    								obm_geometry:geom
+    								obm_uploading_id:uplid
+    								tema:mmm
 Függvények:
 Hívások:
-    Transform data
-
-    Calls:
-
-    General description:
-        In result list it transform data as need
-        E.g. geometry to wkt
-
-    Parameters: example:
-
-    obm_geometry:geom
-    obm_uploading_id:uplid
-    tema:mmm
 
 extra_params
 ------------
@@ -329,22 +320,6 @@ Hívások:
 
     Parameters:
 
-box_load_selection
------------
-Általános leírás:
-Paraméterezés:
-Függvények:
-Hívások:
-
-If this module is enabled "Manage custom geometries" option will appear on your profile page.
-
-It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
-
-You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
-
-Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
-
-Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
 restricted_data
 ---------------
@@ -366,136 +341,64 @@ Hívások:
 identify_point
 --------------
 Általános leírás:
+	* Egy vagy több pont azonosítása a térképen.
+	* Egy kis buborékban láthatóvá tesz az adott adat pontról néhány információt, amit előzőleg már beállítottunk.
 Paraméterezés:
+	* Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:	faj
+									dátum
 Függvények:
+	* return_data()
+	* print_button()
 Hívások:
-    A tool for identify one or more data elements on the map
 
-    Calls:
-
-    Functions: return_data(), print_button()
-
-    General description:
-
-    Parameters:
-        column names
-
-        json object: shows a hyperlink.
-
-            elements:
-
-                type - obligatory, egyelőre csak a "link" érték működik
-
-                href - obligatory - hivatkozás címe
-
-                label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
-
-                class - optional - a linkhez rendelt osztályok
-
-                id - optional - a linkhez rendelt azonosító
-
-                target - optional - alapértelmezett "_blank"
-
-                params - optional - a href elem paraméterei
-
-            A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
-
-            Példa:
-            { "type": "link", "href": "//example.com?nest_id=%1%&species=%2%", "label": "str_add_data", "class": "pure-button button-href", "params": ["obm_id","species"] }
-
-            A fenti példa a következő hiperlinket fogja generálni:
-
-            <a href="//example.com?nest_id=2898&species=Brachyramphus perdix" target="_blank" id="" class="pure-button button-href">Adat hozzáadása</a>
-
-            A json-t egy sorosra kell tömöríteni!
-
-notify
-------
+custom-notify
+-------------
 Általános leírás:
+	* (Creates custom postgres based notify events.)???
 Paraméterezés:
 Függvények:
+	* listen()
+	* unlisten()
+	* notify()
+	* email()
 Hívások:
-    Creates custom postgres based notify events.
-
-    Calls:
-
-    Functions: listen(), unlisten(), notify(), email()
-
-    General description:
-
-    Parameters:
 
 custom_data_check
 -----------------
 Általános leírás:
+	* (Custom data checks of upload data.)?
 Paraméterezés:
 Függvények:
+	* list()
+	* check()
 Hívások:
-    Custom data checks of upload data.
-
-    Calls:
-
-    Functions: list(), check()
-
-    General description:
-
-    Parameters:
 
 custom_filetype
 ---------------
 Általános leírás:
+	* Adat fájlok átalakítása, más rendszerek formátumára pl.: observado típusú .CSV
 Paraméterezés:
 Függvények:
-Hívások:
-    Custom file preparation. E.g. observado style CSV
-
-    Calls:
-
-    Functions: option_list(), custom_read()
-
-    General description:
-
-    Parameters:
+	* option_list()
+	* custom_read()
 
 create_pg_user
 --------------
 Általános leírás:
+	* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
+	* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
+	* Behatárolt hozzáférésű POSTGRES felhasználó létrehozása.
+        * Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
+        * Minden a projekthez rendelt adattáblát tud olvasni.
+        * Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
+        * Egy év után automatikusan lejár a hozzáférése.
+        * Bármikor megújíthatja a hozzáférését a felhasználó.
+
 Paraméterezés:
 Függvények:
+	* create_pg_user()
+	* show_button()
 Hívások:
-If this module is enabled "Create postgres user" option will appear on your profile page.
-
-   Create a restricted access postgres user
-
-    Calls:
-
-    Functions: create_pg_user(), show_button()
-
-    General description:
-
-        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
-        It can read all the data tables assigned to the project.
-        It can only connect to a database from one client program at a time.
-        After one year, Its access expires automatically.
-        Users can renew their access at any time.
-
-    Parameters:
-
-    Behatárolt hozzáférésű POSTGRES felhasználó létrehozása
-    
-    Hívások:
-    
-    Függvények: create_pg_user(), show_button()
-        
-    Általános leírás:
-        A modul engedélyezésével (akik kapnak jogot a modul használatára) a felhazsnálók tudnak maguknak saját postgres felhazsnálót készíteni. 
-        Ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
-        Minden a projekthez rendelt adattáblát tud olvasni.
-        Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-        Egy év után automatikusan lejár a hozzáférése.
-        Bármikor megújíthatja a hozzáférését a felhasználó.
-    
-    Paraméterek:
 
 grid_view
 ---------
@@ -575,18 +478,12 @@ END;
 massive_edit
 ------------
 Általános leírás:
+	* Lehetővé teszi a már feltöltött adatok szerkesztését a fájl feltöltés opción keresztül.
+	* Csak akkor működik, ha az obm_id oszlop engedélyezve van.
+	* Létre kell hozni egy külön formot a szerkestéshez.
 Paraméterezés:
 Függvények:
 Hívások:
-   Allows you to edit the selected data massively on the file upload interface
-
-   Calls:
-
-   Functions:
-
-   General description:
-
-   Parameters:
 
 download_restricted
 -------------------
