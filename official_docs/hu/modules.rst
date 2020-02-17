@@ -117,30 +117,13 @@ Hívások:
 box_custom
 ----------
 Általános leírás:
+	* Egyénileg létrehozott modulok betöltését teszi lehetővé.
+	* Az egyénileg létrehozott modult a projekt könyvtárban az includes/modules/private mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
 Paraméterezés:
+	* A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
+    Pl. hrsz_query, ahol a hrsz_query_Class egy osztály a hrsz_query.php fájlban. Az osztályt legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
 Függvények:
 Hívások:
-    Custom box - only user defined version exists.
-
-    Calls:
-
-    General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it's not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
-
-    Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
-
-    Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
-
-    This Class should include at least print_box() and print_js() functions.
-
-    Custom box - only user defined version exists
-    Egyénileg létrehozott modulok betöltését teszi lehetővé.
-    Hívások:
-    
-    Általános leírás: Az egyénileg létrehozott modult a projekt könyvtárban az includes/modules/private mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
-    
-    Paraméterek: A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
-    Pl. hrsz_query, ahol a hrsz_query_Class egy osztály a hrsz_query.php fájlban. Az osztályt legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
-
 
 photos
 ------
