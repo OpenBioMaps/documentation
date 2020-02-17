@@ -137,21 +137,14 @@ Hívások:
 read_table
 ----------
 Általános leírás:
+	* Görgethető html táblázatot hoz létre, ami egy linken keresztül elérhetővé lehet tenni.
+	* Hozzá kell adni ezeket a sorokat a *".htaccess"* fájlhoz, ahol .... be kelle hejettesítsd a saját projeted táblázatának a nevét
+	* Pl.: RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
 Paraméterezés:
+	* schema.table, vagy
+        * schema.table:default-order-column
 Függvények:
 Hívások:
-    Present a table or an sql view as a rollable html table. This table is available with a unique link.
-
-    Calls:
-
-    General description:
-        Add these lines to .htaccess file where  .... should replaced with your project table name
-        # read table module
-        RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
-
-    Parameters: schema.table
-        or
-        schema.table:default-order-column
 
 results_summary
 ---------------
