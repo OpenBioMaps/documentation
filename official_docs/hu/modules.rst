@@ -38,21 +38,22 @@ Modul leírások:
 additional_columns
 ------------------
 Általános leírás:
+	* Ha egy adatbázis több adattáblából áll azokat különböző változókkal össze lehet kötni.
+	* Lekérdezésnél az egy azonosítóhoz tartozó össze adatot lekérdezésnél. Ezt a funkciót a térképes oldalon az *"ignore table JOINS"* beikszelésével figyelmen kívül lehet hagyni.
+
+akkor legkérdezésnél az összes adattáblából lekérdezi az egy azonosítóhoz kapcsolódó adatot. 
 Paraméterezés:
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
+										megfigyelő
+										dátum
 Függvények: return_columns()
-Hívások:    
-
-Parameters: New line separated list of column names
-
-    use it together with the join_tables module
-    return with an array:
-    co [0] columns array
-    c  [1] column name assoc array
+Hívások:
 
 allowed_columns
 ---------------
 Általános leírás: 
-	* Itt lehet beállítani, hogy melyik oszlop legyen látható a különböző hozzáférési szinteken, akkor lehet használni ha az adattáblához van *"rules"* tábla is rendelve.
+	* Itt lehet beállítani, hogy melyik oszlop legyen látható a különböző hozzáférési szinteken. 
+	* Akkor lehet használni ha az adattáblához van *"rules"* tábla is rendelve.
 Paraméterezés:
 	* for_sensitive_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni. Nem mutatja az adathoz tartozó geometriát.
 	* for_no-geom_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
@@ -95,8 +96,7 @@ Hívások:
 box_load_coord
 --------------
 Általános leírás:
-	* 
-	* 
+	* A térképes oldalon feltűnik a *"pozició"* blokk a térkép alatt. Ha a kurzort mozgatjuk a térképen, akkor láthatjuk hogy a *"pozició"* blokkban a koordináta folyamatosan változik, mintegy lekövetve a kurzorunk helyzetét a térképen.
 Paraméterezés:
 	* Különböző koordináta rendszerek vetületeit adhatjuk itt meg, pl.:
 				* wgs84:4326
@@ -107,16 +107,12 @@ Hívások: print_box, limits, ajax, print_js
 box_load_last_data
 ------------------
 Általános leírás:
+	* Létrehozza a **Gyors lekérdezések** opciót a térképes oldalon a térkép jobb oldalán. Három lehetőség közül lehet választani: utolsó saját feltöltés, legutolsó feltöltés (bárkié) vagy az utolsó feltöltött sorok.
+	* A modul oldalon be lehet állítani, hogy mennyi lehet az így lekérdezett sorok száma.
 Paraméterezés:
+	* Egy számot adunk meg, pl.: 10
 Függvények:
 Hívások:
-    Query last data or last uploads.
-
-    Calls:
-
-    General description:
-
-    Parameters: Number of records in last uploads, default is 10
 
 box_custom
 ----------
