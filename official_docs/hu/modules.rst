@@ -138,159 +138,106 @@ read_table
 ----------
 Általános leírás:
 	* Görgethető html táblázatot hoz létre, ami egy linken keresztül elérhetővé lehet tenni.
-	* Hozzá kell adni ezeket a sorokat a *".htaccess"* fájlhoz, ahol .... be kelle hejettesítsd a saját projeted táblázatának a nevét
-	* Pl.: RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
+	* 
 Paraméterezés:
 	* schema.table, vagy
         * schema.table:default-order-column
 Függvények:
 Hívások:
 
-results_summary
+results_buttons
 ---------------
 Általános leírás:
-	* A térképes oldalon lekérdezés után létrehozza az *"Összfoglaló"* fület a térkép alatt.
-	* Kiírja a találatok számát.
+	* Lekérdezés után a térképes felületen létrehozza a következő füleket: **"Mentési opciók", "Szerkesztési opciók", "Megjelenítési opciók"**.
 Paraméterezés:
 Függvények:
 Hívások:
-
-results_table
--------------
-Általános leírás:
-Paraméterezés:
-Függvények:
-Hívások:
-    create a full html table of the results
-    
-    Hívások:
-    
-    Általános leírás:
-        Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
-        Tovább lehet persze fejleszteni lapozós lekérdezőssé, vagy valami eleve kisebb táblázatok megjelenítéséhez.
-    
-    Paraméterek:
-
-    Create a full html table of the results.
-
-    Calls:
-
-    General description:
-        Not used!!
-
-    Parameters:
-
-results_asList
---------------
-Általános leírás:
-Paraméterezés:
-Függvények:
-Hívások:
-    Create foldable slides like results.
-
-    Calls: results_builder()
-
-    General description:
-
-    Parameters:
-
-results_asGPX
--------------
-Általános leírás:
-Paraméterezés:
-Függvények:
-Hívások:
-    Save results as a GPX file.
-
-    Calls:
-
-    General description:
-
-    Parameters:
 
 results_asCSV
 -------------
 Általános leírás:
+	* Lekérdezésnél létrehoz egy letölthető .CSV fájlt. 
+	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
 Paraméterezés:
 Függvények:
 Hívások:
-    Save results as a csv file.
 
-    Hívások:
-
-    Általános leírás:
-
-    Paraméterek:
+results_asGPX
+-------------
+Általános leírás:
+	* Lekérdezésnél létrehoz egy letölthető .GPX fájlt, amit koordináta kezelő szoftverekkel tudunk alkalmazni pl.: GPS. 
+	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+Paraméterezés:
+Függvények:
+Hívások:
 
 results_asJSON
 --------------
 Általános leírás:
+	* Lekérdezésnél létrehoz egy letölthető .JSON fájlt. 
 Paraméterezés:
 Függvények:
 Hívások:
-    Save results as a JSON file.
 
-    Calls:
-
-    General description:
-
-    Parameters:
+results_asList
+--------------
+Általános leírás:
+	* Lehetővé teszi a listás lekérdezést.
+	* Lekérdezés után a térképes oldalon megjelenik a **Megjelenítési opciók** fülben megjelenik a *"Kinyitható lista"* opció, ami csak feltöltés azonosítóját mutatja. A részletekre kattintva megjelenik egy külön ablakban a feltöltéshez tartozó összes adat.
+	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
+Paraméterezés:
+Függvények:
+Hívások:
+	* results_builder()
 
 results_asSHP
 -------------
 Általános leírás:
+	* Lekérdezésnél létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
 Paraméterezés:
 Függvények:
 Hívások:
-    Save results as a shp file.
-
-    Calls:
-
-    General description:
-
-    Parameters:
-
-results_buttons
----------------
-Általános leírás:
-Paraméterezés:
-Függvények:
-Hívások:
-    Save and other button above results section, under map.
-
-    Calls:
-
-    General description:
-
-    Parameters:
 
 results_asStable
 ----------------
 Általános leírás:
+	* Létrehoz egy kompakt táblázatot, amiben csak az általunk választott oszlopok lesznek benne.
+	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
+Paraméterezés:
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
+										megfigyelő
+										dátum
+Függvények:
+Hívások:
+
+results_asTable
+-------------
+Általános leírás:
+	* Olyan táblázatot hoz létre, ami az összes lekérdezett adatot tartalmazza.
+	* Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
 Paraméterezés:
 Függvények:
 Hívások:
-    Compact results table Stable.
-
-    Calls:
-
-    General description:
-
-    Parameters:
 
 results_specieslist
 -----------
 Általános leírás:
+	* Lekérdezés után a térképes felületen a térkép alatt az **Összefoglaló** fülben létrehozza *"Lekérdezésben előforduló fajok listáját"*.
+	* Be kell hozzá kapcsolni a *"results_summary"* modult, hogy láthatóvá váljon az **Összefoglaló** fül.
 Paraméterezés:
 Függvények:
 Hívások:
-    Specieslist summary above results.
 
-    Calls:
-
-    General description:
-
-    Parameters:
+results_summary
+---------------
+Általános leírás:
+	* A térképes oldalon lekérdezés után létrehozza az **Összfoglaló** fület a térkép alatt.
+	* Kiírja a találatok számát.
+Paraméterezés:
+Függvények:
+Hívások:
 
 text_filter
 -----------
