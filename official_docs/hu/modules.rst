@@ -173,6 +173,16 @@ Paraméterezés:
 Függvények:
 Hívások:
 
+results_asHtmltable
+-------------
+Általános leírás:
+	* Lekérdezésnél létrehoz egy .html fájlt. 
+	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+Paraméterezés:
+Függvények:
+Hívások:
+
 results_asJSON
 --------------
 Általános leírás:
@@ -242,45 +252,47 @@ Hívások:
 text_filter
 -----------
 Általános leírás:
+	* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
+	* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
+	* Ha be van kapcsolva a *"text_filter2"* modul nem használható.
 Paraméterezés:
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	obm_datum
+    										obm_uploading_date
+    										obm_uploader_userfaj
+    										obm_taxon
+	* Létrelehet hozni egymásba épített szűrőket 
+			pl.: faj::colour_rings <- csak az adott fajon belül feltett színes gyűrű kombinációkat mutatja
+	* Létrelehet hozni legördülő (autocomplete) listákat 
+			pl.: faj::autocomplete <- legördülő menüből választhatunk, hogy melyik fajra szeretnénk szűrni
+	* Kombinálhatjuk az egymásba épített és a legördülő menüt
+			pl.: faj:nested(colour_rings):autocomplete
+    	* Akár egyedszám/populáció méeret szerint is lehet szűrni
+			pl.: d.egyedszam:values(): 
 Függvények:
 Hívások:
-    Taxon and other text filters.
-
-    Calls:
-
-    General description:
-        create boxes
-        assemble WHERE part of query string
-
-    Parameters: complex example:
-
-    magyar
-    obm_taxon
-    megj::colour_rings
-    obm_datum
-    obm_uploading_date
-    obm_uploader_user
-    d.szamossag:nested(d.egyedszam):autocomplete
-    d.egyedszam:values():
-    obm_files_id
-    faj::autocomplete
 
 text_filter2
 -----------
 Általános leírás:
+	* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
+	* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
+	* Ha be van kapcsolva a *"text_filter"* modul nem használható.
+	* Fejlesztés alatt!
 Paraméterezés:
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	obm_datum
+    										obm_uploading_date
+    										obm_uploader_userfaj
+    										obm_taxon
+	* Létrelehet hozni egymásba épített szűrőket 
+			pl.: faj::colour_rings <- csak az adott fajon belül feltett színes gyűrű kombinációkat mutatja
+	* Létrelehet hozni legördülő (autocomplete) listákat 
+			pl.: faj::autocomplete <- legördülő menüből választhatunk, hogy melyik fajra szeretnénk szűrni
+	* Kombinálhatjuk az egymásba épített és a legördülő menüt
+			pl.: faj:nested(colour_rings):autocomplete
+    	* Akár egyedszám/populáció méeret szerint is lehet szűrni
+			pl.: d.egyedszam:values(): 
 Függvények:
 Hívások:
-    Advanced taxon and other text filters.
-
-    Calls:
-
-    General description:
-        create boxes
-        assemble WHERE part of query string
-
-    Parameters: example:
 
 
 transform_data
