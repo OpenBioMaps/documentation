@@ -66,7 +66,7 @@ Hívások:
 bold_yellow
 -----------
 Általános leírás: 
-	* Vastag betűvel sárgán írt oszlop nevek az eredmény listákban.
+	* Vastag betűvel sárgán írt oszlop nevek az eredmény listákban. Lekérdezés után a *"Kinyitható lista"* táblához csatolt részletes leírásban vastag betűvel, sárgán írt oszlop nevek jelennek meg.
 	* Ezzel a modullal határozható meg az is, hogy az aplikációban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
 Paraméterezés:
 	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
