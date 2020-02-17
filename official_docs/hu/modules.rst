@@ -149,10 +149,11 @@ Hívások:
 results_summary
 ---------------
 Általános leírás:
+	* A térképes oldalon lekérdezés után létrehozza az *"Összfoglaló"* fület a térkép alatt.
+	* Kiírja a találatok számát.
 Paraméterezés:
 Függvények:
 Hívások:
-    Summary of results.
 
 results_table
 -------------
