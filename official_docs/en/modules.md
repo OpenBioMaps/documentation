@@ -393,6 +393,8 @@ identify_point
 
             A json-t egy sorosra kell tömöríteni!
 
+        obm_files_id: Displays a photo icon on the popup if the record has an attachment.
+
 notify
 ------
     Creates custom postgres based notify events.
