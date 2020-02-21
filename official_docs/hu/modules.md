@@ -44,7 +44,9 @@ Felhasználói dokumentáció
 	Paraméterezés:
 	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
 										megfigyelő
-Fejleszői dokumentáció										dátum
+										dátum
+
+Fejleszői dokumentáció
 
 	Függvények: return_columns()
 
