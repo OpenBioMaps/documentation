@@ -38,7 +38,7 @@ extensions = [
         'm2r',
 ]
 srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs'
-srclink_src_path = 'docs/'
+#srclink_src_path = 'docs/'
 srclink_branch = 'master'
 
 # Add any paths that contain templates here, relative to this directory.
