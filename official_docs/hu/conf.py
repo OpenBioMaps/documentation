@@ -162,7 +162,7 @@ html_sidebars = {
         'localtoc.html',
         'relations.html',
         'searchbox.html',
-        #'srclinks.html',
+        'srclinks.html',
         ],
     'index': [
         'globaltoc.html',
