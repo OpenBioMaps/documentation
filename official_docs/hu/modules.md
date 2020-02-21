@@ -42,7 +42,7 @@ additional_columns
 
 Paraméterezés:
 
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+	Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
 		faj
 		megfigyelő
 		dátum
@@ -62,11 +62,11 @@ allowed_columns
 
 Paraméterezés:
 
-	* for_sensitive_data: 
+	for_sensitive_data: 
 		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni. Nem mutatja az adathoz tartozó geometriát.
-	* for_no-geom_data: 
+	for_no-geom_data: 
 		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
-	* for_general: 
+	for_general: 
 		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
 
 Fejleszői dokumentáció
@@ -84,7 +84,7 @@ bold_yellow
 
 Paraméterezés:
 	
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+	Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
 		faj
 		megfigyelő
 		dátum
@@ -97,34 +97,37 @@ Fejleszői dokumentáció
 
 box_custom
 ----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Egyénileg létrehozott modulok betöltését teszi lehetővé.
-	* Az egyénileg létrehozott modult a projekt könyvtárban az includes/modules/private mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
+* Egyénileg létrehozott modulok betöltését teszi lehetővé.
+* Az egyénileg létrehozott modult a projekt könyvtárban az *includes/modules/private* mappában kell elhelyezni. Amennyiben szükséges, létre kell hozni a könyvtárat. A könyvtár jogosultságait célszerű úgy beállítani, hogy a www-data felhasználónak ne legyen írási jogosultsága. Ezzel elkerülhető, hogy az egyénileg létrehozott moduljaink felülíródjanak egy frissítés során.
 
-	Paraméterezés:
-	* A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
-    Pl. hrsz_query, ahol a hrsz_query_Class egy osztály a hrsz_query.php fájlban. Az osztályt legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
+Paraméterezés:
+A modul(ok) fájlneve kiterjesztés nélkül. Több custom modul esetén a modulneveket sortöréssel kell elválasztani.
+Például *hrsz_query*, ahol a *hrsz_query_Class* egy osztály a *hrsz_query.php* fájlban ami a *includes/modules/private* mappába került.
+
+	hrsz_query
 
 Fejleszői dokumentáció
 
+	Az osztálynak legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
+	
 	Függvények:
 
 	Hívások:
 
 box_load_coord
 --------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* A térképes oldalon feltűnik a *"pozíció"* blokk a térkép alatt. Ha a kurzort mozgatjuk a térképen, akkor láthatjuk hogy a *"pozíció"* blokkban a koordináta folyamatosan változik, mintegy lekövetve a kurzorunk helyzetét a térképen.
-	* Szintén a *"pozíció"* blokkban, ha beírjuk a szélességi és hosszúsági fokokat, akkor a kis, fekete *"nyalókára"* kattintva a téképen megjelenik a pontunk.
+* A térképes oldalon feltűnik a *"pozíció"* blokk a térkép alatt. Ha a kurzort mozgatjuk a térképen, akkor láthatjuk hogy a *"pozíció"* blokkban a koordináta folyamatosan változik, mintegy lekövetve a kurzorunk helyzetét a térképen.
+* Szintén a *"pozíció"* blokkban, ha beírjuk a szélességi és hosszúsági fokokat, akkor a kis, fekete *"nyalókára"* kattintva a téképen megjelenik a pontunk.
 
-	Paraméterezés:
-	* Különböző koordináta rendszerek vetületeit adhatjuk itt meg, pl.:
-				* wgs84:4326
-				* eov=23700
+Paraméterezés:
+Különböző koordináta rendszerek vetületeit adhatjuk itt meg, pl.:
+
+	wgs84:4326
+	eov=23700
 
 Fejleszői dokumentáció
 
@@ -134,14 +137,18 @@ Fejleszői dokumentáció
 
 box_load_last_data
 ------------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Létrehozza a **Gyors lekérdezések** opciót a térképes oldalon a térkép jobb oldalán. Három lehetőség közül lehet választani: utolsó saját feltöltés, legutolsó feltöltés (bárkié) vagy az utolsó feltöltött sorok.
-	* A modul oldalon be lehet állítani, hogy mennyi lehet az így lekérdezett sorok száma.
+* Létrehozza a **Gyors lekérdezések** opciót a térképes oldalon a térkép jobb oldalán. Három lehetőség közül lehet választani:
+	* utolsó saját feltöltés, 
+	* legutolsó feltöltés (bárkié) 
+	* utolsó feltöltött sorok.
+* A modul oldalon be lehet állítani, hogy mennyi lehet az utolsó feltöltött sorok lekérdezett sor mennyisége. A másik két opció esetében mindig 1 sort ad vissza a modul.
 
-	Paraméterezés:
-	* Egy számot adunk meg, pl.: 10
+Paraméterezés:
+Egy számot adunk meg, pl.: 10
+
+	10
 
 Fejleszői dokumentáció
 
@@ -151,21 +158,21 @@ Fejleszői dokumentáció
 
 box_load_selection
 ------------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
-	* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy rákattintunk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez vagy csoportokhoz rendeljük.
-	* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
-	* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre definiált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
-	* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvehetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattintva poligonként, akár egy nagyobb területet is körbe jelölhetünk.
+* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
+* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy rákattintunk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez vagy csoportokhoz rendeljük.
+* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
+* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre definiált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
+* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvehetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattintva poligonként, akár egy nagyobb területet is körbe jelölhetünk.
 
-	Paraméterezés:
-	* Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
-		* contains -
-		* intersects -
-		* crosses -
-		* disjoint -
+Paraméterezés:
+Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
+
+	contains -
+	intersects -
+	crosses -
+	disjoint -
 
 Fejleszői dokumentáció
 
@@ -175,18 +182,17 @@ Fejleszői dokumentáció
 
 create_pg_user
 --------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
-	* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
-	* Behatárolt hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
-        * Minden a projekthez rendelt adattáblát tud olvasni.
-        * Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-        * Egy év után automatikusan lejár a hozzáférése.
-        * Bármikor megújíthatja a hozzáférését a felhasználó.
+* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
+* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
+* Behatárolt hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
+	* Minden a projekthez rendelt adattáblát tud olvasni.
+	* Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
+	* Egy év után automatikusan lejár a hozzáférése.
+	* Bármikor megújíthatja a hozzáférését a felhasználó.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -196,11 +202,9 @@ Fejleszői dokumentáció
 
 custom_admin_pages
 ------------------
-Felhasználói dokumentáció
-
-	Általános leírás:
+Általános leírás:
 	
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -210,12 +214,11 @@ Fejleszői dokumentáció
 
 custom_data_check
 -----------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* (Custom data checks of upload data.)?
+* (Custom data checks of upload data.)?
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -225,12 +228,11 @@ Fejleszői dokumentáció
 
 custom_filetype
 ---------------
-Felhasználói dokumentáció
-	
-	Általános leírás:
-	* Adat fájlok átalakítása, más rendszerek formátumára pl.: observado típusú .CSV
+Általános leírás:
 
-	Paraméterezés:
+* Adat fájlok átalakítása, más rendszerek formátumára pl.: observado típusú .CSV
+
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -240,12 +242,11 @@ Fejleszői dokumentáció
 
 custom_notify
 -------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* (Creates custom postgres based notify events.)???
+* (Creates custom postgres based notify events.)???
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -255,12 +256,11 @@ Fejleszői dokumentáció
 
 download_restricted
 -------------------
-Felhasználói dokumentáció
-	
-	Általános leírás:
-	* A lekérdezett adatok letöltése az adatbázis adminok jóváhagyásával lehetséges.
+Általános leírás:
 
-	Paraméterezés:
+* A lekérdezett adatok letöltése az adatbázis adminok jóváhagyásával lehetséges.
+
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -271,7 +271,8 @@ Fejleszői dokumentáció
 ebp
 ---
 Általános leírás:
-	* Automatikusan tölti fel speciális adatokat speciális felületekre pl: EBirds adatbázis
+
+* Automatikusan tölti fel speciális adatokat speciális felületekre pl: EBirds adatbázis
 
 Paraméterezés:
 
@@ -281,12 +282,11 @@ Hívások:
 
 extra_params
 ------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* (Extra input paramaters for forms.)?
+* (Extra input paramaters for forms.)?
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -296,11 +296,9 @@ Fejleszői dokumentáció
 
 form_choose
 -----------
-Felhasználói dokumentáció
-	
-	Általános leírás:
+Általános leírás:
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -310,19 +308,19 @@ Fejleszői dokumentáció
 
 grid_view
 ---------
-Felhasználói dokumentáció
+Általános leírás:
+
+* Előre definiált poligonok szerint is lehet adatot lekérdezni.
+* SQL-ben kell beállítani a szükséges paramétereket
+
+Paraméterezés:
 	
-	Általános leírás:
-	* Előre definiált poligonok szerint is lehet adatot lekérdezni.
-	* SQL-ben kell beállítani a szükséges paramétereket
+	layer_options
 
-	Paraméterezés:
-	* layer_options
-
-    	* Paraméterezésre példa: 
+Paraméterezésre példa: 
 		layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
 
-    	* Példa trigger funkcióra:
+Példa trigger funkcióra:
 
 		    Trigger on nnn_qgrids:
 		```sql    
@@ -387,15 +385,16 @@ Fejleszői dokumentáció
 
 identify_point
 --------------
-Felhasználói dokumentáció
+Általános leírás:
+* Egy vagy több pont azonosítása a térképen.
+* Egy kis buborékban láthatóvá tesz az adott adat pontról néhány információt, amit előzőleg már beállítottunk.
 
-	Általános leírás:
-	* Egy vagy több pont azonosítása a térképen.
-	* Egy kis buborékban láthatóvá tesz az adott adat pontról néhány információt, amit előzőleg már beállítottunk.
+Paraméterezés:
+Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:
 
-	Paraméterezés:
-	* Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:	faj
-									dátum
+	faj
+	dátum
+
 Fejlesztői dokumentáció
 
 	Függvények: return_data(), print_button()
@@ -404,12 +403,10 @@ Fejlesztői dokumentáció
 
 list_manager
 ------------
-Felhasználói dokumentáció
+Általános leírás:
+* Az adatbázis oszlopoknál bekapcsol egy plusz funkciót, ami meghatározza a listát. ?
 
-	Általános leírás:
-	* Az adatbázis oszlopoknál bekapcsol egy plusz funkciót, ami meghatározza a listát. ?
-
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -419,14 +416,13 @@ Fejleszői dokumentáció
 
 massive_edit
 ------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi a már feltöltött adatok szerkesztését a fájl feltöltés opción keresztül.
-	* Csak akkor működik, ha az obm_id oszlop engedélyezve van.
-	* Létre kell hozni egy külön formot a szerkesztéshez.
+* Lehetővé teszi a már feltöltött adatok szerkesztését a fájl feltöltés opción keresztül.
+* Csak akkor működik, ha az obm_id oszlop engedélyezve van.
+* Létre kell hozni egy külön formot a szerkesztéshez.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -436,12 +432,11 @@ Fejleszői dokumentáció
 
 move_project
 ------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* A projekt költöztetése egyik szerverről a másikra.
+* A projekt költöztetése egyik szerverről a másikra.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -451,13 +446,12 @@ Fejleszői dokumentáció
 
 photos
 ------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi a fájl feltöltés funkciót, azáltal hogy létrehozza a **obm_files_id** oszloptípust, ami az OpenBioMaps saját oszloptípusa.
-	* Bekapcsolás utáni elérési útvonal: Projekt adminisztráció -> Adatbázis oszlopok. Hozzáadjuk az adattáblánkhoz az **obm_files_id** oszlopot, majd ennek az oszlopnak az *OpenBioMaps* típusát *"csatolmánynak"* állítjuk a legördülő menüből.
+* Lehetővé teszi a fájl feltöltés funkciót, azáltal hogy létrehozza a **obm_files_id** oszloptípust, ami az OpenBioMaps saját oszloptípusa.
+* Bekapcsolás utáni elérési útvonal: Projekt adminisztráció -> Adatbázis oszlopok. Hozzáadjuk az adattáblánkhoz az **obm_files_id** oszlopot, majd ennek az oszlopnak az *OpenBioMaps* típusát *"csatolmánynak"* állítjuk a legördülő menüből.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -467,14 +461,14 @@ Fejleszői dokumentáció
 
 read_table
 ----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Görgethető html táblázatot hoz létre, ami egy linken keresztül elérhetővé lehet tenni.
+* Görgethető html táblázatot hoz létre, ami egy linken keresztül elérhetővé lehet tenni.
 
-	Paraméterezés:
-	* schema.table, vagy
-        * schema.table:default-order-column
+Paraméterezés:
+	
+	schema.table, vagy
+        schema.table:default-order-column
 
 Fejleszői dokumentáció
 	
@@ -484,12 +478,11 @@ Fejleszői dokumentáció
 
 restricted_data
 ---------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* (Rule based data restriction) ??
+* (Rule based data restriction) ??
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -499,12 +492,11 @@ Fejleszői dokumentáció
 
 results_buttons
 ---------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lekérdezés után a térképes felületen létrehozza a következő füleket: **Mentési opciók**, **Szerkesztési opciók**, **Megjelenítési opciók**.
+* Lekérdezés után a térképes felületen létrehozza a következő füleket: **Mentési opciók**, **Szerkesztési opciók**, **Megjelenítési opciók**.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 	
@@ -514,14 +506,13 @@ Fejleszői dokumentáció
 
 results_asCSV
 -------------
-Felhasználói dokumentáció
-	
-	Általános leírás:
-	* Lekérdezésnél létrehoz egy letölthető .CSV fájlt. 
-	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
-	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+Általános leírás:
 
-	Paraméterezés:
+* Lekérdezésnél létrehoz egy letölthető .CSV fájlt. 
+* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -532,9 +523,10 @@ Fejleszői dokumentáció
 results_asGPX
 -------------
 Általános leírás:
-	* Lekérdezésnél létrehoz egy letölthető .GPX fájlt, amit koordináta kezelő szoftverekkel tudunk alkalmazni pl.: GPS. 
-	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
-	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+
+* Lekérdezésnél létrehoz egy letölthető .GPX fájlt, amit koordináta kezelő szoftverekkel tudunk alkalmazni pl.: GPS. 
+* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
 
 Paraméterezés:
 
@@ -544,14 +536,13 @@ Hívások:
 
 results_asHtmltable
 -------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lekérdezésnél létrehoz egy .html fájlt. 
-	* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
-	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
+* Lekérdezésnél létrehoz egy .html fájlt. 
+* A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
+* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -562,7 +553,8 @@ Fejleszői dokumentáció
 results_asJSON
 --------------
 Általános leírás:
-	* Lekérdezésnél létrehoz egy letölthető .JSON fájlt. 
+
+* Lekérdezésnél létrehoz egy letölthető .JSON fájlt. 
 
 Paraméterezés:
 
@@ -572,14 +564,13 @@ Hívások:
 
 results_asList
 --------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi a listás lekérdezést.
-	* Lekérdezés után a térképes oldalon megjelenik a **Megjelenítési opciók** fülben a *"Kinyitható lista"* opció, ami csak feltöltés azonosítóját mutatja. A részletekre kattintva a feltöltéshez tartozó összes adat megjelenik egy külön ablakban.
-	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
+* Lehetővé teszi a listás lekérdezést.
+* Lekérdezés után a térképes oldalon megjelenik a **Megjelenítési opciók** fülben a *"Kinyitható lista"* opció, ami csak feltöltés azonosítóját mutatja. A részletekre kattintva a feltöltéshez tartozó összes adat megjelenik egy külön ablakban.
+* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -589,12 +580,11 @@ Fejleszői dokumentáció
 
 results_asSHP
 -------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lekérdezésnél létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
+* Lekérdezésnél létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -604,16 +594,17 @@ Fejleszői dokumentáció
 
 results_asStable
 ----------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Létrehoz egy kompakt táblázatot, amiben csak az általunk választott oszlopok lesznek benne.
-	* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
+* Létrehoz egy kompakt táblázatot, amiben csak az általunk választott oszlopok lesznek benne.
+* Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Megjelenítési opciók** fül.
 
-	Paraméterezés:
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
-										megfigyelő
-										dátum
+Paraméterezés:
+Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Például:
+	
+	faj
+	megfigyelő
+	dátum
 
 Fejleszői dokumentáció
 
@@ -623,13 +614,12 @@ Fejleszői dokumentáció
 
 results_asTable
 -------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Olyan táblázatot hoz létre, ami az összes lekérdezett adatot tartalmazza.
-	* Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
+* Olyan táblázatot hoz létre, ami az összes lekérdezett adatot tartalmazza.
+* Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -639,13 +629,12 @@ Fejleszői dokumentáció
 
 results_specieslist
 -------------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lekérdezés után a térképes felületen a térkép alatt az **Összefoglaló** fülben létrehozza *"Lekérdezésben előforduló fajok listáját"*.
-	* Be kell hozzá kapcsolni a *"results_summary"* modult, hogy láthatóvá váljon az **Összefoglaló** fül.
+* Lekérdezés után a térképes felületen a térkép alatt az **Összefoglaló** fülben létrehozza *"Lekérdezésben előforduló fajok listáját"*.
+* Be kell hozzá kapcsolni a *"results_summary"* modult, hogy láthatóvá váljon az **Összefoglaló** fül.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -655,13 +644,12 @@ Fejleszői dokumentáció
 
 results_summary
 ---------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* A térképes oldalon lekérdezés után létrehozza az **Összefoglaló** fület a térkép alatt.
-	* Kiírja a találatok számát.
+* A térképes oldalon lekérdezés után létrehozza az **Összefoglaló** fület a térkép alatt.
+* Kiírja a találatok számát.
 
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -671,12 +659,12 @@ Fejleszői dokumentáció
 
 simple_search
 -------------
-Felhasználói dokumentáció
 
-	Általános leírás:
-	* Google-szerű automatikus kereső motor, több mezőben keres egyszerre, például, megfigyelő és fajnév
+Általános leírás:
 
-	Paraméterezés:
+* Google-szerű automatikus kereső motor, több mezőben keres egyszerre, például, megfigyelő és fajnév
+
+Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -686,25 +674,27 @@ Fejleszői dokumentáció
 
 text_filter
 -----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
-	* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
-	* Ha be van kapcsolva a *"text_filter2"* modul nem használható.
+* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
+* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
+* Ha be van kapcsolva a *"text_filter2"* modul nem használható.
 
-	Paraméterezés:
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	obm_datum
-    										obm_uploading_date
-    										obm_uploader_userfaj
-    										obm_taxon
-	* Létre lehet hozni egymásba épített szűrőket 
+Paraméterezés:
+Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:
+	
+	obm_datum
+    	obm_uploading_date
+    	obm_uploader_userfaj
+    	obm_taxon
+	
+	Létre lehet hozni egymásba épített szűrőket 
 			pl.: faj::colour_rings <- csak az adott fajon belül feltett színes gyűrű kombinációkat mutatja
-	* Létre lehet hozni legördülő (autocomplete) listákat 
+	Létre lehet hozni legördülő (autocomplete) listákat 
 			pl.: faj::autocomplete <- legördülő menüből választhatunk, hogy melyik fajra szeretnénk szűrni
-	* Kombinálhatjuk az egymásba épített és a legördülő menüt
+	Kombinálhatjuk az egymásba épített és a legördülő menüt
 			pl.: faj:nested(colour_rings):autocomplete
-    	* Akár egyedszám/populáció méeret szerint is lehet szűrni
+    	Akár egyedszám/populáció méeret szerint is lehet szűrni
 			pl.: d.egyedszam:values(): 
 
 Fejleszői dokumentáció
@@ -715,26 +705,28 @@ Fejleszői dokumentáció
 
 text_filter2
 -----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
-	* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
-	* Ha be van kapcsolva a *"text_filter"* modul nem használható.
-	* Fejlesztés alatt!
+* Lehetővé teszi bizonyos oszlopok alapján szűrjük a meglévő adatokat pl.: év, helyszín, feltöltő.
+* A térképes oldalon létrehozza a **Szöveges szűrők** ablakot a térképes oldal jobb felén.
+* Ha be van kapcsolva a *"text_filter"* modul nem használható.
+* Fejlesztés alatt!
 
-	Paraméterezés:
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	obm_datum
-    										obm_uploading_date
-    										obm_uploader_userfaj
-    										obm_taxon
-	* Létre lehet hozni egymásba épített szűrőket 
+Paraméterezés:
+Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+	
+	obm_datum
+    	obm_uploading_date
+	obm_uploader_userfaj
+	obm_taxon
+
+	Létre lehet hozni egymásba épített szűrőket 
 			pl.: faj::colour_rings <- csak az adott fajon belül feltett színes gyűrű kombinációkat mutatja
-	* Létre lehet hozni legördülő (autocomplete) listákat 
+	Létre lehet hozni legördülő (autocomplete) listákat 
 			pl.: faj::autocomplete <- legördülő menüből választhatunk, hogy melyik fajra szeretnénk szűrni
-	* Kombinálhatjuk az egymásba épített és a legördülő menüt
+	Kombinálhatjuk az egymásba épített és a legördülő menüt
 			pl.: faj:nested(colour_rings):autocomplete
-    	* Akár egyedszám/populáció méret szerint is lehet szűrni
+    	Akár egyedszám/populáció méret szerint is lehet szűrni
 			pl.: d.egyedszam:values(): 
 
 Fejleszői dokumentáció
@@ -745,16 +737,16 @@ Fejleszői dokumentáció
 
 transform_data
 --------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
 	* Lekérdezésnél átalakítja a kimeneti adatot pl.: geometria -> wkt
 
-	Paraméterezés:
-	* Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:
-    								obm_geometry:geom
-    								obm_uploading_id:uplid
-    								tema:mmm
+Paraméterezés:
+Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:
+
+	obm_geometry:geom
+	obm_uploading_id:uplid
+	tema:mmm
 
 Fejleszői dokumentáció
 
@@ -764,11 +756,9 @@ Fejleszői dokumentáció
 
 validation
 ----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-
-	Paraméterezés:
+Paraméterezés:
 
 Fejleszői dokumentáció
 
