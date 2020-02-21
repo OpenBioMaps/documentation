@@ -32,9 +32,11 @@ sys.path.insert(0, os.path.abspath('_ext'))
 #extensions = ['edit_on_github']
 #edit_on_github_project = 'OpenBioMaps/documentaion'
 #edit_on_github_branch = 'master'
-#extensions = [
-#        'sphinxcontrib.srclinks',
-#]
+extensions = [
+        #'sphinxcontrib.srclinks',
+        'sphinx.ext.intersphinx',
+        'm2r',
+]
 #srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs'
 #srclink_src_path = 'docs/'
 #srclink_branch = 'master'
@@ -53,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'openbiomaps'
-copyright = u'OpenBioMaps Konzorcium 2015 - 2019'
+copyright = u'OpenBioMaps Konzorcium 2015 - 2020'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
