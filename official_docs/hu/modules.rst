@@ -342,12 +342,12 @@ identify_point
 Paraméterezés:
 	* Egymás alá írt sorok, felsorolás jel és vessző nélkül pl.:	faj
 									dátum
+Fejlesztői információk:
+	Függvények:
+		* return_data()
+		* print_button()
 
-Függvények:
-	* return_data()
-	* print_button()
-
-Hívások:
+	Hívások:
 
 list_manager
 ------------
