@@ -168,7 +168,7 @@ html_sidebars = {
         'globaltoc.html',
         'relations.html',
         'searchbox.html',
-        #'srclinks.html',
+        'srclinks.html',
         ],
 }
 
