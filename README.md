@@ -1,5 +1,11 @@
 # Official OBM documentations
-Sphinx based documentation tree. The built html files are linked in: http://openbiomaps.org/documents
+in English:
+
+http://openbiomaps.org/documents/en/
+
+Magyarul:
+
+http://openbiomaps.org/documents/hu/
 
 
 # User contributed OBM documentations
