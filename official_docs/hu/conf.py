@@ -33,13 +33,13 @@ sys.path.insert(0, os.path.abspath('_ext'))
 #edit_on_github_project = 'OpenBioMaps/documentaion'
 #edit_on_github_branch = 'master'
 extensions = [
-        #'sphinxcontrib.srclinks',
+        'sphinxcontrib.srclinks',
         'sphinx.ext.intersphinx',
         'm2r',
 ]
-#srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs'
-#srclink_src_path = 'docs/'
-#srclink_branch = 'master'
+srclink_project = 'https://github.com/OpenBioMaps/documentation/official_docs'
+srclink_src_path = 'docs/'
+srclink_branch = 'master'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
