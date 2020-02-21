@@ -42,9 +42,10 @@ additional_columns
 
 Paraméterezés:
 
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
-										megfigyelő
-										dátum
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+		faj
+		megfigyelő
+		dátum
 
 Fejleszői dokumentáció
 
@@ -54,16 +55,19 @@ Fejleszői dokumentáció
 
 allowed_columns
 ---------------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás: 
-	* Itt lehet beállítani, hogy melyik oszlop legyen látható a különböző hozzáférési szinteken. 
-	* Akkor lehet használni ha az adattáblához van *"rules"* tábla is rendelve és a projekt alap hozzáférési szintje nem publikus.
+* Itt lehet beállítani, hogy melyik oszlop legyen látható a különböző hozzáférési szinteken. 
+* Akkor lehet használni ha az adattáblához van *"rules"* tábla is rendelve és a projekt alap hozzáférési szintje nem publikus.
 
-	Paraméterezés:
-	* for_sensitive_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni. Nem mutatja az adathoz tartozó geometriát.
-	* for_no-geom_data: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
-	* for_general: vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
+Paraméterezés:
+
+	* for_sensitive_data: 
+		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni. Nem mutatja az adathoz tartozó geometriát.
+	* for_no-geom_data: 
+		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
+	* for_general: 
+		vesszővel elválasztott felsorolása azoknak az oszlopoknak, amiket láthatóvá szeretnénk tenni
 
 Fejleszői dokumentáció
 
@@ -73,16 +77,17 @@ Fejleszői dokumentáció
 
 bold_yellow
 -----------
-Felhasználói dokumentáció
+Általános leírás:
 
-	Általános leírás:
-	* Vastag betűvel sárgán írt oszlop nevek az eredmény listákban. Lekérdezés után a *"Kinyitható lista"* táblához csatolt részletes leírásban vastag betűvel, sárgán írt oszlop nevek jelennek meg.
-	* Ezzel a modullal határozható meg az is, hogy az applikációban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
+* Vastag betűvel sárgán írt oszlop nevek az eredmény listákban. Lekérdezés után a *"Kinyitható lista"* táblához csatolt részletes leírásban vastag betűvel, sárgán írt oszlop nevek jelennek meg.
+* Ezzel a modullal határozható meg az is, hogy az applikációban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
 
-	Paraméterezés:
-	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
-										megfigyelő
-										dátum
+Paraméterezés:
+	
+	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+		faj
+		megfigyelő
+		dátum
 
 Fejleszői dokumentáció
 
