@@ -34,14 +34,14 @@ Modul leírások
 
 additional_columns
 ------------------
-Felhasználói dokumentáció
+Általános leírás
 
-	Általános leírás:
-	* Ha egy adatbázis több adattáblából áll azokat különböző változókkal össze lehet kötni.
-	* Lekérdezésnél az egy azonosítóhoz tartozó összes adatot lekérdezi. Ezt a funkciót a térképes oldalon az *"ignore table JOINS"* beikszelésével figyelmen kívül lehet hagyni.
-	* Például bizonyos odú projektekben külön táblázatban kezeljük az adatokat a szülőkről és a fiókákról, ha az egy odúhoz tartozó össze adatot megszeretnénk kapni, akkor az *"odu_aszonosito"* oszlopot adjuk meg "összekötő" változónak.
+* Ha egy adatbázis több adattáblából áll azokat különböző változókkal össze lehet kötni.
+* Lekérdezésnél az egy azonosítóhoz tartozó összes adatot lekérdezi. Ezt a funkciót a térképes oldalon az *"ignore table JOINS"* beikszelésével figyelmen kívül lehet hagyni.
+* Például bizonyos odú projektekben külön táblázatban kezeljük az adatokat a szülőkről és a fiókákról, ha az egy odúhoz tartozó össze adatot megszeretnénk kapni, akkor az *"odu_aszonosito"* oszlopot adjuk meg "összekötő" változónak.
 
-	Paraméterezés:
+Paraméterezés:
+
 	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
 										megfigyelő
 										dátum
