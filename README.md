@@ -10,6 +10,9 @@ http://openbiomaps.org/documents/hu/
 
 # User contributed OBM documentations
 
+## Mocskonyi Zsófia (DINPI) kézikönyvei
+(hungarian) user manuals
+
 ## OBM_manual.md
 (english) Complete user manual of project founding and administration by Róbert Veres
 
