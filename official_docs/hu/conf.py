@@ -43,7 +43,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
