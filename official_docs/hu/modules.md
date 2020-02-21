@@ -1,54 +1,54 @@
-Modulok
-*******
-
 Általános modul kezelés:  
 ========================
 
 A modul oldalon lehet bekapcsolni azokat a plusz funkciókat, amik nincsenek automatikusan hozzárendelve az OpenBioMaps alap keretrendszeréhez.
 
-Modul hozzáadása a saját listánkhoz:
-------------------------------------
+Modul hozzáadása a saját listánkhoz
+-----------------------------------
 A modul oldal felkínál nekünk előre behozott modulokat ezekről dönthetünk, hogy bekapcsoljuk vagy töröljük őket a saját listánkból, lásd lentebb. Ezenfelül a saját listánkhoz hozzáadhatunk további modulokat is, ehhez a modul lap aljára kell görgetni. A világos kék sáv első cellájában duplán kattintva felugrik egy legördülő lista a jelenleg aktív modulokkal. Rákattintunk a nekünk szükséges modul nevére, majd a *"hozzáad"* gombra kattintva már hozzá is adtuk a modult a saját listánkhoz.
 
-Modul hozzáférés beállítások:
------------------------------
+Modul hozzáférés beállítások
+----------------------------
 Az egyes modulokat akár többször is hozzáadhatjuk a listánkhoz. Ez lehetővé teszi számunkra, hogy az egyes modulokhoz többféle hozzáférést adjunk meg. Ez azoknál a moduloknál lényeges, ahol az egyes felhasználóknak, vagy csoportoknak különböző hozzáférést szeretnénk adni, például: allowed_columns modul. Egy másik példa, hogy ha több adattáblánk van, akkor minden táblára külön megadhatjuk, hogy a lekérdezésnél melyik oszlopok értékei alapján tudjunk szűrni, például: text_filter modul.  
 A **Hozzáférés** oszlopban kiválaszthatjuk, hogy publikusak-e a beállításaink *(everybody)*, vagy csak az adatbázisunkba bejelentkezett felhasználók *(logined users)* használhatják az adott opciót. A **Csoport hozzáférés** oszlopban tovább finomíthatjuk a hozzáférési opciókat, azáltal hogy kiválasztjuk az előre definiált csoportjainkat, vagy akár egyes személyeket is hozzárendelhetünk az adott beállításhoz.
 
-Modul törlés a saját listánkból:
---------------------------------
+Modul törlés a saját listánkból
+-------------------------------
 A nem használt modulokat ki tudjuk törölni a saját listánkból úgy, hogy az **Engedélyezett** oszlopot *"nem"*-re állítjuk és a **Module name** oszlopban kitöröljük az adatbázis nevét, majd rákattintunk a **Műveletek** oszlopban található *"módosít"* gombra.
 
-Modul ki/be kapcsolás:
-----------------------
+Modul ki/be kapcsolás
+---------------------
 Miután kialakítottuk a saját modul listánkat, az egyes modulokat ki és be tudjuk kapcsolni. Ezt úgy lehet megtenni, hogy az **Engedélyezett** fejlécű oszlopban választunk az *"igen"* vagy *"nem"* opcióból. 
 
-Modulok személyre szabása:
---------------------------
+Modulok személyre szabása
+-------------------------
 A **Function** oszlopban kiválaszthatjuk, hogy a modul gyári beállításait szeretnénk használni *"default"* opció választásával, vagy ha egyéni beállításokat szeretnénk használni választhatjuk a *"private"* opciót is. Az utóbbi esetben lehetőség van az egyes modulok forráskódjának a letöltésére, amit az adatbázisunk igényei szerint kiegészíthetünk még további funkciókkal. A modul forráskódját a **Modul cseréje** oszlopból tudjuk letölteni az *"export"* gombra kattintva. A módosított modult *"Fájl kiválasztása"* opción keresztül tudjuk visszatölteni és aktiválni az adatbázisunkhoz.
 
-Modulok paraméterezése:
------------------------
+Modulok paraméterezése
+----------------------
 Be tudjuk állítani, hogy a különböző modulok milyen feltételek mellett működjenek, vagy akár azt is, hogy melyik oszlopokra legyen érvényes. Ezt a **Parameters** oszlopon keresztül tudjuk megtenni. A modulok paraméterezését modulokra lebontva megtalálhatod alább a *"Modul leírások"* részben.
 
 
-Modul leírások:
-===============
+Modul leírások
+==============
 
 additional_columns
 ------------------
-Általános leírás:
+Felhasználói dokumentáció
+
+	Általános leírás:
 	* Ha egy adatbázis több adattáblából áll azokat különböző változókkal össze lehet kötni.
 	* Lekérdezésnél az egy azonosítóhoz tartozó összes adatot lekérdezi. Ezt a funkciót a térképes oldalon az *"ignore table JOINS"* beikszelésével figyelmen kívül lehet hagyni.
 	* Például bizonyos odú projektekben külön táblázatban kezeljük az adatokat a szülőkről és a fiókákról, ha az egy odúhoz tartozó össze adatot megszeretnénk kapni, akkor az *"odu_aszonosito"* oszlopot adjuk meg "összekötő" változónak.
 
-Paraméterezés:
+	Paraméterezés:
 	* Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	faj
 										megfigyelő
-										dátum
-Függvények: return_columns()
+Fejleszői dokumentáció										dátum
 
-Hívások:
+	Függvények: return_columns()
+
+	Hívások:
 
 allowed_columns
 ---------------
