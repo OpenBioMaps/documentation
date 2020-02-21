@@ -42,7 +42,8 @@ additional_columns
 
 Paraméterezés:
 
-	Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:	
+Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Például:
+
 		faj
 		megfigyelő
 		dátum
