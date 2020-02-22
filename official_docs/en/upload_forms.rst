@@ -34,22 +34,22 @@ Form columns
     
     - obligatory:	If yes (burgundy), then the form cannot be submitted without filling in the column cell.
     
-    - column:	The visible name of the column.
+    - column:	
+        - The visible name of the column. It can be edited to make it unique to a form.
+        - The original name of the column.
     
     - description:	Short description of the field.
     
     - type:
     
-        - text: tetszőleges szöveg - habár a minimum és maximum hossz megadható
+        - text: arbitrary text - minimum and maximum lengths can be specified.
         
-        - numeric: tetszőleges szám - habár a minimum és maximum hossz megadható
+        - numeric: arbitrary number - minimum and maximum lengths can be specified
         
         - list: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A "név" amennyiben "str\_" előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A "true" és "false" szavak str_true és str_false fordítás szerint fordulnak le. 
         Megadható több címke egy értékhez amikből webes űrlapesetén az első jelenik meg, file feltöltésnél pedig a fájl cella értékéből bármelyik cimke vagy az érték helyes egyezést ad. A cimkéket # karakterekkel tagolva kell megadni. Pl: female#tojó:f,male#hím#him:m,juvenil#fiatal:j,adult#öreg:a
         
         Ez esetben az "f" érték lehetséges cimkéi a "female", "tojo" és "tojó" szavak
-        
-        Ha formátuma SELECT:table-name.column-name, akkor a public.gisdata adatbázis megadott oszlopából készít DISTINCT listát.
         
         - true-false: boolen false/true value. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
         
@@ -95,7 +95,7 @@ Form columns
             M = 'silver'
 
         
-    - input control: a bevitt karakterek számának ellenőrzése
+    - input control: checks the number of characters entered
         - no check
         - min - max
         - regular expression
@@ -123,14 +123,14 @@ Form columns
       "selected":["val1"],
     }
     
-    - default values:	A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
+    - default values:	Uniform value for each line of the form. You can define a fill value, an optional value, and a fixed value.
 
     Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.
 
     - api-params:
     relations: Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}
 
-Oszlopok tartalmának ellenőrzése más oszlopok tartalmának függvényében
+Check the contents of columns depending on the contents of other columns
 
 
 Relations pseudolanguage definition
@@ -163,17 +163,17 @@ rel_value:
              
      Else can be anything - may be ignored - depending on the used function
 
-Példa:
+Example:
 
-tarsus_length oszlopnál
+at the tarsus_length column
 
 (clutch_size=!!^([123])$) {obligatory(1)}
 
-Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
+Which means it will be mandatory to fill the tarsus length if the nest size is 1, 2 or 3
 
 .. _edit-upload-form:
 
 Edit forms
 ----------
-Meglévő űralpokat lehet kiválasztani szerkesztésre. Űralpokat lehet törölni vagy letiltani.
-Az űralpok átnevezésével az űralpról az új néven egy másolat készül!
+Existing forms can be selected for editing. Forms can be deleted or blocked.
+By renaming the forms, a new name will be created for the form!
