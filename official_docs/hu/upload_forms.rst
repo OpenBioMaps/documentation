@@ -22,12 +22,14 @@ webes felület, fájl feltöltés, programozott felület
 ..............
 
     - tartalmazza?:	ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
-
-    - oszlop:	
-    	- Az adatbázis oszlopok felületen meghatározott, megjelenített oszlop név. Ez szerkeszthető, amivel egyedivé lehet tenni egy űrlapra
-	- Az oszlop neve az adattáblában
+    
+    - oszlop sorrend: itt állatható egyedileg az űrlapra az oszlopsorrend
     
     - kötelező:	ha igen (bordó), akkor az űrlap nem küldhető el, ha nincs kitöltve itt érték
+
+    - oszlop:	
+    	- Az adatbázis oszlopok felületen meghatározott, megjelenített oszlop név. Ez szerkeszthető, amivel egyedivé lehet tenni egy űrlapra.
+	- Az oszlop neve az adattáblában.
 
     - leírás:	rövid leírás a beírandó adatokról
     
@@ -167,8 +169,8 @@ A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterC
 
     - pszeudo oszlopok:
  
-Relations pseudolanguage definition
------------------------------------
+Relations pseudolanguage definíció
+----------------------------------
 
 ( rel_field = rel_statement ) { rel_type = rel_value } , ( rel_field = rel_statement ) { rel_type = rel_value } , ...
 
@@ -209,5 +211,5 @@ Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészek
 
 Űrlapok szerkesztése
 --------------------
-Meglévő űralpokat lehet kiválasztani szerkesztésre. Űralpokat lehet törölni vagy letiltani.
-Az űralpok átnevezésével az űralpról az új néven egy másolat készül!
+Meglévő űrlapokat lehet kiválasztani szerkesztésre. Űrlapokat lehet törölni vagy letiltani.
+Az űrlapok átnevezésével az űrlapról az új néven egy másolat készül!
