@@ -23,7 +23,9 @@ webes felület, fájl feltöltés, programozott felület
 
     - tartalmazza?:	ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
 
-    - oszlop:	az adatbázis oszlopk felületen meghatározott - megjelenített oszlop név
+    - oszlop:	
+    	- Az adatbázis oszlopok felületen meghatározott, megjelenített oszlop név. Ez szerkeszthető, amivel egyedivé lehet tenni egy űrlapra
+	- Az oszlop neve az adattáblában
     
     - kötelező:	ha igen (bordó), akkor az űrlap nem küldhető el, ha nincs kitöltve itt érték
 
