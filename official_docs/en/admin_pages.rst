@@ -10,19 +10,20 @@ Administrative functions can be delegated to user groups.
 Database columns
 ----------------
 Add new columns to a table and manage tables: assign OBM meanings to the columns.
-- data: general
-- spatial geometry: this column can be used for map creation
-- scientific species name: this column can be used in taxon management
-- alternative names: this column can be used in taxon management
-- date this column can be used in date filters
-- no. of individuals: can be used in summary functions
-- rowid: not used
-- latitude: together with longitude can be used for creating spatial geometry
-- longitude: together with latitude can be used for creating spatial geometry
-- citing: used in summary functions
-- sensitive: 
-- attacment: file attacmnets colum
-- UTM Zone: used in spatial geometry creation
+
+    - data: general
+    - spatial geometry: this column can be used for map creation
+    - scientific species name: this column can be used in taxon management
+    - alternative names: this column can be used in taxon management
+    - date this column can be used in date filters
+    - no. of individuals: can be used in summary functions
+    - rowid: not used
+    - latitude: together with longitude can be used for creating spatial geometry
+    - longitude: together with latitude can be used for creating spatial geometry
+    - citing: used in summary functions
+    - sensitive: 
+    - attacment: file attacmnets colum
+    - UTM Zone: used in spatial geometry creation
 
 Groups
 ------
