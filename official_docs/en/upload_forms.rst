@@ -43,6 +43,14 @@ Form SRID
 Any kind of spatial reference can be coosed for the uploaded which is available in https://spatialreference.org/. The default srid is "epsg:4326 (WGS84)". If a list of sptial references specified here, uploaders can choose only from these options. 
 Use the following format for define a list of available references: "4326:wgs84,23700:eov". It is a comma separated list of epsg reference id and visible labels.
 
+Form groupping
+..............
+Form can be organized into groups for the form choose interface on the web form. The group names can be defined or choosed here.
+This option is not available on the mobile app yet.
+
+Form publish
+............
+A form can be locked by publishing it (orange publish button in the form-header area). Any updates on a published form creates a new version of the form. The old versions are available for API clients (mobile-app). Draft version can be created from the published forms for testing (create draft version button at the bottom of the page). The dtaft version is only available the creator of the draft (by default). The draft version can be publised in the published branch of the form.
 
 Form column definitions
 -----------------------
@@ -176,7 +184,6 @@ You can predefine a value for a field. There are several dynamic predefined valu
 
 Field display options 
 .....................
-
     - sticky
         This has real significance in the mobile application. If this option is selected, the field will retain its value when new rows start.
     - hidden
