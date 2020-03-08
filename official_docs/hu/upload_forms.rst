@@ -178,7 +178,8 @@ Többféle lista definíció megadható itt. Egyszeres választós lista, többs
       "multiselect":"true or false, default is false",
       "selected":["val1"]
     }
-    
+
+
     - kapcsolt listák kezelése: lista létrehozása egy oszlopban (indító oszlop), ami megszűri milyen lista jöhet létre az általunk kiválasztott oszlopban ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
 
 A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. A kód első fele határozza meg, hogy az indító oszlopunk melyik másik oszlop listáját befolyásolja:
