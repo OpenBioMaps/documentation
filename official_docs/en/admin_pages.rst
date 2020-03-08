@@ -31,8 +31,7 @@ Create and manage groups
 
 Upload forms
 ------------
-:ref:`upload-form-management`
-
+:doc:`upload_forms`
 
 Functions
 ---------
