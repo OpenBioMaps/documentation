@@ -12,7 +12,7 @@ Which project table the upload form applies to.
 
 Name of the form
 ................
-Please enter a name for your upload form!
+The name for the upload form. This sholud be unique within a project.
 
 This name can be multilingual, if you use the ''str_'' tag. See more about translations :ref:`translations`
 
