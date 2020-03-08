@@ -2,14 +2,16 @@
 
 Create new data upload form
 ---------------------------
-Form Table Selection: Which project table the upload form applies to.
+
+Destination table
+.................
+Which project table the upload form applies to.
 
 Name of the form
 ................
 Please enter a name for your upload form!
 
 This name can be multilingual, if you use the ''str_'' tag. See more about translations :ref:`translations`
-
 
 Form access
 ...........
