@@ -1,7 +1,12 @@
-.. _new-upload-form:
+.. _manage-upload-forms:
 
-Create new data upload form
-===========================
+Upload form management
+======================
+
+List of available forms
+-----------------------
+Existing forms can be selected for editing or can be deleted or blocked of using.
+
 
 Form header definition
 ----------------------
@@ -13,6 +18,8 @@ Which project table the upload form applies to.
 Name of the form
 ................
 The name for the upload form. This sholud be unique within a project.
+
+You can make a copy of a form by renaming it.
 
 This name can be multilingual, if you use the ''str_'' tag. See more about translations :ref:`translations`
 
@@ -254,10 +261,3 @@ at the tarsus_length column
 (clutch_size=!!^([123])$) {obligatory(1)}
 
 Which means it will be mandatory to fill the tarsus length if the nest size is 1, 2 or 3
-
-.. _edit-upload-form:
-
-Edit forms
-----------
-Existing forms can be selected for editing. Forms can be deleted or blocked.
-By renaming the forms, a new name will be created for the form!
