@@ -206,13 +206,15 @@ Field display options
           If the list has the following values: animals, plants, mushrooms, bats
 
 .. code-block:: json
-
+        
+        {
           "pictures": {
             "animals": "http://....png",
             "plants": "http://....png",
             "mushrooms": "http://....png",
             "bats": "http://....png"
             }
+         }
             
     - once
         Field displayed only once in observation-list in mobile app at the end of observation
