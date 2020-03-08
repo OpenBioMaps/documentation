@@ -6,47 +6,59 @@
 Űrlap fejléc beállítások
 ------------------------
 
+.. _Destination table:
 Űrlap tábla kiválasztása
 ........................
 melyik projekt táblára vonatkozik a feltöltő űrlap.
 
+.. _Name of the form:
 Űrlap neve
 ..........
 Az űrlap nevét lehet megadni, amelynek egyedinek kell lennie egy projektben. 
 
 Az űrlap neve többnyevű is lehet, ha _str előtaggal van megadva és a projekt nyelvi beállításokban meg van adva az adott nyelvi definíció minden egyes nyelvre.
 
+.. _Form access:
 Űrlap hozzáférés
 ................
 Azoknak a meghatározása akik láthatják/használhatják az űrlapot: bárki, bejelentkezett felhasználóknak, meghatározott csoport.
 
+.. _Group access:
 Csoport hozzáférés
 ..................
 Amennyiben "csoport hozzáférés" van megadva az űrlap hozzáférésre, akkor itt lehet megadni a csoportokat
 
+.. _Data access:
 Adat hozzárendelés
 ..................
 A feltölött adatoknak az itt megadott csoportoknak lesz hozzáférése. Alapesetben a feltöltőnek van írási és olvasási hozzáférése az adatokhoz és a projekt globális beállításai érvényesülnek.
 
+.. _Form type:
 Űrlap típusa
 ............
 webes felület, fájl feltöltés, API (pl. mobil alkalmazás)
 
+.. _Form description:
 Űrlap leírás
 ............
 Tetszőleges leírás az űrlaphoz. Fordítható ez is.
 
+.. _Form SRID:
 Űrlap térbeli referencia rendszer
 .................................
 Bármilyen térbeli referencia rendszer választható amelybeől a feltöltött adatok származnak amely elérhető az  https://spatialreference.org/ oldalon. It egy vesszővel elávlasztott felsorolás definiálható az adott űrlap számára eléhető referncia rendszerek megadására a következő módon: srid:címke,srid:címke. Pl.: "4326:wgs84,23700:eov"
 
+.. _Form groupping:
 Csoportosítás
 .............
 Az űrlapok csoportokba rendezhetőek a webes űrlap választó felületen való megjelenítéshez (a mobilon még nem elérhető ez az opció)
 
+.. _Form publish:
 Űrlap publikálás
 ................
 Az űrlapok lezárhatók publikálással (narancssárga gomb az űrlap fejléc területen). A publikált űrlapok minden további módosítása egy új verzió készítését okozzák. A korábbi verziók elérhetőek maradnak minden API kliens számára, pl. mobil alkalmazás. A publikált űrlapokból teszt verziók készthetőek (teszt verzió készítése gomb a lap alján). A teszt verzók csak annak késztője számára elérhetőek (alapbeállítás szerint). A teszt verziók publikálhatóak a saját publikált águkba.
+
+
 
 Űrlap mező definíciók
 ---------------------
