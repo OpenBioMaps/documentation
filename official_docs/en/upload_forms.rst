@@ -200,6 +200,9 @@ Field display options
         Field not displayed.
     - read only
         Field value cannot be modified.
+    - once
+        Field displayed only once in observation-list in mobile app at the end of observation
+        (This option will used in the web form to pull out a field from the table over the table. Currenty, using the default value option do this for the web form)
     - list element as buttons
         List element will be diplayed as buttons. Pictures can be used in the buttons. 
           Pictures should be defined in for all list elements in the list definition like in this example:
@@ -216,10 +219,6 @@ Field display options
         }
     }
     
-    - once
-        Field displayed only once in observation-list in mobile app at the end of observation
-        (This option will used in the web form to pull out a field from the table over the table. Currenty, using the default value option do this for the web form)
-
 Column relations
 ................
 Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}
