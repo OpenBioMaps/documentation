@@ -157,6 +157,8 @@ Lista definíció
 ...............
 Többféle lista definíció megadható itt. Egyszeres választós lista, többszörös választós, autó-kiegészítős lista. A listák tartalma megadható itt is az elemek felsorolásával, vagy megadható egy tábla és feltételek ahonnan az alkalmazás lekérdezi a lista elemeket.
 
+.. code-block:: json
+
     {
       "list": {
             "val1": ["label1", "label2"]
@@ -180,6 +182,9 @@ Többféle lista definíció megadható itt. Egyszeres választós lista, többs
     - kapcsolt listák kezelése: lista létrehozása egy oszlopban (indító oszlop), ami megszűri milyen lista jöhet létre az általunk kiválasztott oszlopban ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
 
 A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. A kód első fele határozza meg, hogy az indító oszlopunk melyik másik oszlop listáját befolyásolja:
+
+.. code-block:: json
+
     {
     "triggerTargetColumn": [
         "befolyásolt_lista_neve"
@@ -201,6 +206,8 @@ Kód magyarázat:
 
 A fent leírt kóddal olyan "lista a listában" szerkezetet hoztunk létre, ami két oszlopot köt össze. Következő lépésként meg kell határozzuk a "befolyásolt oszlopunkban", hogy a szükséges listához honnan kell ki venni az értékeket:
 
+.. code-block:: json
+
     {
     "optionsTable": "allat_csoportok",
     "valueColumn": "allat_csoport_név",
@@ -215,6 +222,8 @@ Kód magyarázat (csak az új változókat határozom itt meg):
 
 
 A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni, hanem több oszlopét is. Tehát ha a háttér táblánkban azt is definiáltuk, hogy a kisebb állatcsoportokhoz (állat_csoport_név) mely fajok tartoznak, akár kétszeres de több változó bevonásával akár ötszörös vagy tízszeres kapcsoltsági hálót is létre tudunk hozni. Az indító és a végső oszlop közötti oszlopokhoz a következő kód tartozik:
+
+.. code-block:: json
 
     {
     "optionsSchema": "shared",
