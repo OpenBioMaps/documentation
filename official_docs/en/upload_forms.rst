@@ -206,7 +206,7 @@ Field display options
           If the list has the following values: animals, plants, mushrooms, bats
 
 .. code-block:: json
-        
+
         {
           "pictures": {
             "animals": "http://....png",
@@ -215,7 +215,8 @@ Field display options
             "bats": "http://....png"
             }
          }
-            
+
+
     - once
         Field displayed only once in observation-list in mobile app at the end of observation
         (This option will used in the web form to pull out a field from the table over the table. Currenty, using the default value option do this for the web form)
