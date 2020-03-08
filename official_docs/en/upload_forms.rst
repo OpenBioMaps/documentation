@@ -153,6 +153,9 @@ checks the number of characters entered
 List definítion
 ...............
 lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusnál adatbázis és oszlop megadása "SELECT:" előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.
+
+.. code-block:: json
+
     {
       "list": {
             "val1": ["label1", "label2"]
@@ -201,13 +204,16 @@ Field display options
         List element will be diplayed as buttons. Pictures can be used in the buttons. 
           Pictures should be defined in for all list elements in the list definition like in this example:
           If the list has the following values: animals, plants, mushrooms, bats
-          
+
+.. code-block:: json
+
           "pictures": {
             "animals": "http://....png",
             "plants": "http://....png",
             "mushrooms": "http://....png",
             "bats": "http://....png"
             }
+            
     - once
         Field displayed only once in observation-list in mobile app at the end of observation
         (This option will used in the web form to pull out a field from the table over the table. Currenty, using the default value option do this for the web form)
