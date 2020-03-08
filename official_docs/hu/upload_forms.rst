@@ -1,7 +1,12 @@
-.. _new-upload-form:
+.. _manage-upload-forms:
 
-Új adatfeltöltő űrlap létrehozása
-=================================
+Adatfeltöltő űrlapok kezelése
+=============================
+
+Űrlapok listája
+--------------------
+Űrlapokat lehet kiválasztani szerkesztésre, törölésre vagy a használatból való letiltásra.
+
 
 Űrlap fejléc beállítások
 ------------------------
@@ -16,7 +21,9 @@ melyik projekt táblára vonatkozik a feltöltő űrlap.
 
 Űrlap neve
 ..........
-Az űrlap nevét lehet megadni, amelynek egyedinek kell lennie egy projektben. 
+Az űrlap nevét lehet megadni, amelynek egyedinek kell lennie egy projektben.
+
+Egy űrlapról másolat készíthető annak átnevezésével.
 
 Az űrlap neve többnyevű is lehet, ha _str előtaggal van megadva és a projekt nyelvi beállításokban meg van adva az adott nyelvi definíció minden egyes nyelvre.
 
@@ -300,10 +307,3 @@ tarsus_length oszlopnál
 (clutch_size=!!^([123])$) {obligatory(1)}
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
-
-.. _edit-upload-form:
-
-Űrlapok szerkesztése
---------------------
-Meglévő űrlapokat lehet kiválasztani szerkesztésre. Űrlapokat lehet törölni vagy letiltani.
-Az űrlapok átnevezésével az űrlapról az új néven egy másolat készül!
