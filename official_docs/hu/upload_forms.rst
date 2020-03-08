@@ -33,27 +33,27 @@ Adat hozzárendelés
 ..................
 A feltölött adatoknak az itt megadott csoportoknak lesz hozzáférése. Alapesetben a feltöltőnek van írási és olvasási hozzáférése az adatokhoz és a projekt globális beállításai érvényesülnek.
 
-.. _Form type:
+.. _form-type:
 Űrlap típusa
 ............
 webes felület, fájl feltöltés, API (pl. mobil alkalmazás)
 
-.. _Form description:
+.. _form-description:
 Űrlap leírás
 ............
 Tetszőleges leírás az űrlaphoz. Fordítható ez is.
 
-.. _Form SRID:
+.. _form-srid:
 Űrlap térbeli referencia rendszer
 .................................
 Bármilyen térbeli referencia rendszer választható amelybeől a feltöltött adatok származnak amely elérhető az  https://spatialreference.org/ oldalon. It egy vesszővel elávlasztott felsorolás definiálható az adott űrlap számára eléhető referncia rendszerek megadására a következő módon: srid:címke,srid:címke. Pl.: "4326:wgs84,23700:eov"
 
-.. _Form groupping:
+.. _form-groupping:
 Csoportosítás
 .............
 Az űrlapok csoportokba rendezhetőek a webes űrlap választó felületen való megjelenítéshez (a mobilon még nem elérhető ez az opció)
 
-.. _Form publish:
+.. _form-publish:
 Űrlap publikálás
 ................
 Az űrlapok lezárhatók publikálással (narancssárga gomb az űrlap fejléc területen). A publikált űrlapok minden további módosítása egy új verzió készítését okozzák. A korábbi verziók elérhetőek maradnak minden API kliens számára, pl. mobil alkalmazás. A publikált űrlapokból teszt verziók készthetőek (teszt verzió készítése gomb a lap alján). A teszt verzók csak annak késztője számára elérhetőek (alapbeállítás szerint). A teszt verziók publikálhatóak a saját publikált águkba.
