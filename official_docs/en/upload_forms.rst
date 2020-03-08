@@ -173,7 +173,7 @@ lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusn�
       "preFilterColumn": "",
       "preFilterValue": "",
       "multiselect":"true or false, default is false",
-      "selected":["val1"],
+      "selected":["val1"]
     }
     
 Default values
