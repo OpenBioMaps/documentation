@@ -1,40 +1,75 @@
 .. _new-upload-form:
 
 Új adatfeltöltő űrlap létrehozása
----------------------------------
-Űrlap tábla kiválasztása: melyik projekt táblára vonatkozik a feltöltő űrlap.
+=================================
+
+Űrlap fejléc beállítások
+------------------------
+
+Űrlap tábla kiválasztása
+........................
+melyik projekt táblára vonatkozik a feltöltő űrlap.
 
 Űrlap neve
 ..........
+Az űrlap nevét lehet megadni, amelynek egyedinek kell lennie egy projektben. 
+
+Az űrlap neve többnyevű is lehet, ha _str előtaggal van megadva és a projekt nyelvi beállításokban meg van adva az adott nyelvi definíció minden egyes nyelvre.
 
 Űrlap hozzáférés
 ................
 Azoknak a meghatározása akik láthatják/használhatják az űrlapot: bárki, bejelentkezett felhasználóknak, meghatározott csoport.
 
+Csoport hozzáférés
+..................
+Amennyiben "csoport hozzáférés" van megadva az űrlap hozzáférésre, akkor itt lehet megadni a csoportokat
+
+Adat hozzárendelés
+..................
+A feltölött adatoknak az itt megadott csoportoknak lesz hozzáférése. Alapesetben a feltöltőnek van írási és olvasási hozzáférése az adatokhoz és a projekt globális beállításai érvényesülnek.
+
 Űrlap típusa
 ............
-webes felület, fájl feltöltés, programozott felület
+webes felület, fájl feltöltés, API (pl. mobil alkalmazás)
 
 Űrlap leírás
 ............
+Tetszőleges leírás az űrlaphoz. Fordítható ez is.
 
-Űrlap oszlopok
+Űrlap térbeli referencia rendszer
+.................................
+Bármilyen térbeli referencia rendszer választható amelybeől a feltöltött adatok származnak amely elérhető az  https://spatialreference.org/ oldalon. It egy vesszővel elávlasztott felsorolás definiálható az adott űrlap számára eléhető referncia rendszerek megadására a következő módon: srid:címke,srid:címke. Pl.: "4326:wgs84,23700:eov"
+
+
+Űrlap mező definíciók
+---------------------
+
+Tartalmazza
+...........
+ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
+    
+Oszlop sorrend
 ..............
+itt állatható egyedileg az űrlapra az oszlopsorrend
 
-    - tartalmazza?:	ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
-    
-    - oszlop sorrend: itt állatható egyedileg az űrlapra az oszlopsorrend
-    
-    - kötelező:	ha igen (bordó), akkor az űrlap nem küldhető el, ha nincs kitöltve itt érték
+Oszlop
+......
+Két szó szerepel itt egymás alatt. A megjelenített oszlop név, amely szerkeszthető, amivel egyedivé lehet tenni minden űrlapra.
+A másik az oszlop neve az adattáblában.
 
-    - oszlop:	
-    	- Az adatbázis oszlopok felületen meghatározott, megjelenített oszlop név. Ez szerkeszthető, amivel egyedivé lehet tenni egy űrlapra.
-	- Az oszlop neve az adattáblában.
+Kötelező
+........
+	- Ha `igen` (háttérszín: bordó), akkor az űrlap nem küldhető el, ha nincs megadva a mezőben érték;
+	- Ha `nem` (háttérszín: szürke), akkor be lehet az adott mező üres;
+	- Ha `puha hiba`, akkor az adatfeltöltő minden egy sorra figyelmeztetést, ha a mező üres, vagy eltérések vannak benne a megkötésektől. Soronként egyesével meg kell erősíteni, hogy megengedi az adott eltéréseket.
 
-    - leírás:	rövid leírás a beírandó adatokról
+Mező leírás
+...........
+rövid leírás a mezőről. Fordítható.
     
-    - típus:
-    
+Mező típusa
+...........
+
         - szöveg: tetszőleges szöveg - habár a minimum és maximum hossz megadható
         
         - szám: tetszőleges szám - habár a minimum és maximum hossz megadható
@@ -82,7 +117,9 @@ webes felület, fájl feltöltés, programozott felület
         - térbeli
         - egyéni ellenőrzés
     
-    - lista definíció:	lista típusnál vesszővel elválasztott lista megadaása. Autocomplete típusnál adatbázis és oszlop megadása "SELECT:" előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.
+Lista definíció
+...............
+lista típusnál vesszővel elválasztott lista megadaása. Autocomplete típusnál adatbázis és oszlop megadása "SELECT:" előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.
     {
       "list": {
             "val1": ["label1", "label2"]
@@ -158,19 +195,46 @@ A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni,
 A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterColumn" mindig előző oszlopra mutasson. A "valueColumn" és a "labelColumn" mindig az aktuális oszlopra mutasson.
 
 
-    - alap értékek:	A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
+Alap értékek
+............
+A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
 
         Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.
 
-    - api űrlap kontroll paraméterek:
-    
-    - kapcsolat más oszloppal: Oszlopok tartalmának ellenőrzése más oszlopok tartalmának függvényében
+Mező megjelenítési opciók
+.........................
+    - sticky (rajzszög)
+        A mobil alkalmazásban van igazi jelentősége. A stickyvel jelölt mezők értéke megmarad mindaddig amíg a felhasználó nem ad meg más értéket.
+    - hidden (rejetett)
+        A mező nem fog látszani. A webes felületeten és a mobil alkalmazásban is működik.
+    - read only (csak olvasható)
+        A mező értéke nem módosítható.
+    - list element as buttons (lista elemek gombonként)
+        A lista elemei különálló gombonkként fognak megjelenni az űrlapon. A mobil alkalmazásban és a webes felületen is működik.
+        A gombok pictogrammok is defiiálhatók. Ezt a lista definícióban lehet megadni. Pl:
+          
+          "pictures": {
+            "animals": "http://....png",
+            "plants": "http://....png",
+            "mushrooms": "http://....png",
+            "bats": "http://....png"
+            }
+    - once (egyszer)
+        Ez a mező csak egyszer jelenik meg egy megfigyelési lista típusú adatfelvételnél a lista lezárásakkor.
+        (Később ez az opció fogja majd a mező kiemeléseket csinálni a webes felületeten)
+
+Kapcsolat más oszloppal
+.......................
+Oszlopok tartalmának ellenőrzése más oszlopok tartalmának függvényében
         Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}
 
-    - pszeudo oszlopok:
- 
-Relations pseudolanguage definíció
-----------------------------------
+Pszeudo oszlopok
+................
+Más űralpokból átemelhetőek egyes oszlopok ezzel a funkcióval. form-név:oszlop1,oszlop2,oszlopN. Az itt megadott oszlopok a megadott mező után jelennek meg. Ezzel a funkcióval elérhető, hogy egyszerre két adattáblába lehessen feltölteni adatokat.
+
+
+Kapcsolat más oszlopkkal definíció nyelv
+----------------------------------------
 
 ( rel_field = rel_statement ) { rel_type = rel_value } , ( rel_field = rel_statement ) { rel_type = rel_value } , ...
 
