@@ -37,10 +37,11 @@ Upload forms
 Functions
 ---------
 Manage optional SQL functions and triggers:
-- Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which used by the taxon filter
-- Taxon name auto update: updates the data table on taxon table updating
-- History: creates a history on line in history table on every update and delete
-- Access rules: Custom rules can be defined for the uploaded data user assignments.
+
+    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which used by the taxon filter
+    - Taxon name auto update: updates the data table on taxon table updating
+    - History: creates a history on line in history table on every update and delete
+    - Access rules: Custom rules can be defined for the uploaded data user assignments.
 
 Species names
 -------------
@@ -52,12 +53,13 @@ Overview of set access rules and their work statuses.
 
 Translations
 ------------
-- Global translations: global translations are periodically updated from this github repository: 
-https://github.com/OpenBioMaps/translations
-Feel free to improve translations!
+ 
+    - Global translations: global translations are periodically updated from this github repository: 
+        https://github.com/OpenBioMaps/translations
+        Feel free to improve translations!
 
-- Local translations:
-Use the 'str_' prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
+    - Local translations:
+        Use the 'str_' prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
 When you change the language of a web page, you can set other translations for the same terms.
 
@@ -79,16 +81,18 @@ SQL query settings
 SQL setting for map and text quieries.
 
 The query can contain magic-words. Some magic-word used my modules. The magic-words marked with % characters and replaced by the query creator with something valid SQL string.
-
-SELECT obm_id, %grid_geometry% AS obm_geometry %selected%
-FROM %F%checkitout c%F%
-    %uploading_join%
-    %rules_join%
-    %taxon_join%
-    %grid_join%
-    %search_join%
-    %morefilter%
-WHERE %geometry_type% %envelope% %qstr%
+ 
+.. code-block:: SQL
+ 
+    SELECT obm_id, %grid_geometry% AS obm_geometry %selected%
+    FROM %F%checkitout c%F%
+        %uploading_join%
+        %rules_join%
+        %taxon_join%
+        %grid_join%
+        %search_join%
+        %morefilter%
+    WHERE %geometry_type% %envelope% %qstr%
 
 Web Map Layers
 --------------
