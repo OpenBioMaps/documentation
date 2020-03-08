@@ -175,7 +175,7 @@ lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusn�
       "multiselect":"true or false, default is false",
       "selected":["val1"]
     }
-    
+
 Default values
 ..............
 You can predefine a value for a field. There are several dynamic predefined values:
