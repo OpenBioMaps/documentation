@@ -207,16 +207,15 @@ Field display options
 
 .. code-block:: json
 
-        {
-          "pictures": {
+    {
+        "pictures": {
             "animals": "http://....png",
             "plants": "http://....png",
             "mushrooms": "http://....png",
             "bats": "http://....png"
-            }
-         }
-
-
+        }
+    }
+    
     - once
         Field displayed only once in observation-list in mobile app at the end of observation
         (This option will used in the web form to pull out a field from the table over the table. Currenty, using the default value option do this for the web form)
