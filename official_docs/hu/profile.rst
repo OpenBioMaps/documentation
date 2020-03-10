@@ -22,44 +22,50 @@ Az ORCID azonosítóval rendelkezők számára lehetőség van a ORCID profil ad
 Felhasználói információk
 ------------------------
 Itt ellenőrizhető, hogy milyen státusszal (üzemeltető, normál vagy inaktív) rendelkezik az adott adatbázisban.
-Értékelés?
+
+Az adatainkra, feltöltéseinkre és felhasználói profilunkra kapott értékelések súlyozott összesítése
 
 
 Más adatbázisok
 ---------------
-Itt találja azokat az adatbázisokat felsorolva, amelyekben tag. Az adatbázis nevére kattintva átléphet egy másik adatbázisba. Minden egyes átlépés után újra be kell jelentkeznie.
+Itt találja azokat az adatbázisokat felsorolva, amelyekben tag az adott szerveren. Az adatbázis nevére kattintva átléphet egy másik adatbázisba. Minden egyes átlépés után újra be kell jelentkeznie.
 
 
 Aktivitás
 ---------
-Itt látható, hogy abba az adatbázisba, amelyikbe bejelentkezett hány alkalommal és mennyi (feltöltött sorok száma) adatot töltött fel. Továbbá ebből a menüpontból elérhető a faj statisztika és 
+- Adat feltöltéseink száma (mennyi adatfeltöltést végeztünk összesen eddig)
+- Adat módosításaink száma
+- Feltöltött rekordok száma az összes feltöltésünkben
+- Faj statisztika: Mennyi faj volt az eddigi összes feltöltésükben. Fajonként számlált lista
+- Térbeli aktivitási terület kiterjedése km2-ben a feltöltéseink alapján. A kiírt szám klikkelhető és térképen megmutatja az adatrekordokat határoló konvex poligont.
 
 
-Megszakított feltöltések
-------------------------
-Abban az esetben, ha adatfeltöltéshez az online felületet vagy a fájlfeltöltést választja lehetősége nyílik a feltöltés aktuális állapotát elmenteni.
-
-Amikor elmenti a feltöltés aktuális állapotát az adatai és annak beállításai az OpenBioMaps szerveren kerülnek tárolásra. Az OpenBioMaps szerver minden egyes megszakított feltöltéshez automatikusan generál egy egyedi azonosító számot. 
-
-Ebben a menüpontban találja a "megszakított" feltöltéseihez generált egyedi azonosítókat. Ezekre az azonosítókra kattintva folytathatja a feltöltést ott, ahol félbehagyta.
+Felfüggesztett adatfeltöltések
+------------------------------
+Az elmentett feltöltéseink listája. A hivatkozásokra kattintva folytathatja a feltöltést ott, ahol félbehagyta.
 
 
 Eltárolt lekérdezések
 ---------------------
-
 Lehetősége van a térképes felületen használt adatlekérdezési beállításainak az elmentésére. Az OpenBioMaps szerver automatikusan generál egy egyedi aznosítót minden elmentett lekérdezéshez. Az elmentett lekérdezéseit akár el is nevezheti.
 
-Ebben a menüpontban találhatja a mentett lekérdezéseinek az egyedi azonosítóit. A lekérdezések azonosítóira kattintva automatikusan megjelennek a lekérdezés beállításai a térképes oldalon. 
+Ebben a menüpontban találhatja a mentett lekérdezéseinek az egyedi azonosítóit. A lekérdezések azonosítóira kattintva a lekérdezés újra lefut a térképi oldalon.
 
 
 Elmentett eredmények
 --------------------
-
+A lekérdezések eredményei is elárolhatóak. Ezekhez akár DOI azonosító is kérhető. Itt találhatóak az eredményekkel együtt eltárolt lekérdezéseink. A hivatkozásokat követve az adatok betöltődnek egy specifikus térképi felületen, vagy a tárolt nyers adatokat lehet letölteni.
 
 Api kulcsok
 -----------
-Egy véletlenszerűen számokból és betűkből álló karakterlánc. 
+Az aktív és frissíthető API kulcsaink listája. Leginkább a fejlesztők számára van jelentősége.
 
+Modulok egyéni felületei
+------------------------
+Egyes modulok tehetnek ide ki kezelő felületeket. Pl: postgres felhasználó készítő modul, geometria feltöltő modul, letöltés kérő modul, stb...
 
 Vélemények
 ----------
+Felhasználói véleményezés. Itt olvashatjuk és reagálhatunk a rólunk írt véleményekre. Mások profil oldalán itt véleményezhetjük az adott felhasználót. 
+
+A vélemények pont értéke beleszámít az összpontozási értékbe, amivel az adatvalidálási munkát is lehet támogatni.
