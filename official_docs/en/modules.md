@@ -339,17 +339,6 @@ restricted_data
 
     Parameters:
 
-form_choose
------------
-    List of available forms.
-
-    Calls:
-
-    Functions: form_list()
-
-    General description:
-
-    Parameters:
 
 identify_point
 --------------
