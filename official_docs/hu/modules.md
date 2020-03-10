@@ -295,18 +295,6 @@ Fejleszői dokumentáció
 
 	Hívások:
 
-form_choose
------------
-Általános leírás:
-
-Paraméterezés:
-
-Fejleszői dokumentáció
-	
-	Függvények:
-
-	Hívások:
-
 grid_view
 ---------
 Általános leírás:
