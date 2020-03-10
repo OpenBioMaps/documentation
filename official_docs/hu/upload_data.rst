@@ -23,9 +23,12 @@ A következő lehetőségek állnak rendelkezésre adatfeltöltéshez
   * Webes űrlap
 
   * Külső alkalmazások
-    * API felület használata (pl.: mobil alkalmazás, R-csomag)
-    * SQL kapcsolat használata (pl.: QGIS)
     
+    * API felület használata (pl.: mobil alkalmazás, R-csomag)
+    
+    * SQL kapcsolat használata (pl.: QGIS)
+
+
 Adat exportálás a feltöltési folyamatból
 ========================================
 
