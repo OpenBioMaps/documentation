@@ -274,19 +274,23 @@ Mező megjelenítési opciók
         A mező nem fog látszani. A webes felületeten és a mobil alkalmazásban is működik.
     - read only (csak olvasható)
         A mező értéke nem módosítható.
+    - once (egyszer)
+        Ez a mező csak egyszer jelenik meg egy megfigyelési lista típusú adatfelvételnél a lista lezárásakkor.
+        (Később ez az opció fogja majd a mező kiemeléseket csinálni a webes felületeten)
     - list element as buttons (lista elemek gombonként)
         A lista elemei különálló gombonkként fognak megjelenni az űrlapon. A mobil alkalmazásban és a webes felületen is működik.
         A gombok pictogrammok is defiiálhatók. Ezt a lista definícióban lehet megadni. Pl:
-          
+
+.. code-block:: json
+	
+	{
           "pictures": {
             "animals": "http://....png",
             "plants": "http://....png",
             "mushrooms": "http://....png",
             "bats": "http://....png"
             }
-    - once (egyszer)
-        Ez a mező csak egyszer jelenik meg egy megfigyelési lista típusú adatfelvételnél a lista lezárásakkor.
-        (Később ez az opció fogja majd a mező kiemeléseket csinálni a webes felületeten)
+	 }
 
 .. _column-relations:
 
