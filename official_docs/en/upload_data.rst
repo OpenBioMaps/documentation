@@ -17,6 +17,8 @@ The following options are available for data uploading
         - Spatial formats: Esri shape (.shp, .dbf, .cpg, .prj, .shx together), gpx (GPS adatformátum (xml)), sqlite
         
         - Genetic data: fasta
+        
+     Any kind of file can be gathered from a given URL (simple GET request)
 
   * Web Form
 
