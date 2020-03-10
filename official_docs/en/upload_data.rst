@@ -5,6 +5,18 @@ The following options are available for data uploading
 ======================================================
 
   * File upload
+  
+     Supported formats:
+        
+        - Simple text formats: csv, dsv, tsv, json
+        
+        - Image files: jpg, tiff (Exif column will be processed)
+        
+        - Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
+        
+        - Spatial formats: Esri shape (.shp, .dbf, .cpg, .prj, .shx together), gpx (GPS adatformátum (xml)), sqlite
+        
+        - Genetic data: fasta
 
   * Web Form
 
