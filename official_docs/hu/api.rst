@@ -3,13 +3,13 @@
     <br>
     
 API dokumentáció
-*****************
-HTTP methods:  GET, POST, PATCH
+****************
+HTTP metódusok:  GET, POST, PATCH
 
-API tools:  Authentication, Data retrieval, Data push, Settings update
+API eszközök:  Bejelentkezés, Adat letöltés, Adat feltöltés, Beállítás módosítás
 
 
-API handlers:
+API kezelők:
 -------------
 Authentication handler (oauth):
 
@@ -176,13 +176,20 @@ curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_
 Form Data (get_form_data results) explanations
 ----------------------------------------------
 Description: Optional column description
-Default value: Fix value for all observation. It can be controlled with some options.
+
+Default value: Fix value for all observation. It can be controlled with the following options:
  
  - '_input' it works as any other field with sticky flag. 
  - '_list' it works as any other list type field with sticky flag.
-
-in any other case the value can not be changed by the user users and the field can be hidden.
-
+ - '_geometry' it works as geometry type field
+ - '_login_name' this value overriden by the user's name if logged in or returns as _input
+ - '_email' this value overriden by the user's email address if logged in or returns as _input
+ - '_autocomplete' alias of input
+ - '_boolean' display as normal boolean list
+ - '_attachment' display as normal attachments field
+ - '_datum' display as normal date field
+ - '_none' not used
+ 
 Column: The name of the column in the database
 
 Short_name: Visible name of the column for the users
@@ -196,7 +203,7 @@ Count: (json array) If the control='minmax' this field contains the limit values
 Type: column's openbiomaps type:
  
  - autocomplete	(json array)
- - boolen	
+ - boolean (two elements list)	
  - crings (colour rings - text)	
  - date (YYYY-MM-DD or other clear format)
  - datetime (YYYY-MM-DD HH:mm:ss)
@@ -213,9 +220,27 @@ Type: column's openbiomaps type:
  - wkt (WKT sting)
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+
 Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
-Api_params: jason array of control values. Currently only 'sticky'
+
+Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. 
+Above API v2.0:
+{"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off"}.
+
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+
+List_definition: JSON array of complex list definition
+
+Custom_function: null
+
+permanent_sample_plots: 
+
+API < v.2.1
+    JSON array: [{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
+
+API >= v.2.1
+    in "form_header":{...,"permanent_sample_plots":[{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
+    
 
 Training explanations and examples
 ----------------------------------
@@ -291,13 +316,26 @@ Data retrieval (form fields):
     
 
 Result of a successful get_form_data call:
+
+API < v.2.1
+
+    {"status":"success",
+    
+    "data":[    
+    {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
+    
+    {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{...}]}
+    
+API >= v.2.1
+
     {"status":"success",
     
     "data":[
     
-    {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
+    "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
+    "form_data":[
+        {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"}},{...}]]}
     
-    {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{... ]}
 
 Data upload:
     curl \\ |br|
