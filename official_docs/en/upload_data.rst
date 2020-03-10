@@ -18,7 +18,7 @@ The following options are available for data uploading
         
         - Genetic data: fasta
         
-     Any kind of file can be gathered from a given URL (simple GET request)
+     Any kind of file (listed above) can be gathered from a given URL (simple GET request)
 
   * Web Form
 
