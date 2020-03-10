@@ -1,8 +1,8 @@
-Gyakorlatok
-***********
+Oktató anyagok
+**************
 
-Felhasználók által készített videó gyakorlatok
-==============================================
+Felhasználók által készített videó oktatási anyagok
+===================================================
 `Feltöltési felület használata (Balkanherps, Mizsei Edvárd) english <https://youtu.be/qsu-0UeC46g>`_
 
 `Feltöltési felület használata (Milvus általános űrlap) română <https://www.youtube.com/watch?v=BknizNC8pvc&t=102s>`_
