@@ -1,8 +1,8 @@
 Adatfeltöltés munkafolyamat
 ***************************
 
-A következő lehetőségek állnak rendelkezésre adatfeltöltéshez
-=============================================================
+Adatfeltöltési lehetőségek
+==========================
 
   * Fájl feltöltés
     
@@ -34,3 +34,12 @@ Adat exportálás a feltöltési folyamatból
 ========================================
 
 Az adatfeltöltési folyamat során és a megszakított feltöltések elmentett állapotából lehetőség van az adatok kiexportálására egy CSV fájlba.
+
+Adatfeltöltés megszakítása
+==========================
+
+Az adatfeltöltés folyamatát a webes felületen bármikor meg lehet szakítani. Két percenként automatikusan mentés készül, de feleső menü sávban található mentés gombbal bármikor készíthetünk mentést. 
+
+Az elmenett feltöltések a profil oldalon található "felfüggesztett adatfeltöltések" listából kiválasztva visszatölthetőek.
+
+A befejezett feltöltések a listából autómatikusan kitörlődnek.
