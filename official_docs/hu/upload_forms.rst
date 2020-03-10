@@ -39,7 +39,7 @@ Csoport hozzáférés
 ..................
 Amennyiben "csoport hozzáférés" van megadva az űrlap hozzáférésre, akkor itt lehet megadni a csoportokat
 
-.. _Data-access:
+.. _data-access:
 
 Adat hozzárendelés
 ..................
@@ -80,18 +80,26 @@ Az űrlapok lezárhatók publikálással (narancssárga gomb az űrlap fejléc t
 Űrlap mező definíciók
 ---------------------
 
+.. _included:
+
 Tartalmazza
 ...........
 ha be van jelölve, akkor jelenik meg az ürlapon az adott oszlop
-    
+
+.. _column-order:
+
 Oszlop sorrend
 ..............
 itt állatható egyedileg az űrlapra az oszlopsorrend
+
+.. _column:
 
 Oszlop
 ......
 Két szó szerepel itt egymás alatt. A megjelenített oszlop név, amely szerkeszthető, amivel egyedivé lehet tenni minden űrlapra.
 A másik az oszlop neve az adattáblában.
+
+.. _obligatory:
 
 Kötelező
 ........
@@ -99,10 +107,14 @@ Kötelező
 	- Ha `nem` (háttérszín: szürke), akkor be lehet az adott mező üres;
 	- Ha `puha hiba`, akkor az adatfeltöltő minden egy sorra figyelmeztetést, ha a mező üres, vagy eltérések vannak benne a megkötésektől. Soronként egyesével meg kell erősíteni, hogy megengedi az adott eltéréseket.
 
+.. _column-description:
+
 Mező leírás
 ...........
 rövid leírás a mezőről. Fordítható.
-    
+
+.. _column-type:
+
 Mező típusa
 ...........
 
@@ -145,14 +157,20 @@ Mező típusa
         - geometria: bármi: WKT
         
         - colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
-        
-    - bevitel kontrol: a bevitt karakterek számának ellenőrzése
+
+.. _input-control:
+
+bevitel kontrol
+...............
+a bevitt karakterek számának ellenőrzése
         - nincs ellenőrzés
         - min - max
         - regexp
         - térbeli
         - egyéni ellenőrzés
-    
+
+.. _list-definition:
+
 Lista definíció
 ...............
 Többféle lista definíció megadható itt. Egyszeres választós lista, többszörös választós, autó-kiegészítős lista. A listák tartalma megadható itt is az elemek felsorolásával, vagy megadható egy tábla és feltételek ahonnan az alkalmazás lekérdezi a lista elemeket.
@@ -238,12 +256,15 @@ A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni,
 
 A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterColumn" mindig előző oszlopra mutasson. A "valueColumn" és a "labelColumn" mindig az aktuális oszlopra mutasson.
 
+.. _default-values:
 
 Alap értékek
 ............
 A form minden sora számára egységes érték. Lehet kitölthető, választható és fix értéket definiálni.
 
         Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.
+
+.. _field-display-options:
 
 Mező megjelenítési opciók
 .........................
@@ -267,10 +288,14 @@ Mező megjelenítési opciók
         Ez a mező csak egyszer jelenik meg egy megfigyelési lista típusú adatfelvételnél a lista lezárásakkor.
         (Később ez az opció fogja majd a mező kiemeléseket csinálni a webes felületeten)
 
+.. _column-relations:
+
 Kapcsolat más oszloppal
 .......................
 Oszlopok tartalmának ellenőrzése más oszlopok tartalmának függvényében
         Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}
+
+.. _pseudo-column:
 
 Pszeudo oszlopok
 ................
