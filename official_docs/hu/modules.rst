@@ -1,4 +1,4 @@
-Modules
+Modulok
 *******
 
 .. mdinclude:: ./modules.md
