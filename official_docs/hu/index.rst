@@ -14,8 +14,8 @@
 
    introduction.rst
    tutorial.rst
-   profile.rst
    user_interface.rst
+   profile.rst
    upload_data.rst
    admin_pages.rst
    modules.rst
