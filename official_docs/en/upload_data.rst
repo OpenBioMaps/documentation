@@ -21,9 +21,12 @@ The following options are available for data uploading
   * Web Form
 
   * External programs
+  
     * Using API interface (e.g. mobile-app, R-client)
-    * Using SQL connection (e.g. QGIS)
     
+    * Using SQL connection (e.g. QGIS)
+
+
 Data export from the upload forms
 =================================
 
