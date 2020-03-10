@@ -16,7 +16,7 @@ A következő lehetőségek állnak rendelkezésre adatfeltöltéshez
         
         - Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
         
-        - Genetikai adatfájlok: fast
+        - Genetikai adatfájlok: fasta
         
         
 
