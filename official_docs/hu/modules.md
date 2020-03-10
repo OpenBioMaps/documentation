@@ -81,7 +81,7 @@ bold_yellow
 Általános leírás:
 
 * Vastag betűvel sárgán írt oszlop nevek az eredmény listákban. Lekérdezés után a *"Kinyitható lista"* táblához csatolt részletes leírásban vastag betűvel, sárgán írt oszlop nevek jelennek meg.
-* Ezzel a modullal határozható meg az is, hogy az applikációban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
+* Ezzel a modullal határozható meg az is, hogy a mobil alkalmazásban a **"Felvett adatok"** menüpontban az adatfelvétel összefoglaló címkéin, milyen adatok jelenjenek meg.
 
 Paraméterezés:
 	
