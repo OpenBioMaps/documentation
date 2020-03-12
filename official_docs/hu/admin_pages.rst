@@ -3,40 +3,67 @@ Adminisztratív oldalak
 
 Adatbázis oszlopok
 ------------------
-Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űralpok készítéséhez és lekérdezéshez a webes felületen. 
+Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
 
 Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve ill. ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
 
+A lap címsávjának jobb oldalán látható >_ SQL gombbal egy SQL konzol nyitható. Ez csak üzemeltetői státusszal és külön authentikáció után használható.
+
+Adat hozzáférés
+---------------
+A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
+
+Adminisztratív hozzáférések
+---------------------------
+Felhasználói csoportok hozzárendelése adminisztratív funkciókhoz. Például űrlap készítési vagy fajnév tábla kezelési jogkör kiadása.
+
+
 Csoportok
 ---------
-Felhasználói jogosultság kezelés része. Űrlapok, modulok és adatok eléréséhez csoportokat lehet létrehozni. Az egyes felhasználók is lehetnek csoportok.
+Felhasználói csoportok létrehozása és felhasználók csoportokhoz hozzáadása itt történik. A felhasználói csoportok űrlapok, modulok és adminisztratív funkciókhoz való hozzáférés beállításban van jelentősége.
+
+
+Faj nevek
+---------
+Minden projektben be lehet állítani egy fajnév tábla használatát, amely automatikisan gyűjti ki a megadott adattáblából a fajneveket. Tudmányos és nemzeti nyelvi neveket is tud kezeleni. A fajnév táblát használja a fajnév kereső modul. A fajnév tábla lehetőv teszi szinoním nevek használatát. 
+
+A fajnév tábla elnevezése mindig a projektnév_taxon formájú, amelyben legalább a következő oszlopok szerepelnek: meta (szóközök nélküli fajnév), word (fajnév ahogy az adattáblában szerepel), lang (fajnevet tartalmazó oszlop neve), taxon_id (szinoním, nemezti és tudományos fajneveket egy faj összekötő egyedi belső azonosító),	status (elfogadott tudományos [1], szinoním tudományos [2], nemzeti név [3], hibás [4], nem kategorizált [0]),	modifier_id (az utolsó módosítást végző felhasználó azonosítója). További két oszlop kísérletesen szerepelhet: frequency (Lekérdezések száma az adott fajnévre - ez egy),	taxon_db (Az adott fajnév előfordulási gyakorisága az adott adattáblában). Ezen túl bármilyen egyéni kiegészítéssel bővíthető a taxon tábla, például védettség, taxon kategóriák.
+
+Ezen az adminisztratív lapon történik a taxon tábla lekérdezése és karbantartása.
+
+
+Felfüggesztett adatfeltöltések
+------------------------------
+A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen. 
+
 
 Feltöltő űrlapok
 ----------------
 Itt lehet feltöltő űrlapokat létrehozni és módosítani. 
+
 Az űrlapok kezelésének részletes leírása itt található:
 :ref:`new-upload-form` and :ref:`edit-upload-form`.
 
+
+Fájl kezelő
+-----------
+Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése.
+
+
 Függvények
 ----------
-Táblatörténet, elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
+Táblatörténet, adat elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
 
-Faj nevek
----------
-Faj nevek karbantartása. Faj nevek összekapcsolása, javítása és státuszának beállítása.
 
-Hozzáférések
-------------
-A projekt általános hozzáférési beállításának megtekintése. Itt ez nem konfogurálható!
+Mapserver beállítások
+---------------------
+A projekthez tartozó mapserver mapfájlok konfigurálhatóak itt.
 
-Nyelvi fájlok
--------------
-Elavult.
 
 Modulok
 -------
 Beépülő modulok hozzáadása, engedélyezése és paraméterezésének felülete.
-Az engedélyezett modulok használatát felhazsnálókhoz/csoportokhoz lehet rendelni.
+Az engedélyezett modulok használatát felhasználókhoz/csoportokhoz lehet rendelni.
 
 Paraméterként megadhatunk egyszerű karakterláncot, vagy JSON objektumot.
 
@@ -44,30 +71,70 @@ Az elérhető modulok listája és leírásai itt találhatóak:
 :doc:`modulok <../modules>`
 
 
-Elmentett feltöltések
----------------------
-A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen. 
+Nyelvi definíciók
+-----------------
+Meg lehet tekinteni itt az egész projektre globálisan definiált fordításokat. Ezek itt szerkeszthetőek: https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv
 
-Fájl kezelő
------------
-Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése.
+Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a projektre beállított nyelvre vontakoznak. Minden fordítható stringet str_somesthing_special_text formában kell megadni ahol az str_ előtag kötelező elem. Fordítások használhatók űrlap nevekben, oszlop nevekben, listákban, űrlap leírásokban, mező leírásokban.
+
+
+Rshinyserver
+------------
+A projekthez lehet R-shiny szervert beállítani és így online felületen dinamikus statisztikai ábrákat megjeleníteni. Ez egy kísérleti állapotban lévő funkció, a konfigurálása sok munkát és az R/R-shiny alapos ismeretét igényli. További információ az R-shiny-ról itt: https://shiny.rstudio.com/
+
 
 SQL lekérdezés beállítások
 --------------------------
-Adatlekérdezésekhez az alap SQL lekérdezés beállítása. Mapserver rétgenként lehet egyet létrehozni.
+Adatlekérdezésekhez és térképi megjelenítések SQL lekérdezésekkel valósulnak meg. Az SQL lekérdezések dinamikusan készülnek minden egyes felhasználói kérésre (például a térkép navigálás során). Ezen a felületen lehet a projektünkhoz tartozó SQL lekérdezés sablonokat beállítani. Amennyiben több adattáblához is szeretnénk független térképi felületet megjeleníteni akkor több lekérdezést kell megadnunk. Egy lekérdezést letilthatunk. Ha kiürítjük a lekérdezést és úgy mentjük el, akkor az kitörlődik.
+A lekérdezés vontakozhat csak térképre (alaptérképre vonatkozó lekérdezés). Ilyenkor a lekérdezés típusa "base", egyébként "query & base"
 
-Webes térképi rétegek
----------------------
-Az egyes SQL lekérdezésekhez tartozó openlayers beállítások helye.
 
-Tagok
------
-A projektbe regisztrált tagok listája. Státuszokat és csoport tagságokat lehet itt állítgatni
+Szerver infó
+------------
+Jelenleg még csak az utolsó módosítás ideje és a módosított fájlok listája látható itt.
 
-Mapserver beállítások
----------------------
-A projekthez tartozó mapserver mapfájlok konfigurálhatóak itt.
 
 Szerver logok
 -------------
 Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üzenetei tekinthetők meg itt. 
+
+
+Tagok
+-----
+A projektbe regisztrált tagok listája. Felhasználói státuszt lehet itt megani. Ezek a következők: Normál, Üzemeltető, Felfüggesztett. A felfüggesztett felhasználók semmihez nem férnek hozzá a projektben, majdnem egyenértékű a profil törlésével.
+Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd Csoportok :ref:`Csoportok` és Adminisztratív hozzáférések :ref:`Adminisztratív hozzáférések`.
+
+A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb felület a Csoportkezelő.
+
+A tagok neve egy hivatkozás ezen a felületen. Ezt a hivatkozást követve a felhasználó profil lapjára léphetünk. Adminisztratív jogkörrel ilyenkor a lap cím sávban - jobboldalt, felül megjelenik egy fa-user-secret ikon (https://fontawesome.com/v4.7.0/icon/user-secret). Erre kattitva a saját felhasználói bejelentkezési adatainkkal át tudunk lépni egy másik felhasználó profiljába.
+
+
+Tábla létrehozása
+-----------------
+Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regsiztál és az alap OBM oszlopokat létrehozza benne. A tábla neve nem tartalmazhat ékezetes karaktereket, szóközt és egyéb speciális karaktereket. Keüljük a nagybetűk használatát is. A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
+
+A tábla létrehozása után a felület automatikusan átvált az oszlop kezelő felületre, ahol a frissen létrehozott táblánkhoz oszlopkat tudunk hozzáadni. 
+
+Az OBM felületen csak regisztrált táblákat tudunk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)
+
+
+Webes térképi rétegek
+---------------------
+A webes térképi megjelenítést egy JavaScript függvénykönyvtár az OenLayers valósítja meg, amely számára meg kell adni, hogy mely mapserver rétegünket milyen sql lekérdezéssel szólítson meg. 
+
+A táblázat első oszlopában az SQL lekérdezéseknél megadott SQL lekérdezés nevekből tudunk választani. 
+
+A második oszlopban a Mapserver számára küldött lekérdezés típusát lehet beállítani. Jelenleg csak a WMS támogatott. 
+
+A harmadik oszlopban a mapserver map konfigurációs fájlunkban szereplő réteg nevét kell megadnunk.  
+
+A negyedik oszlopban beállításokat adhatunk meg az OpenLayers számára. Itt a layers:'...' névnek meg kell egyeznie az előző oszlopban megadott réteg névvel. A következő oszlopban az SQL hozzárendelés státusza látható. 
+
+Az URL oszlopban a "proxy" a legtöbb esetben jó választás, de egyéb speciális  beállítások is lehetségesek, pl Mapcache használata vagy Raster topotérképek esetén. A map proxy oszlopban  a default vagy proxy szónka kell szerepelnie. Ezek jelenleg egyenértékűek. Mapcache használata esetén másképp kell beállítani. 
+
+Az OpenLaers név kötelető, de bármi lehet. Ez fog megjelenni a réteg választó felületen a felhasználóknak.
+
+A sorrend oszlop kitöltésével tudjuk az OpenLayers rétegek kirajzolási sorrendjét megadni.
+
+"OpenLayers réteg definíció" mező kiürítésével és a sor mentésével törölhető egy definíció.
+
