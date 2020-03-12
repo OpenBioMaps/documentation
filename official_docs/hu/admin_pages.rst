@@ -102,7 +102,7 @@ Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üze
 Tagok
 -----
 A projektbe regisztrált tagok listája. Felhasználói státuszt lehet itt megani. Ezek a következők: Normál, Üzemeltető, Felfüggesztett. A felfüggesztett felhasználók semmihez nem férnek hozzá a projektben, majdnem egyenértékű a profil törlésével.
-Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd Csoportok :ref:`Csoportok` és Adminisztratív hozzáférések :ref:`Adminisztratív hozzáférések`.
+Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd Csoportok :ref:`csoportok` és Adminisztratív hozzáférések :ref:`adminisztratív-hozzáférések`.
 
 A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb felület a Csoportkezelő.
 
