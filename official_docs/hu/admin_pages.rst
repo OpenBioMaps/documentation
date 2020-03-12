@@ -13,10 +13,13 @@ Adat hozzáférés
 ---------------
 A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
 
+.. _admin-group-access:
+
 Adminisztratív hozzáférések
 ---------------------------
 Felhasználói csoportok hozzárendelése adminisztratív funkciókhoz. Például űrlap készítési vagy fajnév tábla kezelési jogkör kiadása.
 
+.. _groups:
 
 Csoportok
 ---------
@@ -102,7 +105,7 @@ Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üze
 Tagok
 -----
 A projektbe regisztrált tagok listája. Felhasználói státuszt lehet itt megani. Ezek a következők: Normál, Üzemeltető, Felfüggesztett. A felfüggesztett felhasználók semmihez nem férnek hozzá a projektben, majdnem egyenértékű a profil törlésével.
-Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd :ref:`Csoportok<csoportok>` és :ref:`Adminisztratív hozzáférések<adminisztratív-hozzáférések>`.
+Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd :ref:`Csoportok<groups>` és :ref:`Adminisztratív hozzáférések<admin-group-access>`.
 
 A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb felület a Csoportkezelő.
 
