@@ -42,7 +42,7 @@ Feltöltő űrlapok
 Itt lehet feltöltő űrlapokat létrehozni és módosítani. 
 
 Az űrlapok kezelésének részletes leírása itt található:
-:ref:`new-upload-form` and :ref:`edit-upload-form`.
+:doc:`upload_forms`.
 
 
 Fájl kezelő
