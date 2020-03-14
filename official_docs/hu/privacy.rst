@@ -1,5 +1,5 @@
-Privacy and Data Protection Policy
-**********************************
+Adatkezelési irányelvek
+***********************
 .. warning::
    this document part might be outdated
    last update: 2015.03.19
@@ -12,9 +12,13 @@ OpenBioMaps konzorcium (a továbbiakban: adatkezelő)
 Az üzemeltetők nevei
 ====================
 
-Debreceni Egyetem - ISZK
-
-ELTE - IIG
+Debreceni Egyetem
+Soproni Egyetem
+Duna-Ipoly Nemzeti Park Igazgatóság
+Fertő-Hansság Nemzeti Park Igazgatóság
+Hortobágyi Nemzeti Park Igazgatóság
+Milvus Group Association
+Bükki Nemzeti Park Igazgatóság
 
 (A továbbiakban: üzemeltető)
 
