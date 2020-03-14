@@ -30,10 +30,11 @@ Bevezetés
 
 OpenBioMaps folyamatok
 ======================
+.. figure:: adat_eletut_infog.png
+   :scale: 50 %
+   :alt: OpenBioMaps adat életút infógrafika
 
-Adatfeltöltés áttekintés
-
-Adatlekérdezés áttekintés
+   Előkészítés - adatgyűjtés - adathasználat
 
 
 
