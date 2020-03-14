@@ -23,18 +23,18 @@ Non authenticated requests (web):
 
 /projects/*projectname*/index.php
 
-PDS API version:
-................
+PDS API verzió:
+...............
 Example: http://openbiomaps.org/projects/dead_animals/v2.1/pds.php
 The default version setting (if the version string missing from the URL) is 1.1., which compatible with the 2.0 and backward compatible with the 1.0.
 
 
 OAUTH
------------
+-----
 An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-docs/. OAUTH used in the web interface and in the PDS as well.
 
-Variables
-.........
+Változók
+........
 grant_type:     password
 username:       a rergistered email address
 password:       password string
@@ -42,16 +42,15 @@ scope:          list of requested scope access in the autenticated session
 access_token:   a valid access token
 
 html authentication of clients is nesessary
-
-Available clients are mobile,R,web
+Kliensek: mobil, R, web
 
 
 PDS 
 ----
-OBM API interface. Created for R and mobile interface. It uses the OAUTH interface for authentication.
+OBM API felület. Az R és mobil csatlakozási felülete. Az OAUTH-ot használja a bejelentkezések kezelésére.
 
-Variables
-.........
+Változók
+........
 scope:      data methods: see below
 
 value:      some scope uses it
@@ -65,13 +64,14 @@ form_id:        (put_data) set form id
 data:           (put data) JSON array of upload data
 
 
-GET type scopes
-...............
+GET típusú feladatok
+....................
 get_project_vars: query general project variables (available for non logined users as well). 
- Additional parameters: 
+
+ További paraméterek: 
      project [text]: if not set default is the *template* project
 
- Returns:
+ Visszatérés:
 
  - project_url [url string]: web address of the project
  - project_description [text string]: short description of project 
@@ -80,14 +80,14 @@ get_project_vars: query general project variables (available for non logined use
  - rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
 
 get_project_list: get list and basis info of database projects available on the server. 
- Additional parameters:
+ További paraméterek:
      only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
      accessible [text]: all/**accessible**. If *accessible* parameter given and its value is "accessible" (default)
      
      - If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
      - If the user not logined, query public projects only.
 
- Returns:
+ Visszatérés:
 
  - project_table [string],
  - creation_date [date string],
@@ -105,9 +105,9 @@ get_form_list:   query the list of available upload forms,
 
 get_form_data:   query the fields of the selected form
 
- Additional parameters: value [numeric] numeric id of a form.
+ További paraméterek: value [numeric] numeric id of a form.
  
- Returns: see below.
+ Visszatérés: lásd alább.
 
 get_profile:     get profile data of a selected user
 
@@ -123,30 +123,30 @@ get_tables:      get list of tables in a project
 
 get_trainings:  get list of available trainings/forms
 
- Returns: set of traning titles, ids and descriptions,...
+ Visszatérés: set of traning titles, ids and descriptions,...
 
 get_training_questions: get list of questions for the selected training
 
- Additional parameters: value [numeric] numeric id of a training.
+ További paraméterek: value [numeric] numeric id of a training.
  
- Returns: set of questions,answers and settings
+ Visszatérés: set of questions,answers and settings
 
 training_results:   status list of users' trainings per forms. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok)
 
 training_toplist: toplist of trainings. Mean, Max, Count values for each forms.
- Additional parameters: value [text] summary without names (nonames).
+ További paraméterek: value [text] summary without names (nonames).
  
 get_mydata_rows: json array of uploaded data
- Additional parameters: value [numeric] limit of array length. If 0, no limit, default is no limit.
+ További paraméterek: value [numeric] limit of array length. If 0, no limit, default is no limit.
 
 
-POST type scopes
-................
+POST típusú feladatok
+.....................
 put_data:        send/upload data using a selected form
 
 
-PATCH type scopes
-.................
+PATCH típusú feladatok
+......................
 *set_rules:*     update specific settings
 
 
@@ -154,8 +154,8 @@ WEB API
 -------
 Some kind of data access available on the web interface using stored unique URLs. These
 
-Variables
-.........
+Változók
+........
 query:          (non-authenticated data retreive)
 
 query_api:      (non-authenticated data retreive, resulting JSON, XML, CSV output)
@@ -175,9 +175,9 @@ curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_
 
 Form Data (get_form_data results) explanations
 ----------------------------------------------
-Description: Optional column description
+Leírás: Opcionális oszlop leírás
 
-Default value: Fix value for all observation. It can be controlled with the following options:
+Alap érték: Fix value for all observation. It can be controlled with the following options:
  
  - '_input' it works as any other field with sticky flag. 
  - '_list' it works as any other list type field with sticky flag.
@@ -244,7 +244,7 @@ API >= v.2.1
 
 Training explanations and examples
 ----------------------------------
-Examples:
+Példák:
 
 curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
@@ -279,8 +279,8 @@ curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' ht
         "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
         "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
 
-Examples
---------
+Példák
+------
 Authentication:
     curl \\ |br|
     -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
@@ -337,7 +337,7 @@ API >= v.2.1
         {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"}},{...}]]}
     
 
-Data upload:
+Adatfeltöltés:
     curl \\ |br|
     -i \\ |br|
     -X POST \\ |br|
@@ -405,8 +405,8 @@ Project list (using central pds):
     Returns: |br|
     JSON array of those project which has public upload forms, or the user (if logined) member of it.
 
-General API answers
--------------------
+Általános API válaszok
+----------------------
 Based on: https://labs.omniti.com/labs/jsend
 
 JSON:
