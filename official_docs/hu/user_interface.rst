@@ -123,3 +123,25 @@ Egyéni nyitó oldal készíthető a projektekhez. Ehhez vannak sablonok és el�
    :alt: térképes nyitóoldal leaflet térképpel
    
    Nyitóoldali felületbe ágyazott projekt
+
+
+Hiba beküldés
+=============
+A hibabeküldés funkció a profil oldalról és a feltöltési oldalról érhető el. A képernyő jobb alsó sarkából benéző poszogó taplóbogárra kattintva jelenik meg a hiba beküldő felület.
+
+
+.. figure:: images/hiba_1.jpg
+   :scale: 100 %
+   :alt: rejtőzködő bogár
+   
+   Bogár a jobb alsó sarokban
+
+.. figure:: images/hiba_2.jpg
+   :scale: 100 %
+   :alt: Hiba küldő felület
+   
+   Egyszerű üzenetküdő felület
+   
+A hibákat a felület az OpenBioMaps fejlesztői oldalára küldi (https://gitlab.com/groups/openbiomaps/-/issues), ahonnan a további események kapcsán a felhasználó automatikusan választ kap a rendszertől.
+
+A hibakezelőt egy szerveren a system_vars.php.inc konfigurációs állományban megadott AUTO_BUGREPORT_ADDRESS cím megadásával lehet elérhetővé tenni. További információk a GitLab Issue kezelő felületéről itt olvashatók: https://docs.gitlab.com/ee/user/project/issues/
