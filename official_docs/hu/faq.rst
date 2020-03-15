@@ -179,9 +179,9 @@ a hozzá kapcsolódó színek pedig: - fekete 0 piros + zöld
 
 például:
 
-.. role:: rubric
+.. role:: red
 
-:rubric:`R` U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+:red:`R` U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
