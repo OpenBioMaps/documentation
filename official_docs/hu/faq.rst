@@ -79,15 +79,18 @@ Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatb
 
 Hogyan tudok eltárolni lekérdezéseket és hivatkozni őket?
 ---------------------------------------------------------
-A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Az elmentett lekérdezések egyedi azonosítóval hivatkozhatóak és később bármikor megismételhetőek. A lekérdezések wfs/wms url-je is tárolásra kerül, így egy lekérdezés és ismétlése közötti adatbázis változások is könnyen nyomonkövethetőek.
+A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Ennek két lehetséges esete van. egyrészt el lehet magát a lekérdezést tárolni (report-ot készíteni), amely opció az adatlekérdezést mindig az aktuális adatbázis állapot szerint adja meg. Másrészt el lehet tárolni egy lekérdezés ereményét is, amely lekérdezett adatokat egy xml fájlba írja ki és az eltárolt lekérdezés betöltésekor ebből az állományból tölti be az adatokat a rendszer. Mindkét esetben egyedi, tartós azonosítót kap a lekérdezés.
 
-A hivatkozások formátuma ilyen: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
+A hivatkozások formátuma ilyen: http://szerver/projects/database/?LQ=xx@a1b2c3d4
 
-A hivatkozás böngészőben való betöltésére a projekt térkép töltődik be a lekérdezett pontokat kiemelve és a hozzá tartozó adatokat megjelenítve.
+Egy példa: `http://openbiomaps.org/projects/checkitout/?LQ=28@WrlMyKLVsjHi7abx <http://openbiomaps.org/projects/checkitout/?LQ=28@WrlMyKLVsjHi7abx>`_
+
+Egy példa egy report (azaz egyedi cimkével megismételhető lekérdzésre) lekérdezésre: `http://openbiomaps.org/projects/checkitout/?report=20@hbh lekérdezés&qtable=checkitout <http://openbiomaps.org/projects/checkitout/?report=20@hbh%20lek%C3%A9rdez%C3%A9s&qtable=checkitout>`_
+
 
 Hogyan tudok regisztrálni az OpenBioMaps-be?
 --------------------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó tetszőlegesen meghívhat bárkit.
+A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó tetszőlegesen meghívhat bárkit (bár egyes adatbázisok ezt korlátozhatják).
 
 A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
 
