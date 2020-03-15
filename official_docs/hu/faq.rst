@@ -1,7 +1,8 @@
 .. raw:: html
 
-    <style> .red {color:#aa0060;font-weight:bold;}
-            .green {color:#aa0060;font-weight:bold;}
+    <style> 
+    .red {color:#ff0000;font-weight:bold;}
+    .green {color:#00ff00;font-weight:bold;}
     </style>
     
 Gyakran Ismételt Kérdések
@@ -186,6 +187,7 @@ a hozzá kapcsolódó színek pedig: - fekete 0 piros + zöld
 például:
 
 .. role:: red
+.. role:: green
 
 :red:`R` :green:`U` **M**: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
