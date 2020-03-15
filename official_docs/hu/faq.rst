@@ -181,7 +181,9 @@ például:
 
 .. role:: red
 
-:red:`R` U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+:red:`R` 
+
+U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
