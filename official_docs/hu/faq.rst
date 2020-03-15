@@ -1,3 +1,7 @@
+.. raw:: html
+
+    <style> .red {color:#aa0060; font-weight:bold; font-size:16px} </style>
+    
 Gyakran Ismételt Kérdések
 *************************
 
@@ -181,9 +185,7 @@ például:
 
 .. role:: red
 
-:red:`R` 
-
-U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+:red:`R` U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
