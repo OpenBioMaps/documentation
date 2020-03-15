@@ -179,7 +179,9 @@ a hozzá kapcsolódó színek pedig: - fekete 0 piros + zöld
 
 például:
 
-:textcolor:`<#ff0000>R` :textcolor:`<#00ff00>U` M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+.. role:: rubric
+
+:rubric:`R` U M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
