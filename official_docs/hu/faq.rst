@@ -180,18 +180,23 @@ például:
 
 DOI?
 ----
-Minden stabil adatbázis kaphat DOI-t. Továbbá lekérdezések vagy egyes adatok is kaphatnak DOI-t.
+Minden stabil adatbázisban tudunk DOI azonosítókat adni. Az OpenBioMaps a DataCite rendszeren keresztül ad DOI-t. A DOI kezelő partnerünk az MTA Könyvtár.
 
-The OBM konzorcium megkéri a DOI számot, ha az adatbázis elfogadott és biztosítja a szükséges információkat a DOI szám igényléshez.
+A DataCite DOI kezelő felületén itt található az OpenBioMaps: https://search.datacite.org/repositories/mtakik.obiomap 
 
-Az összes adatbázis DOI metaadat oldala ilyen:
+DOI igényléshez szükséges a megfelelő metaadatok megadása. A rendszer automatikusan előállítja a metadat lapot amivel a DOI igénylést el lehet indítani egy adatbázishoz, de az igénylés előtt további adatok megadása is szükséges. Egy automatikus nem teljes metaadat lap így nét ki: http://openbiomaps.org/projects/checkitout/?metadata Ezen a lapon már látható, hogy mi lenne a DOI azonosítója ennek az adatbázisnak, ha kérnénk neki.
 
-http://danubedata.org/index.php?metadata
+Itt látható egy példa, ahol már kértünk DOI-t egy adatbázisnak:
 
-Az adatbázishoz készítünk egy alternatív elérési útvonalat, ahol a "/"-jel után az adatbázis saját DOI száma található. Pl.: http://danubedata.org/doi/xxxxx.
+http://dinpi.openbiomaps.org/projects/dinpi/10.18426/obm.2e76flbd1abg/
+
+Lehet lekérdezésekhez DOI-t kérni, ami publikációkban megadható. A publikációk DOI-ja és a lekérdezés DOI-ja egymást hivatkozzák és a citáció követést is megoldják. A tartós tárolásra került lekérdezési eredmények DOI azonosítóval megfelelőek egyes lapok által megkövetelt publikus adattárban való elhelyezés követelményének teljesítéséhez. Nemsokára ezt a szolgáltatást könyvtári repozitóriumban elhelyezéssel is ki fogjuk egészíteni.
+
+Egy példa adatlekérdezéshez kért DOI-ra:
+
+http://dinpi.openbiomaps.org/projects/dinpi/10.18426/obm.36vn3g36r3m0/
+
 
 Az OBM saját DOI elő száma: 10.18426
 
 Az egyéni adatbáziskora mutató DOI utószámok egyediek és automatikusan generálódnak.
-
-Minden adatbázis számára elérhető, hogy DOI számot igényeljen a specifikus lekérdezései számára. Ez azt jelenti, hogy az adatbázis DOI számát kibővítik egy "/"-jel után.
