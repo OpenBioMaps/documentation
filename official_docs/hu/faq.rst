@@ -179,7 +179,7 @@ a hozzá kapcsolódó színek pedig: - fekete 0 piros + zöld
 
 például:
 
-:textcolor:`<f00f00>R` :textcolor:`<00ff00>U` M : részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+:textcolor:`<#ff0000>R` :textcolor:`<#00ff00>U` M: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
