@@ -1,7 +1,7 @@
 .. raw:: html
 
-    <style> .red {color:#aa0060;}
-            .green {color:#aa0060;}
+    <style> .red {color:#aa0060;font-weight:bold;}
+            .green {color:#aa0060;font-weight:bold;}
     </style>
     
 Gyakran Ismételt Kérdések
@@ -187,7 +187,7 @@ például:
 
 .. role:: red
 
-**:red:`R` :green:`U` M**: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
+:red:`R` :green:`U` **M**: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
 DOI?
 ----
