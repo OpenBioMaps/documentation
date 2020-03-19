@@ -188,6 +188,7 @@ Default value: Fix value for all observation. It can be controlled with the foll
  - '_boolean' display as normal boolean list
  - '_attachment' display as normal attachments field
  - '_datum' display as normal date field
+ - '_auto_geometry' geometry field without extra options (map, set)
  - '_none' not used
  
 Column: The name of the column in the database
@@ -203,6 +204,7 @@ Count: (json array) If the control='minmax' this field contains the limit values
 Type: column's openbiomaps type:
  
  - autocomplete	(json array)
+ - autocomplete_list (json array)
  - boolean (two elements list)	
  - crings (colour rings - text)	
  - date (YYYY-MM-DD or other clear format)
@@ -218,6 +220,7 @@ Type: column's openbiomaps type:
  - timetominutes (numeric value between  0 and 1440)
  - tinterval idő intervallum (HH:mm - HH:mm)
  - wkt (WKT sting)
+ - array (json array)
 
 Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 
