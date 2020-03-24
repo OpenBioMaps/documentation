@@ -194,9 +194,7 @@ create_pg_user
 	* Bármikor megújíthatja a hozzáférését a felhasználó.
 Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
 
-.. figure:: images/qgis_connect.jpg
-   :scale: 100 %
-   :alt: QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz
+![QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz](images/qgis_connect.jpg)
 
 Paraméterezés:
 
