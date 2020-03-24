@@ -187,11 +187,16 @@ create_pg_user
 
 * Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
 * A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
-* Behatárolt hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
+* Korlátozott hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
 	* Minden a projekthez rendelt adattáblát tud olvasni.
 	* Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
 	* Egy év után automatikusan lejár a hozzáférése.
 	* Bármikor megújíthatja a hozzáférését a felhasználó.
+Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
+
+.. figure:: images/qgis_connect.jpg
+   :scale: 100 %
+   :alt: QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz
 
 Paraméterezés:
 
