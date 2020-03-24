@@ -63,8 +63,32 @@ See: :ref:`project_administration`
 
 Messages tab
 ------------
-Across this feature you can send e-mail to the users of the database.
 
+Message types
+.............
+
+On this page you can read and write internal messages. Our message system can handle four main message types :
+
+* System messages - these are messages sent to individual users from the project or from the server. This type of message can be sent for example by the background validation processes
+* Personal messages - these are messages sent from users to users. The message composer is accessible by pressing the Compose message button on the bottom left part of the messages page.
+* Comment notifications - are messages which you receive if one of your data record, uploading or yourself got a comment.
+* News stream - contains an entry for each upload, if a new project is created, if someone shares a polygon or on comments
+
+Every logged in user can send personal messages to another user. 
+
+Project administrators can send messages to users and groups. They can also send an email alert about this message.
+
+User settings
+.............
+
+Users can tune their e-mail alert preferences for the different message types on the profile page.
+
+Plans
+.....
+
+* email alert daily diegest
+* replay to messages
+* replay to comments
 
 Founding new a project tab
 --------------------------
@@ -83,7 +107,7 @@ Creating a database
 ...................
 In this chapter I will focus on walking you trough the steps required, to found your own database.
 
-To be able to create a database, firs you need an invitation, from someone who is already an OBM user. If you don't have such an acquaintance, you can simply request one using the mailing list's mentioned in the previous chapter. If you receive an invitation, you will be able to register, and become an OBM user.
+To be able to create a database, first you need an invitation, from someone who is already an OBM user. If you don't have such an acquaintance, you can simply request one using the mailing list's mentioned in the previous chapter. If you receive an invitation, you will be able to register, and become an OBM user.
 
 If you have done the previous step, you will be able to access your profile, after you login (Fig.3).
 

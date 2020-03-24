@@ -25,7 +25,30 @@ Projekt adminisztráció
 
 Üzenetek
 ========
-Üzenetek olvasása és küldése itt történik. Lehet projekt szintű üzeneteket küldeni és egyéni üzeneteket is (hamarosan). A projekt gazdák választhatják az projekt üzenetek emailben kiküldésének lehetőségét is.
+Üzenet típusok
+..............
+
+Belső üzenetek olvasása és küldése itt történik. Üzenetküldő rendszerünkben négy üzenettípust külöböztetünk meg:
+
+* Rendszerüzenetet a projekt vagy a szerver valamely folyamata küldhet az egyéni felhasználónak. Ilyen üzenet lehet például egy validálási háttérfolyamat üzenete.
+* Személyes üzenetet a felhasználók küldhetnek egymásnak. Az üzenet szerkesztő felületet az Üzenetek oldal bal alsó részén található Üzenet írása gombbal érhetjük el.
+* Megjegyzések értesítése - Ezt az üzenettípust akkor kapjuk, ha valamely adatunkat, feltöltésünket vagy a felhasználókat valaki kommentelte.
+* Hírek - adatfeltöltéskor, új projekt létrehozásakor, poligonok megosztásakor a rendszer létrehoz egy mindenki számára látható hírt.
+
+Az üzenetek oldal minden bejelentkezett felhasználó számára elérhető. Bárki küldhet üzenetet a projekt tagoknak.
+
+A projekt adminisztrátorok az egyéni üzeneken kívül csoportoknak is küldhetnek, valamit emailben értesíthetik a felhasználókat az üzenetekről.
+
+Felhasználói beállítások
+........................
+
+A felhasználók beállíthatják az email értesítéseket a különböző üzenettípusokra. Ezt a profil oldalon lévő kapcsolókkal lehe megtenni.
+
+További tervek
+..............
+
+* üzentekről napi összesített értesítés
+* válaszlehetőség üzenetkere és megjegyzésekre 
 
 
 Új adatbázis alapítása
