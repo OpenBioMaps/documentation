@@ -574,7 +574,21 @@ results_asSHP
 -------------
 Általános leírás:
 
-* Lekérdezésnél létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
+* Lekérdezésnél minden geometria típosra létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
+
+Paraméterezés:
+
+Fejleszői dokumentáció
+
+	Függvények:
+
+	Hívások:
+
+results_asKML
+-------------
+Általános leírás:
+
+* Lekérdezésnél létrehoz egy letölthető .KML fájlt
 
 Paraméterezés:
 

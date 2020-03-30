@@ -182,7 +182,17 @@ results_asJSON
 
 results_asSHP
 -------------
-    Save results as a shp file.
+    Results can be saved as SHP files. Different files are created for the different geometry types. These can be downloaded in a zip archive.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+results_asKML
+-------------
+    Save results as a KML file.
 
     Calls:
 
