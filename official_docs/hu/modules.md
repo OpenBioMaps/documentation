@@ -775,7 +775,7 @@ Publikált háttérfolyamatok:
 	
     observation_lists
         leírás: 
-            A mobilalkalmazásban rögzített megfigyeléslistákat másolja át az ideiglenes táblából a céltáblába. Kitölti az obm_obsevation_list_id oszlopot, a listakezdés és befejezés oszlopokat és az időtartam oszlopot. 
+            A mobilalkalmazásban rögzített megfigyeléslistákat másolja át az ideiglenes táblából a céltáblába. Kitölti az obm_obsevation_list_id oszlopot, a listakezdés és befejezés oszlopokat és az időtartam oszlopot. A lista feldolgozása nem történik meg, ha a lista-rekordban szereplő adatszám nem egyezik a ténylegesen feltöltött adatok számával.
 
         paraméterezés:
             * list_start_column (string): lista indítás ideje oszlop neve
@@ -785,7 +785,7 @@ Publikált háttérfolyamatok:
             * time_as_int (boolean): csak akkor működik, ha az only_time igaz - átalakítja az időt percekké
             
             {
-                "tablename": {
+                "táblanév": {
                     "list_start_column": "time_of_start",
                     "list_end_column": "time_of_end",
                     "list_duration_column": "duration",
@@ -795,8 +795,22 @@ Publikált háttérfolyamatok:
                 }
             }
 
-    incomplete_observation_lists
-        leírás
+	incomplete_observation_lists
+        leírás:
+            Ha feltöltött lista adatszáma nem egyezik a lista-rekord measurements_num értékével, akkor a listát ez a háttérfolyamat dolgozza fel. Ha a különbség a beállított tolerancia határon belül van, akkor a lista-rekord measurements_num értékét átállítja a valós adatszámra, és küld erről egy üzenet. Ezt a listát az observation_list következő futása fel fogja dolgozni. Ha a hiány nagyobb mint a toleraciaérték, akkor csak egy üzenet jön, a továbbiakat kézzel kell elvégezni.
+            
+        paraméterezés:
+            * mail_to (int): egy role_id, akinek megy az üzenet
+            * diff_tolerance (int): hiány toleranciaérték
+            * days_offset (int): lista feldoldozásának késleltetése, napokban megadva
+            
+            {
+                "táblanév": {
+                    "mail_to": 1265,
+                    "diff_tolerance": 2,
+                    "days_offset": 2
+                }
+            }
 
 
 Fejleszői dokumentáció
