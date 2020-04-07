@@ -760,11 +760,44 @@ Fejleszői dokumentáció
 
 	Hívások:
 
-validation
-----------
+job_manager (validation)
+------------------------
 Általános leírás:
+	
+	* A job_manager modullal a háttérfolyamatokkal kapcsolatos műveleteket lehet elvégezni. A modul paraméterei a háttérfolyamatok nevei.
+	* Egy új paraméter felvétele regisztrálja háttérfolyamatot a validation_jobs táblában, valamint létrehozza a háttérfolyamat fájljait: egy modul fájlt a modules/validation_modules mappába, egy job fájlt pedig a jobs mappába.
 
 Paraméterezés:
+
+	* A háttérfolyamatok nevei.
+	
+Publikált háttérfolyamatok:
+	
+    observation_lists
+        leírás: 
+            A mobilalkalmazásban rögzített megfigyeléslistákat másolja át az ideiglenes táblából a céltáblába. Kitölti az obm_obsevation_list_id oszlopot, a listakezdés és befejezés oszlopokat és az időtartam oszlopot. 
+
+        paraméterezés:
+            * list_start_column (string): lista indítás ideje oszlop neve
+            * list_end_column (string): lista befejezés ideje oszlop neve
+            * list_duration_column (string): lista időtartama ideje oszlop neve
+            * only_time (boolean): teljes dátumot, vagy csak időt ment
+            * time_as_int (boolean): csak akkor működik, ha az only_time igaz - átalakítja az időt percekké
+            
+            {
+                "tablename": {
+                    "list_start_column": "time_of_start",
+                    "list_end_column": "time_of_end",
+                    "list_duration_column": "duration",
+                    "only_time": true,
+                    "time_as_int": true
+                    }
+                }
+            }
+
+    incomplete_observation_lists
+        leírás
+
 
 Fejleszői dokumentáció
 

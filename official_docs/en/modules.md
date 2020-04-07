@@ -547,16 +547,65 @@ download_restricted
 
    Parameters:
 
-job_manager
------------
+job_manager (validation)
+------------------------
+    
+    General description:
+    	
+    	* The job_manager (validation) module is used for managing the background processes of the project. It's parameters are the names of the jobs.
+        * On the admin page you can set the time of running (simplified cron style: minute hour day), and the job parameters as json
+    	* Adding a new parameter will register the job in the jobs database table, and create the necessary template files in the modules/validation_modules, jobs folders.
+
+    Parameters:
+
+    	* The names of the background processes
+    	
+    Published jobs:
+    	
+        observation_lists
+            description: 
+                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job completes the obm_obsevation_list_id column, the columns of start, end and duration of list. If the uploaded list is not complete the list is skipped.
+
+            parameters:
+                * list_start_column (string): column name of list start
+                * list_end_column (string): column name of list end
+                * list_duration_column (string): column name of list duration
+                * only_time (boolean): store whole timestamp or just time
+                * time_as_int (boolean): convert time to minutes
+                
+                {
+                    "tablename": {
+                        "list_start_column": "time_of_start",
+                        "list_end_column": "time_of_end",
+                        "list_duration_column": "duration",
+                        "only_time": true,
+                        "time_as_int": true
+                        }
+                    }
+                }
+
+    	incomplete_observation_lists
+            description:
+                If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In other case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually. 
+                
+            paraméterezés:
+                * mail_to (int): role_id - who will get the messages
+                * diff_tolerance (int): tolerance of difference
+                * days_offset (int): number of days to wait until the list is processed
+                
+                {
+                    "tablename": {
+                        "mail_to": 1265,
+                        "diff_tolerance": 2,
+                        "days_offset": 2
+                    }
+                }
+
+
 
    Calls:
 
    Functions:
-
-   General description:
-
-   Parameters:
 
 list_manager
 ------------
