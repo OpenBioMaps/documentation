@@ -105,6 +105,71 @@ Mapserver settings
 ------------------
 Raw version of mapfile.  See the mapserver documentation for updating this file.
 
+
+## Message templates
+
+
+The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short description.
+
+On this page global templates can be overridden by their local version, by selecting 
+a template -> editing -> and saving it. The templates can have variables which 
+are substituted with the provided strings, at the moment of sending the message. 
+For each template these variables are defined in the code. 
+
+Variables are marked with %var%. A few global variables are defined, which can 
+be used anywhere in the template. 
+
+Including other templates are supported. For example if you define a footer for 
+your project, this can be included by appending the @footer@ string to the end 
+of the template.
+
+New templates for custom modules or jobs can also be defined here.
+
+### Global variables
+
+* `%PROJECT_TABLE%` - the name of the project
+* `%PROJECT_TITLE%` - the short description of the project
+* `%PROJECT_DESCRIPTION%` - the long description of the project
+* `%USER_NAME%` - the name of the user
+* `%URL%`
+* `%OB_DOMAIN%`
+* `%DOMAIN%` - the domain name defined in the "projects" table
+* `%PROTOCOL%` - the protocol defined in the "projects" table 
+
+### Predefined templates
+
+User related messages:
+* `welcome_to` - welcome to the project
+* `change_email_address` - a confirmation link, for changing the user's email address
+* `dropmyaccount` - Confirmation email of dropping the account
+* `create_new_project` - confirmation message of creating a new project
+* `invitation` - invitation email
+* `invitation_accomplished` - notification about the accomplished invitation
+* `invitation_request` - message to admins about the invitation request
+* `lostpw` - lost password
+
+Miscellaneous:
+* `new_gitlab_issue` - a copy of a submitted bug report
+* `new_shared_polygon` - Project or system news about a new shared polygon
+* `new_upload_news` - Project news about a new upload
+* `new_upload_report` - Notification for the admins about a new upload
+* `footer` - A general mail footer 
+* `interconnect_request` - 
+
+Evaluation notifications:
+* `data_evaluation_commenters` - This message is sent when a record, previously commented by the user, gets a new comment.
+* `data_evaluation_owner` - This message is sent to the owner if a record uploaded by him gets a comment.
+* `upload_evaluation_commenters` - This message is sent when an upload, previously commented by the user, gets a new comment.
+* `upload_evaluation_owner` - This message is sent when an upload of the user gets a comment.
+* `user_evaluation_commenters` - This message is sent when a user, previously commented by the user, gets a new comment.
+* `user_evaluation_owner` - This message is sent when the user itself get the comment.
+
+Messages sent by modules:
+* `dlr_new_request` - Notification for project admins about a new download request. - ['username', 'requestid', 'request_message']
+* `dlr_request_registered` - Notification for the user that his download request was registered.
+* `incomplete_list_processed` - 
+* `incomplete_list_unprocessed` - 
+
 Server logs
 -----------
 Read logs of mapserver or web app logger.
