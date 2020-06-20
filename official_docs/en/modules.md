@@ -463,6 +463,14 @@ grid_view
     Parameters: layer_options
 
     Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
+    
+    
+    On the nnn_grid table on the comment field the layers visible names should be set:
+```sql 
+    COMMENT ON COLUMN public.nnn_qgrids.original IS 'original';
+    COMMENT ON COLUMN public.nnn_qgrids.snap IS 'snap';
+    COMMENT ON COLUMN public.nnn_qgrids.snap_polygon IS 'snap_polygon';
+```
 
     Example trigger functions:
 
