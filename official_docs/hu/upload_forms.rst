@@ -175,6 +175,34 @@ Lista definíció
 ...............
 Többféle lista definíció megadható itt. Egyszeres választós lista, többszörös választós, autó-kiegészítős lista. A listák tartalma megadható itt is az elemek felsorolásával, vagy megadható egy tábla és feltételek ahonnan az alkalmazás lekérdezi a lista elemeket.
 
+Ha az általunk definiált lista kevés választható elemet tartalmaz, akkor ezt listát akár felsorolással is megadhatjuk. Lásd alább - ebben az esetben megadtuk a listánk értékeit, amit egy legördülő menüből tudunk majd kiválasztani a adatfeltöltés folyamán. Ezek az értékek ("nőstény", "hím") fognak az adatbázisba is bekerülni.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "nőstény":[],
+        "hím":[]
+       }
+    }
+
+Abban az esetben, ha több változó is ugyanazt az értéket jelöli definiálni tudjuk, hogy mely változók mely értékhez tartoznak. Például ivar adatok alapján a "nőstény"-t jelentheti a "nosteny", "F", "f", "female" stb... Az adatok későbbi könnyebb felhasználása érdekében, egy értéket (pl.: "nőstény") hozunk létre az ugyanazt jelölő változókra (pl.: "F", "female", "nőstény"), és az adatbázisba ez az érték fog bekerülni. Ez a lista definíció akkor válik jelentőssé, mikor több évre visszamenőleg szeretnénk adatokat feltölteni, amit különböző adatközlők gyűjtöttek és máshogy kódolták az ugyanazt az értéket. Emellett lekérdezést is megkönnyíti, ha csak "nőstény" szóra kell szűrni nem pedig az összest "nőstényt" jelentő értékre.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "nőstény":[
+        	"nősteny",
+        	"F",
+        	"female"],
+        "hím":[
+                "hím",
+        	"M",
+        	"male"]
+       }
+    }
+
 .. code-block:: json
 
     {
