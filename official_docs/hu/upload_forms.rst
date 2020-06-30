@@ -186,7 +186,19 @@ Ha az általunk definiált lista kevés választható elemet tartalmaz, akkor ez
        }
     }
 
-Abban az esetben, ha több változó is ugyanazt az értéket jelöli definiálni tudjuk, hogy mely változók mely értékhez tartoznak. Például ivar adatok alapján a "nőstény"-t jelentheti a "nosteny", "F", "f", "female" stb... Az adatok későbbi könnyebb felhasználása érdekében, egy értéket (pl.: "nőstény") hozunk létre az ugyanazt jelölő változókra (pl.: "F", "female", "nőstény"), és az adatbázisba ez az érték fog bekerülni. Ez a lista definíció akkor válik jelentőssé, mikor több évre visszamenőleg szeretnénk adatokat feltölteni, amit különböző adatközlők gyűjtöttek és máshogy kódolták az ugyanazt az értéket. Emellett lekérdezést is megkönnyíti, ha csak "nőstény" szóra kell szűrni nem pedig az összest "nőstényt" jelentő értékre.
+Abban az esetben, ha egyes változókat más írási móddal, vagy más formában szeretnénk megjeleníteni. Például, ha a változó értéke szám, de a listában szöveges leírást akarunk megjeleníteni, akkor lehetőség van az értéktől éltérő cimkék megadására. A cimke értékek automatikusan fordíthatóak is, ha az str_ előtagot használjuk és a nyelvi fordítást megadtuk. Így az alábbi példában az adatbázisban "male" és "female" értékek fognak bekerülni, de a legördülő listában "nőstény" és "hím" értékek jelennek meg magyarul és "female", "male" angolul.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "female":["str_female"],
+        "male":["str_male"]
+       }
+    }
+
+
+Lehetőség van több cimke hozzárendeléséhez is egy értékhez. Ebben az esetben weves űrlapon és mobilon a lista első eleme fog megjelenni, de fájlfeltöltés esetén a a fájlban szerepelhet bármelyik cimke vagy érték, mindegyikből a lista értéket fogja az alkalmazás beszúrni. Ahhoz, hogy ez érvényesüljön jelenleg végig kell lapozni a fájlt.
 
 .. code-block:: json
 
@@ -202,6 +214,8 @@ Abban az esetben, ha több változó is ugyanazt az értéket jelöli definiáln
         	"male"]
        }
     }
+
+A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
 
 .. code-block:: json
 
