@@ -150,9 +150,41 @@ checks the number of characters entered
         - spatial
         - custom check
     
-List definítion
+List definition
 ...............
-lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusnál adatbázis és oszlop megadása "SELECT:" előtaggal. Pl.: SELECT:my_project.species, igaz/hamis típusnál sorrend megadása. Bármilyen listánál ha a kezdő vagy záró karakter vessző, üres elemmel kezdődik vagy zárul a lista. A SELECT típusú listázásnál meg lehet adni egy másik oszlopot ami a listában megjelenő értékeket adja. Pl: SELECT:my_project.species:national_name ami esetben a national_name oszlop értékei jelennek meg a listában, de a hozzá tartozó species elemek lesznek az értékek.
+First of all, if you wish to use list during data upload you have to change the "Type" to list, autocomplete or autocomplete list.
+
+You can define here several list, eg.: simple/multiple choice or autocomplete lists. You can define the list with specification of elements or you can use elements from a other datatables also you can define rules and terms to filter those elements.
+
+If our list have only a couple of elements, we can create a simple specification. See below - in this case we define our list values what we can chooose from a roll-down menu during data upload. These values ("female", "male") will get into your database.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "female":[],
+        "male":[]
+       }
+    }
+
+If more labels mean the same value (eg.: "F", "f", "female" mean "female"), we can define which labels belong to which value. During data upload only the value will get into your database not the different labels. This became remarkable during file upload, when you have many data from previous years from many observer. They possibly used different labels to the same value, but using different labels to the same values are non-rewarding either during query or analysing your data.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "female":[
+        	"F",
+        	"f",
+        	"female"],
+        "male":[
+                "M",
+        	"m",
+        	"male"]
+       }
+    }
+
+Also we can create our list based on another table variable.
 
 .. code-block:: json
 
@@ -175,6 +207,65 @@ lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusn�
       "multiselect":"true or false, default is false",
       "selected":["val1"]
     }
+
+Handling of joint lists: create a list in a column (starter column), which determines the list of your choosed column ("list in the list"). First of all you have to create a background table (animal_taxons), which contain data about which groups include which groups. For example, this table can show which genre belong to which family and/or which families belong to which order, like vertebrates (animal_supergoup) contain amphibian, reptile, bird, mammal (animal_group_name) and invertebrates include (animal_supergroup) cnidaria, insects (animal_group_name) etz...
+
+You can add your code of "joint list" in the "list definition" field. The first part of the code determine that which column will affected by the "starter column":
+
+.. code-block:: json
+
+    {
+    "triggerTargetColumn": [
+        "affected_list_name"
+    ],
+   "Function": "select_list",
+    "optionsSchema": "shared",
+    "optionsTable": "animal_taxons",
+    "valueColumn": "animal_group_name",
+    "labelColumn": "animal_group_name",
+    "labelAsValue": true
+    }
+
+Code explanation:
+	"Function" - always "select_list"
+	"optionsSchema" - always "shared"
+	"optionsTable" - "background_table_name"
+	"valueColumn" - column from the background table, what you use for the list, where the code is in (starter_column)
+	"labelColumn" - create the list in the affected column based on strater column
+
+The code above can connect 2 columns. The next step to determine in our affected column, from which column it should take the values out:
+
+.. code-block:: json
+
+    {
+    "optionsTable": "animal_taxons",
+    "valueColumn": "animal_group_name",
+    "labelColumn": "animal_group_name",
+    "filterColumn": "animal_supergroup",
+    "Function": "select_list",
+    "optionsSchema": "shared"
+    }
+
+Code explanation (only the new variables explained here):
+	"filterColumn" - determine which was the starer column
+
+With the "joint list" option you can connect more than 2 columns also.
+
+.. code-block:: json
+
+    {
+    "optionsSchema": "shared",
+    "optionsTable": "animal_taxons",
+    "filterColumn": "animal_supergroup",
+    "Function": "select_list",
+    "valueColumn": "animal_group_name",
+    "triggerTargetColumn": [
+        "species"
+    ],
+    "labelColumn": "animal_group_name"
+    }
+
+"triggerTargetColumn" all the time trigger the next column. "filterColumn" always mark to the previous column. "valueColumn" and the "labelColumn" always mark the actual column.
 
 Default values
 ..............
