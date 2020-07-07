@@ -320,7 +320,7 @@ ELSŐ LÉPÉS: beállítjuk a település oszlop autocomplete listáját, úgy h
     "valueColumn": "telepules"
 }
 
-MÁSODIK LÉPÉS: létrehozzuk a legördülő listánkat az épület oszlopban:
+MÁSODIK LÉPÉS: az épület oszlop típusát listára állítjuk, majd az alábbi kóddal meghatározzuk a listánk értékeit:
 
 .. code-block:: json
 

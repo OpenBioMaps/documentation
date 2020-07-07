@@ -208,9 +208,11 @@ Also we can create our list based on another table variable.
       "selected":["val1"]
     }
 
-Handling of joint lists: create a list in a column (starter column), which determines the list of your choosed column ("list in the list"). First of all you have to create a background table (animal_taxons), which contain data about which groups include which groups. For example, this table can show which genre belong to which family and/or which families belong to which order, like vertebrates (animal_supergoup) contain amphibian, reptile, bird, mammal (animal_group_name) and invertebrates include (animal_supergroup) cnidaria, insects (animal_group_name) etz...
+Joint lists 
+............
+Create a list in a column (starter column), which determines the list of your choosed column ("list in the list"). First of all you have to create a background table (animal_taxons), which contain data about which groups include which groups. For example, this table can show which genre belong to which family and/or which families belong to which order, like vertebrates (animal_supergoup) contain amphibian, reptile, bird, mammal (animal_group_name) and invertebrates include (animal_supergroup) cnidaria, insects (animal_group_name) etz...
 
-You can add your code of "joint list" in the "list definition" field. The first part of the code determine that which column will affected by the "starter column":
+You can add your code of "joint list" in the "list definition" field. The first part of the code determine that which column will affected by the "starter column" (you have to type it in the json field of the starter column):
 
 .. code-block:: json
 
@@ -233,7 +235,7 @@ Code explanation:
 	"valueColumn" - column from the background table, what you use for the list, where the code is in (starter_column)
 	"labelColumn" - create the list in the affected column based on strater column
 
-The code above can connect 2 columns. The next step to determine in our affected column, from which column it should take the values out:
+The next step to determine in our affected column, from which column it should take the values out (you have to type it in the json field of the affected column):
 
 .. code-block:: json
 
@@ -266,6 +268,34 @@ With the "joint list" option you can connect more than 2 columns also.
     }
 
 "triggerTargetColumn" all the time trigger the next column. "filterColumn" always mark to the previous column. "valueColumn" and the "labelColumn" always mark the actual column.
+
+Other examples:
+1. Determine buildings inside the settlement. We collect data from species breeding in artificial nestboxes. We would like to create an autocomplete list for the settlement column, also we would like to create a simple list in the building column. Our background table (tytoalba_buildings) contain the nestboxes spatial distribution: on which buildings in which settlement. The building column of out background table contains huge amount of possible values, but not the all building occur in all settlement. Therefore we would like to create a filtered building list based on the settlement list.
+
+FIRST STEP: we establish the autocomplete list of settlement column. We turn the column type to autocomplete, than we determine which values are we need from our background table and also we point to the building column:
+
+.. code-block:: json
+
+{
+    "triggerTargetColumn": [
+        "building"
+    ],
+    "Function": "select_list",
+    "optionsSchema": "public",
+    "optionsTable": "tytoalba_buildings",
+    "valueColumn": "settlement"
+}
+
+Second step: we establish the simple list of building column. We turn the column type to list, than we determine the value of our list and filter based on settlement column:
+
+.. code-block:: json
+
+{
+    "optionsTable": "tytoalba_buildings",
+    "filterColumn": "settlement",
+    "Function": "select_list",
+    "valueColumn": "building"
+}
 
 Default values
 ..............
