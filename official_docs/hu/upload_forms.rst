@@ -239,9 +239,14 @@ A lista teljes definíciós leírása az alább látható JSON. Ennek összeáll
       "selected":["val1"]
     }
 
-Kapcsolt listák kezelése: lista létrehozása egy oszlopban (indító oszlop), ami megszűri milyen lista jöhet létre az általunk kiválasztott oszlopban ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
+Kapcsolt listák kezelése: 
+.........................
 
-A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. A kód első fele határozza meg, hogy az indító oszlopunk melyik másik oszlop listáját befolyásolja:
+Létrehozunk egy listát egy olyan oszlopban (indító oszlop), ami meghatározza a befolyásolt oszlopban létrejövő listát ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
+
+A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. 
+
+A kód első felét az indító oszlopunkhoz írjuk be, itt határozzuk meg, hogy az indító oszlopunk melyik háttértábla oszlopból vegye ki az értékeket:
 
 .. code-block:: json
 
@@ -264,7 +269,7 @@ Kód magyarázat:
 	"valueColumn" - a háttér táblából kiválasztott oszlop, aminek a változóiból létrejön a legördülő lista, abban az oszlopban ahova a kód kerül (indító oszlop)
 	"labelColumn" - a befolyásolt oszlopban hoz létre egy olyan listát, ami függ attól hogy melyik opciót választottuk az indító oszlop listájából
 
-A fent leírt kóddal olyan "lista a listában" szerkezetet hoztunk létre, ami két oszlopot köt össze. Következő lépésként meg kell határozzuk a "befolyásolt oszlopunkban", hogy a szükséges listához honnan kell ki venni az értékeket:
+A kód második felét a befolyásolt oszlopunkba kell beírni, itt határozzuk meg, hogy a befolyásolt oszlopunk melyik háttértábla oszlopból vegye ki az értékeket:
 
 .. code-block:: json
 
@@ -297,6 +302,35 @@ A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni,
     }
 
 A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterColumn" mindig előző oszlopra mutasson. A "valueColumn" és a "labelColumn" mindig az aktuális oszlopra mutasson.
+
+További példák:
+1. Településeken belüli épületek meghatározása. Adatokat gyűjtünk különböző mesterséges odúkban fészkelő fajokról. Az erre létrehozott feltöltő formon belül szeretnénk létrehozni egy autocomplete a település oszlopban. Majd az épület (ahova az odút kihelyezték) oszlopban is szeretnénk egy legördülő menüt létrehozni. A háttértáblánk épület oszlopa viszont rengeteg lehetséges épületet jelöl, de ezek nem mindegyike fordul elő az összes településen. Ennek tükrében szeretnénk összekötni a település és épület oszlopot méghozzá úgy, hogy a kiválasztott település megszűrje az épület oszlopban kialakuló listát
+
+ELSŐ LÉPÉS: beállítjuk a település oszlop autocomplete listáját, úgy hogy az oszlop típusát autocomplet-re állítjuk, majd megadjuk hogy az itt kialakult lista befolyásolja az épület listánkat:
+
+.. code-block:: json
+
+{
+    "triggerTargetColumn": [
+        "epulet"
+    ],
+    "Function": "select_list",
+    "optionsSchema": "public",
+    "optionsTable": "tytoalba_epuletek",
+    "valueColumn": "telepules"
+}
+
+MÁSODIK LÉPÉS: létrehozzuk a legördülő listánkat az épület oszlopban:
+
+.. code-block:: json
+
+{
+    "optionsTable": "tytoalba_epuletek",
+    "filterColumn": "telepules",
+    "Function": "select_list",
+    "valueColumn": "epulet"
+}
+
 
 .. _default-values:
 
