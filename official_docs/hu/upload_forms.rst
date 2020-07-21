@@ -412,10 +412,32 @@ rel_value:
              
      Else can be anything - may be ignored - depending on the used function
 
-Példa:
+Példák:
 
-tarsus_length oszlopnál
+A `tarsus_length` oszlopnál
 
 (clutch_size=!!^([123])$) {obligatory(1)}
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
+
+Az `end_date` oszlopon. Ha a `found_date` nem üres, megnézzük, hogy az `end_date` nagyobb-e mint a `found_date`. Ha igen true-val tér vissza, ha nem, akkor false-al ami feltöltési hibát eredményez.
+    
+(found_date=!!^(.+)$) {inequality(+>=.)}
+
+Egy dátum mezőn ami nem tartalmaz évet. Ha az `year` oszlop nem üres, akkor a dátum mező év értékét beállítja ezzel az évvel.
+    
+(year=!!^(\d{4})$) {set(.)}
+
+A `ring_number` mezőn. Ha a `visszafogas` értéke "1"  akkor a `ring_number` kötelező mező lesz.
+
+(visszafogas=1) {obligatory(1)}
+  
+A `magyar` oszlopon. Ha a `faj` üres, akkor a `magyar` kötelező.
+
+(faj=!!(^$)) {obligatory(1)}
+
+A `szamossag` mezőn. Ha az `egyedszam` értéke nagyobb mint 50 akkor a `szamossag` értékét "becsült mennyiség"-re állítjuk, ha kisebb vagy egyenlő mint 50, akkor "pontos  egyedszám"-ra.
+
+(egyedszam>50) {set(becsült mennyiség)},(egyedszam<=50) {set(pontos egyedszám)}
+
+
