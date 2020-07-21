@@ -309,27 +309,27 @@ További példák:
 ELSŐ LÉPÉS: beállítjuk a település oszlop autocomplete listáját, úgy hogy az oszlop típusát autocomplet-re állítjuk, majd megadjuk hogy az itt kialakult lista befolyásolja az épület listánkat:
 
 .. code-block:: json
-
-{
-    "triggerTargetColumn": [
+	
+	{
+    	"triggerTargetColumn": [
         "epulet"
-    ],
-    "Function": "select_list",
-    "optionsSchema": "public",
-    "optionsTable": "tytoalba_epuletek",
-    "valueColumn": "telepules"
-}
+    	],
+	"Function": "select_list",
+ 	"optionsSchema": "public",
+ 	"optionsTable": "tytoalba_epuletek",
+ 	"valueColumn": "telepules"
+	}
 
 MÁSODIK LÉPÉS: az épület oszlop típusát listára állítjuk, majd az alábbi kóddal meghatározzuk a listánk értékeit:
 
 .. code-block:: json
-
-{
-    "optionsTable": "tytoalba_epuletek",
-    "filterColumn": "telepules",
-    "Function": "select_list",
-    "valueColumn": "epulet"
-}
+	
+	{
+    	"optionsTable": "tytoalba_epuletek",
+    	"filterColumn": "telepules",
+    	"Function": "select_list",
+    	"valueColumn": "epulet"
+	}
 
 
 .. _default-values:
@@ -390,33 +390,50 @@ Kapcsolat más oszlopkkal definíció nyelv
 IF an other cell value (rel_field) match to (rel_statement) THEN  this cell (rel_type) value should be (rel_value)
 
 rel_type is a function related with the field type
+
      datum:          year            extraxt year component from a datum string
+     
      text,numeric:   minmax          minmax range check
+     
      any type:       obligatory      change obligatory setting
-                     
+     
                      inequality      check inequality with these symbols: <>= between index and current field. Causing error message.
-rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$ 
+		     
+rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$
+
      If statement is regexp rel_value also can be a function
+     
      .       means replace current cell value with matched string from the matched string from the rel_field
+     
      .+      means append current cell value to matched string from the rel_field 
+     
      +.      means append matched string from the rel_field to the current cell value  
 
 rel_value:
      IF rel_type is inequality according to php comparison operators
+     
              +<.
+	     
              +<=.
+	     
              +>=.
+	     
              +=.
+	     
              +<>.
+	     
              WHERE + is the matched rel_field value and . is the current cell value
              
      Else can be anything - may be ignored - depending on the used function
 
-Példák:
+Példák
+......
 
 A `tarsus_length` oszlopnál
 
-(clutch_size=!!^([123])$) {obligatory(1)}
+.. code-block::
+
+	(clutch_size=!!^([123])$) {obligatory(1)}
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
 
