@@ -276,26 +276,26 @@ FIRST STEP: we establish the autocomplete list of settlement column. We turn the
 
 .. code-block:: json
 
-{
-    "triggerTargetColumn": [
-        "building"
-    ],
-    "Function": "select_list",
-    "optionsSchema": "public",
-    "optionsTable": "tytoalba_buildings",
-    "valueColumn": "settlement"
-}
+	{
+    	"triggerTargetColumn": [
+        	"building"
+    	],
+    	"Function": "select_list",
+    	"optionsSchema": "public",
+    	"optionsTable": "tytoalba_buildings",
+    	"valueColumn": "settlement"
+	}
 
 Second step: we establish the simple list of building column. We turn the column type to list, than we determine the value of our list and filter based on settlement column:
 
 .. code-block:: json
 
-{
-    "optionsTable": "tytoalba_buildings",
-    "filterColumn": "settlement",
-    "Function": "select_list",
-    "valueColumn": "building"
-}
+	{
+    	"optionsTable": "tytoalba_buildings",
+    	"filterColumn": "settlement",
+    	"Function": "select_list",
+    	"valueColumn": "building"
+	}
 
 Default values
 ..............
@@ -360,32 +360,67 @@ Relations pseudolanguage definition
 IF an other cell value (rel_field) match to (rel_statement) THEN  this cell (rel_type) value should be (rel_value)
 
 rel_type is a function related with the field type
+
      datum:          year            extraxt year component from a datum string
+     
      text,numeric:   minmax          minmax range check
-     any type:       obligatory      change obligatory setting
-                     
+     
+     any type:       obligatory      change obligatory setting                
                      inequality      check inequality with these symbols: <>= between index and current field. Causing error message.
+		     
 rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$ 
+
      If statement is regexp rel_value also can be a function
+     
      .       means replace current cell value with matched string from the matched string from the rel_field
+     
      .+      means append current cell value to matched string from the rel_field 
+     
      +.      means append matched string from the rel_field to the current cell value  
 
 rel_value:
+
      IF rel_type is inequality according to php comparison operators
+     
              +<.
+	     
              +<=.
+	     
              +>=.
+	     
              +=.
+	     
              +<>.
-             WHERE + is the matched rel_field value and . is the current cell value
+             
+	     WHERE + is the matched rel_field value and . is the current cell value
              
      Else can be anything - may be ignored - depending on the used function
 
-Example:
+Examples
+........
 
-at the tarsus_length column
+On the `tarsus_length` column
 
-(clutch_size=!!^([123])$) {obligatory(1)}
+	(clutch_size=!!^([123])$) {obligatory(1)}
 
 Which means it will be mandatory to fill the tarsus length if the nest size is 1, 2 or 3
+
+On the `end_date` column. If the `found_date` field not empty, check, the `end_date` is grater than the `found_date`. If yes, returning TRUE else FALSE, which causing upload error.
+
+    (found_date=!!^(.+)$) {inequality(+>=.)}
+
+On a date field which not contains year part. If the `year` column is not empty, then the `date` field will be updated with this year (numbers)
+
+    (year=!!^(d{4})$) {set(.)}
+
+On the `ring_number` field. If the recapture's values is “1” then the `ring_number` will be obligatory.
+
+    (recapture=1) {obligatory(1)}
+
+On the `english_name` column. If the `scientific_name` is empty then the english_name will be obligatory.
+
+    (scientific_name=!!(^$)) {obligatory(1)}
+
+On the `amount_type` field. If the `number_of_individuals` grater than 50 then the `amount_type` will be “estimated value”, else if less or equal than 50, then “exact value”.
+
+    (number_of_individuals>50) {set(estimated value)},(egyedszam<=50) {set(exact value)}
