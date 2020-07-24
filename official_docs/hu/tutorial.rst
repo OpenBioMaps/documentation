@@ -33,3 +33,5 @@ Felhasználók által készített videó oktatási anyagok
 
 `OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/8zRgGNOYDxg>`_
 
+_`Kapcsolt listák készítése mobil alkalmazás számára (is) (Balatonfelvidéki Nemzeti Park, Antal Balázs) <https://youtu.be/zlFuobVOWq8>`_
+
