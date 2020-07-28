@@ -35,3 +35,5 @@ Felhasználók által készített videó oktatási anyagok
 
 `Kapcsolt listák készítése mobil alkalmazás számára (is) (Balatonfelvidéki Nemzeti Park, Antal Balázs) <https://youtu.be/zlFuobVOWq8>`_
 
+`Regisztráció és mobil alkalmazás (Balatonfelvidéki Nemzeti Park, Antal Balázs) <https://youtu.be/P93MkCsNQZI>`_
+
