@@ -17,13 +17,19 @@ Add new columns to a table and manage tables: assign OBM meanings to the columns
     - alternative names: this column can be used in taxon management
     - date this column can be used in date filters
     - no. of individuals: can be used in summary functions
-    - rowid: not used
     - latitude: together with longitude can be used for creating spatial geometry
     - longitude: together with latitude can be used for creating spatial geometry
     - citing: used in summary functions
-    - sensitive: 
     - attacment: file attacmnets colum
     - UTM Zone: used in spatial geometry creation
+    
+The "comment field" should contain descriptions of the contents of the columns (metadata) and in some cases may have a regulatory role. For the obm_geometry column, you can specify the srid of the geometry column in the comment field, which will determine the stored srid of the uploaded data. The value entered must be in the format `srid: 4326` and stored in biomaps / header_names / f_srid and used by the application in the global variable SRID_C.
+
+In the obm_id column, you can specify whether the rules table should be used like this: use_rules: 1 This can only be changed with master access.
+
+In both cases, the SET prefix is automatically added to the comment field, which must be deleted for the change to take effect. This is so that these parameters cannot be accidentally changed.
+
+
 
 Groups
 ------

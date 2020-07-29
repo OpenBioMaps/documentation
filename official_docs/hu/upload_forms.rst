@@ -175,6 +175,48 @@ Lista definíció
 ...............
 Többféle lista definíció megadható itt. Egyszeres választós lista, többszörös választós, autó-kiegészítős lista. A listák tartalma megadható itt is az elemek felsorolásával, vagy megadható egy tábla és feltételek ahonnan az alkalmazás lekérdezi a lista elemeket.
 
+Ha az általunk definiált lista kevés választható elemet tartalmaz, akkor ezt listát akár felsorolással is megadhatjuk. Lásd alább - ebben az esetben megadtuk a listánk értékeit, amit egy legördülő menüből tudunk majd kiválasztani a adatfeltöltés folyamán. Ezek az értékek ("nőstény", "hím") fognak az adatbázisba is bekerülni.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "nőstény":[],
+        "hím":[]
+       }
+    }
+
+Abban az esetben, ha egyes változókat más írási móddal, vagy más formában szeretnénk megjeleníteni. Például, ha a változó értéke szám, de a listában szöveges leírást akarunk megjeleníteni, akkor lehetőség van az értéktől éltérő cimkék megadására. A cimke értékek automatikusan fordíthatóak is, ha az str_ előtagot használjuk és a nyelvi fordítást megadtuk. Így az alábbi példában az adatbázisban "male" és "female" értékek fognak bekerülni, de a legördülő listában "nőstény" és "hím" értékek jelennek meg magyarul és "female", "male" angolul.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "female":["str_female"],
+        "male":["str_male"]
+       }
+    }
+
+
+Lehetőség van több cimke hozzárendeléséhez is egy értékhez. Ebben az esetben weves űrlapon és mobilon a lista első eleme fog megjelenni, de fájlfeltöltés esetén a a fájlban szerepelhet bármelyik cimke vagy érték, mindegyikből a lista értéket fogja az alkalmazás beszúrni. Ahhoz, hogy ez érvényesüljön jelenleg végig kell lapozni a fájlt.
+
+.. code-block:: json
+
+    {
+      "list": {
+        "nőstény":[
+        	"nősteny",
+        	"F",
+        	"female"],
+        "hím":[
+                "hím",
+        	"M",
+        	"male"]
+       }
+    }
+
+A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
+
 .. code-block:: json
 
     {
@@ -197,9 +239,14 @@ Többféle lista definíció megadható itt. Egyszeres választós lista, többs
       "selected":["val1"]
     }
 
-Kapcsolt listák kezelése: lista létrehozása egy oszlopban (indító oszlop), ami megszűri milyen lista jöhet létre az általunk kiválasztott oszlopban ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
+Kapcsolt listák kezelése: 
+.........................
 
-A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. A kód első fele határozza meg, hogy az indító oszlopunk melyik másik oszlop listáját befolyásolja:
+Létrehozunk egy listát egy olyan oszlopban (indító oszlop), ami meghatározza a befolyásolt oszlopban létrejövő listát ("lista a listában"). Ehhez először létre kell hozzunk egy olyan háttér táblát (állat_csoportok), ami tartalmazza hogy egy csoporton belül milyen kisebb csoportok helyezkednek el. Például tartalmaznia kell, hogy a nagyobb állatcsoportokon belül milyen kisebb egységek fordulnak elő. Tehát a gerincesek csoporton (állat_szupercsoport) belül találhatóak a kétéltűek, hüllők, madarak, emlősök (állat_csoport_nev) és a gerinctelen csoporton (állat_szupercsoport) belül pedig a csalánozók, ízeltlábúak (állat_csoport_nev) stb.
+
+A kapcsolt listák paramétereit a "lista definíciók" mezőben adjuk meg JSON kód segítségével. 
+
+A kód első felét az indító oszlopunkhoz írjuk be, itt határozzuk meg, hogy az indító oszlopunk melyik háttértábla oszlopból vegye ki az értékeket:
 
 .. code-block:: json
 
@@ -222,7 +269,7 @@ Kód magyarázat:
 	"valueColumn" - a háttér táblából kiválasztott oszlop, aminek a változóiból létrejön a legördülő lista, abban az oszlopban ahova a kód kerül (indító oszlop)
 	"labelColumn" - a befolyásolt oszlopban hoz létre egy olyan listát, ami függ attól hogy melyik opciót választottuk az indító oszlop listájából
 
-A fent leírt kóddal olyan "lista a listában" szerkezetet hoztunk létre, ami két oszlopot köt össze. Következő lépésként meg kell határozzuk a "befolyásolt oszlopunkban", hogy a szükséges listához honnan kell ki venni az értékeket:
+A kód második felét a befolyásolt oszlopunkba kell beírni, itt határozzuk meg, hogy a befolyásolt oszlopunk melyik háttértábla oszlopból vegye ki az értékeket:
 
 .. code-block:: json
 
@@ -255,6 +302,35 @@ A kapcsolt lista opcióval nem csak két oszlop listáit tudjuk összekapcsolni,
     }
 
 A "triggerTargetColumn" mindig a soron következő oszlopra mutasson. A "filterColumn" mindig előző oszlopra mutasson. A "valueColumn" és a "labelColumn" mindig az aktuális oszlopra mutasson.
+
+További példák:
+1. Településeken belüli épületek meghatározása. Adatokat gyűjtünk különböző mesterséges odúkban fészkelő fajokról. Az erre létrehozott feltöltő formon belül szeretnénk létrehozni egy autocomplete listát a település oszlopban. Majd az épület (ahova az odút kihelyezték) oszlopban is szeretnénk egy legördülő menüt létrehozni. Rendelkezésünkre áll egy háttértábla, ami tartalmazza, hogy melyik településen milyen épületeken vannak az odúk. A háttértáblánk épület oszlopa viszont rengeteg lehetséges épületet jelöl, de ezek nem mindegyike fordul elő az összes településen. Ennek tükrében szeretnénk összekötni a település és épület oszlopot méghozzá úgy, hogy a kiválasztott település megszűrje az épület oszlopban kialakuló listát.
+
+ELSŐ LÉPÉS: beállítjuk a település oszlop autocomplete listáját, úgy hogy az oszlop típusát autocomplet-re állítjuk, majd megadjuk hogy az itt kialakult lista befolyásolja az épület listánkat:
+
+.. code-block:: json
+	
+	{
+    	"triggerTargetColumn": [
+        "epulet"
+    	],
+	"Function": "select_list",
+ 	"optionsSchema": "public",
+ 	"optionsTable": "tytoalba_epuletek",
+ 	"valueColumn": "telepules"
+	}
+
+MÁSODIK LÉPÉS: az épület oszlop típusát listára állítjuk, majd az alábbi kóddal meghatározzuk a listánk értékeit:
+
+.. code-block:: json
+	
+	{
+    	"optionsTable": "tytoalba_epuletek",
+    	"filterColumn": "telepules",
+    	"Function": "select_list",
+    	"valueColumn": "epulet"
+	}
+
 
 .. _default-values:
 
@@ -314,32 +390,69 @@ Kapcsolat más oszlopkkal definíció nyelv
 IF an other cell value (rel_field) match to (rel_statement) THEN  this cell (rel_type) value should be (rel_value)
 
 rel_type is a function related with the field type
+
      datum:          year            extraxt year component from a datum string
+     
      text,numeric:   minmax          minmax range check
+     
      any type:       obligatory      change obligatory setting
-                     
+     
                      inequality      check inequality with these symbols: <>= between index and current field. Causing error message.
-rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$ 
+		     
+rel_statement can be a regexp based function. In this case statement should be started with !! and followed by a regexp expression e.g.  !!^(\d{2})$
+
      If statement is regexp rel_value also can be a function
+     
      .       means replace current cell value with matched string from the matched string from the rel_field
+     
      .+      means append current cell value to matched string from the rel_field 
+     
      +.      means append matched string from the rel_field to the current cell value  
 
 rel_value:
      IF rel_type is inequality according to php comparison operators
+     
              +<.
+	     
              +<=.
+	     
              +>=.
+	     
              +=.
+	     
              +<>.
+	     
              WHERE + is the matched rel_field value and . is the current cell value
              
      Else can be anything - may be ignored - depending on the used function
 
-Példa:
+Példák
+......
 
-tarsus_length oszlopnál
+A `tarsus_length` oszlopnál
 
-(clutch_size=!!^([123])$) {obligatory(1)}
+	(clutch_size=!!^([123])$) {obligatory(1)}
 
 Ami azt jelenti, hogy kötelező lesz kitölteni a tarsus hosszát, ha a fészekalj mérete 1,2 vagy 3
+
+Az `end_date` oszlopon. Ha a `found_date` nem üres, megnézzük, hogy az `end_date` nagyobb-e mint a `found_date`. Ha igen true-val tér vissza, ha nem, akkor false-al ami feltöltési hibát eredményez.
+    
+	(found_date=!!^(.+)$) {inequality(+>=.)}
+
+Egy dátum mezőn ami nem tartalmaz évet. Ha az `year` oszlop nem üres, akkor a dátum mező év értékét beállítja ezzel az évvel.
+    
+	(year=!!^(\d{4})$) {set(.)}
+
+A `ring_number` mezőn. Ha a `visszafogas` értéke "1"  akkor a `ring_number` kötelező mező lesz.
+
+	(visszafogas=1) {obligatory(1)}
+  
+A `magyar` oszlopon. Ha a `faj` üres, akkor a `magyar` kötelező.
+
+	(faj=!!(^$)) {obligatory(1)}
+
+A `szamossag` mezőn. Ha az `egyedszam` értéke nagyobb mint 50 akkor a `szamossag` értékét "becsült mennyiség"-re állítjuk, ha kisebb vagy egyenlő mint 50, akkor "pontos  egyedszám"-ra.
+
+	(egyedszam>50) {set(becsült mennyiség)},(egyedszam<=50) {set(pontos egyedszám)}
+
+

@@ -452,7 +452,7 @@ If this module is enabled "Create postgres user" option will appear on your prof
 
 grid_view
 ---------
-    View data on selected polygon grid
+    View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
 
     Calls:
 
@@ -463,60 +463,106 @@ grid_view
     Parameters: layer_options
 
     Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
+    
+    
+    On the nnn_grid table on the comment field the layers visible names should be set:
+```sql 
+    COMMENT ON COLUMN public.nnn_qgrids.original IS 'original';
+    COMMENT ON COLUMN public.nnn_qgrids.snap IS 'snap';
+    COMMENT ON COLUMN public.nnn_qgrids.snap_polygon IS 'snap_polygon';
+```
 
-    Example trigger function:
+    Example trigger functions:
 
-    Trigger on nnn_qgrids:
+    Trigger on nnn_qgrids. Arguments are in the function:
 ```sql    
-    CREATE TRIGGER self_update BEFORE INSERT OR UPDATE ON dinpi_qgrids FOR EACH ROW EXECUTE PROCEDURE update_qgrids_geometries()
+    CREATE TRIGGER update_grid_geoms BEFORE INSERT OR UPDATE ON public.tytoalba_qgrids FOR EACH ROW EXECUTE PROCEDURE public.update_qgrid_geoms_arg('0.1', '0.1', 'f', 'f', 'f', 'f', 't', 't', '0.05');
 ```
     Trigger on nnn table:
 ```sql
-    CREATE TRIGGER update_qgrids AFTER INSERT OR DELETE OR UPDATE ON dinpi FOR EACH ROW EXECUTE PROCEDURE grid_geometries()
+    CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public.debrecen_dnabank FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
 ```
-Function grid_geometries()
+Function insert_originalgeom_into_qgrids()
 ```sql
 BEGIN
-IF tg_op = 'INSERT' THEN
-
+  IF tg_op = 'INSERT' THEN
     EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
-
-RETURN NEW;
+    RETURN NEW;
 END IF;
 
-IF tg_op = 'UPDATE' THEN
-    -- create original at first
-    --EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
+  IF tg_op = 'UPDATE' THEN
     EXECUTE format('UPDATE %I_qgrids SET "original"=%L::geometry WHERE row_id=%L', TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
-
-RETURN NEW;
+    RETURN NEW;
 END IF;
 
 IF tg_op = 'DELETE' THEN
-
     EXECUTE format('DELETE FROM %I_qgrids WHERE row_id=%L',TG_TABLE_NAME,OLD.obm_id);
-
-RETURN OLD;
+    RETURN OLD;
 END IF;
-
 END;
 ```
 
-Function update_qgrids_geometries()
+Function update_qgrid_geoms_arg()
 ```sql
+DECLARE
+    snap_x numeric := TG_ARGV[0];
+    snap_y numeric := TG_ARGV[1];
+    kef5 boolean := TG_ARGV[2];
+    kef10 boolean := TG_ARGV[3];
+    utm25 boolean := TG_ARGV[4];
+    utm10 boolean := TG_ARGV[5];
+    snap boolean := TG_ARGV[6];
+    snap_polygon boolean := TG_ARGV[7];
+    snap_polygon_size numeric := TG_ARGV[8];
 BEGIN
--- Available shared grids tables: kef_5, kef_10, utm_2.5, utm_10, etrs
--- Required output grids e.g.: kef_10x10, utm_10x10, etrs, snap
 
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_5x5"     WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_5";
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."kef_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."kef_10";
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_2.5x2.5" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_2.5";
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_10x10"   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_10";
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_100x100" WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."utm_100";
-    EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."etrs"        WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))',NEW.original) INTO NEW."etrs";
-    EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,0.13,0.09)',NEW.original) INTO NEW."snap";
+IF tg_op = 'UPDATE' THEN
+    IF kef5 THEN
+        EXECUTE FORMAT('SELECT geometry FROM shared."kef_5x5" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_5";
+    END IF;
+    IF kef10 THEN
+        EXECUTE FORMAT('SELECT geometry FROM shared."kef_10x10" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_10";
+    END IF;
+    IF utm25 THEN
+        EXECUTE FORMAT('SELECT st_transform(geometry,4326) as geom FROM shared."utm_2.5x2.5" WHERE st_within(%L::geometry,st_transform(geometry,4326))',NEW.original) INTO 
+NEW."utm_2.5";
+    END IF;
+    IF utm10 THEN
+        EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_10x10" WHERE st_within(%L::geometry,st_transform(geometry,4326))',NEW.original) INTO NEW."utm_10";
+    END IF;
+    IF snap THEN
+        EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,%L,%L)',NEW.original,snap_x,snap_y) INTO NEW."snap";
+    END IF;
+    IF snap_polygon THEN
+        EXECUTE FORMAT('SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)',NEW.original,snap_x,snap_y,snap_polygon_size) INTO NEW."snap_polygon";
+    END IF;
 
     RETURN NEW;
+END IF;
+IF tg_op = 'INSERT' THEN
+
+    IF kef5 THEN
+        EXECUTE FORMAT('SELECT geometry FROM shared."kef_5x5" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_5";
+    END IF;
+    IF kef10 THEN
+        EXECUTE FORMAT('SELECT geometry FROM shared."kef_10x10" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_10";
+    END IF;
+    IF utm25 THEN
+        EXECUTE FORMAT('SELECT st_transform(geometry,4326) as geom FROM shared."utm_2.5x2.5" WHERE st_within(%L::geometry,st_transform(geometry,4326))',NEW.original) INTO 
+NEW."utm_2.5";
+    END IF;
+    IF utm10 THEN
+        EXECUTE FORMAT('SELECT st_transform(geometry,4326) FROM shared."utm_10x10" WHERE st_within(%L::geometry,st_transform(geometry,4326))',NEW.original) INTO NEW."utm_10";
+    END IF;
+    IF snap THEN
+        EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,%L,%L)',NEW.original,snap_x,snap_y) INTO NEW."snap";
+    END IF;
+    IF snap_polygon THEN
+        EXECUTE FORMAT('SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)',NEW.original,snap_x,snap_y,snap_polygon_size) INTO NEW."snap_polygon";
+    END IF;
+
+    RETURN NEW;
+END IF;
 
 END;
 ```
