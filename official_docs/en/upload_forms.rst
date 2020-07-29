@@ -160,6 +160,7 @@ lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusn�
       "list": {
             "val1": ["label1", "label2"]
       },
+      "optionsSchema": "",
       "optionsTable": "",
       "valueColumn": "",
       "labelColumn": "",
@@ -167,13 +168,30 @@ lista típusnál vesszővel elválasztott lista megadaása. Autocoplete típusn�
       "pictures": {
             "val1": "url-string"
       },
-      "triggerTargetColumn": "",
+      "triggerTargetColumn": [
+        ""
+      ],
       "Function": "",
       "disabled": ["val1"],
-      "preFilterColumn": "",
-      "preFilterValue": "",
+      "preFilterColumn": [
+        ""
+      ],
+      "preFilterValue": [
+        ""
+      ],
+      "preFilterRelation": [
+        ""
+      ]
       "multiselect":"true or false, default is false",
-      "selected":["val1"]
+      "selected":["val1"],
+      "size": numeric value
+      "orderBy": [
+        "column or SQL expression"
+      ],
+      "order": [
+        "ASC OR DESC"
+      ],
+      "limit": numeric value
     }
 
 Default values
