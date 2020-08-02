@@ -136,8 +136,10 @@ training_results:   status list of users' trainings per forms. Status can be -1 
 training_toplist: toplist of trainings. Mean, Max, Count values for each forms.
  További paraméterek: value [text] summary without names (nonames).
  
-get_mydata_rows: json array of uploaded data
+get_mydata_rows: feltöltött adatok json formátumban
  További paraméterek: value [numeric] limit of array length. If 0, no limit, default is no limit.
+ 
+get_attachments: csatolt fájlok leszedése a szerverről egybe tarolva.
 
 
 POST típusú feladatok
@@ -314,6 +316,21 @@ Data retrieval (form fields):
     -F 'project=checkitout' \\ |br|
     http://openbiomaps.org/projects/checkitout/pds.php
     
+Csatolmányok letöltése szűréssel:
+    curl \\ |br|
+    -F 'access_token=...' \\ |br|
+    -F 'scope=get_attachments' \\ |br|
+    -F 'project=sablon' \\ |br|
+    -F 'value=filter=gyujto!=Fakenuba Furamuki' \\ |br|
+    http://localhost/biomaps/resources/pds.php -OJ
+
+Csatolmányok letöltése limit-offset megadással:
+    curl \\ |br|
+    -F 'access_token=...' \\ |br|
+    -F 'scope=get_attachments' \\ |br|
+    -F 'project=sablon' \\ |br|
+    -F 'value=limit=1:20' \\ |br|
+    http://localhost/biomaps/resources/pds.php -OJ
 
 Result of a successful get_form_data call:
 
@@ -350,7 +367,7 @@ Adatfeltöltés:
     -d "ignore_warning=1" \\ |br|
     'http://openbiomaps.org/projects/checkitout/pds.php'
 
-Data upload with multiple attachments (files):
+Adat feltöltés több csatolmánnyal (fájlok):
     curl \\ |br|
     -F "access_token=..." \\ |br|
     -F 'scope=put_data' \\ |br|
@@ -407,7 +424,7 @@ Project list (using central pds):
 
 Általános API válaszok
 ----------------------
-Based on: https://labs.omniti.com/labs/jsend
+A https://labs.omniti.com/labs/jsend ajánlást követve:
 
 JSON:
     {"status":"X","data":"","message":""}
