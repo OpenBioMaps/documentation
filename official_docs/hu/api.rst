@@ -353,8 +353,30 @@ API < v.2.1
 
     {"status":"success",
      "data":[    
-     {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
-     {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{...}]
+     {"description":null,
+      "default_value":null,
+      "column":"egyedszam",
+      "short_name":"egyedszam",
+      "list":"",
+      "control":"minmax",
+      "count":"{30,40}",
+      "type":"numeric",
+      "genlist":null,
+      "obl":"3",
+      "api_params":null},
+     {"description":"faj neve",
+      "default_value":null,
+      "column":"faj",
+      "short_name":"faj",
+      "list":"",
+      "control":"nocheck",
+      "count":"{}",
+      "type":"text",
+      "genlist":null,
+      "obl":"1",
+      "api_params":null
+      },
+      {...}]
     }
 
 API >= v.2.1
@@ -366,7 +388,20 @@ API >= v.2.1
    "data":[
    "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
    "form_data":[
-        {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"}},
+        {"description":"faj neve",
+         "default_value":null,
+         "column":"faj",
+         "short_name":"faj",
+         "list":"",
+         "control":"nocheck",
+         "count":"{}",
+         "type":"text",
+         "genlist":null,
+         "obl":"1",
+         "api_params":{"sticky":"off",
+                       "numeric":"off",
+                       "list_elements_as_buttons":"off"}
+        },
         {...}]]
   }
 
