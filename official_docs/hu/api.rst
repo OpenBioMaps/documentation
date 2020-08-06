@@ -288,13 +288,19 @@ curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' ht
 Példák
 ------
 Authentication:
-    curl \\ |br|
-    -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
+
+.. code-block:: bash
+
+    curl \
+    -u mobile:mobile http://openbiomaps.org/oauth/token.php \
     -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
 
 Data retrieval (form list):
-    curl \\ |br|
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
+
+.. code-block:: bash
+
+    curl \
+    -v http://openbiomaps.org/projects/checkitout/pds.php \
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"
 
 Result of a successful get_form_list call:
