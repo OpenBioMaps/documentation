@@ -1,6 +1,8 @@
 Adminisztratív oldalak
 **********************
 
+.. _database-columns:
+
 Adatbázis oszlopok
 ------------------
 Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
