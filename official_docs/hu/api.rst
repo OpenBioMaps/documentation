@@ -312,7 +312,7 @@ OR with central pds
 
 .. code-block:: bash
 
-    curl \\ |br|
+    curl \
     -F 'scope=get_form_data' \
     -F 'value=93' \
     -F 'project=checkitout' \
