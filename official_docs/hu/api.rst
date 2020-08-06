@@ -340,11 +340,11 @@ Csatolmányok letöltése limit-offset megadással és több szűréssel:
 
 .. code-block:: bash
 
-    curl
-    -F 'access_token=...'
-    -F 'scope=get_attachments'
-    -F 'project=sablon'
-    -F 'value=filter=gyujto=Fakenuba Furamuki&limit=1000:0&filter=tema=novenyek'
+    curl \
+    -F 'access_token=...' \
+    -F 'scope=get_attachments' \
+    -F 'project=sablon' \
+    -F 'value=filter=gyujto=Fakenuba Furamuki&limit=1000:0&filter=tema=novenyek' \
     http://localhost/biomaps/resources/pds.php -OJ
 
 Result of a successful get_form_data call:
