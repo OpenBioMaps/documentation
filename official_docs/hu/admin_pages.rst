@@ -1,7 +1,7 @@
 Adminisztratív oldalak
 **********************
 
-.. _database-columns:
+.. rst:role:: database-columns
 
 Adatbázis oszlopok
 ------------------
