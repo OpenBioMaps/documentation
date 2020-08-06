@@ -337,6 +337,7 @@ Csatolmányok letöltése limit-offset megadással (az első sortól 20 sor):
     http://localhost/biomaps/resources/pds.php -OJ
 
 Csatolmányok letöltése limit-offset megadással és több szűréssel:
+
 .. code-block:: bash
 
     curl
