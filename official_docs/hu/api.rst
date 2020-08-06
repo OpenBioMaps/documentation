@@ -301,39 +301,54 @@ Result of a successful get_form_list call:
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
 
 Data retrieval (form fields):
-    curl \\ |br|
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
+
+.. code-block:: bash
+
+    curl \
+    -v http://openbiomaps.org/projects/checkitout/pds.php \
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93"
     
-  OR with central pds
+OR with central pds
+
+.. code-block:: bash
+
     curl \\ |br|
-    -F 'scope=get_form_data' \\ |br|
-    -F 'value=93' \\ |br|
-    -F 'project=checkitout' \\ |br|
+    -F 'scope=get_form_data' \
+    -F 'value=93' \
+    -F 'project=checkitout' \
     http://openbiomaps.org/projects/checkitout/pds.php
-    
-  OR with access token to retrieve data of a restricted form
-    curl \\ |br|
-    -F 'access_token=...' \\ |br|
-    -F 'scope=get_form_data' \\ |br|
-    -F 'value=124' \\ |br|
-    -F 'project=checkitout' \\ |br|
+
+OR with access token to retrieve data of a restricted form
+
+.. code-block:: bash
+
+    curl \
+    -F 'access_token=...' \
+    -F 'scope=get_form_data' \
+    -F 'value=124' \
+    -F 'project=checkitout' \
     http://openbiomaps.org/projects/checkitout/pds.php
     
 Csatolmányok letöltése szűréssel:
-    curl \\ |br|
-    -F 'access_token=...' \\ |br|
-    -F 'scope=get_attachments' \\ |br|
-    -F 'project=sablon' \\ |br|
-    -F 'value=filter=gyujto!=Fakenuba Furamuki' \\ |br|
+
+.. code-block:: bash
+
+    curl \
+    -F 'access_token=...' \
+    -F 'scope=get_attachments' \
+    -F 'project=sablon' \
+    -F 'value=filter=gyujto!=Fakenuba Furamuki' \
     http://localhost/biomaps/resources/pds.php -OJ
 
 Csatolmányok letöltése limit-offset megadással (az első sortól 20 sor):
-    curl \\ |br|
-    -F 'access_token=...' \\ |br|
-    -F 'scope=get_attachments' \\ |br|
-    -F 'project=sablon' \\ |br|
-    -F 'value=limit=20:0' \\ |br|
+
+.. code-block:: bash
+
+    curl \
+    -F 'access_token=...' \
+    -F 'scope=get_attachments' \
+    -F 'project=sablon' \
+    -F 'value=limit=20:0' \
     http://localhost/biomaps/resources/pds.php -OJ
 
 Csatolmányok letöltése limit-offset megadással és több szűréssel:
