@@ -335,15 +335,16 @@ Csatolmányok letöltése limit-offset megadással (az első sortól 20 sor):
     -F 'project=sablon' \\ |br|
     -F 'value=limit=20:0' \\ |br|
     http://localhost/biomaps/resources/pds.php -OJ
-    
 
 Csatolmányok letöltése limit-offset megadással és több szűréssel:
-    curl \\ |br|
-    -F 'access_token=...' \\ |br|
-    -F 'scope=get_attachments' \\ |br|
-    -F 'project=sablon' \\ |br|
-    -F 'value=filter=gyujto=Fakenuba Furamuki&limit=1000:0&filter=tema=novenyek' \\ |br|
-    http://localhost/biomaps/resources/pds.php -OJ    
+.. code-block:: bash
+
+    curl
+    -F 'access_token=...'
+    -F 'scope=get_attachments'
+    -F 'project=sablon'
+    -F 'value=filter=gyujto=Fakenuba Furamuki&limit=1000:0&filter=tema=novenyek'
+    http://localhost/biomaps/resources/pds.php -OJ
 
 Result of a successful get_form_data call:
 
