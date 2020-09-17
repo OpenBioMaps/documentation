@@ -25,11 +25,12 @@ This name can be multilingual, if you use the ''str_'' tag. See more about trans
 
 Form access
 ...........
-Define who can see / use the form: anyone (public), logged in users, specific group (specify groups in the group-access below).
-
-Group access
-............
-If form access specified as "group-access" here choose the groups.
+Define who can see / use the form: 
+	- public (anyone), 
+	- all logged in users, 
+	- only specified groups
+	
+If "only specified groups" chose,  the list of available users/groups select field will be active, where users or groups can be chosen for accessing this form.
 
 Data access
 ...........
