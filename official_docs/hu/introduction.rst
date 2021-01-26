@@ -31,7 +31,7 @@ Bevezetés
 OpenBioMaps folyamatok
 ======================
 
-Az OBM megpróbál támogatást adni a teljes adat - életútra, az adatgyűjtéstől a rendszerezésen át a felhasználásig.
+Az OBM megpróbál támogatást adni a teljes adat életútra, az adatgyűjtéstől a rendszerezésen át a felhasználásig.
 
 .. figure:: images/adat_eletut_infog.png
    :scale: 50 %
