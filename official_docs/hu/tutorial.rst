@@ -3,9 +3,9 @@ Oktató anyagok
 
 Felhasználók által készített szöveges oktatási anyagok
 ======================================================
-:download:`Adatfeltöltés<docs/OBM_adatfeltoltes_dinpi.pdf>` [pdf, 2Mb] Mocskonyi Zsófia (DINPI)
+:download:`Adatfeltöltés<docs/OBM_adatfeltoltes_webesfeluletre.pdf>` [pdf, 2Mb] Mocskonyi Zsófia (DINPI)
 
-:download:`Adatlekérdezés<docs/OBM_lekerdezes.pdf>` [pdf, 1.6Mb] Mocskonyi Zsófia (DINPI)
+:download:`Adatlekérdezés<docs/OBM_adatlekerdezes_webesfeluletre.pdf>` [pdf, 1.6Mb] Mocskonyi Zsófia (DINPI)
 
 :download:`Egyéni SQL felhasználó és QGIS<docs/egyeni_felhasznalo_obm_uj.pdf>` [pdf, 750Kb] Mocskonyi Zsófia (DINPI)
 
