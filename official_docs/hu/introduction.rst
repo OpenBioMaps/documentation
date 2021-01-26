@@ -30,16 +30,18 @@ Bevezetés
 
 OpenBioMaps folyamatok
 ======================
+
+Az OBM megpróbál támogatást adni a teljes adat - életútra, az adatgyűjtéstől a rendszerezésen át a felhasználásig.
+
 .. figure:: images/adat_eletut_infog.png
    :scale: 50 %
    :alt: OpenBioMaps adat életút infógrafika
 
-   Előkészítés - adatgyűjtés - adathasználat
 
 
 
 OpenBioMaps Konzorcium
-----------------------
+======================
 :download:`OpenBioMaps Konzorcium Szerződés<docs/consortium_2015.pdf>`
 
 
