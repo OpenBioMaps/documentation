@@ -691,7 +691,7 @@ Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:
 	
 	obm_datum
     	obm_uploading_date
-    	obm_uploader_userfaj
+    	obm_uploader_user
     	obm_taxon
 	
 	Létre lehet hozni egymásba épített szűrőket 
@@ -701,7 +701,10 @@ Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Pl.:
 	Kombinálhatjuk az egymásba épített és a legördülő menüt
 			pl.: faj:nested(colour_rings):autocomplete
     	Akár egyedszám/populáció méeret szerint is lehet szűrni
-			pl.: d.egyedszam:values(): 
+			pl.: d.egyedszam:values():  Itt a "d." azt jelenti, hogy a "d" SQL aliassal jelölt táblából kérdezzen.
+	
+	Aliasok hazsnálata:
+	táblaalias.oszlop formátumban kell megadni, ha joinolt táblákat hazsnálunk, vagy akkor is, ha használunk aliast az SQL query-nkben.
 
 Fejleszői dokumentáció
 
