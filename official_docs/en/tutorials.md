@@ -32,3 +32,6 @@ Database access
 
 `OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/8zRgGNOYDxg>`_
 
+
+DOCKER
+======
