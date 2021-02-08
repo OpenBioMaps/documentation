@@ -167,6 +167,13 @@ Reading logs
 foo@bar:~$ docker-compose logs -f app
 ```
 
+Using pgtop
+...........
+
+docker-compose exec -u postgres <service_name> pg_top
+
+
+
 Restart app
 ...........
 Do not restart apache from docker shell, but from outside
