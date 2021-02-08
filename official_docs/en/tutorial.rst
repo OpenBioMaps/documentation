@@ -1,4 +1,4 @@
 Tutorials
 *********
 
-.. mdinclude:: ./tutorial.md
+.. mdinclude:: ./tutorials.md
