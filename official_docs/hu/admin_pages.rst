@@ -17,15 +17,18 @@ Mindkét esetben az megjegyzés mezőben automatikusan odakerül a SET előtag, 
 
 A lap címsávjának jobb oldalán látható >_ SQL gombbal egy SQL konzol nyitható. Ez csak üzemeltetői státusszal és külön authentikáció után használható.
 
+
 Adat hozzáférés
 ---------------
 A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
+
 
 .. _admin-group-access:
 
 Adminisztratív hozzáférések
 ---------------------------
 Felhasználói csoportok hozzárendelése adminisztratív funkciókhoz. Például űrlap készítési vagy fajnév tábla kezelési jogkör kiadása.
+
 
 .. _groups:
 
@@ -58,7 +61,7 @@ Az űrlapok kezelésének részletes leírása itt található:
 
 Fájl kezelő
 -----------
-Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése.
+Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése. Ki lehet exportálni egyben az egy táblához tartozó csatományokat, de ez némi időt vehet igénybe, mivel az exportálás egy háttérfolyamatként zajlik. Amikor készen van az export, akkor egy link jelenik meg az export gomb mellett.
 
 
 Függvények
