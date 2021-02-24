@@ -30,27 +30,32 @@ In the obm_id column, you can specify whether the rules table should be used lik
 In both cases, the SET prefix is automatically added to the comment field, which must be deleted for the change to take effect. This is so that these parameters cannot be accidentally changed.
 
 
-
 Groups
 ------
-Create and manage groups
+Creating and managing groups. These groups can be used for the management of access and usage control of upload forms, data, modules and administrative functions.
+The groups can contains groups.
 
 Upload forms
 ------------
 :doc:`upload_forms`
 
+
 Functions
 ---------
 Manage optional SQL functions and triggers:
 
-    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which used by the taxon filter
-    - Taxon name auto update: updates the data table on taxon table updating
-    - History: creates a history on line in history table on every update and delete
-    - Access rules: Custom rules can be defined for the uploaded data user assignments.
+    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which used by the taxon filter,
+    - Taxon name auto update: updates the data table on taxon table updatin,
+    - History: create history lines in the "history table" after update and delete rows,
+    - Access rules: create a rule line in the "rules table" after inserting new row. The rules applied are from the form settings.
+
 
 Species names
 -------------
-Taxon table management interface
+Taxon table management interface.
+Assign species names to the following categories: [accepted name], [synonym name], [common name], [mispelled name]
+The species names in the taxon table (species name database) is used by the "taxon-name-repair-background-jobs" and the search interfaces.
+
 
 Access
 ------
@@ -77,9 +82,11 @@ Interrupted uploads
 -------------------
 List of interrupted/saved imports of the whole project. Admins can load these imports.
 
+
 File manager
 ------------
-List of uploaded attacments. Attachement can be managed here.
+List of uploaded attachments. Attachments can be managed here. There is a possibility to export all attachments belonging to a data table into one compressed file using the export functionality. Exporting can take a long time due to it is using a "Background-Job". When it is ready a link will appear next to the export button to access the produced file.
+
 
 SQL query settings
 ------------------
@@ -103,9 +110,11 @@ Web Map Layers
 --------------
 OpenLayer settings for web-map interface
 
+
 Members
 -------
-Project memeber management interface.
+Project member management interface. Here you can see the group memberships of the users as well. The users' system state [admin, user, banned] can be set here. In addition, you can also access the user's profile page from here where you can also change the profile. 
+
 
 Mapserver settings
 ------------------
