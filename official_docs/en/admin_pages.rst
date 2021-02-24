@@ -7,6 +7,9 @@ Administrative access
 ---------------------
 Administrative functions can be delegated to user groups.
 
+
+.. _database-columns:
+
 Database columns
 ----------------
 Add new columns to a table and manage tables: assign OBM meanings to the columns.
@@ -113,7 +116,7 @@ OpenLayer settings for web-map interface
 
 Members
 -------
-Project member management interface. Here you can see the group memberships of the users as well. The users' system state [admin, user, banned] can be set here. In addition, you can also access the user's profile page from here where you can also change the profile. 
+Project member management interface. Here you can see the group memberships of the users as well. The users' system state [admin, user, banned] can be set here. In addition, you can also access the user's profile page from here where you can also change the profile (https://fontawesome.com/v4.7.0/icon/user-secret). 
 
 
 Mapserver settings
