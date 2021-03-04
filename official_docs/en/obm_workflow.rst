@@ -7,6 +7,8 @@ PostgreSQL Backend
 Database tables
 ---------------
 
+Metadata
+........
 
 Database columns
 ----------------
