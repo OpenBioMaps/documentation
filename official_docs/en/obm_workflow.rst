@@ -12,9 +12,16 @@ Database columns
 ----------------
 
 Column names
+............
+
 Column order
+............
+
 Visible names
+.............
+
 SQL columns vs OpenBioMaps columns
+..................................
 
 
 Data input
