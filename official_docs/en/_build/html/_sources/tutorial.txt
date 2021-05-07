@@ -1,4 +1,0 @@
-Tutorials
-*********
-
-.. mdinclude:: ./tutorial.md
