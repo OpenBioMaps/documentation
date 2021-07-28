@@ -19,14 +19,14 @@ Prepare/Install Docker & Compose
 ................................
 
 ```console
-foo@bar:~$ sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
-foo@bar:~$ sudo chmod +x /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
-foo@bar:~$ docker-compose --version
-
-docker-compose version 1.22.0, build f46880fe
+docker-compose --version
 ```
+docker-compose version 1.22.0, build f46880fe
+
 
 Visit this page for further inforamtion about installing docker
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
@@ -36,17 +36,17 @@ OBM docker install
 ..................
 
 ```console
-foo@bar:~$ git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
+git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
 
-foo@bar:~$ cd obm-composer/
+cd obm-composer/
 
-foo@bar:~$ sudo groupadd -g 996 docker
+sudo groupadd -g 996 docker
 
-foo@bar:~$ sudo adduser foo docker
+sudo adduser foo docker
 
-foo@bar:~$ docker network create obm_web
+docker network create obm_web
 
-foo@bar:~$ docker-compose up -d
+docker-compose up -d
 ```
 
 Visit your OBM app
@@ -92,12 +92,17 @@ Install / Setup OpenBioMaps an instance
 .......................................
 It is recommended to put docker files into /srv/docker directory
 ```
-foo@bar:~$ mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
-foo@bar:~$ git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
-foo@bar:~$ docker-compose pull
-foo@bar:~$ ./obm_pre_install.sh
-foo@bar:~$ docker-compose up -d
-foo@bar:~$ ./obm_post_install.sh
+mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
+
+git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
+
+docker-compose pull
+
+./obm_pre_install.sh
+
+docker-compose up -d
+
+./obm_post_install.sh
 ```
 
 Updates: update application with Docker
