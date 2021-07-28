@@ -28,25 +28,35 @@ docker-compose --version
 docker-compose version 1.22.0, build f46880fe
 
 
-Visit this page for further inforamtion about installing docker
+Visit this page for further inforamtion about installing docker:
+
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
+Install / Setup OpenBioMaps an instance
+.......................................
+It is recommended to put docker files into /srv/docker directory
+```
+mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
 
-OBM docker install
-..................
-
-```console
 git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
 
 cd obm-composer/
 
-sudo groupadd -g 996 docker
+sudo su
 
-sudo adduser foo docker
+groupadd -g 996 docker
+
+adduser foo docker
 
 docker network create obm_web
 
+docker-compose pull
+
+./obm_pre_install.sh
+
 docker-compose up -d
+
+./obm_post_install.sh
 ```
 
 Visit your OBM app
@@ -87,23 +97,6 @@ You can access OBM server admin interface:
 [http://localhost:9880/supervisor.php](http://localhost:9880/supervisor.php)
 
 with *supervisor* username and *12345* password. This password is located at /etc/openbiomaps/.htaccess.
-
-Install / Setup OpenBioMaps an instance
-.......................................
-It is recommended to put docker files into /srv/docker directory
-```
-mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
-
-git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
-
-docker-compose pull
-
-./obm_pre_install.sh
-
-docker-compose up -d
-
-./obm_post_install.sh
-```
 
 Updates: update application with Docker
 .......................................
