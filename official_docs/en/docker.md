@@ -88,26 +88,38 @@ You can access OBM server admin interface:
 
 with *supervisor* username and *12345* password. This password is located at /etc/openbiomaps/.htaccess.
 
+Install / Setup OpenBioMaps an instance
+.......................................
+It is recommended to put docker files into /srv/docker directory
+```
+foo@bar:~$ mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
+foo@bar:~$ git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
+foo@bar:~$ docker-compose pull
+foo@bar:~$ ./obm_pre_install.sh
+foo@bar:~$ docker-compose up -d
+foo@bar:~$ ./obm_post_install.sh
+```
 
 Updates: update application with Docker
 .......................................
 ```console
-foo@bar:~$ git pull https://gitlab.com/openbiomaps/docker/obm-composer.git
 foo@bar:~$ docker-compose pull 
-Pulling gisdata    ... done
-Pulling biomaps    ... done
+Pulling biomaps_db ... done
 Pulling mapserver  ... done
 Pulling app        ... done
 Pulling phppgadmin ... done
 Pulling adminer    ... done
 
 foo@bar:~$ docker-compose up -d
-Starting obm-composer_gisdata_1 ... done
-Starting obm-composer_biomaps_1 ... done
-Starting obm-composer_mapserver_1  ... done
-Starting obm-composer_adminer_1    ... done
-Starting obm-composer_phppgadmin_1 ... done
-Recreating obm-composer_app_1      ... done
+Creating obm-composer_biomaps_db_1 ... done
+Creating obm-composer_mapserver_1  ... done
+Creating obm-composer_adminer_1    ... done
+Creating obm-composer_phppgadmin_1 ... done
+Creating obm-composer_app_1        ... done
+```
+Update only one container
+```console
+foo@bar:~$ docker-compose up -d app
 ```
 
 Stopping docker
