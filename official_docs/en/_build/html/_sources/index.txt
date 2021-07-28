@@ -10,15 +10,12 @@ Welcome to OpenBioMaps' documentation!
 **Contents:**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 0
 
    introduction.rst
    tutorial.rst
-   profile.rst
    user_interface.rst
-   admin_pages.rst
-   modules.rst
-   gekko_install.rst
+   upload_data.rst
    api.rst
    server_install.rst
    privacy.rst

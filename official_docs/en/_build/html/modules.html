@@ -1,42 +1,42 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Modules &#8212; openbiomaps 2.2 documentation</title>
-    
+    <title>Modules &#8212; openbiomaps 3.2 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '2.2',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="openbiomaps 2.2 documentation" href="index.html" />
-    <link rel="next" title="Virtual server" href="gekko_install.html" />
+    <link rel="next" title="Upload form management" href="upload_forms.html" />
     <link rel="prev" title="Administrative pages" href="admin_pages.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
     <tr>
-        <td style='vertical-align:bottom'>
+        <td rowspan='2' style='vertical-align:bottom'>
             <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps.png"></a>
         </td>
         <td style='vertical-align:top;text-align:right'>
-            <a href='http://openbiomaps.org' target='_blank'>Home</a> | <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | <a href='faq.html'>FAQ</a> | <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github"> Edit on GitHub</a>
+            <a href='http://openbiomaps.org' target='_blank'>Home</a> | 
+            <a href='http://openbiomaps.org/community/' target='_blank'>Community</a> | 
+            <a href='faq.html'>FAQ</a> | 
+            <a href='https://gitlab.com/groups/openbiomaps/-/issues'>Issues</a> | 
+            <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | 
+            <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github">Edit documents</a>
         </td>
+    </tr>
+    <tr>
+         <td style="padding: 0px 10px 0px 0px; text-align: right; vertical-align: bottom;">
+          <a href="http://openbiomaps.org/documents/en/"><img src="_static/flagicons/en.png" alt="en" title="in English" border="0" /></a>
+          <a href="http://openbiomaps.org/documents/hu/"><img src="_static/flagicons/hu.png" alt="hu" title="Magyarul" border="0" /></a>
+         </td>
     </tr>
     </table>
 
@@ -44,12 +44,13 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="gekko_install.html" title="Virtual server"
+          <a href="upload_forms.html" title="Upload form management"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="admin_pages.html" title="Administrative pages"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 3.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="user_interface.html" accesskey="U">User interfaces</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -62,7 +63,7 @@
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="additional-columns">
 <h2>additional_columns<a class="headerlink" href="#additional-columns" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Additional columns
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Additional columns
 
 Calls:
 
@@ -80,7 +81,7 @@ Parameters: New line separated list of column names
 </div>
 <div class="section" id="allowed-columns">
 <h2>allowed_columns<a class="headerlink" href="#allowed-columns" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Columns visibility for users in different access levels
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Columns visibility for users in different access levels
 It depends on the existence of _rules table
 
 Calls:
@@ -99,7 +100,7 @@ Parameters:
 </div>
 <div class="section" id="bold-yellow">
 <h2>bold_yellow<a class="headerlink" href="#bold-yellow" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Bold yellow text for some columns in the results lists.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Bold yellow text for some columns in the results lists.
 
 Calls:
 
@@ -112,30 +113,30 @@ Parameters:
 </div>
 <div class="section" id="box-load-selection">
 <h2>box_load_selection<a class="headerlink" href="#box-load-selection" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre><span class="nx">Map</span> <span class="nx">filter</span> <span class="nx">functions</span>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Map filter functions
 
-<span class="nx">These</span> <span class="nx">functions</span> <span class="nx">returns</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">html</span> <span class="nx">table</span> <span class="nx">which</span> <span class="nx">displayed</span> <span class="nx">beside</span> <span class="nx">the</span> <span class="nx">map</span> <span class="nb">window</span>
-<span class="nx">These</span> <span class="nx">are</span> <span class="nx">optional</span> <span class="nx">boxes</span><span class="p">.</span> <span class="nx">Setting</span> <span class="nx">are</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">biomaps</span> <span class="nx">db</span> <span class="nx">projects</span><span class="s1">&#39; table.</span>
+These functions returns with a html table which displayed beside the map window
+These are optional boxes. Setting are in the biomaps db projects&#39; table.
 
-<span class="s1">Load prevously saved spatial queries&#39;</span> <span class="nx">polygons</span>
+Load prevously saved spatial queries&#39; polygons
 
-<span class="nx">Calls</span><span class="o">:</span>
+Calls:
 
-<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
+General description:
 
-<span class="nx">Parameters</span><span class="o">:</span>
+Parameters:
 
-    <span class="nx">available</span> <span class="nx">spatial</span> <span class="nx">relationships</span> <span class="p">(</span><span class="nx">optional</span><span class="p">,</span> <span class="k">if</span> <span class="nx">no</span> <span class="nx">parameter</span> <span class="nx">is</span> <span class="nx">given</span><span class="p">,</span> <span class="nx">all</span> <span class="nx">relationships</span> <span class="nx">are</span> <span class="nx">available</span><span class="p">)</span>
-        <span class="nx">contains</span>
-        <span class="nx">intersects</span>
-        <span class="nx">crosses</span>
-        <span class="nx">disjoint</span>
+    available spatial relationships (optional, if no parameter is given, all relationships are available)
+        contains
+        intersects
+        crosses
+        disjoint
 </pre></div>
 </div>
 </div>
 <div class="section" id="box-load-coord">
 <h2>box_load_coord<a class="headerlink" href="#box-load-coord" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Show given coordinates position on the map
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Show given coordinates position on the map
 
 Calls: print_box, limits, ajax, print_js
 
@@ -150,7 +151,7 @@ eov=23700
 </div>
 <div class="section" id="box-load-last-data">
 <h2>box_load_last_data<a class="headerlink" href="#box-load-last-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Query last data or last uploads.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Query last data or last uploads.
 
 Calls:
 
@@ -162,23 +163,23 @@ Parameters: Number of records in last uploads, default is 10
 </div>
 <div class="section" id="box-custom">
 <h2>box_custom<a class="headerlink" href="#box-custom" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre><span class="nx">Custom</span> <span class="nx">box</span> <span class="o">-</span> <span class="nx">only</span> <span class="nx">user</span> <span class="nx">defined</span> <span class="nx">version</span> <span class="nx">exists</span><span class="p">.</span>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Custom box - only user defined version exists.
 
-<span class="nx">Calls</span><span class="o">:</span>
+Calls:
 
-<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
+General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it&#39;s not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
 
-<span class="nx">Parameters</span><span class="o">:</span> <span class="nx">a</span> <span class="nx">file</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">basename</span> <span class="k">in</span> <span class="nx">includes</span><span class="o">/</span><span class="nx">modules</span><span class="o">/</span><span class="kr">private</span> <span class="nx">folder</span><span class="p">.</span> <span class="nx">E</span><span class="p">.</span><span class="nx">g</span><span class="p">.</span> <span class="nx">hrsz_query</span>
+Parameters: a file&#39;s basename in includes/modules/private folder. E.g. hrsz_query
 
-<span class="nx">Where</span> <span class="nx">hrsz_query_Class</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kr">class</span> <span class="k">in</span> <span class="nx">hrsz_query</span><span class="p">.</span><span class="nx">php</span> <span class="k">in</span> <span class="nx">includes</span><span class="o">/</span><span class="nx">modules</span><span class="o">/</span><span class="kr">private</span><span class="o">/</span> <span class="nx">folder</span><span class="p">.</span>
+Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
 
-<span class="nx">This</span> <span class="nx">Class</span> <span class="nx">should</span> <span class="nx">include</span> <span class="nx">at</span> <span class="nx">least</span> <span class="nx">print_box</span><span class="p">()</span> <span class="nx">and</span> <span class="nx">print_js</span><span class="p">()</span> <span class="nx">functions</span><span class="p">.</span>
+This Class should include at least print_box() and print_js() functions.
 </pre></div>
 </div>
 </div>
 <div class="section" id="photos">
 <h2>photos<a class="headerlink" href="#photos" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Photo or other attachment box.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Photo or other attachment box.
 
 Calls:
 
@@ -190,7 +191,7 @@ Parameters:
 </div>
 <div class="section" id="read-table">
 <h2>read_table<a class="headerlink" href="#read-table" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Present a table or an sql view as a rollable html table. This table is available with a unique link.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Present a table or an sql view as a rollable html table. This table is available with a unique link.
 
 Calls:
 
@@ -207,13 +208,13 @@ Parameters: schema.table
 </div>
 <div class="section" id="results-summary">
 <h2>results_summary<a class="headerlink" href="#results-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Summary of results.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Summary of results.
 </pre></div>
 </div>
 </div>
 <div class="section" id="results-table">
 <h2>results_table<a class="headerlink" href="#results-table" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Create a full html table of the results.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Create a full html table of the results.
 
 Calls:
 
@@ -226,7 +227,7 @@ Parameters:
 </div>
 <div class="section" id="results-aslist">
 <h2>results_asList<a class="headerlink" href="#results-aslist" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Create foldable slides like results.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Create foldable slides like results.
 
 Calls: results_builder()
 
@@ -238,7 +239,7 @@ Parameters:
 </div>
 <div class="section" id="results-asgpx">
 <h2>results_asGPX<a class="headerlink" href="#results-asgpx" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Save results as a GPX file.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Save results as a GPX file.
 
 Calls:
 
@@ -250,7 +251,7 @@ Parameters:
 </div>
 <div class="section" id="results-ascsv">
 <h2>results_asCSV<a class="headerlink" href="#results-ascsv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Save results as a csv file.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Save results as a csv file.
 
 Hívások:
 
@@ -262,7 +263,7 @@ Paraméterek:
 </div>
 <div class="section" id="results-asjson">
 <h2>results_asJSON<a class="headerlink" href="#results-asjson" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Save results as a JSON file.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Save results as a JSON file.
 
 Calls:
 
@@ -274,7 +275,19 @@ Parameters:
 </div>
 <div class="section" id="results-asshp">
 <h2>results_asSHP<a class="headerlink" href="#results-asshp" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Save results as a shp file.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Results can be saved as SHP files. Different files are created for the different geometry types. These can be downloaded in a zip archive.
+
+Calls:
+
+General description:
+
+Parameters:
+</pre></div>
+</div>
+</div>
+<div class="section" id="results-askml">
+<h2>results_asKML<a class="headerlink" href="#results-askml" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Save results as a KML file.
 
 Calls:
 
@@ -286,7 +299,7 @@ Parameters:
 </div>
 <div class="section" id="results-buttons">
 <h2>results_buttons<a class="headerlink" href="#results-buttons" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Save and other button above results section, under map.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Save and other button above results section, under map.
 
 Calls:
 
@@ -298,7 +311,7 @@ Parameters:
 </div>
 <div class="section" id="results-asstable">
 <h2>results_asStable<a class="headerlink" href="#results-asstable" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Compact results table Stable.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Compact results table Stable.
 
 Calls:
 
@@ -310,7 +323,7 @@ Parameters:
 </div>
 <div class="section" id="specieslist">
 <h2>specieslist<a class="headerlink" href="#specieslist" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Specieslist summary above results.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Specieslist summary above results.
 
 Calls:
 
@@ -322,7 +335,7 @@ Parameters:
 </div>
 <div class="section" id="text-filter">
 <h2>text_filter<a class="headerlink" href="#text-filter" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Taxon and other text filters.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Taxon and other text filters.
 
 Calls:
 
@@ -347,7 +360,7 @@ faj::autocomplete
 </div>
 <div class="section" id="text-filter2">
 <h2>text_filter2<a class="headerlink" href="#text-filter2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Advanced taxon and other text filters.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Advanced taxon and other text filters.
 
 Calls:
 
@@ -361,7 +374,7 @@ Parameters: example:
 </div>
 <div class="section" id="transform-data">
 <h2>transform_data<a class="headerlink" href="#transform-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Transform data
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Transform data
 
 Calls:
 
@@ -379,7 +392,7 @@ tema:mmm
 </div>
 <div class="section" id="extra-params">
 <h2>extra_params<a class="headerlink" href="#extra-params" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Extra input paramaters for forms.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Extra input paramaters for forms.
 
 Calls:
 
@@ -391,7 +404,7 @@ Parameters:
 </div>
 <div class="section" id="join-tables">
 <h2>join_tables<a class="headerlink" href="#join-tables" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Join table to use additional columns
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Join table to use additional columns
 
 Calls:
 
@@ -410,9 +423,17 @@ LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&amp;dinpi_mirror.objectid&
 </pre></div>
 </div>
 </div>
+<div class="section" id="shared-geom">
+<h2>shared_geom<a class="headerlink" href="#shared-geom" title="Permalink to this headline">¶</a></h2>
+<p>If this module is enabled “Manage custom geometries” option will appear on your profile page.</p>
+<p>It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.</p>
+<p>You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.</p>
+<p>Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.</p>
+<p>Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!</p>
+</div>
 <div class="section" id="snap-to-grid">
 <h2>snap_to_grid<a class="headerlink" href="#snap-to-grid" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Project specified sanp to grid points on the map
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Project specified sanp to grid points on the map
 
 Calls:
 
@@ -427,7 +448,7 @@ Parameters:
 </div>
 <div class="section" id="restricted-data">
 <h2>restricted_data<a class="headerlink" href="#restricted-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Rule based data restriction
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Rule based data restriction
 
 alls
 
@@ -439,23 +460,9 @@ Parameters:
 </pre></div>
 </div>
 </div>
-<div class="section" id="form-choose">
-<h2>form_choose<a class="headerlink" href="#form-choose" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>List of available forms.
-
-Calls:
-
-Functions: form_list()
-
-General description:
-
-Parameters:
-</pre></div>
-</div>
-</div>
 <div class="section" id="identify-point">
 <h2>identify_point<a class="headerlink" href="#identify-point" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>A tool for identify one or more data elements on the map
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>A tool for identify one or more data elements on the map
 
 Calls:
 
@@ -494,12 +501,14 @@ Parameters:
         &lt;a href=&quot;//example.com?nest_id=2898&amp;species=Brachyramphus perdix&quot; target=&quot;_blank&quot; id=&quot;&quot; class=&quot;pure-button button-href&quot;&gt;Adat hozzáadása&lt;/a&gt;
 
         A json-t egy sorosra kell tömöríteni!
+
+    obm_files_id: Displays a photo icon on the popup if the record has an attachment.
 </pre></div>
 </div>
 </div>
 <div class="section" id="notify">
 <h2>notify<a class="headerlink" href="#notify" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Creates custom postgres based notify events.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Creates custom postgres based notify events.
 
 Calls:
 
@@ -513,7 +522,7 @@ Parameters:
 </div>
 <div class="section" id="custom-data-check">
 <h2>custom_data_check<a class="headerlink" href="#custom-data-check" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Custom data checks of upload data.
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Custom data checks of upload data.
 
 Calls:
 
@@ -527,7 +536,7 @@ Parameters:
 </div>
 <div class="section" id="custom-filetype">
 <h2>custom_filetype<a class="headerlink" href="#custom-filetype" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Custom file preparation. E.g. observado style CSV
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Custom file preparation. E.g. observado style CSV
 
 Calls:
 
@@ -541,92 +550,141 @@ Parameters:
 </div>
 <div class="section" id="create-pg-user">
 <h2>create_pg_user<a class="headerlink" href="#create-pg-user" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre>Create a restricted access postgres user
+<p>If this module is enabled “Create postgres user” option will appear on your profile page.</p>
+<blockquote>
+<div>Create a restricted access postgres user</div></blockquote>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">Calls</span><span class="o">:</span>
 
-Calls:
+<span class="n">Functions</span><span class="o">:</span> <span class="n">create_pg_user</span><span class="o">(),</span> <span class="n">show_button</span><span class="o">()</span>
 
-Functions: create_pg_user(), show_button()
+<span class="n">General</span> <span class="n">description</span><span class="o">:</span>
 
-General description:
-    By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
-    It can read all the data tables assigned to the project.
-    It can only connect to a database from one client program at a time.
-    After one year, Its access expires automatically.
-    Users can renew their access at any time.
+    <span class="n">By</span> <span class="n">enabling</span> <span class="n">the</span> <span class="n">module</span> <span class="o">(</span><span class="n">who</span> <span class="n">has</span> <span class="n">the</span> <span class="n">right</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">module</span><span class="o">),</span> <span class="n">users</span> <span class="n">can</span> <span class="n">create</span> <span class="n">their</span> <span class="n">own</span> <span class="n">postgres</span> <span class="n">user</span><span class="o">.</span> <span class="n">This</span> <span class="n">user</span> <span class="n">can</span> <span class="n">only</span> <span class="n">read</span> <span class="n">from</span> <span class="n">the</span> <span class="n">database</span><span class="o">.</span>
+    <span class="n">It</span> <span class="n">can</span> <span class="n">read</span> <span class="n">all</span> <span class="n">the</span> <span class="n">data</span> <span class="n">tables</span> <span class="n">assigned</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="o">.</span>
+    <span class="n">It</span> <span class="n">can</span> <span class="n">only</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">a</span> <span class="n">database</span> <span class="n">from</span> <span class="n">one</span> <span class="n">client</span> <span class="n">program</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span><span class="o">.</span>
+    <span class="n">After</span> <span class="n">one</span> <span class="n">year</span><span class="o">,</span> <span class="n">Its</span> <span class="n">access</span> <span class="n">expires</span> <span class="n">automatically</span><span class="o">.</span>
+    <span class="n">Users</span> <span class="n">can</span> <span class="n">renew</span> <span class="n">their</span> <span class="n">access</span> <span class="n">at</span> <span class="n">any</span> <span class="n">time</span><span class="o">.</span>
 
-Parameters:
+<span class="n">Parameters</span><span class="o">:</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="grid-view">
 <h2>grid_view<a class="headerlink" href="#grid-view" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess"><div class="highlight"><pre><span class="nx">View</span> <span class="nx">data</span> <span class="nx">on</span> <span class="nx">selected</span> <span class="nx">polygon</span> <span class="nx">grid</span>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
 
-<span class="nx">Calls</span><span class="o">:</span>
+Calls:
 
-<span class="nx">Functions</span><span class="o">:</span> <span class="nx">print_box</span><span class="p">(),</span> <span class="nx">default_grid_geom</span><span class="p">(),</span> <span class="nx">get_grid_layer</span><span class="p">()</span>
+Functions: print_box(), default_grid_geom(), get_grid_layer()
 
-<span class="nx">General</span> <span class="nx">description</span><span class="o">:</span>
+General description:
 
-<span class="nx">Parameters</span><span class="o">:</span> <span class="nx">layer_options</span>
+Parameters: layer_options
 
-<span class="nx">Parameters</span> <span class="nx">example</span><span class="o">:</span> <span class="nx">layer_options</span><span class="o">:</span><span class="nx">kef_5</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_2</span><span class="p">.</span><span class="mi">5</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_10</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">utm_100</span> <span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">),</span> <span class="nx">original</span> <span class="p">(</span><span class="nx">dinpi_points</span><span class="p">,</span><span class="nx">dinpi_grid</span><span class="p">),</span><span class="nx">etrs</span><span class="p">(</span><span class="nx">dinpi_grid</span><span class="p">)</span>
+Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
 
-<span class="nx">Example</span> <span class="nx">trigger</span> <span class="kd">function</span><span class="o">:</span>
 
-<span class="nx">Trigger</span> <span class="nx">on</span> <span class="nx">nnn_qgrids</span><span class="o">:</span>
+On the nnn_grid table on the comment field the layers visible names should be set:
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">self_update</span> <span class="k">BEFORE</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">dinpi_qgrids</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">update_qgrids_geometries</span><span class="p">()</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">COMMENT</span> <span class="k">ON</span> <span class="k">COLUMN</span> <span class="k">public</span><span class="p">.</span><span class="n">nnn_qgrids</span><span class="p">.</span><span class="n">original</span> <span class="k">IS</span> <span class="s1">&#39;original&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span> <span class="k">ON</span> <span class="k">COLUMN</span> <span class="k">public</span><span class="p">.</span><span class="n">nnn_qgrids</span><span class="p">.</span><span class="n">snap</span> <span class="k">IS</span> <span class="s1">&#39;snap&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span> <span class="k">ON</span> <span class="k">COLUMN</span> <span class="k">public</span><span class="p">.</span><span class="n">nnn_qgrids</span><span class="p">.</span><span class="n">snap_polygon</span> <span class="k">IS</span> <span class="s1">&#39;snap_polygon&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="highlight-guess"><div class="highlight"><pre>Trigger on nnn table:
-</pre></div>
-</div>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">update_qgrids</span> <span class="k">AFTER</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">DELETE</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">dinpi</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">grid_geometries</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Function grid_geometries()</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">BEGIN</span>
-<span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;INSERT&#39;</span> <span class="k">THEN</span>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Example trigger functions:
 
+Trigger on nnn_qgrids. Arguments are in the function:
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">update_grid_geoms</span> <span class="k">BEFORE</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="k">public</span><span class="p">.</span><span class="n">tytoalba_qgrids</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="k">public</span><span class="p">.</span><span class="n">update_qgrid_geoms_arg</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;0.05&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Trigger on nnn table:
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">qgrids</span> <span class="k">BEFORE</span> <span class="k">INSERT</span> <span class="k">OR</span> <span class="k">DELETE</span> <span class="k">OR</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="k">public</span><span class="p">.</span><span class="n">debrecen_dnabank</span> <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">insert_originalgeom_into_qgrids</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Function insert_originalgeom_into_qgrids()</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span>
+  <span class="k">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;INSERT&#39;</span> <span class="k">THEN</span>
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">);</span>
+    <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
+<span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
 
-<span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
-<span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
-
-<span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="k">THEN</span>
-    <span class="c1">-- create original at first</span>
-    <span class="c1">--EXECUTE format(&#39;INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry&#39;,TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);</span>
+  <span class="k">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="k">THEN</span>
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;UPDATE %I_qgrids SET &quot;original&quot;=%L::geometry WHERE row_id=%L&#39;</span><span class="p">,</span> <span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_geometry</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
+    <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
+<span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
 
-<span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
-<span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
-
-<span class="n">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;DELETE&#39;</span> <span class="k">THEN</span>
-
+<span class="k">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;DELETE&#39;</span> <span class="k">THEN</span>
     <span class="k">EXECUTE</span> <span class="n">format</span><span class="p">(</span><span class="s1">&#39;DELETE FROM %I_qgrids WHERE row_id=%L&#39;</span><span class="p">,</span><span class="n">TG_TABLE_NAME</span><span class="p">,</span><span class="k">OLD</span><span class="p">.</span><span class="n">obm_id</span><span class="p">);</span>
-
-<span class="k">RETURN</span> <span class="k">OLD</span><span class="p">;</span>
-<span class="k">END</span> <span class="n">IF</span><span class="p">;</span>
-
+    <span class="k">RETURN</span> <span class="k">OLD</span><span class="p">;</span>
+<span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
 <span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Function update_qgrids_geometries()</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">BEGIN</span>
-<span class="c1">-- Available shared grids tables: kef_5, kef_10, utm_2.5, utm_10, etrs</span>
-<span class="c1">-- Required output grids e.g.: kef_10x10, utm_10x10, etrs, snap</span>
+<p>Function update_qgrid_geoms_arg()</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DECLARE</span>
+    <span class="n">snap_x</span> <span class="nb">numeric</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">snap_y</span> <span class="nb">numeric</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">kef5</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="n">kef10</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">utm25</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="n">utm10</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="n">snap</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="n">snap_polygon</span> <span class="nb">boolean</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="n">snap_polygon_size</span> <span class="nb">numeric</span> <span class="p">:</span><span class="o">=</span> <span class="n">TG_ARGV</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="k">BEGIN</span>
 
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;kef_5x5&quot;     WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_5&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;kef_10x10&quot;   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_10&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_2.5x2.5&quot; WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_2.5&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_10x10&quot;   WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_10&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_100x100&quot; WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_100&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;etrs&quot;        WHERE st_within(st_setsrid(%L::geometry,4326),st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;etrs&quot;</span><span class="p">;</span>
-    <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_SnapToGrid(%L::geometry,0.13,0.09)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap&quot;</span><span class="p">;</span>
+<span class="k">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="k">THEN</span>
+    <span class="k">IF</span> <span class="n">kef5</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT geometry FROM shared.&quot;kef_5x5&quot; WHERE st_within(%L::geometry,geometry)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_5&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">kef10</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT geometry FROM shared.&quot;kef_10x10&quot; WHERE st_within(%L::geometry,geometry)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_10&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">utm25</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) as geom FROM shared.&quot;utm_2.5x2.5&quot; WHERE st_within(%L::geometry,st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span>
+<span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_2.5&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">utm10</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_10x10&quot; WHERE st_within(%L::geometry,st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_10&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">snap</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_SnapToGrid(%L::geometry,%L,%L)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">,</span><span class="n">snap_x</span><span class="p">,</span><span class="n">snap_y</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">snap_polygon</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">,</span><span class="n">snap_x</span><span class="p">,</span><span class="n">snap_y</span><span class="p">,</span><span class="n">snap_polygon_size</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap_polygon&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
 
     <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
+<span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+<span class="k">IF</span> <span class="n">tg_op</span> <span class="o">=</span> <span class="s1">&#39;INSERT&#39;</span> <span class="k">THEN</span>
+
+    <span class="k">IF</span> <span class="n">kef5</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT geometry FROM shared.&quot;kef_5x5&quot; WHERE st_within(%L::geometry,geometry)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_5&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">kef10</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT geometry FROM shared.&quot;kef_10x10&quot; WHERE st_within(%L::geometry,geometry)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;kef_10&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">utm25</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) as geom FROM shared.&quot;utm_2.5x2.5&quot; WHERE st_within(%L::geometry,st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span>
+<span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_2.5&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">utm10</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_transform(geometry,4326) FROM shared.&quot;utm_10x10&quot; WHERE st_within(%L::geometry,st_transform(geometry,4326))&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;utm_10&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">snap</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_SnapToGrid(%L::geometry,%L,%L)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">,</span><span class="n">snap_x</span><span class="p">,</span><span class="n">snap_y</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+    <span class="k">IF</span> <span class="n">snap_polygon</span> <span class="k">THEN</span>
+        <span class="k">EXECUTE</span> <span class="n">FORMAT</span><span class="p">(</span><span class="s1">&#39;SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)&#39;</span><span class="p">,</span><span class="k">NEW</span><span class="p">.</span><span class="n">original</span><span class="p">,</span><span class="n">snap_x</span><span class="p">,</span><span class="n">snap_y</span><span class="p">,</span><span class="n">snap_polygon_size</span><span class="p">)</span> <span class="k">INTO</span> <span class="k">NEW</span><span class="p">.</span><span class="ss">&quot;snap_polygon&quot;</span><span class="p">;</span>
+    <span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
+
+    <span class="k">RETURN</span> <span class="k">NEW</span><span class="p">;</span>
+<span class="k">END</span> <span class="k">IF</span><span class="p">;</span>
 
 <span class="k">END</span><span class="p">;</span>
 </pre></div>
@@ -652,6 +710,86 @@ Parameters:
 <p>Parameters:</p>
 </div></blockquote>
 </div>
+<div class="section" id="job-manager-validation">
+<h2>job_manager (validation)<a class="headerlink" href="#job-manager-validation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>General description:
+
+    * The job_manager (validation) module is used for managing the background processes of the project. It&#39;s parameters are the names of the jobs.
+    * On the admin page you can set the time of running (simplified cron style: minute hour day), and the job parameters as json
+    * Adding a new parameter will register the job in the jobs database table, and create the necessary template files in the modules/validation_modules, jobs folders.
+
+Parameters:
+
+    * The names of the background processes
+
+Published jobs:
+
+    observation_lists
+        description:
+            This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job completes the obm_obsevation_list_id column, the columns of start, end and duration of list. If the uploaded list is not complete the list is skipped.
+
+        parameters:
+            * list_start_column (string): column name of list start
+            * list_end_column (string): column name of list end
+            * list_duration_column (string): column name of list duration
+            * only_time (boolean): store whole timestamp or just time
+            * time_as_int (boolean): convert time to minutes
+
+            {
+                &quot;tablename&quot;: {
+                    &quot;list_start_column&quot;: &quot;time_of_start&quot;,
+                    &quot;list_end_column&quot;: &quot;time_of_end&quot;,
+                    &quot;list_duration_column&quot;: &quot;duration&quot;,
+                    &quot;only_time&quot;: true,
+                    &quot;time_as_int&quot;: true
+                    }
+                }
+            }
+
+    incomplete_observation_lists
+        description:
+            If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In other case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually.
+
+        paraméterezés:
+            * mail_to (int): role_id - who will get the messages
+            * diff_tolerance (int): tolerance of difference
+            * days_offset (int): number of days to wait until the list is processed
+
+            {
+                &quot;tablename&quot;: {
+                    &quot;mail_to&quot;: 1265,
+                    &quot;diff_tolerance&quot;: 2,
+                    &quot;days_offset&quot;: 2
+                }
+            }
+
+
+
+
+Calls:
+
+Functions:
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-manager">
+<h2>list_manager<a class="headerlink" href="#list-manager" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>Functions:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
+<div class="section" id="move-project">
+<h2>move_project<a class="headerlink" href="#move-project" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calls:</p>
+<p>Functions:</p>
+<p>General description:</p>
+<p>Parameters:</p>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -660,7 +798,7 @@ Parameters:
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Modules</a><ul>
 <li><a class="reference internal" href="#additional-columns">additional_columns</a></li>
@@ -679,6 +817,7 @@ Parameters:
 <li><a class="reference internal" href="#results-ascsv">results_asCSV</a></li>
 <li><a class="reference internal" href="#results-asjson">results_asJSON</a></li>
 <li><a class="reference internal" href="#results-asshp">results_asSHP</a></li>
+<li><a class="reference internal" href="#results-askml">results_asKML</a></li>
 <li><a class="reference internal" href="#results-buttons">results_buttons</a></li>
 <li><a class="reference internal" href="#results-asstable">results_asStable</a></li>
 <li><a class="reference internal" href="#specieslist">specieslist</a></li>
@@ -687,9 +826,9 @@ Parameters:
 <li><a class="reference internal" href="#transform-data">transform_data</a></li>
 <li><a class="reference internal" href="#extra-params">extra_params</a></li>
 <li><a class="reference internal" href="#join-tables">join_tables</a></li>
+<li><a class="reference internal" href="#shared-geom">shared_geom</a></li>
 <li><a class="reference internal" href="#snap-to-grid">snap_to_grid</a></li>
 <li><a class="reference internal" href="#restricted-data">restricted_data</a></li>
-<li><a class="reference internal" href="#form-choose">form_choose</a></li>
 <li><a class="reference internal" href="#identify-point">identify_point</a></li>
 <li><a class="reference internal" href="#notify">notify</a></li>
 <li><a class="reference internal" href="#custom-data-check">custom_data_check</a></li>
@@ -698,6 +837,9 @@ Parameters:
 <li><a class="reference internal" href="#grid-view">grid_view</a></li>
 <li><a class="reference internal" href="#massive-edit">massive_edit</a></li>
 <li><a class="reference internal" href="#download-restricted">download_restricted</a></li>
+<li><a class="reference internal" href="#job-manager-validation">job_manager (validation)</a></li>
+<li><a class="reference internal" href="#list-manager">list_manager</a></li>
+<li><a class="reference internal" href="#move-project">move_project</a></li>
 </ul>
 </li>
 </ul>
@@ -706,16 +848,18 @@ Parameters:
   <p class="topless"><a href="admin_pages.html"
                         title="previous chapter">Administrative pages</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="gekko_install.html"
-                        title="next chapter">Virtual server</a></p>
+  <p class="topless"><a href="upload_forms.html"
+                        title="next chapter">Upload form management</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -726,17 +870,18 @@ Parameters:
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="gekko_install.html" title="Virtual server"
+          <a href="upload_forms.html" title="Upload form management"
              >next</a></li>
         <li class="right" >
           <a href="admin_pages.html" title="Administrative pages"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 2.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">openbiomaps 3.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="user_interface.html" >User interfaces</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright OpenBioMaps Consortium 2015 - 2018.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
+        &#169; Copyright OpenBioMaps Consortium 2015 - 2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

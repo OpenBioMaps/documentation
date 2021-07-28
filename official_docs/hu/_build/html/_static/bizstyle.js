@@ -36,6 +36,6 @@ $(window).resize(function(){
         $("li.nav-item-0 a").text("Top");
     }
     else {
-        $("li.nav-item-0 a").text("openbiomaps 2.2 documentation");
+        $("li.nav-item-0 a").text("openbiomaps 4.0 documentation");
     }
 });

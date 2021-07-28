@@ -3,19 +3,14 @@ Bevezetés
 
 **Az OpenBioMaps céljai**
 
-**There are two objectives of the openbiomaps project:**
+**Az OpenBioMaps projektnek két fő célja van:**
 
-    *  First, to maintain an open and free biological database service, and; 
-    *  Second, to develop biological data handling software applications. 
+    *  egy ingyenes és szabadon hozzáférhető biológiai adatbázis szolgáltatás fenntartása,
+    *  továbbá egy biológiai adatokat kezelő alkalmazás fejlesztése. 
     
-       The openbiomaps project thus provides a stable background for open and free biological databases, specifically for scientists and conservationists, and its customizable toolset allows for the easy access and management of data.
+*Az OpenBioMaps további céljai:*
 
-*objectives in hungarian*
-
-Az openbiomaps projekt célja szabadon elérhető tudományos és természetvédelmi célú biológiai térképi adatbázisok számára biztosítani egy megbízható keretrendszert ami az egyedi igényekre szabható 
-eszközkészletével megkönnyíti az adatok elérését és kezelését.
-
-   * Az OpenBioMaps célja élő szervezetekre vonatkozó (természetvédelmi jelentőségű vagy biodiverzitás kutatásban használható) előfordulási és kapcsolódó adatok (biotikai adatok) nyilvántartása, 
+   * Az OpenBioMaps célja élő szervezetekre vonatkozó (természetvédelmi jelentőségű vagy biodiverzitás kutatásban használható) előfordulási és az ahhoz kapcsolódó adatok (biotikai adatok) nyilvántartása, 
    * közzététele és GIS (Geographic Information System) felhasználásra alkalmas szolgáltatása nem közhiteles módon, a közösségi tudás önkéntes összegyűjtésén alapulva.
    * Az OpenBioMaps további kifejezett célja a felsőfokú oktatás támogatása a keretrendszer, valamint az adattartalom nyitott használata, fejleszthetősége útján.
    * Az OpenBioMaps nyílt forráskódú alkalmazásokra támaszkodó, decentralizált, minimalizált költségigényű, központi ellenőrzés nélküli részadatbázisokból álló adatbázis és keretrendszer.
@@ -28,17 +23,17 @@ eszközkészletével megkönnyíti az adatok elérését és kezelését.
 
 **Fő tulajdonságok:**
 
-   * Creating and managing custom databases
-   * Easy data import from varios formats (ods, xls, xlsx, gpx, shp, csv ...)
-   * Repeatable and citable queries
-   * DataCite DOI
-   * Exporting data into various formats (csv, gpx)
-   * Accessing data from remote databases or desktop applications (e.g R, QGIS)
-   * Decentralized community
-   * Customizable data management interfaces
-   * Customizable data collecting interfaces
-   * Free and open softwares
-   * Open data
+   * Felhasználói adatbázisok létrehozása és kezelése
+   * Egyszerű adat feltöltés különböző fájl formátumokból (ods, xls, xlsx, gpx, shp, csv ...)
+   * Ismételhető és idézhető lekérdezések
+   * Az adatbázis rendelkezik DOI számmal
+   * Az adatok kölönböző formátumokban letölthetőek (csv, gpx)
+   * Az adatok hozzáférhetőek távoli adatbázisokból vagy asztali alkalmazásokból is (pl.: R, QGIS)
+   * Decentralizált közösség
+   * Személyre szabható szerkesztő felület
+   * Személyre szabható adat feltöltő felület
+   * Ingyense és nyílt forráskodú szoftver
+   * Nyílt adatok
 
 
 OpenBioMaps áttekintés
