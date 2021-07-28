@@ -1,4 +1,0 @@
-Modulok
-*******
-
-.. mdinclude:: ./modules.md
