@@ -186,7 +186,7 @@ Ha az általunk definiált lista kevés választható elemet tartalmaz, akkor ez
        }
     }
 
-Abban az esetben, ha egyes változókat más írási móddal, vagy más formában szeretnénk megjeleníteni. Például, ha a változó értéke szám, de a listában szöveges leírást akarunk megjeleníteni, akkor lehetőség van az értéktől éltérő cimkék megadására. A cimke értékek automatikusan fordíthatóak is, ha az str_ előtagot használjuk és a nyelvi fordítást megadtuk. Így az alábbi példában az adatbázisban "male" és "female" értékek fognak bekerülni, de a legördülő listában "nőstény" és "hím" értékek jelennek meg magyarul és "female", "male" angolul.
+Abban az esetben, ha egyes változókat más írási móddal, vagy más formában szeretnénk megjeleníteni. Például, ha a változó értéke szám, de a listában szöveges leírást akarunk megjeleníteni, akkor lehetőség van az értéktől éltérő cimkék megadására. A cimke értékek automatikusan fordíthatóak is, ha az "str_" előtagot használjuk és a nyelvi fordítást megadtuk. Így az alábbi példában az adatbázisban "male" és "female" értékek fognak bekerülni, de a legördülő listában "nőstény" és "hím" értékek jelennek meg magyarul és "female", "male" angolul.
 
 .. code-block:: json
 
