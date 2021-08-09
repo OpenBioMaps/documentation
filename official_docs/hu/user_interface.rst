@@ -26,7 +26,7 @@ Projekt adminisztráció
 Üzenetek
 ========
 Üzenet típusok
-..............
+--------------
 
 Belső üzenetek olvasása és küldése itt történik. Üzenetküldő rendszerünkben négy üzenettípust külöböztetünk meg:
 
@@ -40,12 +40,12 @@ Az üzenetek oldal minden bejelentkezett felhasználó számára elérhető. Bá
 A projekt adminisztrátorok az egyéni üzeneken kívül csoportoknak is küldhetnek, valamit emailben értesíthetik a felhasználókat az üzenetekről.
 
 Felhasználói beállítások
-........................
+------------------------
 
 A felhasználók beállíthatják az email értesítéseket a különböző üzenettípusokra. Ezt a profil oldalon lévő kapcsolókkal lehe megtenni.
 
 További tervek
-..............
+--------------
 
 * üzentekről napi összesített értesítés
 * válaszlehetőség üzenetkere és megjegyzésekre 
