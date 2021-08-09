@@ -461,6 +461,7 @@ Packed data upload. Data line in ZIP archive. This is the old mobile app's expor
     PICT01.JPG |br|
     PICT02.JPG |br|
     note.txt |br|
+    
 The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example it is the 'faj'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory column in the form, those can be filled by the default_value parameter. In this example the 'egyedszam' column is an obligatory field which will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contains zip files detailed above.
     
     curl \\ |br|
