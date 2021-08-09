@@ -89,7 +89,7 @@ Nyelvi definíciók
 -----------------
 Meg lehet tekinteni itt az egész projektre globálisan definiált fordításokat. Ezek itt szerkeszthetőek: https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv
 
-Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a projektre beállított nyelvre vontakoznak. Minden fordítható stringet str_somesthing_special_text formában kell megadni ahol az str_ előtag kötelező elem. Fordítások használhatók űrlap nevekben, oszlop nevekben, listákban, űrlap leírásokban, mező leírásokban.
+Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a projektre beállított nyelvre vontakoznak. Minden fordítható stringet str_somesthing_special_text formában kell megadni ahol az "str_" előtag kötelező elem. Fordítások használhatók űrlap nevekben, oszlop nevekben, listákban, űrlap leírásokban, mező leírásokban.
 
 
 Rshinyserver
