@@ -522,18 +522,13 @@ results_asGPX
 
 Paraméterezés:
 
+```
+{"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+```
+
 Függvények:
 
 Hívások:
-
-Beállítások:
-
-A local_vars.php.inc-ben beállítható, hogy a kiexportált GPX fájl `name` és `description` oszlopai milyen adatokat tartalmazzanak. A `description`-be több mezőt is összefűzhetünk:
-
-```
-define("GPX_NAME_COLUMN", ["table1" => "column1", "table2" => "column2"]);
-define("GPX_DESC_COLUMN", ["table1" => "column1|column2|...", ...]);
-```
 
 results_asHtmltable
 -------------
@@ -600,6 +595,10 @@ results_asKML
 * Lekérdezésnél létrehoz egy letölthető .KML fájlt
 
 Paraméterezés:
+
+```
+{"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+```
 
 Fejleszői dokumentáció
 
