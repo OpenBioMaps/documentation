@@ -57,6 +57,8 @@ docker-compose pull
 docker-compose up -d
 
 ./obm_post_install.sh
+
+docker-compose restart
 ```
 
 Visit your OBM app
