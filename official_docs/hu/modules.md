@@ -522,6 +522,10 @@ results_asGPX
 
 Paraméterezés:
 
+```
+{"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+```
+
 Függvények:
 
 Hívások:
@@ -591,6 +595,10 @@ results_asKML
 * Lekérdezésnél létrehoz egy letölthető .KML fájlt
 
 Paraméterezés:
+
+```
+{"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+```
 
 Fejleszői dokumentáció
 
