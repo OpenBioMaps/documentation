@@ -159,6 +159,7 @@ Do not restart apache from docker shell, but from outside
 ```console
 foo@bar:~$ docker-compose restart app
 ```
+
 Set up mailing
 ..............
 Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
@@ -182,29 +183,57 @@ As you can see, there are commented references for these external files which wi
 
 So, you have to edit your obm-composer/econf/local_vars-sablon.php.inc file for the default "sablon" project.
 
-Find the Mail Settings section
+Find the mail settings section and set the smtp host and authentication if needed.
+
+If there is an external smtp server here you are an example:
 ```console
- 45 // Mail settings
- 46 define('SMTP_AUTH',false); # true
- 47 define('SMTP_HOST','...');
- 48 define('SMTP_USERNAME','...');
- 49 define('SMTP_PASSWORD','...');
- 50 define('SMTP_SECURE','tls'); # ssl
- 51 define('SMTP_PORT','587'); # 465
- 52 define('SMTP_SENDER','openbiomaps@...');
-```
-Set these variables as you need. E.g.
-```console
- 45 // Mail settings
- 46 define('SMTP_AUTH',false); # true
- 47 define('SMTP_HOST','mail.my-mail-server.com');
- 48 define('SMTP_USERNAME','my-name@my-mail-server.com');
- 49 define('SMTP_PASSWORD','something');
- 50 define('SMTP_SECURE','tls'); # ssl
- 51 define('SMTP_PORT','587'); # 465
- 52 define('SMTP_SENDER','openbiomaps@my-mail-server.com');
+ // Mail settings
+ define('SMTP_AUTH',true); # true
+ define('SMTP_HOST','mail.my-mail-server.com');
+ define('SMTP_USERNAME','my-name@my-mail-server.com');
+ define('SMTP_PASSWORD','something');
+ define('SMTP_SECURE','tls'); # ssl
+ define('SMTP_PORT','587'); # 465
+ define('SMTP_SENDER','openbiomaps@my-mail-server.com');
 ```
 If SMTP_SENDER is not set the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
+
+If the host system will be the smtp server:
+```console
+ // Mail settings
+define('SMTP_AUTH',false);
+define('SMTP_HOST','172.17.0.1');
+define('SMTP_PORT','25');
+define('SMTP_SENDER','info@you-smtp-server');
+```
+For the ip address above check host "ip addr | grep docker0"
+On the host you may need the bridge interface address e.g in the /etc/exim4/update-exim4.conf.conf file set the 
+
+dc_relay_nets or somesthing similar. And the dc_local_interfaces='127.0.0.1 ; ::1 ; 172.17.0.1' should be extended 
+
+and the
+
+"hostlist   relay_from_hosts" line should be extended with obm_back network in the exim4.config.
+
+(Also maybe you need update your firewall. For the firewall you also need to use the obm_back network address)
+
+```console
+docker container ls
+```
+search for obm-composer_app_1
+
+```console
+docker xxxxx_inspect obm-composer_app_1
+```
+Search for obm_back and obm_web interfaces:
+obm-composer_obm_back {
+ "Gateway": "172.20.0.1",
+ "IPAddress": "172.20.0.6",
+}
+
+Use the obm_web address for the mail server and the obm_back address 
+
+
 
 Docker maintenance
 ..................
