@@ -375,7 +375,7 @@ Let drop them....
 ```console
 docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
 ```
-
+You may need to edit the traefik2.0/traefik.yml, traefik2.0/docker-compose.yml and traefik2.0/acme.json files
 
 
 Resources
