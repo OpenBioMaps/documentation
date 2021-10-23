@@ -117,10 +117,132 @@ Creating obm-composer_adminer_1    ... done
 Creating obm-composer_phppgadmin_1 ... done
 Creating obm-composer_app_1        ... done
 ```
+
 Update only one container
 ```console
 foo@bar:~$ docker-compose up -d app
 ```
+
+After founding a new project
+............................
+
+- You may want access local_vars.php.inc file (and other setting files) from the host directly
+To access local_vars.php.inc files from the host system, you need to copy these files from the image to the host system and update docker-compose.yml files to up-to-date them.
+
+```console
+docker cp xxxxx__obm-composer_app_1:/var/www/html/biomaps/root-site/projects/YOURPROJECT/local_vars.php.inc ./econf/local_vars-YOURPROJECT.inc
+```
+Add the new file as a volume path below the local_vars line of sablon project to access the local like this:
+
+    volumes:
+      ....
+      - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/root-site/projects/sablon/local_vars.php.inc
+      - ./econf/local_vars-YOURPROJECT.php.inc:/var/www/html/biomaps/root-site/projects/YOURPROJECT/local_vars.php.inc
+
+
+- You **must set up a Mail server access** to send mails from the app
+
+Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
+
+These config files as a template can be accessed from your "obm-composer" directory:
+```console
+ls -l obm-composer/econf/
+-rw-r--r-- 1 foo bar 2059 Feb  5 20:59 local_vars-sablon.php.inc
+-rw-r--r-- 1 foo bar  417 Feb  5 20:45 server_vars.php.inc
+-rw-r--r-- 1 foo bar  819 Feb  5 20:36 system_vars.php.inc
+```
+To be able to apply a new setting here in the running system, you have to comment out these line in your docker-compose.yml file (if they start with #)
+```console
+vi obm-composer/docker-compose.yml
+ - ./econf/system_vars.php.inc:/etc/openbiomaps/system_vars.php.inc
+ - ./econf/server_vars.php.inc:/var/www/html/biomaps/server_vars.php.inc
+ - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/projects/sablon/local_vars.php.inc
+```
+
+Now, you can update your *local_vars-sablon.php.inc* file for the default "sablon" project.
+
+Find the mail settings section and set up the smtp host and authentication if needed.
+
+If there is an external smtp server here you are an example:
+```console
+ // Mail settings
+ define('SMTP_AUTH',true); # true
+ define('SMTP_HOST','mail.my-mail-server.com');
+ define('SMTP_USERNAME','my-name@my-mail-server.com');
+ define('SMTP_PASSWORD','something');
+ define('SMTP_SECURE','tls'); # ssl
+ define('SMTP_PORT','587'); # 465
+ define('SMTP_SENDER','openbiomaps@my-mail-server.com');
+```
+
+If SMTP_SENDER is not set, the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
+
+If the host system will be the smtp server:
+```console
+ // Mail settings
+define('SMTP_AUTH',false);
+define('SMTP_HOST','172.17.0.1');
+define('SMTP_PORT','25');
+define('SMTP_SENDER','info@you-smtp-server');
+```
+For the ip address above check host "ip addr | grep docker0"
+
+On the host depending on what MTA you have here you some examples:
+
+**Exim4**
+
+In the /etc/exim4/update-exim4.conf file
+
+ dc_relay_nets='172.21.0.0/16'
+ dc_local_interfaces='127.0.0.1 ; ::1 ; 172.17.0.1' 
+
+these lines shoud be updated, but depending on your exim config maybe something else as well.
+
+In the /etc/exim4/exim4.config file
+
+"hostlist   relay_from_hosts..." line, you should extend with the obm_back network e.g.
+ hostlist   relay_from_hosts = localhost :172.20.0.0/16 :172.17.0.0/16 :172.21.0.0/16
+ 
+ Comment: "Maybe one of the three network is enough above, I did not tested yet"
+
+**Postfix**
+inet_interfaces = 172.17.0.1
+
+mynetworks = 172.21.0.4 172.20.0.6
+
+Here's how to find out docker networks and ip addresses: 
+
+```console
+docker container ls
+```
+search for obm-composer_app_1
+
+```console
+docker inspect xxxxx_obm-composer_app_1
+```
+Search for obm_back and obm_web interfaces:
+obm-composer_obm_back {
+ ...
+ "IPAddress": "172.20.0.6",
+}
+obm-composer_obm_web {
+ ...
+ "IPAddress": "172.21.0.4",
+}
+
+**Firewall**
+
+You may also need to update your firewall. The network address of obm_back must be allowed as incoming network for the firewall. 
+E.g.
+```console
+ufw allow from 172.20.0.0/16 proto tcp to any port 25
+```
+
+
+
+
+Docker maintenance
+..................
 
 Stopping docker
 ...............
@@ -134,11 +256,14 @@ Drop everything (including data and databases)
 foo@bar:~$ docker-compose down -v
 ```
 
-Shell access of web app
-.......................
+
+Shell access of the system in the the container image
+.....................................................
 ```console
 foo@bar:~$ docker-compose exec app bash
 ```
+Here we accessed the **app** service. See service names in docker-compose.yml file.
+
 
 Reading logs
 ............
@@ -146,12 +271,10 @@ Reading logs
 foo@bar:~$ docker-compose logs -f app
 ```
 
+
 Using pgtop
 ...........
-
 docker-compose exec -u postgres <service_name> pg_top
-
-
 
 Restart app
 ...........
@@ -160,84 +283,9 @@ Do not restart apache from docker shell, but from outside
 foo@bar:~$ docker-compose restart app
 ```
 
-Set up mailing
-..............
-Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
 
-These config files as a template can be accessed from your "obm-composer" directory:
-```console
-ls -l obm-composer/econf/
--rw-r--r-- 1 foo bar 2059 Feb  5 20:59 local_vars-sablon.php.inc
--rw-r--r-- 1 foo bar  417 Feb  5 20:45 server_vars.php.inc
--rw-r--r-- 1 foo bar  819 Feb  5 20:36 system_vars.php.inc
-```
-To be able to apply a new setting here in the running system, you have to edit your Docker config file
-```console
-vi obm-composer/docker-compose.yml
- 20       # comment out to enable local config files
- 21       # - ./econf/system_vars.php.inc:/etc/openbiomaps/system_vars.php.inc
- 22       # - ./econf/server_vars.php.inc:/var/www/html/biomaps/server_vars.php.inc
- 23       # - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/projects/sablon/local_vars.php.inc
-```
-As you can see, there are commented references for these external files which will be included "on the fly" in your running system. 
-
-So, you have to edit your obm-composer/econf/local_vars-sablon.php.inc file for the default "sablon" project.
-
-Find the mail settings section and set the smtp host and authentication if needed.
-
-If there is an external smtp server here you are an example:
-```console
- // Mail settings
- define('SMTP_AUTH',true); # true
- define('SMTP_HOST','mail.my-mail-server.com');
- define('SMTP_USERNAME','my-name@my-mail-server.com');
- define('SMTP_PASSWORD','something');
- define('SMTP_SECURE','tls'); # ssl
- define('SMTP_PORT','587'); # 465
- define('SMTP_SENDER','openbiomaps@my-mail-server.com');
-```
-If SMTP_SENDER is not set the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
-
-If the host system will be the smtp server:
-```console
- // Mail settings
-define('SMTP_AUTH',false);
-define('SMTP_HOST','172.17.0.1');
-define('SMTP_PORT','25');
-define('SMTP_SENDER','info@you-smtp-server');
-```
-For the ip address above check host "ip addr | grep docker0"
-On the host you may need the bridge interface address e.g in the /etc/exim4/update-exim4.conf.conf file set the 
-
-dc_relay_nets or somesthing similar. And the dc_local_interfaces='127.0.0.1 ; ::1 ; 172.17.0.1' should be extended 
-
-and the
-
-"hostlist   relay_from_hosts" line should be extended with obm_back network in the exim4.config.
-
-(Also maybe you need update your firewall. For the firewall you also need to use the obm_back network address)
-
-```console
-docker container ls
-```
-search for obm-composer_app_1
-
-```console
-docker xxxxx_inspect obm-composer_app_1
-```
-Search for obm_back and obm_web interfaces:
-obm-composer_obm_back {
- "Gateway": "172.20.0.1",
- "IPAddress": "172.20.0.6",
-}
-
-Use the obm_web address for the mail server and the obm_back address 
-
-
-
-Docker maintenance
-..................
-Remove huge amount of old, not used docker images...
+Remove huge amount of old, not used docker images
+.................................................
 
 Do we have a lot?
 ```console
@@ -248,20 +296,11 @@ Let drop them....
 docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
 ```
 
-Founding a new project in Docker
-................................
-Some updates....
-```console
-docker cp obm-composer_app_1:/var/www/html/biomaps/projects/YOUR_PROJECT/local_vars.php.inc ./econf/local_vars-YOUR_PROJECT.inc
-```
-Include this econf path below the app volumes as like sablon example.
-
 
 Resources
 .........
 * https://gitlab.com/openbiomaps/web-app
-* https://gitlab.com/openbiomaps/docker
-* https://hub.docker.com/r/gaspara/obm-web-app
+* https://gitlab.com/openbiomaps/docker/obm-composer
 
 
 Not docker: VirtualBox
