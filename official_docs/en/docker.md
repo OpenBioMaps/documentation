@@ -145,7 +145,7 @@ Add the new file as a volume path below the local_vars line of sablon project to
       - ./econf/local_vars-YOURPROJECT.php.inc:/var/www/html/biomaps/root-site/projects/YOURPROJECT/local_vars.php.inc
 
 
-- You **must set up a Mail server access** to send mails from the app
+You **must set up a Mail server access** to send mails from the app
 
 Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
 
