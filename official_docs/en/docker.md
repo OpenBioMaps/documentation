@@ -246,7 +246,7 @@ ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
 
 Setting up **https access** (recommended)
-.................................
+.........................................
 
 If you use https redirect to your docker. You may need to update your project settings in the database.
 You can access your project settings database through the phppgadmin:

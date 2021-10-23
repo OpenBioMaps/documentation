@@ -33,7 +33,7 @@ After login you will see your profile. See details about functions and features 
 
 That surface is divided to three main part: Main headline, sub-headline and working surface (see in Fig 1.).
 
-.. figure::  images/img_7.png
+.. figure::  _images/img_7.png
    :align:   center
 
    Fig 1. The loged-in surface.
@@ -41,7 +41,7 @@ That surface is divided to three main part: Main headline, sub-headline and work
 
 You can see in the sub-headline gear-wheels, if you click on them several button will appear between the main- and sub-headline: Profile, Invites, Project administration, Messages, Founding new project (see in Fig 2.).
 
-.. figure::  images/img_8.png
+.. figure::  _images/img_8.png
    :align:   center
 
    Fig 2. The loged-in surface after you clicked on the gear-wheels.
@@ -111,7 +111,7 @@ To be able to create a database, first you need an invitation, from someone who 
 
 If you have done the previous step, you will be able to access your profile, after you login (Fig.3).
 
-.. figure::  images/img_1.png
+.. figure::  _images/img_1.png
    :align:   center
 
    Fig 3.
@@ -134,17 +134,17 @@ When you found a new project, the system create a skeleton, which has three part
     * YOUR_NEW_DATABASE_taxon (this table will be generated automatically; i will speak about this table in more detail later)
     * You can access all your data tables at http://openbiomaps.org/phppgadmin/ While you can see the data tables of other OBM users, you can only access your own. Fig.3 - Fig.4. Note, that you are not limited to these 3 tables, and can create new ones. It is good practice to follow the naming pattern. Accordingly the new table should look like *'YOUR_NEW_DATABASE_new_table_name'*.
 
-.. figure::  images/img_2.png
+.. figure::  _images/img_2.png
    :align:   center
 
    Fig 2.
 
-.. figure::  images/img_3.png
+.. figure::  _images/img_3.png
    :align:   center
 
    Fig 3.
 
-.. figure::  images/img_4.png
+.. figure::  _images/img_4.png
    :align:   center
 
    Fig 4.
@@ -155,7 +155,7 @@ Database
 ........
 First, you must "pick-up" your database columns (Profile -> Project administration -> **Database columns** tab) The OBM does not handle this step automatically. The chosen columns have to be marked for identity and type of use. They have to be provided with public names (these can be the same as the database column names or different: e.g *'dummy_date'* ->  *'Dummy date'*) and must be marked as *'special column'* or *'common data'*. You cannot change the public names of the automatically generated columns, like *'obm_geometry'* or *'obm_id'*. The *'special columns'* are the special column types, that project users use a lot, and you will have a few extra options for the columns marked with thees types. Some of the types are: **date** type, different **geometry** types (which handles one ore more sets of coordinates), **species** type (you will want to mark the column containing species names with this one, because it will register the names, and store them in the YOUR_NEW_DATABASE_taxon table, which we will set up a little later. If this is set up correctly, the map search engine will offer option from the table, as you start typing in search fields), the **number of individuals** and **citing person** types. Note, that you can have only one of each of the special column type (except the *'date'* and *'cite person'* types), and the rest of the columns should be set to *'common data'*. Every column that you wish to use, must be "picked-up", because the system will not have access to the one's that aren't. If you add new databases later, or expends the existing ones with additional columns, these have to be "picked up" again the same way. One of the columns, that the system generates automatically will appear here. This is the obm_id column. Usually you don't want this column to be public, and it is very important to set this column's type to *'special: id'*. Only after setting the type, will the web page be able to work with the data from your data tables. Fig.5
 
-.. figure::  images/img_5.png
+.. figure::  _images/img_5.png
    :align:   center
 
    Fig 5.
@@ -171,7 +171,7 @@ Mi a web map layer? Meg kiegesziteni plusz informacioval.
 
 Fig 6.
 
-.. figure::  images/img_6.png
+.. figure::  _images/img_6.png
    :align:   center
 
    Fig 6.
