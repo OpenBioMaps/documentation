@@ -65,11 +65,13 @@ docker-compose restart
 Visit your OBM app
 ..................
 
-[http://localhost:9880/](http://localhost:9880/)
+[http://YOUR_SERVER_NAME:9880/](http://YOUR_SERVER_NAME:9880/)
 
-[http://localhost:9880/projects/sablon/](http://localhost:9880/projects/sablon/)
+[http://YOUR_SERVER_NAME:9880/projects/sablon/](http://YOUR_SERVER_NAME:9880/projects/sablon/)
 
 Log in your template databse using *valaki@openbiomaps.org* user name and *abc123* password;
+
+If you installed the docker in your local computer you can access the services above in localhost.
 
 
 Database access
@@ -77,9 +79,9 @@ Database access
 
 You can access your postgres database on the following preconfigured online database manager applications:
 
-[phppgadmin](http://localhost:9881/)
+[phppgadmin](http://YOUR_SERVER_NAME:9881/)
 
-[adminer](http://localhost:9882/)
+[adminer](http://YOUR_SERVER_NAME:9882/)
 
 with *sablon_admin* username and *12345* password. You can manage your database with *biomapsadmin* user and *abcd1234* password.
 
@@ -238,11 +240,84 @@ obm-composer_obm_web {
 
 **Firewall**
 
-You may also need to update your firewall. The network address of obm_back must be allowed as incoming network for the firewall. 
-E.g.
+You may also need to update your firewall to enable incoming mails from image to host. The network address of obm_back must be allowed as incoming network for the firewall. E.g.
 ```console
 ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
+
+Setting up **https access** (recommended)
+.................................
+
+If you use https redirect to your docker. You may need to update your project settings in the database.
+You can access your project settings database through the phppgadmin:
+
+http://YOUR_SERVER_NAME:9881/
+
+use the biomapsdb_user and biomapsdb_pass from the econf/system_vars.php.inc
+```console
+grep biomaps_db econf/system_vars.php.inc
+```
+
+```sql
+SELECT * FROM "public"."projects";
+UPDATE projects SET protocol='https' WHERE project_table='YOURPROJECT'
+```
+
+To set up docker based https trafic rooter we recommend to use traefik2.x in an other container:
+
+https://gitlab.com/openbiomaps/docker/traefik2.0-proxy
+
+And update your docker-compose.yml file to communicate with traefik:
+
+```console
+networks:
+   traefik20_default:
+    external: true 
+  #obm_web:
+  #  external: true
+
+services:
+  app:
+  ....
+#    ports:
+#      - 80:80
+#      - 443:443
+    networks:
+      - obm_back
+      #- obm_web
+      - traefik20_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik20_default
+      - traefik.http.routers.obm-secured.rule=Host(`YOUR_DOMAIN`)
+      - traefik.http.routers.obm-secured.entrypoints=https
+      - traefik.http.routers.obm-secured.middlewares=hsts@file
+      - traefik.http.routers.obm-secured.tls.certresolver=letsencrypt
+      - "traefik.http.middlewares.obm-biotika-redirect.redirectregex.regex=^https?://biotika.YOURDOMAIN(.*)"
+      - "traefik.http.middlewares.obm-biotika-redirect.redirectregex.replacement=https://YOUR_DOMAIN/projects/YOURPROJECT/"
+      - traefik.http.middlewares.obm-biotika-redirect.redirectregex.permanent=true
+  
+  phppgadmin:
+  ...
+    networks:
+        #- obm_web
+      - obm_back
+      - traefik20_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik20_default"
+      - "traefik.http.routers.obm-pgadmin.rule=Host(`phppgadmin.YOURDOMAIN`)"
+      - "traefik.http.routers.obm-pgadmin.entrypoints=https"
+      - "traefik.http.routers.obm-pgadmin.tls.certresolver=letsencrypt"
+      - "traefik.http.services.obm-pgadmin.loadbalancer.server.port=8080"
+volumes:
+  ...
+    traefik20_letsencrypt:
+    external: true
+```
+
+This latter examples maybe not complete yet...
+
 
 Docker maintenance
 ..................
@@ -300,6 +375,7 @@ Let drop them....
 ```console
 docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
 ```
+
 
 
 Resources
