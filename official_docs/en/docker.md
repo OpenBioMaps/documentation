@@ -34,6 +34,7 @@ Visit this page for further inforamtion about installing docker:
 
 Install / Setup OpenBioMaps an instance
 .......................................
+
 It is recommended to put docker files into /srv/docker directory
 ```
 mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
@@ -63,6 +64,7 @@ docker-compose restart
 
 Visit your OBM app
 ..................
+
 [http://localhost:9880/](http://localhost:9880/)
 
 [http://localhost:9880/projects/sablon/](http://localhost:9880/projects/sablon/)
@@ -72,6 +74,7 @@ Log in your template databse using *valaki@openbiomaps.org* user name and *abc12
 
 Database access
 ...............
+
 You can access your postgres database on the following preconfigured online database manager applications:
 
 [phppgadmin](http://localhost:9881/)
@@ -95,6 +98,7 @@ The two databases 'biomaps' and 'gisdata' have root postgres users respectively 
 
 OBM maintenance
 ...............
+
 You can access OBM server admin interface: 
 [http://localhost:9880/supervisor.php](http://localhost:9880/supervisor.php)
 
@@ -102,6 +106,7 @@ with *supervisor* username and *12345* password. This password is located at /et
 
 Updates: update application with Docker
 .......................................
+
 ```console
 foo@bar:~$ docker-compose pull 
 Pulling biomaps_db ... done
@@ -206,6 +211,7 @@ In the /etc/exim4/exim4.config file
  Comment: "Maybe one of the three network is enough above, I did not tested yet"
 
 **Postfix**
+
 inet_interfaces = 172.17.0.1
 
 mynetworks = 172.21.0.4 172.20.0.6
@@ -238,9 +244,6 @@ E.g.
 ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
 
-
-
-
 Docker maintenance
 ..................
 
@@ -252,6 +255,7 @@ foo@bar:~$ docker-compose down
 
 Drop everything (including data and databases)
 ..............................................
+
 ```console
 foo@bar:~$ docker-compose down -v
 ```
@@ -259,6 +263,7 @@ foo@bar:~$ docker-compose down -v
 
 Shell access of the system in the the container image
 .....................................................
+
 ```console
 foo@bar:~$ docker-compose exec app bash
 ```
@@ -267,13 +272,14 @@ Here we accessed the **app** service. See service names in docker-compose.yml fi
 
 Reading logs
 ............
+
 ```console
 foo@bar:~$ docker-compose logs -f app
 ```
 
-
 Using pgtop
 ...........
+
 docker-compose exec -u postgres <service_name> pg_top
 
 Restart app
@@ -282,7 +288,6 @@ Do not restart apache from docker shell, but from outside
 ```console
 foo@bar:~$ docker-compose restart app
 ```
-
 
 Remove huge amount of old, not used docker images
 .................................................
@@ -299,6 +304,7 @@ docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | b
 
 Resources
 .........
+
 * https://gitlab.com/openbiomaps/web-app
 * https://gitlab.com/openbiomaps/docker/obm-composer
 
