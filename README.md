@@ -1,11 +1,11 @@
 # Official OBM documentations
 in English:
 
-http://openbiomaps.org/documents/en/
+https://openbiomaps.org/documents/en/
 
 Magyarul:
 
-http://openbiomaps.org/documents/hu/
+https://openbiomaps.org/documents/hu/
 
 
 # User contributed OBM documentations

@@ -1,10 +1,17 @@
-Adminisztratív oldalak
+Projekt adminisztráció
 **********************
 
 .. _database-columns:
 
-Adatbázis oszlopok
-------------------
+Adatbázis táblák és oszlopok
+----------------------------
+
+[web] -> [profile] -> [Projektadminisztráció] -> [adatbázis tábla kezelés]
+
+Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket. Kerüljük a nagybetűk használatát is. A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
+
+Az OBM felületen csak a regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)
+
 Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
 
 Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve ill. ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
@@ -15,11 +22,18 @@ Az obm_id oszlopnál megadható, hogy legyen-e a rules tábla használva így: u
 
 Mindkét esetben az megjegyzés mezőben automatikusan odakerül a SET előtag, amit ki kell törölni, hogy érvényesítetni lehessen a módosítást. Ez azért van így, hogy ne lehessen véletlenül módosítani ezeket a paramétereket.
 
-A lap címsávjának jobb oldalán látható >_ SQL gombbal egy SQL konzol nyitható. Ez csak üzemeltetői státusszal és külön authentikáció után használható.
+A lap tetején elérhető egy SQL konzol, ami csak üzemeltetői státusszal és külön authentikáció után használható.
+Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, azt nem kezeli az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
 
-Adat hozzáférés
----------------
+
+Adat hozzáférések
+-----------------
+
+[web] -> [profile] -> [Projektadminisztráció] -> [adat hozzáférés]
+
+[system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+
 A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
 
 
@@ -69,17 +83,39 @@ Függvények
 Táblatörténet, adat elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
 
 
-Mapserver beállítások
----------------------
-A projekthez tartozó mapserver mapfájlok konfigurálhatóak itt.
+Térkép beállítások
+------------------
+[web] -> [profile] -> [Projektadminisztráció] -> [térkép beállítások]
+
+A térképi megjelenítés beállításának három része van:
+
+  - mapszerver konfiguráció
+  - sql lekérdezés a mapszerver számára
+  - openlayers beállítások a mapszerver számára
+
+Mapserver
+.........
+
+Egy új projektnél be kell állítani a térkép kiterjedését. Ezt a legkönnyebb úgy megtenni, ha töltünk fel pár sor teszt adatot a várható kiterjedés sarkairól és a kalkulált kiterjedést beírjuk a private.map fájlba, amit ezen az adminisztratív oldalon tudunk szerkeszteni.
+
+A publikus mapfájl használata további beállításokat igényel, jelenleg nem javasolt a használata.
+
+OpenLayers
+..........
+
+Az OpenLayers definícióknál tudunk összekötni egy SQL lekérdezést egy MapServer réteggel. Erre azért van szükség, mert a mapserverben alap esetben nem statikus lekérdezések vannak, hanem a webes felületen végrehajotott lekérdezéseket kapja meg a MapServer. Válasszuk ki, hogy melyik SQL lekérdezést melyik MapServer réteghez szeretnénk kapcsolni, adjunk egy tetszőleges nevet az OpenLayers rétegnek és többi változót hagyjuk az alapértelmezett értéken.
+
+"OpenLayers réteg definíció" mező kiürítésével és a sor mentésével törölhető egy definíció.
 
 
 Modulok
 -------
-Beépülő modulok hozzáadása, engedélyezése és paraméterezésének felülete.
+A beépülő modulokkal számos extra funkció válik elérhetővé a rendszerünkben, de ezek többnyire további beállításokat igényelnek. 
+A modulokat lehet saját igények szerint módosítani, habár ezek karbantartásáról ez után nekünk kell gondokodni. A módosított modulokat meg lehet osztani a közösséggel!
+
 Az engedélyezett modulok használatát felhasználókhoz/csoportokhoz lehet rendelni.
 
-Paraméterként megadhatunk egyszerű karakterláncot, vagy JSON objektumot.
+A paramétereket JSON objektumként tudjuk megadni a moduloknak.
 
 Az elérhető modulok listája és leírásai itt találhatóak: 
 :doc:`modulok <../modules>`
@@ -123,32 +159,11 @@ A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb 
 A tagok neve egy hivatkozás ezen a felületen. Ezt a hivatkozást követve a felhasználó profil lapjára léphetünk. Adminisztratív jogkörrel ilyenkor a lap cím sávban - jobboldalt, felül megjelenik egy fa-user-secret ikon (https://fontawesome.com/v4.7.0/icon/user-secret). Erre kattitva a saját felhasználói bejelentkezési adatainkkal át tudunk lépni egy másik felhasználó profiljába.
 
 
-Tábla létrehozása
------------------
-Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regsiztál és az alap OBM oszlopokat létrehozza benne. A tábla neve nem tartalmazhat ékezetes karaktereket, szóközt és egyéb speciális karaktereket. Keüljük a nagybetűk használatát is. A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
+Háttérfolyamatok kezelése
+-------------------------
 
-A tábla létrehozása után a felület automatikusan átvált az oszlop kezelő felületre, ahol a frissen létrehozott táblánkhoz oszlopkat tudunk hozzáadni. 
+[web] -> [profile] -> [Projektadminisztráció] -> [háttérfolyamatok]
 
-Az OBM felületen csak regisztrált táblákat tudunk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)
+Az OBM képes háttérben feladatokat elvégezni. Háttérfolyamat szkripteket le tudunk tölteni a lapról elérhető git repo-ból és ezeket is módosíthatjuk, vagy a sablon szkript alapján teljesen újat írhatunk. A héttérfolyamatoknak van egy run és egy lib állománya. Az ütemező a run állományunkat hívja meg, ami sztenderd php job esetén a lib állományban lévő feladatokat hajtja végre.
 
-
-Webes térképi rétegek
----------------------
-A webes térképi megjelenítést egy JavaScript függvénykönyvtár az OenLayers valósítja meg, amely számára meg kell adni, hogy mely mapserver rétegünket milyen sql lekérdezéssel szólítson meg. 
-
-A táblázat első oszlopában az SQL lekérdezéseknél megadott SQL lekérdezés nevekből tudunk választani. 
-
-A második oszlopban a Mapserver számára küldött lekérdezés típusát lehet beállítani. Jelenleg csak a WMS támogatott. 
-
-A harmadik oszlopban a mapserver map konfigurációs fájlunkban szereplő réteg nevét kell megadnunk.  
-
-A negyedik oszlopban beállításokat adhatunk meg az OpenLayers számára. Itt a layers:'...' névnek meg kell egyeznie az előző oszlopban megadott réteg névvel. A következő oszlopban az SQL hozzárendelés státusza látható. 
-
-Az URL oszlopban a "proxy" a legtöbb esetben jó választás, de egyéb speciális  beállítások is lehetségesek, pl Mapcache használata vagy Raster topotérképek esetén. A map proxy oszlopban  a default vagy proxy szónka kell szerepelnie. Ezek jelenleg egyenértékűek. Mapcache használata esetén másképp kell beállítani. 
-
-Az OpenLaers név kötelető, de bármi lehet. Ez fog megjelenni a réteg választó felületen a felhasználóknak.
-
-A sorrend oszlop kitöltésével tudjuk az OpenLayers rétegek kirajzolási sorrendjét megadni.
-
-"OpenLayers réteg definíció" mező kiürítésével és a sor mentésével törölhető egy definíció.
-
+Az ütemezés  cron-szerű, perc - óra - nap mezőket kell kitölteni hozzá, amely miden esetben lehet * is, azaz minden perc, óra, nap értékű. A jobot, ha nem engedélyezzük nem fut le. Engedélyezés nélkül is tudjuk tesztelni [run]. A [results]-al pedig az adott job utolsó eredményeit tudjuk megnézni.
