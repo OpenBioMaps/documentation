@@ -1,5 +1,3 @@
-|today|
-
 Projekt adminisztráció
 **********************
 
