@@ -39,8 +39,9 @@ local_vars.php.inc
 
 fájlban van:
 
- define('ACC_LEVEL','group'); // lehet az  értéke 'public' vagy 'login'
- define('MOD_LEVEL','group');
+.. code-block:: php
+   define('ACC_LEVEL','group'); // lehet az  értéke 'public' vagy 'login'
+   define('MOD_LEVEL','group');
 
 
 Amennyiben az adatmegtekintési/letöltési és módosítási szintek érteke "group", akkor további szabályozási lehetőségeink
@@ -59,22 +60,14 @@ Az egyes adatsorok hozzáférése egyedileg is meghatározható amennyiben a cso
 A _rules tábla kézzel is újra generálható:
  - egyrészt egyszerre, csoportbeállítások nélkül:
 
-.. highlight:: sql
-
-::
+.. code-block:: sql
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
 
-.. highlight:: none
-
  - vagy soronkénti csoportbeállítással is:
 
-.. highlight:: sql
-
-::
+.. code-block:: sql
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table,read,write) 
       SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
       FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id)
-
-.. highlight:: none
