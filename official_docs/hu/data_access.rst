@@ -39,10 +39,11 @@ local_vars.php.inc
 
 fájlban van:
 
-```php
+.. code-block:: php
+
    define('ACC_LEVEL','group'); // lehet az  értéke 'public' vagy 'login'
    define('MOD_LEVEL','group');
-```
+
 
 Amennyiben az adatmegtekintési/letöltési és módosítási szintek érteke "group", akkor további szabályozási lehetőségeink
 
