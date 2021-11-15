@@ -58,18 +58,23 @@ Az egyes adatsorok hozzáférése egyedileg is meghatározható amennyiben a cso
 
 A _rules tábla kézzel is újra generálható:
  - egyrészt egyszerre, csoportbeállítások nélkül:
+
 .. highlight:: sql
 
 ::
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
+
 .. highlight:: none
+
  - vagy soronkénti csoportbeállítással is:
+
 .. highlight:: sql
 
 ::
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table,read,write) 
       SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
-      FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id) 
+      FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id)
+
 .. highlight:: none
