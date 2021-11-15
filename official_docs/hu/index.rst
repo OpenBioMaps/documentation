@@ -17,6 +17,8 @@
    user_interface.rst
    profile.rst
    upload_data.rst
+   data_access.rst
+   api.rst
    admin_pages.rst
    modules.rst
    api.rst
