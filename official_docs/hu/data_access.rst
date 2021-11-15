@@ -66,6 +66,7 @@ A _rules tábla kézzel is újra generálható:
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
 
+.. highlight:: none
 
  - vagy soronkénti csoportbeállítással is:
 
