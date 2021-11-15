@@ -76,5 +76,11 @@ A *_rules* tábla kézzel is újra generálható:
       SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
       FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id)
 
+A *_rules* táblában a *sensitivity* mező az adott adatsor publikus elérhetőségének a megadására szolgál zárt ('group') projektekben. A *'sensitivity'* érétéke még 'sensitive' vagy 'restricted' lehet. Ezek azonos jelentésűek. A 'sensitive' sorokat csak a megadott csoportok tagjai tudják olvasni vagy módosítani.
+
 Az adathozzáférés még tovább szabályozható az egyes mezőkre vonatkozó szabályok beállításával, amit az *allowed_columns* modul használatával tehetünk meg.
-Amennyiben a projekt beállításunk 'group', azaz csoport-szintű és nincsenek a *_rules* táblában sorok, akkor még az *allowed_columns* modullal mégis elérhetővé tehetjük az adatmezőinket publikusan vagy megadott felhasználó csoportok részére.
+Amennyiben a projekt beállításunk 'group', azaz csoport-szintű és nincsenek a *_rules* táblában sorok, akkor még az *allowed_columns* modullal mégis elérhetővé tehetjük az adatmezőinket publikusan vagy megadott felhasználó csoportok részére. Azaz az 'allowed_columns' modul a legmagasabb szintű hozzáférés szabályozás is egyúttal.
+
+Minden esetben a legalacsonyabb szabály határozza meg az adatok hozzáférését, ha nincs magasabb szabály beállítva.
+
+Azaz, ha 'group' szintű a projektünk és semmi egyéb szabály nincs megadva, akkor csak a projekt adminisztrátorai érik el az adatokat. Ha van megadva *_rules* tábla és 
