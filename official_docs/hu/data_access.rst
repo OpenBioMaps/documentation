@@ -67,7 +67,7 @@ A _rules tábla kézzel is újra generálható:
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
 ..
 
- - vagy soronkénti csoportbeállítással is:
+- vagy soronkénti csoportbeállítással is:
 
 .. code-block:: sql
 
