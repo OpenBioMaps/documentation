@@ -15,8 +15,11 @@ Welcome to OpenBioMaps' documentation!
    introduction.rst
    tutorials.rst
    user_interface.rst
+   profile.rst
    upload_data.rst
+   data_access.rst
    api.rst
+   admin_pages.rst
    server_install.rst
    privacy.rst
    terms.rst
