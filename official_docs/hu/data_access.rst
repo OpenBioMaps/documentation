@@ -59,6 +59,7 @@ Itt lehet a trigger függvényt létrehozni és módosítani, illetve a triggert
 Az egyes adatsorok hozzáférése egyedileg is meghatározható amennyiben a csoport írás és olvasás mezőkben csoportokat adunk hozzá. Ezt a *_rules* trigger meg tudja automatikusan csinálni a feltöltő űrlapok adathozzárendelési beállítása alapján, amely értékek a system.uploadings táblában kerülnek beírásra a feltöltő űrlapok beállítása alapján.
 
 A *_rules* tábla kézzel is újra generálható:
+
  - egyrészt egyszerre, csoportbeállítások nélkül:
 
 .. code-block:: sql
@@ -67,7 +68,7 @@ A *_rules* tábla kézzel is újra generálható:
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
 ..
 
-- vagy soronkénti csoportbeállítással is:
+ - vagy soronkénti csoportbeállítással is:
 
 .. code-block:: sql
 
