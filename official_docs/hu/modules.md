@@ -1,7 +1,14 @@
-Általános modul kezelés:  
-========================
+A modulok ki-be kapcsolható kiegésztői egy OpenBioMaps projektnek. A rendszer alapfunkcióit egészítik ki különféle funkciókkal (például szöveges keresési opciók).
+A modulokat táblánként lehet definiálni és különböző felhazsnálókhoz vagy felhasználó csoportokhoz rendelni.
+A modulok megjelenési helyei a következők:
+ - térképi oldal
+ - profil lap
+A legtöbb modul egyszerű paraméterekkel kofigurálható, de egyes modulok egyéni kofigurációs felülettel rendelkeznek.
 
-A modul oldalon lehet bekapcsolni azokat a plusz funkciókat, amik nincsenek automatikusan hozzárendelve az OpenBioMaps alap keretrendszeréhez.
+Modul adminisztráció:  
+=====================
+
+A *projekt_adminisztráció->modulok* oldalon lehet engedélyezni és konfigurálni a modulokat.
 
 Modul hozzáadása a saját listánkhoz
 -----------------------------------
@@ -392,6 +399,13 @@ Fejlesztői dokumentáció
 	Függvények: return_data(), print_button()
 
 	Hívások:
+
+linneatus
+---------
+
+Feltétele a *CREATE EXTENSION unaccent SCHEMA public;* postgres extension engedélyezése.
+A linneatus modul az eredetileg főkódban található fajnév kezelés modulja. Beállítása esetén aktiválódik a az adminisztratav menüben a *faj nevek* menüpont.
+
 
 list_manager
 ------------
