@@ -3,15 +3,16 @@ A modulokat táblánként lehet definiálni és különböző felhazsnálókhoz 
 A modulok megjelenési helyei a következők:
  - térképi oldal
  - profil lap
+
 A legtöbb modul egyszerű paraméterekkel kofigurálható, de egyes modulok egyéni kofigurációs felülettel rendelkeznek.
 
 Modul adminisztráció:  
 =====================
 
-A *projekt_adminisztráció->modulok* oldalon lehet engedélyezni és konfigurálni a modulokat.
+A *projekt_adminisztráció -> modulok* oldalon lehet engedélyezni és konfigurálni a modulokat.
 
-Modul hozzáadása a saját listánkhoz
------------------------------------
+Modul hozzáadása
+----------------
 A modul oldal felkínál nekünk előre behozott modulokat ezekről dönthetünk, hogy bekapcsoljuk vagy töröljük őket a saját listánkból, lásd lentebb. Ezenfelül a saját listánkhoz hozzáadhatunk további modulokat is, ehhez a modul lap aljára kell görgetni. A világos kék sáv első cellájában duplán kattintva felugrik egy legördülő lista a jelenleg aktív modulokkal. Rákattintunk a nekünk szükséges modul nevére, majd a *"hozzáad"* gombra kattintva már hozzá is adtuk a modult a saját listánkhoz.
 
 Modul hozzáférés beállítások
@@ -19,8 +20,8 @@ Modul hozzáférés beállítások
 Az egyes modulokat akár többször is hozzáadhatjuk a listánkhoz. Ez lehetővé teszi számunkra, hogy az egyes modulokhoz többféle hozzáférést adjunk meg. Ez azoknál a moduloknál lényeges, ahol az egyes felhasználóknak, vagy csoportoknak különböző hozzáférést szeretnénk adni, például: allowed_columns modul. Egy másik példa, hogy ha több adattáblánk van, akkor minden táblára külön megadhatjuk, hogy a lekérdezésnél melyik oszlopok értékei alapján tudjunk szűrni, például: text_filter modul.  
 A **Hozzáférés** oszlopban kiválaszthatjuk, hogy publikusak-e a beállításaink *(everybody)*, vagy csak az adatbázisunkba bejelentkezett felhasználók *(logined users)* használhatják az adott opciót. A **Csoport hozzáférés** oszlopban tovább finomíthatjuk a hozzáférési opciókat, azáltal hogy kiválasztjuk az előre definiált csoportjainkat, vagy akár egyes személyeket is hozzárendelhetünk az adott beállításhoz.
 
-Modul törlés a saját listánkból
--------------------------------
+Modul törlése
+-------------
 A nem használt modulokat ki tudjuk törölni a saját listánkból úgy, hogy az **Engedélyezett** oszlopot *"nem"*-re állítjuk és a **Module name** oszlopban kitöröljük az adatbázis nevét, majd rákattintunk a **Műveletek** oszlopban található *"módosít"* gombra.
 
 Modul ki/be kapcsolás
