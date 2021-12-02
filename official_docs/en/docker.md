@@ -16,7 +16,7 @@ Using docker is easy! Only 3 steps needed:
 
 There is an other way through portainer for advenced admins :D
 The portainer is a web based Docker maintainance application.
-See this type of installation step here.
+See this type of installation step :doc:`portainer obm install <../portainer_obm>`..
 
 
 Prepare/Install Docker & Compose
