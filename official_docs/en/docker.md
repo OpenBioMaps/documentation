@@ -14,6 +14,10 @@ Using docker is easy! Only 3 steps needed:
 2. Get obm-docker image
 3. start your docker environment
 
+There is an other way through portainer for advenced admins :D
+The portainer is a web based Docker maintainance application.
+See this type of installation step here.
+
 
 Prepare/Install Docker & Compose
 ................................
@@ -127,7 +131,7 @@ Visit your docker-admin (portainer) app
 
 [http://YOUR_SERVER_NAME:9000/](http://YOUR_SERVER_NAME:9000/)
 
-Log in your app using *sysadmin* user name and your password;
+Log in your app using *admin* user name and your password;
 
 If you installed the docker in your local computer you can access the services above in localhost.
 
