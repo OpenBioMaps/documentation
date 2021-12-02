@@ -97,6 +97,38 @@ In the mapfile, the new encrypted password can be generated with the ms-access-k
 
 The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the ususal *postgres*) and both password is *changeMe*.
 
+Docker maintenance
+..................
+
+This step is not obligatory, but can be useful if you need a strong web admin interface for docker management. 
+
+```
+mkdir -p /srv/docker/portainer && cd /srv/docker/portainer
+
+git clone https://gitlab.com/openbiomaps/docker/obm-portainer.git
+
+cd obm-portainer/
+
+sudo su
+
+docker-compose pull
+
+# Genereate a strong random password for the admin user
+bash ./password_gen.sh
+
+docker-compose up -d
+
+```
+
+Visit your docker-admin (portainer) app
+.......................................
+
+[http://YOUR_SERVER_NAME:9000/](http://YOUR_SERVER_NAME:9000/)
+
+Log in your app using *sysadmin* user name and your password;
+
+If you installed the docker in your local computer you can access the services above in localhost.
+
 
 OBM maintenance
 ...............
