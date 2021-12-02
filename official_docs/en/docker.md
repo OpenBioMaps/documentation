@@ -39,9 +39,7 @@ It is recommended to put docker files into /srv/docker directory
 ```
 mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
 
-git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
-
-cd obm-composer/
+git clone https://gitlab.com/openbiomaps/docker/obm-composer.git .
 
 sudo su
 
@@ -105,9 +103,7 @@ This step is not obligatory, but can be useful if you need a strong web admin in
 ```
 mkdir -p /srv/docker/portainer && cd /srv/docker/portainer
 
-git clone https://gitlab.com/openbiomaps/docker/obm-portainer.git
-
-cd obm-portainer/
+git clone https://gitlab.com/openbiomaps/docker/obm-portainer.git .
 
 sudo su
 
