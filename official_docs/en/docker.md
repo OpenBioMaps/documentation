@@ -118,6 +118,8 @@ bash ./password_gen.sh
 
 docker-compose up -d
 
+On the portainer interface use the "Get started" button...
+
 ```
 
 Visit your docker-admin (portainer) app
