@@ -21,7 +21,6 @@
    api.rst
    admin_pages.rst
    modules.rst
-   api.rst
    server_install.rst
    privacy.rst
    terms.rst

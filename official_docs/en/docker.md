@@ -39,9 +39,7 @@ It is recommended to put docker files into /srv/docker directory
 ```
 mkdir -p /srv/docker/openbiomaps && cd /srv/docker/openbiomaps
 
-git clone https://gitlab.com/openbiomaps/docker/obm-composer.git
-
-cd obm-composer/
+git clone https://gitlab.com/openbiomaps/docker/obm-composer.git .
 
 sudo su
 
@@ -96,6 +94,38 @@ If you change these passwords, should be updated the following places:
 In the mapfile, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key
 
 The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the ususal *postgres*) and both password is *changeMe*.
+
+Docker maintenance
+..................
+
+This step is not obligatory, but can be useful if you need a strong web admin interface for docker management. 
+
+```
+mkdir -p /srv/docker/portainer && cd /srv/docker/portainer
+
+git clone https://gitlab.com/openbiomaps/docker/obm-portainer.git .
+
+sudo su
+
+docker-compose pull
+
+# Genereate a strong random password for the admin user
+bash ./password_gen.sh
+
+docker-compose up -d
+
+On the portainer interface use the "Get started" button...
+
+```
+
+Visit your docker-admin (portainer) app
+.......................................
+
+[http://YOUR_SERVER_NAME:9000/](http://YOUR_SERVER_NAME:9000/)
+
+Log in your app using *admin* user name and your password;
+
+If you installed the docker in your local computer you can access the services above in localhost.
 
 
 OBM maintenance

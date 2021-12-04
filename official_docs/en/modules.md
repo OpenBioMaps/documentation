@@ -1,3 +1,36 @@
+Modules can be turned on and off for an OpenBioMaps project. The basic functions of the system are supplemented with various functions (such as text search options). Modules can be defined per table and assigned to different users or user groups. The locations of the modules are as follows:
+ - map page
+ - profile tab
+
+Most modules can be configured with simple parameters, but some modules have a custom configuration interface.
+
+Modul administration:  
+=====================
+
+The modules can be enabled and configured on the *project_administration -> modules* page.
+
+Add a module
+------------
+
+Module access
+-------------
+
+Drop a module
+-------------
+
+Turn off a module
+-----------------
+
+Custom modules
+--------------
+
+Parameters for modules
+----------------------
+
+
+Module descriptions
+===================
+
 additional_columns
 ------------------
     Additional columns
