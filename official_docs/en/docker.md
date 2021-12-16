@@ -134,7 +134,7 @@ OBM maintenance
 You can access OBM server admin interface: 
 [http://localhost:9880/supervisor.php](http://localhost:9880/supervisor.php)
 
-with *supervisor* username and *12345* password. This password is located at /etc/openbiomaps/.htaccess.
+with *supervisor* username and password created by obm_post_install.sh. This password is located at /etc/openbiomaps/.htpasswd.
 
 Updates: update application with Docker
 .......................................
@@ -163,40 +163,11 @@ foo@bar:~$ docker-compose up -d app
 After founding a new project
 ............................
 
-- You may want access local_vars.php.inc file (and other setting files) from the host directly
-To access local_vars.php.inc files from the host system, you need to copy these files from the image to the host system and update docker-compose.yml files to up-to-date them.
-
-```console
-docker cp xxxxx__obm-composer_app_1:/var/www/html/biomaps/root-site/projects/YOURPROJECT/local_vars.php.inc ./econf/local_vars-YOURPROJECT.inc
-```
-Add the new file as a volume path below the local_vars line of sablon project to access the local like this:
-
-    volumes:
-      ....
-      - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/root-site/projects/sablon/local_vars.php.inc
-      - ./econf/local_vars-YOURPROJECT.php.inc:/var/www/html/biomaps/root-site/projects/YOURPROJECT/local_vars.php.inc
-
-
 You **must set up a Mail server access** to send mails from the app
 
 Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
 
-These config files as a template can be accessed from your "obm-composer" directory:
-```console
-ls -l obm-composer/econf/
--rw-r--r-- 1 foo bar 2059 Feb  5 20:59 local_vars-sablon.php.inc
--rw-r--r-- 1 foo bar  417 Feb  5 20:45 server_vars.php.inc
--rw-r--r-- 1 foo bar  819 Feb  5 20:36 system_vars.php.inc
-```
-To be able to apply a new setting here in the running system, you have to comment out these line in your docker-compose.yml file (if they start with #)
-```console
-vi obm-composer/docker-compose.yml
- - ./econf/system_vars.php.inc:/etc/openbiomaps/system_vars.php.inc
- - ./econf/server_vars.php.inc:/var/www/html/biomaps/server_vars.php.inc
- - ./econf/local_vars-sablon.php.inc:/var/www/html/biomaps/projects/sablon/local_vars.php.inc
-```
-
-Now, you can update your *local_vars-sablon.php.inc* file for the default "sablon" project.
+These config files can be edited in the supervisor interface.
 
 Find the mail settings section and set up the smtp host and authentication if needed.
 
@@ -274,24 +245,27 @@ You may also need to update your firewall to enable incoming mails from image to
 ```console
 ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
+**Global smtp settings**
+
+Most probably you want to use the same smtp settings for your all project in your server. In this case use the
+
+   - SMTP_GLOBAL_HOST
+   - SMTP_GLOBAL_AUTH
+   - SMTP_GLOBAL_USERNAME
+   - SMTP_GLOBAL_PASSWORD
+   - SMTP_GLOBAL_SECURE
+   - SMTP_GLOBAL_PORT
+   - SMTP_GLOBAL_SENDER
+ 
+ parameters in the sytem_vars.php.inc. At least the SMTP_GLOBAL_HOST should be set if you want use global params. The local params override the globals allways.
+ 
+ 
+ 
 
 Setting up **https access** (recommended)
 .........................................
 
-If you use https redirect to your docker. You may need to update your project settings in the database.
-You can access your project settings database through the phppgadmin:
-
-http://YOUR_SERVER_NAME:9881/
-
-use the biomapsdb_user and biomapsdb_pass from the econf/system_vars.php.inc
-```console
-grep biomaps_db econf/system_vars.php.inc
-```
-
-```sql
-SELECT * FROM "public"."projects";
-UPDATE projects SET protocol='https' WHERE project_table='YOURPROJECT'
-```
+If you use https redirect to your docker. You may need to update your project access protocol setting in the Supervisor.
 
 To set up docker based https trafic rooter we recommend to use traefik2.x in an other container:
 
@@ -347,6 +321,9 @@ volumes:
 ```
 
 This latter examples maybe not complete yet...
+
+
+An other way to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
 
 
 Docker maintenance
