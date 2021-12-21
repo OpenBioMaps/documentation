@@ -99,7 +99,8 @@ The query can contain magic-words. Some magic-word used my modules. The magic-wo
  
 .. code-block:: SQL
  
-    SELECT obm_id, %grid_geometry% AS obm_geometry %selected%
+    SELECT obm_id, %grid_geometry% AS obm_geometry 
+        %selected%
     FROM %F%checkitout c%F%
         %uploading_join%
         %rules_join%
@@ -108,6 +109,37 @@ The query can contain magic-words. Some magic-word used my modules. The magic-wo
         %search_join%
         %morefilter%
     WHERE %geometry_type% %envelope% %qstr%
+
+Use %F% and an alias name around the FROM table. It is necessary to split the query template.
+If you want join an other table use the %J% around the JOIN statement. E.g.
+
+.. code-block:: SQL
+
+    SELECT n.obm_geometry,n.obm_id,-2 AS date_part,nestbox_type,project_id,beinaction
+        %selected%
+    FROM %F%public_nestbox_data n%F%
+        %J%LEFT JOIN public_nestbox_data_observations o ON o.nestbox_id=n.obm_id%J%
+        %taxon_join%
+        %morefilter%
+    WHERE %envelope% %qstr%
+
+Building more compplex queries also possible:
+
+.. code-block:: SQL
+
+    WITH aall AS (
+        SELECT o.obm_id,n.obm_geometry,nestbox_type,project_id,beinaction,
+        COALESCE(extract(days FROM (CURRENT_DATE-datum)::interval),'-1') as  date_part
+            %selected% 
+        FROM %F%public_nestbox_data_observations o%F%
+        %J%LEFT JOIN public_nestbox_data n ON (nestbox_id=n.obm_id) %J%
+        %taxon_join%
+        %morefilter% 
+        WHERE 1=1 %envelope% %qstr% 
+    )
+    SELECT * FROM aall ORDER BY date_part DESC
+
+
 
 Web Map Layers
 --------------
