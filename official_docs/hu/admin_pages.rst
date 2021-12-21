@@ -133,10 +133,59 @@ Rshinyserver
 A projekthez lehet R-shiny szervert beállítani és így online felületen dinamikus statisztikai ábrákat megjeleníteni. Ez egy kísérleti állapotban lévő funkció, a konfigurálása sok munkát és az R/R-shiny alapos ismeretét igényli. További információ az R-shiny-ról itt: https://shiny.rstudio.com/
 
 
-SQL lekérdezés beállítások
---------------------------
+SQL lekérdezés beállítások szöveges és térképi lekérdezésekhez
+--------------------------------------------------------------
 Adatlekérdezésekhez és térképi megjelenítések SQL lekérdezésekkel valósulnak meg. Az SQL lekérdezések dinamikusan készülnek minden egyes felhasználói kérésre (például a térkép navigálás során). Ezen a felületen lehet a projektünkhoz tartozó SQL lekérdezés sablonokat beállítani. Amennyiben több adattáblához is szeretnénk független térképi felületet megjeleníteni akkor több lekérdezést kell megadnunk. Egy lekérdezést letilthatunk. Ha kiürítjük a lekérdezést és úgy mentjük el, akkor az kitörlődik.
 A lekérdezés vontakozhat csak térképre (alaptérképre vonatkozó lekérdezés). Ilyenkor a lekérdezés típusa "base", egyébként "query & base"
+
+A lekérdezés sablonban a különleges helyettesítő karakterek % jellel vannak jelölve. Ezeket az OBM valós SQL kifejezésekre cseréli dinamikusan.
+ 
+.. code-block:: SQL
+ 
+    SELECT obm_id, %grid_geometry% AS obm_geometry 
+        %selected%
+    FROM %F%nestbox c%F%
+        %uploading_join%
+        %rules_join%
+        %taxon_join%
+        %grid_join%
+        %search_join%
+        %morefilter%
+    WHERE %geometry_type% %envelope% %qstr%
+    
+A %grid_geometry% AS obm_geometry helyett használd csak az obm_geometry kifejezést, ha nincs beállítva grid modul! Szintén ne tedd be a %grid_join% se a lekérdezésbe, ha nincs beállítva a grid modul. A %search_join% is modul specifikus.
+
+Használd %F% és egy alias nevet is a FROM tábla megadásánál. Ez feltétlenül szükséges a lekérdezés feldolgozásához
+Ha egy másik táblát is szeretnél JOIN-olni akkor használd a  %J% határolót a JOIN kifejezés körül. Például:
+
+.. code-block:: SQL
+
+    SELECT n.obm_geometry,n.obm_id,-2 AS date_part,nestbox_type,project_id,beinaction
+        %selected%
+    FROM %F%nestbox n%F%
+        %J%LEFT JOIN nestbox_observations o ON o.nestbox_id=n.obm_id%J%
+        %taxon_join%
+        %morefilter%
+    WHERE %envelope% %qstr%
+
+Lehetséges még komplexeb lekérdezés összerekasára is:
+
+.. code-block:: SQL
+
+    WITH aall AS (
+        SELECT o.obm_id,n.obm_geometry,nestbox_type,project_id,beinaction,
+        COALESCE(extract(days FROM (CURRENT_DATE-datum)::interval),'-1') as  date_part
+            %selected% 
+        FROM %F%nestbox_observations o%F%
+        %J%LEFT JOIN nestbox n ON (nestbox_id=n.obm_id) %J%
+        %taxon_join%
+        %morefilter% 
+        WHERE 1=1 %envelope% %qstr% 
+    )
+    SELECT * FROM aall ORDER BY date_part DESC
+
+
+
 
 
 Szerver infó
