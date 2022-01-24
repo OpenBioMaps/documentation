@@ -22,7 +22,5 @@ Welcome to OpenBioMaps' documentation!
    admin_pages.rst
    modules.rst
    server_install.rst
-   privacy.rst
-   terms.rst
    faq.rst
 
