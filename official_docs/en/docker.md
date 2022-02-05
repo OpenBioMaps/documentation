@@ -75,7 +75,7 @@ If you installed the docker in your local computer you can access the services a
 Database access
 ...............
 
-You can access your postgres database on the following preconfigured online database manager applications:
+You can access your postgres database on the following preconfigured online database manager applications. However, it depends on your host-docker relationship.
 
 [phppgadmin](http://YOUR_SERVER_NAME:9881/)
 
@@ -396,14 +396,36 @@ If you have traefik you can configure ssl access there. In other case, you can g
 
 docker-compose.yml:
 ```console
+services:
+...
+  biomaps_db:
+     volumes:
+       - /PATH_TO_CERTS/ssl.cert:/etc/ssl/certs/YOURDOMAIN.cert
+       - /PATH_TO_CERTS/ssl.key:/etc/ssl/certs/YOURDOMAIN.key
+       - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf 
+       - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf 
 ```
+
 In biomaps_db container:
 /..../pg_hba.conf:
 ```console
+hostssl all all all md5 
 ```
+
 /..../postgres.conf:
 ```console
+ssl = on
+ssl_cert_file = '/etc/ssl/certs/YOURDOMAIN.cert'
+ssl_key_file = '/etc/ssl/certs/YOURDOMAIN.key' 
 ```
+You can try your postgres connection without ssl:
+```console
+psql "postgresql://gisadmin@YOURDMAIN:5432/gisdata?sslmode=disable"
+```
+
+If your ssl require works, you will get an error message like this:
+
+psql: FATAL:  no pg_hba.conf entry for host "xxxxxxx", user "gisadmin", database "gisdata", SSL off 
 
 
 
