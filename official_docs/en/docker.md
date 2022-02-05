@@ -75,7 +75,7 @@ If you installed the docker in your local computer you can access the services a
 Database access
 ...............
 
-You can access your postgres database on the following preconfigured online database manager applications:
+You can access your postgres database on the following preconfigured online database manager applications. However, it depends on your host-docker relationship.
 
 [phppgadmin](http://YOUR_SERVER_NAME:9881/)
 
@@ -178,7 +178,7 @@ If there is an external smtp server here you are an example:
  define('SMTP_HOST','mail.my-mail-server.com');
  define('SMTP_USERNAME','my-name@my-mail-server.com');
  define('SMTP_PASSWORD','something');
- define('SMTP_SECURE','tls'); # ssl
+ define('SMTP_SECURE','tls'); # Or starttls
  define('SMTP_PORT','587'); # 465
  define('SMTP_SENDER','openbiomaps@my-mail-server.com');
 ```
@@ -262,10 +262,77 @@ Most probably you want to use the same smtp settings for your all project in you
  
  
 
-Setting up **https access** (recommended)
-.........................................
+Setting up **ssl**/**https access** (highly recommended)
+........................................................
+You may need to update your project access protocol setting in the Supervisor however it is depending on your host's setting.
 
-If you use https redirect to your docker. You may need to update your project access protocol setting in the Supervisor.
+*There is no webserver on the Host, but Host provide ssl certs for docker*
+
+One possible way is to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
+You can create letsencrypt 
+``` console
+apt install dehydrated
+vi /etc/dehydrated/domain.txt
+    YOURDOMAIN
+dehydrated -c
+```
+
+docker-compose.yml:
+```console
+services:
+  app:
+    image: registry.gitlab.com/openbiomaps/web-app:latest
+    volumes:
+      ...
+      - /etc/letsencrypt/YOURDOMAIN:/etc/apache2/certs
+      - ./apache2/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
+    ports:
+     - 80:80
+     - 443:443
+    ... 
+```
+
+*Host has a web server and provide a proxy for the docker*
+
+An other way to use host's apache proxy
+
+Host: /etc/apache2/sites-enabled/000-default.conf
+```
+RedirectMatch permanent ^(?!/.well-known/.*) https://YOURDOMAIN/
+```
+
+Host: /etc/apache2/sites-enabled/default-ssl.conf
+```
+RequestHeader set X-Forwarded-Proto 'https'
+RequestHeader set X-Forwarded-Host 'YOURDOMAIN'
+RequestHeader set X-Forwarded-Port "443"
+
+ProxyPass /.well-known !
+ProxyPass / 
+http://localhost:8090/
+
+ProxyPassReverse / 
+http://localhost:8090/
+
+ProxyPreserveHost On
+<Proxy *>
+allow from all
+</Proxy> 
+```
+
+docker-compose.yml:
+```console
+services:
+  app:
+  ...
+      ports:
+      - 80:8090
+  ...
+```
+In this case you don't need to use https protocol in projects settings because the obm can recognize the https request through the HTTP-X-FORWARD settings.
+
+
+*Using traefik to process different domain request in the docker level. E.g. you have several docker containers on your host...*
 
 To set up docker based https trafic rooter we recommend to use traefik2.x in an other container:
 
@@ -283,6 +350,7 @@ networks:
 services:
   app:
   ....
+# Do not use ports, traefik provides them!!!
 #    ports:
 #      - 80:80
 #      - 443:443
@@ -322,8 +390,44 @@ volumes:
 
 This latter examples maybe not complete yet...
 
+If you provide Postgres access you also need to set up ssl over postgres
 
-An other way to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
+If you have traefik you can configure ssl access there. In other case, you can give ssl certs for your database container and set up postgres to accept connection only through ssl.
+
+docker-compose.yml:
+```console
+services:
+...
+  biomaps_db:
+     volumes:
+       - /PATH_TO_CERTS/ssl.cert:/etc/ssl/certs/YOURDOMAIN.cert
+       - /PATH_TO_CERTS/ssl.key:/etc/ssl/certs/YOURDOMAIN.key
+       - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf 
+       - ./pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf 
+```
+
+In biomaps_db container:
+/..../pg_hba.conf:
+```console
+hostssl all all all md5 
+```
+
+/..../postgres.conf:
+```console
+ssl = on
+ssl_cert_file = '/etc/ssl/certs/YOURDOMAIN.cert'
+ssl_key_file = '/etc/ssl/certs/YOURDOMAIN.key' 
+```
+You can try your postgres connection without ssl:
+```console
+psql "postgresql://gisadmin@YOURDMAIN:5432/gisdata?sslmode=disable"
+```
+
+If your ssl require works, you will get an error message like this:
+
+psql: FATAL:  no pg_hba.conf entry for host "xxxxxxx", user "gisadmin", database "gisdata", SSL off 
+
+
 
 
 Docker maintenance
