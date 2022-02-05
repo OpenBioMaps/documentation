@@ -266,6 +266,8 @@ Setting up **ssl**/**https access** (highly recommended)
 ........................................................
 You may need to update your project access protocol setting in the Supervisor however it is depending on your host's setting.
 
+*There is no webserver on the Host, but Host provide ssl certs for docker*
+
 One possible way is to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
 You can create letsencrypt 
 ``` console
@@ -286,6 +288,9 @@ services:
       - ./apache2/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
 
 ```
+
+*Host has a web server and provide a proxy for the docker*
+
 An other way to use host's apache proxy
 
 Host: /etc/apache2/sites-enabled/000-default.conf
@@ -297,6 +302,8 @@ docker-compose.yml:
 ```
 In this case you don't need to use https protocol in projects settings because the obm can recognize the https request through the HTTP-X-FORWARD settings.
 
+
+*Using traefik to process different domain request in the docker level. E.g. you have several docker containers on your host...*
 
 To set up docker based https trafic rooter we recommend to use traefik2.x in an other container:
 
