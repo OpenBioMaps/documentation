@@ -262,10 +262,41 @@ Most probably you want to use the same smtp settings for your all project in you
  
  
 
-Setting up **https access** (recommended)
-.........................................
+Setting up **ssl**/**https access** (highly recommended)
+........................................................
+You may need to update your project access protocol setting in the Supervisor however it is depending on your host's setting.
 
-If you use https redirect to your docker. You may need to update your project access protocol setting in the Supervisor.
+One possible way is to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
+You can create letsencrypt 
+``` console
+apt install dehydrated
+vi /etc/dehydrated/domain.txt
+    YOURDOMAIN
+dehydrated -c
+```
+
+docker-compose.yml:
+```console
+services:
+  app:
+    image: registry.gitlab.com/openbiomaps/web-app:latest
+    volumes:
+      ...
+      - /etc/letsencrypt/YOURDOMAIN:/etc/apache2/certs
+      - ./apache2/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
+
+```
+An other way to use host's apache proxy
+
+Host: /etc/apache2/sites-enabled/000-default.conf
+```
+```
+docker-compose.yml:
+```console
+
+```
+In this case you don't need to use https protocol in projects settings because the obm can recognize the https request through the HTTP-X-FORWARD settings.
+
 
 To set up docker based https trafic rooter we recommend to use traefik2.x in an other container:
 
@@ -323,7 +354,8 @@ volumes:
 This latter examples maybe not complete yet...
 
 
-An other way to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
+
+
 
 
 Docker maintenance
