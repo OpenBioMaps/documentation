@@ -9,10 +9,11 @@ It is the currently supported up-to-date virtual environment release of OpenBioM
 
 It is good for testing, developing or it can be applied in production environment after some updates.
 
-Using docker is easy! Only 3 steps needed:
+For using docker 4 steps needed:
 1. Install docker compose
 2. Get obm-docker image
-3. start your docker environment
+3. Configure your docker according to host's speciality (e.g. ssl, smtp)
+4. Start your docker environment
 
 
 Prepare/Install Docker & Compose
