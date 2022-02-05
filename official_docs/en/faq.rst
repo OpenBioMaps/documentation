@@ -188,9 +188,8 @@ e.g.
 
 Are there DOI for databases?
 ----------------------------
-Every accepted database can get DOI through the DataCite DOI Service.
+Every accepted database can get DOI through the DataCite DOI Service or an external repository.
 
-The OBM Consortium ask the DOI if the database is accepted and provide all the necessary information for DOI registration.
 
 All databases has a DOI metadata page like:
 
@@ -198,7 +197,7 @@ http://danubedata.org/index.php?metadata
 
 We create an alias of this page as http://danubedata.org/doi/ after the database got its doi.
 
-Our DOI prefix is: 10.18426
+Our DOI prefix in DataCite is: 10.18426
 
 The DOI suffixes are automatically generated and they are unique.
 
