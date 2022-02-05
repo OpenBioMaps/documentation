@@ -178,7 +178,7 @@ If there is an external smtp server here you are an example:
  define('SMTP_HOST','mail.my-mail-server.com');
  define('SMTP_USERNAME','my-name@my-mail-server.com');
  define('SMTP_PASSWORD','something');
- define('SMTP_SECURE','tls'); # ssl
+ define('SMTP_SECURE','tls'); # Or starttls
  define('SMTP_PORT','587'); # 465
  define('SMTP_SENDER','openbiomaps@my-mail-server.com');
 ```
@@ -286,7 +286,10 @@ services:
       ...
       - /etc/letsencrypt/YOURDOMAIN:/etc/apache2/certs
       - ./apache2/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
-
+    ports:
+     - 80:80
+     - 443:443
+    ... 
 ```
 
 *Host has a web server and provide a proxy for the docker*
@@ -295,10 +298,36 @@ An other way to use host's apache proxy
 
 Host: /etc/apache2/sites-enabled/000-default.conf
 ```
+RedirectMatch permanent ^(?!/.well-known/.*) https://YOURDOMAIN/
 ```
+
+Host: /etc/apache2/sites-enabled/default-ssl.conf
+```
+RequestHeader set X-Forwarded-Proto 'https'
+RequestHeader set X-Forwarded-Host 'YOURDOMAIN'
+RequestHeader set X-Forwarded-Port "443"
+
+ProxyPass /.well-known !
+ProxyPass / 
+http://localhost:8090/
+
+ProxyPassReverse / 
+http://localhost:8090/
+
+ProxyPreserveHost On
+<Proxy *>
+allow from all
+</Proxy> 
+```
+
 docker-compose.yml:
 ```console
-
+services:
+  app:
+  ...
+      ports:
+      - 80:8090
+  ...
 ```
 In this case you don't need to use https protocol in projects settings because the obm can recognize the https request through the HTTP-X-FORWARD settings.
 
@@ -321,6 +350,7 @@ networks:
 services:
   app:
   ....
+# Do not use ports, traefik provides them!!!
 #    ports:
 #      - 80:80
 #      - 443:443
@@ -360,7 +390,20 @@ volumes:
 
 This latter examples maybe not complete yet...
 
+If you provide Postgres access you also need to set up ssl over postgres
 
+If you have traefik you can configure ssl access there. In other case, you can give ssl certs for your database container and set up postgres to accept connection only through ssl.
+
+docker-compose.yml:
+```console
+```
+In biomaps_db container:
+/..../pg_hba.conf:
+```console
+```
+/..../postgres.conf:
+```console
+```
 
 
 
