@@ -4,10 +4,18 @@ Common errors
 No data on map or pink map
 --------------------------
 
-1) No write permission on mapserver log file. Owner that files should be www-data and the mapserver directory in /tmp also should be owned by mapserver
-2) Bad hostname in sql connections in the mapfile. E.g. localhost instead of gisdata in Docker installation.
-3) Bad database name in sql connections in the mapfile.
-4) Bad password in sql connections in the mapfile. Try to regenerate the encrypted password string.
+1) Symptoms: No points on map, no error messages. 
+   Problem: If no write permission on mapserver log file the mapserv service will not start on request. 
+   Solution: Owner of log file should be the www-data and the mapserver directory in /tmp directory also should be owned by mapserver.
+2) Symptoms: No points on map, error messages about connection errors. 
+   Problem: Bad hostname in sql connections in the mapfile. 
+   Solution: E.g. localhost instead of gisdata in Docker installation.
+3) Symptoms: No points on map, error messages about connection errors. 
+   Problem: Bad database name in sql connections in the mapfile.
+   Solution:
+4) Symptoms: No points on map, error messages about connection errors. 
+   Problem: Bad password in sql connections in the mapfile. 
+   Solution: Try to regenerate the encrypted password string.
 
 No css rules, incorrect appearance of the application
 -----------------------------------------------------
