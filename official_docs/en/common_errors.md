@@ -40,9 +40,9 @@ Mobile or R clients can't connect
 
 1) Symptoms: No error messages, just can't connect..
    
-   Problem: pds.php missing from the project's root directory
+   Problem: pds.php is missing from the project's root directory.
    
-   Solution: copy the missing file from an other project
+   Solution: Copy the missing file from an other project
 
 2) Symptoms: No projects listed on my server
    
@@ -50,13 +50,13 @@ Mobile or R clients can't connect
    
    Solution: Go to https://openbiomaps.org/openbiomaps_network/ and modify your project domain (beginning with protocol: http or https !).
 
-3) Symptoms: There are lots of strange and unexpeted error messages.
+3) Symptoms: There are lots of strange and unexpected error messages.
    
    Problem: The *pds* and/or *oauth* is not up-to-date in the default project (usally the *sablon* project)
    
-   Solution: update these *pds* and *oauth* direcories with supervisor. Check your system_vars.php.inc for the DEFAULT_PROJECT. If is not set there, the default project is the *sablon*.
+   Solution: Update *pds* and *oauth* directories with supervisor. Check your system_vars.php.inc for the DEFAULT_PROJECT. If is not set there, the default project is the *sablon*.
 
-4) Symptoms: Mobile client not listing your server
+4) Symptoms: Mobile client does not listing your server
    
    Problem: Your server is not registered in openbiomaps.org/openbiomaps_networks
    
