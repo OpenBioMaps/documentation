@@ -8,7 +8,7 @@ No data on map or pink map
    
    Problem: If no write permission on mapserver log file the mapserv service will not start on request. 
    
-   Solution: Owner of log file should be the www-data and the mapserver directory in /tmp directory also should be owned by mapserver.
+   Solution: Owner of log file should be the www-data and the mapserver directory in /tmp directory also should be owned by www-data user.
 
 2) Symptoms: No points on map, error messages about connection errors. 
    
