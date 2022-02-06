@@ -12,15 +12,15 @@ No data on map or pink map
 
 2) Symptoms: No points on map, error messages about connection errors. 
    
-   Problem: Bad hostname in sql connections in the mapfile. 
+   Problem: Invalid hostname provided in sql connections in the mapfile. 
    
-   Solution: E.g. localhost instead of gisdata in Docker installation.
+   Solution: Update your connection, e.g. gisdata instead of localhost.
 
 3) Symptoms: No points on map, error messages about connection errors. 
    
-   Problem: Bad database name in sql connections in the mapfile.
+   Problem: Invalid database name provided in sql connections in the mapfile.
    
-   Solution:
+   Solution: Update your connection, e.g. biomaps_db.
 
 4) Symptoms: No points on map, error messages about connection errors. 
    
