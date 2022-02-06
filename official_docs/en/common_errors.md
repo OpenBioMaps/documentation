@@ -31,9 +31,18 @@ No data on map or pink map
 No css rules, incorrect appearance of the application
 -----------------------------------------------------
 
-1) URL constants should be set up correctly in local_vars.php.inc
+1) Solution: URL constants should be set up correctly in local_vars.php.inc
 
-2) http and https protocol calls are mixed. Try to set protocol setting in the projects table.
+2) Problem: http and https protocol calls are mixed. 
+   
+   Solution: Try to set protocol setting in the projects table.
+
+3) Problem: If you use forward proxy, the HTTP_X_FORWARDED_* headers are missing
+   
+   Solution: Put X-FORWARD headers into your host's webserver (apache) config file:
+      RequestHeader set X-Forwarded-Proto 'https'
+      RequestHeader set X-Forwarded-Host 'YOURDOMAIN'
+      RequestHeader set X-Forwarded-Port "443"
 
 Mobile or R clients can't connect
 ---------------------------------
