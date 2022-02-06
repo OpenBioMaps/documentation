@@ -31,13 +31,15 @@ No data on map or pink map
 No css rules, incorrect appearance of the application
 -----------------------------------------------------
 
-1) Solution: URL constants should be set up correctly in local_vars.php.inc
+1) Problem: css and js files not loaded (not found)
+
+   Solution: URL constants should be set up correctly in local_vars.php.inc
 
 2) Problem: http and https protocol calls are mixed. 
    
    Solution: Try to set protocol setting in the projects table.
 
-3) Problem: If you use forward proxy, the HTTP_X_FORWARDED_* headers are missing
+3) Problem: If you are using forwarded proxy, the HTTP_X_FORWARDED_* headers are missing
    
    Solution: Put X-FORWARD headers into your host's webserver (apache) config file:
    ```
