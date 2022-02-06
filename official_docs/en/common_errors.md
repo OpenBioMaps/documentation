@@ -40,9 +40,11 @@ No css rules, incorrect appearance of the application
 3) Problem: If you use forward proxy, the HTTP_X_FORWARDED_* headers are missing
    
    Solution: Put X-FORWARD headers into your host's webserver (apache) config file:
+   ```
       RequestHeader set X-Forwarded-Proto 'https'
       RequestHeader set X-Forwarded-Host 'YOURDOMAIN'
       RequestHeader set X-Forwarded-Port "443"
+   ```
 
 Mobile or R clients can't connect
 ---------------------------------
