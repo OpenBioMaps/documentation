@@ -215,7 +215,7 @@ results_asJSON
 
 results_asSHP
 -------------
-    Results can be saved as SHP files. Different files are created for the different geometry types. These can be downloaded in a zip archive.
+    Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
 
     Calls:
 

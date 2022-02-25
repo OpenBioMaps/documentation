@@ -125,7 +125,7 @@ Shoud I pay for anything?
 -------------------------
 All OpenBioMaps features are completely free!
 
-How and where the OpenBioMaps strore the data?
+How and where the OpenBioMaps stores the data?
 ----------------------------------------------
 Currently we have two servers in Debrecen at the University of Debrecen's computer center and one server in the ELTE Information Park. 1 server at MILVUS group in Târgu Mureș in Romania and one at Duna-Ipoly National Park Directorate.
 
@@ -202,3 +202,29 @@ Our DOI prefix in DataCite is: 10.18426
 The DOI suffixes are automatically generated and they are unique.
 
 In every database it is possible to ask additional DOI-s for data subsets. These DOI-s will be extend the original database DOI after a /
+
+How to set up archiving?
+------------------------
+
+1. To set up archiving you need to have ssh access to the server.
+2. Download the `obm_archive.sh`, the `obm_archive_settings.sh` and the `.archive_list.txt` files from the [OBM scripts](https://github.com/OpenBioMaps/scripts/) repository
+
+```
+cd $HOME
+mkdir bin && cd bin
+
+wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/obm_archive.sh
+wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/obm_archive_settings.sh
+wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/.archive_list.txt
+
+chmod 744 obm_archive.sh
+```
+
+3. Edit the `obm_archive_settings.sh` and the `.archive_list.txt` files to meet your server's and projects' setup. Further instructions and examples are provided it those files.
+4. Set up a cronjob to run the `obm_archive.sh` on a daily basis.
+
+```
+15 04 * * 1-6 obm_archive.sh normal &> /dev/null
+15 04 * * 7 obm_archive.sh full &> /dev/null
+15 05 * * * obm_archive.sh clean &> /dev/null
+```

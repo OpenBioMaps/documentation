@@ -593,7 +593,7 @@ results_asSHP
 -------------
 Általános leírás:
 
-* Lekérdezésnél minden geometria típosra létrehoz egy letölthető .SHP fájlt, amit .zip formátumban lehet letölteni.
+* Az eredmények SHP fájlként menthetők. A különböző geometriatípusokhoz külön fájlok jönnek létre. Ezek egy zip-archívumban tölthetők le.
 
 Paraméterezés:
 
