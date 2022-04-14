@@ -106,8 +106,10 @@ box_load_coord
 
     Parameters: example:
 
-    wgs84:4326
-    eov=23700
+    {
+      "wgs84":"4326",
+      "eov":"23700"
+     }
 
 box_load_last_data
 ------------------
