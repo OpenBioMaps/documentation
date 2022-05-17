@@ -147,16 +147,11 @@ photos
 
 read_table
 ----------
-    Present a table or an sql view as a rollable html table. This table is available with a unique link.
+    Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
 
-    Calls:
+    Calls: mainpage/gridbox
 
     General description:
-        Add these lines to .htaccess file where  .... should replaced with your project table name
-        # read table module
-        RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
-        
-        ! This revrite rule thing is a bad idea!!!
 
     Parameters: 
      [{"table":"schema.table",
