@@ -155,10 +155,13 @@ read_table
         Add these lines to .htaccess file where  .... should replaced with your project table name
         # read table module
         RewriteRule ^view-table/(.*)/$ /projects/..../includes/modules/results_asTable.php?view&table=$1&%{QUERY_STRING} [NC,L]
+        
+        ! This revrite rule thing is a bad idea!!!
 
-    Parameters: schema.table
-        or
-        schema.table:default-order-column
+    Parameters: 
+     [{"table":"schema.table",
+       "label":"somesthing",
+       "orderby":"column"}, ... ]
 
 results_summary
 ---------------
