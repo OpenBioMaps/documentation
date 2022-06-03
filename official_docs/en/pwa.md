@@ -23,6 +23,10 @@ Limitations
 - Base maps can't be stored offline
 - Fetching a large number of records (>50.000) can cause problems for offline storing and more...
 
+Where is it?
+- https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/
+
+
 Configuration settings for PWA application
 ------------------------------------------
 
@@ -116,4 +120,10 @@ FROM YOUR_PROJECT
 WHERE %qstr%
 ```
 
+Installation
+------------
+
+Load the following url at once to make your app ready to use: 
+
+https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/setup.php
 
