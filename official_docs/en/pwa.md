@@ -9,7 +9,7 @@ While you are online, you can see data as a layer above the base map. Practicall
 
 The PWA app runs in the browser but can operate without the browser window. So it looks like a standalone mobile application. The fetched data is stored in offline storage, but the base map actually is not, but maybe can be cached if you browse it before an offline usage.
 
-When you visit the app's URL from the CHROME browser, it will offer to install it as a desktop app. Use this option to access the offline usage features of the app, and the window size will be a bit larger without the browser frame.
+When you visit the app's URL from the CHROME or OPERA browser, it will offer to install it as a desktop app. Use this option to access the offline usage features of the app, and the window size will be a bit larger without the browser frame.
 
 Features
 - Show your location (yellow dot)
@@ -42,7 +42,7 @@ On the Maps settings page, you have to create a new MapServer layer in the *priv
         STATUS on
 
         CONNECTIONTYPE postgis
-        CONNECTION "host=localhost dbname=gisdata password={} user=YOUR_PROJECT_admin options='--client_encoding=UTF8'"
+        CONNECTION "host=localhost dbname=gisdata password={xxxxx} user=YOUR_PROJECT_admin options='--client_encoding=UTF8'"
 
         PROJECTION
             "init=epsg:4326"
@@ -121,6 +121,10 @@ The *NAME_OF_YOUR_LABELING_COLUMN* is a column name which will be used as a labe
 The *YOUR_PROJECT* is the target table name which will used. Most commonm is the base project table.
 
 MAXSCALEDENOM 100000 means that no features displayed over 1:100.000 zoom level which is generally a good pratcice to prevent overloading your mapserver when it tries to calculates millions of clusters...
+
+The CONNECTION string should be set up properly according to your server. If you use a Docker, these settings are most probably good for you, except for the password. Copy and paste the CONNECTION setting from another working layer.
+
+*CONNECTION "host=localhost dbname=gisdata password={xxxxx} user=YOUR_PROJECT_admin options='--client_encoding=UTF8'"*
 
 More, you have to create an SQL query on the SQL QUERY SETTINGS page:
 
