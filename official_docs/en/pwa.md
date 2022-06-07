@@ -33,7 +33,7 @@ Configuration settings for PWA application
 ------------------------------------------
 
 Few settings are needed on the project admin interface.
-On the Maps settings page, you have to create a new MapServer layer:
+On the Maps settings page, you have to create a new MapServer layer in the *private map* file:
 
 ```
   LAYER
@@ -53,7 +53,7 @@ On the Maps settings page, you have to create a new MapServer layer:
             "wms_srs"              "epsg:4326 epsg:900913"
         END
 
-        DATA "obm_geometry FROM (SELECT * FROM YOUR_PROJECT) as new_table USING UNIQUE obm_geometry USING srid=4326"
+        DATA "obm_geometry FROM (SELECT * FROM YOUR_PROJECT WHERE ST_GeometryType(obm_geometry)='ST_Point') as new_table USING UNIQUE obm_geometry USING srid=4326"
 
         CLUSTER
             MAXDISTANCE 50
@@ -65,6 +65,7 @@ On the Maps settings page, you have to create a new MapServer layer:
 
         CLASS
             NAME 'Clustered points'
+            MAXSCALEDENOM 100000
             EXPRESSION ("[Cluster_FeatureCount]" != "1")
             STYLE
                 SYMBOL "circle"
@@ -87,6 +88,7 @@ On the Maps settings page, you have to create a new MapServer layer:
         END
         CLASS
             NAME "Single point"
+            MAXSCALEDENOM 100000
             EXPRESSION "1"
             STYLE
                 SIZE 12
@@ -95,7 +97,7 @@ On the Maps settings page, you have to create a new MapServer layer:
                 OUTLINECOLOR 30 30 30
                 OUTLINEWIDTH 1
             END
-            TEXT "[species]"
+            TEXT "[NAME_OF_YOUR_LABELING_COLUMN]"
             LABEL
                 #FONT arial
                 #TYPE TRUETYPE
@@ -113,14 +115,23 @@ On the Maps settings page, you have to create a new MapServer layer:
         UNITS PIXELS
     END #wms cluster layer
 ```
+
+The *NAME_OF_YOUR_LABELING_COLUMN* is a column name which will be used as a label. Most common, is the species-name column.
+
+The *YOUR_PROJECT* is the target table name which will used. Most commonm is the base project table.
+
+MAXSCALEDENOM 100000 means that no features displayed over 1:100.000 zoom level which is generally a good pratcice to prevent overloading your mapserver when it tries to calculates millions of clusters...
+
 More, you have to create an SQL query on the SQL QUERY SETTINGS page:
 
 ```
-SELECT obm_id, obm_geometry, species %selected% 
+SELECT obm_id, obm_geometry, NAME_OF_YOUR_LABELING_COLUMN %selected% 
 FROM YOUR_PROJECT 
 %morefilter%
-WHERE %qstr%
+WHERE ST_GeometryType(obm_geometry)='ST_Point' AND %qstr%
 ```
+As you can see, there is a predefined filter that uses only POINT data, which is because clustering cannot merge line and polygon data. 
+
 
 Installation
 ------------
@@ -128,4 +139,6 @@ Installation
 Load the following url at once to make your app ready to use: 
 
 https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/setup.php
+
+**Make sure you connect using https (secure connection), otherwise the application will not work properly!**
 
