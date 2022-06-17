@@ -327,22 +327,41 @@ extra_params
 
 join_tables
 -----------
-    Join table to use additional columns
 
-    Calls:
+This modules makes possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
 
-    Functions: return_joins()
+Calls:
 
-    General description:
-        use it together with the additional_columns module
-        RETURN: join command and column list and visible names list
-        [0] column name , separated list
-        [1] prefixed column names array: all column which defined in the database columns
-        [2] visible names array of array by JOIN
+Functions: 
 
-    Parameters: example:
+    load_joined_data()
 
-    LEFT JOIN:dinpi_mirror:dinpi_mirror.objectid=p.obm_id&dinpi_mirror.objectid>1:1
+General description:
+    
+Parameters:
+        
+```
+    [
+        {
+            "table": "teszt_events",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "patient_id"
+                }
+            ]
+        },
+        {
+            "table": "teszt_masik",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "fid"
+                }
+            ]
+        }
+    ]
+```
 
 shared_geom
 -----------

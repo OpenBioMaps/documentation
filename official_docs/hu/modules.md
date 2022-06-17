@@ -401,6 +401,36 @@ Fejlesztői dokumentáció
 
 	Hívások:
 
+join_tables
+-----------
+
+Ezzel a modullal engedélyezhető az adatlapon a csatolt táblák adatainak táblázatos megjelenítése. Jelenleg a modul csak egyszerű, egy egyenlőségen alapuló LEFT JOIN-t támogat csak.
+
+Paraméterezés:
+        
+```
+    [
+        {
+            "table": "teszt_events",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "patient_id"
+                }
+            ]
+        },
+        {
+            "table": "teszt_masik",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "fid"
+                }
+            ]
+        }
+    ]
+```
+
 linneatus
 ---------
 
