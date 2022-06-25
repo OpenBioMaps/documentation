@@ -1,3 +1,6 @@
+Using the web application
+=========================
+
 .. toctree::
    :maxdepth: 2
 
