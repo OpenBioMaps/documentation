@@ -1,5 +1,5 @@
-grid module functions
-=====================
+Trigger functions
+=================
 
 ```sql
 BEGIN
