@@ -15,7 +15,8 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
 
 # Database connection definitions
 .. code-block:: php
-// Please change the passwords for an other random string
+
+  // Please change the passwords for an other random string
   define('gisdb_user','YOUR_PROJECT_ADMIN');
   define('gisdb_pass','xxxxxxx');
   define('gisdb_name','POSTGRES_DB_NAME');
@@ -23,11 +24,13 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # Project's sql table name 
 .. code-block:: php
+  
   define('PROJECTTABLE','your_database_table_name');
   #define('PROJECTTABLE',basename(__DIR__));
   
 # Project data restriction settings
 .. code-block:: php
+  
   // `public` data read/mod for everybody
   // `login` data read/mod only for logined users
   // `group` data read/mod only for group members
@@ -36,12 +39,14 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # Language settings
 .. code-block:: php
+  
   // the corresponding language file should be exists
   // see the language file inclusion in the prepare_vars.php
   define('LANG','hu'); # en, ro, ru, ...
   
 # Path and URL settings
 .. code-block:: php
+  
   // On openbiomaps.org is /projects
   // else maybe empty
   define('PATH','/biomaps/resources');
@@ -49,6 +54,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # mapserver variables
 .. code-block:: php
+  
   define('PRIVATE_MAPSERV',sprintf("%s/private/proxy.php",URL));
   define('PUBLIC_MAPSERV',sprintf("%s/public/proxy.php",URL));
   define('PRIVATE_MAPCACHE',sprintf("%s/private/cache.php",URL));
@@ -66,6 +72,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # Invitations
 .. code-block:: php
+  
   // If 0, only admin can send invitations
   // otherwise the specified number of active invitation can be, so can't send more the xx invitations at once
   // default is 11
@@ -73,6 +80,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # MAIL settings, if no local mail agent...
 .. code-block:: php
+  
   #define('SMTP_AUTH',true);
   // local smtp server example 
   #define('SMTP_HOST','mail.your-smtp-server.org');
@@ -95,11 +103,13 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
 # Which page loaded after log in? profile, mainpage, map
 # default is map
 .. code-block:: php
+  
   define('LOGINPAGE','map');
   define('TRAINING',false);
   
 # MainPage configuration
 .. code-block:: php
+  
   define('MAINPAGE',array(
     //'custom_skeleton'=>1,
     'template'=>'gridbox', //intropage
@@ -112,12 +122,14 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # Which style folder used
 .. code-block:: php
+  
   define('STYLE',array(
     'template'=>'evolvulus'
   ));
   
 # Footer configuration
 .. code-block:: php
+  
   define('FOOTER',array(
     'links'=>'map|upload|about|terms|usage|privacy',
     'languages'=>'languages',
@@ -129,11 +141,13 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   
 # Encrypt hash
 .. code-block:: php
+  
   // used by the read_table module to encrypt the table name, ...
   define('MyHASH','password-string');
   
 # Developer options
 .. code-block:: php
+  
   // Switch to an other GIT branch 
   #define('branch','testing');
   // Extra logging for PDS actions
