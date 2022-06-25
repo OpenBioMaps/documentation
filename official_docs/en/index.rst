@@ -23,6 +23,7 @@ Welcome to OpenBioMaps' documentation!
    modules.rst
    server_install.md
    pwa.md
+   mobile_application.rst
    developer_hints.md
    faq.rst
 
