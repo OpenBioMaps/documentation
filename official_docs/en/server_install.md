@@ -2,7 +2,7 @@
 
 ## Common errors and solutions after new installations or updates
 
-:doc:`docker <../docker>`.
+:doc:`common errors <../common_errors>`.
 
 
 ## Local variables for a project
