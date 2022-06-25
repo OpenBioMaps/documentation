@@ -108,7 +108,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   //define('RSERVER',false);
   
 **Which page loaded after log in? profile, mainpage, map
-  default is map**
+default is map**
   
 .. code-block:: php
   
