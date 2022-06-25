@@ -158,6 +158,7 @@ default is map**
   define('MyHASH','password-string');
   
 **Developer options**
+
 .. code-block:: php
   
   // *Switch to an other GIT branch*
