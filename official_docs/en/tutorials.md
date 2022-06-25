@@ -27,12 +27,12 @@ Share Data
 New project
 ===========
 
-Database access
-===============
+Data access using QGIS
+======================
 
 `OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/8zRgGNOYDxg>`_
 
 
-DOCKER
-======
-:doc:`docker <../docker>`.
+New server Installation
+=======================
+:doc:`New server installation tutorial <../docker>`
