@@ -1,19 +1,19 @@
-Install new OBM Server guide
-============================
+# Install new OBM Server guide
 
-Common errors and solutions after new installations or updates
---------------------------------------------------------------
+## Common errors and solutions after new installations or updates
+
 :doc:`docker <../docker>`.
 
 
-Local variables for a project
------------------------------
+## Local variables for a project
+
 Several low-level settings coming from the local_vars.php.inc file which can be updated by the server admin
 
-# The local_vars.php.inc file
+### The local_vars.php.inc file
 
 
 **Database connection definitions**
+
 .. code-block:: php
 
   // Please change the passwords for an other random string
@@ -23,12 +23,14 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('gisdb_host','POSTGRES_HOST_NAME');
   
 **Project's sql table name**
+
 .. code-block:: php
   
   define('PROJECTTABLE','your_database_table_name');
-  #define('PROJECTTABLE',basename(__DIR__));
+  //define('PROJECTTABLE',basename(__DIR__));
   
 **Project data restriction settings**
+
 .. code-block:: php
   
   // `public` data read/mod for everybody
@@ -38,6 +40,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('MOD_LEVEL','group');
   
 **Language settings**
+
 .. code-block:: php
   
   // the corresponding language file should be exists
@@ -45,6 +48,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('LANG','hu'); # en, ro, ru, ...
   
 **Path and URL settings**
+
 .. code-block:: php
   
   // On openbiomaps.org is /projects
@@ -53,6 +57,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('URL',sprintf("%s%s",$_SERVER['SERVER_NAME'],PATH));
   
 **mapserver variables**
+
 .. code-block:: php
   
   define('PRIVATE_MAPSERV',sprintf("%s/private/proxy.php",URL));
@@ -71,6 +76,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('PRIVATE_MAPFILE','private.map');
   
 **Invitations**
+
 .. code-block:: php
   
   // If 0, only admin can send invitations
@@ -79,35 +85,38 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('INVITATIONS',0);
   
 **MAIL settings, if no local mail agent...**
+
 .. code-block:: php
   
-  #define('SMTP_AUTH',true);
-  // local smtp server example 
-  #define('SMTP_HOST','mail.your-smtp-server.org');
-  #define('SMTP_USERNAME','MAIL USER');
-  #define('SMTP_PASSWORD','xxxxxx');
-  #define('SMTP_PORT','PORT-NUMBER');
-  #define('SMTP_SENDER','mail_user@your-smtp-server.org');
-  // Google example, it not works, updates needed!!!
-  #define('SMTP_HOST','smtp.gmail.com');
-  #define('SMTP_USERNAME','your-user@gmail.com');
-  #define('SMTP_PASSWORD','xxxxxxxxx');
-  #define('SMTP_SECURE','tls');
-  #define('SMTP_PORT','587');
+  //define('SMTP_AUTH',true);
+  // *local smtp server example*
+  //define('SMTP_HOST','mail.your-smtp-server.org');
+  //define('SMTP_USERNAME','MAIL USER');
+  //define('SMTP_PASSWORD','xxxxxx');
+  //define('SMTP_PORT','PORT-NUMBER');
+  //define('SMTP_SENDER','mail_user@your-smtp-server.org');
+  // *Google example, it not works, updates needed!!!*
+  //define('SMTP_HOST','smtp.gmail.com');
+  //define('SMTP_USERNAME','your-user@gmail.com');
+  //define('SMTP_PASSWORD','xxxxxxxxx');
+  //define('SMTP_SECURE','tls');
+  //define('SMTP_PORT','587');
   
-  // Deprecated features...
+  // *Deprecated features...*
   //define('TURN_OFF_LAYERS','layer_data_points');
-  #define('SHINYURL',false);
-  #define('RSERVER',false);
+  //define('SHINYURL',false);
+  //define('RSERVER',false);
   
 **Which page loaded after log in? profile, mainpage, map
   default is map**
+  
 .. code-block:: php
   
   define('LOGINPAGE','map');
   define('TRAINING',false);
   
 **MainPage configuration**
+
 .. code-block:: php
   
   define('MAINPAGE',array(
@@ -121,6 +130,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   ));
   
 **Which style folder used**
+
 .. code-block:: php
   
   define('STYLE',array(
@@ -128,6 +138,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   ));
   
 **Footer configuration**
+
 .. code-block:: php
   
   define('FOOTER',array(
@@ -140,15 +151,16 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   );
   
 **Encrypt hash**
+
 .. code-block:: php
   
-  // used by the read_table module to encrypt the table name, ...
+  // *used by the read_table module to encrypt the table name, ...*
   define('MyHASH','password-string');
   
 **Developer options**
 .. code-block:: php
   
-  // Switch to an other GIT branch 
-  #define('branch','testing');
-  // Extra logging for PDS actions
-  #define('DEBUG_PDS', true);
+  // *Switch to an other GIT branch*
+  //define('branch','testing');
+  // *Extra logging for PDS actions*
+  //define('DEBUG_PDS', true);
