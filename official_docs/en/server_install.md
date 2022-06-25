@@ -1,8 +1,8 @@
 Install new OBM Server guide
 ============================
 
-Common errors after new installations or updates
-------------------------------------------------
+Common errors and solutions after new installations or updates
+--------------------------------------------------------------
 :doc:`docker <../docker>`.
 
 
