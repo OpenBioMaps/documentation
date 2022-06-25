@@ -1,6 +1,13 @@
 Install new OBM Server guide
-----------------------------
+============================
 
+Common errors after new installations or updates
+------------------------------------------------
+:doc:`docker <../docker>`.
+
+
+Local variables for a project
+-----------------------------
 Several low-level settings coming from the local_vars.php.inc file which can be updated by the server admin
 
 local_vars.php.inc
@@ -40,7 +47,11 @@ local_vars.php.inc
   define('PUBLIC_MAPSERV',sprintf("%s/public/proxy.php",URL));
   define('PRIVATE_MAPCACHE',sprintf("%s/private/cache.php",URL));
   define('PUBLIC_MAPCACHE',sprintf("%s/public/cache.php",URL));
+  # Standalone installation
   define('MAPSERVER','http://localhost/cgi-bin/mapserv.fcgi');
+  # Docker installation
+  define('MAPSERVER','http://mapserver/cgi-bin/mapserv');
+  # Using Mapcache needs further settings, see Mapserver documentation
   define('MAPCACHE','http://localhost/mapcache');
   define('MAP','PMAP');
   
@@ -70,13 +81,44 @@ local_vars.php.inc
   #define('SMTP_PORT','587');
   
   //define('TURN_OFF_LAYERS','layer_data_points');
-  define('MAP_OVER_MAINPAGE',0);
-  define('LOAD_INTROPAGE',0);
-  define('SHINYURL',false);
-  define('RSERVER',false);
+  #define('SHINYURL',false);
+  #define('RSERVER',false);
+  
+  # Which page loaded after log in? profile, mainpage, map
+  # default is map
   define('LOGINPAGE','map');
   define('TRAINING',false);
   
-  // used by the read_table module to encrypt the table name, ...
+  # MainPage configuration
+  define('MAINPAGE',array(
+    //'custom_skeleton'=>1,
+    'template'=>'gridbox', //intropage
+    'content1'=>'map',   // map | upload-table | slideshow
+    'sidebar1'=>'column_dinpi.altema|custom_countries|members|uploads|data|species|species_stat', // members uploads data species species_stat
+    'system_footer'=>'on',
+    'system_header'=>'off',
+    //'restrictaded_pages'=>array('map','id','history','profile','data','table','editrecord','qtable','query','show','LQ','metadata')
+  ));
+  
+  # Which style folder used
+  define('STYLE',array(
+    'template'=>'evolvulus'
+  ));
+  
+  # Footer configuration
+  define('FOOTER',array(
+    'links'=>'map|upload|about|terms|usage|privacy',
+    'languages'=>'languages',
+    'partners' => array(
+            array('img'=>'obm_logo.png','size'=>'110','url'=>'https://openbiomaps.org'),
+            array('img'=>'unideb_logo.png','size'=>'','url'=>'https://unideb.hu')
+        ))
+  );
+  
+  # used by the read_table module to encrypt the table name, ...
   define('MyHASH','password-string');
+  
+  # Switch to an other GIT branch
+  # Only for developers
+  #define('branch','testing');
 
