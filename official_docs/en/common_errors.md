@@ -4,29 +4,47 @@ Troubleshooting
 No data on map or pink map
 --------------------------
 
-1) Symptoms: No points on map, no error messages. 
+1) Symptoms: No points on map, and no error messages. 
    
    Problem: If no write permission on mapserver log file the mapserv service will not start on request. 
    
    Solution: Owner of log file should be the www-data and the mapserver directory in /tmp directory also should be owned by www-data user.
 
-2) Symptoms: No points on map, error messages about connection errors. 
+2) Symptoms: No points on map, and no error messages.
+   
+   Problem: The assignment between OpanLayers and SQL queries is missing or incorrect.
+   
+   Solution: Check SQL queries to see if an SQL query is set for that table, and then see if Map Settings has an OpenLayers assignment to that SQL query (which starts the Map Server query).
+
+3) Symptoms: No points on map, and there are error messages about connection errors. 
    
    Problem: Invalid hostname provided in sql connections in the mapfile. 
    
    Solution: Update your connection, e.g. gisdata instead of localhost.
 
-3) Symptoms: No points on map, error messages about connection errors. 
+4) Symptoms: No points on map, and there are error messages about connection errors. 
    
    Problem: Invalid database name provided in sql connections in the mapfile.
    
    Solution: Update your connection, e.g. biomaps_db.
 
-4) Symptoms: No points on map, error messages about connection errors. 
+5) Symptoms: No points on map, and there are error messages about connection errors. 
    
-   Problem: Bad password in sql connections in the mapfile. 
+   Problem: Bad password (or missing password) in sql connections in the mapfile. 
    
    Solution: Try to regenerate the encrypted password string.
+
+Incorrect appearance of the application, e.g. no profile page
+-------------------------------------------------------------
+
+1) Problem: PHP Fatal error. Missing Composer Package.
+   
+   Solution: Composer update needed
+
+2) Problem: PHP Fatal error. Missing files for a Composer Package.
+   
+   Solution: Supervisor couldn't copy all the necessary files, try to copy them manually.
+
 
 No css rules, incorrect appearance of the application
 -----------------------------------------------------
