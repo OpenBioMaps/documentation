@@ -489,6 +489,16 @@ docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | b
 ```
 You may need to edit the traefik2.0/traefik.yml, traefik2.0/docker-compose.yml and traefik2.0/acme.json files
 
+Auto update of docker
+.....................
+
+https://github.com/OpenBioMaps/scripts/blob/master/docker-auto-update.readme
+
+Archive tables, data, ...
+.........................
+
+https://github.com/OpenBioMaps/scripts
+
 
 Resources
 .........

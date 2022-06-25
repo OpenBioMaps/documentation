@@ -2,7 +2,12 @@
 
 ## Common errors and solutions after new installations or updates
 
-:doc:`common errors <../common_errors>`.
+:doc:`common errors <../common_errors>`
+
+
+## Server configuratin
+
+:doc:`Server configuration <../server_config>`
 
 
 ## Local variables for a project
