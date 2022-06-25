@@ -1,14 +1,16 @@
 # Install new OBM Server guide
 
+## New OBM server installation using Docker
+
+:doc:`Docker installation tutorial <../docker>`
+
 ## Common errors and solutions after new installations or updates
 
-:doc:`common errors <../common_errors>`
+:doc:`Common errors <../common_errors>`
 
-
-## Server configuratin
+## Server configuration
 
 :doc:`Server configuration <../server_config>`
-
 
 ## Local variables for a project
 
