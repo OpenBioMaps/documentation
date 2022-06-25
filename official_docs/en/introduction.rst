@@ -43,12 +43,15 @@ OpenBioMaps overview
 
 OpenBioMaps Query Workflow
 --------------------------
-:download:`query scheme (pdf) <docs/query_scheme.pdf>` :download:`query scheme (odp) <docs/query_scheme.odp>`
+
+:doc:`OBM Workflow <../obm_workflow>`
+
+:download:`Query scheme (pdf) <docs/query_scheme.pdf>` :download:`Query scheme (odp) <docs/query_scheme.odp>`
 
 
 
 OpenBioMaps Consortium
 ----------------------
-:download:`OpenBioMaps<docs/consortium_2015.pdf>`
+:download:`OpenBioMaps Consortium Document <docs/consortium_2015.pdf>`
 
 
