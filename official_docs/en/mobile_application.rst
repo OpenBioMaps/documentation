@@ -1,16 +1,26 @@
-# How the mobile application works?
+Mobile application documentation
+================================
 
-## Choosing server
+How the mobile application works?
+---------------------------------
 
-## Choosing project
+Choosing server
+...............
+
+Choosing project
+................
 
 
 
 
-# Mobile application settings on the server
+Mobile application settings on the server
+-----------------------------------------
 
-## Forms
+Forms
+.....
 
-## Upload data
+Upload data
+...........
 
-## Upload tracklogs
+Upload tracklogs
+................
