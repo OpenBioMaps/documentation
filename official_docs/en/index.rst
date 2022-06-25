@@ -14,13 +14,8 @@ Welcome to OpenBioMaps' documentation!
 
    introduction.rst
    tutorials.rst
-   user_interface.rst
-   profile.rst
-   upload_data.rst
-   data_access.rst
+   using_web_application.rst
    api.rst
-   admin_pages.rst
-   modules.rst
    server_install.md
    pwa.md
    mobile_application.rst
