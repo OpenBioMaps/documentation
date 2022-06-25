@@ -166,3 +166,4 @@ default is map**
   // *Extra logging for PDS actions*
   define('DEBUG_PDS', true);
   
+local_vars.php.inc
