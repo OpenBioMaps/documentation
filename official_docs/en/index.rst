@@ -13,16 +13,12 @@ Welcome to OpenBioMaps' documentation!
    :maxdepth: 2
 
    introduction.rst
-   tutorial.rst
-   user_interface.rst
-   profile.rst
-   upload_data.rst
-   data_access.rst
+   tutorials.rst
+   using_web_application.rst
    api.rst
-   admin_pages.rst
-   modules.rst
    server_install.md
    pwa.md
+   mobile_application.rst
    developer_hints.md
    faq.rst
 
