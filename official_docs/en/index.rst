@@ -21,7 +21,7 @@ Welcome to OpenBioMaps' documentation!
    api.rst
    admin_pages.rst
    modules.rst
-   server_install.rst
+   server_install.md
    pwa.md
    developer_hints.md
    faq.rst
