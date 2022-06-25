@@ -13,7 +13,7 @@ Welcome to OpenBioMaps' documentation!
    :maxdepth: 2
 
    introduction.rst
-   tutorial.rst
+   tutorials.rst
    user_interface.rst
    profile.rst
    upload_data.rst
