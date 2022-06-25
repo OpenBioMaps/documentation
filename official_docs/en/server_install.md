@@ -162,6 +162,7 @@ default is map**
 .. code-block:: php
   
   // *Switch to an other GIT branch*
-  //define('branch','testing');
+  define('branch','testing');
   // *Extra logging for PDS actions*
-  //define('DEBUG_PDS', true);
+  define('DEBUG_PDS', true);
+  
