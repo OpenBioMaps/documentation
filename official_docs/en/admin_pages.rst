@@ -67,14 +67,15 @@ Overview of set access rules and their work statuses.
 Translations
 ------------
  
-    - Global translations: global translations are periodically updated from this github repository: 
-        https://github.com/OpenBioMaps/translations
-        Feel free to improve translations!
+    - Global translations: global translations can be added and improved in our public translator platform: https://translate.openbiomaps.org.
+        You can also start a new language on this interface, and translations of the mobile app and other openbiomaps components can be found here.
+        Feel free to create, add and improve translations!
 
     - Local translations:
         Use the 'str_' prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
-When you change the language of a web page, you can set other translations for the same terms.
+See local translations in action here: 
+   https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
 
 Modules
 -------
