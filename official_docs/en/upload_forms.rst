@@ -367,7 +367,7 @@ You can specify how to check or modify the value entered from the table for a va
 
 Check the contents of columns depending on the contents of other columns
 
-See in action: https://openbiomaps.org/projects/checkitout/upload/?form=932&type=web
+See in action: https://openbiomaps.org/projects/checkitout/upload/?form=933&type=web
 
 Pseudo columns
 ..............
