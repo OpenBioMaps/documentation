@@ -93,28 +93,28 @@ Column type
         
     - numeric: arbitrary number - minimum and maximum lengths can be specified
         
-    - list: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A "név" amennyiben "str\_" előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A "true" és "false" szavak str_true és str_false fordítás szerint fordulnak le. 
-        Megadható több címke egy értékhez amikből webes űrlapesetén az első jelenik meg, file feltöltésnél pedig a fájl cella értékéből bármelyik cimke vagy az érték helyes egyezést ad. A cimkéket # karakterekkel tagolva kell megadni. Pl: female#tojó:f,male#hím#him:m,juvenil#fiatal:j,adult#öreg:a
+    - list: drop-down list of values separated by the comma you specify. The drop-down list can be specified in name:value format, with the elements and real values of the drop-down list being filled out. The "name", if prefixed with "str\_", will automatically translate to the selected language version, if defined. The words 'true' and 'false' are translated according to str_true and str_false. 
+        Multiple labels can be specified for a value, the first of which will be displayed in a web form case, and any label or value from the file cell value will give a correct match in a file upload. Tags must be specified with # characters between them. E.g.: female#boy:f,male#male#him:m,juvenile#juvenile:j,adult#old:a
         
-        Ez esetben az "f" érték lehetséges cimkéi a "female", "tojo" és "tojó" szavak
+        In this case, the possible labels for the "f" value are the words "female", "tojo" and "egg"
         
-    - true-false: boolen false/true value. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
+    - true-false: boolen false/true value. The order of the value can be controlled in the list definition field. e.g. "false,true"
         
-    - date: tetszőleges karakterrel elválasztva év hónap nap sorrendben. Adatbázisban date típusként tárolva.
+    - date: Separated by any character in order of year month day. Stored in database as date type.
         
-    - date and time: üres karektert követően a dátum után óra:perc:másodperc formátumban. Ha hiányzik a másodperc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Ha hiányzik a perc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Adatbázisban datetime típusként tárolva.
+    - date and time: after a blank frame, the date is in hour:minute:second format. If a second is missing, the program automatically considers it as 00, but warns you to accept it. If the minute is missing, the program will automatically treat it as 00 but warn to accept it. Stored in database as datetime type.
         
-    - time: (timetominutes): hours:minutes formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.
+    - time: (timetominutes): hours:minutes format which the program converts to an integer value. Stored in database as integer.
         
     - time: hours:minutes. As time type in the database.
         
-    - time interval: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.
+    - time interval: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Stored in database as timeinterval type.
         
-    - autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.
+    - autocomplete: generates an autocomplete list from the sql table column specified in the list_definition field. The syntax is table_name.column. The table is searched (by default) in the public schema in the gisdata database.
 
     - autocompletelist: Similar to the autocomplete field, just here it is possible autocompleting multiple values into a single field
         
-   - photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
+   - photo id: if the photo module is enabled, the program enters the uploaded photo IDs here.
         
    - geometria: point: WKT POINT()
         
@@ -123,9 +123,11 @@ Column type
    - geometria: polygon: WKT POLYGON()
         
    - geometria: any: WKT
+   
+   See different geometry types in action: https://openbiomaps.org/projects/checkitout/upload/?form=736&type=web
         
-   - colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
-        Megengedett színek és jelölések: 
+   - colour rings: allows you to specify a colour ring combination, where you can create red, pink, green, light green, orange, yellow, blue, light blue, white, black, brown, purple, violet and metal ring combinations. The section in square brackets codes the maximum number of rings that can be specified on the different leg sections, followed by the individual colour codes of the possible colours. Eg: [XX],Blue:B, red:R, green:G
+        Allowed colours and markings: 
             R = 'red'
             P = 'pink'
             G = 'green'
@@ -330,7 +332,7 @@ You can predefine a value for a field. There are several dynamic predefined valu
     - _datum
     - _auto_geometry
 
-    Ha üres input mezőt szeretnénk, akkor _input értéket kell megadni, ha választó listát szeretnénk kapni a _list értéket kell megadni (a lista fefiníció elemeit tölti be), ha geometra választást, akkor _geometry értéket, az _datum pedig a dátum választó mezőt eredményez.
+    If you want an empty input field, you have to specify _input, if you want a selection list, you have to specify _list (it fills the list with the elements of the definition), if you want a geometry selection, you have to specify _geometry, and _datum results in a date selection field.
 
 Field display options 
 .....................
@@ -361,7 +363,7 @@ Field display options
     
 Column relations
 ................
-Megadható hogy a táblából egy más oszlop értéke esetén az adott oszlopba bevitt értéket hogyan ellenőrízze vagy módosítsa. pl.: weight oszlop esetén ha a sex oszlop tartalma female akkor az értékek min 20 és max 30 numerikus értket vehetnek fel (sex=female) {minmax=20:30}
+You can specify how to check or modify the value entered from the table for a value in another column. e.g.: for weight column, if the sex column is female, the values can take min 20 and max 30 numeric values (sex=female) {minmax=20:30}
 
 Check the contents of columns depending on the contents of other columns
 
