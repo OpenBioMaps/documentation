@@ -17,7 +17,6 @@ Upload data
 
 Query Data
 ==========
-
 `Adatlekérdezés, javítás (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/elDJqiolyFg>`_
 
 
@@ -26,10 +25,10 @@ Share Data
 
 New project
 ===========
+Creating/founding a new database project: Video tutorial () english <https:youtu.be/...>
 
 Data access using QGIS
 ======================
-
 `OBM adatok használata QGIS-ben (Duna-Dráva Nemzeti Park, Gáborik Ákos) magyarul <https://youtu.be/8zRgGNOYDxg>`_
 
 

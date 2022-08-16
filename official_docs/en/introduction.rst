@@ -48,7 +48,19 @@ OpenBioMaps Query Workflow
 
 :download:`Query scheme (pdf) <docs/query_scheme.pdf>` :download:`Query scheme (odp) <docs/query_scheme.odp>`
 
+Getting started
+===============
 
+Getting started
+
+To create your own database you will need a server. This can be your own server, a rented server, or a server already maintained by someone else to serve OpenBioMaps.
+
+It is easiest to create a new database on an existing OpenBioMaps server. Check the list of known servers to see if you have access to one of them. There are dedicated public servers that host many different databases.
+
+If you need more capacity or you want to control access to the entire server, you can install a dedicated server. It's not that complicated. Here is a tutorial: https://openbiomaps.org/documents/en/server_install.html
+
+If you want to create your own database project on an existing server, you must have access to a database on that server. Once you have this, you can easily set up your own database project there, the steps for which you can see here: https://openbiomaps.org/documents/en/tutorials.html#new-project and
+here: https://openbiomaps.org/documents/en/user_interface.html#founding-new-a-project-tab
 
 OpenBioMaps Consortium
 ----------------------
