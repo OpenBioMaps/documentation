@@ -363,9 +363,11 @@ Field display options
     
 Column relations
 ................
-You can specify how to check or modify the value entered from the table for a value in another column. e.g.: for weight column, if the sex column is female, the values can take min 20 and max 30 numeric values (sex=female) {minmax=20:30}
+You can specify how to check or modify the value entered from the table for a value in another column. e.g.: for weight column, if the sex column is female, the values can take min 20 and max 30 numeric values (sex=female) {minmax(20:30)}
 
 Check the contents of columns depending on the contents of other columns
+
+See in action: https://openbiomaps.org/projects/checkitout/upload/?form=932&type=web
 
 Pseudo columns
 ..............
