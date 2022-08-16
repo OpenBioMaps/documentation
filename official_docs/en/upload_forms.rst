@@ -143,6 +143,8 @@ Column type
             V = 'violet'
             M = 'silver'
 
+   See in action: https://openbiomaps.org/projects/checkitout/upload/?form=939&type=web
+
         
 Input control
 .............
