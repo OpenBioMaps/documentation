@@ -233,11 +233,36 @@ A lista teljes definíciós leírása az alább látható JSON. Ennek összeáll
       "triggerTargetColumn": "",
       "Function": "",
       "disabled": ["val1"],
-      "preFilterColumn": "",
-      "preFilterValue": "",
+      "preFilterColumn": [""],
+      "preFilterValue": [""],
+      "preFilterRelation": [],
       "multiselect":"true or false, default is false",
       "selected":["val1"]
     }
+    
+Példa:
+
+.. code-block:: json
+
+  {
+    "optionsTable": "milvus_taxon",
+    "valueColumn": "word",
+    "preFilterColumn": [
+        "lang",
+        "status"
+    ],
+    "preFilterValue": [
+        "obm_taxon",
+        [
+            "accepted",
+            "undefined"
+        ]
+    ],
+    "orderBy": "taxon_db",
+    "order": "desc"
+  }
+
+
 
 Kapcsolt listák kezelése: 
 .........................
@@ -250,7 +275,7 @@ A kód első felét az indító oszlopunkhoz írjuk be, itt határozzuk meg, hog
 
 .. code-block:: json
 
-    {
+  {
     "triggerTargetColumn": [
         "befolyásolt_lista_neve"
     ],
@@ -260,7 +285,7 @@ A kód első felét az indító oszlopunkhoz írjuk be, itt határozzuk meg, hog
     "valueColumn": "allat_szupercsoport",
     "labelColumn": "allat_csoport_nev",
     "labelAsValue": true
-    }
+  }
 
 Kód magyarázat:
 	"Function" - mindig "select_list"
