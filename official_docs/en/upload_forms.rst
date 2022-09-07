@@ -220,7 +220,7 @@ Also we can create our list based on another table variable.
 	],
         "preFilterRelation": [
 	    ""
-	]
+	],
         "multiselect": "true or false, default is false",
         "selected":[
             "an element from the `list`, e.g. val1"
