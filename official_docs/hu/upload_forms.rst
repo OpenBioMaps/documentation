@@ -25,7 +25,7 @@ Az űrlap nevét lehet megadni, amelynek egyedinek kell lennie egy projektben.
 
 Egy űrlapról másolat készíthető annak átnevezésével.
 
-Az űrlap neve többnyevű is lehet, ha _str előtaggal van megadva és a projekt nyelvi beállításokban meg van adva az adott nyelvi definíció minden egyes nyelvre.
+Az űrlap neve többnyevű is lehet, ha -str előtaggal van megadva és a projekt nyelvi beállításokban meg van adva az adott nyelvi definíció minden egyes nyelvre.
 
 .. _form-access:
 
