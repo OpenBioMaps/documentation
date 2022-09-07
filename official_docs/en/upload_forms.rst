@@ -230,6 +230,30 @@ Also we can create our list based on another table variable.
       ],
       "limit": numeric value
     }
+    
+ Example:
+ 
+ .. code-block:: json
+ 
+   {
+    "optionsTable": "milvus_taxon",
+    "valueColumn": "word",
+    "preFilterColumn": [
+        "lang",
+        "status"
+    ],
+    "preFilterValue": [
+        "obm_taxon",
+        [
+            "accepted",
+            "undefined"
+        ]
+    ],
+    "orderBy": "taxon_db",
+    "order": "desc"
+  }
+
+
 
 Joint lists 
 ............
