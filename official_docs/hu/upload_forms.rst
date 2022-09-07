@@ -240,7 +240,7 @@ A lista teljes definíciós leírása az alább látható JSON. Ennek összeáll
       "selected":["val1"]
     }
     
-Példa:
+Példa az előszűrő használatára (preFilter):
 
 .. code-block:: json
 
