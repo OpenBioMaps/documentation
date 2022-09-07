@@ -195,7 +195,9 @@ Also we can create our list based on another table variable.
 
     {
       "list": {
-            "val1": ["label1", "label2"]
+        "val1": [
+	  "label1", "label2"
+	]
       },
       "optionsSchema": "",
       "optionsTable": "",
@@ -205,22 +207,16 @@ Also we can create our list based on another table variable.
       "pictures": {
             "val1": "url-string"
       },
-      "triggerTargetColumn": [
-        ""
-      ],
+      "triggerTargetColumn": [""],
       "Function": "",
       "disabled": ["val1"],
-      "preFilterColumn": [
-        ""
-      ],
-      "preFilterValue": [
-        ""
-      ],
-      "preFilterRelation": [
-        ""
-      ]
+      "preFilterColumn": [""],
+      "preFilterValue": [""],
+      "preFilterRelation": [""]
       "multiselect":"true or false, default is false",
-      "selected":["val1"],
+      "selected":[
+        "val1"
+      ],
       "size": numeric value
       "orderBy": [
         "column or SQL expression"
@@ -230,28 +226,28 @@ Also we can create our list based on another table variable.
       ],
       "limit": numeric value
     }
-    
- Example:
+
+Example:
+
+.. code-block:: json
  
- .. code-block:: json
- 
-   {
-    "optionsTable": "milvus_taxon",
-    "valueColumn": "word",
-    "preFilterColumn": [
-        "lang",
-        "status"
-    ],
-    "preFilterValue": [
-        "obm_taxon",
-        [
-            "accepted",
-            "undefined"
-        ]
-    ],
-    "orderBy": "taxon_db",
-    "order": "desc"
-  }
+    {
+        "optionsTable": "milvus_taxon",
+        "valueColumn": "word",
+        "preFilterColumn": [
+            "lang",
+            "status"
+        ],
+        "preFilterValue": [
+            "obm_taxon",
+            [
+                "accepted",
+                "undefined"
+            ]
+        ],
+        "orderBy": "taxon_db",
+        "order": "desc"
+    }
 
 
 
@@ -264,15 +260,15 @@ You can add your code of "joint list" in the "list definition" field. The first 
 .. code-block:: json
 
     {
-    "triggerTargetColumn": [
-        "affected_list_name"
-    ],
-   "Function": "select_list",
-    "optionsSchema": "shared",
-    "optionsTable": "animal_taxons",
-    "valueColumn": "animal_group_name",
-    "labelColumn": "animal_group_name",
-    "labelAsValue": true
+        "triggerTargetColumn": [
+            "affected_list_name"
+        ],
+        "Function": "select_list",
+        "optionsSchema": "shared",
+        "optionsTable": "animal_taxons",
+        "valueColumn": "animal_group_name",
+        "labelColumn": "animal_group_name",
+        "labelAsValue": true
     }
 
 Code explanation:
@@ -287,12 +283,12 @@ The next step to determine in our affected column, from which column it should t
 .. code-block:: json
 
     {
-    "optionsTable": "animal_taxons",
-    "valueColumn": "animal_group_name",
-    "labelColumn": "animal_group_name",
-    "filterColumn": "animal_supergroup",
-    "Function": "select_list",
-    "optionsSchema": "shared"
+        "optionsTable": "animal_taxons",
+        "valueColumn": "animal_group_name",
+        "labelColumn": "animal_group_name",
+        "filterColumn": "animal_supergroup",
+        "Function": "select_list",
+        "optionsSchema": "shared"
     }
 
 Code explanation (only the new variables explained here):
@@ -303,15 +299,15 @@ With the "joint list" option you can connect more than 2 columns also.
 .. code-block:: json
 
     {
-    "optionsSchema": "shared",
-    "optionsTable": "animal_taxons",
-    "filterColumn": "animal_supergroup",
-    "Function": "select_list",
-    "valueColumn": "animal_group_name",
-    "triggerTargetColumn": [
-        "species"
-    ],
-    "labelColumn": "animal_group_name"
+        "optionsSchema": "shared",
+        "optionsTable": "animal_taxons",
+        "filterColumn": "animal_supergroup",
+        "Function": "select_list",
+        "valueColumn": "animal_group_name",
+        "triggerTargetColumn": [
+            "species"
+        ],
+        "labelColumn": "animal_group_name"
     }
 
 "triggerTargetColumn" all the time trigger the next column. "filterColumn" always mark to the previous column. "valueColumn" and the "labelColumn" always mark the actual column.
@@ -323,26 +319,26 @@ FIRST STEP: we establish the autocomplete list of settlement column. We turn the
 
 .. code-block:: json
 
-	{
-    	"triggerTargetColumn": [
-        	"building"
-    	],
-    	"Function": "select_list",
-    	"optionsSchema": "public",
-    	"optionsTable": "tytoalba_buildings",
-    	"valueColumn": "settlement"
-	}
+    {
+        "triggerTargetColumn": [
+            "building"
+        ],
+        "Function": "select_list",
+        "optionsSchema": "public",
+        "optionsTable": "tytoalba_buildings",
+        "valueColumn": "settlement"
+    }
 
 Second step: we establish the simple list of building column. We turn the column type to list, than we determine the value of our list and filter based on settlement column:
 
 .. code-block:: json
 
-	{
-    	"optionsTable": "tytoalba_buildings",
-    	"filterColumn": "settlement",
-    	"Function": "select_list",
-    	"valueColumn": "building"
-	}
+    {
+        "optionsTable": "tytoalba_buildings",
+        "filterColumn": "settlement",
+        "Function": "select_list",
+        "valueColumn": "building"
+    }
 
 Default values
 ..............
