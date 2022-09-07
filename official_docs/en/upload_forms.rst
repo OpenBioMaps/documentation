@@ -199,18 +199,18 @@ Also we can create our list based on another table variable.
 	      "label1", "label2"
 	  ]
         },
-        "optionsSchema": "",
-        "optionsTable": "",
-        "valueColumn": "",
-        "labelColumn": "",
+        "optionsSchema": "e.g. public",
+        "optionsTable": "table name",
+        "valueColumn": "a column from the table",
+        "labelColumn": "a column from the table - optional",
         "filterColumn": "",
         "pictures": {
-            "val1": "url-string"
+            "an element from the `list`, e.g. val1": "url-string"
         },
         "triggerTargetColumn": [""],
         "Function": "",
         "disabled": [
-	    "val1"
+	    "an element from the `list`, e.g. val1"
 	],
         "preFilterColumn": [
 	    ""
@@ -221,21 +221,21 @@ Also we can create our list based on another table variable.
         "preFilterRelation": [
 	    ""
 	]
-        "multiselect":"true or false, default is false",
+        "multiselect": "true or false, default is false",
         "selected":[
-            "val1"
+            "an element from the `list`, e.g. val1"
         ],
-        "size": numeric value
+        "size": "a numeric value"
         "orderBy": [
             "column or SQL expression"
         ],
         "order": [
-            "ASC OR DESC"
+            "ASC or DESC"
         ],
-        "limit": numeric value
+        "limit": "numeric value"
     }
 
-Example:
+Example of pre filtering:
 
 .. code-block:: json
  
