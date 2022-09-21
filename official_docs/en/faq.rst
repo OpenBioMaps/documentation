@@ -22,12 +22,12 @@ Current OpenBioMaps partners:
 
 **University of Debrecen**
 
-contact: Dr. Miklós Bán, banm@vocs.unideb.hu.
+contact: Dr. Miklós Bán
 
 
 **Danube-Ipoly National Park Directorate**
 
-contact: Zsolt Baranyai, baranyaizs@dinpi.hu.
+contact: Zsolt Baranyai
 
 
 **Eötvös Loránd University**
@@ -37,17 +37,17 @@ contact: Dávid Ritter
 
 **WWF World Wildlife Fund for Nature Hungary**
 
-contact: Katalin Sipos, katalin.sipos@wwf.hu
+contact: Katalin Sipos
 
 
 **Eszterházy Károly University**
 
-contact: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
+contact: Dr. Erika Pénzesné Kónya
 
 
 **Milvus Group Association**
 
-contact: Edgár Papp, 
+contact: Edgár Papp
 
 
 **Danube-Dráva National Park Directorate**
@@ -70,9 +70,7 @@ management@lists.openbiomaps.org
 
 How can I create/found a new database-project?
 ----------------------------------------------
-You can set up new database to store biological data which contain geometrical data as well. That could be a database of a scientific project, which is used everyday, or that could be archive. Furthermore in the light of Open Access agreements of a scientific journal or grant you can use that database to store and present your data.
-
-Every registered user can set up new database, but the database can get its final status only after the ratification of the OpenBioMaps consortium. The logined users can set up new database with the online templates. You can set up a new, empty database during couple of minutes.
+If you are already a member of a project on a server, you can use the web interface to create a new database project on the same server. It only takes a few minutes.
 
 How can I upload data?
 ----------------------
@@ -110,13 +108,13 @@ Each project can have individual language settings and associated translations.
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
- *   Creating/founding database-project
- *   Uploading data into a database-project
- *   Creating new OpenBioMaps server
- *   Hosting databases in your server
- *   Adding new or improving existing translations
- *   Software development
- *   Financial support
+- By creating/establishing a database project
+- Uploading data to a database project
+- By creating a new OpenBioMaps server
+- Hosting database-project on your server
+- Adding new languages or improving existing translations
+- Software development
+- Financial support
 
 Shoud I pay for anything?
 -------------------------
