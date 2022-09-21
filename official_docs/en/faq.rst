@@ -108,13 +108,13 @@ Each project can have individual language settings and associated translations.
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
- *   Creating/founding database-project
- *   Uploading data into a database-project
- *   Creating new OpenBioMaps server
- *   Hosting databases in your server
- *   Adding new or improving existing translations
- *   Software development
- *   Financial support
+- By creating/establishing a database project
+- Uploading data to a database project
+- By creating a new OpenBioMaps server
+- Hosting database-project on your server
+- Adding new languages or improving existing translations
+- Software development
+- Financial support
 
 Shoud I pay for anything?
 -------------------------
