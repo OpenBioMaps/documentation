@@ -10,19 +10,11 @@ Gyakran Ismételt Kérdések
 
 Mi az OpenBioMaps?
 ------------------
-Az OpenBioMaps (OBM) egy olyan nyílt adatbázis keretrendszer, amely georeferált biológiai adatok tárolását és kezelését teszi lehetővé.
-
-A keretrendszer több különböző ingyenesen hozzáférhető szerverből épül fel:
-* UMN Mapserver - az online térképet szolgáltatja
-* PostgreSQL adatbázis szerver - tárolja a keretrendszert és a feltöltött adatokat
-* PostGIS könyvtár - kezeli a térbeli lekérdezéseket
-* Apache webserver - az online kimenetet kezeli
-* OpenLayers Javascript könyvtár - az online térkép megjelenítését kezeli a böngészőben
-* Debian Linux operációs rendszer - biztosítja a hátteret az egész rendszer számára. 
+Az OpenBioMaps egy szoftver- és szolgáltatási platform a biológiai adatok kezelésére. Önállóan vagy szolgáltatásként is használható. Olyan adatbázis-alapú projektek létrehozására használható, amelyeket egyszerre több, különböző eszközökkel és hozzáférési jogosultsági szintekkel rendelkező felhasználó is használhat. Ha nem kíván saját szervert fenntartani, szolgáltatásként is használhatja, mivel egyes intézmények olyan szervereket is üzemeltetnek, amelyeken kutatási vagy civil tudományos projektek ingyenesen működnek.
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-Az OpenBioMaps konzorciumot közintézmények és civil szervezetek hozták létre 2015 szeptember elsején. A konzorcium célja, hogy az OpenBioMaps közösségi adatbázist fejlessze és működtesse. A konzorcium tagjai egyenlő partnerek, akik valamilyen módon hozzájárulnak mind a fejlesztéshez mind a működtetéshez. A konzorciumhoz bárki csatlakozhat, aki elfogadja az OpenBioMaps alaptételeit, eleget tesz annak kitételének és a már jelenlegi konzorciumi partnerek elfogadják a belépését.
+Az OpenBioMaps konzorciumot közintézmények és civil szervezetek hozták létre 2015 szeptember elsején. A konzorcium célja, hogy az OpenBioMaps szotfevereket fejlessze és arra épülő szabadon hozzáférhető szolgáltatásokat üzemeltessen. A konzorcium tagjai egyenlő partnerek, akik valamilyen módon hozzájárulnak mind a fejlesztéshez mind a működtetéshez. A konzorciumhoz bárki csatlakozhat, aki elfogadja az OpenBioMaps alaptételeit, eleget tesz annak kitételének és a már jelenlegi konzorciumi partnerek elfogadják a belépését.
 
 Jelenlegi OpenBioMaps partnerek:
 
@@ -53,7 +45,7 @@ kapcsolat: Dr. Pénzesné Kónya Erika
 
 **Milvus Csoport Egyesület**
 
-kapcsolat: Kovács István, 
+kapcsolat: Papp Edgár, 
 
 
 **Duna-Dráva Nemzeti Park Igazgatóság**
