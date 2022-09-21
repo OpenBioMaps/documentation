@@ -1,3 +1,10 @@
+.. raw:: html
+
+    <style> 
+    .red {color:#ff0000;font-weight:bold;}
+    .green {color:#00ff00;font-weight:bold;}
+    </style>
+
 Frequently Asked Questions
 **************************
 
@@ -131,42 +138,23 @@ Currently we have two servers in Debrecen at the University of Debrecen's comput
 
 There is database-level synchronization between servers. The contents of the databases are saved daily.
 
-How can I join OpenBioMaps?
-----------------------------------
-Invitation is required to registration. Any registered user can invite anyone.
+How can I join an OpenBioMaps project?
+--------------------------------------
+Invitation is required to registration. Usually, any registered member can invite new users.
 
-For more information about registration, invitations, contact the owners, managers, or members of the databases.
+For more information on registration and invitations, please contact the owner or operator of the selected project or the members of the database.
 
 I lost my password, how can I get a new?
 ----------------------------------------
-Don't worry, It is very easy to get a new password.
+Don't worry, it's very easy to get a new password.
 
 Follow the "lost password" link on the login page.
 
-There you can type your login email address. After you sent it the system will send and email for you which contains a link.
-
-Following this link you will be log in temporarily and you can change your password. 
+There you can enter your login email address. Once you submit it, you will receive an email from the system containing a link that you can follow to log in to your account and set a new password.
 
 Pink squares appear on the map page
 -----------------------------------
-It can be related with the layers or the mapfile settings.
-
-How can I control the shared polygons?
---------------------------------------
-On the profile page there are two links
-
-    Own polygons
-    Shared polygons
-
-Following the first one, you will see those polygons that you uploaded or saved (using the save selection option).
-
-Following the second link, you will see all the shared polygons including your own polygons.
-
-In the own polygon page there is an option to share polygons with all users in the project or all logined users or anybody.
-
-In both pages you can control, where would you like to see these polygons (as map selection or as uploading area). These options are marked by "eye" and "X" pictograms.
-
-In both pages you can rename polygons. You can delete only your not shared polygons.
+This may be due to some kind of configuration error, which may be related to the map layers or the settings of the data queries.
 
 What is the RUM?
 ----------------
@@ -186,25 +174,23 @@ e.g.
 
 <font color="red">R</font><font color="green">U</font>M partial public read, public upload and no public modify 
 
-Are there DOI for databases?
-----------------------------
-Every accepted database can get DOI through the DataCite DOI Service or an external repository.
+Is it possible to assign a DOI to databases?
+--------------------------------------------
+Yes, all databases in a finalized state can receive a DOI using the DataCite DOI Service.
 
 
 All databases has a DOI metadata page like:
 
-http://danubedata.org/index.php?metadata
-
-We create an alias of this page as http://danubedata.org/doi/ after the database got its doi.
+https://dinpi.openbiomaps.org/projects/danubefish/index.php?metadata
 
 Our DOI prefix in DataCite is: 10.18426
 
 The DOI suffixes are automatically generated and they are unique.
 
-In every database it is possible to ask additional DOI-s for data subsets. These DOI-s will be extend the original database DOI after a /
+In every database it is possible to assigne additional DOI-s for datasets. These DOI-s will be extend the original database DOI after a /
 
-How to set up archiving?
-------------------------
+How to set up archiving for my server?
+--------------------------------------
 
 1. To set up archiving you need to have ssh access to the server.
 2. Download the `obm_archive.sh`, the `obm_archive_settings.sh` and the `.archive_list.txt` files from the [OBM scripts](https://github.com/OpenBioMaps/scripts/) repository
