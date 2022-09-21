@@ -45,7 +45,7 @@ kapcsolat: Dr. Pénzesné Kónya Erika
 
 **Milvus Csoport Egyesület**
 
-kapcsolat: Papp Edgár, 
+kapcsolat: Papp Edgár
 
 
 **Duna-Dráva Nemzeti Park Igazgatóság**
@@ -66,101 +66,76 @@ email-en keresztül:
 
 management@lists.openbiomaps.org
 
-Hogyan tudok saját adatbázist készíteni?
-----------------------------------------
-Bármilyen biológiai, térbeli információkkal is rendelkező adatok tárolására és kezelésére létre lehet hozni új adatbázist. Ez lehet egy tudományos projekt napi használatban lévő adatbázisa, vagy archív célú adatbázis, lehet tudományos cikk, vagy pályázati adatmegjelenítési kötelezettség kapcsán létrehozott adatbázis is.
-
-Új adatbázis projektet minden regisztrált felhasználó alapíthat, de az adatbázis csak az OpenBioMaps irányító testület jóváhagyása után kaphat végleges státuszt. Új adatbázist a bejelentkezett felhasználók az erre létrehozott webes sablon segítségével hozhatnak létre. Egy új, üres adatbázis létrehozása pár perc.
+Hogyan tudok saját adatbázist projektet készíteni/alapítani?
+------------------------------------------------------------
+Ha már tagja egy szerveren lévő projektnek, akkor a webes felület segítségével új adatbázis-projektet alapíthat ugyanazon a szerveren. Ez csak néhány percet vesz igénybe.
 
 Hogyan tudok adatot feltölteni?
 -------------------------------
-Az adatok PostgreSQL/PostGIS adatbázisban vannak tárolva. A létrehozott adatbázisok projekt gazdája tudja meghatározni kik tölthetnek be adatokat az adatbázisba. Az adatok adatbázisba történő feltöltése történhet közvetlenül, vagy egyedileg definiált adatfeltöltő sablonok segítségével pl. gpx, vagy excel fájlokból. Minden adatbázisnak egyedi adatfeltöltő felülete van.
+Egyszerű válasz: adatfeltöltési űrlapok használatával.
+Vagy esetleg bármilyen PostgreSQL kliens használatával, bár ez a megoldás csak nagy mennyiségű adat alkalmi importálásához ajánlott.
 
-Hogyan tudok eltárolni lekérdezéseket és hivatkozni őket?
----------------------------------------------------------
-A webes felületen beállított térképi lekérdezések a bejelentkezett felhasználók számára elmenthetőek. Ennek két lehetséges esete van. egyrészt el lehet magát a lekérdezést tárolni (report-ot készíteni), amely opció az adatlekérdezést mindig az aktuális adatbázis állapot szerint adja meg. Másrészt el lehet tárolni egy lekérdezés ereményét is, amely lekérdezett adatokat egy xml fájlba írja ki és az eltárolt lekérdezés betöltésekor ebből az állományból tölti be az adatokat a rendszer. Mindkét esetben egyedi, tartós azonosítót kap a lekérdezés.
+Hogyan férhetek hozzá az adatokhoz?
+-----------------------------------
+- A webes felületen keresztül térképes vagy szöveges lekérdezésekkel.
+- PostgeSQL kliens segítségével.
+- Az OpenBioMaps R csomag használatával.
+- A webes felületen keresztül történő adatmegosztás használatával.
+- Adatexporttal a webes felületen keresztül.
 
-A hivatkozások formátuma ilyen: http://szerver/projects/database/?LQ=xx@a1b2c3d4
+Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
+---------------------------------------------------------------
+A regisztrációhoz meghívás szükséges. Bármely regisztrált tag meghívhat új felhasználókat.
 
-Egy példa: `http://openbiomaps.org/projects/checkitout/?LQ=28@WrlMyKLVsjHi7abx <http://openbiomaps.org/projects/checkitout/?LQ=28@WrlMyKLVsjHi7abx>`_
-
-Egy példa egy report (azaz egyedi cimkével megismételhető lekérdzésre) lekérdezésre: `http://openbiomaps.org/projects/checkitout/?report=20@hbh lekérdezés&qtable=checkitout <http://openbiomaps.org/projects/checkitout/?report=20@hbh%20lek%C3%A9rdez%C3%A9s&qtable=checkitout>`_
-
-
-Hogyan tudok regisztrálni az OpenBioMaps-be?
---------------------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó tetszőlegesen meghívhat bárkit (bár egyes adatbázisok ezt korlátozhatják).
-
-A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
-
-A bejelentkezett felhasználók eltárolhatják a lekérdezéseiket, tölthetnek fel adatokat, megnézhetnek korlátozottan elérhető térképeket. A bejelentkezéshez egyedileg meghatározott jogosultságok rendelhetőek, amiket a különböző projektek adatgazdái állítanak be.
-
-A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait.
+A regisztrációval és a meghívásokkal kapcsolatos további információkért kérjük, forduljon a csatlakozni kívánt adatbázis létrehozóihoz vagy adminisztrátoraihoz.
 
 Van programozható felület fejlesztőknek?
 ----------------------------------------
-A Project Data Service (PDS) segítségével a projectek és a felhasználói adatok az adatbázisokból webes kérésekkel - jogosultságtól függően - projektenként lekérdezhetőek.
+Igen. A projektadat-szolgáltatás (PDS) lehetővé teszi a projektek és a felhasználói adatok lekérdezését projektenként, az adatbázisokból érkező URL-kéréseken keresztül.
 
-Példa: http://openbiomaps.org/pds.php?scope=get_project_list
+Példa: https://openbiomaps.org/pds.php?scope=get_project_list
 
-Ebben a példában az openbiomaps.org-on elérhető projektek listáját kérdeztük le.
-
-A PDS JSON formában adja vissza a lekérdezett adatokat.
-
-Szintaktikailag hibás lekérdezés esetén, hibaüzenetet ad vissza.
-
-
-A PDS figyelembe veszi a lekérdező jogosultságát. Ha nincs bejelentkezve a lekérdező, alap jogosultság szerinti lekérdezésekre kap választ.
-
+További információkért látogasson el az API dokumentációba.
 
 Milyen nyelvek támogatottak?
 ----------------------------
-Nincsenek nyelvi korlátok, az oldal jelenleg magyarul,angolul, románul és részben oroszul elérhető. További nyelvek vagy javítások hozzáadhatóak a rendszerhez https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv fájl szerkesztésével.
+Nincsenek nyelvi korlátozások, de az OpenBioMaps jelenleg magyar, angol, román, spanyol és részben orosz nyelven érhető el. További nyelvek vagy fordítások a https://translate.openbiomaps.org felületen keresztül adhatók hozzá.
 
-Az adatbázisoknak egymástól független egyedi nyelvi fájljai is vannak. 
-
-Milyen operációs rendszerekkel kompatibilis az OpenBioMaps?
------------------------------------------------------------
-A webes portál, a térkép és adatbázis szolgáltatások egyaránt kompatibilisek a legtöbb operációs rendszerrel.
-
-A fejlesztések során viszont ezt nem szoktuk ellenőrizni. 
+Minden projektnek egyéni nyelvi beállításai és a hozzá tartozó fordítások lehetnek. 
 
 Hogyan tudok hozzájárulni az OpenBioMaps-hoz?
 ---------------------------------------------
- *   Adatbázisok létrhozásával
- *   Adatok közlésével
- *   Adatbázis szerverek létrehozásával
- *   Nyelvi fordításokkal
- *   Programozással
- *   Adományozással
+- Adatbázis-projekt létrehozásával/alapításával
+- Adatok feltöltéséval adatbázis-projektbe
+- Új OpenBioMaps szerver létrehozásával
+- Adatbázisok hosztolásával a szervereden
+- Új nyelvek hozzáadásával vagy meglévő fordítások javításával
+- Szoftverfejlesztéssel
+- Pénzügyi támogatással
 
 Kell fizetni valamiért?
 -----------------------
-Az OpenBioMaps minden szolgáltatása teljesen ingyenes!
+Az OpenBioMaps minden összetevője és szolgáltatása teljesen ingyenes!
 
 Hol és hogyan tárolja az OpenBioMaps az adatokat? 
 -------------------------------------------------
-Jelenleg négy szerverünk van. Egy szerverünk van Debrecenben a Debreceni Egyetem informatikai központjában, egy az Eötvös Lóránd Tudományegyetem infoparkjában, egy Marosvásárhelyen a MILVUS csoport és egy a Duna-Ipoly Nemzeti Park Igazgatóság kezelésében.
+Minden OpenBioMaps szerver a saját adatbázisában és fájlrendszerében tárolja az adatokat.
 
-A szerverek között adatbázis szintű szinkronizáció van. Az adatbázisok tartalma naponta mentésre kerül. 
-
-Hogyan tudok az OpenBioMaps-hoz csatlakozni?
---------------------------------------------
-A regisztrációhoz meghívó szükséges. Minden regisztrált felhasználó meghívhat tetszőlegesen bárkit.
-
-A bejelentkezési név és jelszó a webes felületen keresztül adható meg vagy asztali alkalmazásokból normál http authentikácóként.
-
-A regisztrációval, meghívássokkal kapcsolatban további információkért keresse az adatbázisok létrehozóit, kezelőit vagy tagjait. 
+Van valamilyen biztonsági mentés megoldás?
+------------------------------------------
+Nincs központosított biztonsági mentés, mivel az OpenBioMapsban nincs központosított adatkezelés. Minden szerver saját biztonsági mentési megoldással rendelkezik, de néhány szerver egymás tárolókapacitását használja archiválásra.
 
 Elfelejtettem a jelszavamat, most mi lesz?
 ------------------------------------------
-Nem kell aggódni, új jelszót könnyű beállítani!
+Ne aggódj, nagyon könnyű új jelszót szerezni.
 
-Kattintson az "elfelejtett jelszó" mezőre a bejelentkezési oldalon. Adja meg a regisztrált e-mail címét, és a rendszer küldeni fog egy linket, amint keresztül új jelszót állíthat be.
+Kövesse a bejelentkezési oldalon található "Elveszett jelszó" linket.
+
+Ott megadhatja a bejelentkezési e-mail címét. Miután elküldte, kap egy e-mailt a rendszertől, amely tartalmaz egy linket, amelyet követve bejelentkezhet a fiókjába, és beállíthat egy új jelszót.
 
 Rózsaszín négyzetek vannak a térkép helyén
 ------------------------------------------
-Bármilyen rendszer beállítási hiba rózsaszín négyzetekhez vezethet.
+Ennek az oka valamilyen konfigurációs hiba lehet, amely a térképi rétegekkel vagy az adatkérések beállításaival függhet össze.
 
 Mi az a RUM?
 ------------
@@ -183,25 +158,29 @@ például:
 
 :red:`R` :green:`U` **M**: részben nyitott olvasásra, szabadon elérhető feltöltésre és zárt a módosításra.
 
-DOI?
-----
-Minden stabil adatbázisban tudunk DOI azonosítókat adni. Az OpenBioMaps a DataCite rendszeren keresztül ad DOI-t. A DOI kezelő partnerünk az MTA Könyvtár.
+Lehetséges DOI-t rendelni az adatbázisokhoz?
+--------------------------------------------
+Igen, minden véglegesített állapotú adatbázis kaphat DOI-t a DataCite DOI szolgáltatás segítségével.
 
-A DataCite DOI kezelő felületén itt található az OpenBioMaps: https://search.datacite.org/repositories/mtakik.obiomap 
+Minden adatbázisnak van egy DOI metaadat oldala, mint például:
 
-DOI igényléshez szükséges a megfelelő metaadatok megadása. A rendszer automatikusan előállítja a metadat lapot amivel a DOI igénylést el lehet indítani egy adatbázishoz, de az igénylés előtt további adatok megadása is szükséges. Egy automatikus nem teljes metaadat lap így nét ki: http://openbiomaps.org/projects/checkitout/?metadata Ezen a lapon már látható, hogy mi lenne a DOI azonosítója ennek az adatbázisnak, ha kérnénk neki.
+https://dinpi.openbiomaps.org/projects/danubefish/index.php?metadata
 
-Itt látható egy példa, ahol már kértünk DOI-t egy adatbázisnak:
+DOI-előtagunk a DataCite-ban: 10.18426
 
-http://dinpi.openbiomaps.org/projects/dinpi/10.18426/obm.2e76flbd1abg/
+A DOI utótagok automatikusan generálódnak és egyediek.
 
-Lehet lekérdezésekhez DOI-t kérni, ami publikációkban megadható. A publikációk DOI-ja és a lekérdezés DOI-ja egymást hivatkozzák és a citáció követést is megoldják. A tartós tárolásra került lekérdezési eredmények DOI azonosítóval megfelelőek egyes lapok által megkövetelt publikus adattárban való elhelyezés követelményének teljesítéséhez. Nemsokára ezt a szolgáltatást könyvtári repozitóriumban elhelyezéssel is ki fogjuk egészíteni.
+Minden adatbázisban lehetőség van további DOI-kat rendelni egyes adatkészletekhez.
 
-Egy példa adatlekérdezéshez kért DOI-ra:
+Hol találom meg az OpenBioMaps szerverek listáját?
+--------------------------------------------------
+A regisztrált szerverek egy OpenBioMaps adatbázisában találhatók a https://openbiomaps.org/projects/openbiomaps_network címen.
 
-http://dinpi.openbiomaps.org/projects/dinpi/10.18426/obm.36vn3g36r3m0/
+Hogyan működik az OpenBioMaps mobilalkalmazás?
+----------------------------------------------
+Iphone-on vagy Androidon. Csak a regisztrált felhasználók férhetnek hozzá a számukra elérhető űrlapokhoz. A bejelentkezés és az űrlapok letöltése után az alkalmazás offline is használható.
 
+Hol található meg az OpenBioMaps R csomag?
+------------------------------------------
+Egyelőre csak fejlesztői csomagként érhető el itt: https://github.com/OpenBioMaps/obm.r.
 
-Az OBM saját DOI elő száma: 10.18426
-
-Az egyéni adatbáziskora mutató DOI utószámok egyediek és automatikusan generálódnak.
