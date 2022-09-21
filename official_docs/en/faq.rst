@@ -22,12 +22,12 @@ Current OpenBioMaps partners:
 
 **University of Debrecen**
 
-contact: Dr. Miklós Bán, banm@vocs.unideb.hu.
+contact: Dr. Miklós Bán
 
 
 **Danube-Ipoly National Park Directorate**
 
-contact: Zsolt Baranyai, baranyaizs@dinpi.hu.
+contact: Zsolt Baranyai
 
 
 **Eötvös Loránd University**
@@ -37,17 +37,17 @@ contact: Dávid Ritter
 
 **WWF World Wildlife Fund for Nature Hungary**
 
-contact: Katalin Sipos, katalin.sipos@wwf.hu
+contact: Katalin Sipos
 
 
 **Eszterházy Károly University**
 
-contact: Dr. Erika Pénzesné Kónya, konya.erika@uni-eszterhazy.hu
+contact: Dr. Erika Pénzesné Kónya
 
 
 **Milvus Group Association**
 
-contact: Edgár Papp, 
+contact: Edgár Papp
 
 
 **Danube-Dráva National Park Directorate**
