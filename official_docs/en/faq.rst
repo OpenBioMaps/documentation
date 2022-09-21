@@ -70,9 +70,7 @@ management@lists.openbiomaps.org
 
 How can I create/found a new database-project?
 ----------------------------------------------
-You can set up new database to store biological data which contain geometrical data as well. That could be a database of a scientific project, which is used everyday, or that could be archive. Furthermore in the light of Open Access agreements of a scientific journal or grant you can use that database to store and present your data.
-
-Every registered user can set up new database, but the database can get its final status only after the ratification of the OpenBioMaps consortium. The logined users can set up new database with the online templates. You can set up a new, empty database during couple of minutes.
+If you are already a member of a project on a server, you can use the web interface to create a new database project on the same server. It only takes a few minutes.
 
 How can I upload data?
 ----------------------
