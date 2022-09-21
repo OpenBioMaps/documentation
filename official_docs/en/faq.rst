@@ -68,81 +68,67 @@ By email:
 
 management@lists.openbiomaps.org
 
-How can I create a new database?
---------------------------------
+How can I create/found a new database-project?
+----------------------------------------------
 You can set up new database to store biological data which contain geometrical data as well. That could be a database of a scientific project, which is used everyday, or that could be archive. Furthermore in the light of Open Access agreements of a scientific journal or grant you can use that database to store and present your data.
 
 Every registered user can set up new database, but the database can get its final status only after the ratification of the OpenBioMaps consortium. The logined users can set up new database with the online templates. You can set up a new, empty database during couple of minutes.
 
 How can I upload data?
 ----------------------
-Data are stored in a PostgreSQL/PostGIS database. Every database has a project manager, and the project manager can decide who can upload data to the given database. You can type your data row by row into the database, or you can upload data eg. from gpx or excel files into the database with previously defined uploading templates.
+Simply answered: using data upload forms.
+Or perhaps using any PostgreSQL client, although this solution is only recommended for occasional imports of large amounts of data.
 
-How can I store queries and how can I refere them?
---------------------------------------------------
-The logined users can save their queries on the web page. The saved queries have unique thread-mark and you can refer them, furthermore you can repeat those queries at any time. The wfs/wms url will be saved as well, therefore you can easily follow the database changes between the first query and its repeat.
+How can I access data?
+----------------------
+- Via the web interface with map or text queries. 
+- Using a PostgeSQL client.
+- Using the OpenBioMaps R package.
+- Using data sharing via the web interface.
+- Data export via the web interface.
 
-The type of the reference: http://openbiomaps.org/projects/database/?loadquery=xx@abcd1234
+How can I sign up for an OpenBioMaps project?
+---------------------------------------------
+Invitation is required to registration. Any registered member can invite new users.
 
-If you load your reference into the browser, you will see the data points on a project map, furthermore the webpage will present the other values of the specific data points.
-
-How can I sign up for OpenBioMaps?
-----------------------------------
-Invitation is required to registration. Any registered user can invite anyone.
-
-For more information about registration, invitations, contact the creators, managers, or members of the databases.
+For more information on registration and invitations, please contact the creators or administrators of the database you wish to join.
 
 Is there a programmable interface for developers?
 --------------------------------------------------
-The Project Data Service (PDS) allows you to query projects and user data on a per-project basis through URL requests from databases.
+Yes. The Project Data Service (PDS) allows you to query projects and user data on a per-project basis through URL requests from databases.
 
-Example: http://openbiomaps.org/pds.php?scope=get_project_list
+Example: https://openbiomaps.org/pds.php?scope=get_project_list
 
-In this example, we list the projects available from the openbiomaps.org server in JSON format.
+For more information visit the API documentation.
 
-PDS returns the requested data in JSON format.
+What language support is available?
+-----------------------------------
+There are no language restrictions, but the OpenBioMaps is currently available in Hungarian, nglish Romanian, Spanish and partially in Russian. Additional languages or translations can be added through https://translate.openbiomaps.org interface.
 
-Returns an error message when a query is syntactically incorrect or invalid.
+Each project can have individual language settings and associated translations.
 
-PDS takes into account the query authority. If the poller is not logged in, he / she will receive a response for basic authority queries
-
-What languages are supported?
------------------------------
-There are no language restrictions, the site is currently available in Hungarian, in English and in Romanian and partially in Russian. Additional languages can be added by editing the https://github.com/OpenBioMaps/translations/blob/master/global_project_translations.csv file.
-
-Databases also have independent language files that are independent of each other.
-
-Which operating systems are compatible with OpenBioMaps?
----------------------------------------------------------
-The web portal, map and database services are compatible with most of the operating systems.
-
-During the developments we are not test compatibility.
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
- *   Creating databases
- *   Uploading data
- *   Creating new database servers 
- *   Hosting databases in your servers
- *   Adding new and improving translations
- *   Programmming
- *   With financial support
+ *   Creating/founding database-project
+ *   Uploading data into a database-project
+ *   Creating new OpenBioMaps server
+ *   Hosting databases in your server
+ *   Adding new or improving existing translations
+ *   Software development
+ *   Financial support
 
 Shoud I pay for anything?
 -------------------------
-All OpenBioMaps features are completely free!
+All OpenBioMaps services and components are completely free!
 
 How and where the OpenBioMaps stores the data?
 ----------------------------------------------
-Currently we have two servers in Debrecen at the University of Debrecen's computer center and one server in the ELTE Information Park. 1 server at MILVUS group in Târgu Mureș in Romania and one at Duna-Ipoly National Park Directorate.
+Each OpenBioMaps server stores the data in its own database and file system.
 
-There is database-level synchronization between servers. The contents of the databases are saved daily.
-
-How can I join an OpenBioMaps project?
---------------------------------------
-Invitation is required to registration. Usually, any registered member can invite new users.
-
-For more information on registration and invitations, please contact the owner or operator of the selected project or the members of the database.
+Is there any backup solution?
+-----------------------------
+No centralised backup, as there is no centralised data management in OpenBioMaps. Each server has its own backup solution, but some servers use each other's storage capacity for archiving.
 
 I lost my password, how can I get a new?
 ----------------------------------------
@@ -187,30 +173,17 @@ Our DOI prefix in DataCite is: 10.18426
 
 The DOI suffixes are automatically generated and they are unique.
 
-In every database it is possible to assigne additional DOI-s for datasets. These DOI-s will be extend the original database DOI after a /
+In every database it is possible to assigne additional DOI-s for datasets.
 
-How to set up archiving for my server?
---------------------------------------
+Where can I find the list of the existing OpenBioMaps servers?
+--------------------------------------------------------------
+The servers that have registered can be found in the OpenBioMaps database at https://openbiomaps.org/projects/openbiomaps_network .
 
-1. To set up archiving you need to have ssh access to the server.
-2. Download the `obm_archive.sh`, the `obm_archive_settings.sh` and the `.archive_list.txt` files from the [OBM scripts](https://github.com/OpenBioMaps/scripts/) repository
+How does the OpenBioMaps mobile app work?
+-----------------------------------------
+On Iphone or Android. Only registered users can access the forms available to them. After logging in and downloading the forms, the app can be used offline.
 
-```
-cd $HOME
-mkdir bin && cd bin
+Where can I found the OpenBioMaps R package?
+--------------------------------------------
+For now, only available as a developer package here: https://github.com/OpenBioMaps/obm.r
 
-wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/obm_archive.sh
-wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/obm_archive_settings.sh
-wget https://raw.githubusercontent.com/OpenBioMaps/scripts/master/.archive_list.txt
-
-chmod 744 obm_archive.sh
-```
-
-3. Edit the `obm_archive_settings.sh` and the `.archive_list.txt` files to meet your server's and projects' setup. Further instructions and examples are provided it those files.
-4. Set up a cronjob to run the `obm_archive.sh` on a daily basis.
-
-```
-15 04 * * 1-6 obm_archive.sh normal &> /dev/null
-15 04 * * 7 obm_archive.sh full &> /dev/null
-15 05 * * * obm_archive.sh clean &> /dev/null
-```
