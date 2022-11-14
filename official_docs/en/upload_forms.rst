@@ -60,6 +60,27 @@ Form publish
 ............
 A form can be locked by publishing it (orange publish button in the form-header area). Any updates on a published form creates a new version of the form. The old versions are available for API clients (mobile-app). Draft version can be created from the published forms for testing (create draft version button at the bottom of the page). The dtaft version is only available the creator of the draft (by default). The draft version can be publised in the published branch of the form.
 
+.. observationlists:
+
+Observation list
+................
+Megfigyelések egy sorozata összekapcsolható, például transzekt menti számlálás megfigyelései, vagy időlimites számlálás megfigyelései.
+Beállítható egy idő limit (percekben), amely elérésekor a mobil alkalmazás figyelmeztet az idő lejártára, de egyéb dolog nem történik, a felhasználó folytathatja a megfigyelést.
+A kényszerített megfigyelési lista azt jelenti, hogy az adott űrlap csak listás módban tud elindulni, egyéként a felhasználó indíthat listás megfigyelést is az adott űrlappal, ha ez az opció engedélyezve van.
+
+.. tracklog:
+
+Tracklog
+........
+Automatikus traklog rögzítés a form használata közben.
+
+.. periodic-notification:
+
+Periodic notification
+.....................
+Megadott időközönként (percek) az alkalmazás figyelmeztet egy újabb megfigyelés rögzítésére. Eközben megy a számláló folyamatosan. Amikor a felhasználó rögzít egy megfigyelést, akkor az időzítő mindig újraindul.
+
+
 Form column definitions
 -----------------------
 
