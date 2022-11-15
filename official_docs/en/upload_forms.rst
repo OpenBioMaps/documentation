@@ -60,6 +60,25 @@ Form publish
 ............
 A form can be locked by publishing it (orange publish button in the form-header area). Any updates on a published form creates a new version of the form. The old versions are available for API clients (mobile-app). Draft version can be created from the published forms for testing (create draft version button at the bottom of the page). The dtaft version is only available the creator of the draft (by default). The draft version can be publised in the published branch of the form.
 
+.. observationlists:
+
+Observation list
+................
+A series of observations can be combined, for example, observations of transect counting or observations of time limit counting. A time limit (in minutes) can be set, when reached the mobile application will warn when the time is up, but nothing else happens, the user can continue the observation. A forced observation list means that the form can only be started in list mode, as an individual the user can also start a list observation with the form if this option is enabled.
+
+.. tracklog:
+
+Tracklog
+........
+Automatic traclog recording while using the form.
+
+.. periodic-notification:
+
+Periodic notification
+.....................
+At specified intervals (minutes), the app will alert you to record a new observation. Meanwhile, the counter runs continuously. When the user records an observation, the timer will always restart.
+
+
 Form column definitions
 -----------------------
 

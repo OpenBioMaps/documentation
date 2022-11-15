@@ -75,7 +75,25 @@ Az űrlapok csoportokba rendezhetőek a webes űrlap választó felületen való
 ................
 Az űrlapok lezárhatók publikálással (narancssárga gomb az űrlap fejléc területen). A publikált űrlapok minden további módosítása egy új verzió készítését okozzák. A korábbi verziók elérhetőek maradnak minden API kliens számára, pl. mobil alkalmazás. A publikált űrlapokból teszt verziók készthetőek (teszt verzió készítése gomb a lap alján). A teszt verzók csak annak késztője számára elérhetőek (alapbeállítás szerint). A teszt verziók publikálhatóak a saját publikált águkba.
 
+.. observationlists:
 
+Megfigyelési lista
+..................
+Megfigyelések egy sorozata összekapcsolható, például transzekt menti számlálás megfigyelései, vagy időlimites számlálás megfigyelései.
+Beállítható egy idő limit (percekben), amely elérésekor a mobil alkalmazás figyelmeztet az idő lejártára, de egyéb dolog nem történik, a felhasználó folytathatja a megfigyelést.
+A kényszerített megfigyelési lista azt jelenti, hogy az adott űrlap csak listás módban tud elindulni, egyéként a felhasználó indíthat listás megfigyelést is az adott űrlappal, ha ez az opció engedélyezve van.
+
+.. tracklog:
+
+Nyomkövetés
+...........
+Automatikus traklog rögzítés a form használata közben.
+
+.. periodic-notification:
+
+Ismétlődő figyelmeztetés
+........................
+Megadott időközönként (percek) az alkalmazás figyelmeztet egy újabb megfigyelés rögzítésére. Eközben megy a számláló folyamatosan. Amikor a felhasználó rögzít egy megfigyelést, akkor az időzítő mindig újraindul.
 
 Űrlap mező definíciók
 ---------------------
