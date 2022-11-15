@@ -64,21 +64,19 @@ A form can be locked by publishing it (orange publish button in the form-header 
 
 Observation list
 ................
-Megfigyelések egy sorozata összekapcsolható, például transzekt menti számlálás megfigyelései, vagy időlimites számlálás megfigyelései.
-Beállítható egy idő limit (percekben), amely elérésekor a mobil alkalmazás figyelmeztet az idő lejártára, de egyéb dolog nem történik, a felhasználó folytathatja a megfigyelést.
-A kényszerített megfigyelési lista azt jelenti, hogy az adott űrlap csak listás módban tud elindulni, egyéként a felhasználó indíthat listás megfigyelést is az adott űrlappal, ha ez az opció engedélyezve van.
+A series of observations can be combined, for example, observations of transect counting or observations of time limit counting. A time limit (in minutes) can be set, when reached the mobile application will warn when the time is up, but nothing else happens, the user can continue the observation. A forced observation list means that the form can only be started in list mode, as an individual the user can also start a list observation with the form if this option is enabled.
 
 .. tracklog:
 
 Tracklog
 ........
-Automatikus traklog rögzítés a form használata közben.
+Automatic traclog recording while using the form.
 
 .. periodic-notification:
 
 Periodic notification
 .....................
-Megadott időközönként (percek) az alkalmazás figyelmeztet egy újabb megfigyelés rögzítésére. Eközben megy a számláló folyamatosan. Amikor a felhasználó rögzít egy megfigyelést, akkor az időzítő mindig újraindul.
+At specified intervals (minutes), the app will alert you to record a new observation. Meanwhile, the counter runs continuously. When the user records an observation, the timer will always restart.
 
 
 Form column definitions
