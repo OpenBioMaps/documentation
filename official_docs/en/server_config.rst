@@ -69,13 +69,15 @@ There are some recommended cron jobs to set up (examples):
 
   https://github.com/OpenBioMaps/scripts/blob/master/auto_update.sh
   
-.. code-block:: bash
+.. code-block:: shell
+
   # m h  dom mon dow   command
   0 4,16 * * * /srv/docker/openbiomaps/auto_update.sh > /srv/docker/openbiomaps/system_update_job.log
 
 - archiver
   
-.. code-block:: bash
+.. code-block:: shell
+
   0 2 * * *  /path_to/obm_archive.sh normal
   15 2 * * * /path_to/obm_archive.sh system
   15 3 1 * * /path_to/obm_archive.sh full
@@ -86,5 +88,6 @@ There are some recommended cron jobs to set up (examples):
 - jobs runner
   
 .. code-block:: bash
+
   */5 * * * * /path_to/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/PROJECTTABLE/jobs.php
 
