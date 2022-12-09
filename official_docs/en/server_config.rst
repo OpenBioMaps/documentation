@@ -55,14 +55,19 @@ system_vars
   // ask the issue-key from the gitlab-repo mainteners
   define('AUTO_BUGREPORT_ADDRESS','incoming+openbiomaps...'); 
 
-Further settings can be:
 
- - apache server settings
-   - cgi-bin settings
- - mapserver settings
-   - fastcgi settings
-   - mapcache settings
- - memcache settings
+apache server
+-------------
+- cgi-bin settings
+ 
+mapserver
+---------
+- fastcgi settings
+- mapcache settings
+
+PHP
+---
+- memcache settings
 
 cron
 ----
