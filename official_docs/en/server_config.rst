@@ -3,6 +3,9 @@ Server configuration
 
 The system settings for OpenBioMaps are located in
 
+system_vars
+-----------
+
 `/etc/openbiomaps/system_vars.php.inc`
 
 .. code-block:: php
@@ -61,7 +64,8 @@ Further settings can be:
    - mapcache settings
  - memcache settings
 
-Cron settings:
+cron
+----
 
 There are some recommended cron jobs to set up (examples):
 
@@ -78,6 +82,7 @@ There are some recommended cron jobs to set up (examples):
   
 .. code-block:: shell
 
+  # m h  dom mon dow   command
   0 2 * * *  /path_to/obm_archive.sh normal
   15 2 * * * /path_to/obm_archive.sh system
   15 3 1 * * /path_to/obm_archive.sh full
@@ -89,5 +94,6 @@ There are some recommended cron jobs to set up (examples):
   
 .. code-block:: bash
 
+  # m h  dom mon dow   command
   */5 * * * * /path_to/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/PROJECTTABLE/jobs.php
 
