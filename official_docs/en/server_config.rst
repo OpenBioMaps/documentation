@@ -61,3 +61,27 @@ Further settings can be:
    - mapcache settings
  - memcache settings
 
+Cron settings:
+
+There are some recommended cron jobs to set up (examples):
+- docker update
+  https://github.com/OpenBioMaps/scripts/blob/master/auto_update.sh
+  
+  ```cron
+  # m h  dom mon dow   command
+  0 4,16 * * * /srv/docker/openbiomaps/auto_update.sh > /srv/docker/openbiomaps/system_update_job.log
+  ```
+
+- archiver
+  ```cron
+  0 2 * * *  /path_to/obm_archive.sh normal
+  15 2 * * * /path_to/obm_archive.sh system
+  15 3 1 * * /path_to/obm_archive.sh full
+  0 5 * * *  /path_to/obm_archive.sh clean
+  # remote servers
+  0 4 * * *  /path_to/obm_archive.sh sync remote_user@remote-server.com /remote_path_to_archives
+  ```
+- jobs runner
+  ```cron
+  */5 * * * * /path_to/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/PROJECTTABLE/jobs.php
+  ```
