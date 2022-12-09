@@ -76,7 +76,7 @@ There are some recommended cron jobs to set up (examples):
 
 - docker update
 
-  https://github.com/OpenBioMaps/scripts/blob/master/auto_update.sh
+  https://github.com/OpenBioMaps/scripts/tree/master/docker-auto-update
   
 .. code-block:: shell
 
