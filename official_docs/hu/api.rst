@@ -157,8 +157,8 @@ WEB API
 Van egy web (_GET) api végpont az adatok eléréséhez authentikáció nélkül. Ez a ?query=
 Ez az API a text_filter modulokat használja az SQL lekérdezés összerakásához.
 
-Variables
-.........
+Változók
+........
 query:          (API végpont)
 
 qtable:         (adat tábla megadása)
