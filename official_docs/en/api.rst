@@ -152,25 +152,28 @@ PATCH type scopes
 
 WEB API
 -------
-Some kind of data access available on the web interface using stored unique URLs. These
+There is a web (_GET) api endpoint to retrieve data without authentication. This is the ?query=
+This is API uses text_filter modules to assemble an SQL query statement.
 
 Variables
 .........
-query:          (non-authenticated data retreive)
+query:          (API endpoint)
 
-query_api:      (non-authenticated data retreive, resulting JSON, XML, CSV output)
+qtable:         (data table for data retreive)
 
-qtable:         (non-authenicated table setting for data retreive)
+report:         (data retreive using stored queries)
 
-report:         (non-authenticated data retreive using stored query)
+output:         (JSON, XML, CSV, ... file output; If not set, the output is the web interface)
 
-output:         (non-authenticated data output setting)
+filename:       (the file name of the output file)
 
-LQ:             (non-authenticated) display data from a stored query result
+Get list of active (known) OpenBioMaps servers using query api:
 
-Get list of active (known) OpenBioMaps servers using query_api:
+curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename='
 
-curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query_api={"available":"up"}&output=json&filename='
+LQ API end point:
+
+LQ:             (display data from a stored query result)
 
 
 Form Data (get_form_data results) explanations
