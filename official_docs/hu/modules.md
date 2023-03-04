@@ -1,10 +1,9 @@
-A modulok ki-be kapcsolható kiegésztői egy OpenBioMaps projektnek. A rendszer alapfunkcióit egészítik ki különféle funkciókkal (például szöveges keresési opciók).
-A modulokat táblánként lehet definiálni és különböző felhazsnálókhoz vagy felhasználó csoportokhoz rendelni.
-A modulok megjelenési helyei a következők:
- - térképi oldal
- - profil lap
+A modulok be- és kikapcsolható kiterjesztései az OpenBioMaps webes alkalmazásnak. Vannak projekt szinten érvényesülő modulok (pl.: postgres felhazsnáló készítése, fotó kezelő) és vannak egyes adattáblákhoz kötődő modulok is (pl.: szöveges szűrők térképi oldalhoz, CSV export).
 
-A legtöbb modul egyszerű paraméterekkel kofigurálható, de egyes modulok egyéni kofigurációs felülettel rendelkeznek.
+A modulok használata különböző felhasználókhoz vagy felhasználói csoportokhoz rendelhetők.
+
+A modulok az alkalmazásban modul horgok kapcsolódnak, amelyek többnyire a térkép oldalon és profil lapon helyezkednek el.
+A legtöbb modul egyszerű paraméterekkel konfigurálható (JSON), de egyes modulok egyéni adminisztratív felülettel rendelkeznek.
 
 Modul adminisztráció:  
 =====================
@@ -102,7 +101,7 @@ Fejleszői dokumentáció
 
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 box_custom
 ----------
@@ -118,12 +117,10 @@ Például *hrsz_query*, ahol a *hrsz_query_Class* egy osztály a *hrsz_query.php
 	hrsz_query
 
 Fejleszői dokumentáció
-
-	Az osztálynak legalább a print_box () és a print_js () funkcióknak tartalmazniuk kell.
 	
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 box_load_coord
 --------------
@@ -142,7 +139,7 @@ Fejleszői dokumentáció
 
 	Függvények: print_box(), limits(), ajax(), print_js()
 
-	Hívások: 
+	Horgok: 
 
 box_load_last_data
 ------------------
@@ -163,7 +160,7 @@ Fejleszői dokumentáció
 
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 box_load_selection
 ------------------
@@ -187,7 +184,7 @@ Fejleszői dokumentáció
 
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 create_pg_user
 --------------
@@ -210,7 +207,7 @@ Fejleszői dokumentáció
 	
 	Függvények: create_pg_user(), show_button()
 
-	Hívások:
+	Horgok:
 
 custom_admin_pages
 ------------------
@@ -222,7 +219,7 @@ Fejleszői dokumentáció
 
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 custom_data_check
 -----------------
@@ -236,7 +233,7 @@ Fejleszői dokumentáció
 
 	Függvények: list(), check()
 
-	Hívások:
+	Horgok:
 
 custom_filetype
 ---------------
@@ -250,7 +247,7 @@ Fejleszői dokumentáció
 
 	Függvények: option_list(), custom_read()
 
-	Hívások:
+	Horgok:
 
 custom_notify
 -------------
@@ -264,7 +261,7 @@ Fejleszői dokumentáció
 	
 	Függvények: listen(), unlisten(), notify(), email()
 
-	Hívások:
+	Horgok:
 
 download_restricted
 -------------------
@@ -278,7 +275,7 @@ Fejleszői dokumentáció
 
 	Függvények:
 
-	Hívások:
+	Horgok:
 
 ebp
 ---
