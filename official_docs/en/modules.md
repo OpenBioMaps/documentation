@@ -34,7 +34,7 @@ Project level modules
 =====================
 box_load_selection
 ------------------
-    Map filter functions
+Map filter functions
 
     These functions returns with a html table which displayed beside the map window
     These are optional boxes. Setting are in the biomaps db projects' table.
@@ -54,7 +54,7 @@ box_load_selection
             disjoint
 photos
 ------
-    Photo or other attachment box.
+Photo or other attachment box.
 
     Calls:
 
@@ -87,7 +87,7 @@ computation
 
 custom_filetype
 ---------------
-    Custom file preparation. E.g. observado style CSV
+Custom file preparation. E.g. observado style CSV
 
     Calls:
 
@@ -105,7 +105,7 @@ Table level modules
 
 additional_columns
 ------------------
-    Additional columns for 
+Additional columns for ...
 
     Calls:
 
@@ -121,8 +121,7 @@ additional_columns
 
 allowed_columns
 ---------------
-    Columns visibility for users in different access levels
-    It depends on the existence of _rules table
+Columns visibility for users in different access levels. It depends on the existence of _rules table
 
     Calls:
 
@@ -138,7 +137,7 @@ allowed_columns
 
 bold_yellow
 -----------
-    Bold yellow text for some columns in the results lists.
+Bold yellow text for some columns in the results lists.
 
     Calls:
 
@@ -149,7 +148,7 @@ bold_yellow
 
 box_load_coord
 --------------
-    Show given coordinates position on the map
+Show given coordinates position on the map
 
     Calls: print_box, limits, ajax, print_js
 
@@ -164,7 +163,7 @@ box_load_coord
 
 box_load_last_data
 ------------------
-    Query last data or last uploads.
+Query last data or last uploads.
 
     Calls:
 
@@ -174,7 +173,7 @@ box_load_last_data
 
 box_custom
 ----------
-    Custom box - only user defined version exists.
+Custom box - only user defined version exists.
 
     Calls:
 
@@ -188,7 +187,7 @@ box_custom
 
 read_table
 ----------
-    Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
+Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
 
     Calls: mainpage/gridbox
 
@@ -201,56 +200,61 @@ read_table
 
 results_summary
 ---------------
-    Summary of results.
+Summary of results.
+
+    Hooks:
+
+    Methods:
+
+    Parameters:
 
 results_table
 -------------
-    Create a full html table of the results.
+Create a full html table of the results.
 
-    Calls:
+    Hooks:
 
-    General description:
-        Not used!!
+    Methods:
 
     Parameters:
 
 results_asList
 --------------
-    Create foldable slides like results.
+Create foldable slides like results.
 
-    Calls: results_builder()
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 results_asGPX
 -------------
-    Save results as a GPX file.
+Save results as a GPX file.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 results_asCSV
 -------------
-    Save results as a csv file.
+Save results as a csv file.
 
-    Hívások:
+    Hooks:
 
-    Általános leírás:
+    Methods:
 
-    Paraméterek:
+    Parameters:
 
 results_asJSON
 --------------
-    Save results as a JSON file.
+Save results as a JSON file.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
@@ -266,103 +270,97 @@ results_asSHP
 
 results_asKML
 -------------
-    Save results as a KML file.
+Save results as a KML file.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 results_buttons
 ---------------
-    Save and other button above results section, under map.
+Save and other button above results section, under map.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 results_asStable
 ----------------
-    Compact results table Stable.
+Compact results table on map page.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 results_specieslist
 -------------------
-    Specieslist summary above results.
+Specieslist summary on map page
 
-    Calls:
+    Hoks:
 
-    General description:
+    Methods:
 
     Parameters:
 
 text_filter
 -----------
-    Taxon and other text filters.
+Text filters on map page and for query api. Create the WHERE part of the SQL query string.
 
-    Calls:
+    Hooks:
 
-    General description:
-        create boxes
-        assemble WHERE part of query string
-
-    Parameters: complex example:
-
-    magyar
-    obm_taxon
-    megj::colour_rings
-    obm_datum
-    obm_uploading_date
-    obm_uploader_user
-    d.szamossag:nested(d.egyedszam):autocomplete
-    d.egyedszam:values():
-    obm_files_id
-    faj::autocomplete
+    Methods: 
+    
+    Parameters: 
+    [
+    "magyar",
+    "obm_taxon",
+    "megj::colour_rings",
+    "obm_datum",
+    "obm_uploading_date",
+    "obm_uploader_user",
+    "d.szamossag:nested(d.egyedszam):autocomplete",
+    "d.egyedszam:values():",
+    "obm_files_id",
+    "faj::autocomplete"
+    ]
 
 text_filter2
 -----------
-    Advanced taxon and other text filters.
+Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
-    Calls:
+    Hooks:
 
-    General description:
-        create boxes
-        assemble WHERE part of query string
+    Methods:    
 
-    Parameters: example:
+    Parameters:
 
 
 transform_data
 --------------
-    Transform data
+Transform fields to better reading on web tables and exports.  E.g. In result list it can transform geometry to wkt.
 
-    Calls:
-
-    General description:
-        In result list it transform data as need
-        E.g. geometry to wkt
-
-    Parameters: example:
-
-    obm_geometry:geom
-    obm_uploading_id:uplid
-    tema:mmm
+    Hooks:
+    
+    Methods:
+    
+    Parameters:
+        obm_geometry:geom
+        obm_uploading_id:uplid
+        tema:mmm
 
 extra_params
 ------------
-    Extra input paramaters for forms.
+Extra input paramaters for forms.
 
-    Calls:
+    Hooks:
 
-    General description:
+    Methods:
 
     Parameters:
 
@@ -403,41 +401,24 @@ Parameters:
     ]
 ```
 
-shared_geom
------------
-If this module is enabled "Manage custom geometries" option will appear on your profile page.
-
-It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
-
-You can manage the custom geometries in the profile page by following two links: shared geometries and own geometries.
-
-Following the own geometries link you can delete or share, rename and modify the view options of your geometries. The view options are the following: View in spatial selection list and View in upload data - assign named spatial forms list.
-
-Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
-
-
 restricted_data
 ---------------
-    Rule based data restriction
+Rule based data restriction
 
-    alls
+    Hooks:
 
-    Functions: rule_data()
-
-    General description:
+    Methods: rule_data()
 
     Parameters:
 
 
 identify_point
 --------------
-    A tool for identify one or more data elements on the map
+A tool for identify one or more records on the map by mouse click.
 
-    Calls:
+    Hooks:
 
-    Functions: return_data(), print_button()
-
-    General description:
+    Methods: return_data(), print_button()
 
     Parameters:
         column names
@@ -475,37 +456,31 @@ identify_point
 
 custom_notify
 -------------
-    Creates custom postgres based notify events.
+Creates custom postgres based notify events.This is just an idea, the module is not really ready.
 
-    Calls:
+    Hooks:
 
-    Functions: listen(), unlisten(), notify(), email()
-
-    General description:
+    Methods: listen(), unlisten(), notify(), email()
 
     Parameters:
 
 custom_data_check
 -----------------
-    Custom data checks of upload data.
+Custom data checks of upload data.
 
-    Calls:
+    Hooks:
 
-    Functions: list(), check()
-
-    General description:
+    Methods: list(), check()
 
     Parameters:
 
 grid_view
 ---------
-    View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
+View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
 
-    Calls:
+    Hooks:
 
-    Functions: print_box(), default_grid_geom(), get_grid_layer()
-
-    General description:
+    Methods: print_box(), default_grid_geom(), get_grid_layer()
 
     Parameters: layer_options
 
@@ -616,27 +591,21 @@ END;
 
 massive_edit
 ------------
+Allows bulk editing of selected data on the map page via the file upload interface
 
-   Allows you to edit the selected data massively on the file upload interface
+   Hooks:
 
-   Calls:
-
-   Functions:
-
-   General description:
+   Methods:
 
    Parameters:
 
 download_restricted
 -------------------
+Admin-controlled download authorization
 
-   Admin-controlled download authorization
+   Hooks:
 
-   Calls:
-
-   Functions:
-
-   General description:
+   Methods:
 
    Parameters:
 
@@ -703,21 +672,18 @@ job_manager (validation)
 list_manager
 ------------
 
-   Calls:
+   Hooks:
 
-   Functions:
-
-   General description:
+   Methods:
 
    Parameters:
 
 move_project
 ------------
+Move project to an other server. This is an experimental module.
 
-   Calls:
+   Hooks:
 
-   Functions:
-
-   General description:
+   Methods:
 
    Parameters:
