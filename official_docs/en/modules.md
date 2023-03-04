@@ -1,8 +1,9 @@
-Modules can be turned on and off for an OpenBioMaps project. The basic functions of the system are supplemented with various functions (such as text search options). Modules can be defined per table and assigned to different users or user groups. The locations of the modules are as follows:
- - map page
- - profile tab
+The modules are on/off extensions to the OpenBioMaps web application. There are project-level modules (e.g.: postgres repository creation, photo manager) and there are also modules specific to individual data tables (e.g.: text filters for map page, CSV export).
 
-Most modules can be configured with simple parameters, but some modules have a custom configuration interface.
+The use of modules can be assigned to different users or user groups.
+
+The modules are linked to module hooks in the application, which are mostly located on the map page and profile tab.
+Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
 
 Modul administration:  
 =====================
@@ -33,7 +34,7 @@ Module descriptions
 
 additional_columns
 ------------------
-    Additional columns
+    Additional columns for 
 
     Calls:
 
