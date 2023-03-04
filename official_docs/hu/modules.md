@@ -12,7 +12,7 @@ A *projekt_adminisztráció -> modulok* oldalon lehet engedélyezni és konfigur
 
 Modul hozzáadása
 ----------------
-A modul oldal felkínál nekünk előre behozott modulokat ezekről dönthetünk, hogy bekapcsoljuk vagy töröljük őket a saját listánkból, lásd lentebb. Ezenfelül a saját listánkhoz hozzáadhatunk további modulokat is, ehhez a modul lap aljára kell görgetni. A világos kék sáv első cellájában duplán kattintva felugrik egy legördülő lista a jelenleg aktív modulokkal. Rákattintunk a nekünk szükséges modul nevére, majd a *"hozzáad"* gombra kattintva már hozzá is adtuk a modult a saját listánkhoz.
+Saját modulokat feltölthetünk és ezzek hozzáadhatjuk a projektünkhöz. A modul fejlesztéshez nézd meg az modules/examples/ könyvtárban a példa modulokat.
 
 Modul hozzáférés beállítások
 ----------------------------
@@ -21,19 +21,14 @@ A **Hozzáférés** oszlopban kiválaszthatjuk, hogy publikusak-e a beállítás
 
 Modul törlése
 -------------
-A nem használt modulokat ki tudjuk törölni a saját listánkból úgy, hogy az **Engedélyezett** oszlopot *"nem"*-re állítjuk és a **Module name** oszlopban kitöröljük az adatbázis nevét, majd rákattintunk a **Műveletek** oszlopban található *"módosít"* gombra.
 
 Modul ki/be kapcsolás
 ---------------------
-Miután kialakítottuk a saját modul listánkat, az egyes modulokat ki és be tudjuk kapcsolni. Ezt úgy lehet megtenni, hogy az **Engedélyezett** fejlécű oszlopban választunk az *"igen"* vagy *"nem"* opcióból. 
-
-Modulok személyre szabása
--------------------------
-A **Function** oszlopban kiválaszthatjuk, hogy a modul gyári beállításait szeretnénk használni *"default"* opció választásával, vagy ha egyéni beállításokat szeretnénk használni választhatjuk a *"private"* opciót is. Az utóbbi esetben lehetőség van az egyes modulok forráskódjának a letöltésére, amit az adatbázisunk igényei szerint kiegészíthetünk még további funkciókkal. A modul forráskódját a **Modul cseréje** oszlopból tudjuk letölteni az *"export"* gombra kattintva. A módosított modult *"Fájl kiválasztása"* opción keresztül tudjuk visszatölteni és aktiválni az adatbázisunkhoz.
+Miután kialakítottuk a saját modul listánkat, az egyes modulokat ki és be tudjuk kapcsolni.
 
 Modulok paraméterezése
 ----------------------
-Be tudjuk állítani, hogy a különböző modulok milyen feltételek mellett működjenek, vagy akár azt is, hogy melyik oszlopokra legyen érvényes. Ezt a **Parameters** oszlopon keresztül tudjuk megtenni. A modulok paraméterezését modulokra lebontva megtalálhatod alább a *"Modul leírások"* részben.
+A legtöbb modul paraméterezhető, vagy saját admnisztratív lapján keresztül konfigurálható. A modulok JSON paramétereket fogdnak.
 
 
 Modul leírások
