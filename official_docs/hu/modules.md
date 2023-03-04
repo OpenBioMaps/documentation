@@ -31,8 +31,106 @@ Modulok paraméterezése
 A legtöbb modul paraméterezhető, vagy saját admnisztratív lapján keresztül konfigurálható. A modulok JSON paramétereket fogdnak.
 
 
-Modul leírások
-==============
+
+Projekt szintű modulok
+======================
+
+box_load_selection
+------------------
+Általános leírás:
+
+* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
+* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy rákattintunk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez vagy csoportokhoz rendeljük.
+* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
+* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre definiált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
+* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvehetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattintva poligonként, akár egy nagyobb területet is körbe jelölhetünk.
+
+Paraméterezés:
+Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
+
+	contains -
+	intersects -
+	crosses -
+	disjoint -
+
+Fejleszői dokumentáció
+
+	Függvények:
+
+	Horgok:
+
+computation
+-----------
+
+create_pg_user
+--------------
+Általános leírás:
+
+* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
+* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
+* Korlátozott hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
+	* Minden a projekthez rendelt adattáblát tud olvasni.
+	* Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
+	* Egy év után automatikusan lejár a hozzáférése.
+	* Bármikor megújíthatja a hozzáférését a felhasználó.
+Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
+
+![QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz](images/qgis_connect.jpg)
+
+Paraméterezés:
+
+Fejleszői dokumentáció
+	
+	Függvények: create_pg_user(), show_button()
+
+	Horgok:
+
+custom_filetype
+---------------
+Általános leírás:
+
+* Adat fájlok átalakítása, más rendszerek formátumára pl.: observado típusú .CSV
+
+Paraméterezés:
+
+Fejleszői dokumentáció
+
+	Függvények: option_list(), custom_read()
+
+	Horgok:
+
+ebp
+---
+Általános leírás:
+
+* Automatikusan tölti fel speciális adatokat speciális felületekre pl: EBirds adatbázis
+
+Paraméterezés:
+
+Függvények:
+
+Hívások:
+
+photos
+------
+Általános leírás:
+
+* Lehetővé teszi a fájl feltöltés funkciót, azáltal hogy létrehozza a **obm_files_id** oszloptípust, ami az OpenBioMaps saját oszloptípusa.
+* Bekapcsolás utáni elérési útvonal: Projekt adminisztráció -> Adatbázis oszlopok. Hozzáadjuk az adattáblánkhoz az **obm_files_id** oszlopot, majd ennek az oszlopnak az *OpenBioMaps* típusát *"csatolmánynak"* állítjuk a legördülő menüből.
+
+Paraméterezés:
+
+Fejleszői dokumentáció
+	
+	Függvények:
+
+	Hívások:
+
+taxon_meta
+----------
+
+Tábla szintű modulok
+====================
 
 additional_columns
 ------------------
@@ -157,65 +255,6 @@ Fejleszői dokumentáció
 
 	Horgok:
 
-box_load_selection
-------------------
-Általános leírás:
-
-* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
-* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy rákattintunk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez vagy csoportokhoz rendeljük.
-* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
-* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre definiált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
-* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvehetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattintva poligonként, akár egy nagyobb területet is körbe jelölhetünk.
-
-Paraméterezés:
-Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
-
-	contains -
-	intersects -
-	crosses -
-	disjoint -
-
-Fejleszői dokumentáció
-
-	Függvények:
-
-	Horgok:
-
-create_pg_user
---------------
-Általános leírás:
-
-* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
-* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
-* Korlátozott hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
-	* Minden a projekthez rendelt adattáblát tud olvasni.
-	* Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-	* Egy év után automatikusan lejár a hozzáférése.
-	* Bármikor megújíthatja a hozzáférését a felhasználó.
-Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
-
-![QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz](images/qgis_connect.jpg)
-
-Paraméterezés:
-
-Fejleszői dokumentáció
-	
-	Függvények: create_pg_user(), show_button()
-
-	Horgok:
-
-custom_admin_pages
-------------------
-Általános leírás:
-	
-Paraméterezés:
-
-Fejleszői dokumentáció
-
-	Függvények:
-
-	Horgok:
-
 custom_data_check
 -----------------
 Általános leírás:
@@ -227,20 +266,6 @@ Paraméterezés:
 Fejleszői dokumentáció
 
 	Függvények: list(), check()
-
-	Horgok:
-
-custom_filetype
----------------
-Általános leírás:
-
-* Adat fájlok átalakítása, más rendszerek formátumára pl.: observado típusú .CSV
-
-Paraméterezés:
-
-Fejleszői dokumentáció
-
-	Függvények: option_list(), custom_read()
 
 	Horgok:
 
@@ -271,18 +296,6 @@ Fejleszői dokumentáció
 	Függvények:
 
 	Horgok:
-
-ebp
----
-Általános leírás:
-
-* Automatikusan tölti fel speciális adatokat speciális felületekre pl: EBirds adatbázis
-
-Paraméterezés:
-
-Függvények:
-
-Hívások:
 
 extra_params
 ------------
@@ -395,7 +408,6 @@ Fejlesztői dokumentáció
 
 join_tables
 -----------
-
 Ezzel a modullal engedélyezhető az adatlapon a csatolt táblák adatainak táblázatos megjelenítése. Jelenleg a modul csak egyszerű, egy egyenlőségen alapuló LEFT JOIN-t támogat csak.
 
 Paraméterezés:
@@ -422,13 +434,6 @@ Paraméterezés:
         }
     ]
 ```
-
-linneatus
----------
-
-Feltétele a *CREATE EXTENSION unaccent SCHEMA public;* postgres extension engedélyezése.
-A linneatus modul az eredetileg főkódban található fajnév kezelés modulja. Beállítása esetén aktiválódik a az adminisztratav menüben a *faj nevek* menüpont.
-
 
 list_manager
 ------------
@@ -464,21 +469,6 @@ move_project
 Általános leírás:
 
 * A projekt költöztetése egyik szerverről a másikra.
-
-Paraméterezés:
-
-Fejleszői dokumentáció
-	
-	Függvények:
-
-	Hívások:
-
-photos
-------
-Általános leírás:
-
-* Lehetővé teszi a fájl feltöltés funkciót, azáltal hogy létrehozza a **obm_files_id** oszloptípust, ami az OpenBioMaps saját oszloptípusa.
-* Bekapcsolás utáni elérési útvonal: Projekt adminisztráció -> Adatbázis oszlopok. Hozzáadjuk az adattáblánkhoz az **obm_files_id** oszlopot, majd ennek az oszlopnak az *OpenBioMaps* típusát *"csatolmánynak"* állítjuk a legördülő menüből.
 
 Paraméterezés:
 
@@ -567,8 +557,8 @@ Függvények:
 
 Hívások:
 
-results_asHtmltable
--------------
+results_asTable
+---------------
 Általános leírás:
 
 * Lekérdezésnél létrehoz egy .html fájlt. 
@@ -656,21 +646,6 @@ Egymás alá írt oszlop nevek, felsorolás jel és vessző nélkül. Például:
 	faj
 	megfigyelő
 	dátum
-
-Fejleszői dokumentáció
-
-	Függvények:
-
-	Hívások:
-
-results_asTable
--------------
-Általános leírás:
-
-* Olyan táblázatot hoz létre, ami az összes lekérdezett adatot tartalmazza.
-* Nincs használva, mert nagy adatmennyiségeknél nagyon megterhelő a böngészőnek. Pár száz sor adat az még ok.
-
-Paraméterezés:
 
 Fejleszői dokumentáció
 
@@ -866,4 +841,3 @@ Fejleszői dokumentáció
 	Függvények:
 
 	Hívások:
-
