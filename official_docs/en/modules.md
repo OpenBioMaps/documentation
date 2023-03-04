@@ -10,24 +10,25 @@ Modul administration:
 
 The modules can be enabled and configured on the *project_administration -> modules* page.
 
-Add a module
-------------
+Add a custom module
+-------------------
+You can upload your own modules and add them to your project. To develop a module, check out the example modules in modules/examples/.
 
 Module access
 -------------
+You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example: allowed_columns module. Another example is that if we have multiple data tables, we can specify for each table separately which column values we can filter based on when querying, for example: text_filter module.
+In the **Access** column, we can choose whether our settings are public (everybody) or only logged in users (logged users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting our predefined groups or even assigning specific persons to a particular setting.
 
 Drop a module
 -------------
 
 Turn off a module
 -----------------
-
-Custom modules
---------------
+Once we have our own list of modules, we can switch each module on and off.
 
 Parameters for modules
 ----------------------
-
+Most modules can be parameterised or configured via their own admin tab. The modules take JSON parameters.
 
 Module descriptions
 ===================
@@ -55,7 +56,7 @@ allowed_columns
 
     Calls:
 
-    Functions:
+    Methods:
        return_columns(), return_gcolumns()
 
     General description:
