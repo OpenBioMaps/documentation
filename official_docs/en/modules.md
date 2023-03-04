@@ -30,7 +30,77 @@ Parameters for modules
 ----------------------
 Most modules can be parameterised or configured via their own admin tab. The modules take JSON parameters.
 
-Module descriptions
+Project level modules
+=====================
+box_load_selection
+------------------
+    Map filter functions
+
+    These functions returns with a html table which displayed beside the map window
+    These are optional boxes. Setting are in the biomaps db projects' table.
+
+    Load prevously saved spatial queries' polygons
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+        available spatial relationships (optional, if no parameter is given, all relationships are available)
+            contains
+            intersects
+            crosses
+            disjoint
+photos
+------
+    Photo or other attachment box.
+
+    Calls:
+
+    General description:
+
+    Parameters:
+
+create_pg_user
+--------------
+If this module is enabled "Create postgres user" option will appear on your profile page.
+
+   Create a restricted access postgres user
+
+    Calls:
+
+    Functions: create_pg_user(), show_button()
+
+    General description:
+
+        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
+        It can read all the data tables assigned to the project.
+        It can only connect to a database from one client program at a time.
+        After one year, Its access expires automatically.
+        Users can renew their access at any time.
+
+    Parameters:
+
+computation
+-----------
+
+custom_filetype
+---------------
+    Custom file preparation. E.g. observado style CSV
+
+    Calls:
+
+    Functions: option_list(), custom_read()
+
+    General description:
+
+    Parameters:
+
+taxon_meta
+----------
+
+Table level modules
 ===================
 
 additional_columns
@@ -77,27 +147,6 @@ bold_yellow
     Parameters:
       New line separated list of column names
 
-box_load_selection
-------------------
-    Map filter functions
-
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
-
-    Load prevously saved spatial queries' polygons
-
-    Calls:
-
-    General description:
-
-    Parameters:
-
-        available spatial relationships (optional, if no parameter is given, all relationships are available)
-            contains
-            intersects
-            crosses
-            disjoint
-
 box_load_coord
 --------------
     Show given coordinates position on the map
@@ -136,16 +185,6 @@ box_custom
     Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
 
     This Class should include at least print_box() and print_js() functions.
-
-photos
-------
-    Photo or other attachment box.
-
-    Calls:
-
-    General description:
-
-    Parameters:
 
 read_table
 ----------
@@ -255,8 +294,8 @@ results_asStable
 
     Parameters:
 
-specieslist
------------
+results_specieslist
+-------------------
     Specieslist summary above results.
 
     Calls:
@@ -329,7 +368,6 @@ extra_params
 
 join_tables
 -----------
-
 This modules makes possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
 
 Calls:
@@ -377,19 +415,6 @@ Following the own geometries link you can delete or share, rename and modify the
 
 Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
-
-snap_to_grid
-------------
-    Project specified sanp to grid points on the map
-
-    Calls:
-
-    Functions: geom_column(), geom_column_join(), rules_join()
-
-    General description:
-        not recommended to use!
-
-    Parameters:
 
 restricted_data
 ---------------
@@ -448,8 +473,8 @@ identify_point
 
         obm_files_id: Displays a photo icon on the popup if the record has an attachment.
 
-notify
-------
+custom_notify
+-------------
     Creates custom postgres based notify events.
 
     Calls:
@@ -469,38 +494,6 @@ custom_data_check
     Functions: list(), check()
 
     General description:
-
-    Parameters:
-
-custom_filetype
----------------
-    Custom file preparation. E.g. observado style CSV
-
-    Calls:
-
-    Functions: option_list(), custom_read()
-
-    General description:
-
-    Parameters:
-
-create_pg_user
---------------
-If this module is enabled "Create postgres user" option will appear on your profile page.
-
-   Create a restricted access postgres user
-
-    Calls:
-
-    Functions: create_pg_user(), show_button()
-
-    General description:
-
-        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
-        It can read all the data tables assigned to the project.
-        It can only connect to a database from one client program at a time.
-        After one year, Its access expires automatically.
-        Users can renew their access at any time.
 
     Parameters:
 
