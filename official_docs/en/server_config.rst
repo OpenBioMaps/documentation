@@ -84,7 +84,7 @@ There are some recommended cron jobs to set up (examples):
   0 4,16 * * * /srv/docker/openbiomaps/auto_update.sh > /srv/docker/openbiomaps/system_update_job.log
 
 - archiver
-  
+  using the https://github.com/OpenBioMaps/scripts/blob/master/obm_archive.sh script (with .archive_list.txt and obm_archive_settings.sh)
 .. code-block:: shell
 
   # m h  dom mon dow   command
@@ -94,6 +94,8 @@ There are some recommended cron jobs to set up (examples):
   0 5 * * *  /path_to/obm_archive.sh clean
   # remote servers
   0 4 * * *  /path_to/obm_archive.sh sync remote_user@remote-server.com /remote_path_to_archives
+  
+  On Docker use the instructions at the end of obm_archive_settings.sh
 
 - jobs runner
   
