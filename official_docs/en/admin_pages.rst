@@ -248,4 +248,6 @@ The scheduler is cron-like, you have to fill in minute - hour - day fields, whic
 
 In order to run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
 
+```
 */5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
+```
