@@ -64,6 +64,7 @@ Felfüggesztett adatfeltöltések
 ------------------------------
 A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen. 
 
+.. _Upload forms:
 
 Feltöltő űrlapok
 ----------------
@@ -72,16 +73,19 @@ Itt lehet feltöltő űrlapokat létrehozni és módosítani.
 Az űrlapok kezelésének részletes leírása itt található:
 :doc:`upload_forms`.
 
+.. _File manager:
 
 Fájl kezelő
 -----------
 Csatolt fájlként feltöltött képek és egyéb állományok listája és kezelése. Ki lehet exportálni egyben az egy táblához tartozó csatományokat, de ez némi időt vehet igénybe, mivel az exportálás egy háttérfolyamatként zajlik. Amikor készen van az export, akkor egy link jelenik meg az export gomb mellett.
 
+.. _Functions:
 
 Függvények
 ----------
 Táblatörténet, adat elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
 
+.. _Map settings:
 
 Térkép beállítások
 ------------------
@@ -107,6 +111,7 @@ Az OpenLayers definícióknál tudunk összekötni egy SQL lekérdezést egy Map
 
 "OpenLayers réteg definíció" mező kiürítésével és a sor mentésével törölhető egy definíció.
 
+.. _Modules:
 
 Modulok
 -------
@@ -120,6 +125,7 @@ A paramétereket JSON objektumként tudjuk megadni a moduloknak.
 Az elérhető modulok listája és leírásai itt találhatóak: 
 :doc:`modulok <../modules>`
 
+.. _Translations:
 
 Nyelvi definíciók
 -----------------
@@ -127,11 +133,7 @@ Meg lehet tekinteni itt az egész projektre globálisan definiált fordításoka
 
 Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a projektre beállított nyelvre vontakoznak. Minden fordítható stringet str_somesthing_special_text formában kell megadni ahol az "str\_" előtag kötelező elem. Fordítások használhatók űrlap nevekben, oszlop nevekben, listákban, űrlap leírásokban, mező leírásokban.
 
-
-Rshinyserver
-------------
-A projekthez lehet R-shiny szervert beállítani és így online felületen dinamikus statisztikai ábrákat megjeleníteni. Ez egy kísérleti állapotban lévő funkció, a konfigurálása sok munkát és az R/R-shiny alapos ismeretét igényli. További információ az R-shiny-ról itt: https://shiny.rstudio.com/
-
+.. _SQL query settings:
 
 SQL lekérdezés beállítások szöveges és térképi lekérdezésekhez
 --------------------------------------------------------------
@@ -185,18 +187,19 @@ Lehetséges még komplexeb lekérdezés összerekasára is:
     SELECT * FROM aall ORDER BY date_part DESC
 
 
-
-
+.. _Server info:
 
 Szerver infó
 ------------
 Számos alap info elérhető a projektről, mint az alkalmazás verzió száma, tárhely használati adatok, rendszer terhelé és memória használat, továbbá a Supervisor projekt adminisztrációs felület linkje.
 
+.. _Server logs:
 
 Szerver logok
 -------------
 Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üzenetei tekinthetők meg itt. 
 
+.. _Members:
 
 Tagok
 -----
@@ -207,6 +210,7 @@ A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb 
 
 A tagok neve egy hivatkozás ezen a felületen. Ezt a hivatkozást követve a felhasználó profil lapjára léphetünk. Adminisztratív jogkörrel ilyenkor a lap cím sávban - jobboldalt, felül megjelenik egy fa-user-secret ikon (https://forkaweso.me/Fork-Awesome/icon/user-secret/). Erre kattitva a saját felhasználói bejelentkezési adatainkkal át tudunk lépni egy másik felhasználó profiljába.
 
+.. _Background jobs:
 
 Háttérfolyamatok kezelése
 -------------------------
