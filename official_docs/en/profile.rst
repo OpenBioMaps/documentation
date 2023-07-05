@@ -83,7 +83,7 @@ Following the shared geometries link you can rename the geometries and modify th
 
 Create PostgreSQL user
 ......................
-
+Create an active user for one year with read access to the project's data tables via SQL client programs. Required to use QGIS!
 
 
 
