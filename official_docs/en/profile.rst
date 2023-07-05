@@ -65,9 +65,12 @@ Active API keys. It is an authentication related function. You can follow your c
 
 The following page items are optional and related to specific modules allowed in your project.
 
+Modul specific settings
+-----------------------
+Some modules can expose management interfaces here. For example: postgres user creation module, geometry upload module, download request module, etc...
 
 Manage custom geometries
-------------------------
+........................
 This function is only available when the shared_geoms modul allows.
 
 It is possible to upload or draw custom geometries for further action. These action can be make spatial queries or assign geometry to uploaded data.
@@ -79,10 +82,9 @@ Following the own geometries link you can delete or share, rename and modify the
 Following the shared geometries link you can rename the geometries and modify the view options. You cannot delete the shared geometries!
 
 Create PostgreSQL user
-----------------------
+......................
 
-Manage downloads
-----------------
+
 
 
 Opinions
