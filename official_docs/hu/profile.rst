@@ -25,12 +25,12 @@ Itt ellenőrizhető, hogy milyen státusszal (üzemeltető, normál vagy inaktí
 
 Az adatainkra, feltöltéseinkre és felhasználói profilunkra kapott értékelések súlyozott összesítése
 
-.. _other-databases
+.. _other-databases:
 Más adatbázisok
 ---------------
 Itt találja azokat az adatbázisokat felsorolva, amelyekben tag az adott szerveren. Az adatbázis nevére kattintva átléphet egy másik adatbázisba. Minden egyes átlépés után újra be kell jelentkeznie.
 
-.. _activity
+.. _activity:
 Aktivitás
 ---------
 - Adat feltöltéseink száma (mennyi adatfeltöltést végeztünk összesen eddig)
@@ -39,24 +39,24 @@ Aktivitás
 - Faj statisztika: Mennyi faj volt az eddigi összes feltöltésükben. Fajonként számlált lista
 - Térbeli aktivitási terület kiterjedése km2-ben a feltöltéseink alapján. A kiírt szám klikkelhető és térképen megmutatja az adatrekordokat határoló konvex poligont.
 
-.. _interrupted-imports
+.. _interrupted-imports:
 Felfüggesztett adatfeltöltések
 ------------------------------
 Az elmentett feltöltéseink listája. A hivatkozásokra kattintva folytathatja a feltöltést ott, ahol félbehagyta.
 
-.. _stored-queries
+.. _stored-queries:
 Eltárolt lekérdezések
 ---------------------
 Lehetősége van a térképes felületen használt adatlekérdezési beállításainak az elmentésére. Az OpenBioMaps szerver automatikusan generál egy egyedi aznosítót minden elmentett lekérdezéshez. Az elmentett lekérdezéseit akár el is nevezheti.
 
 Ebben a menüpontban találhatja a mentett lekérdezéseinek az egyedi azonosítóit. A lekérdezések azonosítóira kattintva a lekérdezés újra lefut a térképi oldalon.
 
-.. _saved-results
+.. _saved-results:
 Elmentett eredmények
 --------------------
 A lekérdezések eredményei is elárolhatóak. Ezekhez akár DOI azonosító is kérhető. Itt találhatóak az eredményekkel együtt eltárolt lekérdezéseink. A hivatkozásokat követve az adatok betöltődnek egy specifikus térképi felületen, vagy a tárolt nyers adatokat lehet letölteni.
 
-.. _api-keys
+.. _api-keys:
 Api kulcsok
 -----------
 Az aktív és frissíthető API kulcsaink listája. Leginkább a fejlesztők számára van jelentősége.
@@ -79,7 +79,7 @@ A megosztott geometriák linket követve átnevezheti a geometriákat és módos
 
 PostgreSQL felhasználó létrehozása
 ..................................
-
+Egy évig aktív felhasználó létrehozása, akinek olvasási joga van a projekt adattábláira SQL kliens programokon keresztül. QGIS használathoz szükséges!
 
 Vélemények
 ----------
