@@ -141,10 +141,17 @@ Building more compplex queries also possible:
     SELECT * FROM aall ORDER BY date_part DESC
 
 
+.. _Map settings:
 
+Map settings
+------------
 Web Map Layers
---------------
+..............
 OpenLayer settings for web-map interface
+
+Mapserver settings
+..................
+Raw version of mapfile.  See the mapserver documentation for updating this file.
 
 
 Members
@@ -152,9 +159,6 @@ Members
 Project member management interface. Here you can see the group memberships of the users as well. The users' system state [admin, user, banned] can be set here. In addition, you can also access the user's profile page from here where you can also change the profile (https://fontawesome.com/v4.7.0/icon/user-secret). 
 
 
-Mapserver settings
-------------------
-Raw version of mapfile.  See the mapserver documentation for updating this file.
 
 
 ## Message templates
