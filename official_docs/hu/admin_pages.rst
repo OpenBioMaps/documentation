@@ -219,4 +219,6 @@ Az ütemezés  cron-szerű, perc - óra - nap mezőket kell kitölteni hozzá, a
 
 Ahhoz, hogy az ütemező fusson, a gazdagépnek is kell egy ütemező Cron bejegyzés minden projekt job futtató scriptjéhez lennie. Ezt a szerver rendszergazdája tudja beállítani. Pl:
 
+```
 */5 * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
+```
