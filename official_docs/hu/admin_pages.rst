@@ -190,7 +190,7 @@ Lehetséges még komplexeb lekérdezés összerekasára is:
 
 Szerver infó
 ------------
-Jelenleg még csak az utolsó módosítás ideje és a módosított fájlok listája látható itt.
+Számos alap info elérhető a projektről, mint az alkalmazás verzió száma, tárhely használati adatok, rendszer terhelé és memória használat, továbbá a Supervisor projekt adminisztrációs felület linkje.
 
 
 Szerver logok
@@ -201,11 +201,11 @@ Hibakeresésre szolgál. A projekt szerver belső üzenetei és a mapserver üze
 Tagok
 -----
 A projektbe regisztrált tagok listája. Felhasználói státuszt lehet itt megani. Ezek a következők: Normál, Üzemeltető, Felfüggesztett. A felfüggesztett felhasználók semmihez nem férnek hozzá a projektben, majdnem egyenértékű a profil törlésével.
-Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszály üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd :ref:`Csoportok<groups>` és :ref:`Adminisztratív hozzáférések<admin-group-access>`.
+Az üzemeltetőknak minden funkcióhoz és adathoz van hozzáférésük. Az adatbázis alapítónak nem muszáj üzemeltetőnek lennie ahhoz, hogy mindenhez hozzáférjen. A normál felhasználók alap esetben a projekt jogosultság beállítása szerint férnek hozzá adatfeltöltési és adatlekérdezéi lehetőségekhez. Ez az alapeset módosítható csoportok létrehozásával és különféle jogosítványok csoportokhoz rendelésével. Lásd :ref:`Csoportok<groups>` és :ref:`Adminisztratív hozzáférések<admin-group-access>`.
 
 A tagok csoport hozzárendelései is módosíthatók itt, de erre kényelmesebb felület a Csoportkezelő.
 
-A tagok neve egy hivatkozás ezen a felületen. Ezt a hivatkozást követve a felhasználó profil lapjára léphetünk. Adminisztratív jogkörrel ilyenkor a lap cím sávban - jobboldalt, felül megjelenik egy fa-user-secret ikon (https://fontawesome.com/v4.7.0/icon/user-secret). Erre kattitva a saját felhasználói bejelentkezési adatainkkal át tudunk lépni egy másik felhasználó profiljába.
+A tagok neve egy hivatkozás ezen a felületen. Ezt a hivatkozást követve a felhasználó profil lapjára léphetünk. Adminisztratív jogkörrel ilyenkor a lap cím sávban - jobboldalt, felül megjelenik egy fa-user-secret ikon (https://forkaweso.me/Fork-Awesome/icon/user-secret/). Erre kattitva a saját felhasználói bejelentkezési adatainkkal át tudunk lépni egy másik felhasználó profiljába.
 
 
 Háttérfolyamatok kezelése
@@ -216,3 +216,9 @@ Háttérfolyamatok kezelése
 Az OBM képes háttérben feladatokat elvégezni. Háttérfolyamat szkripteket le tudunk tölteni a lapról elérhető git repo-ból és ezeket is módosíthatjuk, vagy a sablon szkript alapján teljesen újat írhatunk. A héttérfolyamatoknak van egy run és egy lib állománya. Az ütemező a run állományunkat hívja meg, ami sztenderd php job esetén a lib állományban lévő feladatokat hajtja végre.
 
 Az ütemezés  cron-szerű, perc - óra - nap mezőket kell kitölteni hozzá, amely miden esetben lehet * is, azaz minden perc, óra, nap értékű. A jobot, ha nem engedélyezzük nem fut le. Engedélyezés nélkül is tudjuk tesztelni [run]. A [results]-al pedig az adott job utolsó eredményeit tudjuk megnézni.
+
+Ahhoz, hogy az ütemező fusson, a gazdagépnek is kell egy ütemező Cron bejegyzés minden projekt job futtató scriptjéhez lennie. Ezt a szerver rendszergazdája tudja beállítani. Pl:
+
+```
+*/5 * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
+```

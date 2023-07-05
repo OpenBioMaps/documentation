@@ -221,6 +221,33 @@ Messages sent by modules:
 * `incomplete_list_processed` - 
 * `incomplete_list_unprocessed` - 
 
+Server info
+-----------
+There is a lot of basic information available about the project, such as the application version number, storage usage, system load and memory usage, and a link to the Supervisor project administration interface.
+
 Server logs
 -----------
 Read logs of mapserver or web app logger.
+
+Members
+-------
+List of members registered in the project. You can change your user status here. These are Normal, Operator, Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
+Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<admin-group-access>`.
+
+Members' group assignments can also be modified here, but a more convenient interface is Group Manager.
+
+The member name is a reference in this interface. Following this link will take you to the user's profile page. With administrative privileges, a tree-user-secret icon (https://forkaweso.me/Fork-Awesome/icon/user-secret/) will appear in the tab title bar - top right. Clicking on this will take you to another user's profile using your own user login details.
+
+Background jobs
+---------------
+[web] -> [profile] -> [project administration] -> [background processes]
+
+OBM can perform tasks in the background. You can download background process scripts from the git repo available from the page and modify them or write a completely new one based on the template script. The shell processes have a run and a lib file. The scheduler calls our run file which, in the case of a standard php job, executes the tasks in the lib file.
+
+The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
+
+In order to run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
+
+```
+*/5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
+```

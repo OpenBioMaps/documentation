@@ -169,7 +169,11 @@ filename:       (the file name of the output file)
 
 Get list of active (known) OpenBioMaps servers using query api:
 
-curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename='
+curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'
+
+Get a filtered table from a non-default table:
+
+curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'
 
 LQ API end point:
 
