@@ -273,7 +273,7 @@ Read logs of mapserver or web app logger.
 Members
 -------
 List of members registered in the project. You can change your user status here. These are Normal, Operator, Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
-Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<admin-group-access>`.
+Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<administrative-access>`.
 
 Members' group assignments can also be modified here, but a more convenient interface is Group Manager.
 
