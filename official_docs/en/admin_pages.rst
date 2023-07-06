@@ -23,7 +23,7 @@ Add new columns to a table and manage tables: assign OBM meanings to the columns
     - latitude: together with longitude can be used for creating spatial geometry
     - longitude: together with latitude can be used for creating spatial geometry
     - citing: used in summary functions
-    - attacment: file attacmnets colum
+    - attachment: file attachments column
     - UTM Zone: used in spatial geometry creation
     
 The "comment field" should contain descriptions of the contents of the columns (metadata) and in some cases may have a regulatory role. For the obm_geometry column, you can specify the srid of the geometry column in the comment field, which will determine the stored srid of the uploaded data. The value entered must be in the format `srid: 4326` and stored in biomaps / header_names / f_srid and used by the application in the global variable SRID_C.
@@ -35,8 +35,8 @@ In both cases, the SET prefix is automatically added to the comment field, which
 
 Groups
 ------
-Creating and managing groups. These groups can be used for the management of access and usage control of upload forms, data, modules and administrative functions.
-The groups can contains groups.
+Creating and managing groups. These groups can be used for the management of access and usage control of upload forms, data, modules, and administrative functions.
+The groups can contain groups.
 
 Upload forms
 ------------
@@ -47,17 +47,17 @@ Functions
 ---------
 Manage optional SQL functions and triggers:
 
-    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which used by the taxon filter,
-    - Taxon name auto update: updates the data table on taxon table updatin,
-    - History: create history lines in the "history table" after update and delete rows,
-    - Access rules: create a rule line in the "rules table" after inserting new row. The rules applied are from the form settings.
+    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
+    - Taxon name auto update: updates the data table on taxon table updating,
+    - History: create history lines in the "history table" after updating and delete rows,
+    - Access rules: create a rule line in the "rules table" after inserting a new row. The rules applied are from the form settings.
 
 
 Species names
 -------------
 Taxon table management interface.
 Assign species names to the following categories: [accepted name], [synonym name], [common name], [mispelled name]
-The species names in the taxon table (species name database) is used by the "taxon-name-repair-background-jobs" and the search interfaces.
+The species names in the taxon table (species name database) are used by the "taxon-name-repair-background-jobs" and the search interfaces.
 
 
 Access
@@ -72,7 +72,7 @@ Translations
         Feel free to create, add and improve translations!
 
     - Local translations:
-        Use the 'str_' prefix, followed by some pretty understandable English expression. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
+        Use the 'str_' prefix, followed by some pretty understandable English expressions. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
 See local translations in action here: 
    https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
@@ -89,7 +89,7 @@ List of interrupted/saved imports of the whole project. Admins can load these im
 
 File manager
 ------------
-List of uploaded attachments. Attachments can be managed here. There is a possibility to export all attachments belonging to a data table into one compressed file using the export functionality. Exporting can take a long time due to it is using a "Background-Job". When it is ready a link will appear next to the export button to access the produced file.
+List of uploaded attachments. Attachments can be managed here. There is a possibility to export all attachments belonging to a data table into one compressed file using the export functionality. Exporting can take a long time due to it using a "Background-Job". When it is ready a link will appear next to the export button to access the produced file.
 
 
 SQL query settings
@@ -99,7 +99,7 @@ These are mostly not real SQL commands, but templates for SQL query assembly wit
 
 In the Mapserver/map file, WMS layers must contain a DATA definition line with a %query% substitution string to use a dynamically generated SQL command based on the SQL template defined here.
 
-All SQL query should be connected with one web maps layer. In the last column you can set these connections. In the SQL queries there are two substitute varibles to perform dymaic queries: %qstr% and %morefilters%.
+All SQL queries should be connected with one web map layer. In the last column, you can set these connections. In the SQL queries, there are two substitute variables to perform dynamic queries: %qstr% and %morefilters%.
 
 The query may contain magic words. These are delimited by % characters. These will be dynamically replaced by real SQL strings in the OBM SQL interpreter.
 Some modules may also generate such magic words!
