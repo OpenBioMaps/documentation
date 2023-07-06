@@ -8,13 +8,25 @@ Adatbázis táblák és oszlopok
 
 [web] -> [profile] -> [Projektadminisztráció] -> [adatbázis tábla kezelés]
 
-Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket. Kerüljük a nagybetűk használatát is. A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
+Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket! Kerüljük a nagybetűk használatát is! A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
 
-Az OBM felületen csak a regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)
+Az OBM felületen csak az itt regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)!
 
 Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
 
-Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve ill. ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
+Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve illetve ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
+
+    - adat: általános célú oszlopokra
+    - térbeli geometria: ez az oszlop térképek készítéséhez használható.
+    - tudományos fajnév: ez az oszlop a taxonok kezelésében használható.
+    - alternatív nevek: ez az oszlop a taxonok kezelésében használható.
+    - dátum ez az oszlop a dátumszűrőkben használható
+    - egyedek száma: összefoglaló funkciókban használható
+    - földrajzi szélesség: a földrajzi hosszúsággal együtt használható a térgeometria létrehozásához
+    - földrajzi hosszúság: a földrajzi szélességgel együtt használható térbeli geometria létrehozásához
+    - idézés: összefoglaló funkciókban használható
+    - melléklet: fájl mellékletek oszlop
+    - UTM zóna: a térgeometria létrehozásakor használható.
 
 A "megjegyzés mező" az oszlopok tartalmára vonatkozó leírásokat kell tartalmazzon (meta adatok), továbbá egyes esetekben szabályzó szerepe is lehet. Az obm_geometry oszlop esetén a megjegyzés mezőbe lehet megadni a geometria oszlop srid-ját, amit a feltöltött adatok tárolt srid-ját fogja meghatározni. Beírt értéket `srid:4326` formátumba kell megadni és a biomaps/header_names/f_srid helyen kerül eltárolásra és az alkalmazás az SRID_C globális változóban használja.
 
@@ -23,8 +35,12 @@ Az obm_id oszlopnál megadható, hogy legyen-e a rules tábla használva így: u
 Mindkét esetben az megjegyzés mezőben automatikusan odakerül a SET előtag, amit ki kell törölni, hogy érvényesítetni lehessen a módosítást. Ez azért van így, hogy ne lehessen véletlenül módosítani ezeket a paramétereket.
 
 A lap tetején elérhető egy SQL konzol, ami csak üzemeltetői státusszal és külön authentikáció után használható.
-Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, azt nem kezeli az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
+Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, amit nem kezel az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
+
+A Nézetek kezelése elsősorban egy speciális funkció kiszolgálására szolgál, mégpedig arra, hogy egy adattáblánkat egy Nézettel helyettesítsük. Ilyen esetben a rendszer létrehoz az alaptábla nevével azonos Schémát a projektünk számára és oda helyezi át az eredeti táblánkat, amelyek kezeléséhez a megfelelő INSERT/UPDATE/DELETE Rule-okat is létrehozza. Ez a funkció akkor lehet hasznos, ha nagy adattáblánk van és vannak olyan folyatok, vagy triggerek, amelyek használata már túl lassú, vagy egyes specifikus felhasználó igények kielégítésére egyedi változatokat akarunk létrehozni az adattáblánkból. 
+
+A tábláinkhoz további oszlopokat is tudunk itt hozzáadni. Az oszlopk nevében ne legyenek üres karakterek, nagy betűk és kötőjelek sem!
 
 .. _access:
 
