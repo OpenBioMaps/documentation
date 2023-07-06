@@ -137,10 +137,15 @@ Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a
 
 SQL lekérdezés beállítások szöveges és térképi lekérdezésekhez
 --------------------------------------------------------------
-Adatlekérdezésekhez és térképi megjelenítések SQL lekérdezésekkel valósulnak meg. Az SQL lekérdezések dinamikusan készülnek minden egyes felhasználói kérésre (például a térkép navigálás során). Ezen a felületen lehet a projektünkhoz tartozó SQL lekérdezés sablonokat beállítani. Amennyiben több adattáblához is szeretnénk független térképi felületet megjeleníteni akkor több lekérdezést kell megadnunk. Egy lekérdezést letilthatunk. Ha kiürítjük a lekérdezést és úgy mentjük el, akkor az kitörlődik.
-A lekérdezés vontakozhat csak térképre (alaptérképre vonatkozó lekérdezés). Ilyenkor a lekérdezés típusa "base", egyébként "query & base"
+Itt konfigurálhatja azokat az SQL-lekérdezéseket, amelyeket a Mapserver a térképadatok megjelenítéséhez, a webalkalmazás pedig a lekérdezések szöveges eredményeinek megjelenítéséhez használ.
+Ezek többnyire nem valódi SQL-parancsok, hanem az SQL-lekérdezések összeállítására szolgáló sablonok, közelítő SQL-szintaxissal.
 
-A lekérdezés sablonban a különleges helyettesítő karakterek % jellel vannak jelölve. Ezeket az OBM valós SQL kifejezésekre cseréli dinamikusan.
+A Mapserver/térkép fájlban a WMS rétegeknek tartalmazniuk kell egy DATA definíciós sort egy %query% helyettesítő karakterlánccal, hogy az itt definiált SQL sablon alapján dinamikusan generált SQL parancsot használhasson.
+
+Minden SQL-lekérdezést egy webtérkép-réteghez kell kapcsolni. Az utolsó oszlopban állíthatja be ezeket a kapcsolatokat. Az SQL-lekérdezésekben két helyettesítő változó van a dinamikus lekérdezések végrehajtásához: %qstr% és %morefilters%.
+
+A lekérdezés tartalmazhat varázsszavakat. Ezek % karakterekkel vannak elválasztva. Ezeket dinamikusan valódi SQL karakterláncokkal helyettesíti az OBM SQL-értelmező.
+Egyes modulok is generálhatnak ilyen varázsszavakat!
  
 .. code-block:: SQL
  
