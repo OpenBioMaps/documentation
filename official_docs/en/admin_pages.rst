@@ -10,11 +10,20 @@ Administrative functions can be delegated to user groups.
 
 .. _database-columns:
 
-Database columns
-----------------
-Add new columns to a table and manage tables: assign OBM meanings to the columns.
+Database tables and columns
+---------------------------
 
-    - data: general
+[web] -> [profile] -> [project administration] -> [database table management]
+
+We can create a SQL table that OBM registers to our project and creates the default OBM columns in it. The table name should not contain accented characters, spaces or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
+
+Only tables registered here can be used in the OBM interface (map display, form use, text queries)!
+
+Here, you can set which columns from each table should be available for form creation and queries in the web interface. 
+
+Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number and location columns. For the location column, the X,Y coordinate column and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species name, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to "data" type.
+
+    - data: for general purpose columns
     - spatial geometry: this column can be used for map creation
     - scientific species name: this column can be used in taxon management
     - alternative names: this column can be used in taxon management
@@ -25,12 +34,18 @@ Add new columns to a table and manage tables: assign OBM meanings to the columns
     - citing: used in summary functions
     - attachment: file attachments column
     - UTM Zone: used in spatial geometry creation
-    
-The "comment field" should contain descriptions of the contents of the columns (metadata) and in some cases may have a regulatory role. For the obm_geometry column, you can specify the srid of the geometry column in the comment field, which will determine the stored srid of the uploaded data. The value entered must be in the format `srid: 4326` and stored in biomaps / header_names / f_srid and used by the application in the global variable SRID_C.
 
-In the obm_id column, you can specify whether the rules table should be used like this: use_rules: 1 This can only be changed with master access.
+The 'comment field' should contain descriptions of the content of the columns (metadata) and may also have a regulatory role in some cases. In the case of the obm_geometry column, the comment field can be used to specify the geometry column's srid, which will define the stored srid of the uploaded data. The value entered must be in the format `srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
 
-In both cases, the SET prefix is automatically added to the comment field, which must be deleted for the change to take effect. This is so that these parameters cannot be accidentally changed.
+For the obm_id column, you can specify whether the rules table should be used as follows: use_rules:1 This can only be modified with master access.
+
+In both cases, the SET prefix is automatically added in the comment field and must be cleared in order to validate the change. This is done to prevent accidental modification of these parameters.
+
+An SQL console is available at the top of the page, which can only be used with operator status and after separate authentication.
+
+Also available here is a drop-down list of all the tables that start with the name of our project in the SQL database. Of these, the ones marked in red are not handled by the OBM interface because they are not registered as tables accessible to OBM.
+
+Views management is mainly used to serve a specific function, namely to replace one of our data tables with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
 
 
 Groups
