@@ -45,8 +45,11 @@ Upload forms
 
 Functions
 ---------
-Manage optional SQL functions and triggers:
+Some pre-built triggers can be turned on and off here, and the associated functions can be edited.
 
+You can also view the status of all triggers and SQL Rules associated with the selected table.
+
+Built-in triggers:
     - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
     - Taxon name auto update: updates the data table on taxon table updating,
     - History: create history lines in the "history table" after updating and delete rows,
