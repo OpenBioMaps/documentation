@@ -8,13 +8,25 @@ Adatbázis táblák és oszlopok
 
 [web] -> [profile] -> [Projektadminisztráció] -> [adatbázis tábla kezelés]
 
-Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket. Kerüljük a nagybetűk használatát is. A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
+Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket! Kerüljük a nagybetűk használatát is! A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
 
-Az OBM felületen csak a regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)
+Az OBM felületen csak az itt regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)!
 
 Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
 
-Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve ill. ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
+Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, hogy olyan oszlopok amiket egyes modulok használnak anélkül, hogy tudnák mi az oszlop pontos neve illetve ugyanilyen alapon metakeresésekben is elérhetőek. Ilyen kitüntetett oszlopok a fajnév, dátum, adatgyüjtő, példányszám és hely oszlopok. A hely oszlopnál külön megadható az X,Y koordináta oszlop és a postgres geometria oszlop is. Dátumnál megadható több dátum oszlop is, adatgyűjtőnél szintén több oszlop is megadható. Fajnévél külön megadható a tudományos és nemzeti nevet tartalmazó oszlop ha van ilyen. Minden egyéb oszlop "adat" típusúra kell beállítani.
+
+    - adat: általános célú oszlopokra
+    - térbeli geometria: ez az oszlop térképek készítéséhez használható.
+    - tudományos fajnév: ez az oszlop a taxonok kezelésében használható.
+    - alternatív nevek: ez az oszlop a taxonok kezelésében használható.
+    - dátum ez az oszlop a dátumszűrőkben használható
+    - egyedek száma: összefoglaló funkciókban használható
+    - földrajzi szélesség: a földrajzi hosszúsággal együtt használható a térgeometria létrehozásához
+    - földrajzi hosszúság: a földrajzi szélességgel együtt használható térbeli geometria létrehozásához
+    - idézés: összefoglaló funkciókban használható
+    - melléklet: fájl mellékletek oszlop
+    - UTM zóna: a térgeometria létrehozásakor használható.
 
 A "megjegyzés mező" az oszlopok tartalmára vonatkozó leírásokat kell tartalmazzon (meta adatok), továbbá egyes esetekben szabályzó szerepe is lehet. Az obm_geometry oszlop esetén a megjegyzés mezőbe lehet megadni a geometria oszlop srid-ját, amit a feltöltött adatok tárolt srid-ját fogja meghatározni. Beírt értéket `srid:4326` formátumba kell megadni és a biomaps/header_names/f_srid helyen kerül eltárolásra és az alkalmazás az SRID_C globális változóban használja.
 
@@ -23,12 +35,18 @@ Az obm_id oszlopnál megadható, hogy legyen-e a rules tábla használva így: u
 Mindkét esetben az megjegyzés mezőben automatikusan odakerül a SET előtag, amit ki kell törölni, hogy érvényesítetni lehessen a módosítást. Ez azért van így, hogy ne lehessen véletlenül módosítani ezeket a paramétereket.
 
 A lap tetején elérhető egy SQL konzol, ami csak üzemeltetői státusszal és külön authentikáció után használható.
-Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, azt nem kezeli az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
+Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, amit nem kezel az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
+A Nézetek kezelése elsősorban egy speciális funkció kiszolgálására szolgál, mégpedig arra, hogy egy adattáblánkat egy Nézettel helyettesítsük. Ilyen esetben a rendszer létrehoz az alaptábla nevével azonos Schémát a projektünk számára és oda helyezi át az eredeti táblánkat, amelyek kezeléséhez a megfelelő INSERT/UPDATE/DELETE Rule-okat is létrehozza. Ez a funkció akkor lehet hasznos, ha nagy adattáblánk van és vannak olyan folyatok, vagy triggerek, amelyek használata már túl lassú, vagy egyes specifikus felhasználó igények kielégítésére egyedi változatokat akarunk létrehozni az adattáblánkból. 
+
+A tábláinkhoz további oszlopokat is tudunk itt hozzáadni. Az oszlopk nevében ne legyenek üres karakterek, nagy betűk és kötőjelek sem!
+
+.. _data-access:
 
 Adat hozzáférések
 -----------------
+A beállított hozzáférési szabályok és azok munkaállapotának áttekintése.
 
 [web] -> [profile] -> [Projektadminisztráció] -> [adat hozzáférés]
 
@@ -37,7 +55,7 @@ Adat hozzáférések
 A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
 
 
-.. _admin-group-access:
+.. _administrative-access:
 
 Adminisztratív hozzáférések
 ---------------------------
@@ -51,18 +69,24 @@ Csoportok
 Felhasználói csoportok létrehozása és felhasználók csoportokhoz hozzáadása itt történik. A felhasználói csoportok űrlapok, modulok és adminisztratív funkciókhoz való hozzáférés beállításban van jelentősége.
 
 
+.. _Species names:
+
 Faj nevek
 ---------
-Minden projektben be lehet állítani egy fajnév tábla használatát, amely automatikisan gyűjti ki a megadott adattáblából a fajneveket. Tudmányos és nemzeti nyelvi neveket is tud kezeleni. A fajnév táblát használja a fajnév kereső modul. A fajnév tábla lehetőv teszi szinoním nevek használatát. 
+Taxontáblák kezelőfelülete.
 
-A fajnév tábla elnevezése mindig a projektnév_taxon formájú, amelyben legalább a következő oszlopok szerepelnek: meta (szóközök nélküli fajnév), word (fajnév ahogy az adattáblában szerepel), lang (fajnevet tartalmazó oszlop neve), taxon_id (szinoním, nemezti és tudományos fajneveket egy faj összekötő egyedi belső azonosító),	status (elfogadott tudományos [1], szinoním tudományos [2], nemzeti név [3], hibás [4], nem kategorizált [0]),	modifier_id (az utolsó módosítást végző felhasználó azonosítója). További két oszlop kísérletesen szerepelhet: frequency (Lekérdezések száma az adott fajnévre - ez egy),	taxon_db (Az adott fajnév előfordulási gyakorisága az adott adattáblában). Ezen túl bármilyen egyéni kiegészítéssel bővíthető a taxon tábla, például védettség, taxon kategóriák.
+A fajnevek hozzárendelése a következő kategóriákhoz: [elfogadott név], [szinonimnév], [köznév], [helytelenül írt név].
+
+A taxontáblában (fajnév-adatbázisban) szereplő fajneveket a "taxonnév-javítás-háttérmunkák" és a keresőfelületek használják.
 
 Ezen az adminisztratív lapon történik a taxon tábla lekérdezése és karbantartása.
 
 
+.. _Interrupted uploads:
+
 Felfüggesztett adatfeltöltések
 ------------------------------
-A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen. 
+A felhasználók elmentett és be nem fejezett fájl vagy űrlapos adat feltöltései találhatóak meg itt. A feltöltéseket betöltve azok folytathatóak vagy el is lehe vetni őket. Többnyire kitörlhetőek ezek a megszakított feltöltések!
 
 .. _Upload forms:
 
@@ -83,7 +107,16 @@ Csatolt fájlként feltöltött képek és egyéb állományok listája és keze
 
 Függvények
 ----------
-Táblatörténet, adat elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
+Néhány előre elkészített trigger itt be- és kikapcsolható, és a hozzájuk tartozó funkciók szerkeszthetők.
+
+A kiválasztott táblához kapcsolódó összes trigger és SQL-szabály állapotát is megtekintheti.
+
+Beépített triggerek:
+
+    - A taxonlista automatikus frissítése: A taxonszűrő által használt taxon-táblához hozzáadjuk a "tudományos nevet" és az "alternatív neveket",
+    - Taxonnév automatikus frissítése: frissíti az adattáblát a taxontábla frissítésekor,
+    - Előzmények: előzménysorok létrehozása az "előzménytáblában" a sorok frissítése és törlése után,
+    - Hozzáférési szabályok: új sor beszúrása után szabálysor létrehozása a "szabályok táblában". Az alkalmazott szabályok az űrlap beállításaiból származnak.
 
 .. _Map settings:
 
@@ -137,10 +170,15 @@ Itt lehet a projektre érvényes fordításokat megadni. A fordítások mindig a
 
 SQL lekérdezés beállítások szöveges és térképi lekérdezésekhez
 --------------------------------------------------------------
-Adatlekérdezésekhez és térképi megjelenítések SQL lekérdezésekkel valósulnak meg. Az SQL lekérdezések dinamikusan készülnek minden egyes felhasználói kérésre (például a térkép navigálás során). Ezen a felületen lehet a projektünkhoz tartozó SQL lekérdezés sablonokat beállítani. Amennyiben több adattáblához is szeretnénk független térképi felületet megjeleníteni akkor több lekérdezést kell megadnunk. Egy lekérdezést letilthatunk. Ha kiürítjük a lekérdezést és úgy mentjük el, akkor az kitörlődik.
-A lekérdezés vontakozhat csak térképre (alaptérképre vonatkozó lekérdezés). Ilyenkor a lekérdezés típusa "base", egyébként "query & base"
+Itt konfigurálhatja azokat az SQL-lekérdezéseket, amelyeket a Mapserver a térképadatok megjelenítéséhez, a webalkalmazás pedig a lekérdezések szöveges eredményeinek megjelenítéséhez használ.
+Ezek többnyire nem valódi SQL-parancsok, hanem az SQL-lekérdezések összeállítására szolgáló sablonok, közelítő SQL-szintaxissal.
 
-A lekérdezés sablonban a különleges helyettesítő karakterek % jellel vannak jelölve. Ezeket az OBM valós SQL kifejezésekre cseréli dinamikusan.
+A Mapserver/térkép fájlban a WMS rétegeknek tartalmazniuk kell egy DATA definíciós sort egy %query% helyettesítő karakterlánccal, hogy az itt definiált SQL sablon alapján dinamikusan generált SQL parancsot használhasson.
+
+Minden SQL-lekérdezést egy webtérkép-réteghez kell kapcsolni. Az utolsó oszlopban állíthatja be ezeket a kapcsolatokat. Az SQL-lekérdezésekben két helyettesítő változó van a dinamikus lekérdezések végrehajtásához: %qstr% és %morefilters%.
+
+A lekérdezés tartalmazhat varázsszavakat. Ezek % karakterekkel vannak elválasztva. Ezeket dinamikusan valódi SQL karakterláncokkal helyettesíti az OBM SQL-értelmező.
+Egyes modulok is generálhatnak ilyen varázsszavakat!
  
 .. code-block:: SQL
  
