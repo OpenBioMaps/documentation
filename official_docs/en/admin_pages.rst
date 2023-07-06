@@ -189,14 +189,16 @@ Raw version of mapfile.  See the mapserver documentation for updating this file.
 
 Members
 -------
-Project member management interface. Here you can see the group memberships of the users as well. The users' system state [admin, user, banned] can be set here. In addition, you can also access the user's profile page from here where you can also change the profile (https://fontawesome.com/v4.7.0/icon/user-secret). 
+List of members registered in the project. You can change your user status here. These are Normal, Operator, Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
+Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<admin-group-access>`.
+
+Members' group assignments can also be modified here, but a more convenient interface is Group Manager.
+
+The member name is a reference in this interface. Following this link will take you to the user's profile page. With administrative privileges, a tree-user-secret icon (https://forkaweso.me/Fork-Awesome/icon/user-secret/) will appear in the tab title bar - top right. Clicking on this will take you to another user's profile using your own user login details. 
 
 
-
-
-## Message templates
-
-
+Message templates
+-----------------
 The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short description.
 
 On this page, global templates can be overridden by their local version, by selecting 
@@ -213,8 +215,8 @@ of the template.
 
 New templates for custom modules or jobs can also be defined here.
 
-### Global variables
-
+Global variables
+................
 * `%PROJECT_TABLE%` - the name of the project
 * `%PROJECT_TITLE%` - the short description of the project
 * `%PROJECT_DESCRIPTION%` - the long description of the project
@@ -224,8 +226,8 @@ New templates for custom modules or jobs can also be defined here.
 * `%DOMAIN%` - the domain name defined in the "projects" table
 * `%PROTOCOL%` - the protocol defined in the "projects" table 
 
-### Predefined templates
-
+Predefined templates
+....................
 User-related messages:
 * `welcome_to` - welcome to the project
 * `change_email_address` - a confirmation link, for changing the user's email address
