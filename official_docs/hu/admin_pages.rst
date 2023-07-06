@@ -42,7 +42,7 @@ A Nézetek kezelése elsősorban egy speciális funkció kiszolgálására szolg
 
 A tábláinkhoz további oszlopokat is tudunk itt hozzáadni. Az oszlopk nevében ne legyenek üres karakterek, nagy betűk és kötőjelek sem!
 
-.. _access:
+.. _data-access:
 
 Adat hozzáférések
 -----------------
