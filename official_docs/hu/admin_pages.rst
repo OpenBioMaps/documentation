@@ -59,10 +59,11 @@ A fajnév tábla elnevezése mindig a projektnév_taxon formájú, amelyben lega
 
 Ezen az adminisztratív lapon történik a taxon tábla lekérdezése és karbantartása.
 
+.. _Interrupted uploads:
 
 Felfüggesztett adatfeltöltések
 ------------------------------
-A felhasználók elmentett és be nem fejezett feltöltései elérhetők innen. 
+A felhasználók elmentett és be nem fejezett fájl vagy űrlapos adat feltöltései találhatóak meg itt. A feltöltéseket betöltve azok folytathatóak vagy el is lehe vetni őket. Többnyire kitörlhetőek ezek a megszakított feltöltések!
 
 .. _Upload forms:
 
