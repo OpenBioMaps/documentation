@@ -55,7 +55,7 @@ A beállított hozzáférési szabályok és azok munkaállapotának áttekinté
 A projekt általános hozzáférési beállításának megtekintése adat táblánként. Itt ez nem konfogurálható!
 
 
-.. _admin-group-access:
+.. _administrative-access:
 
 Adminisztratív hozzáférések
 ---------------------------
