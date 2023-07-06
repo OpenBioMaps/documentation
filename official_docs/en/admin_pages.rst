@@ -87,7 +87,7 @@ Modules
 
 Interrupted uploads
 -------------------
-List of interrupted/saved imports of the whole project. Admins can load these imports.
+Users' saved and unfinished file or form data uploads can be found here. Once uploaded, they can be resumed or discarded. Most of these interrupted uploads can be deleted!
 
 
 File manager
