@@ -94,9 +94,15 @@ List of uploaded attachments. Attachments can be managed here. There is a possib
 
 SQL query settings
 ------------------
-SQL setting for map and text quieries.
+Here you can configure the SQL queries that Mapserver will use to display the map data and the web application will use to display the text results of the queries.
+These are mostly not real SQL commands, but templates for SQL query assembly with approximate SQL syntax.
 
-The query can contain magic-words. Some magic-word used my modules. The magic-words marked with % characters and replaced by the query creator with something valid SQL string.
+In the Mapserver/map file, WMS layers must contain a DATA definition line with a %query% substitution string to use a dynamically generated SQL command based on the SQL template defined here.
+
+All SQL query should be connected with one web maps layer. In the last column you can set these connections. In the SQL queries there are two substitute varibles to perform dymaic queries: %qstr% and %morefilters%.
+
+The query may contain magic words. These are delimited by % characters. These will be dynamically replaced by real SQL strings in the OBM SQL interpreter.
+Some modules may also generate such magic words!
  
 .. code-block:: SQL
  
@@ -112,7 +118,8 @@ The query can contain magic-words. Some magic-word used my modules. The magic-wo
     WHERE %geometry_type% %envelope% %qstr%
 
 Use %F% and an alias name around the FROM table. It is necessary to split the query template.
-If you want join an other table use the %J% around the JOIN statement. E.g.
+
+If you want to join another table use the %J% around the JOIN statement. E.g.
 
 .. code-block:: SQL
 
@@ -124,7 +131,7 @@ If you want join an other table use the %J% around the JOIN statement. E.g.
         %morefilter%
     WHERE %envelope% %qstr%
 
-Building more compplex queries also possible:
+Building more complex queries is possible:
 
 .. code-block:: SQL
 
@@ -166,15 +173,15 @@ Project member management interface. Here you can see the group memberships of t
 
 The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short description.
 
-On this page global templates can be overridden by their local version, by selecting 
-a template -> editing -> and saving it. The templates can have variables which 
+On this page, global templates can be overridden by their local version, by selecting 
+a template -> editing -> and saving it. The templates can have variables that 
 are substituted with the provided strings, at the moment of sending the message. 
-For each template these variables are defined in the code. 
+For each template, these variables are defined in the code. 
 
 Variables are marked with %var%. A few global variables are defined, which can 
 be used anywhere in the template. 
 
-Including other templates are supported. For example if you define a footer for 
+Including other templates are supported. For example, if you define a footer for 
 your project, this can be included by appending the @footer@ string to the end 
 of the template.
 
@@ -193,7 +200,7 @@ New templates for custom modules or jobs can also be defined here.
 
 ### Predefined templates
 
-User related messages:
+User-related messages:
 * `welcome_to` - welcome to the project
 * `change_email_address` - a confirmation link, for changing the user's email address
 * `dropmyaccount` - Confirmation email of dropping the account
@@ -248,7 +255,7 @@ Background jobs
 
 OBM can perform tasks in the background. You can download background process scripts from the git repo available from the page and modify them or write a completely new one based on the template script. The shell processes have a run and a lib file. The scheduler calls our run file which, in the case of a standard php job, executes the tasks in the lib file.
 
-The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
+The scheduler is cron-like, you have to fill in a minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
 
 In order to run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
 
