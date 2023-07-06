@@ -67,6 +67,12 @@ Access
 ------
 Overview of set access rules and their work statuses.
 
+[web] -> [profile] -> [project administration] -> [data access]
+
+[system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+
+View the general access setting of the project per data table. This is not configurable here!
+
 Translations
 ------------
  
