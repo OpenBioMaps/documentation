@@ -69,13 +69,18 @@ Csoportok
 Felhasználói csoportok létrehozása és felhasználók csoportokhoz hozzáadása itt történik. A felhasználói csoportok űrlapok, modulok és adminisztratív funkciókhoz való hozzáférés beállításban van jelentősége.
 
 
+.. _Species names:
+
 Faj nevek
 ---------
-Minden projektben be lehet állítani egy fajnév tábla használatát, amely automatikisan gyűjti ki a megadott adattáblából a fajneveket. Tudmányos és nemzeti nyelvi neveket is tud kezeleni. A fajnév táblát használja a fajnév kereső modul. A fajnév tábla lehetőv teszi szinoním nevek használatát. 
+Taxontáblák kezelőfelülete.
 
-A fajnév tábla elnevezése mindig a projektnév_taxon formájú, amelyben legalább a következő oszlopok szerepelnek: meta (szóközök nélküli fajnév), word (fajnév ahogy az adattáblában szerepel), lang (fajnevet tartalmazó oszlop neve), taxon_id (szinoním, nemezti és tudományos fajneveket egy faj összekötő egyedi belső azonosító),	status (elfogadott tudományos [1], szinoním tudományos [2], nemzeti név [3], hibás [4], nem kategorizált [0]),	modifier_id (az utolsó módosítást végző felhasználó azonosítója). További két oszlop kísérletesen szerepelhet: frequency (Lekérdezések száma az adott fajnévre - ez egy),	taxon_db (Az adott fajnév előfordulási gyakorisága az adott adattáblában). Ezen túl bármilyen egyéni kiegészítéssel bővíthető a taxon tábla, például védettség, taxon kategóriák.
+A fajnevek hozzárendelése a következő kategóriákhoz: [elfogadott név], [szinonimnév], [köznév], [helytelenül írt név].
+
+A taxontáblában (fajnév-adatbázisban) szereplő fajneveket a "taxonnév-javítás-háttérmunkák" és a keresőfelületek használják.
 
 Ezen az adminisztratív lapon történik a taxon tábla lekérdezése és karbantartása.
+
 
 .. _Interrupted uploads:
 
