@@ -83,7 +83,16 @@ Csatolt fájlként feltöltött képek és egyéb állományok listája és keze
 
 Függvények
 ----------
-Táblatörténet, adat elérési szabályozás és fajnév táblák trigger függvényei itt megtekinthetőek és ki-be kapcsolhatóak.
+Néhány előre elkészített trigger itt be- és kikapcsolható, és a hozzájuk tartozó funkciók szerkeszthetők.
+
+A kiválasztott táblához kapcsolódó összes trigger és SQL-szabály állapotát is megtekintheti.
+
+Beépített triggerek:
+
+    - A taxonlista automatikus frissítése: A taxonszűrő által használt taxon-táblához hozzáadjuk a "tudományos nevet" és az "alternatív neveket",
+    - Taxonnév automatikus frissítése: frissíti az adattáblát a taxontábla frissítésekor,
+    - Előzmények: előzménysorok létrehozása az "előzménytáblában" a sorok frissítése és törlése után,
+    - Hozzáférési szabályok: új sor beszúrása után szabálysor létrehozása a "szabályok táblában". Az alkalmazott szabályok az űrlap beállításaiból származnak.
 
 .. _Map settings:
 
