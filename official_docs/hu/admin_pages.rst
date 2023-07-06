@@ -26,9 +26,11 @@ A lap tetején elérhető egy SQL konzol, ami csak üzemeltetői státusszal és
 Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, azt nem kezeli az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
 
+.. _access:
 
 Adat hozzáférések
 -----------------
+A beállított hozzáférési szabályok és azok munkaállapotának áttekintése.
 
 [web] -> [profile] -> [Projektadminisztráció] -> [adat hozzáférés]
 
