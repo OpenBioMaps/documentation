@@ -77,6 +77,7 @@ Taxon table management interface.
 Assign species names to the following categories: [accepted name], [synonym name], [common name], [mispelled name]
 The species names in the taxon table (species name database) are used by the "taxon-name-repair-background-jobs" and the search interfaces.
 
+.. _data-access:
 
 Access
 ------
