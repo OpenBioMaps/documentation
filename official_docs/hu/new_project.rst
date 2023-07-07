@@ -12,6 +12,12 @@ A projekt alapítás lépésee a következők:
 - Szükséges egy részletes leírást is írni arról, hogy mi ez a projekt, mi a célja. Ez is módosítható később.
 - Meg kell határozni az adatok elérésének és módosítának a lehetőségeit, ami azt határozza meg, hogy kik tudják lekérdezni és módosítani az adatokat. Zárt projektek esetében az adatok elérésének változatos     szinjei a projekt létrehozása után. Később ez a beállítás is módosítható.
 
+A projekt alapításával létrejön egy adattábla (az általunk megadott névvel), amelyben csak az OBM számára kötelező mezők vannak benne. Ez lesz a projektünk alaptáblája. A projekt alapítás során ezen tábla számára definálhatunk tetszőleges adatmezőket, de ezt később az projektünkben is el tudjuk végezni egy hasonló felületen.
+
+Meg kell adjuk a térképi oldal alapértelmezett középpontját, amit szintén tudunk később módosítani.
+
+Végezetül meg kell adjuk a projekt alaptáblájának SRID-ját (https://spatialreference.org/), amely alapértelmezetten WGS84 (epsg 4326).
+
 Ezen űrlap kitöltése és elküldése után a projekt kísérleti státusszal jön létre. Ennek a projekt működése szempontjából nincs jelentősége, inkább csak a felhasználók tájékoztatására szolgál.
 
 Az ebben a projektben érvényes felhasználó nevével és jelszavával tud majd az újonnan létrejött projektbe is belépni.
