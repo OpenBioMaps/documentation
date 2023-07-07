@@ -1,26 +1,45 @@
+.. _user-interfaces:
+
 Felhasználói felületek
 **********************
+
+**Contents:**
+
+.. toctree::
+   :maxdepth: 2
+
+   profile.rst
+   invitations.rst
+   invitations.rst
+   new_project.rst
+   admin_pages.rst
+   modules.rst
+   upload_forms.rst
+   data_query_interface.rst
+
 
 Bejelentkezés
 =============
 
 Elfelejtett jelszó
 ------------------
-Az email cím megadásával itt lehet egy ideiglenes belépési hivatkozást kérni.
+A regisztrált email címünk megadásával itt lehet egy ideiglenes belépési hivatkozást kérni, amit emailben kapunk meg a rendszertől.
 
 Profil lap
 ==========
-:doc:`profil lap beállításai <../profile>`
+:doc:`Saját profilunkhoz kapcsolódó beállítások <../profile>`.
 
 
 Meghívások
 ==========
-Meghívó leveleket lehet kiküldeni bárkinek. Egyszerre tipikusan 11 aktív meghívásunk lehet, habár ez a szám projekt szinten módosítható (local_vars.php.inc INVITATIONS). Ha ez az érték 0-ra van állítva, csak a projekt gazdák tudnak meghívókat küldeni.
+Aléprtelemezetten minden tag meg tud hívni további tagokat.
+
+:doc:`További információkért látogasd meg a meghívások oldalt <../invitations>.
 
 
 Projekt adminisztráció
 ======================
-:doc:`adminisztrációs beállítások <../admin_pages>`
+:doc:`Projekt szintű beállítások <../admin_pages>` helye. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
 
 
 Üzenetek
@@ -42,7 +61,7 @@ A projekt adminisztrátorok az egyéni üzeneken kívül csoportoknak is küldhe
 Felhasználói beállítások
 ------------------------
 
-A felhasználók beállíthatják az email értesítéseket a különböző üzenettípusokra. Ezt a profil oldalon lévő kapcsolókkal lehe megtenni.
+A felhasználók beállíthatják az email értesítéseket a különböző üzenettípusokra. Ezt a profil oldalon található kapcsolókkal lehet megtenni.
 
 További tervek
 --------------
@@ -54,7 +73,9 @@ További tervek
 Új adatbázis alapítása
 ======================
 
-Bárki alapíthat új adatbázist, bár ez egyes szervereken technikai okok miatt csak rendszergadai segítséggel fejezhető be.
+Bármelyik regisztrált tag alapíthat egy új adatbázis projektet, amelynek ő lesz a tulajdonosa és teljesen független lesz attól a projekttől amelyben alapították.
+
+:doc:`További információk az adatbázis alapításról<../new_project>`
 
 
 Térképi lap
