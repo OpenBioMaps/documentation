@@ -1,3 +1,8 @@
+.. _invitations:
+
+Meghívások
+**********
+
 Alapértelmezetten minden bejelentkezett felhasználó tud meghívót küldeni a projekthez/adatbázishoz való csatlakozáshoz.
 
 A meghívó a kiválaszott nyelven kerül elküldésre a meghívott személynek. Lehetőség van személyes üzenetet is hozzáadni az automatikusan generált meghívó üzenethez.
