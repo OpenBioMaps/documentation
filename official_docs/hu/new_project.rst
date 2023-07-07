@@ -3,7 +3,7 @@
 
 Új adatbázis projektet minden adatábzis tag alapíthat.
 
-A létrehozott új adatbázis projekt teljesen független lesz a jelenlegi projekttől és az alapító lesz a tulajdonosa és egyetlen felhazsnálója mindaddig amíg újabb tagokat nem hív meg a projektjébe.
+A létrehozott új adatbázis projekt teljesen független lesz a jelenlegi projekttől és az alapító lesz a tulajdonosa és egyetlen felhasználója mindaddig amíg újabb tagokat nem hív meg a projektjébe.
 
 A projekt alapítás lépésee a következők:
 
