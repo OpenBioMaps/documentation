@@ -21,4 +21,3 @@
    mobile_application.rst
    developer_hints.md
    faq.rst
-
