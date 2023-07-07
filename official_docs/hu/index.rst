@@ -15,12 +15,10 @@
    introduction.rst
    tutorial.rst
    user_interface.rst
-   profile.rst
-   upload_data.rst
-   data_access.rst
    api.rst
-   admin_pages.rst
-   modules.rst
-   server_install.rst
+   server_install.md
+   pwa.md
+   mobile_application.rst
+   developer_hints.md
    faq.rst
 
