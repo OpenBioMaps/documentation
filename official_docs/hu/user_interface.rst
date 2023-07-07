@@ -10,7 +10,6 @@ Felhasználói felületek
 
    profile.rst
    invitations.rst
-   invitations.rst
    new_project.rst
    admin_pages.rst
    modules.rst
