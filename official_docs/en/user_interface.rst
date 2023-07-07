@@ -130,7 +130,7 @@ Opening page
 ============
 Custom landing pages can be created for projects. There are templates and pre-built functions for this, but in fact this landing page can be anything. Examples:
 
-... figure:: images/nyitolap_1.jpg
+.. figure:: images/nyitolap_1.jpg
    :scale: 50 %
    :alt: map query page
    
@@ -169,12 +169,11 @@ Custom landing pages can be created for projects. There are templates and pre-bu
    Project embedded in a landing page interface
 
 
-Error submission
-================
-The bug submission feature is available from the profile page and the upload page. Clicking on the posterized Tinder bug in the bottom right corner of the screen will bring up the bug submission interface.
+Error reporting
+===============
+The bug submission feature is available from the profile page and the upload page. Clicking on the bug in the bottom right corner of the screen will bring up the bug submission interface.
 
-
-... figure:: images/hiba_1.jpg
+.. figure:: images/hiba_1.jpg
    :scale: 100 %
    :alt: hiding beetle
    
