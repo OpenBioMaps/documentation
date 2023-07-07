@@ -174,13 +174,13 @@ Error submission
 The bug submission feature is available from the profile page and the upload page. Clicking on the posterized Tinder bug in the bottom right corner of the screen will bring up the bug submission interface.
 
 
-... figure:: images/fault_1.jpg
+... figure:: images/hiba_1.jpg
    :scale: 100 %
    :alt: hiding beetle
    
    Bug in the bottom right corner
 
-.. figure:: images/fault_2.jpg
+.. figure:: images/hiba_2.jpg
    :scale: 100 %
    :alt: Error sending interface
    
