@@ -14,6 +14,7 @@ Welcome to OpenBioMaps' documentation!
 
    introduction.rst
    tutorials.rst
+   user_interface.rst
    using_web_application.rst
    api.rst
    server_install.md
