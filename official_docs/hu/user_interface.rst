@@ -23,7 +23,7 @@ Meghívások
 ----------
 Aléprtelemezetten minden tag meg tud hívni további tagokat.
 
-:doc:`További információkért látogasd meg a meghívások oldalt <../invitations>.
+:doc:`További információkért látogasd meg a meghívások oldalt <../invitations>`.
 
 Üzenetek
 --------
