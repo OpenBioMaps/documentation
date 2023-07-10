@@ -122,49 +122,6 @@ Adatbázis összefoglaló oldal
 Minden adatbázishoz tartozik egy összefoglaló oldal ami tartalmazza az adatbázis leírását és kapcsolati adatokat.
 
 
-Nyitó oldal
-===========
-Egyéni nyitó oldal készíthető a projektekhez. Ehhez vannak sablonok és előre elkészített funkciók, de tulajdonképpen ez a nyitó oldal bármilyen lehet. Példák:
-
-.. figure:: images/nyitolap_1.jpg
-   :scale: 50 %
-   :alt: térképes lekérdező oldal
-   
-   Nincs külön nyitóoldal beállítva
-
-.. figure:: images/nyitolap_2.jpg
-   :scale: 50 %
-   :alt: dobozos nyitóoldal
-   
-   Térképpel a fő helyen
-
-.. figure:: images/nyitolap_3.jpg
-   :scale: 50 %
-   :alt: dobozos nyitóoldal
-   
-   Képgalériával a fő helyen
-
-.. figure:: images/nyitolap_4.jpg
-   :scale: 50 %
-   :alt: dobozos nyitóoldal
-   
-   Teljes képernyős beuszós képgalériával
-
-
-.. figure:: images/nyitolap_5.jpg
-   :scale: 50 %
-   :alt: dobozos nyitóoldal
-   
-   Több dobozos nyitóoldal feltöltési történettel a fő helyen
-
-
-.. figure:: images/nyitolap_6.jpg
-   :scale: 50 %
-   :alt: térképes nyitóoldal leaflet térképpel
-   
-   Nyitóoldali felületbe ágyazott projekt
-
-
 Hiba beküldés
 =============
 A hibabeküldés funkció a profil oldalról és a feltöltési oldalról érhető el. A képernyő jobb alsó sarkából benéző poszogó taplóbogárra kattintva jelenik meg a hiba beküldő felület.
