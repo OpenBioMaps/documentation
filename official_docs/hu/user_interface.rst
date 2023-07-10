@@ -3,17 +3,6 @@
 Felhasználói felületek
 **********************
 
-**Contents:**
-
-.. toctree::
-   :maxdepth: 1
-
-   profile.rst
-   admin_pages.rst
-   new_project.rst
-   data_query_interface.rst
-   welcome_page.rst
-
 
 Bejelentkezési oldal
 ====================
@@ -122,6 +111,9 @@ Adatbázis összefoglaló oldal
 ============================
 Minden adatbázishoz tartozik egy összefoglaló oldal ami tartalmazza az adatbázis leírását és kapcsolati adatokat.
 
+Nyitó oldal
+===========
+:doc:`Változatos nyitó oldalak állíthatóak be minden projekthez <../welcome_page>`.
 
 Hiba beküldés
 =============
