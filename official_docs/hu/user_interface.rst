@@ -24,6 +24,7 @@ A regisztrált email címünk megadásával itt lehet egy ideiglenes belépési 
 Regisztráció
 ------------
 
+
 Profil lap
 ==========
 :doc:`Saját profilunkhoz kapcsolódó beállítások <../profile>`.
@@ -54,11 +55,9 @@ Bármelyik regisztrált tag alapíthat egy új adatbázis projektet, amelynek ő
 :doc:`További információk az adatbázis alapításról<../new_project>`
 
 
-
 Projekt adminisztráció
 ======================
 :doc:`Projekt szintű beállítások <../admin_pages>` helye. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
-
 
 
 Térképi lap
@@ -77,7 +76,6 @@ Tetszőleges szöveges lekérdezési lehetőségek állíthatóak be minden proj
 lekérdezés eltárolása
 ---------------------
 Egy lekérdezés eredménye eltárolható a szerveren, amely egy tartós azonsítóval hivatkozható. Ezekhez az azonosítókhoz DOI azonosítót lehet kérni. A lekérdezés is eltárolható, amivel meg lehet ismételni a lekérdezést.
-
 
 
 Adat feltöltés
@@ -109,17 +107,20 @@ Adatfeltöltés történeti lap
 ---------------------------
 Minden egyes adatfeltöltés metaadata automatikusan rögzítésre kerül, amely elérhető a felhasználók profil lapjáról, vagy adatok adatlapjáról is.
 
+
 Adat lap
 ========
 Minden egyes adatrekordnak van egy saját adatlapja, amely tartalmaz minden kapcsolódó metaadatot és a rekord adatmezőit. Beállításoktól függően különféleképpen korlátozható az elérhető adattartalom.
 
 Adat történeti lap
-==================
+------------------
 Minden egyes adatrekordnak van egy saját adattörténeti adatlapja, ahol megtekinthetőek a rekord változásai. Ez a funkció csak akkor működik, ha projekt beállításokban a projekt gazda engedélyezte az adatváltzás rögzítéseket.
+
 
 Adatbázis összefoglaló oldal
 ============================
 Minden adatbázishoz tartozik egy összefoglaló oldal ami tartalmazza az adatbázis leírását és kapcsolati adatokat.
+
 
 Nyitó oldal
 ===========
