@@ -75,19 +75,15 @@ A feltöltés folyamatában bármikor lehet mentést készíteni és le is lehet
 
 Fájl feltöltés
 --------------
-      Támogatott formátumok: 
+Támogatott formátumok: 
         
-        - Egyszerű szöveges állományok: csv, dsv, tsv, json
+- Egyszerű szöveges állományok: csv, dsv, tsv, json
+- Kép fájlok: jpg, tiff (Exif oszlopok kerülnek kiolvasásra)
+- Táblázatkezelő formátumok: ods (Libreoffice), xls (Excel), xlsx (Excel)
+- Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
+- Genetikai adatfájlok: fasta
         
-        - Kép fájlok: jpg, tiff (Exif oszlopok kerülnek kiolvasásra)
-        
-        - Táblázatkezelő formátumok: ods (Libreoffice), xls (Excel), xlsx (Excel)
-        
-        - Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
-        
-        - Genetikai adatfájlok: fasta
-        
-      Bármilyen itt felsorolt fájl importálható URL cím megadasával is (egyszerű GET lekérdezés)
+Bármilyen itt felsorolt fájl importálható URL cím megadasával is (egyszerű GET lekérdezés)
 
 Webes űrlap kitöltés
 --------------------
@@ -96,8 +92,8 @@ Adatokat lehet egy webes űrlap segítségével is feltölteni. Tetszőleges sz�
 Külső alkalmazások
 ------------------
 
-    * API felület használata (pl.: mobil alkalmazás, R-csomag)
-    * SQL kapcsolat használata (pl.: QGIS)
+* API felület használata (pl.: mobil alkalmazás, R-csomag)
+* SQL kapcsolat használata (pl.: QGIS)
 
 
 Adat exportálás a feltöltési folyamatból
