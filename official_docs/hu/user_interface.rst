@@ -6,46 +6,37 @@ Felhasználói felületek
 **Contents:**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    profile.rst
-   invitations.rst
-   new_project.rst
    admin_pages.rst
-   modules.rst
-   upload_forms.rst
+   new_project.rst
    data_query_interface.rst
 
 
-Bejelentkezés
-=============
+Bejelentkezési oldal
+====================
 
 Elfelejtett jelszó
 ------------------
 A regisztrált email címünk megadásával itt lehet egy ideiglenes belépési hivatkozást kérni, amit emailben kapunk meg a rendszertől.
 
+Regisztráció
+------------
+A regisztrációhoz meghívó szükséges, ami lehet a bejelentkezési lapról elérhető űrlapon keresztül is lehet igényelni. Továbbá projekt beállításaitól függően lehetőség van Google vagy egy egyéb OpenID alapú regisztrációra is.
+
 Profil lap
 ==========
 :doc:`Saját profilunkhoz kapcsolódó beállítások <../profile>`.
 
-
 Meghívások
-==========
+----------
 Aléprtelemezetten minden tag meg tud hívni további tagokat.
 
 :doc:`További információkért látogasd meg a meghívások oldalt <../invitations>.
 
-
-Projekt adminisztráció
-======================
-:doc:`Projekt szintű beállítások <../admin_pages>` helye. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
-
-
 Üzenetek
-========
-Üzenet típusok
---------------
-
+--------
 Belső üzenetek olvasása és küldése itt történik. Üzenetküldő rendszerünkben négy üzenettípust külöböztetünk meg:
 
 * Rendszerüzenetet a projekt vagy a szerver valamely folyamata küldhet az egyéni felhasználónak. Ilyen üzenet lehet például egy validálási háttérfolyamat üzenete.
@@ -57,24 +48,16 @@ Az üzenetek oldal minden bejelentkezett felhasználó számára elérhető. Bá
 
 A projekt adminisztrátorok az egyéni üzeneken kívül csoportoknak is küldhetnek, valamit emailben értesíthetik a felhasználókat az üzenetekről.
 
-Felhasználói beállítások
-------------------------
-
-A felhasználók beállíthatják az email értesítéseket a különböző üzenettípusokra. Ezt a profil oldalon található kapcsolókkal lehet megtenni.
-
-További tervek
---------------
-
-* üzentekről napi összesített értesítés
-* válaszlehetőség üzenetkere és megjegyzésekre 
-
-
 Új adatbázis alapítása
-======================
-
+----------------------
 Bármelyik regisztrált tag alapíthat egy új adatbázis projektet, amelynek ő lesz a tulajdonosa és teljesen független lesz attól a projekttől amelyben alapították.
 
 :doc:`További információk az adatbázis alapításról<../new_project>`
+
+
+Projekt adminisztráció
+======================
+:doc:`Projekt szintű beállítások <../admin_pages>` helye. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
 
 
 Térképi lap
@@ -93,7 +76,6 @@ Tetszőleges szöveges lekérdezési lehetőségek állíthatóak be minden proj
 lekérdezés eltárolása
 ---------------------
 Egy lekérdezés eredménye eltárolható a szerveren, amely egy tartós azonsítóval hivatkozható. Ezekhez az azonosítókhoz DOI azonosítót lehet kérni. A lekérdezés is eltárolható, amivel meg lehet ismételni a lekérdezést.
-
 
 
 Adat feltöltés
@@ -119,11 +101,26 @@ Fájl feltöltés
 
 Webes űrlap kitöltés
 --------------------
+Adatokat lehet egy webes űrlap segítségével is feltölteni. Tetszőleges számú sort adhatunk hozzá a táblázatunkhoz feltöltéskor. Az adatok feltöltését gyorsíthatjuk különféle tömeges cellakitöltő funkciók használatával.
+
+Adatfeltöltés történeti lap
+---------------------------
+Minden egyes adatfeltöltés metaadata automatikusan rögzítésre kerül, amely elérhető a felhasználók profil lapjáról, vagy adatok adatlapjáról is.
+
+
+Adat lap
+========
+Minden egyes adatrekordnak van egy saját adatlapja, amely tartalmaz minden kapcsolódó metaadatot és a rekord adatmezőit. Beállításoktól függően különféleképpen korlátozható az elérhető adattartalom.
+
+Adat történeti lap
+------------------
+Minden egyes adatrekordnak van egy saját adattörténeti adatlapja, ahol megtekinthetőek a rekord változásai. Ez a funkció csak akkor működik, ha projekt beállításokban a projekt gazda engedélyezte az adatváltzás rögzítéseket.
 
 
 Adatbázis összefoglaló oldal
 ============================
 Minden adatbázishoz tartozik egy összefoglaló oldal ami tartalmazza az adatbázis leírását és kapcsolati adatokat.
+
 
 Nyitó oldal
 ===========

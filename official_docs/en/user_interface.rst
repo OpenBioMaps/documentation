@@ -6,46 +6,37 @@ User interfaces
 **Contents:**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    profile.rst
-   invitations.rst
-   new_project.rst
    admin_pages.rst
-   modules.rst
-   upload_forms.rst
+   new_project.rst
    data_query_interface.rst
 
 
-Log in
-======
+Log in page
+===========
 
 Forgotten password
 ------------------
 By entering your registered email address here you can request a temporary login link, which will be sent to you by email.
 
-Profile tab
-===========
+Registration
+------------
+Registration requires an invitation, which can be requested via the form available from the registration page. In addition, depending on your project settings, it is also possible to register using Google or another OpenID-based registration.
+
+Profile page
+============
 :doc:`Settings related to our profile <../profile>`.
 
-
 Invitations
-===========
+-----------
 Each member can invite additional members.
 
 :doc:`For more information, visit the invitations page <../invitations>.
 
-
-Project administration
-======================
-:doc:`Project level settings <../admin_pages>`. For example, upload forms and map settings, or user administration.
-
-
 Messages
-========
-Message types
---------------
-
+--------
 Internal messages are read and sent here. Our messaging system distinguishes between four message types:
 
 * A system message can be sent by a project or a server process to an individual user. Such a message could be, for example, a message from a background validation process.
@@ -57,24 +48,16 @@ The messages page is available to all logged in users. Anyone can send messages 
 
 In addition to individual messages, project administrators can also send messages to groups or notify users of messages by email.
 
-User settings
--------------
-
-Users can set up email notifications for different message types. This can be done using the options on the profile page.
-
-Additional plans
-----------------
-
-* daily aggregated notification of messages
-* reply option for message body and comments 
-
-
-creation of a new database
-==========================
-
+Creation of a new database
+--------------------------
 Any registered member can create a new database project, which he/she will own and will be completely independent from the project in which it was created.
 
 :doc:`More information about creating a database<../new_project>`
+
+
+Project administration
+======================
+:doc:`Project level settings <../admin_pages>`. For example, upload forms and map settings, or user administration.
 
 
 Map page
@@ -119,6 +102,19 @@ File upload
 
 Web form filling
 ----------------
+Data can also be uploaded using a web form. You can add any number of rows to your table when uploading. Data upload can be accelerated using various bulk cell upload functions.
+
+Data upload history page
+------------------------
+The metadata of each data upload is automatically recorded and can be accessed from the user's profile page or data sheet.
+
+Data sheet
+==========
+Each data record has its own data sheet, which contains all the associated metadata and data fields for the record. Depending on the settings, the available data content can be restricted in various ways.
+
+Data history page
+-----------------
+Each data record has its own data history sheet where you can view the changes to the record. This feature only works if the project host has enabled data change records in the project settings.
 
 
 Database summary page

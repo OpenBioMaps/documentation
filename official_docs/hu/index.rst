@@ -13,7 +13,7 @@
    :maxdepth: 2
 
    introduction.rst
-   tutorial.rst
+   tutorials.rst
    user_interface.rst
    api.rst
    server_install.md
