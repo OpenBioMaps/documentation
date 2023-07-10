@@ -95,9 +95,8 @@ Adatokat lehet egy webes űrlap segítségével is feltölteni. Tetszőleges sz�
 
 Külső alkalmazások
 ------------------
-    
+
     * API felület használata (pl.: mobil alkalmazás, R-csomag)
-    
     * SQL kapcsolat használata (pl.: QGIS)
 
 
