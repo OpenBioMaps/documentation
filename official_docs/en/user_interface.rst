@@ -23,7 +23,7 @@ Invitations
 -----------
 Each member can invite additional members.
 
-:doc:`For more information, visit the invitations page <../invitations>.
+:doc:`For more information, visit the invitations page <../invitations>`.
 
 Messages
 --------
@@ -93,6 +93,24 @@ File upload
 Web form filling
 ----------------
 Data can also be uploaded using a web form. You can add any number of rows to your table when uploading. Data upload can be accelerated using various bulk cell upload functions.
+
+External applications
+---------------------
+    
+    * Use of API interface (e.g. mobile app, R-package)
+    * Use SQL connection (e.g. QGIS)
+
+Export data from the upload process
+-----------------------------------
+During the data upload process and from the saved state of interrupted uploads, it is possible to export the data to a CSV file.
+
+Abort data upload
+-----------------
+The data upload process can be interrupted at any time from the web interface. A backup is automatically created every two minutes, but you can create a backup at any time by clicking on the Save button in the redundant menu bar. 
+
+Uploads that have been suspended can be restored by selecting them from the 'Suspended uploads' list on the profile page.
+
+Completed uploads are automatically deleted from the list.
 
 Data upload history page
 ------------------------
