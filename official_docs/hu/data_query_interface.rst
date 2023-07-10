@@ -1,20 +1,16 @@
-Spatial queries
-===============
+Térképi lekérdező oldal
+=======================
 
-map query
----------
+Térbeli lekérdezések
+--------------------
 
-
-Text queries
-============
-
-text query
-----------
+Szöveges lekérdezések
+---------------------
 
 
-save query
-==========
+Lekérdezések eltárolása
+-----------------------
 
 
-share query
-===========
+Lekérdezések megosztása
+-----------------------
