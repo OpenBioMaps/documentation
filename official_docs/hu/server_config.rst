@@ -1,5 +1,5 @@
-Szerver beállítás
-*****************
+Szerver beállítások
+*******************
 
 Az OpenBioMaps rendszerbeállításai a system_vars.php.inc fájlban találhatók. Ez a felügyelőn keresztül kezelhető.
 
