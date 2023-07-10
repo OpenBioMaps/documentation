@@ -23,6 +23,7 @@ By entering your registered email address here you can request a temporary login
 
 Registration
 ------------
+Registration requires an invitation, which can be requested via the form available from the registration page. In addition, depending on your project settings, it is also possible to register using Google or another OpenID-based registration.
 
 Profile page
 ============
