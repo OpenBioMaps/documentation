@@ -1,20 +1,16 @@
+Map query page
+==============
+
 Spatial queries
-===============
+---------------
 
-map query
----------
-
-
-Text queries
-============
-
-text query
+Text query
 ----------
 
 
-save query
-==========
+Save query
+----------
 
 
-share query
-===========
+Share query
+-----------
