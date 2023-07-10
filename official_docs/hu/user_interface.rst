@@ -93,6 +93,27 @@ Webes űrlap kitöltés
 --------------------
 Adatokat lehet egy webes űrlap segítségével is feltölteni. Tetszőleges számú sort adhatunk hozzá a táblázatunkhoz feltöltéskor. Az adatok feltöltését gyorsíthatjuk különféle tömeges cellakitöltő funkciók használatával.
 
+Külső alkalmazások
+------------------
+    
+    * API felület használata (pl.: mobil alkalmazás, R-csomag)
+    
+    * SQL kapcsolat használata (pl.: QGIS)
+
+
+Adat exportálás a feltöltési folyamatból
+----------------------------------------
+Az adatfeltöltési folyamat során és a megszakított feltöltések elmentett állapotából lehetőség van az adatok kiexportálására egy CSV fájlba.
+
+Adatfeltöltés megszakítása
+--------------------------
+Az adatfeltöltés folyamatát a webes felületen bármikor meg lehet szakítani. Két percenként automatikusan mentés készül, de feleső menü sávban található mentés gombbal bármikor készíthetünk mentést. 
+
+Az elmenett feltöltések a profil oldalon található "felfüggesztett adatfeltöltések" listából kiválasztva visszatölthetőek.
+
+A befejezett feltöltések a listából autómatikusan kitörlődnek.
+
+
 Adatfeltöltés történeti lap
 ---------------------------
 Minden egyes adatfeltöltés metaadata automatikusan rögzítésre kerül, amely elérhető a felhasználók profil lapjáról, vagy adatok adatlapjáról is.
