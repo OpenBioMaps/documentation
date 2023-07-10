@@ -3,17 +3,6 @@
 User interfaces
 ***************
 
-**Contents:**
-
-.. toctree::
-   :maxdepth: 1
-
-   profile.rst
-   admin_pages.rst
-   new_project.rst
-   data_query_interface.rst
-   welcome_page.rst
-
 
 Log in page
 ===========
@@ -121,6 +110,11 @@ Each data record has its own data history sheet where you can view the changes t
 Database summary page
 =====================
 Each database comes with a summary page containing a description of the database and contact details.
+
+
+Welcome page
+============
+:doc:`Variable welcome pages can be set for each project <../welcome_page>`.
 
 
 Error reporting
