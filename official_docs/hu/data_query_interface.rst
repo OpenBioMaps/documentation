@@ -1,16 +1,16 @@
-Map query page
-==============
+Térképi lekérdező oldal
+=======================
 
-Spatial queries
----------------
+Térbeli lekérdezések
+--------------------
 
-Text query
-----------
-
-
-Save query
-----------
+Szöveges lekérdezések
+---------------------
 
 
-Share query
------------
+Lekérdezések eltárolása
+-----------------------
+
+
+Lekérdezések megosztása
+-----------------------
