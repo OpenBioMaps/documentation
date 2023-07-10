@@ -23,7 +23,7 @@ A regisztrált email címünk megadásával itt lehet egy ideiglenes belépési 
 
 Regisztráció
 ------------
-
+A regisztrációhoz meghívó szükséges, ami lehet a bejelentkezési lapról elérhető űrlapon keresztül is lehet igényelni. Továbbá projekt beállításaitól függően lehetőség van Google vagy egy egyéb OpenID alapú regisztrációra is.
 
 Profil lap
 ==========
