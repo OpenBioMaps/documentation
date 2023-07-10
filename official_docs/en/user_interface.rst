@@ -76,19 +76,15 @@ At any time during the upload process, it is possible to save and download the u
 
 File upload
 -----------
-      Supported formats: 
+Supported formats: 
         
-        - Plain text files: csv, dsv, tsv, json
+- Plain text files: csv, dsv, tsv, json
+- Image files: jpg, tiff (Exif columns are read out)
+- Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
+- Spatial formats: esri shape (.shp, .dbf, .cpg, .prj, .shx combined), gpx (GPS data format (xml)), sqlite
+- Genetic data files: fasta
         
-        - Image files: jpg, tiff (Exif columns are read out)
-        
-        - Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
-        
-        - Spatial formats: esri shape (.shp, .dbf, .cpg, .prj, .shx combined), gpx (GPS data format (xml)), sqlite
-        
-        - Genetic data files: fasta
-        
-      Any of the files listed here can be imported by entering a URL (simple GET query)
+Any of the files listed here can be imported by entering a URL (simple GET query)
 
 Web form filling
 ----------------
@@ -97,8 +93,8 @@ Data can also be uploaded using a web form. You can add any number of rows to yo
 External applications
 ---------------------
     
-    * Use of API interface (e.g. mobile app, R-package)
-    * Use SQL connection (e.g. QGIS)
+* Use of API interface (e.g. mobile app, R-package)
+* Use SQL connection (e.g. QGIS)
 
 Export data from the upload process
 -----------------------------------
