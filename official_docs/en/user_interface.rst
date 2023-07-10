@@ -12,6 +12,7 @@ User interfaces
    admin_pages.rst
    new_project.rst
    data_query_interface.rst
+   welcome_page.rst
 
 
 Log in page
