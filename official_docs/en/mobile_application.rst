@@ -1,14 +1,43 @@
 Mobile application documentation
 ================================
 
-How the mobile application works?
----------------------------------
+How does the mobile app work?
+-----------------------------
 
-Choosing server
-...............
+Server choice
+.............
 
-Choosing project
-................
+Log in
+......
+
+Project choice
+..............
+
+Form selection
+..............
+
+Pin form to the home screen
+...........................
+
+Map screen
+..........
+
+Settings
+........
+
+Tracklog settings
+
+Drawing angle settings
+
+Sound feedback
+
+Data upload
+
+GPS usage
+
+Saves
+
+Language selection
 
 
 
@@ -18,9 +47,3 @@ Mobile application settings on the server
 
 Forms
 .....
-
-Upload data
-...........
-
-Upload tracklogs
-................
