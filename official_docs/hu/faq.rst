@@ -85,7 +85,7 @@ Hogyan férhetek hozzá az adatokhoz?
 
 Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
 ---------------------------------------------------------------
-A regisztrációhoz meghívás szükséges. Bármely regisztrált tag meghívhat új felhasználókat.
+A regisztrációhoz meghívás szükséges. Bármely regisztrált tag meghívhat új felhasználókat. Ezen kívül alapértelmezetten rendelkezésre áll a bejelentkezési felületről egy meghívó igénylő űrlap, aminek a kitöltésével új felhazsnálók igényelhetnek meghívót egy projekthez való csatlakozáshoz. Továbbá létezik egy OpenID modul, amely lehetővé teszi Google fiókkal való regiszráviót és bejelentkezést.
 
 A regisztrációval és a meghívásokkal kapcsolatos további információkért kérjük, forduljon a csatlakozni kívánt adatbázis létrehozóihoz vagy adminisztrátoraihoz.
 
@@ -115,7 +115,7 @@ Hogyan tudok hozzájárulni az OpenBioMaps-hoz?
 
 Kell fizetni valamiért?
 -----------------------
-Az OpenBioMaps minden összetevője és szolgáltatása teljesen ingyenes!
+Az OpenBioMaps minden összetevője és szolgáltatása teljesen ingyenes, de a fejlesztések egy része nem önkéntes munka, azaz fizetünk a fejlesztőknek így minden támogatást köszönettel fogadunk a fejlesztéshez!
 
 Hol és hogyan tárolja az OpenBioMaps az adatokat? 
 -------------------------------------------------
