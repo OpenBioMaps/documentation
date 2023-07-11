@@ -42,7 +42,7 @@ box_load_selection
 * Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. And project administrators can make these settings in their own administration interface of the **box_load_selection** module in the module settings tab.
 * Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that are inside the polygon or also the data that fall under the edges of the polygon.
 * For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
-* * A feltöltésre elérhető térbeli alakzatokat a mobil alkalmazás is letölti és a feltöltő űrlapokon található térképen lesznek félig átlátszóan kirajzolva a nevükkel címkézve.
+* The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labeled with their names.
 
 No parameters
 
@@ -93,15 +93,13 @@ additional_columns
         co [0] columns array
         c  [1] column name assoc array
 
-
     Parameters:
-     [column names]
+     ["column names"]
 
 allowed_columns
 ---------------
 * Here you can set which column should be visible at different access levels. 
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
-
 
     Parameters:
      {
@@ -120,7 +118,7 @@ bold_yellow
 
 
     Parameters:
-     [column names]
+     ["column names"]
 
 box_load_coord
 --------------
@@ -142,9 +140,8 @@ box_load_last_data
 	* last uploaded rows.
 * On the module page you can set the amount of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
-
     Parameters: 
-     [Number of records in last uploads, default is 10]
+     ["Number of records in last uploads, default is 10"]
 
 box_custom
 ----------
