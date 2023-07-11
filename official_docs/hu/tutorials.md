@@ -1,6 +1,6 @@
 Szerver telepítés Dockerrel
 ===========================
-:doc:`New server installation tutorial <../en/docker>`
+:doc:`New server installation tutorial <../../en/docker>`
 
 
 Felhasználók által készített videó oktatási anyagok
