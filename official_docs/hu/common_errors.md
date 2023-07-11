@@ -1,12 +1,12 @@
-Troubleshooting
-===============
+Hibaelhárítás
+=============
 
-No data on the map or pink map
-------------------------------
+Nincs adat a térképen vagy a rózsaszín a térkép
+-----------------------------------------------
 
 1) Symptoms: No points on the map, and no error messages. 
    
-   Problem: If no write permission on the MapServer log files the mapserv service will not start on request. 
+   Problem: If no write permission on MapServer log files the mapserv service will not start on request. 
    
    Solution: The owner of the log file should be the www-data and the MapServer directory in /tmp directory also should be owned by www-data user.
 
@@ -33,9 +33,9 @@ No data on the map or pink map
    Problem: Bad password (or missing password) in SQL connections in the map file. 
    
    Solution: Try to regenerate the encrypted password string.
-
-The incorrect appearance of the application, e.g. no profile page
------------------------------------------------------------------
+   
+Az alkalmazás helytelenül jelenik meg, pl. nincs profiloldal
+------------------------------------------------------------
 
 1) Problem: PHP Fatal error. Missing Composer Package.
    
@@ -46,14 +46,14 @@ The incorrect appearance of the application, e.g. no profile page
    Solution: The supervisor couldn't copy all the necessary files, try to copy them manually.
 
 
-No CSS rules, the incorrect appearance of the application
----------------------------------------------------------
+Nincsenek CSS szabályok, incorrect appearance of the application
+-----------------------------------------------------
 
 1) Problem: CSS and js files not loaded (not found)
 
    Solution: URL constants should be set up correctly in local_vars.php.inc
 
-2) Problem: HTTP and HTTPS protocol calls are mixed. 
+2) Problem: HTTP and https protocol calls are mixed. 
    
    Solution: Try to set protocol settings in the projects table.
 
@@ -79,13 +79,13 @@ Mobile or R clients can't connect
    
    Problem: A bad url registered in openbiomaps.org/openbiomaps_networks
    
-   Solution: Go to https://openbiomaps.org/openbiomaps_network/ and modify your project domain (beginning with protocol: HTTP or HTTPS !).
+   Solution: Go to https://openbiomaps.org/openbiomaps_network/ and modify your project domain (beginning with protocol: http or https !).
 
 3) Symptoms: There are lots of strange and unexpected error messages.
    
    Problem: The *pds* and/or *oauth* is not up-to-date in the default project (usally the *sablon* project)
    
-   Solution: Update *pds* and *oauth* directories with the Supervisor. Check your system_vars.php.inc for the DEFAULT_PROJECT. It is not set there, the default project is the *sablon*.
+   Solution: Update *pds* and *oauth* directories with supervisor. Check your system_vars.php.inc for the DEFAULT_PROJECT. It is not set there, the default project is the *sablon*.
 
 4) Symptoms: Mobile client does not list your server
    
