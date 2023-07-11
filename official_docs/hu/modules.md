@@ -1,18 +1,18 @@
-A modulok be- és kikapcsolható kiterjesztései az OpenBioMaps webes alkalmazásnak. Vannak projekt szinten érvényesülő modulok (pl.: postgres felhazsnáló készítése, fotó kezelő) és vannak egyes adattáblákhoz kötődő modulok is (pl.: szöveges szűrők térképi oldalhoz, CSV export).
+A modulok egyedi igény szerint bekapcsolható kiterjesztései az OpenBioMaps webes alkalmazásnak. Vannak projekt szinten érvényesülő modulok (pl.: postgres felhazsnáló készítése, fotó kezelő) és vannak egyes adattáblákhoz kötődő modulok is (pl.: szöveges szűrők térképi oldalhoz, CSV export).
 
 A modulok használata különböző felhasználókhoz vagy felhasználói csoportokhoz rendelhetők.
 
 A modulok az alkalmazásban modul horgok kapcsolódnak, amelyek többnyire a térkép oldalon és profil lapon helyezkednek el.
 A legtöbb modul egyszerű paraméterekkel konfigurálható (JSON), de egyes modulok egyéni adminisztratív felülettel rendelkeznek.
 
+
 Modul adminisztráció:  
 =====================
-
 A *projekt_adminisztráció -> modulok* oldalon lehet engedélyezni és konfigurálni a modulokat.
 
 Modul hozzáadása
 ----------------
-Saját modulokat feltölthetünk és ezzek hozzáadhatjuk a projektünkhöz. A modul fejlesztéshez nézd meg az modules/examples/ könyvtárban a példa modulokat.
+Saját modulokat tölthetünk fel és ezeket hozzáadhatjuk a projektünkhöz. A modul fejlesztéshez nézd meg az modules/examples/ könyvtárban a példa modulokat.
 
 Modul hozzáférés beállítások
 ----------------------------
@@ -21,6 +21,7 @@ A **Hozzáférés** oszlopban kiválaszthatjuk, hogy publikusak-e a beállítás
 
 Modul törlése
 -------------
+Jelenleg nincs ilyen opció.
 
 Modul ki/be kapcsolás
 ---------------------
@@ -28,8 +29,7 @@ Miután kialakítottuk a saját modul listánkat, az egyes modulokat ki és be t
 
 Modulok paraméterezése
 ----------------------
-A legtöbb modul paraméterezhető, vagy saját admnisztratív lapján keresztül konfigurálható. A modulok JSON paramétereket fogdnak.
-
+A legtöbb modul közvetlenül paraméterezhető JSON formátumú paraméterekkel. Egyes modulok pedig saját adminisztratív lappal rendelkeznek, amelyen keresztül a modulhoz kapcsolódó adminisztratív feladatok végezhetőek el. Ilyen például a box_load_selection modul.
 
 
 Projekt szintű modulok
@@ -37,19 +37,14 @@ Projekt szintű modulok
 
 box_load_selection
 ------------------
-* Lehetővé teszi saját előre definiált koordináták feltöltését a profil oldalon megtalálható **"Megosztott geometriák"** ablakon keresztül. Ezek a koordináták lehetnek pontok, poligonok vagy akár raszterek is.
-* Az előre definiált koordinátáinkat a modul oldalon keresztül tudjuk hozzáadni az adatbázisunkhoz, úgy hogy rákattintunk a zöld háttérrel rendelkező fogaskerékre. A megjelenő oldalon nem csak a saját, hanem a mások által definiált "publikusnak" nyilvánított koordináták is megjelennek. Megkeressük a számunkra szükséges koordinátákat, majd a koordináta mellett található áthúzott szemekre kattintva be tudjuk állítani, hogy az adott koordináta látható legyen-e az adatbázisban. Továbbá eldönthetjük, hogy ezeket a koordinátákat egyes személyekhez vagy csoportokhoz rendeljük.
-* Bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** ablak. Itt egy legördülő listában láthatóak az előre definiált koordinátáink, amelyek alapján lekérdezhetjük az adatainkat. Raszterek esetén beállítható, hogy csak azokat az adatokat kérdezze le, amik a raszteren belül találhatóak vagy azokat is, amelyek a raszterek élei alá esnek.
-* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a megjelenő az oszlop legördülő menüjére kattintva megjelenik egy kis ablak, amin keresztül lehetővé válik a térképről történő koordináta felvétel. Ezen a kis ablakon belül található a *"geometria listából"* opció, aminek a legördülő menüjében megtalálhatóak az előre definiált koordinátáink. Emellett lehetőségünk van közvetlenül a térképről felvenni koordinátákat a *"koordináták térképről"* menüpontra kattintva.
-* *"koordináták térképről"*  menüpont: erre az opcióra kattintva megjelenik egy térkép amiről felvehetjük a koordinátáinkat. A térkép jobb alsó sarkában található ceruza ikonra kattintva egy pontot jelölhetünk ki, míg a négyzet ikonra kattintva poligonként, akár egy nagyobb területet is körbe jelölhetünk.
+* Lehetővé teszi saját térbeli alakzatok (pontok, vonalak, poligonok) feltöltését. Ezek többnyire SHP fájlok szoktak lenni, de lehet más sztenderd tér-adat formátum is.
+* A feltölötött térbeli alakzatokat a felhasználók adat lekérdezés, vagy adat feltöltés során is tudják használni. Mindkét esetben az alakzat nevére hivatkozva használható a térbeli objektum, vagy az adatlekérdezés térbeli lehatárolására, vagy pedig a feltöltött adatrekord térbeli helyének magadására.
+* A feltölötött térbeli objektumokat meg lehet osztani más felhasználókkal, akik el tudják dönteni, hogy szeretnék-e használni a ezeket az alakzatokat. Alapértelmezetten más felhasználók számára nem láthatóak az újonnan feltöltött térbeli alakzatok. Ahhoz, hogy használni tudjuk a mások által feltölött objektumokat engedélyeznünk kell lekérdezéshez, vagy adatfeltöltéshez. A projekt gazdák be tudják állítani ezeket az engedélyeket az egyes felhasználóknak minden egyes térbeli objektumra.
+* A térbeli alakzatok elérhetőségét a felhasználók a profil lapuk alján a modul szekcióban taláható **"Megosztott geometriák"** modul blokkon keresztül érik el. A projekt adminisztrátorok pedig a modulok beállításai lapon a **box_load_selection** modul saját adminisztrációs felületén tudják ezeket a beállításokat elvégezni.
+* A modul bekapcsolása után a **Térkép** oldalon megjelenik a **"Térbeli lekérdezés"** doboz. Itt egy legördülő listában láthatóak a számunkra elérhető térbeli alakzatok nevei, amelyekből választva térbeli lekérdezést hajthatunk végre az adatbázison. Poligon esetén beállítható, hogy csak azokat az adatokat kérdezze le, amelyek a poligonon belül találhatóak vagy azokat is, amelyek a poligon élei alá esnek.
+* A webes és fájl feltöltés esetén, ha az *"obm_geometry"* oszlop típust használjuk koordináta felvételre, akkor a térkép jelölő ikonra kattintva egy előugró ablakban, megjelenik egy legördülő menü *"geometria listából"* cimkével, amely listában kiválaszthatjuk a neve alapján a szükséges térbeli alakzatot, amelynek az alkalmazás a WKT koordinátáját tölti majd be feltöltő űrlap megfelelő geometria mezőjébe. 
 
 	Paraméterezés:
-	Beállíthatjuk, hogyan szeretnénk az adatokat lekérdezni, ha ezt nem paraméterezzük akkor az összes mód elérhető.
-
-	contains -
-	intersects -
-	crosses -
-	disjoint -
 
 	Függvények:
 
@@ -63,14 +58,12 @@ computation
 	
 create_pg_user
 --------------
-* Engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** opció.
-* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres azonosítót készíteni.
-* Korlátozott hozzáférésű POSTGRES felhasználó létrehozása: ez a felhasználó csak olvasni tud az adatbázisból, módosítani, törölni nem. 
-	* Minden a projekthez rendelt adattáblát tud olvasni.
-	* Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni.
-	* Egy év után automatikusan lejár a hozzáférése.
-	* Bármikor megújíthatja a hozzáférését a felhasználó.
-Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
+* A modul engedélyezés után a profil oldalon megjelenik a **Postgres felhasználó készítése** doboz.
+* A modul engedélyezésével azok a felhasználók, akik kapnak jogot a modul használatára, tudnak maguknak saját postgres felhasználót készíteni.
+* A modul alapértelmezetten egy korlátozott hozzáférésű POSTGRES felhasználót hoz létre aki olvasni tudja a projektünk összes adatbázis tábláját. Egyszerre csak egy kliens programból tud az adatbázishoz kapcsolódni és egy év után automatikusan lejár a hozzáférése.
+* A létrehozott Postgres felhasználó bekerül a ***project_name*_user** csoportba, ami a rendszer által automatikusan létrehozott Postgres Csoportba. Postgres admin hozzáférésssel további jogokat állíthatunk be egyes felhazsnálóknak, pl. egyes táblákra írási jogot.
+* A felhasználók bármikor megújíthatja a hozzáférésüket.
+* A Postgres felhasználóval lehet például QGIS-ből kapcsolódni az adatbázishoz. Ennek a beállítására egy példa:
 
 ![QGIS-ben PostGis kapcsolata hozzáadása OpenBioMaps-hoz](images/qgis_connect.jpg)
 
