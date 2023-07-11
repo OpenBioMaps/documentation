@@ -331,7 +331,7 @@ results_asCSV
 * A térkép alatt **Mentési opciók** fül lenyitásával találjuk meg ezt a fájlt.
 * Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
 
-    Parameters: {"sep": "", "quote":""}
+    Paraméterezés: {"sep": "", "quote":""}
 
 results_asGPX
 -------------
@@ -340,7 +340,7 @@ results_asGPX
 * Be kell hozzá kapcsolni a *"results_button"* modult, hogy láthatóvá váljon a **Mentési opciók** fül.
 
     Paraméterezés:
-    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+     {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
 
 results_asTable
 ---------------
@@ -375,7 +375,7 @@ results_asKML
 Lekérdezésnél létrehoz egy letölthető .KML fájlt
 
     Paraméterezés:
-    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+     {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
 
 results_asStable
 ----------------
