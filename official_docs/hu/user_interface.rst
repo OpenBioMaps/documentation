@@ -21,7 +21,7 @@ Profil lap
 
 Meghívások
 ----------
-Aléprtelemezetten minden tag meg tud hívni további tagokat.
+Alapértelmezetten minden regisztrált felhasználó meg tud hívni további tagokat.
 
 :doc:`További információkért látogasd meg a meghívások oldalt <../invitations>`.
 
