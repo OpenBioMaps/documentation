@@ -22,5 +22,4 @@ Welcome to OpenBioMaps' documentation!
    developer_hints.md
    faq.rst
 
-
-:download:`Docs in pdf <docs/openbiomaps.pdf>` :download:`Docs in epub <docs/openbiomaps.epub>`
+:download:`Download docs as pdf <docs/openbiomaps.pdf>` | :download:`Download docs as epub <docs/openbiomaps.epub>`
