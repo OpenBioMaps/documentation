@@ -1,13 +1,13 @@
-The modules are on/off extensions to the OpenBioMaps web application. There are project-level modules (e.g.: postgres repository creation, photo manager) and there are also modules specific to individual data tables (e.g.: text filters for map page, CSV export).
+The modules are customizable extensions to the OpenBioMaps web application. There are project-level modules (e.g.: postgres repository creation, photo manager) and there are also modules specific to individual data tables (e.g.: text filters for map page, CSV export).
 
 The use of modules can be assigned to different users or user groups.
 
 The modules are linked to module hooks in the application, which are mostly located on the map page and profile tab.
 Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
 
-Modul administration:  
-=====================
 
+Module administration:  
+=====================
 The modules can be enabled and configured on the *project_administration -> modules* page.
 
 Add a custom module
@@ -16,11 +16,12 @@ You can upload your own modules and add them to your project. To develop a modul
 
 Module access
 -------------
-You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example: allowed_columns module. Another example is that if we have multiple data tables, we can specify for each table separately which column values we can filter based on when querying, for example: text_filter module.
-In the **Access** column, we can choose whether our settings are public (everybody) or only logged in users (logged users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting our predefined groups or even assigning specific persons to a particular setting.
+You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example, the allowed_columns module. Another example is that if we have multiple data tables, we can specify for each table separately which column values we can filter based on when querying, for example, the text_filter module.
+In the **Access** column, we can choose whether our settings are public (everybody) or only logged-in users (logged users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting our predefined groups or even assigning specific persons to a particular setting.
 
 Drop a module
 -------------
+Currently, there is no such option.
 
 Turn off a module
 -----------------
@@ -28,84 +29,65 @@ Once we have our own list of modules, we can switch each module on and off.
 
 Parameters for modules
 ----------------------
-Most modules can be parameterised or configured via their own admin tab. The modules take JSON parameters.
+Most modules can be directly parameterized with JSON format parameters. And some modules have their own administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
+
 
 Project level modules
 =====================
 box_load_selection
 ------------------
-Map filter functions
+* Allows you to upload your own spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
+* The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the name of the shape, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
+* Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. In order to use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
+* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. And project administrators can make these settings in their own administration interface of the **box_load_selection** module in the module settings tab.
+* Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that are inside the polygon or also the data that fall under the edges of the polygon.
+* For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
+* * A feltöltésre elérhető térbeli alakzatokat a mobil alkalmazás is letölti és a feltöltő űrlapokon található térképen lesznek félig átlátszóan kirajzolva a nevükkel címkézve.
 
-    These functions returns with a html table which displayed beside the map window
-    These are optional boxes. Setting are in the biomaps db projects' table.
+No parameters
 
-    Load prevously saved spatial queries' polygons
-
-    Calls:
-
-    General description:
-
-    Parameters:
-
-        available spatial relationships (optional, if no parameter is given, all relationships are available)
-            contains
-            intersects
-            crosses
-            disjoint
 photos
 ------
-Photo or other attachment box.
+Photo or other attachment boxes.
 
-    Calls:
-
-    General description:
-
-    Parameters:
+No parameters
 
 create_pg_user
 --------------
-If this module is enabled "Create postgres user" option will appear on your profile page.
+* After enabling the module, the **Create Postgres user** box will appear on the profile page.
+* By enabling the module, users who are granted the right to use the module will be able to create their own Postgres user.
+* By default, the module creates a POSTGRES user with limited access, who can read all database tables in your project. He can only connect to the database from one client program at a time, and his access automatically expires after one year.
+* The created Postgres user will be added to the ***project_name*_user** group, which is the Postgres Group automatically created by the system. With Postgres admin access, you can set additional rights for certain users, e.g. write access to certain tables.
+* Users can renew their access at any time.
+* The Postgres user can be used to connect to the database from QGIS, for example. An example of how to set this up:
 
-   Create a restricted access postgres user
+![Add PostGis connection to OpenBioMaps in QGIS](images/qgis_connect.jpg)
 
-    Calls:
-
-    Functions: create_pg_user(), show_button()
-
-    General description:
-
-        By enabling the module (who has the right to use the module), users can create their own postgres user. This user can only read from the database.
-        It can read all the data tables assigned to the project.
-        It can only connect to a database from one client program at a time.
-        After one year, Its access expires automatically.
-        Users can renew their access at any time.
-
-    Parameters:
+No parameters
 
 computation
 -----------
+No parameters
 
 custom_filetype
 ---------------
 Custom file preparation. E.g. observado style CSV
 
-    Calls:
+No parameters
 
-    Functions: option_list(), custom_read()
-
-    General description:
-
-    Parameters:
 
 taxon_meta
 ----------
+No parameters
 
 Table level modules
 ===================
 
 additional_columns
 ------------------
-Additional columns for ...
+* If a database consists of several data tables, they can be linked by different variables.
+* When queried, all data for an identifier is queried. This function can be ignored by checking *"ignore table JOINS "* on the map page.
+* For example, in some burrow projects we keep the data for parents and offspring in separate tables, if we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
 
     Calls:
 
@@ -117,81 +99,68 @@ Additional columns for ...
         co [0] columns array
         c  [1] column name assoc array
 
-    Parameters: New line separated list of column names
+    Parameters:  [column names]
 
 allowed_columns
 ---------------
-Columns visibility for users in different access levels. It depends on the existence of _rules table
+* Here you can set which column should be visible at different access levels. 
+* It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
-    Calls:
+	Parameters:
 
-    Methods:
-       return_columns(), return_gcolumns()
+	{
+	"for_sensitive_data": [...]
+		The columns we want to make visible. Does not show the geometry associated with the data.
+	"for_no-geom_data": [...]
+		Columns that you want to make visible.
+	"for_general": [...]
+		For the columns we want to make visible.
+  	}
 
-    General description:
-
-    Parameters:
-       for_sensitive_data: comma separated list of column names
-       for_no-geom_data: comma separated list of column names
-       for_general: comma separated list of column names
 
 bold_yellow
 -----------
-Bold yellow text for some columns in the results lists.
+* Column names in yellow bold in the result lists. After a query, column names in bold yellow appear in the detailed description attached to the *"Drop-down list "* table.
+* This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
-    Calls:
-
-    General description:
-
-    Parameters:
-      New line separated list of column names
+	Parameters: [column names]
 
 box_load_coord
 --------------
-Show given coordinates position on the map
+* On the map page, a *"position "* block will appear below the map. If you move the cursor around the map, you will see that the coordinate in the *"position "* block is constantly changing, tracking the position of your cursor on the map.
+* Also in the *"position "* block, if you type in the latitude and longitude, clicking on the little black *"lollipop "* will display your point on the map.
 
-    Calls: print_box, limits, ajax, print_js
-
-    General description:
-
-    Parameters: example:
+    Parameters:
 
     {
       "wgs84":"4326",
       "eov":"23700"
-     }
+    }
 
 box_load_last_data
 ------------------
-Query last data or last uploads.
+* Create **Quick queries** option on the map page on the right side of the map. There are three options to choose from:
+	* last own upload, 
+	* last upload (anyone's) 
+	* last uploaded rows.
+* On the module page you can set the amount of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
-    Calls:
-
-    General description:
-
-    Parameters: Number of records in last uploads, default is 10
+    Parameters: [Number of records in last uploads, default is 10]
 
 box_custom
 ----------
-Custom box - only user defined version exists.
+Custom box on the map page - only user-defined version exists.
+The custom module has to be placed in the local/includes/modules/ folder.
 
-    Calls:
+    Parameters: [a file's basename includes/modules/private folder. E.g. hrsz_query]
 
-    General description: The custom module has to be in includes/modules/private/ folder (You have to create private folder, if it's not there. It is recomended to add read-only permissions for www-data user to avoid the deletion or modification of the custom module in the course of a system upgrade.
-
-    Parameters: a file's basename in includes/modules/private folder. E.g. hrsz_query
-
-    Where hrsz_query_Class is a class in hrsz_query.php in includes/modules/private/ folder.
+    Where hrsz_query_Class is a class in local/includes/modules/hrsz_query.php file.
 
     This Class should include at least print_box() and print_js() functions.
 
 read_table
 ----------
 Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
-
-    Calls: mainpage/gridbox
-
-    General description:
 
     Parameters: 
      [{"table":"schema.table",
@@ -200,121 +169,75 @@ Present a SQL table or an SQL view as a rollable html table. This table is avail
 
 results_summary
 ---------------
-Summary of results.
+A summary of results.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
+No parameters
 
 results_table
 -------------
 Create a full html table of the results.
-
-    Hooks:
-
-    Methods:
-
-    Parameters:
+    
+No parameters
 
 results_asList
 --------------
-Create foldable slides like results.
+Create foldable slides-like results output.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
+No parameters
 
 results_asGPX
 -------------
 Save results as a GPX file.
 
-    Hooks:
-
-    Methods:
-
     Parameters:
+    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
 
 results_asCSV
 -------------
 Save results as a csv file.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
+    Parameters: {"sep": "", "quote":""}
 
 results_asJSON
 --------------
 Save results as a JSON file.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
+No parameters
 
 results_asSHP
 -------------
-    Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
+Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
 
-    Calls:
-
-    General description:
-
-    Parameters:
+No parameters
 
 results_asKML
 -------------
 Save results as a KML file.
 
-    Hooks:
-
-    Methods:
-
     Parameters:
+    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
 
 results_buttons
 ---------------
-Save and other button above results section, under map.
+Save and other buttons above the results section, under the map.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
+No parameters
 
 results_asStable
 ----------------
-Compact results table on map page.
-
-    Hooks:
-
-    Methods:
-
-    Parameters:
+Compact results table on the map page.
+	
+ Parameters: [column names]
 
 results_specieslist
 -------------------
-Specieslist summary on map page
+Species list summary on the map page
 
-    Hoks:
-
-    Methods:
-
-    Parameters:
+No parameters
 
 text_filter
 -----------
-Text filters on map page and for query api. Create the WHERE part of the SQL query string.
-
-    Hooks:
-
-    Methods: 
+Text filters on the map page and for query API. Create the WHERE part of the SQL query string.
     
     Parameters: 
     [
@@ -334,47 +257,27 @@ text_filter2
 -----------
 Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
-    Hooks:
-
-    Methods:    
-
-    Parameters:
-
+    Parameters: {...}
 
 transform_data
 --------------
-Transform fields to better reading on web tables and exports.  E.g. In result list it can transform geometry to wkt.
-
-    Hooks:
-    
-    Methods:
+Transform fields to better reading on web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
     
     Parameters:
-        obm_geometry:geom
-        obm_uploading_id:uplid
-        tema:mmm
+    {
+        "obm_geometry":"geom",
+        "obm_uploading_id":"uplid",
+        "tema":"mmm"
+    }
 
 extra_params
 ------------
-Extra input paramaters for forms.
+Extra input parameters for forms.
 
-    Hooks:
-
-    Methods:
-
-    Parameters:
 
 join_tables
 -----------
-This modules makes possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
-
-Calls:
-
-Functions: 
-
-    load_joined_data()
-
-General description:
+This module makes it possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
     
 Parameters:
         
@@ -405,78 +308,30 @@ restricted_data
 ---------------
 Rule based data restriction
 
-    Hooks:
-
-    Methods: rule_data()
-
-    Parameters:
-
+No parameters
 
 identify_point
 --------------
-A tool for identify one or more records on the map by mouse click.
+* Identify one or more points on the map.
+* Display in a small bubble some information about the data point that has been previously set.
 
-    Hooks:
-
-    Methods: return_data(), print_button()
-
-    Parameters:
-        column names
-
-        json object: shows a hyperlink.
-
-            elements:
-
-                type - obligatory, egyelőre csak a "link" érték működik
-
-                href - obligatory - hivatkozás címe
-
-                label - obligatory - a link/gomb szövege/cimkéje - többnyelvűséget támogatja
-
-                class - optional - a linkhez rendelt osztályok
-
-                id - optional - a linkhez rendelt azonosító
-
-                target - optional - alapértelmezett "_blank"
-
-                params - optional - a href elem paraméterei
-
-            A href elemet a modul-paraméterek közt felsorolt oszlopok értékeivel paraméterezhetjük. lásd a példát:
-
-            Példa:
-            { "type": "link", "href": "//example.com?nest_id=%1%&species=%2%", "label": "str_add_data", "class": "pure-button button-href", "params": ["obm_id","species"] }
-
-            A fenti példa a következő hiperlinket fogja generálni:
-
-            <a href="//example.com?nest_id=2898&species=Brachyramphus perdix" target="_blank" id="" class="pure-button button-href">Adat hozzáadása</a>
-
-            A json-t egy sorosra kell tömöríteni!
-
-        obm_files_id: Displays a photo icon on the popup if the record has an attachment.
+	Parameters: [column names]
 
 custom_notify
 -------------
-Creates custom postgres based notify events.This is just an idea, the module is not really ready.
+Creates custom Postgres based notify events. This is just an idea, the module is not really ready.
 
-    Hooks:
-
-    Methods: listen(), unlisten(), notify(), email()
-
-    Parameters:
+No parameters
 
 custom_data_check
 -----------------
 Custom data checks of upload data.
 
-    Hooks:
-
-    Methods: list(), check()
-
-    Parameters:
+No parameters
 
 grid_view
 ---------
-View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
+View data on a custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
 
     Hooks:
 
@@ -487,7 +342,7 @@ View data on custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to gri
     Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
     
     
-    On the nnn_grid table on the comment field the layers visible names should be set:
+    On the nnn_grid table on the comment field, the layers visible names should be set:
 ```sql 
     COMMENT ON COLUMN public.nnn_qgrids.original IS 'original';
     COMMENT ON COLUMN public.nnn_qgrids.snap IS 'snap';
@@ -593,29 +448,21 @@ massive_edit
 ------------
 Allows bulk editing of selected data on the map page via the file upload interface
 
-   Hooks:
-
-   Methods:
-
-   Parameters:
+No parameters
 
 download_restricted
 -------------------
 Admin-controlled download authorization
 
-   Hooks:
-
-   Methods:
-
-   Parameters:
+No parameters
 
 job_manager (validation)
 ------------------------
     
     General description:
     	
-    	* The job_manager (validation) module is used for managing the background processes of the project. It's parameters are the names of the jobs.
-        * On the admin page you can set the time of running (simplified cron style: minute hour day), and the job parameters as json
+    	* The job_manager (validation) module is used for managing the background processes of the project. Its parameters are the names of the jobs.
+        * On the admin page you can set the time of running (simplified cron style: minute hour day), and the job parameters as JSON
     	* Adding a new parameter will register the job in the jobs database table, and create the necessary template files in the modules/validation_modules, jobs folders.
 
     Parameters:
@@ -626,7 +473,7 @@ job_manager (validation)
     	
         observation_lists
             description: 
-                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job completes the obm_obsevation_list_id column, the columns of start, end and duration of list. If the uploaded list is not complete the list is skipped.
+                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job completes the obm_obsevation_list_id column, the columns of start, end, and duration of the list. If the uploaded list is not complete the list is skipped.
 
             parameters:
                 * list_start_column (string): column name of list start
@@ -648,7 +495,7 @@ job_manager (validation)
 
     	incomplete_observation_lists
             description:
-                If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In other case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually. 
+                If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In another case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually. 
                 
             paraméterezés:
                 * mail_to (int): role_id - who will get the messages
@@ -664,26 +511,13 @@ job_manager (validation)
                 }
 
 
-
-   Calls:
-
-   Functions:
-
 list_manager
 ------------
 
-   Hooks:
-
-   Methods:
-
-   Parameters:
+No parameters
 
 move_project
 ------------
-Move project to an other server. This is an experimental module.
+Move the project to another server. This is an experimental module.
 
-   Hooks:
-
-   Methods:
-
-   Parameters:
+No parameters

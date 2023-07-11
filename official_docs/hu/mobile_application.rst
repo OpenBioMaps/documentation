@@ -1,14 +1,43 @@
 Mobil alkalmazás dokumentáció
 =============================
 
-How the mobile application works?
----------------------------------
+Hogyan működik a mobil alkalmazás?
+----------------------------------
 
-Choosing server
+Szerver választás
+.................
+
+Bejelentkezés
+.............
+
+Projekt választás
+.................
+
+Űrlap választás
 ...............
 
-Choosing project
-................
+Űrlap kitűzése a kezdő képernyőre
+.................................
+
+Térképi oldal
+.............
+
+Beállítások
+...........
+
+Tracklog beállítások
+
+Rajzszög beállítások
+
+Hang visszajelzés
+
+Adatfeltöltés
+
+GPS használat
+
+Mentések
+
+Nyelv választás
 
 
 
@@ -18,9 +47,3 @@ Mobile application settings on the server
 
 Forms
 .....
-
-Upload data
-...........
-
-Upload tracklogs
-................
