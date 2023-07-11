@@ -14,7 +14,7 @@ OpenBioMaps is a software and services platform for managing biological data. It
 
 What is OpenBioMaps consortium?
 -------------------------------
-OpenBioMaps is a consortium of public institutions and social organisations. Their aim is to develop OpenBioMaps software and maintain freely available services based on it. The members of the consortium are equal partners and they have all contributed to achievenig this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
+OpenBioMaps is a consortium of public institutions and social organizations. Their aim is to develop OpenBioMaps software and maintain freely available services based on it. The members of the consortium are equal partners and they have all contributed to achieving this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
 
 
 Current OpenBioMaps partners:
@@ -60,7 +60,7 @@ contact: Ákos Gáborik
 contact: Gábor Takács
 
 
-The OpenBioMaps consortium established at September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
+The OpenBioMaps consortium was established on September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
 
 How can I contact the consortium?
 ---------------------------------
@@ -87,7 +87,7 @@ How can I access data?
 
 How can I sign up for an OpenBioMaps project?
 ---------------------------------------------
-Invitation is required to registration. Any registered member can invite new users.
+Registration requires an invitation. Any registered member can invite new users. In addition, by default, an invitation request form is available from the login interface, which can be filled in by new hosts to request an invitation to join a project. In addition, there is an OpenID module that allows registration and login with a Google Account.
 
 For more information on registration and invitations, please contact the creators or administrators of the database you wish to join.
 
@@ -101,7 +101,7 @@ For more information visit the API documentation.
 
 What language support is available?
 -----------------------------------
-There are no language restrictions, but the OpenBioMaps is currently available in Hungarian, nglish Romanian, Spanish and partially in Russian. Additional languages or translations can be added through https://translate.openbiomaps.org interface.
+There are no language restrictions, but the OpenBioMaps is currently available in Hungarian, English Romanian, Spanish, and partially in Russian. Additional languages or translations can be added through https://translate.openbiomaps.org interface.
 
 Each project can have individual language settings and associated translations.
 
@@ -116,19 +116,19 @@ How can I contribute to OpenBioMaps?
 - Software development
 - Financial support
 
-Shoud I pay for anything?
+Should I pay for anything?
 -------------------------
-All OpenBioMaps services and components are completely free!
+All components and services of OpenBioMaps are completely free of charge, but some of the development is not voluntary work, i.e. we pay the developers, so all support for the development is gratefully accepted!
 
-How and where the OpenBioMaps stores the data?
-----------------------------------------------
+How and where does the OpenBioMaps store the data?
+--------------------------------------------------
 Each OpenBioMaps server stores the data in its own database and file system.
 
 Is there any backup solution?
 -----------------------------
-No centralised backup, as there is no centralised data management in OpenBioMaps. Each server has its own backup solution, but some servers use each other's storage capacity for archiving.
+No centralized backup, as there is no centralized data management in OpenBioMaps. Each server has its own backup solution, but some servers use each other's storage capacity for archiving.
 
-I lost my password, how can I get a new?
+I lost my password, how can I get a new one?
 ----------------------------------------
 Don't worry, it's very easy to get a new password.
 
@@ -142,7 +142,7 @@ This may be due to some kind of configuration error, which may be related to the
 
 What is the RUM?
 ----------------
-RUM is acronym of database openness classes:
+RUM is an acronym for database openness classes:
 
 Read - Upload - Modify
 
