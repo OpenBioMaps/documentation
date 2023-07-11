@@ -7,12 +7,12 @@ Docker
 
 It is the currently supported up-to-date virtual environment release of OpenBioMaps.
 
-It is good for testing, developing or it can be applied in production environment after some updates.
+It is good for testing, and developing or it can be applied in a production environment after some updates.
 
-For using docker 4 steps needed:
-1. Install docker compose
-2. Get obm-docker image
-3. Configure your docker according to host's speciality (e.g. ssl, smtp)
+For using docker 4 steps are needed:
+1. Install docker-compose
+2. Get the obm-docker image
+3. Configure your docker according to the host's specialty (e.g. SSL, SMTP)
 4. Start your docker environment
 
 
@@ -29,7 +29,7 @@ docker-compose --version
 docker-compose version 1.29.2, build f46880fe
 
 
-Visit this page for further inforamtion about installing docker:
+Visit this page for further information about installing docker:
 
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
@@ -76,7 +76,7 @@ If you installed the docker in your local computer you can access the services a
 Database access
 ...............
 
-You can access your postgres database on the following preconfigured online database manager applications. However, it depends on your host-docker relationship.
+You can access your Postgres database on the following preconfigured online database manager applications. However, it depends on your host-docker relationship.
 
 [phppgadmin](http://YOUR_SERVER_NAME:9881/)
 
@@ -84,7 +84,7 @@ You can access your postgres database on the following preconfigured online data
 
 with *sablon_admin* username and *12345* password. You can manage your database with *biomapsadmin* user and *abcd1234* password.
 
-If you change these passwords, should be updated the following places:
+If you change these passwords, should be updated in the following places:
 
 /etc/openbiomaps/system_vars.php.inc
 
@@ -92,14 +92,14 @@ If you change these passwords, should be updated the following places:
 
 /var/www/html/biomaps/projects/sablon/private/private.map
 
-In the mapfile, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key
+In the map file, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key
 
-The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the ususal *postgres*) and both password is *changeMe*.
+The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the usual *postgres*) and both password is *changeMe*.
 
 Docker maintenance
 ..................
 
-This step is not obligatory, but can be useful if you need a strong web admin interface for docker management. 
+This step is not obligatory but can be useful if you need a strong web admin interface for docker management. 
 
 ```
 mkdir -p /srv/docker/portainer && cd /srv/docker/portainer
@@ -124,7 +124,7 @@ Visit your docker-admin (portainer) app
 
 [http://YOUR_SERVER_NAME:9000/](http://YOUR_SERVER_NAME:9000/)
 
-Log in your app using *admin* user name and your password;
+Log in to your app using *admin* user name and your password;
 
 If you installed the docker in your local computer you can access the services above in localhost.
 
@@ -164,15 +164,15 @@ foo@bar:~$ docker-compose up -d app
 After founding a new project
 ............................
 
-You **must set up a Mail server access** to send mails from the app
+You **must set up a Mail server access** to send emails from the app
 
-Assuming that the new servers do not have their own domain name, the default value for sending mail is set to smtp (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each projects (/var/www/html/biomaps/projects/.../local_vars.php.inc)
+Assuming that the new servers do not have their own domain name, the default value for sending mail is set to SMTP (/etc/openbiomaps/system_vars.php.inc), which requires you to configure outgoing smtp servers and associated authentication for each project (/var/www/html/biomaps/projects/.../local_vars.php.inc)
 
 These config files can be edited in the supervisor interface.
 
-Find the mail settings section and set up the smtp host and authentication if needed.
+Find the mail settings section and set up the SMTP host and authentication if needed.
 
-If there is an external smtp server here you are an example:
+If there is an external SMTP server here you are an example:
 ```console
  // Mail settings
  define('SMTP_AUTH',true); # true
@@ -184,9 +184,9 @@ If there is an external smtp server here you are an example:
  define('SMTP_SENDER','openbiomaps@my-mail-server.com');
 ```
 
-If SMTP_SENDER is not set, the SMTP_USERNAME will be the sender. Sending mails with google, with these simple settings is not possible, because google uses xoauth layer to authenticate! It is possible to include that layer here!
+If SMTP_SENDER is not set, the SMTP_USERNAME will be the sender. Sending mails with Google, with these simple settings is not possible, because Google uses xoauth layer to authenticate! It is possible to include that layer here!
 
-If the host system will be the smtp server:
+If the host system will be the SMTP server:
 ```console
  // Mail settings
 define('SMTP_AUTH',false);
@@ -194,7 +194,7 @@ define('SMTP_HOST','172.17.0.1');
 define('SMTP_PORT','25');
 define('SMTP_SENDER','info@you-smtp-server');
 ```
-For the ip address above check host "ip addr | grep docker0"
+For the IP address above check host "ip addr | grep docker0"
 
 On the host depending on what MTA you have here you some examples:
 
@@ -205,14 +205,14 @@ In the /etc/exim4/update-exim4.conf file
  dc_relay_nets='172.21.0.0/16'
  dc_local_interfaces='127.0.0.1 ; ::1 ; 172.17.0.1' 
 
-these lines shoud be updated, but depending on your exim config maybe something else as well.
+these lines should be updated, but depending on your exim config maybe something else as well.
 
 In the /etc/exim4/exim4.config file
 
 "hostlist   relay_from_hosts..." line, you should extend with the obm_back network e.g.
  hostlist   relay_from_hosts = localhost :172.20.0.0/16 :172.17.0.0/16 :172.21.0.0/16
  
- Comment: "Maybe one of the three network is enough above, I did not tested yet"
+ Comment: "Maybe one of the three networks is enough above, I did not test yet"
 
 **Postfix**
 
@@ -225,7 +225,7 @@ Here's how to find out docker networks and ip addresses:
 ```console
 docker container ls
 ```
-search for obm-composer_app_1
+Search for obm-composer_app_1
 
 ```console
 docker inspect xxxxx_obm-composer_app_1
@@ -242,13 +242,13 @@ obm-composer_obm_web {
 
 **Firewall**
 
-You may also need to update your firewall to enable incoming mails from image to host. The network address of obm_back must be allowed as incoming network for the firewall. E.g.
+You may also need to update your firewall to enable incoming mail from the image to the host. The network address of obm_back must be allowed as an incoming network for the firewall. E.g.
 ```console
 ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
 **Global smtp settings**
 
-Most probably you want to use the same smtp settings for your all project in your server. In this case use the
+Most probably you want to use the same SMTP settings for your all project on your server. In this case, use the
 
    - SMTP_GLOBAL_HOST
    - SMTP_GLOBAL_AUTH
@@ -258,7 +258,7 @@ Most probably you want to use the same smtp settings for your all project in you
    - SMTP_GLOBAL_PORT
    - SMTP_GLOBAL_SENDER
  
- parameters in the sytem_vars.php.inc. At least the SMTP_GLOBAL_HOST should be set if you want use global params. The local params override the globals allways.
+ parameters in the sytem_vars.php.inc. At least the SMTP_GLOBAL_HOST should be set if you want to use global parameters. The local params override the globals always.
  
  
  
@@ -269,7 +269,7 @@ You may need to update your project access protocol setting in the Supervisor ho
 
 *There is no webserver on the Host, but Host provide ssl certs for docker*
 
-One possible way is to use the host's ssl certificates by the way to mount the necessery directories from the host to the docker.
+One possible way is to use the host's SSL certificates by the way to mount the necessary directories from the host to the docker.
 You can create letsencrypt 
 ``` console
 apt install dehydrated
@@ -295,7 +295,7 @@ services:
 
 *Host has a web server and provide a proxy for the docker*
 
-An other way to use host's apache proxy
+Another way to use the host's Apache proxy
 
 Host: /etc/apache2/sites-enabled/000-default.conf
 ```
@@ -389,11 +389,11 @@ volumes:
     external: true
 ```
 
-This latter examples maybe not complete yet...
+This latter example is maybe not complete yet...
 
-If you provide Postgres access you also need to set up ssl over postgres
+If you provide Postgres access you also need to set up SSL over Postgres
 
-If you have traefik you can configure ssl access there. In other case, you can give ssl certs for your database container and set up postgres to accept connection only through ssl.
+If you have Traefik you can configure SSL access there. In another case, you can give SSL certs for your database container and set up Postgres to accept connection only through SSL.
 
 docker-compose.yml:
 ```console
@@ -424,7 +424,7 @@ You can try your postgres connection without ssl:
 psql "postgresql://gisadmin@YOURDMAIN:5432/gisdata?sslmode=disable"
 ```
 
-If your ssl require works, you will get an error message like this:
+If your SSL require works, you will get an error message like this:
 
 psql: FATAL:  no pg_hba.conf entry for host "xxxxxxx", user "gisadmin", database "gisdata", SSL off 
 
@@ -448,8 +448,8 @@ foo@bar:~$ docker-compose down -v
 ```
 
 
-Shell access of the system in the the container image
-.....................................................
+Shell access of the system in the container image
+.................................................
 
 ```console
 foo@bar:~$ docker-compose exec app bash
@@ -471,23 +471,23 @@ docker-compose exec -u postgres <service_name> pg_top
 
 Restart app
 ...........
-Do not restart apache from docker shell, but from outside
+Do not restart Apache from the Docker shell, but from outside
 ```console
 foo@bar:~$ docker-compose restart app
 ```
 
-Remove huge amount of old, not used docker images
-.................................................
+Remove huge amounts of old, not used docker images
+..................................................
 
 Do we have a lot?
 ```console
 docker images | grep "<none>"
 ```
-Let drop them....
+Let's drop them...
 ```console
 docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | bash
 ```
-You may need to edit the traefik2.0/traefik.yml, traefik2.0/docker-compose.yml and traefik2.0/acme.json files
+You may need to edit the traefik2.0/traefik.yml, traefik2.0/docker-compose.yml, and traefik2.0/acme.json files
 
 Auto update of docker
 .....................
@@ -507,10 +507,10 @@ Resources
 * https://gitlab.com/openbiomaps/docker/obm-composer
 
 
-Not docker: VirtualBox
-----------------------
+Not docker: VirtualBox (outdated!!!)
+------------------------------------
 The VirtualBox edition currently is outdated, not recommended to use it!
 
-1. Download virtualbox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+1. Download VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 2. Download the latest .ova image from [http://openbiomaps.org/downloads](http://openbiomaps.org/downloads/virtual-image/)
-3. Read this readme for the the next steps: [http://openbiomaps.org/downloads/virtual-image/README](http://openbiomaps.org/downloads/virtual-image/README)
+3. Read this readme for the next steps: [http://openbiomaps.org/downloads/virtual-image/README](http://openbiomaps.org/downloads/virtual-image/README)

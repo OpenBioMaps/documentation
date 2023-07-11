@@ -15,13 +15,13 @@ Database tables and columns
 
 [web] -> [profile] -> [project administration] -> [database table management]
 
-We can create a SQL table that OBM registers to our project and creates the default OBM columns in it. The table name should not contain accented characters, spaces or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
+We can create a SQL table that OBM registers to our project and creates the default OBM columns in it. The table name should not contain accented characters, spaces, or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
 
 Only tables registered here can be used in the OBM interface (map display, form use, text queries)!
 
 Here, you can set which columns from each table should be available for form creation and queries in the web interface. 
 
-Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number and location columns. For the location column, the X,Y coordinate column and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species name, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to "data" type.
+Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number, and location columns. For the location column, the X,Y coordinate column and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species names, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to "data" type.
 
     - data: for general purpose columns
     - spatial geometry: this column can be used for map creation
@@ -35,7 +35,7 @@ Also, here you can specify the columns to be specially handled. This means that 
     - attachment: file attachments column
     - UTM Zone: used in spatial geometry creation
 
-The 'comment field' should contain descriptions of the content of the columns (metadata) and may also have a regulatory role in some cases. In the case of the obm_geometry column, the comment field can be used to specify the geometry column's srid, which will define the stored srid of the uploaded data. The value entered must be in the format `srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
+The 'comment field' should contain descriptions of the content of the columns (metadata) and may also have a regulatory role in some cases. In the case of the obm_geometry column, the comment field can be used to specify the geometry column's SRID, which will define the stored SRID of the uploaded data. The value entered must be in the format `srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
 
 For the obm_id column, you can specify whether the rules table should be used as follows: use_rules:1 This can only be modified with master access.
 
@@ -68,7 +68,7 @@ You can also view the status of all triggers and SQL Rules associated with the s
 Built-in triggers:
     - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
     - Taxon name auto update: updates the data table on taxon table updating,
-    - History: create history lines in the "history table" after updating and delete rows,
+    - History: create history lines in the "history table" after updating and deleting rows,
     - Access rules: create a rule line in the "rules table" after inserting a new row. The rules applied are from the form settings.
 
 
@@ -90,7 +90,7 @@ Overview of set access rules and their work statuses.
 
 [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
 
-View the general access setting of the project per data table. This is not configurable here!
+View the general access setting of the project per the data table. This is not configurable here!
 
 Translations
 ------------
@@ -112,7 +112,7 @@ Modules
 
 Interrupted uploads
 -------------------
-Users' saved and unfinished file or form data uploads can be found here. Once uploaded, they can be resumed or discarded. Most of these interrupted uploads can be deleted!
+Users' saved and unfinished files or form data uploads can be found here. Once uploaded, they can be resumed or discarded. Most of these interrupted uploads can be deleted!
 
 
 File manager
@@ -182,16 +182,16 @@ Map settings
 ------------
 Web Map Layers
 ..............
-OpenLayer settings for web-map interface
+OpenLayers settings for web-map interface
 
-Mapserver settings
+MapServer settings
 ..................
-Raw version of mapfile.  See the mapserver documentation for updating this file.
+The raw version of mapfile.  See the MapServer documentation for updating this file.
 
 
 Members
 -------
-List of members registered in the project. You can change your user status here. These are Normal, Operator, Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
+List of members registered in the project. You can change your user status here. These are Normal, Operator, and Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
 Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<administrative-access>`.
 
 Members' group assignments can also be modified here, but a more convenient interface is Group Manager.
@@ -201,7 +201,7 @@ The member name is a reference in this interface. Following this link will take 
 
 Message templates
 -----------------
-The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short description.
+The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short descriptions.
 
 On this page, global templates can be overridden by their local version, by selecting 
 a template -> editing -> and saving it. The templates can have variables that 
@@ -254,7 +254,7 @@ Evaluation notifications:
 * `upload_evaluation_commenters` - This message is sent when an upload, previously commented by the user, gets a new comment.
 * `upload_evaluation_owner` - This message is sent when an upload of the user gets a comment.
 * `user_evaluation_commenters` - This message is sent when a user, previously commented by the user, gets a new comment.
-* `user_evaluation_owner` - This message is sent when the user itself get the comment.
+* `user_evaluation_owner` - This message is sent when the user itself gets the comment.
 
 Messages sent by modules:
 * `dlr_new_request` - Notification for project admins about a new download request. - ['username', 'requestid', 'request_message']
@@ -264,7 +264,7 @@ Messages sent by modules:
 
 Server info
 -----------
-There is a lot of basic information available about the project, such as the application version number, storage usage, system load and memory usage, and a link to the Supervisor project administration interface.
+There is a lot of basic information available about the project, such as the application version number, storage usage, system load, and memory usage, and a link to the Supervisor project administration interface.
 
 Server logs
 -----------
@@ -272,7 +272,7 @@ Read logs of mapserver or web app logger.
 
 Members
 -------
-List of members registered in the project. You can change your user status here. These are Normal, Operator, Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
+List of members registered in the project. You can change your user status here. These are Normal, Operator, and Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
 Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<administrative-access>`.
 
 Members' group assignments can also be modified here, but a more convenient interface is Group Manager.

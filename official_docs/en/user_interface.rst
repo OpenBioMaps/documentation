@@ -21,7 +21,7 @@ Profile page
 
 Invitations
 -----------
-Each member can invite additional members.
+By default, all registered users can invite additional members.
 
 :doc:`For more information, visit the invitations page <../invitations>`.
 
@@ -31,16 +31,16 @@ Internal messages are read and sent here. Our messaging system distinguishes bet
 
 * A system message can be sent by a project or a server process to an individual user. Such a message could be, for example, a message from a background validation process.
 * A personal message can be sent between users. The message editing interface can be accessed by clicking the Write Message button at the bottom left of the Messages page.
-* Comment Notification - This message type is sent when someone has commented on your data, uploads or users.
-* News - when uploading data, creating a new project, sharing polygons, the system creates a news item for everyone to see.
+* Comment Notification - This message type is sent when someone has commented on your data, uploads, or users.
+* News - when uploading data, creating a new project, or sharing polygons, the system creates a news item for everyone to see.
 
-The messages page is available to all logged in users. Anyone can send messages to project members.
+The messages page is available to all logged-in users. Anyone can send messages to project members.
 
 In addition to individual messages, project administrators can also send messages to groups or notify users of messages by email.
 
 Creation of a new database
 --------------------------
-Any registered member can create a new database project, which he/she will own and will be completely independent from the project in which it was created.
+Any registered member can create a new database project, which he/she will own and will be completely independent of the project in which it was created.
 
 :doc:`More information about creating a database<../new_project>`
 
@@ -53,15 +53,15 @@ Project administration
 Map page
 ========
 
-If you have map data and valid settings (SQL, Mapserver), you can view and query the map data from this subpage. Some map settings may differ significantly, for example, only the queried data may be displayed. There may be different base maps, e.g. grids, or aerial photos, sampling locations on a map. You can display point, line and polygon data (in separate layers). Several base maps can be selected (OSM is the default). In some projects you can set up a google base map if the project owners do so by entering some google account data.
+If you have map data and valid settings (SQL, Mapserver), you can view and query the map data from this subpage. Some map settings may differ significantly, for example, only the queried data may be displayed. There may be different base maps, e.g. grids, or aerial photos, and sampling locations on a map. You can display point, line, and polygon data (in separate layers). Several base maps can be selected (OSM is the default). In some projects, you can set up a Google base map if the project owners do so by entering some Google account data.
 
 map queries
 -----------
-Spatial queries can be triggered by drawing on the map, by tapping on the map (info module), or by selecting pre-loaded geometries. When drawing a map, a buffer zone can be specified around the drawing pointer. That is, you can query a point by dropping a point in say a 500m radius circle, or around a line in a 10m zone.
+Spatial queries can be triggered by drawing on the map, tapping on the map (info module), or selecting pre-loaded geometries. When drawing a map, a buffer zone can be specified around the drawing pointer. That is, you can query a point by dropping a point in say a 500m radius circle, or around a line in a 10m zone.
 
 text queries
 ------------
-Arbitrary text query options can be set up in each project to query data, which options can include a number of helper functions such as auto-text completion, list selection, date, time, date interval selection, multiple list item selection, etc..
+Arbitrary text query options can be set up in each project to query data, which options can include a number of helper functions such as auto-text completion, list selection, date, time, date interval selection, multiple list item selection, etc...
 
 query storage
 -------------
@@ -78,10 +78,10 @@ File upload
 -----------
 Supported formats: 
         
-- Plain text files: csv, dsv, tsv, json
+- Plain text files: CSV, DSV, TSV, json
 - Image files: jpg, tiff (Exif columns are read out)
-- Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
-- Spatial formats: esri shape (.shp, .dbf, .cpg, .prj, .shx combined), gpx (GPS data format (xml)), sqlite
+- Spreadsheet formats: ods (LibreOffice), xls (Excel), xlsx (Excel)
+- Spatial formats: esri shape (.shp, .dbf, .cpg, .prj, .shx combined), gpx (GPS data format (xml)), SQLite
 - Genetic data files: fasta
         
 Any of the files listed here can be imported by entering a URL (simple GET query)
@@ -104,13 +104,13 @@ Abort data upload
 -----------------
 The data upload process can be interrupted at any time from the web interface. A backup is automatically created every two minutes, but you can create a backup at any time by clicking on the Save button in the redundant menu bar. 
 
-Uploads that have been suspended can be restored by selecting them from the 'Suspended uploads' list on the profile page.
+Uploads that have been suspended can be restored by selecting them from the 'Suspended Uploads' list on the profile page.
 
 Completed uploads are automatically deleted from the list.
 
 Data upload history page
 ------------------------
-The metadata of each data upload is automatically recorded and can be accessed from the user's profile page or data sheet.
+The metadata of each data upload is automatically recorded and can be accessed from the user's profile page or datasheet.
 
 Data sheet
 ==========
@@ -147,6 +147,6 @@ The bug submission feature is available from the profile page and the upload pag
    
    Simple messaging interface
    
-The interface sends the errors to the OpenBioMaps developer page (https://gitlab.com/groups/openbiomaps/-/issues), from where the user will automatically receive a response from the system for further events.
+The interface sends the errors to the OpenBioMaps developer page (https://gitlab.com/groups/openbiomaps/-/issues), from which the user will automatically receive a response from the system for further events.
 
 The error handler can be made available on a server by specifying the AUTO_BUGREPORT_ADDRESS address in the system_vars.php.inc configuration file. More information about the GitLab Issue handler interface can be found here: https://docs.gitlab.com/ee/user/project/issues/
