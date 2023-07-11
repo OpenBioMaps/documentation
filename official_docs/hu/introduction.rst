@@ -3,8 +3,10 @@ Bevezetés
 
 Az OpenBioMaps projektnek céljai
 ================================
-*  ingyenes és szabadon hozzáférhető biológiai, térképi adatbázis szolgáltatás fenntartása,
-*  ezen szolgáltatások mögötti nyílt forráskódú szabadon felhasználható szoftveres eszközök fejlesztése
+* A biodiverzitással kapcsolatos adatok kezelésének támogatása azért, hogy azok hatékonyabban legyenk használhatók a természet megőrzésének céljából
+* Ingyenes és szabadon hozzáférhető biológiai, térképi adatbázis szolgáltatás fenntartása
+* Nyílt forráskódú és szabadon felhasználható biodiverzitási adatkezelő szoftveres eszközök fejlesztése
+* A biodiverzitással kapcsolatos oktatás és kutatás támogatása
 
 
 Az OpenBioMaps fontos tulajdonságai
@@ -31,7 +33,6 @@ Az OpenBioMaps fontos tulajdonságai
 
 OpenBioMaps folyamatok
 ======================
-
 Az OBM megpróbál támogatást adni a teljes adat életútra, az adatgyűjtéstől a rendszerezésen át a felhasználásig.
 
 .. figure:: images/adat_eletut_infog.png
@@ -39,8 +40,18 @@ Az OBM megpróbál támogatást adni a teljes adat életútra, az adatgyűjtést
    :alt: OpenBioMaps adat életút infógrafika
 
 
+Első lépések
+============
+A saját adatbázis létrehozásához szüksége lesz egy szerverre. Ez lehet saját szerver, bérelt szerver, vagy egy olyan szerver, amelyet valaki más már karbantart az OpenBioMaps kiszolgálására.
+
+A legegyszerűbb egy új adatbázist egy meglévő OpenBioMaps szerveren létrehozni. Nézze meg az ismert szerverek listáját, hogy van-e hozzáférése valamelyikhez. Vannak dedikált nyilvános szerverek, amelyek számos különböző adatbázisnak adnak otthont.
+
+Ha nagyobb kapacitásra van szüksége, vagy szeretné ellenőrizni a hozzáférést a teljes szerverhez, telepíthet dedikált szervert. Ez nem olyan bonyolult. Itt van egy útmutató: https://openbiomaps.org/documents/hu/server_install.html
+
+Ha saját adatbázis-projektet szeretne létrehozni egy meglévő szerveren, akkor hozzáféréssel kell rendelkeznie az adott szerveren lévő adatbázishoz. Ha ez megvan, akkor ott könnyedén létrehozhatja a saját adatbázis-projektjét, amelynek lépéseit itt találja: https://openbiomaps.org/documents/hu/tutorials.html#new-project és
+itt: https://openbiomaps.org/documents/hu/new_project.html
+
+
 OpenBioMaps Konzorcium
 ======================
 :download:`OpenBioMaps Konzorcium Szerződés<docs/consortium_2015.pdf>`
-
-
