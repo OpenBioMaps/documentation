@@ -21,7 +21,7 @@ Profile page
 
 Invitations
 -----------
-Each member can invite additional members.
+By default, all registered users can invite additional members.
 
 :doc:`For more information, visit the invitations page <../invitations>`.
 
