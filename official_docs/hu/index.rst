@@ -21,3 +21,5 @@
    mobile_application.rst
    developer_hints.md
    faq.rst
+
+:download:`Dokumentáció letöltése pdf formátumban<docs/openbiomaps.pdf>` | :download:`Dokumentáció letöltése epub formátumban <docs/openbiomaps.epub>`
