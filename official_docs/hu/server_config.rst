@@ -1,11 +1,25 @@
 Szerver beállítások
 *******************
 
-Az OpenBioMaps rendszerbeállításai a system_vars.php.inc fájlban találhatók. Ez a felügyelőn keresztül kezelhető.
+Supervisor
+----------
+A Supervisor egy önálló webes alkalmazás az OBM szerver és projektek alacsonyabb szintű beállításainak elvégzéséhez és a frissítések karbantartásához. A Supervisor az OBM szerver telepítése során szintén feltelepül és elérhető URL gyökér címéből, pl. yourserver.com/supervisor/ vagy yourserver.com/supervisor.php
 
-system_vars
------------
-`/etc/openbiomaps/system_vars.php.inc`
+A Supervisor belépési jelszavát az obm_post_install.sh parancs futtatásával újra lehet generálni:
+
+.. code-block:: sh
+
+  /srv/docker/openbiomaps# /obm_post_install.sh update supervisor
+
+A Supervisor-nak két működési módja van, a rendszer és a projekt. Rendszer módban a rendszer szintű frissítések érhetőek el és a ``system_vars.php.inc`` módosítható. Projekt módban a projekt frissítések érhetőek el és a ``local_vars.php.inc`` módosítható, illetve a projekthez tartozó olyan adatbázis szintű módosítások, amelyek a projekt létrehozáshoz kapcsolódnak. Továbbá projekt módban rendelkezésre áll egy fájlkezelő, amelyen keresztül a projekt/local mappa tartalmát lehet kezelni. A Supervisor projekt mód elérhető a projekt adminisztrációs felületéről is a projekt rendszergazdái számára.
+
+
+
+system_vars.php.inc
+-------------------
+Az OpenBioMaps rendszerbeállításai a system_vars.php.inc fájlban találhatók. Ez a Supervisoron keresztül módosítható.
+
+``/etc/openbiomaps/system_vars.php.inc``
 
 .. code-block:: php
 
