@@ -42,7 +42,7 @@ box_load_selection
 * Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. And project administrators can make these settings in their own administration interface of the **box_load_selection** module in the module settings tab.
 * Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that are inside the polygon or also the data that fall under the edges of the polygon.
 * For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
-* * A feltöltésre elérhető térbeli alakzatokat a mobil alkalmazás is letölti és a feltöltő űrlapokon található térképen lesznek félig átlátszóan kirajzolva a nevükkel címkézve.
+* The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labeled with their names.
 
 No parameters
 
@@ -88,54 +88,49 @@ additional_columns
 * If a database consists of several data tables, they can be linked by different variables.
 * When queried, all data for an identifier is queried. This function can be ignored by checking *"ignore table JOINS "* on the map page.
 * For example, in some burrow projects we keep the data for parents and offspring in separate tables, if we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
-
-    Calls:
-
-    Functions: return_columns()
-
-    General description:
-        use it together with the join_tables module
+* use it together with the join_tables module
         return with an array:
         co [0] columns array
         c  [1] column name assoc array
 
-    Parameters:  [column names]
+    Parameters:
+     ["column names"]
 
 allowed_columns
 ---------------
 * Here you can set which column should be visible at different access levels. 
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
-	Parameters:
-
-	{
-	"for_sensitive_data": [...]
-		The columns we want to make visible. Does not show the geometry associated with the data.
+    Parameters:
+     {
+       "for_sensitive_data": [...]
+            The columns we want to make visible. Does not show the geometry associated with the data.
 	"for_no-geom_data": [...]
-		Columns that you want to make visible.
-	"for_general": [...]
-		For the columns we want to make visible.
-  	}
-
+            Columns that you want to make visible.
+       "for_general": [...]
+            For the columns, we want to make them visible.
+     }
 
 bold_yellow
 -----------
 * Column names in yellow bold in the result lists. After a query, column names in bold yellow appear in the detailed description attached to the *"Drop-down list "* table.
 * This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
-	Parameters: [column names]
+
+    Parameters:
+     ["column names"]
 
 box_load_coord
 --------------
 * On the map page, a *"position "* block will appear below the map. If you move the cursor around the map, you will see that the coordinate in the *"position "* block is constantly changing, tracking the position of your cursor on the map.
 * Also in the *"position "* block, if you type in the latitude and longitude, clicking on the little black *"lollipop "* will display your point on the map.
 
-    Parameters:
 
-    {
-      "wgs84":"4326",
-      "eov":"23700"
-    }
+    Parameters:
+     {
+       "wgs84": "4326",
+       "eov": "23700"
+     }
 
 box_load_last_data
 ------------------
@@ -145,14 +140,16 @@ box_load_last_data
 	* last uploaded rows.
 * On the module page you can set the amount of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
-    Parameters: [Number of records in last uploads, default is 10]
+    Parameters: 
+     ["Number of records in last uploads, default is 10"]
 
 box_custom
 ----------
 Custom box on the map page - only user-defined version exists.
 The custom module has to be placed in the local/includes/modules/ folder.
 
-    Parameters: [a file's basename includes/modules/private folder. E.g. hrsz_query]
+    Parameters:
+     [a file's basename includes/modules/private folder. E.g. hrsz_query]
 
     Where hrsz_query_Class is a class in local/includes/modules/hrsz_query.php file.
 
@@ -163,9 +160,9 @@ read_table
 Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
 
     Parameters: 
-     [{"table":"schema.table",
-       "label":"somesthing",
-       "orderby":"column"}, ... ]
+     [{"table": "schema.table",
+       "label": "somesthing",
+       "orderby": "column"}, ... ]
 
 results_summary
 ---------------
@@ -190,13 +187,16 @@ results_asGPX
 Save results as a GPX file.
 
     Parameters:
-    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+     {"name": "column", 
+      "description": ["column-1", "column-2", ... ]}
 
 results_asCSV
 -------------
 Save results as a csv file.
 
-    Parameters: {"sep": "", "quote":""}
+    Parameters:
+     {"sep": ",", 
+      "quote":"\""}
 
 results_asJSON
 --------------
@@ -215,7 +215,8 @@ results_asKML
 Save results as a KML file.
 
     Parameters:
-    {"name": "oszlop", "description": ["oszlop1", "oszlop2", ... ]}
+     {"name": "column", 
+      "description": ["column-1", "column-2", ... ]}
 
 results_buttons
 ---------------
@@ -227,7 +228,8 @@ results_asStable
 ----------------
 Compact results table on the map page.
 	
- Parameters: [column names]
+ Parameters: 
+  [column names]
 
 results_specieslist
 -------------------
@@ -257,7 +259,8 @@ text_filter2
 -----------
 Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
-    Parameters: {...}
+    Parameters: 
+    {...}
 
 transform_data
 --------------
@@ -280,8 +283,6 @@ join_tables
 This module makes it possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
     
 Parameters:
-        
-```
     [
         {
             "table": "teszt_events",
@@ -302,7 +303,6 @@ Parameters:
             ]
         }
     ]
-```
 
 restricted_data
 ---------------
@@ -497,7 +497,7 @@ job_manager (validation)
             description:
                 If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In another case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually. 
                 
-            paraméterezés:
+            Parameters:
                 * mail_to (int): role_id - who will get the messages
                 * diff_tolerance (int): tolerance of difference
                 * days_offset (int): number of days to wait until the list is processed
