@@ -164,10 +164,11 @@ get_training_questions
 
  - value [numeric] numeric id of a training.
  
- Returns: 
+ Returns:
+
  - The set of questions, answers, and settings
 
-training_results:   
+training_results
  
  Status list of users' training for each form. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok).
  
