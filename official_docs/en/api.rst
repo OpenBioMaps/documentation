@@ -11,39 +11,39 @@ API tools:  Authentication, Data retrieval, Data push, Settings update
 
 API handlers:
 -------------
-Authentication handler (oauth):
+Authentication handler (OAUTH):
 
 /oatuh/token.php: Authentication
 
-Authentication based interface (pds):
+Authentication-based interface (PDS):
 
 /projects/*API_VERSION*/*projectname*/pds.php: Data retrieval, Data push, Settings update 
 
-Non authenticated requests (web):
+Non-authenticated requests (web):
 
 /projects/*projectname*/index.php
 
 PDS API version:
 ................
 Example: http://openbiomaps.org/projects/dead_animals/v2.1/pds.php
-The default version setting (if the version string missing from the URL) is 1.1., which compatible with the 2.0 and backward compatible with the 1.0.
+The default version setting (if the version string missing from the URL) is 1.1., which is compatible with 2.0 and backward compatible with 1.0.
 
 
 OAUTH
 -----------
-An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-docs/. OAUTH used in the web interface and in the PDS as well.
+An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-docs/. OAUTH is used in the web interface and in the PDS as well.
 
 Variables
 .........
 grant_type:     password
-username:       a rergistered email address
+username:       a registered email address
 password:       password string
-scope:          list of requested scope access in the autenticated session
+scope:          list of requested scope access in the authenticated session
 access_token:   a valid access token
 
-html authentication of clients is nesessary
+HTML authentication of clients is necessary
 
-Available clients are mobile,R,web
+Available clients are mobile, R, web
 
 
 PDS 
@@ -62,30 +62,35 @@ ignore_warning: (put data) ignore upload warnings
 
 form_id:        (put_data) set form id
 
-data:           (put data) JSON array of upload data
+data:           (put data) JSON array of uploaded data
 
 
 GET type scopes
 ...............
-get_project_vars: query general project variables (available for non logined users as well). 
+get_project_vars
+
+ Query general project variables (also available for non-logged-in users).
+
  Additional parameters: 
-     project [text]: if not set default is the *template* project
+
+ - project [text]: if not set default is the *template* project
 
  Returns:
 
- - project_url [url string]: web address of the project
- - project_description [text string]: short description of project 
- - game [on/off]: game available for android mobile app
- - public_mapserv [url string]: url of publicly accessible map service
+ - project_url [url string]: The web address of the project
+ - project_description [text string]: Short description of the project 
+ - game [on/off]: game available for Android mobile app
+ - public_mapserv [url string]: URL of publicly accessible map service
  - rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
 
-get_project_list: get list and basis info of database projects available on the server. 
+get_project_list
+
+ Get a list and basic info on database projects available on the server. If a user is already logged in, get a list of those projects where the user has an account and where there are public query/upload interfaces. If the user is not logged in, query public projects only.
+ 
  Additional parameters:
-     only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
-     accessible [text]: all/**accessible**. If *accessible* parameter given and its value is "accessible" (default)
-     
-     - If user already logined, get list of those projects where user has account and where there are public query/upload interfaces. 
-     - If the user not logined, query public projects only.
+
+ - only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
+ - accessible [text]: all/**accessible**. If the *accessible* parameter is given and its value is "accessible" (default)
 
  Returns:
 
@@ -96,53 +101,102 @@ get_project_list: get list and basis info of database projects available on the 
  - stage [string] experimental/testing/stable,
  - doi [string],
  - running_date [date string],
- - licence [string],
+ - license [string],
  - rum [string],
  - collection_dates [date range string],
  - subjects [text],
 
-get_form_list:   query the list of available upload forms,
+get_form_list
+ 
+ Query the list of available upload forms.
 
-get_form_data:   query the fields of the selected form
+get_form_data
+ 
+ Query the fields of the selected form.
 
- Additional parameters: value [numeric] numeric id of a form.
+ Additional parameters: 
+
+ - value [numeric] numeric id of a form.
  
  Returns: see below.
 
-get_profile:     get profile data of a selected user
-
-get_data:        get data rows from a selected data table (observation data)
-
-get_specieslist: get species list from a project
-
-get_history:     get history of a selected data row
-
-get_report:      perform a predefined query and get the result
-
-get_tables:      get list of tables in a project
-
-get_trainings:  get list of available trainings/forms
-
- Returns: set of traning titles, ids and descriptions,...
-
-get_training_questions: get list of questions for the selected training
-
- Additional parameters: value [numeric] numeric id of a training.
+get_profile
  
- Returns: set of questions,answers and settings
+ Get profile data of a selected user
 
-training_results:   status list of users' trainings per forms. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok)
+get_data
 
-training_toplist: toplist of trainings. Mean, Max, Count values for each forms.
- Additional parameters: value [text] summary without names (nonames).
+ Get data rows from a selected data table (observation data).
+
+get_specieslist
  
-get_mydata_rows: json array of uploaded data
- Additional parameters: value [numeric] limit of array length. If 0, no limit, default is no limit.
+ Get the species list from a project.
+
+get_history
+
+ Get the history of a selected data row.
+
+get_report
+
+ Perform a predefined query and get the result.
+
+get_tables
+ 
+ Get the list of tables in a project
+
+get_trainings
+
+ Get the list of available trainings/forms.
+
+ Not available from API 2.6
+
+ Returns:
+
+ - the set of training titles, ids, and descriptions,...
+
+get_training_questions
+
+ Get the list of questions for the selected training.
+
+ Not available from API 2.6
+
+ Additional parameters:
+
+ - value [numeric] numeric id of a training.
+ 
+ Returns: 
+ - The set of questions, answers, and settings
+
+training_results:   
+ 
+ Status list of users' training for each form. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok).
+ 
+ Not available from API 2.6
+
+training_toplist
+
+ Toplist of trainings. Mean, Max, and Count values for each form.
+ 
+ Not available from API 2.6
+ 
+ Additional parameters:
+
+ - value [text] summary without names (nonames).
+ 
+get_mydata_rows
+
+ JSON array of uploaded data.
+
+ Additional parameters:
+
+ - Value [numeric] limit of array length. If 0, no limit, default is no limit.
 
 
 POST type scopes
 ................
-put_data:        send/upload data using a selected form
+put_data
+ 
+ Send/upload data using a selected form
 
 
 PATCH type scopes
@@ -152,14 +206,14 @@ PATCH type scopes
 
 WEB API
 -------
-There is a web (_GET) api endpoint to retrieve data without authentication. This is the ?query=
-This is API uses text_filter modules to assemble an SQL query statement.
+There is a web (_GET) API endpoint to retrieve data without authentication. This is the ?query=
+This API uses text_filter modules to assemble an SQL query statement.
 
 Variables
 .........
 query:          (API endpoint)
 
-qtable:         (data table for data retreive)
+qtable:         (data table for data retrieve)
 
 report:         (data retreive using stored queries)
 
@@ -167,7 +221,7 @@ output:         (JSON, XML, CSV, ... file output; If not set, the output is the 
 
 filename:       (the file name of the output file)
 
-Get list of active (known) OpenBioMaps servers using query api:
+Get the list of active (known) OpenBioMaps servers using query API:
 
 curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'
 
@@ -175,7 +229,7 @@ Get a filtered table from a non-default table:
 
 curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'
 
-LQ API end point:
+LQ API endpoint:
 
 LQ:             (display data from a stored query result)
 
@@ -184,17 +238,17 @@ Form Data (get_form_data results) explanations
 ----------------------------------------------
 Description: Optional column description
 
-Default value: Fix value for all observation. It can be controlled with the following options:
+Default value: Fix value for all observations. It can be controlled with the following options:
  
- - '_input' it works as any other field with sticky flag. 
- - '_list' it works as any other list type field with sticky flag.
- - '_geometry' it works as geometry type field
- - '_login_name' this value overriden by the user's name if logged in or returns as _input
- - '_email' this value overriden by the user's email address if logged in or returns as _input
+ - '_input' works as any other field with a sticky flag. 
+ - '_list' works as any other list-type field with a sticky flag.
+ - '_geometry' works as a geometry-type field
+ - '_login_name' this value is overridden by the user's name if logged in or returns as _input
+ - '_email' this value overridden by the user's email address if logged in or returns as _input
  - '_autocomplete' alias of input
- - '_boolean' display as normal boolean list
+ - '_boolean' display as a normal boolean list
  - '_attachment' display as normal attachments field
- - '_datum' display as normal date field
+ - '_datum' display as a normal date field
  - '_auto_geometry' geometry field without extra options (map, set)
  - '_none' not used
  
@@ -202,44 +256,44 @@ Column: The name of the column in the database
 
 Short_name: Visible name of the column for the users
 
-List: json array for menu items of a select menu. Can be {key:value} or [value,value] format
+List: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
 
 Control: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
 
-Count: (json array) If the control='minmax' this field contains the limit values, e.g 1:100
+Count: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
 
 Type: column's openbiomaps type:
  
- - autocomplete	(json array)
- - autocomplete_list (json array)
+ - autocomplete	(JSON array)
+ - autocomplete_list (JSON array)
  - boolean (two elements list)	
- - crings (colour rings - text)	
+ - crings (color rings - text)	
  - date (YYYY-MM-DD or other clear format)
  - datetime (YYYY-MM-DD HH:mm:ss)
  - file_id (file names as id by the server) 
  - line (WKT geometry string)
- - list (json array)
+ - list (JSON array)
  - numeric	
  - point	(WKT geometry string)
- - polygon (wkt geometry string)
+ - polygon (WKT geometry string)
  - text 
  - time (HH:mm)
  - timetominutes (numeric value between  0 and 1440)
  - tinterval idő intervallum (HH:mm - HH:mm)
- - wkt (WKT sting)
- - array (json array)
+ - wkt (WKT string)
+ - array (JSON array)
 
-Genlist: json array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+Genlist: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 
-Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non obligatory.
+Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
 
-Api_params: json array of control values. Till API v2.0 only 'sticky' as an array element. 
+Api_params: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
 Above API v2.0:
 {"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off"}.
 
 Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
-List_definition: JSON array of complex list definition
+List_definition: JSON array of the complex list definition
 
 Custom_function: null
 
@@ -266,7 +320,7 @@ curl -F 'scope=get_training_questions' -F 'access_token=9d45...' -F 'project=din
 Result of a successful call:
     {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
     
-    qtype can be multiselect or singleselect
+    qtype can be multi-select or single select
     
 curl -F 'scope=training_results' -F 'access_token=9bb4...' -F 'project=dinpi' http://localhost/biomaps/pds.php
 
@@ -316,7 +370,7 @@ Data retrieval (form fields):
     -F 'project=checkitout' \\ |br|
     http://openbiomaps.org/projects/checkitout/pds.php
     
-  OR with access token to retrieve data of a restricted form
+  OR with the access token to retrieve data from a restricted form
     curl \\ |br|
     -F 'access_token=...' \\ |br|
     -F 'scope=get_form_data' \\ |br|
@@ -329,7 +383,7 @@ Result of a successful get_form_data call:
 
 API < v.2.1
 
-    {"status":"success",
+    {"status": "success",
     
     "data":[    
     {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
@@ -338,7 +392,7 @@ API < v.2.1
     
 API >= v.2.1
 
-    {"status":"success",
+    {"status": "success",
     
     "data":[
     
@@ -379,7 +433,7 @@ Packed data upload. Data line in ZIP archive. This is the old mobile app's expor
     PICT01.JPG |br|
     PICT02.JPG |br|
     note.txt |br|
-The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example it is the 'faj'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory column in the form, those can be filled by the default_value parameter. In this example the 'egyedszam' column is an obligatory field which will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contains zip files detailed above.
+The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example, it is the 'faj'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory columns in the form, those can be filled by the default_value parameter. In this example, the 'egyedszam' column is an obligatory field that will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contain the zip files detailed above.
     
     curl \\ |br|
     -F 'scope=put_data' \\ |br|
@@ -407,13 +461,13 @@ Refresh token (from R):
     "scope":"get_form_data ...", |br|
     "refresh_token":"..."}
     
-Project list (using central pds):
+Project list (using central PDS):
     curl \\ |br|
     -F 'scope=get_project_list' \\ |br|
     http://localhost/biomaps/pds.php
     
     Returns: |br|
-    JSON array of those project which has public upload forms, or the user (if logined) member of it.
+    JSON array of those project which has public upload forms, or the user (if logged) member of it.
 
 General API answers
 -------------------
