@@ -1,9 +1,5 @@
 
-Virtual servers
-===============
-
-Docker
-------
+# Virtual szerverek: Docker
 
 It is the currently supported up-to-date virtual environment release of OpenBioMaps.
 
@@ -16,8 +12,7 @@ For using docker 4 steps are needed:
 4. Start your docker environment
 
 
-Prepare/Install Docker & Compose
-................................
+## Előkészítés és telepítés: Docker & Compose
 
 ```console
 sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -33,8 +28,8 @@ Visit this page for further information about installing docker:
 
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
-Install / Setup OpenBioMaps an instance
-.......................................
+
+## Egy OpenBioMaps példány telepítése
 
 It is recommended to put docker files into /srv/docker directory
 ```
@@ -61,8 +56,7 @@ docker-compose up -d
 docker-compose restart
 ```
 
-Visit your OBM app
-..................
+## A saját OBM alkalmazásunk meglátogatása
 
 [http://YOUR_SERVER_NAME:9880/](http://YOUR_SERVER_NAME:9880/)
 
@@ -73,8 +67,7 @@ Log in your template databse using *valaki@openbiomaps.org* user name and *abc12
 If you installed the docker in your local computer you can access the services above in localhost.
 
 
-Database access
-...............
+### Adatbázis hozzáférések
 
 You can access your Postgres database on the following preconfigured online database manager applications. However, it depends on your host-docker relationship.
 
@@ -82,22 +75,14 @@ You can access your Postgres database on the following preconfigured online data
 
 [adminer](http://YOUR_SERVER_NAME:9882/)
 
-with *sablon_admin* username and *12345* password. You can manage your database with *biomapsadmin* user and *abcd1234* password.
+with *sablon_admin* username and *12345* password. A *biomapsadmin* felhasználó rendszergazdai szintű hozzáférésű. A jelszava telepítéskor jön létre és a /srv/docker/openbiomaps/.env fájlban található.
 
-If you change these passwords, should be updated in the following places:
-
-/etc/openbiomaps/system_vars.php.inc
-
-/var/www/html/biomaps/projects/sablon/local_vars.php.inc
-
-/var/www/html/biomaps/projects/sablon/private/private.map
 
 In the map file, the new encrypted password can be generated with the ms-access-key located in /var/lib/openbiomaps/maps/access.key
 
 The two databases 'biomaps' and 'gisdata' have root postgres users respectively *biomaps* and *gisdata* (instead of the usual *postgres*) and both password is *changeMe*.
 
-Docker maintenance
-..................
+## Docker karbantartó felület
 
 This step is not obligatory but can be useful if you need a strong web admin interface for docker management. 
 
@@ -119,8 +104,7 @@ On the portainer interface use the "Get started" button...
 
 ```
 
-Visit your docker-admin (portainer) app
-.......................................
+Visit your docker-admin (portainer) app:
 
 [http://YOUR_SERVER_NAME:9000/](http://YOUR_SERVER_NAME:9000/)
 
@@ -129,16 +113,16 @@ Log in to your app using *admin* user name and your password;
 If you installed the docker in your local computer you can access the services above in localhost.
 
 
-OBM maintenance
-...............
+## OBM karbantartás
+
 
 You can access OBM server admin interface: 
 [http://localhost:9880/supervisor.php](http://localhost:9880/supervisor.php)
 
 with *supervisor* username and password created by obm_post_install.sh. This password is located at /etc/openbiomaps/.htpasswd.
 
-Updates: update application with Docker
-.......................................
+## Updates: update application with Docker
+
 
 ```console
 foo@bar:~$ docker-compose pull 
@@ -161,8 +145,8 @@ Update only one container
 foo@bar:~$ docker-compose up -d app
 ```
 
-After founding a new project
-............................
+## After founding a new project
+
 
 You **must set up a Mail server access** to send emails from the app
 
@@ -198,7 +182,7 @@ For the IP address above check host "ip addr | grep docker0"
 
 On the host depending on what MTA you have here you some examples:
 
-**Exim4**
+### Exim4
 
 In the /etc/exim4/update-exim4.conf file
 
@@ -214,7 +198,7 @@ In the /etc/exim4/exim4.config file
  
  Comment: "Maybe one of the three networks is enough above, I did not test yet"
 
-**Postfix**
+### Postfix
 
 inet_interfaces = 172.17.0.1
 
@@ -240,13 +224,13 @@ obm-composer_obm_web {
  "IPAddress": "172.21.0.4",
 }
 
-**Firewall**
+### Firewall
 
 You may also need to update your firewall to enable incoming mail from the image to the host. The network address of obm_back must be allowed as an incoming network for the firewall. E.g.
 ```console
 ufw allow from 172.20.0.0/16 proto tcp to any port 25
 ```
-**Global smtp settings**
+### Global smtp settings
 
 Most probably you want to use the same SMTP settings for your all project on your server. In this case, use the
 
@@ -263,8 +247,8 @@ Most probably you want to use the same SMTP settings for your all project on you
  
  
 
-Setting up **ssl**/**https access** (highly recommended)
-........................................................
+## Setting up **ssl**/**https access** (highly recommended)
+
 You may need to update your project access protocol setting in the Supervisor however it is depending on your host's setting.
 
 *There is no webserver on the Host, but Host provide ssl certs for docker*
@@ -431,25 +415,25 @@ psql: FATAL:  no pg_hba.conf entry for host "xxxxxxx", user "gisadmin", database
 
 
 
-Docker maintenance
-..................
+## Docker karbantartás
 
-Stopping docker
-...............
+
+### Stopping docker
+
 ```console
 foo@bar:~$ docker-compose down
 ```
 
-Drop everything (including data and databases)
-..............................................
+### Drop everything (including data and databases)
+
 
 ```console
 foo@bar:~$ docker-compose down -v
 ```
 
 
-Shell access of the system in the container image
-.................................................
+### Shell access of the system in the container image
+
 
 ```console
 foo@bar:~$ docker-compose exec app bash
@@ -457,27 +441,26 @@ foo@bar:~$ docker-compose exec app bash
 Here we accessed the **app** service. See service names in docker-compose.yml file.
 
 
-Reading logs
-............
+### Reading logs
+
 
 ```console
 foo@bar:~$ docker-compose logs -f app
 ```
 
-Using pgtop
-...........
+### Using pgtop
+
 
 docker-compose exec -u postgres <service_name> pg_top
 
-Restart app
-...........
+### Restart app
+
 Do not restart Apache from the Docker shell, but from outside
 ```console
 foo@bar:~$ docker-compose restart app
 ```
 
-Remove huge amounts of old, not used docker images
-..................................................
+### Remove huge amounts of old, not used docker images
 
 Do we have a lot?
 ```console
@@ -489,26 +472,23 @@ docker images | grep "<none>" | awk '{print $3}' | sed -e 's/^/docker rmi /' | b
 ```
 You may need to edit the traefik2.0/traefik.yml, traefik2.0/docker-compose.yml, and traefik2.0/acme.json files
 
-Auto update of docker
-.....................
+### Auto update of docker
 
 https://github.com/OpenBioMaps/scripts/blob/master/docker-auto-update.readme
 
-Archive tables, data, ...
-.........................
+## Archive tables, data, ...
 
 https://github.com/OpenBioMaps/scripts
 
 
-Resources
-.........
+## Resources
 
 * https://gitlab.com/openbiomaps/web-app
 * https://gitlab.com/openbiomaps/docker/obm-composer
 
 
-Not docker: VirtualBox (outdated!!!)
-------------------------------------
+# Not docker: VirtualBox (outdated!!!)
+
 The VirtualBox edition currently is outdated, not recommended to use it!
 
 1. Download VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
