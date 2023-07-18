@@ -383,12 +383,7 @@ Above API v2.0:
 
 *field_description*:
 
-API < v.2.1
-    JSON array: [{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
 
-API >= v.2.1
-    in "form_header":{...,"permanent_sample_plots":[{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
-    
 
 Training explanations and examples
 ----------------------------------
@@ -427,12 +422,13 @@ curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' ht
         "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
         "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
 
-Examples
---------
-Authentication:
-    curl \\ |br|
+
+Authentication examples
+-----------------------
+
+`    curl \\ |br|
     -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
-    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
+    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"`
 
 Data retrieval (form list):
     curl \\ |br|
