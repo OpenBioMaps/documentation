@@ -260,9 +260,59 @@ or
     "message": "The request requires higher privileges than provided by the access token"
   }
 
+Successful response:
 
+.. code-block:: json
+{
+  "status": "success",
+  "message": "",
+  "data": {
+    "form_header": {
+      "login_name": "Gipsz Jakab",
+      "login_email": "jakab.gipsz@openbiomaps.jupyter.ga",
+      "boldyellow": [
+        "species"
+      ],
+      "num_ind": "quantity",
+      "tracklog_mode": "",
+      "observationlist_mode": "false",
+      "observationlist_time_length": "0",
+      "periodic_notification_time": null
+    },
+    "form_data": [ ...
+        "description": "...",
+        "default_value": "...",
+        "column": "species",
+        "short_name": "Scientific species name",
+        "list": [...],
+        "control": "nocheck",
+        "count": "{}",
+        "type": "list",
+        "genlist": null,
+        "obl": "1",
+        "api_params": {
+          "sticky": "on",
+          "hidden": "off",
+          "readonly": "off",
+          "list_elements_as_buttons": "on",
+          "once": "off",
+          "unfolding_list": "off"
+        },
+        "spatial_limit": null,
+        "list_definition": {
+          "multiselect": false,
+          "selected": null,
+          "triggerTargetColumn": [],
+          "Function": ""
+        },
+        "custom_function": null,
+        "column_label": null,
+        "field_description": "..."
+      }, ... ]}
 
-Default value: Fix value for all observations. It can be controlled with the following options:
+Explanations of variables:
+
+*default value*: Fix value for all observations. It can be controlled with the following options:
  
  - '_input' works as any other field with a sticky flag. 
  - '_list' works as any other list-type field with a sticky flag.
@@ -276,17 +326,17 @@ Default value: Fix value for all observations. It can be controlled with the fol
  - '_auto_geometry' geometry field without extra options (map, set)
  - '_none' not used
  
-Column: The name of the column in the database
+*column*: The name of the column in the database
 
-Short_name: Visible name of the column for the users
+*short_name*: Visible name of the column for the users
 
-List: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
+*list*: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
 
-Control: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
+*control*: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
 
-Count: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
+*count*: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
 
-Type: column's openbiomaps type:
+*type*: column's openbiomaps type:
  
  - autocomplete	(JSON array)
  - autocomplete_list (JSON array)
@@ -307,21 +357,26 @@ Type: column's openbiomaps type:
  - wkt (WKT string)
  - array (JSON array)
 
-Genlist: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+*genlist*: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 
-Obl: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
+*obl*: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
 
-Api_params: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
+*api_params*: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
+
 Above API v2.0:
-{"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off"}.
 
-Spatial_limit: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+.. code-block:: json
+    {"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off","unfolding_list": "off"}
 
-List_definition: JSON array of the complex list definition
+*spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
-Custom_function: null
+*list_definition*: JSON array of the complex list definition
 
-permanent_sample_plots: 
+*custom_function*: null
+
+*custom_label*: 
+
+*field_description*:
 
 API < v.2.1
     JSON array: [{"id":"1110","name":"Standard plots","geometry":"POLYGON((16.5625...
