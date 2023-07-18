@@ -118,7 +118,7 @@ GET type scopes
 
  - value [numeric] numeric id of a form.
  
- Returns: see below.
+ Returns: :ref:`see in examples below <get_form_data_example>`.
 
 **get_profile**
  
@@ -237,9 +237,30 @@ LQ API endpoint:
 LQ:             (display data from a stored query result)
 
 
-Form Data (get_form_data results) explanations
-----------------------------------------------
-Description: Optional column description
+.. _get_form_data_example:
+
+**get_form_data** examples
+--------------------------
+Usage example:
+``curl -F 'access_token=c53c9ec690fede4c3' -F 'scope=get_form_data' -F 'value=246' -F 'project=dead_animals' https://openbiomaps.org/projects/dead_animals/v2.3/pds.php | jq``
+
+Error messages:
+
+.. code-block:: json
+  {
+    "status": "error",
+    "message": "The access token provided is invalid"
+  }
+
+or
+
+.. code-block:: json
+  {
+    "status": "error",
+    "message": "The request requires higher privileges than provided by the access token"
+  }
+
+
 
 Default value: Fix value for all observations. It can be controlled with the following options:
  
