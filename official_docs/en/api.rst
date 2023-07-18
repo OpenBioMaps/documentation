@@ -246,7 +246,8 @@ Usage example:
 
 Error messages:
 
-.. code-block:: javascript
+.. code-block:: json
+
   {
     "status": "error",
     "message": "The access token provided is invalid"
@@ -254,7 +255,8 @@ Error messages:
 
 or
 
-.. code-block:: javascript
+.. code-block:: json
+
   {
     "status": "error",
     "message": "The request requires higher privileges than provided by the access token"
@@ -262,8 +264,9 @@ or
 
 Successful response:
 
-.. code-block:: javascript
-{
+.. code-block:: json
+
+  {
   "status": "success",
   "message": "",
   "data": {
@@ -279,7 +282,8 @@ Successful response:
       "observationlist_time_length": "0",
       "periodic_notification_time": null
     },
-    "form_data": [ ...
+    "form_data": [
+        {
         "description": "...",
         "default_value": "...",
         "column": "species",
@@ -308,7 +312,7 @@ Successful response:
         "custom_function": null,
         "column_label": null,
         "field_description": "..."
-      }, ... ]}
+      }, {...} ]}}
 
 Explanations of variables:
 
@@ -365,7 +369,8 @@ Explanations of variables:
 
 Above API v2.0:
 
-.. code-block:: javascript
+.. code-block:: json
+
     {"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off","unfolding_list": "off"}
 
 *spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
