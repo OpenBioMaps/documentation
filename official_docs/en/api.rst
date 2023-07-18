@@ -46,15 +46,15 @@ HTML authentication of clients is necessary
 Available clients are mobile, R, web
 
 
-PDS 
-----
-OBM API interface. Created for R and mobile interface. It uses the OAUTH interface for authentication.
+PDS API
+-------
+The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication.
 
 Variables
 .........
 scope:      data methods: see below
 
-value:      some scope uses it
+value:      Most scopes use
 
 header:     (put data) JSON list of table columns' names
 
@@ -67,7 +67,7 @@ data:           (put data) JSON array of uploaded data
 
 GET type scopes
 ...............
-get_project_vars
+**get_project_vars**
 
  Query general project variables (also available for non-logged-in users).
 
@@ -83,7 +83,7 @@ get_project_vars
  - public_mapserv [url string]: URL of publicly accessible map service
  - rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
 
-get_project_list
+**get_project_list**
 
  Get a list and basic info on database projects available on the server. If a user is already logged in, get a list of those projects where the user has an account and where there are public query/upload interfaces. If the user is not logged in, query public projects only.
  
@@ -106,11 +106,11 @@ get_project_list
  - collection_dates [date range string],
  - subjects [text],
 
-get_form_list
+**get_form_list**
  
  Query the list of available upload forms.
 
-get_form_data
+**get_form_data**
  
  Query the fields of the selected form.
 
@@ -120,31 +120,31 @@ get_form_data
  
  Returns: see below.
 
-get_profile
+**get_profile**
  
  Get profile data of a selected user
 
-get_data
+**get_data**
 
  Get data rows from a selected data table (observation data).
 
-get_specieslist
+**get_specieslist**
  
  Get the species list from a project.
 
-get_history
+**get_history**
 
  Get the history of a selected data row.
 
-get_report
+**get_report**
 
  Perform a predefined query and get the result.
 
-get_tables
+**get_tables**
  
  Get the list of tables in a project
 
-get_trainings
+*get_trainings*
 
  Get the list of available trainings/forms.
 
@@ -154,7 +154,7 @@ get_trainings
 
  - the set of training titles, ids, and descriptions,...
 
-get_training_questions
+*get_training_questions*
 
  Get the list of questions for the selected training.
 
@@ -168,13 +168,13 @@ get_training_questions
 
  - The set of questions, answers, and settings
 
-training_results
+*training_results*
  
  Status list of users' training for each form. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok).
  
  Not available from API 2.6
 
-training_toplist
+*training_toplist*
 
  Toplist of trainings. Mean, Max, and Count values for each form.
  
@@ -184,7 +184,7 @@ training_toplist
 
  - value [text] summary without names (nonames).
  
-get_mydata_rows
+**get_mydata_rows**
 
  JSON array of uploaded data.
 
@@ -195,19 +195,21 @@ get_mydata_rows
 
 POST type scopes
 ................
-put_data
+**put_data**
  
  Send/upload data using a selected form
 
 
 PATCH type scopes
 .................
-*set_rules:*     update specific settings
+*set_rules*     
+
+ Update specific settings
 
 
 WEB API
 -------
-There is a web (_GET) API endpoint to retrieve data without authentication. This is the ?query=
+The index.php is also an API service in some cases (?query=) for _GET requests only and for unauthenticated requests.
 This API uses text_filter modules to assemble an SQL query statement.
 
 Variables
@@ -224,11 +226,11 @@ filename:       (the file name of the output file)
 
 Get the list of active (known) OpenBioMaps servers using query API:
 
-curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'
+``curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'``
 
 Get a filtered table from a non-default table:
 
-curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'
+``curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'``
 
 LQ API endpoint:
 
