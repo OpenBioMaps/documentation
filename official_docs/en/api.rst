@@ -371,7 +371,14 @@ Above API v2.0:
 
 .. code-block:: json
 
-    {"sticky":"off","hidden":"off","readonly":"off","list_elements_as_buttons":"off","once":"off","unfolding_list": "off"}
+    {
+     "sticky":"off",
+     "hidden":"off",
+     "readonly":"off",
+     "list_elements_as_buttons":"off",
+     "once":"off",
+     "unfolding_list": "off"
+    }
 
 *spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
@@ -426,24 +433,28 @@ curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' ht
 Authentication examples
 -----------------------
 
-`    curl \\ |br|
+    curl \\ |br|
     -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
-    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"`
+    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
 
 Data retrieval (form list):
+
     curl \\ |br|
     -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"
 
 Result of a successful get_form_list call:
+
     {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
 
 Data retrieval (form fields):
+
     curl \\ |br|
     -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
     -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93"
     
   OR with central pds
+
     curl \\ |br|
     -F 'scope=get_form_data' \\ |br|
     -F 'value=93' \\ |br|
@@ -451,6 +462,7 @@ Data retrieval (form fields):
     http://openbiomaps.org/projects/checkitout/pds.php
     
   OR with the access token to retrieve data from a restricted form
+
     curl \\ |br|
     -F 'access_token=...' \\ |br|
     -F 'scope=get_form_data' \\ |br|
@@ -463,25 +475,39 @@ Result of a successful get_form_data call:
 
 API < v.2.1
 
-    {"status": "success",
-    
-    "data":[    
-    {"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},
-    
-    {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":null},{...}]}
+.. code-block:: json
+
+    {"status":"success","data":[{"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},{...}]}
     
 API >= v.2.1
 
-    {"status": "success",
-    
+.. code-block:: json
+
+    {
+    "status": "success",
     "data":[
-    
-    "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
-    "form_data":[
-        {"description":"faj neve","default_value":null,"column":"faj","short_name":"faj","list":"","control":"nocheck","count":"{}","type":"text","genlist":null,"obl":"1","api_params":{"sticky":"off","numeric":"off","list_elements_as_buttons":"off"}},{...}]]}
+      "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
+      "form_data":[
+        {
+         "description":"faj neve",
+         "default_value":null,
+         "column":"faj",
+         "short_name":"faj",
+         "list":"",
+         "control":"nocheck",
+         "count":"{}",
+         "type":"text",
+         "genlist":null,"obl":"1",
+         "api_params":
+            {
+             "sticky":"off",
+             "numeric":"off",
+             "list_elements_as_buttons":"off"}},{...}]]
+    }
     
 
 Data upload:
+
     curl \\ |br|
     -i \\ |br|
     -X POST \\ |br|
@@ -495,6 +521,7 @@ Data upload:
     'http://openbiomaps.org/projects/checkitout/pds.php'
 
 Data upload with multiple attachments (files):
+
     curl \\ |br|
     -F "access_token=..." \\ |br|
     -F 'scope=put_data' \\ |br|
@@ -525,28 +552,37 @@ The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from 
     http://localhost/biomaps/pds.php
 
 Data retrieval (non-authenticated report):
+
     wget http://localhost/biomaps/projects/dinpi/?report=2@szamossag&output=csv
 
 Refresh token (from R):
+
     curl \\ |br|
     -F 'grant_type=refresh_token' \\ |br|
     -F 'refresh_token=...' \\ |br|
     -F 'client_id=R' \\ |br|
     http://openbiomaps.org/oauth/token.php
     
-    Returns: |br|
-    {"access_token":"...", |br|
-    "expires_in":3600, |br|
-    "token_type":"Bearer", |br|
-    "scope":"get_form_data ...", |br|
-    "refresh_token":"..."}
+Returns:
+
+.. code-block:: json
+
+   {
+    "access_token":"...",
+    "expires_in":3600,
+    "token_type":"Bearer",
+    "scope":"get_form_data ...",
+    "refresh_token":"..."
+   }
     
 Project list (using central PDS):
+
     curl \\ |br|
     -F 'scope=get_project_list' \\ |br|
     http://localhost/biomaps/pds.php
     
     Returns: |br|
+
     JSON array of those project which has public upload forms, or the user (if logged) member of it.
 
 General API answers
@@ -554,6 +590,13 @@ General API answers
 Based on: https://labs.omniti.com/labs/jsend
 
 JSON:
-    {"status":"X","data":"","message":""}
+
+.. code-block:: json
+
+    {
+     "status":"X",
+     "data":"",
+     "message":""
+    }
 
 X: success, error, fail
