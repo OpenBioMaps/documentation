@@ -56,7 +56,7 @@ You can access your Postgres database on the following pre-configured online dat
 
   PhpPgadmin notes:
   
-    It is a very friendly tool, but unfortunately it is currently not maintained, so we have to create our own edition or wait for someone else....
+  It is a very friendly tool, but unfortunately, it is currently not maintained, so we have to create our own edition or wait for someone else....
 
 Adminer: [http://YOUR_SERVER_NAME:9882/](http://YOUR_SERVER_NAME:9882/)
 
@@ -185,6 +185,7 @@ On the host depending on what MTA you have here you some examples:
 In the /etc/exim4/update-exim4.conf file
 
  dc_relay_nets='172.21.0.0/16'
+ 
  dc_local_interfaces='127.0.0.1 ; ::1 ; 172.17.0.1' 
 
 these lines should be updated, but depending on your exim config maybe something else as well.
@@ -192,9 +193,10 @@ these lines should be updated, but depending on your exim config maybe something
 In the /etc/exim4/exim4.config file
 
 "hostlist   relay_from_hosts..." line, you should extend with the obm_back network e.g.
- hostlist   relay_from_hosts = localhost :172.20.0.0/16 :172.17.0.0/16 :172.21.0.0/16
+
+  hostlist   relay_from_hosts = localhost :172.20.0.0/16 :172.17.0.0/16 :172.21.0.0/16
  
- Comment: "Maybe one of the three networks is enough above, I did not test yet"
+  Comment: "Maybe one of the three networks is enough above, I did not test yet"
 
 ### Postfix
 
@@ -213,14 +215,15 @@ Search for obm-composer_app_1
 docker inspect xxxxx_obm-composer_app_1
 ```
 Search for obm_back and obm_web interfaces:
-obm-composer_obm_back {
- ...
- "IPAddress": "172.20.0.6",
-}
-obm-composer_obm_web {
- ...
- "IPAddress": "172.21.0.4",
-}
+
+  obm-composer_obm_back {
+    ...
+    "IPAddress": "172.20.0.6",
+  }
+  obm-composer_obm_web {
+   ...
+   "IPAddress": "172.21.0.4",
+  }
 
 ### Firewall
 
