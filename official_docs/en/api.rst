@@ -70,219 +70,219 @@ GET type scopes
 ...............
 **get_project_vars**
 
- Query general project variables (also available for non-logged-in users).
+Query general project variables (also available for non-logged-in users).
 
- Additional parameters: 
+Additional parameters: 
 
- - project [text]: if not set default is the *template* project
+- project [text]: if not set default is the *template* project
 
- Returns:
+Returns:
 
- - project_url [url string]: The web address of the project
- - project_description [text string]: Short description of the project 
- - game [on/off]: game available for Android mobile app
- - public_mapserv [url string]: URL of publicly accessible map service
- - rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
+- project_url [url string]: The web address of the project
+- project_description [text string]: Short description of the project 
+- game [on/off]: game available for Android mobile app
+- public_mapserv [url string]: URL of publicly accessible map service
+- rserver_port [numeric]: numeric port number of R-Shiny server, accessible on project_url
 
 **get_project_list**
 
- Get a list and basic info on database projects available on the server. If a user is already logged in, get a list of those projects where the user has an account and where there are public query/upload interfaces. If the user is not logged in, query public projects only.
+Get a list and basic info on database projects available on the server. If a user is already logged in, get a list of those projects where the user has an account and where there are public query/upload interfaces. If the user is not logged in, query public projects only.
  
- Additional parameters:
+Additional parameters:
 
- - only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
- - accessible [text]: all/**accessible**. If the *accessible* parameter is given and its value is "accessible" (default)
+- only-project [text]: query project parameters only for the selected project, default is to query all accessible projects
+- accessible [text]: all/**accessible**. If the *accessible* parameter is given and its value is "accessible" (default)
 
- Returns:
+Returns:
 
- - project_table [string],
- - creation_date [date string],
- - Creator [string],
- - email [string],
- - stage [string] experimental/testing/stable,
- - doi [string],
- - running_date [date string],
- - license [string],
- - rum [string],
- - collection_dates [date range string],
- - subjects [text],
+- project_table [string],
+- creation_date [date string],
+- Creator [string],
+- email [string],
+- stage [string] experimental/testing/stable,
+- doi [string],
+- running_date [date string],
+- license [string],
+- rum [string],
+- collection_dates [date range string],
+- subjects [text],
 
 **get_form_list**
  
- Query the list of available upload forms.
+Query the list of available upload forms.
 
 **get_form_data**
  
- Query the fields of the selected form.
+Query the fields of the selected form.
 
- Additional parameters: 
+Additional parameters: 
 
- - value [numeric] numeric id of a form.
+- value [numeric] numeric id of a form.
  
- Returns: :ref:`see in examples below <get_form_data_example>`.
+Returns: :ref:`see in examples below <get_form_data_example>`.
 
- Explanations of variables:
+Explanations of variables:
 
- *default value*: Fix value for all observations. It can be controlled with the following options:
+*default value*: Fix value for all observations. It can be controlled with the following options:
  
- - '_input' works as any other field with a sticky flag. 
- - '_list' works as any other list-type field with a sticky flag.
- - '_geometry' works as a geometry-type field
- - '_login_name' this value is overridden by the user's name if logged in or returns as _input
- - '_email' this value overridden by the user's email address if logged in or returns as _input
- - '_autocomplete' alias of input
- - '_boolean' display as a normal boolean list
- - '_attachment' display as normal attachments field
- - '_datum' display as a normal date field
- - '_auto_geometry' geometry field without extra options (map, set)
- - '_none' not used
+- '_input' works as any other field with a sticky flag. 
+- '_list' works as any other list-type field with a sticky flag.
+- '_geometry' works as a geometry-type field
+- '_login_name' this value is overridden by the user's name if logged in or returns as _input
+- '_email' this value overridden by the user's email address if logged in or returns as _input
+- '_autocomplete' alias of input
+- '_boolean' display as a normal boolean list
+- '_attachment' display as normal attachments field
+- '_datum' display as a normal date field
+- '_auto_geometry' geometry field without extra options (map, set)
+- '_none' not used
  
- *column*: The name of the column in the database
+*column*: The name of the column in the database
 
- *short_name*: Visible name of the column for the users
+*short_name*: Visible name of the column for the users
 
- *list*: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
+*list*: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
 
- *control*: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
+*control*: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
 
- *count*: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
+*count*: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
 
- *type*: column's openbiomaps type:
+*type*: column's openbiomaps type:
  
- - autocomplete	(JSON array)
- - autocomplete_list (JSON array)
- - boolean (two elements list)	
- - crings (color rings - text)	
- - date (YYYY-MM-DD or other clear format)
- - datetime (YYYY-MM-DD HH:mm:ss)
- - file_id (file names as id by the server) 
- - line (WKT geometry string)
- - list (JSON array)
- - numeric	
- - point	(WKT geometry string)
- - polygon (WKT geometry string)
- - text 
- - time (HH:mm)
- - timetominutes (numeric value between  0 and 1440)
- - tinterval idő intervallum (HH:mm - HH:mm)
- - wkt (WKT string)
- - array (JSON array)
+- autocomplete	(JSON array)
+- autocomplete_list (JSON array)
+- boolean (two elements list)	
+- crings (color rings - text)	
+- date (YYYY-MM-DD or other clear format)
+- datetime (YYYY-MM-DD HH:mm:ss)
+- file_id (file names as id by the server) 
+- line (WKT geometry string)
+- list (JSON array)
+- numeric	
+- point	(WKT geometry string)
+- polygon (WKT geometry string)
+- text 
+- time (HH:mm)
+- timetominutes (numeric value between  0 and 1440)
+- tinterval idő intervallum (HH:mm - HH:mm)
+- wkt (WKT string)
+- array (JSON array)
 
- *genlist*: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+*genlist*: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
 
- *obl*: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
+*obl*: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
 
- *api_params*: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
+*api_params*: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
 
- api_params above API v2.0:
+api_params above API v2.0:
 
 .. code-block:: json
 
-    {
-     "sticky":"off",
-     "hidden":"off",
-     "readonly":"off",
-     "list_elements_as_buttons":"off",
-     "once":"off",
-     "unfolding_list": "off"
-    }
+  {
+   "sticky":"off",
+   "hidden":"off",
+   "readonly":"off",
+   "list_elements_as_buttons":"off",
+   "once":"off",
+   "unfolding_list": "off"
+  }
 
- *spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+*spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
 
- *list_definition*: JSON array of the complex list definition
+*list_definition*: JSON array of the complex list definition
 
- *custom_function*: null
+*custom_function*: null
 
- *custom_label*: 
+*custom_label*: 
 
- *field_description*:
+*field_description*:
 
 
 **get_profile**
  
- Get profile data of a selected user
+Get profile data of a selected user
 
 **get_data**
 
- Get data rows from a selected data table (observation data).
+Get data rows from a selected data table (observation data).
 
 **get_specieslist**
  
- Get the species list from a project.
+Get the species list from a project.
 
 **get_history**
 
- Get the history of a selected data row.
+Get the history of a selected data row.
 
 **get_report**
 
- Perform a predefined query and get the result.
+Perform a predefined query and get the result.
 
 **get_tables**
  
- Get the list of tables in a project
+Get the list of tables in a project
 
-*get_trainings*
+**get_trainings**
 
- Get the list of available trainings/forms.
+Not available from API 2.6
 
- Not available from API 2.6
+Get the list of available trainings/forms.
 
- Returns:
+Returns:
 
- - the set of training titles, ids, and descriptions,...
+- the set of training titles, ids, and descriptions,...
 
-*get_training_questions*
+**get_training_questions**
 
- Get the list of questions for the selected training.
+Get the list of questions for the selected training.
 
- Not available from API 2.6
+Not available from API 2.6
 
- Additional parameters:
+Additional parameters:
 
- - value [numeric] numeric id of a training.
+- value [numeric] numeric id of a training.
  
- Returns:
+Returns:
 
- - The set of questions, answers, and settings
+- The set of questions, answers, and settings
 
-*training_results*
+**training_results**
  
- Status list of users' training for each form. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok).
+Status list of users' training for each form. Status can be -1 (not sent), 0 (not validated yet), 1 (done, ok).
  
- Not available from API 2.6
+Not available from API 2.6
 
-*training_toplist*
+**training_toplist**
 
- Toplist of trainings. Mean, Max, and Count values for each form.
+Toplist of trainings. Mean, Max, and Count values for each form.
  
- Not available from API 2.6
+Not available from API 2.6
  
- Additional parameters:
+Additional parameters:
 
- - value [text] summary without names (nonames).
+- value [text] summary without names (nonames).
  
 **get_mydata_rows**
 
- JSON array of uploaded data.
+JSON array of uploaded data.
 
- Additional parameters:
+Additional parameters:
 
- - Value [numeric] limit of array length. If 0, no limit, default is no limit.
+- Value [numeric] limit of array length. If 0, no limit, default is no limit.
 
 
 POST type scopes
 ................
 **put_data**
  
- Send/upload data using a selected form
+Send/upload data using a selected form
 
 
 PATCH type scopes
 .................
 *set_rules*     
 
- Update specific settings
+Update specific settings
 
 
 Examples
@@ -290,50 +290,44 @@ Examples
 **Authentication**
 -----------------
 Usage example:
-``curl \\
-    -u mobile:123 http://openbiomaps.org/oauth/token.php \\
-    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data" | jq``
+``curl -u mobile:123 http://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data" | jq``
 
 Specific error messages:
 
 .. code-block:: json
 
-{
-  "error": "invalid_grant",
-  "error_description": "Invalid username and password combination"
-}
+  {
+    "error": "invalid_grant",
+    "error_description": "Invalid username and password combination"
+  }
 
 Successful response:
 
 .. code-block:: json
 
-{
-  "access_token": "2cf59c094cc83498355ee9f520848efab6f71fe0",
-  "expires_in": 3600,
-  "token_type": "Bearer",
-  "scope": "get_form_data get_form_list put_data apiprofile",
-  "refresh_token": "e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f"
-}
+  {
+    "access_token": "2cf59c094cc83498355ee9f520848efab6f71fe0",
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "scope": "get_form_data get_form_list put_data apiprofile",
+    "refresh_token": "e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f"
+  }
 
 Using refresh token:
 
-    curl \\ |br|
-    -F 'grant_type=refresh_token' \\ |br|
-    -F 'refresh_token=e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f' \\ |br|
-    -F 'client_id=R' \\ |br|
-    http://openbiomaps.org/oauth/token.php
+``curl -F 'grant_type=refresh_token' -F 'refresh_token=e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f' -F 'client_id=R' http://openbiomaps.org/oauth/token.php | jq``
     
 Returns:
 
 .. code-block:: json
 
-   {
+  {
     "access_token":"ccc1d3e0f13dffb17d36b2acfe9d161fd4ec1d4d",
     "expires_in":3600,
     "token_type":"Bearer",
     "scope":"get_form_data get_form_list",
     "refresh_token":"a1e1d3e0f13dffb17d36b2acfe9d161fd4ec1d27"
-   }
+  }
 
 .. _get_form_data_example:
 
@@ -442,9 +436,7 @@ Usage example:
 ---------------
 Usage example:
 
-    curl \\ |br|
-    -i \\ |br|
-    -X POST \\ |br|
+  curl -i -X POST \\ |br|
     -H "Content-Type:application/x-www-form-urlencoded" \\ |br|
     -H "Authorization:Bearer ..." \\ |br|
     -d "scope=put_data" \\ |br|
@@ -537,40 +529,48 @@ Examples:
 
 Result of a successful call:
 
-    {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
-    
+.. code-block:: json
+
+  {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"}]}
+
 ``curl -F 'scope=get_training_questions' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
 Result of a successful call:
 
-    {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
+.. code-block:: json
+
+  {"status":"success","data":[ {"qid":"1", "training_id":"1", "caption":"...?", "answers":[{"Answer": "...","isRight": "false" } ],"qtype":"multiselect"}]}
     
-    qtype can be multi-select or single select
+qtype can be multi-select or single select
     
 ``curl -F 'scope=training_results' -F 'access_token=9bb4...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
 Result of a successful call:
 
-    {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
+.. code-block:: json
+
+  {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
     
-    Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
+Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
     
 ``curl -F 'scope=training_toplist' -F 'value=nonames' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
 Result of a successful call:
 
-    {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
+.. code-block:: json
+
+  {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
     
 ``curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
-    {"status":"success","data":{
+.. code-block:: json
+
+  {"status":"success","data":{
         "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"},
               "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
         "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
         "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
         "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
-
-
 
 
 General API answers
