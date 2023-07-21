@@ -217,12 +217,12 @@ docker inspect xxxxx_obm-composer_app_1
 Search for obm_back and obm_web interfaces:
 
   obm-composer_obm_back {
-    ...
-    "IPAddress": "172.20.0.6",
+  ...
+  "IPAddress": "172.20.0.6",
   }
   obm-composer_obm_web {
-   ...
-   "IPAddress": "172.21.0.4",
+  ...
+  "IPAddress": "172.21.0.4",
   }
 
 ### Firewall
