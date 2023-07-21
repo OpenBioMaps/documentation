@@ -343,6 +343,7 @@ Returns:
 **get_form_data**
 -----------------
 Usage example:
+
 ``curl -F 'access_token=c53c9ec690fede4c3' -F 'scope=get_form_data' -F 'value=246' -F 'project=dead_animals' https://openbiomaps.org/projects/dead_animals/v2.3/pds.php | jq``
 
 Specific error messages:
@@ -360,23 +361,23 @@ Successful response:
 .. code-block:: json
 
   {
-  "status": "success",
-  "message": "",
-  "data": {
-    "form_header": {
-      "login_name": "Gipsz Jakab",
-      "login_email": "jakab.gipsz@openbiomaps.jupyter.ga",
-      "boldyellow": [
-        "species"
-      ],
-      "num_ind": "quantity",
-      "tracklog_mode": "",
-      "observationlist_mode": "false",
-      "observationlist_time_length": "0",
-      "periodic_notification_time": null
-    },
-    "form_data": [
-        {
+   "status": "success",
+   "message": "",
+   "data": {
+     "form_header": {
+       "login_name": "Gipsz Jakab",
+       "login_email": "jakab.gipsz@openbiomaps.jupyter.ga",
+       "boldyellow": [
+         "species"
+       ],
+       "num_ind": "quantity",
+       "tracklog_mode": "",
+       "observationlist_mode": "false",
+       "observationlist_time_length": "0",
+       "periodic_notification_time": null
+     },
+     "form_data": [
+       {
         "description": "...",
         "default_value": "...",
         "column": "species",
@@ -405,21 +406,23 @@ Successful response:
         "custom_function": null,
         "column_label": null,
         "field_description": "..."
-      }, {...} ]}}
+       }, {...} ]
+   }
+  }
 
 
 **get_form_list**
 -----------------
 Usage example:
-``curl http://openbiomaps.org/projects/checkitout/pds.php \\ 
-      -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"``
+
+``curl http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"``
 
 .. code-block:: json
 
   {
-  "status": "success",
-  "message": "",
-  "data": [
+   "status": "success",
+   "message": "",
+   "data": [
     {
       "id": "1017",
       "visibility": "Observation list - obligatory / tracklog no",
@@ -435,8 +438,7 @@ Usage example:
       "published_form_id": "937",
       "form_name": "relational columns test",
       "last_mod": "1660679646"
-    }
-  }
+    }]
   }
 
 **Data upload**
