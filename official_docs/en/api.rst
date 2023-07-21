@@ -26,6 +26,7 @@ Non-authenticated requests (web):
 PDS API version:
 ................
 Example: http://openbiomaps.org/projects/dead_animals/v2.1/pds.php
+
 The default version setting (if the version string missing from the URL) is 1.1., which is compatible with 2.0 and backward compatible with 1.0.
 
 
@@ -35,16 +36,17 @@ An oauth2 implementation based on ttps://bshaffer.github.io/oauth2-server-php-do
 
 Variables
 .........
-grant_type:     password
-username:       a registered email address
-password:       password string
-scope:          list of requested scope access in the authenticated session
+- grant_type:     password
+- username:       a registered email address
+- password:       password string
+- scope:          list of requested scope access in the authenticated session
 
 HTML authentication of clients is necessary
 
 Available clients are mobile, R, web
 
 Scopes:
+
 - get_form_data
 - get_form_list
 - put_data
@@ -56,17 +58,12 @@ The main OBM API interface. Basically designed for R and mobile clients. It uses
 
 Variables
 .........
-scope:      data methods: see below
-
-value:      Most scopes use
-
-header:     (put data) JSON list of table columns' names
-
-ignore_warning: (put data) ignore upload warnings
-
-form_id:        (put_data) set form id
-
-data:           (put data) JSON array of uploaded data
+- scope:      data methods: see below
+- value:      Most scopes use
+- header:     (put data) JSON list of table columns' names
+- ignore_warning: (put data) ignore upload warnings
+- form_id:        (put_data) set form id
+- data:           (put data) JSON array of uploaded data
 
 
 GET type scopes
