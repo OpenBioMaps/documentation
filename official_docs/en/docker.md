@@ -33,7 +33,7 @@ Visit this page for further information about installing docker:
 
 In one step:
 
-curl -s https://gitlab.com/openbiomaps/docker/obm-composer/-/raw/master/install.sh > /tmp/install.sh && sudo bash /tmp/install.sh
+``curl -s https://gitlab.com/openbiomaps/docker/obm-composer/-/raw/master/install.sh > /tmp/install.sh && sudo bash /tmp/install.sh``
 
 ## Visit your OBM app
 
