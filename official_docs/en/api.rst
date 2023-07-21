@@ -39,12 +39,16 @@ grant_type:     password
 username:       a registered email address
 password:       password string
 scope:          list of requested scope access in the authenticated session
-access_token:   a valid access token
 
 HTML authentication of clients is necessary
 
 Available clients are mobile, R, web
 
+Scopes:
+- get_form_data
+- get_form_list
+- put_data
+- ...
 
 PDS API
 -------
@@ -119,6 +123,83 @@ GET type scopes
  - value [numeric] numeric id of a form.
  
  Returns: :ref:`see in examples below <get_form_data_example>`.
+
+ Explanations of variables:
+
+ *default value*: Fix value for all observations. It can be controlled with the following options:
+ 
+ - '_input' works as any other field with a sticky flag. 
+ - '_list' works as any other list-type field with a sticky flag.
+ - '_geometry' works as a geometry-type field
+ - '_login_name' this value is overridden by the user's name if logged in or returns as _input
+ - '_email' this value overridden by the user's email address if logged in or returns as _input
+ - '_autocomplete' alias of input
+ - '_boolean' display as a normal boolean list
+ - '_attachment' display as normal attachments field
+ - '_datum' display as a normal date field
+ - '_auto_geometry' geometry field without extra options (map, set)
+ - '_none' not used
+ 
+ *column*: The name of the column in the database
+
+ *short_name*: Visible name of the column for the users
+
+ *list*: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
+
+ *control*: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
+
+ *count*: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
+
+ *type*: column's openbiomaps type:
+ 
+ - autocomplete	(JSON array)
+ - autocomplete_list (JSON array)
+ - boolean (two elements list)	
+ - crings (color rings - text)	
+ - date (YYYY-MM-DD or other clear format)
+ - datetime (YYYY-MM-DD HH:mm:ss)
+ - file_id (file names as id by the server) 
+ - line (WKT geometry string)
+ - list (JSON array)
+ - numeric	
+ - point	(WKT geometry string)
+ - polygon (WKT geometry string)
+ - text 
+ - time (HH:mm)
+ - timetominutes (numeric value between  0 and 1440)
+ - tinterval idő intervallum (HH:mm - HH:mm)
+ - wkt (WKT string)
+ - array (JSON array)
+
+ *genlist*: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
+
+ *obl*: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
+
+ *api_params*: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
+
+ api_params above API v2.0:
+
+.. code-block:: json
+
+    {
+     "sticky":"off",
+     "hidden":"off",
+     "readonly":"off",
+     "list_elements_as_buttons":"off",
+     "once":"off",
+     "unfolding_list": "off"
+    }
+
+ *spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
+
+ *list_definition*: JSON array of the complex list definition
+
+ *custom_function*: null
+
+ *custom_label*: 
+
+ *field_description*:
+
 
 **get_profile**
  
@@ -207,59 +288,71 @@ PATCH type scopes
  Update specific settings
 
 
-WEB API
--------
-The index.php is also an API service in some cases (?query=) for _GET requests only and for unauthenticated requests.
-This API uses text_filter modules to assemble an SQL query statement.
+Examples
+========
+**Authentication**
+-----------------
+Usage example:
+``curl \\
+    -u mobile:123 http://openbiomaps.org/oauth/token.php \\
+    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data" | jq``
 
-Variables
-.........
-query:          (API endpoint)
+Specific error messages:
 
-qtable:         (data table for data retrieve)
+.. code-block:: json
 
-report:         (data retreive using stored queries)
+{
+  "error": "invalid_grant",
+  "error_description": "Invalid username and password combination"
+}
 
-output:         (JSON, XML, CSV, ... file output; If not set, the output is the web interface)
+Successful response:
 
-filename:       (the file name of the output file)
+.. code-block:: json
 
-Get the list of active (known) OpenBioMaps servers using query API:
+{
+  "access_token": "2cf59c094cc83498355ee9f520848efab6f71fe0",
+  "expires_in": 3600,
+  "token_type": "Bearer",
+  "scope": "get_form_data get_form_list put_data apiprofile",
+  "refresh_token": "e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f"
+}
 
-``curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'``
+Using refresh token:
 
-Get a filtered table from a non-default table:
+    curl \\ |br|
+    -F 'grant_type=refresh_token' \\ |br|
+    -F 'refresh_token=e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f' \\ |br|
+    -F 'client_id=R' \\ |br|
+    http://openbiomaps.org/oauth/token.php
+    
+Returns:
 
-``curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'``
+.. code-block:: json
 
-LQ API endpoint:
-
-LQ:             (display data from a stored query result)
-
+   {
+    "access_token":"ccc1d3e0f13dffb17d36b2acfe9d161fd4ec1d4d",
+    "expires_in":3600,
+    "token_type":"Bearer",
+    "scope":"get_form_data get_form_list",
+    "refresh_token":"a1e1d3e0f13dffb17d36b2acfe9d161fd4ec1d27"
+   }
 
 .. _get_form_data_example:
 
-**get_form_data** examples
---------------------------
+**get_form_data**
+-----------------
 Usage example:
 ``curl -F 'access_token=c53c9ec690fede4c3' -F 'scope=get_form_data' -F 'value=246' -F 'project=dead_animals' https://openbiomaps.org/projects/dead_animals/v2.3/pds.php | jq``
 
-Error messages:
+Specific error messages:
 
 .. code-block:: json
 
   {
-    "status": "error",
-    "message": "The access token provided is invalid"
-  }
-
-or
-
-.. code-block:: json
-
-  {
-    "status": "error",
-    "message": "The request requires higher privileges than provided by the access token"
+   "status": "error",
+   "message": "Form access denied.",
+   "data": ""
   }
 
 Successful response:
@@ -314,199 +407,41 @@ Successful response:
         "field_description": "..."
       }, {...} ]}}
 
-Explanations of variables:
 
-*default value*: Fix value for all observations. It can be controlled with the following options:
- 
- - '_input' works as any other field with a sticky flag. 
- - '_list' works as any other list-type field with a sticky flag.
- - '_geometry' works as a geometry-type field
- - '_login_name' this value is overridden by the user's name if logged in or returns as _input
- - '_email' this value overridden by the user's email address if logged in or returns as _input
- - '_autocomplete' alias of input
- - '_boolean' display as a normal boolean list
- - '_attachment' display as normal attachments field
- - '_datum' display as a normal date field
- - '_auto_geometry' geometry field without extra options (map, set)
- - '_none' not used
- 
-*column*: The name of the column in the database
-
-*short_name*: Visible name of the column for the users
-
-*list*: JSON array for menu items of a select menu. Can be {key:value} or [value,value] format
-
-*control*: Data checking commands: custom_check, minmax, spatial, nocheck, NULL
-
-*count*: (JSON array) If the control='minmax' this field contains the limit values, e.g 1:100
-
-*type*: column's openbiomaps type:
- 
- - autocomplete	(JSON array)
- - autocomplete_list (JSON array)
- - boolean (two elements list)	
- - crings (color rings - text)	
- - date (YYYY-MM-DD or other clear format)
- - datetime (YYYY-MM-DD HH:mm:ss)
- - file_id (file names as id by the server) 
- - line (WKT geometry string)
- - list (JSON array)
- - numeric	
- - point	(WKT geometry string)
- - polygon (WKT geometry string)
- - text 
- - time (HH:mm)
- - timetominutes (numeric value between  0 and 1440)
- - tinterval idő intervallum (HH:mm - HH:mm)
- - wkt (WKT string)
- - array (JSON array)
-
-*genlist*: JSON array for menu items of an autocomplete menu. Can be  {key:value} or [value,value] format
-
-*obl*: 1,2,3 (obligatory, non-obligatory, soft error) Soft error can be handled as non-obligatory.
-
-*api_params*: JSON array of control values. Till API v2.0 only 'sticky' as an array element. 
-
-Above API v2.0:
+**get_form_list**
+-----------------
+Usage example:
+``curl http://openbiomaps.org/projects/checkitout/pds.php \\ 
+      -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"``
 
 .. code-block:: json
 
+  {
+  "status": "success",
+  "message": "",
+  "data": [
     {
-     "sticky":"off",
-     "hidden":"off",
-     "readonly":"off",
-     "list_elements_as_buttons":"off",
-     "once":"off",
-     "unfolding_list": "off"
-    }
-
-*spatial_limit*: WKT polygon string of spatial limit. It is used if the Control type is spatial.
-
-*list_definition*: JSON array of the complex list definition
-
-*custom_function*: null
-
-*custom_label*: 
-
-*field_description*:
-
-
-
-Training explanations and examples
-----------------------------------
-Examples:
-
-curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
-
-Result of a successful call:
-    {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
-    
-curl -F 'scope=get_training_questions' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php
-
-Result of a successful call:
-    {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
-    
-    qtype can be multi-select or single select
-    
-curl -F 'scope=training_results' -F 'access_token=9bb4...' -F 'project=dinpi' http://localhost/biomaps/pds.php
-
-Result of a successful call:
-    {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
-    
-    Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
-    
-curl -F 'scope=training_toplist' -F 'value=nonames' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
-
-Result of a successful call:
-    {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
-    
-curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php
-
-    {"status":"success","data":{ \\ |br|
-        "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"}, \\ |br|
-              "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}}, \\ |br|
-        "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
-
-
-Authentication examples
------------------------
-
-    curl \\ |br|
-    -u mobile:123 http://openbiomaps.org/oauth/token.php \\ |br|
-    -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data"
-
-Data retrieval (form list):
-
-    curl \\ |br|
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
-    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"
-
-Result of a successful get_form_list call:
-
-    {"status":"success","data":[{"form_id":"93","form_name":"lepke űrlap"},{ …
-
-Data retrieval (form fields):
-
-    curl \\ |br|
-    -v http://openbiomaps.org/projects/checkitout/pds.php \\ |br|
-    -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_data&value=93"
-    
-  OR with central pds
-
-    curl \\ |br|
-    -F 'scope=get_form_data' \\ |br|
-    -F 'value=93' \\ |br|
-    -F 'project=checkitout' \\ |br|
-    http://openbiomaps.org/projects/checkitout/pds.php
-    
-  OR with the access token to retrieve data from a restricted form
-
-    curl \\ |br|
-    -F 'access_token=...' \\ |br|
-    -F 'scope=get_form_data' \\ |br|
-    -F 'value=124' \\ |br|
-    -F 'project=checkitout' \\ |br|
-    http://openbiomaps.org/projects/checkitout/pds.php
-    
-
-Result of a successful get_form_data call:
-
-API < v.2.1
-
-.. code-block:: json
-
-    {"status":"success","data":[{"description":null,"default_value":null,"column":"egyedszam","short_name":"egyedszam","list":"","control":"minmax","count":"{30,40}","type":"numeric","genlist":null,"obl":"3","api_params":null},{...}]}
-    
-API >= v.2.1
-
-.. code-block:: json
-
+      "id": "1017",
+      "visibility": "Observation list - obligatory / tracklog no",
+      "form_id": "1017",
+      "published_form_id": "1016",
+      "form_name": "Observation list - obligatory / tracklog no",
+      "last_mod": "1674809097"
+    },
     {
-    "status": "success",
-    "data":[
-      "form_header":{"login_name":"John Smith","login_email":"jsmith@openbiomaps.org"},
-      "form_data":[
-        {
-         "description":"faj neve",
-         "default_value":null,
-         "column":"faj",
-         "short_name":"faj",
-         "list":"",
-         "control":"nocheck",
-         "count":"{}",
-         "type":"text",
-         "genlist":null,"obl":"1",
-         "api_params":
-            {
-             "sticky":"off",
-             "numeric":"off",
-             "list_elements_as_buttons":"off"}},{...}]]
+      "id": "938",
+      "visibility": "relational columns test",
+      "form_id": "938",
+      "published_form_id": "937",
+      "form_name": "relational columns test",
+      "last_mod": "1660679646"
     }
-    
+  }
+  }
 
-Data upload:
+**Data upload**
+---------------
+Usage example:
 
     curl \\ |br|
     -i \\ |br|
@@ -540,6 +475,7 @@ Packed data upload. Data line in ZIP archive. This is the old mobile app's expor
     PICT01.JPG |br|
     PICT02.JPG |br|
     note.txt |br|
+
 The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example, it is the 'faj'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory columns in the form, those can be filled by the default_value parameter. In this example, the 'egyedszam' column is an obligatory field that will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contain the zip files detailed above.
     
     curl \\ |br|
@@ -551,52 +487,158 @@ The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from 
     -F 'packed_line=@Sun May 13 08:52:51 CEST 2018.zip' \\ |br|
     http://localhost/biomaps/pds.php
 
-Data retrieval (non-authenticated report):
-
-    wget http://localhost/biomaps/projects/dinpi/?report=2@szamossag&output=csv
-
-Refresh token (from R):
-
-    curl \\ |br|
-    -F 'grant_type=refresh_token' \\ |br|
-    -F 'refresh_token=...' \\ |br|
-    -F 'client_id=R' \\ |br|
-    http://openbiomaps.org/oauth/token.php
     
-Returns:
+**get_project_list**
+--------------------
+Usage example:
+
+It is a non-authenticated request:
+
+``curl http://openbiomaps.org/projects/checkitout/pds.php -d "scope=get_project_list&value=" | jq``
+    
+Successful response:
 
 .. code-block:: json
 
-   {
-    "access_token":"...",
-    "expires_in":3600,
-    "token_type":"Bearer",
-    "scope":"get_form_data ...",
-    "refresh_token":"..."
-   }
-    
-Project list (using central PDS):
+  {
+  "status": "success",
+  "data": [
+    {
+      "project_table": "checkitout",
+      "creation_date": "2016-03-09",
+      "Creator": "Bán Miklós",
+      "email": "banm@vocs.unideb.hu",
+      "stage": "sandbox",
+      "doi": null,
+      "running_date": null,
+      "licence": "ODbL",
+      "rum": "+++",
+      "collection_dates": null,
+      "subjects": null,
+      "project_hash": "28gmst44rm8g",
+      "project_url": "https://openbiomaps.org/projects/checkitout/",
+      "project_description": "Próbáld ki! Játszótér.",
+      "public_mapserv": "-",
+      "training": "f",
+      "rserver": "f",
+      "language": "hu",
+      "game": "off",
+      "rserver_port": 0
+    } 
+  ] 
+  }
 
-    curl \\ |br|
-    -F 'scope=get_project_list' \\ |br|
-    http://localhost/biomaps/pds.php
-    
-    Returns: |br|
+Training explanations and examples
+----------------------------------
+No client from API 2.6.
 
-    JSON array of those project which has public upload forms, or the user (if logged) member of it.
+Examples:
+
+``curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
+
+Result of a successful call:
+
+    {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"},{
+    
+``curl -F 'scope=get_training_questions' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
+
+Result of a successful call:
+
+    {"status":"success","data":[{"qid":"1","training_id":"1","caption":"...?","answers":"[{"Answer": "...","isRight": "false" }, ]","qtype":"multiselect"}]}
+    
+    qtype can be multi-select or single select
+    
+``curl -F 'scope=training_results' -F 'access_token=9bb4...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
+
+Result of a successful call:
+
+    {"status":"success","data":"{"95":1,"96":0,"97":-1,"98":-1}"}
+    
+    Meaning of values: form-95 done, form-96 done, but not validated yet, form-97,98 not completed yet
+    
+``curl -F 'scope=training_toplist' -F 'value=nonames' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
+
+Result of a successful call:
+
+    {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
+    
+``curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
+
+    {"status":"success","data":{
+        "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"},
+              "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
+
+
+
 
 General API answers
 -------------------
 Based on: https://labs.omniti.com/labs/jsend
 
-JSON:
+It is always a JSON string:
 
 .. code-block:: json
 
-    {
-     "status":"X",
-     "data":"",
-     "message":""
-    }
+  {
+   "status":"X",
+   "data":"",
+   "message":""
+  }
 
 X: success, error, fail
+
+General error messages
+----------------------
+
+.. code-block:: json
+
+  {
+    "status": "error",
+    "message": "The access token provided is invalid"
+  }
+
+.. code-block:: json
+
+  {
+    "status": "error",
+    "message": "The request requires higher privileges than provided by the access token"
+  }
+
+
+
+WEB API
+-------
+The index.php is also an API service in some cases (?query=) for _GET requests only and for unauthenticated requests.
+This API uses text_filter modules to assemble an SQL query statement.
+
+Variables
+.........
+query:          (API endpoint)
+
+qtable:         (data table for data retrieve)
+
+report:         (data retreive using stored queries)
+
+output:         (JSON, XML, CSV, ... file output; If not set, the output is the web interface)
+
+filename:       (the file name of the output file)
+
+Get the list of active (known) OpenBioMaps servers using query API:
+
+``curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'``
+
+Get a filtered table from a non-default table:
+
+``curl https://openbiomaps.org/projects/pollimon/index.php -G -d 'query={"q":"2"}&output=json&qtable=pollimon_sample_plots'``
+
+LQ API endpoint:
+
+LQ:             (display data from a stored query result)
+
+
+Usage example:
+
+``wget http://openbiomaps.org/projects/checkitout/?report=2@szamossag&output=csv``
