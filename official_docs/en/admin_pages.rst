@@ -292,3 +292,7 @@ In order to run the scheduler, the host must also have a scheduler cron entry fo
 ```
 */5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
 ```
+
+Project description
+-------------------
+Here you can set the project name displayed in the header of the project page (short description) and the long description of the project for each language.

@@ -264,3 +264,9 @@ Ahhoz, hogy az ütemező fusson, a gazdagépnek is kell egy ütemező Cron bejeg
 ```
 */5 * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
 ```
+
+.. _Project description:
+
+Projekt leírás
+--------------
+Itt állíthatja be a projekt lap fejlécében látható nevét (rövid leírás) és a projekt hosszú leírását minden egyes nyelvhez.
