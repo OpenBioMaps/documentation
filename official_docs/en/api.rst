@@ -277,6 +277,27 @@ POST type scopes
  
 Send/upload data using a selected form
 
+Can be either
+
+    - tracklog
+    - form_id
+
+Obligatory parameters for form_id:
+
+    - header
+    - data
+
+Optional parameters along form_id:
+
+    - metadata
+    - api_warnings
+    - srid
+    - description
+    - upload_table_post
+    - default_values
+
+File upload
+
 
 PATCH type scopes
 .................
@@ -437,14 +458,14 @@ Usage example:
 Usage example:
 
   curl -i -X POST \\ |br|
-    -H "Content-Type:application/x-www-form-urlencoded" \\ |br|
-    -H "Authorization:Bearer ..." \\ |br|
-    -d "scope=put_data" \\ |br|
-    -d "form_id=128" \\ |br|
-    -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
-    -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
-    -d "ignore_warning=1" \\ |br|
-    'http://openbiomaps.org/projects/checkitout/pds.php'
+  -H "Content-Type:application/x-www-form-urlencoded" \\ |br|
+  -H "Authorization:Bearer ..." \\ |br|
+  -d "scope=put_data" \\ |br|
+  -d "form_id=128" \\ |br|
+  -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
+  -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
+  -d "ignore_warning=1" \\ |br|
+  'http://openbiomaps.org/projects/checkitout/pds.php'
 
 Data upload with multiple attachments (files):
 
@@ -497,8 +518,8 @@ Successful response:
     {
       "project_table": "checkitout",
       "creation_date": "2016-03-09",
-      "Creator": "Bán Miklós",
-      "email": "banm@vocs.unideb.hu",
+      "Creator": "",
+      "email": "",
       "stage": "sandbox",
       "doi": null,
       "running_date": null,
@@ -508,7 +529,7 @@ Successful response:
       "subjects": null,
       "project_hash": "28gmst44rm8g",
       "project_url": "https://openbiomaps.org/projects/checkitout/",
-      "project_description": "Próbáld ki! Játszótér.",
+      "project_description": "Checkitout! Sandbox.",
       "public_mapserv": "-",
       "training": "f",
       "rserver": "f",
@@ -566,11 +587,11 @@ Result of a successful call:
 .. code-block:: json
 
   {"status":"success","data":{
-        "95":{"Bán Miki":{"mean":"0.30000000000000000000","count":"1","max":"0.3"},
-              "Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
-        "96":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
-        "97":{"Dr. Bán Miklós":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
-        "98":{"Dr. Bán Miklós":{"mean":null,"count":"1","max":null}}}}
+        "95":{"Gipsz Jakab":{"mean":"0.30000000000000000000","count":"1","max":"0.3"},
+              "Foo Aladár":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "96":{"Foo Aladár":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "97":{"Foo Aladár":{"mean":"0.70000000000000000000","count":"1","max":"0.7"}},
+        "98":{"Mr. Bean":{"mean":null,"count":"1","max":null}}}}
 
 
 General API answers
