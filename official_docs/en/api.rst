@@ -469,8 +469,8 @@ Usage example:
   -H "Authorization:Bearer ..." \\ |br|
   -d "scope=put_data" \\ |br|
   -d "form_id=128" \\ |br|
-  -d "header=[\"obm_geometry\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
-  -d "data=[{\"obm_geometry\":\"point(48.071187 19.293714)\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
+  -d "header=[\"obm_geometry\",\"datum\",\"comment\",\"observer\"]" \\ |br|
+  -d "data=[{\"obm_geometry\":\"point(48.071187 19.293714)\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"observer\":\"sdsaada\"}]" \\ |br|
   -d "ignore_warning=1" \\ |br|
   'https://openbiomaps.org/projects/checkitout/v2.5/pds.php'
 
@@ -499,10 +499,10 @@ Data upload with multiple attachments (files):
     -F "access_token=..." \\ |br|
     -F 'scope=put_data' \\ |br|
     -F 'form_id=58' \\ |br|
-    -F 'header=["faj","obm_geometry","obm_files_id"]' \\ |br|
+    -F 'header=["species","obm_geometry","obm_files_id"]' \\ |br|
     -F 'batch=[\\ |br|
-    {"data":[{"faj":"Sylvia curruca","obm_geometry":"POINT(22.0 46.3)"}],"attached_files":"file1,file2"},\\ |br|
-    {"data":[{"faj":"Lanius Collurio","obm_geometry":"POINT(21.5 47.1)"}],"attached_files":"file3"}]' \\ |br|
+    {"data":[{"species":"Sylvia curruca","obm_geometry":"POINT(22.0 46.3)"}],"attached_files":"file1,file2"},\\ |br|
+    {"data":[{"species":"Lanius Collurio","obm_geometry":"POINT(21.5 47.1)"}],"attached_files":"file3"}]' \\ |br|
     -F 'file1=@file1' \\ |br|
     -F 'file2=@file2' \\ |br|
     -F 'file3=@file3' \\ |br|
@@ -514,7 +514,7 @@ Packed data upload. Data line in ZIP archive. This is the old mobile app's expor
     PICT02.JPG |br|
     note.txt |br|
 
-The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example, it is the 'faj'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory columns in the form, those can be filled by the default_value parameter. In this example, the 'egyedszam' column is an obligatory field that will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contain the zip files detailed above.
+The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from the observation date-time sting. The note.txt contains the observation comment which can be associated with one column of the form. In this example, it is the 'species'. The other 3 columns shouldn't be replaced or neglected. If there are some obligatory columns in the form, those can be filled by the default_value parameter. In this example, the 'egyedszam' column is an obligatory field that will be filled with '1'. Packed lines can be super packed. In this case 'packed_line' parameter should be changed to 'multipacked_lines' and the zip archive should contain the zip files detailed above.
     
     curl \\ |br|
     -F 'scope=put_data' \\ |br|
