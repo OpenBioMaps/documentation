@@ -4,7 +4,7 @@
     
 API documentation
 *****************
-HTTP methods:  GET, POST, PATCH
+HTTP methods:  GET, POST
 
 API tools:  Authentication, Data retrieval, Data push, Settings update
 
@@ -13,11 +13,11 @@ API handlers:
 -------------
 Authentication handler (OAUTH):
 
-/oatuh/token.php: Authentication
+/oatuh/token.php: Authentication / Authorisation
 
-Authentication-based interface (PDS):
+Authentication-based interface (PDS / Oauth):
 
-/projects/*API_VERSION*/*projectname*/pds.php: Data retrieval, Data push, Settings update 
+/projects/*projectname*/*API_VERSION*/pds.php: Data retrieval, Data upload, Settings update 
 
 Non-authenticated requests (web):
 
@@ -45,6 +45,13 @@ HTML authentication of clients is necessary
 
 Available clients are mobile, R, web
 
+The OAUTH only accepts 
+
+- application/x-www-form-urlencoded 
+- multipart/form-data
+
+request.
+
 Scopes:
 
 - get_form_data
@@ -54,7 +61,7 @@ Scopes:
 
 PDS API
 -------
-The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication.
+The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication. Due to OAUTH processing it is only accept application/x-www-form-urlencoded and multipart/form-data requests!
 
 Variables
 .........
@@ -462,10 +469,29 @@ Usage example:
   -H "Authorization:Bearer ..." \\ |br|
   -d "scope=put_data" \\ |br|
   -d "form_id=128" \\ |br|
-  -d "header=[\"obm_geometry\",\"obm_datum\",\"time\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
-  -d "data=[{\"obm_geometr     y\":\"point(48.071187 19.293714)\",\"obm_datum\":\"2018-04-03 23:05\",\"time\":\"12\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
+  -d "header=[\"obm_geometry\",\"datum\",\"comment\",\"longitude\",\"latitude\",\"observer\"]" \\ |br|
+  -d "data=[{\"obm_geometry\":\"point(48.071187 19.293714)\",\"datum\":\"2018-04-03\",\"comment\":\"asdad\",\"longitude\":\"0\",\"latitude\":\"0\",\"observer\":\"sdsaada\"}]" \\ |br|
   -d "ignore_warning=1" \\ |br|
-  'http://openbiomaps.org/projects/checkitout/pds.php'
+  'https://openbiomaps.org/projects/checkitout/v2.5/pds.php'
+
+Javascript example:
+
+.. code-block:: javascript
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://openbiomaps.org/projects/checkitout/v2.5/pds.php");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    const encodedData = Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    xhr.onload = () => {
+      if (xhr.readyState == 4 && xhr.status == 201) {
+        console.log(JSON.parse(xhr.responseText));
+      } else {
+        console.log(`Error: ${xhr.status}`);
+      }
+    };
+    xhr.send(encodedData);
 
 Data upload with multiple attachments (files):
 
@@ -504,9 +530,9 @@ The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from 
 --------------------
 Usage example:
 
-It is a non-authenticated request:
+It is a non-authenticated request on PDS:
 
-``curl http://openbiomaps.org/projects/checkitout/pds.php -d "scope=get_project_list&value=" | jq``
+``curl https://openbiomaps.org/projects/checkitout/v2.5/pds.php -d "scope=get_project_list&value=" | jq``
     
 Successful response:
 
