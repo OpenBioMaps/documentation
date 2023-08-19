@@ -155,161 +155,6 @@ The custom module has to be placed in the local/includes/modules/ folder.
 
     This Class should include at least print_box() and print_js() functions.
 
-read_table
-----------
-Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
-
-    Parameters: 
-     [{"table": "schema.table",
-       "label": "somesthing",
-       "orderby": "column"}, ... ]
-
-results_summary
----------------
-A summary of results.
-
-No parameters
-
-results_table
--------------
-Create a full html table of the results.
-    
-No parameters
-
-results_asList
---------------
-Create foldable slides-like results output.
-
-No parameters
-
-results_asGPX
--------------
-Save results as a GPX file.
-
-    Parameters:
-     {"name": "column", 
-      "description": ["column-1", "column-2", ... ]}
-
-results_asCSV
--------------
-Save results as a csv file.
-
-    Parameters:
-     {"sep": ",", 
-      "quote":"\""}
-
-results_asJSON
---------------
-Save results as a JSON file.
-
-No parameters
-
-results_asSHP
--------------
-Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
-
-No parameters
-
-results_asKML
--------------
-Save results as a KML file.
-
-    Parameters:
-     {"name": "column", 
-      "description": ["column-1", "column-2", ... ]}
-
-results_buttons
----------------
-Save and other buttons above the results section, under the map.
-
-No parameters
-
-results_asStable
-----------------
-Compact results table on the map page.
-	
- Parameters: 
-  [column names]
-
-results_specieslist
--------------------
-Species list summary on the map page
-
-No parameters
-
-text_filter
------------
-Text filters on the map page and for query API. Create the WHERE part of the SQL query string.
-    
-    Parameters: 
-    [
-    "magyar",
-    "obm_taxon",
-    "megj::colour_rings",
-    "obm_datum",
-    "obm_uploading_date",
-    "obm_uploader_user",
-    "d.szamossag:nested(d.egyedszam):autocomplete",
-    "d.egyedszam:values():",
-    "obm_files_id",
-    "faj::autocomplete"
-    ]
-
-text_filter2
------------
-Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
-
-    Parameters: 
-    {...}
-
-transform_data
---------------
-Transform fields to better reading on web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
-    
-    Parameters:
-    {
-        "obm_geometry":"geom",
-        "obm_uploading_id":"uplid",
-        "tema":"mmm"
-    }
-
-extra_params
-------------
-Extra input parameters for forms.
-
-
-join_tables
------------
-This module makes it possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
-    
-Parameters:
-    [
-        {
-            "table": "teszt_events",
-            "join_on": [
-                {
-                    "ref_field": "obm_id",
-                    "join_field": "patient_id"
-                }
-            ]
-        },
-        {
-            "table": "teszt_masik",
-            "join_on": [
-                {
-                    "ref_field": "obm_id",
-                    "join_field": "fid"
-                }
-            ]
-        }
-    ]
-
-restricted_data
----------------
-Rule based data restriction
-
-No parameters
-
 identify_point
 --------------
 * Identify one or more points on the map.
@@ -329,6 +174,18 @@ Custom data checks of upload data.
 
 No parameters
 
+download_restricted
+-------------------
+Admin-controlled download authorization
+
+No parameters
+
+
+extra_params
+------------
+Extra input parameters for forms.
+
+
 grid_view
 ---------
 View data on a custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
@@ -339,14 +196,25 @@ View data on a custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to g
 
     Parameters: layer_options
 
-    Parameters example: layer_options:kef_5 (dinpi_grid), utm_2.5 (dinpi_grid), utm_10 (dinpi_grid), utm_100 (dinpi_grid), original (dinpi_points,dinpi_grid),etrs(dinpi_grid)
-    
+    Parameters example: 
+```json
+   {
+    "layer_options": [
+        "kef_5 (dinpi_grid)",
+        "utm_2.5 (dinpi_grid)",
+        "utm_10 (dinpi_grid)",
+        "utm_100 (dinpi_grid)",
+        "original (dinpi_points)",
+        "dinpi_grid etrs(dinpi_grid)"
+     ]
+   }
+```
     
     On the nnn_grid table on the comment field, the layers visible names should be set:
 ```sql 
     COMMENT ON COLUMN public.nnn_qgrids.original IS 'original';
-    COMMENT ON COLUMN public.nnn_qgrids.snap IS 'snap';
-    COMMENT ON COLUMN public.nnn_qgrids.snap_polygon IS 'snap_polygon';
+    COMMENT ON COLUMN public.nnn_qgrids.kef5 IS 'KEF 5x5';
+    COMMENT ON COLUMN public.nnn_qgrids.snap IS 'Snap to grid';
 ```
 
     Example trigger functions:
@@ -444,18 +312,6 @@ END IF;
 END;
 ```
 
-massive_edit
-------------
-Allows bulk editing of selected data on the map page via the file upload interface
-
-No parameters
-
-download_restricted
--------------------
-Admin-controlled download authorization
-
-No parameters
-
 job_manager (validation)
 ------------------------
     
@@ -510,9 +366,41 @@ job_manager (validation)
                     }
                 }
 
+join_tables
+-----------
+This module makes it possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
+    
+Parameters:
+    [
+        {
+            "table": "teszt_events",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "patient_id"
+                }
+            ]
+        },
+        {
+            "table": "teszt_masik",
+            "join_on": [
+                {
+                    "ref_field": "obm_id",
+                    "join_field": "fid"
+                }
+            ]
+        }
+    ]
+
 
 list_manager
 ------------
+
+No parameters
+
+massive_edit
+------------
+Allows bulk editing of selected data on the map page via the file upload interface
 
 No parameters
 
@@ -521,3 +409,127 @@ move_project
 Move the project to another server. This is an experimental module.
 
 No parameters
+
+read_table
+----------
+Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
+
+    Parameters: 
+     [{"table": "schema.table",
+       "label": "somesthing",
+       "orderby": "column"}, ... ]
+
+results_asList
+--------------
+Create foldable slides-like results output.
+
+No parameters
+
+results_asGPX
+-------------
+Save results as a GPX file.
+
+    Parameters:
+     {"name": "column", 
+      "description": ["column-1", "column-2", ... ]}
+
+results_asCSV
+-------------
+Save results as a csv file.
+
+    Parameters:
+     {"sep": ",", 
+      "quote":"\""}
+
+results_asJSON
+--------------
+Save results as a JSON file.
+
+No parameters
+
+results_asSHP
+-------------
+Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
+
+No parameters
+
+results_asKML
+-------------
+Save results as a KML file.
+
+    Parameters:
+     {"name": "column", 
+      "description": ["column-1", "column-2", ... ]}
+
+results_buttons
+---------------
+Save and other buttons above the results section, under the map.
+
+No parameters
+
+results_asStable
+----------------
+Compact results table on the map page.
+	
+ Parameters: 
+  [column names]
+
+results_specieslist
+-------------------
+Species list summary on the map page
+
+No parameters
+
+results_summary
+---------------
+A summary of results.
+
+No parameters
+
+results_table
+-------------
+Create a full html table of the results.
+    
+No parameters
+
+restricted_data
+---------------
+Rule based data restriction
+
+No parameters
+
+text_filter
+-----------
+Text filters on the map page and for query API. Create the WHERE part of the SQL query string.
+    
+    Parameters: 
+    [
+    "magyar",
+    "obm_taxon",
+    "megj::colour_rings",
+    "obm_datum",
+    "obm_uploading_date",
+    "obm_uploader_user",
+    "d.szamossag:nested(d.egyedszam):autocomplete",
+    "d.egyedszam:values():",
+    "obm_files_id",
+    "faj::autocomplete"
+    ]
+
+text_filter2
+-----------
+Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
+
+    Parameters: 
+    {...}
+
+transform_data
+--------------
+Transform fields to better reading on web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
+    
+    Parameters:
+    {
+        "obm_geometry":"geom",
+        "obm_uploading_id":"uplid",
+        "tema":"mmm"
+    }
