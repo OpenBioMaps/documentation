@@ -195,15 +195,15 @@ When using grid modules, the original geometry of the data is also taken from th
 
     Parameters: layer_options
 
-    Parameters example: 
+Parameters example: 
     
 ```json
-   {
+{
     "layer_options": [
         "kef_5 (layer_data_grid)",
         "original (layer_data_points)"
      ]
-   }
+}
 ```
 The layer_options contains the data view modes and their options that users can choose, i.e. which layer should be associated with which MapServer layer.
 
@@ -218,8 +218,8 @@ The module will also create update_grid_geoms trigger and set the comments for y
 In the YOURTABLE_qgrids table, set the visible names of the layers in the comment field. These will be the names that users will see in the options list.
 
 ```sql 
-    COMMENT ON COLUMN public.nnn_qgrids.original IS 'original';
-    COMMENT ON COLUMN public.nnn_qgrids.kef5 IS 'KEF 5x5';
+COMMENT ON COLUMN public.YOURTABLE_qgrids.original IS 'original';
+COMMENT ON COLUMN public.YOURTABLE_qgrids.kef5 IS 'KEF 5x5';
 ```
 
 Example trigger functions:
@@ -227,13 +227,13 @@ Example trigger functions:
 Trigger on YOURTABLE_qgrids. Arguments are in the function:
 
 ```sql    
-    CREATE TRIGGER update_grid_geoms BEFORE INSERT OR UPDATE ON public.tytoalba_qgrids FOR EACH ROW EXECUTE PROCEDURE public.update_qgrid_geoms_arg('0.1', '0.1', 't', 't', 't', 't', '0.05');
+CREATE TRIGGER update_grid_geoms BEFORE INSERT OR UPDATE ON public.tytoalba_qgrids FOR EACH ROW EXECUTE PROCEDURE public.update_qgrid_geoms_arg('0.1', '0.1', 't', 't', 't', 't', '0.05');
 ```
 
 Trigger on YOURTABLE table:
 
 ```sql
-    CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public.YOURTABLE FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
+CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public.YOURTABLE FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
 ```
 
 Function insert_originalgeom_into_qgrids()
