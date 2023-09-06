@@ -6,8 +6,9 @@ By default, a template called *gridbox* is loaded, which itself can be customise
 We can configure the landing page in the local_vars.php.inc file.
 If the LOGINPAGE variable is set to mainpage, the main page template configured in the MAINPAGE variable will be loaded.
 
-```php
-define('MAINPAGE',array(
+.. code-block:: php
+
+  define('MAINPAGE',array(
     //'custom_skeleton'=>1,
     'template'=>'gridbox', //intropage
     'content1'=>'map',   // map | upload-table | slideshow
@@ -15,10 +16,10 @@ define('MAINPAGE',array(
     'system_footer'=>'on',
     'system_header'=>'off',
     //'restrictaded_pages'=>array('map','id','history','profile','data','table','editrecord','qtable','query','show','LQ','metadata')
-));
-```
+  ));
 
- Here are some screenshot examples from different projects:
+
+Here are some screenshot examples from different projects:
 
 .. figure:: images/nyitolap_1.jpg
    :scale: 50 %
