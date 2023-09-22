@@ -201,3 +201,9 @@ Where can I find the OpenBioMaps R package?
 -------------------------------------------
 For now, only available as a developer package here: https://github.com/OpenBioMaps/obm.r
 
+What data download options are there?
+-------------------------------------
+* Using csv, kml, json, and other modules where available
+* Via QGIS
+* Using bookmarks and permanent links
+* Using the R package
