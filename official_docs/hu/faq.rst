@@ -201,3 +201,9 @@ Hol található meg az OpenBioMaps R csomag?
 ------------------------------------------
 Egyelőre csak fejlesztői csomagként érhető el itt: https://github.com/OpenBioMaps/obm.r.
 
+What data download options are there?
+-------------------------------------
+* Csv, kml, json és egyéb modulok használatával, ha ezek rendelkezésre állnak
+* QGIS-en keresztül
+* Könyvjelzők és állandó hivatkozások használatával
+* Az R csomag használatával
