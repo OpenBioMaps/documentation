@@ -46,19 +46,17 @@ Felfüggesztett adatfeltöltések
 ------------------------------
 Az elmentett feltöltéseink listája. A hivatkozásokra kattintva folytathatja a feltöltést ott, ahol félbehagyta.
 
-.. _stored-queries:
+.. _bookmarks:
 
-Eltárolt lekérdezések
----------------------
-Lehetősége van a térképes felületen használt adatlekérdezési beállításainak az elmentésére. Az OpenBioMaps szerver automatikusan generál egy egyedi aznosítót minden elmentett lekérdezéshez. Az elmentett lekérdezéseit akár el is nevezheti.
+Könyvjelzők
+-----------
+Lehetőség van a lekérdezések elmentésére és megismétlésére a könyvjelző hivatkozások használatával. A könyvjelző hivatkozások nem megoszhatóak, csak bejelentkezve és a létrehozójuk számára működnek. A könyvjelzők magukat a lekérdezéseket tárolják nem annak az eredményét, így az adatbázis tartalmának változása megváltoztatja a könyvjelző használatával kapott eredményeket is.
 
-Ebben a menüpontban találhatja a mentett lekérdezéseinek az egyedi azonosítóit. A lekérdezések azonosítóira kattintva a lekérdezés újra lefut a térképi oldalon.
+.. _sharing-data:
 
-.. _saved-results:
-
-Elmentett eredmények
---------------------
-A lekérdezések eredményei is elárolhatóak. Ezekhez akár DOI azonosító is kérhető. Itt találhatóak az eredményekkel együtt eltárolt lekérdezéseink. A hivatkozásokat követve az adatok betöltődnek egy specifikus térképi felületen, vagy a tárolt nyers adatokat lehet letölteni.
+Adatok megosztása
+-----------------
+A lekérdezési eredmények eltárolhatók és megoszthatók. Ebben az esetben nem az adatbázisban tárolt adatokat látják, akivel megosztották a lekérdezést, hanem annak tárolt változatát. Ez a tárolt eredményállapot nem változik, teljesen független az adatbázistól. Bárki, aki rendelkezik a megosztási hivatkozással, hozzáférhet a lekérdezésben tárolt adatokhoz. A megosztási hivatkozás tartós azonosító, amely egy DOI azonosítóhoz is társítható.
 
 .. _Api keys:
 
