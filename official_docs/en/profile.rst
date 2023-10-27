@@ -45,18 +45,14 @@ The identifiers are generating automatically. In one SESSION and one form there 
 You can follow your saved imports in the profile page, by click on the "interrupted imports" link. 
 
 
-Stored queries
---------------
-It is possible to save a permanent copy of the queried data in the OBM servers. These saved queries are repeatable later using its query identifier.
-
-The query identifiers are generated automatically when you save a query on the main map window. Also you can give a name for the saved queries.
-
-On the administrative pages you can follow your saved queries by clicking on the "stored queries" link. 
+Sharing data
+------------
+Query results can be stored and shared. In this case, they do not see the data stored in the database with whom you shared a query, but the stored version of it. This stored result state does not change, once created it is completely independent of the database. Anyone with the share link can access the data stored in the query.A share link is a persistent identifier that can be associated with a DOI identifier.
 
 
-Saved results
--------------
-It is possible to save queries and repeat them by using these ID-s.
+Bookmarks
+---------
+It is possible to save and repeat queries using bookmark links. Bookmarking links are not shareable, they only work when logged in and for their creator. Bookmarks store the query itself, not the result of the query, so changes to the database content will change the results obtained using the bookmark.
 
 
 Api keys
