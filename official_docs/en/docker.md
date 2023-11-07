@@ -489,12 +489,17 @@ https://github.com/OpenBioMaps/scripts
 - use this to set up perodic sql dumps of important tables: archive.sh
 
 #### crontab setting examples for archive.sh
+
+```sh
    #dumping normal tables from Monday to Saturday
    15 04 * * 1-6 /root/archive.sh normal &
    #dumping all tables and whole databases on every Sunday
    15 04 * * 7 /root/archive.sh full &
+```
 
 # Example settings in obm_archive_settings.sh
+
+```sh
   #path of table list
   table_list="${HOME}/.archive_list.txt"
 
@@ -519,6 +524,7 @@ https://github.com/OpenBioMaps/scripts
   #bar 1 * *
   #casbla at every 1st day of every June
   #casbla * 1 6
+```
 
 ### Dumping table from the database using docker
 
