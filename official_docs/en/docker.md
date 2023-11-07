@@ -483,12 +483,13 @@ https://github.com/OpenBioMaps/scripts/blob/master/docker-auto-update.readme
 
 ## Archive tables, data, ...
 
+For scripts follow this repo:
 
 https://github.com/OpenBioMaps/scripts
 
-- use this to set up perodic sql dumps of important tables: archive.sh
+- use this to set up a perodic sql dumps of important tables: archive.sh
 
-#### crontab setting examples for archive.sh
+### crontab setting examples for archive.sh
 
 ```sh
    #dumping normal tables from Monday to Saturday
@@ -497,7 +498,7 @@ https://github.com/OpenBioMaps/scripts
    15 04 * * 7 /root/archive.sh full &
 ```
 
-# Example settings in obm_archive_settings.sh
+### Example settings in obm_archive_settings.sh
 
 ```sh
   #path of table list
