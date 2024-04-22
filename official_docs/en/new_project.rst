@@ -26,8 +26,8 @@ After logging in to the project, several settings need to be made to make the pr
 
 In a nutshell, the following settings should be done:
 
- - Set up your data table(s).
- - Set up upload forms.
- - Set up an SQL query.
- - Set up your map interface
- - Set up modules for data query (e.g. text_filter, identify_points) and visualisation (results_asStable, results_buttons, results_summary).
+- Set up your data table(s).
+- Set up upload forms.
+- Set up an SQL query.
+- Set up your map interface
+- Set up modules for data query (e.g. text_filter, identify_points) and visualisation (results_asStable, results_buttons, results_summary).
