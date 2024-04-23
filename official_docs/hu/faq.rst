@@ -209,3 +209,8 @@ Milyen adat letöltési lehetőségek vannak?
 * QGIS-en keresztül
 * Könyvjelzők és állandó hivatkozások használatával
 * Az R csomag használatával
+
+A mobil applikációval terepen készített fotókhoz hogyan/hol lehet hozzáférni?
+-----------------------------------------------------------------------------
+
+A webes felületen egyesével az adatok saját adatlapján, vagy az adminisztratív felületen a fájlok lapon. Akár egyben is le lehet tölteni az összes képet. A pds api is támogatja a képek egyben letöltését.

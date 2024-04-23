@@ -15,7 +15,7 @@ Database tables and columns
 
 [web] -> [profile] -> [project administration] -> [database table management]
 
-We can create a SQL table that OBM registers to our project and creates the default OBM columns in it. The table name should not contain accented characters, spaces, or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
+You can create an SQL table that OBM registers to your project and creates the basic OBM columns in it. The table name should not contain accented characters, spaces, or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
 
 Only tables registered here can be used in the OBM interface (map display, form use, text queries)!
 
@@ -35,11 +35,16 @@ Also, here you can specify the columns to be specially handled. This means that 
     - attachment: file attachments column
     - UTM Zone: used in spatial geometry creation
 
-The 'comment field' should contain descriptions of the content of the columns (metadata) and may also have a regulatory role in some cases. In the case of the obm_geometry column, the comment field can be used to specify the geometry column's SRID, which will define the stored SRID of the uploaded data. The value entered must be in the format `srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
+There are two special fields in this table: comment, command
 
-For the obm_id column, you can specify whether the rules table should be used as follows: use_rules:1 This can only be modified with master access.
+The 'comment' field should contain descriptions of the content of the columns (metadata). It is strongly recommended to add some meta description for each column!
 
-In both cases, the SET prefix is automatically added in the comment field and must be cleared in order to validate the change. This is done to prevent accidental modification of these parameters.
+Width the 'command' field you define some settings or can execute some actions (currently rename or delete) on columns.
+
+- In the case of the obm_geometry column, you can set the SRID (Spatial Reference System ID) for the column. The value entered must be in the format `SET srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
+- For the obm_id column, you can specify whether the rules table should be used as follows: SET use_rules:1
+- Renaming a column is possible with the RENAME:new-name command syntax. Be careful, if you rename a column, the upload forms will be corrupted!
+- Renaming a column is possible with the DROP command. Be careful, if you delete a column, the upload forms will be corrupted!
 
 An SQL console is available at the top of the page, which can only be used with operator status and after separate authentication.
 

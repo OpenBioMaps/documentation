@@ -207,3 +207,9 @@ What data download options are there?
 * Via QGIS
 * Using bookmarks and permanent links
 * Using the R package
+
+How/where can I access photos taken in the field with the mobile app?
+---------------------------------------------------------------------
+
+On the web interface, one by one on the data's own data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The pds api also supports downloading images in one download.
+

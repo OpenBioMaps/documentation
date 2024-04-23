@@ -483,8 +483,54 @@ https://github.com/OpenBioMaps/scripts/blob/master/docker-auto-update.readme
 
 ## Archive tables, data, ...
 
+For scripts follow this repo:
 
 https://github.com/OpenBioMaps/scripts
+
+- use this to set up a perodic sql dumps of important tables: archive.sh
+
+### crontab setting examples for archive.sh
+
+```sh
+   #dumping normal tables from Monday to Saturday
+   15 04 * * 1-6 /root/archive.sh normal &
+   #dumping all tables and whole databases on every Sunday
+   15 04 * * 7 /root/archive.sh full &
+```
+
+### Example settings in obm_archive_settings.sh
+
+```sh
+  #path of table list
+  table_list="${HOME}/.archive_list.txt"
+
+  #postgres parameters
+  project_database="gisdata"
+  system_database="biomaps"
+  admin_user="gisadmin"
+  archive_path="/home/archives"
+  pgport="5432"
+  pg_dump="pg_dump -p $pgport"
+  psql="psql -p $pgport"
+
+  #FOR DOCKER based OBM systems
+  #docker="/usr/bin/docker-compose -f /path/to/docker-compose.yml exec -T"
+  #pg_dump="$docker biomaps_db pg_dump -p $pgport"
+  #psql="$docker biomaps_db psql -p $pgport"
+  
+  #table dayof_week dayofmonth month
+  #foo at every day
+  #foo * * *
+  #bar every Monday
+  #bar 1 * *
+  #casbla at every 1st day of every June
+  #casbla * 1 6
+```
+
+### Dumping table from the database using docker
+
+docker-compose exec -T biomaps_db bash -c "pg_dump -U biomapsadmin --table public.YOUR_TABLE gisdata" > YOUR_TABLE.sql
+
 
 
 ## Resources
