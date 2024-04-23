@@ -138,7 +138,7 @@ No centralized backup, as there is no centralized data management in OpenBioMaps
 
 
 I lost my password, how can I get a new one?
-----------------------------------------
+--------------------------------------------
 Don't worry, it's very easy to get a new password.
 
 Follow the "lost password" link on the login page.
