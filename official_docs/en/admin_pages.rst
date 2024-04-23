@@ -101,11 +101,11 @@ Translations
 ------------
  
     - Global translations: global translations can be added and improved in our public translator platform: https://translate.openbiomaps.org.
-        You can also start a new language on this interface, and translations of the mobile app and other openbiomaps components can be found here.
+        You can also start a new language on this interface, and translations of the mobile app and other OpenBioMaps components can be found here.
         Feel free to create, add and improve translations!
 
     - Local translations:
-        Use the 'str_' prefix, followed by some pretty understandable English expressions. Eg: str_observations, the translation of which must be given in the given active language. In this case, observation.
+        Use the "str_" prefix, followed by some pretty understandable English expressions. E.g.: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
 See local translations in action here: 
    https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
