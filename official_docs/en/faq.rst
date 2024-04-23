@@ -10,11 +10,11 @@ Frequently Asked Questions
 
 What is OpenBioMaps?
 --------------------
-OpenBioMaps is a software and services platform for managing biological data. It can be used on its own or as a service. It can be used to create database-based projects that can be used simultaneously by multiple users with different devices and access privilege levels. If you do not wish to maintain your own server, you can use it as a service, as some institutions also operate servers that host research or citizen-science projects for no charge.
+OpenBioMaps is a software and services platform for managing biological data. It can be used on its own or as a service. It can be used to create database-based projects that can be used simultaneously by multiple users with different devices and access privilege levels. If you do not wish to maintain your server, you can use it as a service, as some institutions also operate servers that host research or citizen-science projects for no charge.
 
 What is OpenBioMaps consortium?
 -------------------------------
-OpenBioMaps is a consortium of public institutions and social organizations. Their aim is to develop OpenBioMaps software and maintain freely available services based on it. The members of the consortium are equal partners and they have all contributed to achieving this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions set and the partners accept the new member.
+OpenBioMaps is a consortium of public institutions and social organizations. They aim to develop OpenBioMaps software and maintain freely available services based on it. The members of the consortium are equal partners and they have all contributed to achieving this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions and the partners accept the new member.
 
 
 Current OpenBioMaps partners:
@@ -106,7 +106,7 @@ For more information visit the API documentation.
 
 What language support is available?
 -----------------------------------
-There are no language restrictions, but the OpenBioMaps is currently available in Hungarian, English Romanian, Spanish, and partially in Russian. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
+There are no language restrictions, but OpenBioMaps is currently available in Hungarian, English Romanian, Spanish, and partially in Russian. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
 
 Each project can have individual language settings and associated translations.
 
@@ -123,7 +123,7 @@ How can I contribute to OpenBioMaps?
 
 
 Should I pay for anything?
--------------------------
+--------------------------
 All components and services of OpenBioMaps are completely free of charge, but some of the development is not voluntary work, i.e. we pay the developers, so all support for the development is gratefully accepted!
 
 
@@ -192,7 +192,7 @@ The servers that have registered can be found in the OpenBioMaps database at htt
 
 How to use the OpenBioMaps mobile app?
 --------------------------------------
-On Iphone or Android (currently, only the Android version works). Users need to be logged in on their own server to access the data upload forms available in their project. After logging in and downloading the forms, the app can be used offline. The current base map is Google-based and only works offline if the target area is downloaded for offline use from the Google Terrain Map application.
+On Iphone or Android (currently, only the Android version works). Users need to be logged in on their server to access the data upload forms available in their project. After logging in and downloading the forms, the app can be used offline. The current base map is Google-based and only works offline if the target area is downloaded for offline use from the Google Terrain Map application.
 
 The mobile application lists the servers that are registered in the https://openbiomaps.org/projects/openbiomaps_network database.
 
@@ -203,7 +203,7 @@ For now, only available as a developer package here: https://github.com/OpenBioM
 
 What data download options are there?
 -------------------------------------
-* Using csv, kml, json, and other modules where available
+* Using CSV, KML, JSON, and other modules where available
 * Via QGIS
 * Using bookmarks and permanent links
 * Using the R package
@@ -211,5 +211,5 @@ What data download options are there?
 How/where can I access photos taken in the field with the mobile app?
 ---------------------------------------------------------------------
 
-On the web interface, one by one on the data's own data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The pds api also supports downloading images in one download.
+On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download.
 
