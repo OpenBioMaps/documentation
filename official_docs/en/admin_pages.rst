@@ -1,5 +1,17 @@
 .. _project_administration:
 
+**Pages related to project administration:**
+
+.. toctree::
+   :maxdepth: 2
+
+   invitations.rst
+   admin_pages.rst
+   modules.md
+   welcome_page.rst
+   new_project.rst
+
+
 Administrative pages
 ********************
 
