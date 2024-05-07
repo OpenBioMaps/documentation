@@ -5,12 +5,7 @@ Projekt adminisztráció
 
 Adatbázis táblák és oszlopok
 ----------------------------
-
-[web] -> [profile] -> [Projektadminisztráció] -> [adatbázis tábla kezelés]
-
-Létre tudunk hozni egy SQL táblát, amit az OBM a projektünkhöz regisztrál és az alapértelmezett OBM oszlopokat létrehozza benne. A tábla neve ne tartalmazzon ékezetes karaktereket, szóközt és egyéb speciális karaktereket! Kerüljük a nagybetűk használatát is! A _ karakter megengedett. A táblához tetszőleges hosszúságú leírás megadása nyomatékosan ajánlott.
-
-Az OBM felületen csak az itt regisztrált táblákat tudjuk használni (térképi megjelenítés, űrlap használat, szöveges lekérdezések)!
+Itt hozhat létre és kezelhet SQL táblákat és nézeteket. Az itt létrehozott táblák és táblaoszlopok regisztrálódnak az OBM metaadatokban és így válnak elérhetővé az OBM felületeken keresztül. Sztandard SQL klienseken keresztül létrehozott táblák és tábla mezők nem válnak automatikusan elérhetővé az OBM számára! A létrehozott táblák neve nem tartalmazhat ékezetes karaktereket, szóközöket vagy egyéb speciális karaktereket! Kerülje a nagybetűk használatát is! A _ karakter használata megengedett. Erősen ajánlott, hogy egy tábla létrehozásakor adjon meg egy leírást hozzá. Ugyanezek a szabályok vonatkoznak a mező nevekre is.
 
 Itt lehet beállítani, hogy az egyes táblákból melyik oszlopok legyenek elérhetőek az űrlapok készítéséhez és lekérdezéshez a webes felületen. 
 
@@ -28,17 +23,22 @@ Szintén itt lehet megadni a különlegesen kezelet oszlopokat. Ez azt jelenti, 
     - melléklet: fájl mellékletek oszlop
     - UTM zóna: a térgeometria létrehozásakor használható.
 
-A "megjegyzés mező" az oszlopok tartalmára vonatkozó leírásokat kell tartalmazzon (meta adatok), továbbá egyes esetekben szabályzó szerepe is lehet. Az obm_geometry oszlop esetén a megjegyzés mezőbe lehet megadni a geometria oszlop srid-ját, amit a feltöltött adatok tárolt srid-ját fogja meghatározni. Beírt értéket `srid:4326` formátumba kell megadni és a biomaps/header_names/f_srid helyen kerül eltárolásra és az alkalmazás az SRID_C globális változóban használja.
+Két speciális mező van ebben a táblázatban: megjegyzés, parancs
 
-Az obm_id oszlopnál megadható, hogy legyen-e a rules tábla használva így: use_rules:1 Ezt csak master hozzáféréssel lehet módosítani.
+A "megjegyzés" mezőnek tartalmaznia kell az oszlopok tartalmának leírását (metaadatok). Erősen ajánlott minden oszlophoz valamilyen meta leírást adni!
 
-Mindkét esetben az megjegyzés mezőben automatikusan odakerül a SET előtag, amit ki kell törölni, hogy érvényesítetni lehessen a módosítást. Ez azért van így, hogy ne lehessen véletlenül módosítani ezeket a paramétereket.
+A 'parancs' mezőben definiálhat néhány beállítást, vagy végezhet bizonyos műveleteket (jelenleg átnevezés vagy törlés) az oszlopokon.
+
+- Az obm_geometry oszlop esetében beállíthatja az oszlop SRID-jét (Spatial Reference System ID). A megadott értéknek a `SET srid:4326` formátumúnak kell lennie, és a biomaps/header_names/f_srid fájlban kerül tárolásra, az alkalmazás pedig az SRID_C globális változóban használja.
+- Az obm_id oszlophoz a következőképpen adhatja meg, hogy a szabálytáblát használja-e: SET use_rules:1
+- Egy oszlop átnevezése a RENAME:új-név parancs szintaxisával lehetséges. Vigyázzon, ha átnevez egy oszlopot, a feltöltési űrlapok sérülhetnek!
+- Egy oszlop törlése a DROP paranccsal lehetséges. Vigyázzon, ha töröl egy oszlopot, a feltöltési űrlapok sérülhetnek! Tehát frissítenie kell a kapcsolódó feltöltési űrlapokat, de a már letöltött űrlapokkal rendelkező offline ügyfelek nem biztos, hogy szinkronizálni tudják az adatokat.
 
 A lap tetején elérhető egy SQL konzol, ami csak üzemeltetői státusszal és külön authentikáció után használható.
 
 Szintén elérhető itt egy kinyitható lista az összes olyan tábla felsorolásával, ami a projektünk nevével kezdődik az SQL adatbázisban. Ezek közül ami pirossal van jelölve, amit nem kezel az OBM felület, mert nincs beregisztrálva az OBM számára hozzáférhető táblák közé.
 
-A Nézetek kezelése elsősorban egy speciális funkció kiszolgálására szolgál, mégpedig arra, hogy egy adattáblánkat egy Nézettel helyettesítsük. Ilyen esetben a rendszer létrehoz az alaptábla nevével azonos Schémát a projektünk számára és oda helyezi át az eredeti táblánkat, amelyek kezeléséhez a megfelelő INSERT/UPDATE/DELETE Rule-okat is létrehozza. Ez a funkció akkor lehet hasznos, ha nagy adattáblánk van és vannak olyan folyatok, vagy triggerek, amelyek használata már túl lassú, vagy egyes specifikus felhasználó igények kielégítésére egyedi változatokat akarunk létrehozni az adattáblánkból. 
+A Nézetek kezelésével egy speciális funkciót is meg lehet valósítani, mégpedig azt, hogy egy adattáblánkat egy Nézettel helyettesítsük. Ilyen esetben a rendszer létrehoz az alaptábla nevével azonos Schémát a projektünk számára és oda helyezi át az eredeti táblánkat, amelyek kezeléséhez a megfelelő INSERT/UPDATE/DELETE Rule-okat is létrehozza. Ez a funkció akkor lehet hasznos, ha nagy adattáblánk van és vannak olyan folyatok, vagy triggerek, amelyek használata már túl lassú, vagy egyes specifikus felhasználó igények kielégítésére egyedi változatokat akarunk létrehozni az adattáblánkból.
 
 A tábláinkhoz további oszlopokat is tudunk itt hozzáadni. Az oszlopk nevében ne legyenek üres karakterek, nagy betűk és kötőjelek sem!
 
