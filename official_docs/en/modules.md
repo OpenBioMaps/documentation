@@ -6,13 +6,13 @@ The modules are linked to module hooks in the application, which are mostly loca
 Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
 
 
-Module administration:  
+Module administration
 =====================
 The modules can be enabled and configured on the *project_administration -> modules* page.
 
 Add a custom module
 -------------------
-You can upload your own modules and add them to your project. To develop a module, check out the example modules in modules/examples/.
+You can upload your modules and add them to your project. To develop a module, check out the example modules in modules/examples/.
 
 Module access
 -------------
@@ -25,24 +25,24 @@ Currently, there is no such option.
 
 Turn off a module
 -----------------
-Once we have our own list of modules, we can switch each module on and off.
+Once we have our list of modules, we can switch each module on and off.
 
 Parameters for modules
 ----------------------
-Most modules can be directly parameterized with JSON format parameters. And some modules have their own administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
+Most modules can be directly parameterized with JSON format parameters. Some modules have their administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
 
 
 Project level modules
 =====================
 box_load_selection
 ------------------
-* Allows you to upload your own spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
+* Allows you to upload your spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
 * The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the name of the shape, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
-* Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. In order to use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
-* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. And project administrators can make these settings in their own administration interface of the **box_load_selection** module in the module settings tab.
+* Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. To use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
+* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. Project administrators can make these settings in their administration interface of the **box_load_selection** module in the module settings tab.
 * Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that are inside the polygon or also the data that fall under the edges of the polygon.
 * For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
-* The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labeled with their names.
+* The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labelled with their names.
 
 No parameters
 
