@@ -211,7 +211,7 @@ What data download options are there?
 How/where can I access photos taken in the field with the mobile app?
 ---------------------------------------------------------------------
 
-On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download. On the supervisor interface (through the admin pages/system info).
+On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download. Also via the supervisor interface (located on the administrative functions / system information page).
 
 How can I delete data?
 ----------------------
