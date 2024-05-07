@@ -211,5 +211,12 @@ What data download options are there?
 How/where can I access photos taken in the field with the mobile app?
 ---------------------------------------------------------------------
 
-On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download.
+On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download. On the supervisor interface (through the admin pages/system info).
+
+How can I delete data?
+----------------------
+The OBM web interface does not include a data deletion function, but there is still the possibility to delete data if it is deemed necessary.
+Each upload has an entry in the system.uploadings table. Its id can be referenced to delete all records of an upload from SQL client at once. If the uploading table is linked to the data table with a foreign key, it is sufficient to delete the uploading metadata row and it will delete the corresponding rows from the data table, but this linkage is not automatically set. It is usually safer to explicitly delete the required rows with an SQL command. If you want to delete all rows of an upload, it is handy to do it with a single command referring to the upload ID:
+
+DELETE FROM your_table WHERE uploading_id=x;
 
