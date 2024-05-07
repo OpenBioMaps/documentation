@@ -212,7 +212,7 @@ Milyen adat letöltési lehetőségek vannak?
 
 A mobil applikációval terepen készített fotókhoz hogyan/hol lehet hozzáférni?
 -----------------------------------------------------------------------------
-A webes felületen egyesével az adatok saját adatlapján, vagy az adminisztratív felületen a fájlok lapon. Akár egyben is le lehet tölteni az összes képet. A pds api is támogatja a képek egyben letöltését.
+A webes felületen egyesével az adatok saját adatlapján, vagy az adminisztratív felületen a fájlok lapon. Akár egyben is le lehet tölteni az összes képet. A pds api is támogatja a képek egyben letöltését. A supervisor felületen (az admin oldalakon/rendszerinformáción fülön található) keresztül is.
 
 Hogyan tudok adatokat törölni?
 ------------------------------
