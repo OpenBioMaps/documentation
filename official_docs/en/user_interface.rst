@@ -13,7 +13,7 @@ By entering your registered email address here you can request a temporary login
 
 Registration
 ------------
-Registration requires an invitation, which can be requested via the form available from the registration page. In addition, depending on your project settings, it is also possible to register using Google or another OpenID-based registration.
+Registration requires an invitation, which can be requested via the form available on the registration page. In addition, depending on your project settings, it is also possible to register using Google or another OpenID-based registration.
 
 Profile page
 ============
@@ -69,8 +69,8 @@ The result of a query can be stored on the server, which can be referenced by a 
 
 
 
-Data upload
-===========
+Data upload page
+================
 Any number of forms can be defined for a data table, with which forms different data can be loaded with different options. For example, some forms may be designed for mobile formatting only or for public data upload, while others may be designed specifically for a certain file type to be imported.
 At any time during the upload process, it is possible to save and download the upload status in CSV format.
 
@@ -112,13 +112,13 @@ Data upload history page
 ------------------------
 The metadata of each data upload is automatically recorded and can be accessed from the user's profile page or datasheet.
 
-Data sheet
-==========
-Each data record has its own data sheet, which contains all the associated metadata and data fields for the record. Depending on the settings, the available data content can be restricted in various ways.
+Datasheet page
+==============
+Each data record has its data sheet, which contains all the associated metadata and data fields for the record. Depending on the settings, the available data content can be restricted in various ways.
 
 Data history page
 -----------------
-Each data record has its own data history sheet where you can view the changes to the record. This feature only works if the project host has enabled data change records in the project settings.
+Each data record has its data history sheet where you can view the changes to the record. This feature only works if the project host has enabled data change records in the project settings.
 
 
 Database summary page
