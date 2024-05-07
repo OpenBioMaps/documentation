@@ -61,7 +61,7 @@ Spatial queries can be triggered by drawing on the map, tapping on the map (info
 
 text queries
 ------------
-Arbitrary text query options can be set up in each project to query data, which options can include a number of helper functions such as auto-text completion, list selection, date, time, date interval selection, multiple list item selection, etc...
+Arbitrary text query options can be set up in each project to query data, which options can include several helper functions such as auto-text completion, list selection, date, time, date interval selection, multiple list item selection, etc...
 
 query storage
 -------------
@@ -150,3 +150,16 @@ The bug submission feature is available from the profile page and the upload pag
 The interface sends the errors to the OpenBioMaps developer page (https://gitlab.com/groups/openbiomaps/-/issues), from which the user will automatically receive a response from the system for further events.
 
 The error handler can be made available on a server by specifying the AUTO_BUGREPORT_ADDRESS address in the system_vars.php.inc configuration file. More information about the GitLab Issue handler interface can be found here: https://docs.gitlab.com/ee/user/project/issues/
+
+
+**Contents:**
+
+.. toctree::
+   :maxdepth: 2
+
+   invitations.rst
+   admin_pages.rst
+   modules.md
+   welcome_page.rst
+   new_project.rst
+
