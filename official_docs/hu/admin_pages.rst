@@ -1,6 +1,13 @@
 Projekt adminisztráció
 **********************
 
+**Projekt adminisztrációval kapcsolatos lapok:**
+
+.. toctree::
+   :maxdepth: 2
+
+   admin_pages.rst
+
 .. _database-columns:
 
 Adatbázis táblák és oszlopok

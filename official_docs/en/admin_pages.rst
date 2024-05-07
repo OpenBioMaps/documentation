@@ -6,8 +6,6 @@
    :maxdepth: 2
 
    admin_pages.rst
-   welcome_page.rst
-   new_project.rst
 
 
 Administrative pages
