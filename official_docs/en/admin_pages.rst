@@ -8,6 +8,8 @@
    admin_pages.rst
    new_project.rst
    welcome_page.rst
+   invitations.rst
+   modules.md
 
 
 Administrative pages
