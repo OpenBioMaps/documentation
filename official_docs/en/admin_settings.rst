@@ -1,6 +1,8 @@
 Administrative settings
 ***********************
 
+.. _administrative-access:
+
 Administrative access
 ---------------------
 Administrative functions can be delegated to user groups.
@@ -45,6 +47,21 @@ Also available here is a drop-down list of all the tables that start with the na
 
 By managing Views you can also implement a special function, namely to replace a data table with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
 
+
+.. _data-access:
+
+Data access
+-----------
+Overview of set access rules and their work statuses.
+
+[web] -> [profile] -> [project administration] -> [data access]
+
+[system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+
+View the general access setting of the project per the data table. This is not configurable here!
+
+
+
 Groups
 ------
 Creating and managing groups. These groups can be used for the management of access and usage control of upload forms, data, modules, and administrative functions.
@@ -77,17 +94,7 @@ Assign species names to the following categories: [accepted name], [synonym name
 
 The species names in the taxon table (species name database) are used by the "taxon-name-repair-background-jobs" and the search interfaces.
 
-.. _data-access:
 
-Access
-------
-Overview of set access rules and their work statuses.
-
-[web] -> [profile] -> [project administration] -> [data access]
-
-[system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
-
-View the general access setting of the project per the data table. This is not configurable here!
 
 Translations
 ------------
