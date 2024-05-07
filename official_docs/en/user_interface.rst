@@ -47,7 +47,7 @@ Any registered member can create a new database project, which he/she will own a
 
 Project administration
 ======================
-:doc:`Project level settings <../admin_pages>`. For example, upload forms and map settings, or user administration.
+:doc:`Project settings <../admin_pages>`. For example, upload forms and map settings, or user administration.
 
 
 Map page
