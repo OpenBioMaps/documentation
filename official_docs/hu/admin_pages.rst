@@ -6,7 +6,7 @@ Projekt adminisztráció
 .. toctree::
    :maxdepth: 2
 
-   admin_pages.rst
+   admin_settings.rst
    new_project.rst
    welcome_page.rst
    invitations.rst
