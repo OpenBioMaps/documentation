@@ -212,5 +212,12 @@ Milyen adat letöltési lehetőségek vannak?
 
 A mobil applikációval terepen készített fotókhoz hogyan/hol lehet hozzáférni?
 -----------------------------------------------------------------------------
+A webes felületen egyesével az adatok saját adatlapján, vagy az adminisztratív felületen a fájlok lapon. Akár egyben is le lehet tölteni az összes képet. A pds api is támogatja a képek egyben letöltését. A supervisor felületen (az admin oldalakon/rendszerinformáción fülön található) keresztül is.
 
-A webes felületen egyesével az adatok saját adatlapján, vagy az adminisztratív felületen a fájlok lapon. Akár egyben is le lehet tölteni az összes képet. A pds api is támogatja a képek egyben letöltését.
+Hogyan tudok adatokat törölni?
+------------------------------
+Az OBM webes felület nem tartalmaz adat törlési funkciót, de ettől függetlenül van lehetőség az adatok törlésére, ha ez valóban szükségesnek látszik.
+
+Minden feltöltésnek van egy bejegyzése az system.uploadings  táblában. Annak van egy id-jával hivatkozva egyszerre lehet törölni egy feltöltés összes rekordját SQL kliensből. Amennyiben az  uploading tábla idegen kulcscsal össze van kötve az adattáblával,  akkor elegendő a feltöltési metaadat sort törölni és az törli a hozzá tartozó adatsorokat az adattáblából, de ez az összekapcsolás nincs automatikusan beállítva. Általában biztonságosabb, ha explicit módon töröljük a szükséges sorokat egy SQL paranccsal. Amennyiben egy feltöltés összes sorát szeretnénk törölni praktikusan a feltöltési azonosítóra hivatkozva egyetlen paranccsal megtehető:
+
+DELETE FROM your_table WHERE uploading_id=x;
