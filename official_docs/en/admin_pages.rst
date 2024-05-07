@@ -173,6 +173,17 @@ Building more complex queries is possible:
     )
     SELECT * FROM aall ORDER BY date_part DESC
 
+A typical simple SQL query looks like this:
+
+.. code-block:: SQL
+ 
+    SELECT obm_id, obm_geometry %selected%
+    FROM %F%checkitout c%F%
+        %uploading_join%
+        %rules_join%
+        %taxon_join%
+        %morefilter%
+    WHERE %geometry_type% %envelope% %qstr%
 
 .. _Map settings:
 
