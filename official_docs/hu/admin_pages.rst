@@ -224,6 +224,17 @@ Lehetséges még komplexeb lekérdezés összerekasára is:
     )
     SELECT * FROM aall ORDER BY date_part DESC
 
+Egy tipikus egyszerű SQL lekérdezés így néz ki:
+
+.. code-block:: SQL
+ 
+    SELECT obm_id, obm_geometry %selected%
+    FROM %F%nestbox c%F%
+        %uploading_join%
+        %rules_join%
+        %taxon_join%
+        %morefilter%
+    WHERE %geometry_type% %envelope% %qstr%
 
 .. _Server info:
 
