@@ -12,16 +12,11 @@ Administrative functions can be delegated to user groups.
 
 Database tables and columns
 ---------------------------
-
-[web] -> [profile] -> [project administration] -> [database table management]
-
-You can create an SQL table that OBM registers to your project and creates the basic OBM columns in it. The table name should not contain accented characters, spaces, or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that a description of arbitrary length be provided for the table.
-
-Only tables registered here can be used in the OBM interface (map display, form use, text queries)!
+Here you can create and manage SQL tables and views. Tables and table columns created here are registered in the OBM metadata and thus become available through the OBM interfaces. Tables and table fields created via standard SQL clients are not automatically made available to OBM! The names of tables created must not contain accented characters, spaces or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that you add a description when creating a table. The same rules apply to field names.
 
 Here, you can set which columns from each table should be available for form creation and queries in the web interface. 
 
-Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number, and location columns. For the location column, the X,Y coordinate column and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species names, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to "data" type.
+Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number, and location columns. For the location column, the X, and Y coordinate columns and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species names, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to the "data" type.
 
     - data: for general purpose columns
     - spatial geometry: this column can be used for map creation
@@ -44,14 +39,13 @@ Width the 'command' field you define some settings or can execute some actions (
 - In the case of the obm_geometry column, you can set the SRID (Spatial Reference System ID) for the column. The value entered must be in the format `SET srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
 - For the obm_id column, you can specify whether the rules table should be used as follows: SET use_rules:1
 - Renaming a column is possible with the RENAME:new-name command syntax. Be careful, if you rename a column, the upload forms will be corrupted!
-- Renaming a column is possible with the DROP command. Be careful, if you delete a column, the upload forms will be corrupted!
+- Dropping a column is possible with the DROP command. Be careful, if you delete a column, the upload forms will be corrupted! So you have to update your related upload forms, but the offline clients with already downloaded forms may not be able to synchronise the data.
 
 An SQL console is available at the top of the page, which can only be used with operator status and after separate authentication.
 
 Also available here is a drop-down list of all the tables that start with the name of our project in the SQL database. Of these, the ones marked in red are not handled by the OBM interface because they are not registered as tables accessible to OBM.
 
-Views management is mainly used to serve a specific function, namely to replace one of our data tables with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
-
+By managing Views you can also implement a special function, namely to replace a data table with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
 
 Groups
 ------
