@@ -6,8 +6,8 @@ A modulok az alkalmazásban modul horgok kapcsolódnak, amelyek többnyire a té
 A legtöbb modul egyszerű paraméterekkel konfigurálható (JSON), de egyes modulok egyéni adminisztratív felülettel rendelkeznek.
 
 
-Modul adminisztráció:  
-=====================
+Modul adminisztráció
+====================
 A *projekt_adminisztráció -> modulok* oldalon lehet engedélyezni és konfigurálni a modulokat.
 
 Modul hozzáadása
