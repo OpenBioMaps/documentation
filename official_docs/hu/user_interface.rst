@@ -47,7 +47,7 @@ Bármelyik regisztrált tag alapíthat egy új adatbázis projektet, amelynek ő
 
 Projekt adminisztráció
 ======================
-:doc:`Projekt szintű beállítások <../admin_pages>` helye. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
+:doc:`Projekt beállítások <../admin_pages>`. Például feltöltű űrlapok készítése és térkép beállítások, vagy felhasználó adminisztráció.
 
 
 Térképi lap
