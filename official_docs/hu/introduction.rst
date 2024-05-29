@@ -27,7 +27,7 @@ Az OpenBioMaps fontos tulajdonságai
 * Személyre szabható adat feltöltő felületek létrehozása.
 * Terepi mobil adatgyűjtő alkalmazás.
 * Közösségi szerkesztésű dokumentáció.
-* Bármilyen nyelvre fordítható felület (jelenleg Magyar, Angol, Román, Spanyol és részben Orosz)
+* Bármilyen nyelvre fordítható felület (jelenleg Magyar, Angol, Román, Spanyol, Portugál és részben Orosz, Német, Horvát, Francia, Cseh, Lengyel és Görög nyelvekre van fordítás). A fordításokhoz bárki hozzájárulhat a https://translate.openbiomaps.org weblate felületen keresztül
 * Közösségi visszajelzéseken alapuló fejlesztés.
 
 
