@@ -39,6 +39,10 @@ Az OBM megpróbál támogatást adni a teljes adat életútra, az adatgyűjtést
    :scale: 50 %
    :alt: OpenBioMaps adat életút infógrafika
 
+OBM Workflow <../obm_workflow>
+
+Lekérdezési séma (pdf) <docs/query_scheme.pdf> Lekérdezési séma (odp) <docs/query_scheme.odp>
+
 
 Első lépések
 ============
