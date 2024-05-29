@@ -55,6 +55,8 @@ here: https://openbiomaps.org/documents/en/new_project.html
 
 OpenBioMaps Consortium
 ----------------------
+The OpenBioMaps community has formed a consortium to manage the development of the software and maintain the free services. Membership of the consortium is conditional on a significant contribution to the development or maintenance of the services.
+
 :download:`OpenBioMaps Consortium Document <docs/consortium_2015.pdf>`
 
 
