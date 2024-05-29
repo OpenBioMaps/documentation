@@ -28,7 +28,7 @@ Main properties
 * Create customizable data upload interfaces.
 * Field mobile data collection application.
 * Community-edited documentation.
-* Interface translatable into any language (currently Hungarian, English, Romanian, Spanish and partly Russian)
+* The interface can be translated into any language (currently translated into Hungarian, English, Romanian, Spanish, Portuguese and partly into Russian, German, Croatian, French, Czech, Polish and Greek). Anyone can contribute to the translations via the https://translate.openbiomaps.org weblate interface
 * Community feedback based development.
 
 
