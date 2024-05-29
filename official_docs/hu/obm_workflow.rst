@@ -123,7 +123,7 @@ Adat kimenet
 .. _OpenBioMaps-output
 
 OpenBioMaps kimenet
-------------------_
+-------------------
 Az adatok lekérdezhetőek a webes felületen vagy API-n keresztül. Lehetőség van teljes táblák letöltésére, exportálására vagy az adatok szűrésére, megjelenítésére és exportálására is.
 
 .. _Other-outputs
