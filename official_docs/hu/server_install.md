@@ -1,25 +1,25 @@
 # Új OBM szerver telepítési útmutató
 
-## New OBM server installation using Docker
+## Új OBM szerver telepítés Dockerrel
 
 :doc:`Docker installation tutorial <../docker>`
 
-## Common errors and solutions after new installations or updates
+## Gyakori hibák és megoldások új telepítések vagy frissítések után
 
 :doc:`Common errors <../common_errors>`
 
-## Server configuration
+## Szerver beállítások
 
 :doc:`Server configuration <../server_config>`
 
-## Local variables for a project
+## Helyi változók egy projektben
 
 Several low-level settings coming from the local_vars.php.inc file which can be updated by the server admin
 
-### The local_vars.php.inc file
+### A local_vars.php.inc fájl
 
 
-**Database connection definitions**
+**Adatbázis kapcsolatok megadása**
 
 .. code-block:: php
 
@@ -36,7 +36,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('PROJECTTABLE','your_database_table_name');
   //define('PROJECTTABLE',basename(__DIR__));
   
-**Project data restriction settings**
+**Project data restriction beállítások**
 
 .. code-block:: php
   
@@ -46,7 +46,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('ACC_LEVEL','public');
   define('MOD_LEVEL','group');
   
-**Language settings**
+**Nyelvi beállítások**
 
 .. code-block:: php
   
@@ -54,7 +54,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   // see the language file inclusion in the prepare_vars.php
   define('LANG','hu'); # en, ro, ru, ...
   
-**Path and URL settings**
+**Útvonal és URL beállítások**
 
 .. code-block:: php
   
@@ -63,7 +63,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   define('PATH','/biomaps/resources');
   define('URL',sprintf("%s%s",$_SERVER['SERVER_NAME'],PATH));
   
-**mapserver variables**
+**mapserver változók**
 
 .. code-block:: php
   
@@ -82,7 +82,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   // should move into postgresql vars
   define('PRIVATE_MAPFILE','private.map');
   
-**Invitations**
+**Meghívások**
 
 .. code-block:: php
   
@@ -122,7 +122,7 @@ default is map**
   define('LOGINPAGE','map');
   define('TRAINING',false);
   
-**MainPage configuration**
+**Nyitó oldal beállítás**
 
 .. code-block:: php
   
@@ -144,7 +144,7 @@ default is map**
     'template'=>'evolvulus'
   ));
   
-**Footer configuration**
+**Lábléc beállítás**
 
 .. code-block:: php
   
@@ -164,7 +164,7 @@ default is map**
   // *used by the read_table module to encrypt the table name, ...*
   define('MyHASH','password-string');
   
-**Developer options**
+**Fejlesztői opciók**
 
 .. code-block:: php
   
