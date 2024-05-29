@@ -6,12 +6,37 @@ PostgreSQL Backend
 
 Database tables
 ---------------
+Tables
+......
+OpenBioMaps only handles Postgres tables that are created through the OBM admin interface. When a table is created, it is registered with the tables managed in the project. If you rename your table via an SQL client, OBM loses the connection to the table. If you delete a table from an SQL client, OBM will automatically delete the associated metadata. You can also delete an empty table via the OBM admin interface.
 
 Metadata
 ........
+For database tables, a descriptive metadata can be specified, which is optional but highly recommended. It is basically good practice to provide descriptive information for your tables and fields!
 
 Database columns
 ----------------
+Default columns
+...............
+OpenBioMaps creates a number of default fields in each table it creates, the existence of which is mandatory for OBM to be able to manage the table.
+These fields should never be deleted from our tables!
+
+These fields are as follows:
+
+.. code-block:: SQL
+  
+  CREATE TABLE public.test_table (
+    obm_id integer DEFAULT nextval('public.test_table_obm_id_seq'::regclass) NOT NULL,
+    obm_geometry public.geometry,
+    obm_uploading_id integer,
+    obm_validation numeric,
+    obm_comments text[],
+    obm_modifier_id integer,
+    obm_files_id character varying(32),
+    CONSTRAINT enforce_dims_obm_geometry CHECK ((public.st_ndims(obm_geometry) = 2)),
+    CONSTRAINT enforce_srid_obm_geometry CHECK ((public.st_srid(obm_geometry) = 4326))
+  );
+
 
 SQL columns vs OpenBioMaps columns
 ..................................
@@ -29,27 +54,27 @@ If we want to change the order of our fields in Postgres, one solution is to use
 
 Visible names
 .............
-OpenBioMaps uses a so-called display name stored in a metadata to display the field names instead of the field names visible in SQL, which is specified by the administrator who created the fields. By default, this is the same as the Postgres name of the field. If the field name starts with the prefix str_, these strings will be displayed with the translation according to the language settings of the client application, if we have specified translations for our strings. 
-
-
+OpenBioMaps uses a so-called display name stored in a metadata to display the field names instead of the field names visible in SQL, which is specified by the administrator who created the fields. By default, this is the same as the Postgres name of the field. If the field name starts with the prefix str_, these strings will be displayed with the translation according to the language settings of the client application, if we have specified translations for our strings.
 
 Data input
 ==========
 OpenBioMaps way
 ---------------
+Data can be loaded into the data tables via the upload forms or via any SQL client. When data is entered using the upload forms, the data is recorded as an upload event in the system.uploading table and the upload metadata is available with the data.
 
 SQL ways
 --------
-
+You can also import large amounts of data with the COPY FROM Postgres tool!
 
 Data output
 ===========
 OpenBioMaps output
 ------------------
+The data can be queried via the web interface or API. It is also possible to download and export complete tables or filter, display and export data.
 
 Other outputs
 -------------
-
+OpenBioMaps basically stores the data in simple strctures, so that the data can be easily queried and plotted via SQL clients, e.g. in QGIS.
 
 Users
 =====
