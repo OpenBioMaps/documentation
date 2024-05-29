@@ -57,4 +57,6 @@ itt: https://openbiomaps.org/documents/hu/new_project.html
 
 OpenBioMaps Konzorcium
 ======================
+Az OpenBioMaps közösség a szoftverek fejlesztésének irányítására és az ingyenes szolgáltatások fenntartására egy konzorciumot hozott létre. A konzorciumi tagság feltétele a a fejlesztéshez, vagy a szolgáltatások fenntartásához történő szignifikáns hozzájárulás.
+
 :download:`OpenBioMaps Konzorcium Szerződés<docs/consortium_2015.pdf>`
