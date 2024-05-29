@@ -1,24 +1,24 @@
 OpenBioMaps folyamatok
 **********************
 
-.. _PostgreSQL-Backend
-  
+.. _postgresql-backend
+
 Postgres háttér
 ===============
 
-.. _Database-tables
+.. _database-tables
 
 Adatbázis háttér
 ----------------
 
-.. _Tables
+.. _tables
 
 Táblák
 ......
 Az OpenBioMaps csak azokat Postgres táblákat kezeli, amelyeket az OBM admin felületen keresztül hozunk létre. A tábla létrehozásakkor azokat 
 beregisztrálja a projektben kezelt táblák közé. Amennyiben egy SQL kliensen keresztül átnevezzük a táblánkat, akkor az OBM elveszíti a kapcsolatot a táblával. Amennyiben SQL kliensből 
 kitörlünk egy táblánkat, akkor az OBM automatikusan kitörli a hozzá kapocslódó metaadatokat is. Üres táblát ki lehet törölni az OBM admin felületen keresztül is.
-  
+
 .. _metadata
 
 Meta adatok
