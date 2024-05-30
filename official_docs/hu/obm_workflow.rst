@@ -112,7 +112,7 @@ A feltöltő űrlapokkal történt adatbevitel során az adat feltöltési esem�
 
 SQL megoldások
 --------------
-Nagy adatmennyiségek beolvasása történhet a `COPY FROM Postgres eszközzel<https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/>`_ is!
+Nagy adatmennyiségek beolvasása történhet a `COPY FROM Postgres eszközzel <https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/>`_ is!
 
 
 .. _Data-output
