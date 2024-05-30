@@ -64,7 +64,7 @@ Data can be loaded into the data tables via the upload forms or via any SQL clie
 
 SQL ways
 --------
-You can also import large amounts of data with the `COPY FROM Postgres tool<https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/>`!
+You can also import large amounts of data with the `COPY FROM Postgres tool<https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/>`_!
 
 Data output
 ===========
