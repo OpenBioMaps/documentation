@@ -20,3 +20,10 @@ mapserver
 ```
 
 `docker-compose up -d mapserver`
+
+
+## Turn off php opcache
+
+In the /var/www/html/biomaps/project/YOUR_PROJECT/.htaccess file:
+
+php_flag opcache.enable Off

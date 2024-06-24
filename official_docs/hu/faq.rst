@@ -14,57 +14,8 @@ Az OpenBioMaps egy szoftver- és szolgáltatási platform a biológiai adatok ke
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-Az OpenBioMaps konzorciumot közintézmények és civil szervezetek hozták létre 2015 szeptember elsején. A konzorcium célja, hogy az OpenBioMaps szotfevereket fejlessze és arra épülő szabadon hozzáférhető szolgáltatásokat üzemeltessen. A konzorcium tagjai egyenlő partnerek, akik valamilyen módon hozzájárulnak mind a fejlesztéshez mind a működtetéshez. A konzorciumhoz bárki csatlakozhat, aki elfogadja az OpenBioMaps alaptételeit, eleget tesz annak kitételének és a már jelenlegi konzorciumi partnerek elfogadják a belépését.
+Lásd :ref:`Konzorcium <introduction/OpenBioMaps Konzorcium>`:
 
-Jelenlegi OpenBioMaps partnerek:
-
-**Debreceni Egyetem**
-
-kapcsolat: Dr. Bán Miklós
-
-
-**Duna-Ipoly Nemzeti Park Igazgatóság**
-
-kapcsolat: Baranyai Zsolt
-
-
-**Eötvös Loránd Tudományegyetem**
-
-kapcsolat: Ritter Dávid
-
-
-**WWF Magyarország**
-
-kapcsolat: Sipos Katalin
-
-
-**Eszterházy Károly Egyetem**
-
-kapcsolat: Dr. Pénzesné Kónya Erika
-
-
-**Milvus Csoport Egyesület**
-
-kapcsolat: Papp Edgár
-
-
-**Duna-Dráva Nemzeti Park Igazgatóság**
-
-kapcsolat: Gáborik Ákos
-
-
-**Fertő-Hanság Nemzeti Park Igazgatóság**
-
-kapcsolat: Takács Gábor
-
-
-Az OpenBioMaps konzorcium nyilatkozata `itt <docs/consortium_agreement_2015.pdf>`_ elérhető.
-
-Hogyan léphetek kapcsolatba a konzorciummal?
---------------------------------------------
-email-en keresztül:
-
-management@lists.openbiomaps.org
 
 Hogyan tudok saját adatbázist projektet készíteni/alapítani?
 ------------------------------------------------------------
@@ -84,6 +35,11 @@ Hogyan férhetek hozzá az adatokhoz?
 - Az OpenBioMaps R csomag használatával.
 - A webes felületen keresztül történő adatmegosztás használatával.
 - Adatexporttal a webes felületen keresztül.
+- :ref:`PWA alkalmazással <pwa>`:
+
+Hogyan tudom mobil telefonnal lekérdezni az adatokat?
+-----------------------------------------------------
+A :ref:`PWA alkalmazással <pwa>`:
 
 
 Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
@@ -220,4 +176,19 @@ Az OBM webes felület nem tartalmaz adat törlési funkciót, de ettől függetl
 
 Minden feltöltésnek van egy bejegyzése az system.uploadings  táblában. Annak van egy id-jával hivatkozva egyszerre lehet törölni egy feltöltés összes rekordját SQL kliensből. Amennyiben az  uploading tábla idegen kulcscsal össze van kötve az adattáblával,  akkor elegendő a feltöltési metaadat sort törölni és az törli a hozzá tartozó adatsorokat az adattáblából, de ez az összekapcsolás nincs automatikusan beállítva. Általában biztonságosabb, ha explicit módon töröljük a szükséges sorokat egy SQL paranccsal. Amennyiben egy feltöltés összes sorát szeretnénk törölni praktikusan a feltöltési azonosítóra hivatkozva egyetlen paranccsal megtehető:
 
-DELETE FROM your_table WHERE uploading_id=x;
+.. code-block:: sql
+
+   DELETE FROM your_table WHERE uploading_id=x;
+
+
+Nem látom és nem tudom lekérdezni az adatokat, amelyeket más felhasználók látnak
+--------------------------------------------------------------------------------
+Valószínűleg a projekt adatai korlátozott hozzáférésűek, ami úgy van meghatározva, hogy csak bizonyos felhasználók vagy felhasználó csoportok férhetnek hozzá az adatokhoz. Ez a beállítás a gyakorlatban úgy érvényesül, hogy az adatfeltöltő űrlap beállításai között kell megadni, mely felhasználók vagy felhasználó csoportoknak lesz olvasási, vagy módosítási hozzáférése egy adott űrlappal feltöltött adatokhoz. 
+Amennyiben vannak olyan adatok feltöltve, ahol nem volt beállítva semmi, akkor alapértelmezetten csak a projekt gazdák számára lesz elérhető az így feltöltött adat. Az adatok hozzáférésének beállítását a projekt gazdák SQL parancsok segítségével tudják utólag módosítani, pl: 
+
+.. code-block:: sql
+
+   UPDATE mydatabase_rules d SET read = read || 295 FROM (
+   SELECT row_id FROM "public"."mydatabase" LEFT JOIN mydatabase_rules ON (obm_id=row_id) WHERE "observer" ILIKE 'Smith%') AS foo 
+   WHERE foo.row_id=d.row_id
+
