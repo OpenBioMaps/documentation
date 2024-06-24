@@ -218,5 +218,18 @@ How can I delete data?
 The OBM web interface does not include a data deletion function, but there is still the possibility to delete data if it is deemed necessary.
 Each upload has an entry in the system.uploadings table. Its id can be referenced to delete all records of an upload from SQL client at once. If the uploading table is linked to the data table with a foreign key, it is sufficient to delete the uploading metadata row and it will delete the corresponding rows from the data table, but this linkage is not automatically set. It is usually safer to explicitly delete the required rows with an SQL command. If you want to delete all rows of an upload, it is handy to do it with a single command referring to the upload ID:
 
+```sql
 DELETE FROM your_table WHERE uploading_id=x;
+```
+
+I can't query/see data which is visible to other users
+-------------------------------------------------------
+The project data is likely restricted access, which is defined as only certain users or groups of users having access to the data. In practice, this setting is enforced by specifying in the data upload form settings which users or user groups will have read or modify access to data uploaded with a particular form. 
+If there is data uploaded where no settings have been made, then by default only the project admins will have access to the data uploaded. The data access setting can be changed subsequently by the project admins using SQL commands, e.g: 
+
+```sql
+UPDATE mydatabase_rules d SET read = read || 295 FROM (
+SELECT row_id FROM "public". "mydatabase" LEFT JOIN mydatabase_rules ON (obm_id=row_id) WHERE "observer" ILIKE 'Smith%') AS foo 
+WHERE foo.row_id=d.row_id
+```
 
