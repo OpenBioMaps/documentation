@@ -35,6 +35,7 @@ Hogyan férhetek hozzá az adatokhoz?
 - Az OpenBioMaps R csomag használatával.
 - A webes felületen keresztül történő adatmegosztás használatával.
 - Adatexporttal a webes felületen keresztül.
+- :ref:`PWA alkalmazással <pwa>`:
 
 
 Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
