@@ -14,7 +14,7 @@ OpenBioMaps is a software and services platform for managing biological data. It
 
 What is OpenBioMaps Consortium?
 -------------------------------
-:doc:`See Consortium <../introduction#OpenBioMaps_Consortium>`
+:doc:`See Consortium <../introduction>`
 
 
 How can I create/find a new database-project?
