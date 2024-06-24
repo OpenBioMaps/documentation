@@ -35,6 +35,11 @@ How can I access data?
 - Using the OpenBioMaps R package.
 - Using data sharing via the web interface.
 - Data export via the web interface.
+- Width the :ref:`PWA application <pwa>`:
+
+How can I retrieve data with my mobile phone?
+---------------------------------------------
+With the :ref:`PWA application <pwa>`:
 
 
 How can I sign up for an OpenBioMaps project?
