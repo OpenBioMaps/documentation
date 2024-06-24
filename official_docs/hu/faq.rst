@@ -37,6 +37,10 @@ Hogyan férhetek hozzá az adatokhoz?
 - Adatexporttal a webes felületen keresztül.
 - :ref:`PWA alkalmazással <pwa>`:
 
+Hogyan tudom mobil telefonnal lekérdezni az adatokat?
+-----------------------------------------------------
+A :ref:`PWA alkalmazással <pwa>`:
+
 
 Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
 ---------------------------------------------------------------
