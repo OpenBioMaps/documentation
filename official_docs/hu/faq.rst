@@ -220,4 +220,17 @@ Az OBM webes felület nem tartalmaz adat törlési funkciót, de ettől függetl
 
 Minden feltöltésnek van egy bejegyzése az system.uploadings  táblában. Annak van egy id-jával hivatkozva egyszerre lehet törölni egy feltöltés összes rekordját SQL kliensből. Amennyiben az  uploading tábla idegen kulcscsal össze van kötve az adattáblával,  akkor elegendő a feltöltési metaadat sort törölni és az törli a hozzá tartozó adatsorokat az adattáblából, de ez az összekapcsolás nincs automatikusan beállítva. Általában biztonságosabb, ha explicit módon töröljük a szükséges sorokat egy SQL paranccsal. Amennyiben egy feltöltés összes sorát szeretnénk törölni praktikusan a feltöltési azonosítóra hivatkozva egyetlen paranccsal megtehető:
 
+```sql
 DELETE FROM your_table WHERE uploading_id=x;
+```
+
+Nem látom és nem tudom lekérdezni azadatokat, amelyeket más felhasználók látnak
+-------------------------------------------------------------------------------
+Valószínűleg a projekt adatai korlátozott hozzáférésűek, ami úgy van meghatározva, hogy csak bizonyos felhasználók vagy felhasználó csoportok férhetnek hozzá az adatokhoz. Ez a beállítás a gyakorlatban úgy érvényesül, hogy az adatfeltöltő űrlap beállításai között kell megadni, mely felhasználók vagy felhasználó csoportoknak lesz olvasási, vagy módosítási hozzáférése egy adott űrlappal feltöltött adatokhoz. 
+Amennyiben vannak olyan adatok feltöltve, ahol nem volt beállítva semmi, akkor alapértelmezetten csak a projekt gazdák számára lesz elérhető az így feltöltött adat. Az adatok hozzáférésének beállítását a projekt gazdák SQL parancsok segítségével tudják utólag módosítani, pl: 
+
+```sql
+UPDATE mydatabase_rules d SET read = read || 295 FROM (
+SELECT row_id FROM "public"."mydatabase" LEFT JOIN mydatabase_rules ON (obm_id=row_id) WHERE "observer" ILIKE 'Smith%') AS foo 
+WHERE foo.row_id=d.row_id
+```
