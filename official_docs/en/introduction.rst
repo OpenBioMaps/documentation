@@ -57,6 +57,54 @@ OpenBioMaps Consortium
 ----------------------
 The OpenBioMaps community has formed a consortium to manage the development of the software and maintain the free services. Membership of the consortium is conditional on a significant contribution to the development or maintenance of the services.
 
+Current OpenBioMaps partners:
+
+**University of Debrecen**
+
+contact: Dr. Miklós Bán
+
+
+**Danube-Ipoly National Park Directorate**
+
+contact: Zsolt Baranyai
+
+
+**Eötvös Loránd University**
+
+contact: Dávid Ritter
+
+
+**WWF World Wildlife Fund for Nature Hungary**
+
+contact: Katalin Sipos
+
+
+**Eszterházy Károly University**
+
+contact: Dr. Erika Pénzesné Kónya
+
+
+**Milvus Group Association**
+
+contact: Edgár Papp
+
+
+**Danube-Dráva National Park Directorate**
+
+contact: Ákos Gáborik
+
+
+**Fertő-Hanság National Park Directorate**
+
+contact: Gábor Takács
+
+The OpenBioMaps consortium was established on September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
+
+Contact the consortium:
+
+management@lists.openbiomaps.org
+
+
 :download:`OpenBioMaps Consortium Document <docs/consortium_2015.pdf>`
 
 
