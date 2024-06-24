@@ -14,7 +14,7 @@ OpenBioMaps is a software and services platform for managing biological data. It
 
 What is OpenBioMaps Consortium?
 -------------------------------
-:ref:`See Consortium <introduction/OpenBioMaps Consortium>`
+:doc:`See Consortium <../introduction/OpenBioMaps Consortium>`
 
 
 How can I create/find a new database-project?
@@ -35,11 +35,11 @@ How can I access data?
 - Using the OpenBioMaps R package.
 - Using data sharing via the web interface.
 - Data export via the web interface.
-- Width the :ref:`PWA application <pwa>`
+- Width the :doc:`PWA application <../pwa>`
 
 How can I retrieve data with my mobile phone?
 ---------------------------------------------
-With the :ref:`PWA application <pwa>`
+With the :doc:`PWA application <../pwa>`
 
 
 How can I sign up for an OpenBioMaps project?
