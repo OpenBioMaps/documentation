@@ -98,13 +98,13 @@ contact: Ákos Gáborik
 
 contact: Gábor Takács
 
-The OpenBioMaps consortium was established on September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
+The OpenBioMaps consortium was established on September 1, 2015. 
+
+The OpenBioMaps Consortium Agreement is available `here <docs/consortium_agreement_2015.pdf>`_.
 
 Contact the consortium:
 
 management@lists.openbiomaps.org
 
-
-:download:`OpenBioMaps Consortium Document <docs/consortium_2015.pdf>`
 
 
