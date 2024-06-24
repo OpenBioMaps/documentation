@@ -14,7 +14,7 @@ Az OpenBioMaps egy szoftver- és szolgáltatási platform a biológiai adatok ke
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-Lásd :ref:`Konzorcium <introduction/OpenBioMaps Konzorcium>`
+Lásd :ref:`Konzorcium <introduction/OpenBioMaps Konzorcium>`:
 
 
 Hogyan tudok saját adatbázist projektet készíteni/alapítani?
