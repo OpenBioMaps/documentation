@@ -14,57 +14,8 @@ Az OpenBioMaps egy szoftver- és szolgáltatási platform a biológiai adatok ke
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-Az OpenBioMaps konzorciumot közintézmények és civil szervezetek hozták létre 2015 szeptember elsején. A konzorcium célja, hogy az OpenBioMaps szotfevereket fejlessze és arra épülő szabadon hozzáférhető szolgáltatásokat üzemeltessen. A konzorcium tagjai egyenlő partnerek, akik valamilyen módon hozzájárulnak mind a fejlesztéshez mind a működtetéshez. A konzorciumhoz bárki csatlakozhat, aki elfogadja az OpenBioMaps alaptételeit, eleget tesz annak kitételének és a már jelenlegi konzorciumi partnerek elfogadják a belépését.
+Lásd :ref:`Konzorcium <introduction/OpenBioMaps Konzorcium>`
 
-Jelenlegi OpenBioMaps partnerek:
-
-**Debreceni Egyetem**
-
-kapcsolat: Dr. Bán Miklós
-
-
-**Duna-Ipoly Nemzeti Park Igazgatóság**
-
-kapcsolat: Baranyai Zsolt
-
-
-**Eötvös Loránd Tudományegyetem**
-
-kapcsolat: Ritter Dávid
-
-
-**WWF Magyarország**
-
-kapcsolat: Sipos Katalin
-
-
-**Eszterházy Károly Egyetem**
-
-kapcsolat: Dr. Pénzesné Kónya Erika
-
-
-**Milvus Csoport Egyesület**
-
-kapcsolat: Papp Edgár
-
-
-**Duna-Dráva Nemzeti Park Igazgatóság**
-
-kapcsolat: Gáborik Ákos
-
-
-**Fertő-Hanság Nemzeti Park Igazgatóság**
-
-kapcsolat: Takács Gábor
-
-
-Az OpenBioMaps konzorcium nyilatkozata `itt <docs/consortium_agreement_2015.pdf>`_ elérhető.
-
-Hogyan léphetek kapcsolatba a konzorciummal?
---------------------------------------------
-email-en keresztül:
-
-management@lists.openbiomaps.org
 
 Hogyan tudok saját adatbázist projektet készíteni/alapítani?
 ------------------------------------------------------------
