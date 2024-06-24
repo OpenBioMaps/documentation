@@ -12,61 +12,9 @@ What is OpenBioMaps?
 --------------------
 OpenBioMaps is a software and services platform for managing biological data. It can be used on its own or as a service. It can be used to create database-based projects that can be used simultaneously by multiple users with different devices and access privilege levels. If you do not wish to maintain your server, you can use it as a service, as some institutions also operate servers that host research or citizen-science projects for no charge.
 
-What is OpenBioMaps consortium?
+What is OpenBioMaps Consortium?
 -------------------------------
-OpenBioMaps is a consortium of public institutions and social organizations. They aim to develop OpenBioMaps software and maintain freely available services based on it. The members of the consortium are equal partners and they have all contributed to achieving this objective in some ways. The partnership can be extended, if the parties wishing to join are willing to accept the system's fundamentals, satisfy the specified conditions and the partners accept the new member.
-
-
-Current OpenBioMaps partners:
-
-
-**University of Debrecen**
-
-contact: Dr. Miklós Bán
-
-
-**Danube-Ipoly National Park Directorate**
-
-contact: Zsolt Baranyai
-
-
-**Eötvös Loránd University**
-
-contact: Dávid Ritter
-
-
-**WWF World Wildlife Fund for Nature Hungary**
-
-contact: Katalin Sipos
-
-
-**Eszterházy Károly University**
-
-contact: Dr. Erika Pénzesné Kónya
-
-
-**Milvus Group Association**
-
-contact: Edgár Papp
-
-
-**Danube-Dráva National Park Directorate**
-
-contact: Ákos Gáborik
-
-
-**Fertő-Hanság National Park Directorate**
-
-contact: Gábor Takács
-
-The OpenBioMaps consortium was established on September 1, 2015. The OpenBioMaps Consortium Agreement will be available `here <docs/consortium_agreement_2015.pdf>`_.
-
-
-How can I contact the consortium?
----------------------------------
-By email:
-
-management@lists.openbiomaps.org
+:ref:`See Consortium <introduction/OpenBioMaps Consortium>`:
 
 
 How can I create/find a new database-project?
