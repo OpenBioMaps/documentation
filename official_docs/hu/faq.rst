@@ -14,7 +14,7 @@ Az OpenBioMaps egy szoftver- és szolgáltatási platform a biológiai adatok ke
 
 Mi az OpenBioMaps konzorcium?
 -----------------------------
-Lásd :ref:`Konzorcium <introduction/OpenBioMaps Konzorcium>`:
+Lásd :doc:`Konzorcium <../introduction>`:
 
 
 Hogyan tudok saját adatbázist projektet készíteni/alapítani?
@@ -35,11 +35,11 @@ Hogyan férhetek hozzá az adatokhoz?
 - Az OpenBioMaps R csomag használatával.
 - A webes felületen keresztül történő adatmegosztás használatával.
 - Adatexporttal a webes felületen keresztül.
-- :ref:`PWA alkalmazással <pwa>`:
+- :doc:`PWA alkalmazással <../pwa>`:
 
 Hogyan tudom mobil telefonnal lekérdezni az adatokat?
 -----------------------------------------------------
-A :ref:`PWA alkalmazással <pwa>`:
+A :doc:`PWA alkalmazással <../pwa>`:
 
 
 Hogyan tudok regisztrálni egy OpenBioMaps adatbázis proejektbe?
