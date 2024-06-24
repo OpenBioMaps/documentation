@@ -224,8 +224,8 @@ Minden feltöltésnek van egy bejegyzése az system.uploadings  táblában. Anna
 DELETE FROM your_table WHERE uploading_id=x;
 ```
 
-Nem látom és nem tudom lekérdezni azadatokat, amelyeket más felhasználók látnak
--------------------------------------------------------------------------------
+Nem látom és nem tudom lekérdezni az adatokat, amelyeket más felhasználók látnak
+--------------------------------------------------------------------------------
 Valószínűleg a projekt adatai korlátozott hozzáférésűek, ami úgy van meghatározva, hogy csak bizonyos felhasználók vagy felhasználó csoportok férhetnek hozzá az adatokhoz. Ez a beállítás a gyakorlatban úgy érvényesül, hogy az adatfeltöltő űrlap beállításai között kell megadni, mely felhasználók vagy felhasználó csoportoknak lesz olvasási, vagy módosítási hozzáférése egy adott űrlappal feltöltött adatokhoz. 
 Amennyiben vannak olyan adatok feltöltve, ahol nem volt beállítva semmi, akkor alapértelmezetten csak a projekt gazdák számára lesz elérhető az így feltöltött adat. Az adatok hozzáférésének beállítását a projekt gazdák SQL parancsok segítségével tudják utólag módosítani, pl: 
 
