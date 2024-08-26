@@ -208,7 +208,36 @@ If more labels mean the same value (eg.: "F", "f", "female" mean "female"), we c
        }
     }
 
-Also we can create our list based on another table variable.
+GOOD TO KNOW!
+
+  A list can be specified not only in JSON, but also in plain text format, for easier creation. In this case, all values must be entered on a new line. When you save the form, the list in JSON format is automatically converted from the plain text list, which you can then edit in JSON format.
+
+
+The values in the list can also come from an SQL table. In this case, we need to specify the path to the table (schema name (optionsSchema), table name (optionsTable)) and the column name we want to use as value (valueColumn) and label (labelColumn).
+
+We also can filter values from the table according to specified criteria. In this case, we need to specify which columns (preFilterColumn) we filter against and which values we specify (preFilterValue). Example of using a prefilter:
+
+.. code-block:: json
+ 
+    {
+        "optionsTable": "milvus_taxon",
+        "valueColumn": "word",
+        "preFilterColumn": [
+            "lang",
+            "status"
+        ],
+        "preFilterValue": [
+            "obm_taxon",
+            [
+                "accepted",
+                "undefined"
+            ]
+        ],
+        "orderBy": "taxon_db",
+        "order": "desc"
+    }
+
+The full definition of the list is JSON, shown below. It is compiled in the web interface with the help of the list editor and automatically checked for syntax by the application. If the syntax is incorrect, an error message is returned.
 
 .. code-block:: json
 
@@ -219,7 +248,7 @@ Also we can create our list based on another table variable.
 	  ]
         },
         "optionsSchema": "e.g. public",
-        "optionsTable": "table name",
+        "optionsTable": "a table name",
         "valueColumn": "a column from the table",
         "labelColumn": "a column from the table - optional",
         "filterColumn": "",
@@ -253,30 +282,6 @@ Also we can create our list based on another table variable.
         ],
         "limit": "numeric value"
     }
-
-Example of pre filtering:
-
-.. code-block:: json
- 
-    {
-        "optionsTable": "milvus_taxon",
-        "valueColumn": "word",
-        "preFilterColumn": [
-            "lang",
-            "status"
-        ],
-        "preFilterValue": [
-            "obm_taxon",
-            [
-                "accepted",
-                "undefined"
-            ]
-        ],
-        "orderBy": "taxon_db",
-        "order": "desc"
-    }
-
-
 
 Joint lists 
 ............
