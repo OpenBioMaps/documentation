@@ -3,7 +3,7 @@
 Invitations
 ***********
 
-By default, all logged in users can send an invitation to join the project/database.
+By default, all logged-in users can send an invitation to join the project/database.
 
 The invitation will be sent to the invited person in the selected language. It is also possible to add a personal message to the automatically generated invitation message.
 

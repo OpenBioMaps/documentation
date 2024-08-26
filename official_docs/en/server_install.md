@@ -163,6 +163,32 @@ default is map**
   
   // *used by the read_table module to encrypt the table name, ...*
   define('MyHASH','password-string');
+
+**Custom cache settings**
+
+.. code-block:: php
+
+  define('CACHE_HOST', $_ENV['CACHE_HOST'] ?? 'localhost');
+  define('CACHE_PORT', $_ENV['CACHE_PORT'] ?? 11211);
+
+**OpenID-based login settings**
+
+.. code-block:: php
+
+  define('OPENID_CONNECT', [
+    'google' => [
+        'client_id' => 'xxxxx.apps.googleusercontent.com',
+        'client_secret' => 'xxxxxxx',
+        'provider_url' => 'https://accounts.google.com/',
+    ],
+  ]);
+  define('OPENID_CONNECT_CERT_PATH', '/etc/ssl/certs/ca-certificates.crt');
+
+**Using PWA app link on mainpage**
+
+.. code-block:: php
+
+  define('PWA_LINK','on');
   
 **Developer options**
 

@@ -121,9 +121,9 @@ A másik az oszlop neve az adattáblában.
 
 Kötelező
 ........
-	- Ha `igen` (háttérszín: bordó), akkor az űrlap nem küldhető el, ha nincs megadva a mezőben érték;
-	- Ha `nem` (háttérszín: szürke), akkor be lehet az adott mező üres;
-	- Ha `puha hiba`, akkor az adatfeltöltő minden egy sorra figyelmeztetést, ha a mező üres, vagy eltérések vannak benne a megkötésektől. Soronként egyesével meg kell erősíteni, hogy megengedi az adott eltéréseket.
+- Ha `igen` (háttérszín: bordó), akkor az űrlap nem küldhető el, ha nincs megadva a mezőben érték;
+- Ha `nem` (háttérszín: szürke), akkor be lehet az adott mező üres;
+- Ha `puha hiba`, akkor az adatfeltöltő minden egy sorra figyelmeztetést, ha a mező üres, vagy eltérések vannak benne a megkötésektől. Soronként egyesével meg kell erősíteni, hogy megengedi az adott eltéréseket.
 
 .. _column-description:
 
@@ -136,56 +136,35 @@ rövid leírás a mezőről. Fordítható.
 Mező típusa
 ...........
 
-        - szöveg: tetszőleges szöveg - habár a minimum és maximum hossz megadható
-        
-        - szám: tetszőleges szám - habár a minimum és maximum hossz megadható
-        
-        - lista: legördülő lista a megadott vesszővel elválasztott értékekből. A legördülő lista kiírt elemei és valós értékei név:érték formátumban megadhatók. A "név" amennyiben "str\_" előtaggal kezdődik, akkor automatikusan lefordul a kiválasztott nyelvi változatra, ha az definiálva van. A "true" és "false" szavak str_true és str_false fordítás szerint fordulnak le. 
-
-            Megadható több címke egy értékhez amikből webes űrlapesetén az első jelenik meg, file feltöltésnél pedig a fájl cella értékéből bármelyik cimke vagy az érték helyes egyezést ad. A cimkéket # karakterekkel tagolva kell megadni. Pl: female#tojó:f,male#hím#him:m,juvenil#fiatal:j,adult#öreg:a
-        
-            Ez esetben az "f" érték lehetséges cimkéi a "female", "tojo" és "tojó" szavak
-        
-            Ha formátuma SELECT:táblanév.oszlopnév, akkor a public.gisdata adatbázis megadott oszlopából készít DISTINCT listát.
-        
-        - igaz-hamis: boolen false/true érték. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
-        
-        - dátum: tetszőleges karakterrel elválasztva év hónap nap sorrendben. Adatbázisban date típusként tárolva.
-        
-        - dátum és idő: üres karektert követően a dátum után óra:perc:másodperc formátumban. Ha hiányzik a másodperc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Ha hiányzik a perc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Adatbázisban datetime típusként tárolva.
-        
-        - idő (timetominutes): óra:perc formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.
-        
-        - idő: óra:perc formátum. Adatbázuisban time típusként tárolva.
-        
-        - idő intervallum: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.
-        
-        - autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.
-        
-        - autocompletelist: hasonló az autocomplet-hez, de egymás után több, vesszővel elválasztott értéket is bevihetünk a mezőbe
-        
-        - photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
-        
-        - geometria: pont: WKT POINT()
-        
-        - geometria: vonal: WKT LINE()
-        
-        - geometria: polygon: WKT POLYGON()
-        
-        - geometria: bármi: WKT
-        
-        - colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
+- szöveg: tetszőleges szöveg - habár a minimum és maximum hossz megadható
+- szám: tetszőleges szám - habár a minimum és maximum hossz megadható
+- lista: legördülő lista, alapértelmezetten egy kiválasztható elemmel
+- igaz-hamis: boolen false/true érték. Az érték sorrendje a lista definíciós mezőben szabályozható. pl: "false,true"
+- dátum: tetszőleges karakterrel elválasztva év hónap nap sorrendben. Adatbázisban date típusként tárolva.
+- dátum és idő: üres karektert követően a dátum után óra:perc:másodperc formátumban. Ha hiányzik a másodperc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Ha hiányzik a perc a program automatikusan 00-nak tekinti, de figyelmeztet az elfogadására. Adatbázisban datetime típusként tárolva.
+- idő (timetominutes): óra:perc formátum amit a program egész szám értékké számol át. Adatbázisban egész számként tárolva.
+- idő: óra:perc formátum. Adatbázuisban time típusként tárolva.
+- idő intervallum: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Adatbázisban timeinterval típusként tárolva.
+- autocomplete: a lista_definíció mezőben megadott sql tábla oszlopából autocomplete listát készít. A szintaxis táblanév.oszlop. A táblát a public sémában keresi a program a gisdata adatbázisban.
+- autocompletelist: hasonló az autocomplet-hez, de egymás után több, vesszővel elválasztott értéket is bevihetünk a mezőbe
+- photo id: fotó modul bekapcsolása esetén ide írja be a feltöltött fotó azonosítókat a program.
+- geometria: pont: WKT POINT()
+- geometria: vonal: WKT LINE()
+- geometria: polygon: WKT POLYGON()
+- geometria: bármi: WKT
+- colour rings: színesgyűrű kombináció megadására ad lehetőséget, ahol piros, rózsaszín, zöld, világos zöld, narancs, sárga, kék, világos kék, fehér, fekete, barna, lila, ibolya és fémgyűrű kombinációkat lehet létrehozni. A szögletes zárójelben levő rész a különböző láb-részeken megadandó maximális gyűrűk számát kódolja, az ezt követő rész a lehetséges színek egyénileg megadott cimkéi. Pl: [XX],Blue:B, red:R, green:G
 
 .. _input-control:
 
 bevitel kontrol
 ...............
 a bevitt karakterek számának ellenőrzése
-        - nincs ellenőrzés
-        - min - max
-        - regexp
-        - térbeli
-        - egyéni ellenőrzés
+
+- nincs ellenőrzés
+- min - max
+- regexp
+- térbeli
+- egyéni ellenőrzés
 
 .. _list-definition:
 
@@ -233,32 +212,14 @@ Lehetőség van több cimke hozzárendeléséhez is egy értékhez. Ebben az ese
        }
     }
 
-A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
+JÓ TUDNI!
 
-.. code-block:: json
+  Egy listát nem csak JSON, hanem egyszerű szöves formában is megadhatunk, a könnyebb elkészítés érdekében. Ilyenkor minden értéket új sorban kell megadnunk. Amikor elmentjük az űrlapot, akkor automatikusan elkészül a JSON formátumú lista a sima szöveges listából, amit a továbbiakban JSON formában szerkeszthetünk.
 
-    {
-      "list": {
-            "val1": ["label1", "label2"]
-      },
-      "optionsTable": "",
-      "valueColumn": "",
-      "labelColumn": "",
-      "filterColumn": "",
-      "pictures": {
-            "val1": "url-string"
-      },
-      "triggerTargetColumn": "",
-      "Function": "",
-      "disabled": ["val1"],
-      "preFilterColumn": [""],
-      "preFilterValue": [""],
-      "preFilterRelation": [],
-      "multiselect":"true or false, default is false",
-      "selected":["val1"]
-    }
-    
-Példa az előszűrő használatára (preFilter):
+
+A lista értékeit egy SQL táblából is származhatnak. Ebben az esetben meg kell adni a tábla elérési útvonalát (séma név (optionsSchema), tábla név (optionsTable)) és az oszlop nevét, amit használni akarunk értéknek (valueColumn) és címkének (labelColumn).
+
+Arra is van lehetőségünk, hogy megadott feltételek szerint szűrjünk értékekekt a listánkhoz a táblából. Ilyenkor meg kell határozni, hogy melyik oszlopok (preFilterColumn) alapján szűrünk és milyen értékeket határozunk meg (preFilterValue). Példa az előszűrő használatára:
 
 .. code-block:: json
 
@@ -280,6 +241,51 @@ Példa az előszűrő használatára (preFilter):
     "order": "desc"
   }
 
+A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
+
+.. code-block:: json
+
+    {
+        "list": {
+          "val1": [
+	      "label1", "label2"
+	  ]
+        },
+        "optionsSchema": "pl.: public",
+        "optionsTable": "egy tábla név",
+        "valueColumn": "a column from the table",
+        "labelColumn": "a column from the table - optional",
+        "filterColumn": "",
+        "pictures": {
+            "an element from the `list`, e.g. val1": "url-string"
+        },
+        "triggerTargetColumn": [""],
+        "Function": "",
+        "disabled": [
+	    "an element from the `list`, e.g. val1"
+	],
+        "preFilterColumn": [
+	    ""
+	],
+        "preFilterValue": [
+	    ""
+	],
+        "preFilterRelation": [
+	    ""
+	],
+        "multiselect": "true or false, default is false",
+        "selected":[
+            "an element from the `list`, e.g. val1"
+        ],
+        "size": "a numeric value"
+        "orderBy": [
+            "column or SQL expression"
+        ],
+        "order": [
+            "ASC or DESC"
+        ],
+        "limit": "numeric value"
+    }
 
 
 Kapcsolt listák kezelése: 
