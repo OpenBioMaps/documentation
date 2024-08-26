@@ -163,7 +163,7 @@ identify_point
 
 custom_notify
 -------------
-Creates custom Postgres based notify events. This is just an idea, the module is not really ready.
+Creates custom Postgres-based notify events. This is just an idea, the module is not ready.
 
 No parameters
 
@@ -497,7 +497,7 @@ No parameters
 
 restricted_data
 ---------------
-Rule based data restriction
+Rule-based data restriction
 
 No parameters
 
