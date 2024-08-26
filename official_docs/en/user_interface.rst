@@ -71,7 +71,7 @@ The result of a query can be stored on the server, which can be referenced by a 
 
 Data upload page
 ================
-Any number of forms can be defined for a data table, with which forms different data can be loaded with different options. For example, some forms may be designed for mobile formatting only or for public data upload, while others may be designed specifically for a certain file type to be imported.
+Any number of forms can be defined for a data table, with which different data can be loaded with different options. For example, some forms may be designed for mobile formatting only or public data upload, while others may be designed specifically for a certain file type to be imported.
 At any time during the upload process, it is possible to save and download the upload status in CSV format.
 
 File upload
