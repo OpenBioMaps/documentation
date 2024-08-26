@@ -233,6 +233,10 @@ Lehetőség van több cimke hozzárendeléséhez is egy értékhez. Ebben az ese
        }
     }
 
+JÓ TUDNI!
+
+  Egy listát nem csak JSON, hanem egyszerű szöves formában is megadhatunk, a könnyebb elkészítés érdekében. Ilyenkor minden értéket új sorban kell megadnunk. Amikor elmentjük az űrlapot, akkor automatikusan elkészül a JSON formátumú lista a sima szöveges listából, amit a továbbiakban JSON formában szerkeszthetünk.
+
 A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
 
 .. code-block:: json
