@@ -237,32 +237,10 @@ JÓ TUDNI!
 
   Egy listát nem csak JSON, hanem egyszerű szöves formában is megadhatunk, a könnyebb elkészítés érdekében. Ilyenkor minden értéket új sorban kell megadnunk. Amikor elmentjük az űrlapot, akkor automatikusan elkészül a JSON formátumú lista a sima szöveges listából, amit a továbbiakban JSON formában szerkeszthetünk.
 
-A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
 
-.. code-block:: json
+A lista értékeit egy SQL táblából is származhatnak. Ebben az esetben meg kell adni a tábla elérési útvonalát (séma név (optionsSchema), tábla név (optionsTable)) és az oszlop nevét, amit használni akarunk értéknek (valueColumn) és címkének (labelColumn).
 
-    {
-      "list": {
-            "val1": ["label1", "label2"]
-      },
-      "optionsTable": "",
-      "valueColumn": "",
-      "labelColumn": "",
-      "filterColumn": "",
-      "pictures": {
-            "val1": "url-string"
-      },
-      "triggerTargetColumn": "",
-      "Function": "",
-      "disabled": ["val1"],
-      "preFilterColumn": [""],
-      "preFilterValue": [""],
-      "preFilterRelation": [],
-      "multiselect":"true or false, default is false",
-      "selected":["val1"]
-    }
-    
-Példa az előszűrő használatára (preFilter):
+Arra is van lehetőségünk, hogy megadott feltételek szerint szűrjünk értékekekt a listánkhoz a táblából. Ilyenkor meg kell határozni, hogy melyik oszlopok (preFilterColumn) alapján szűrünk és milyen értékeket határozunk meg (preFilterValue). Példa az előszűrő használatára:
 
 .. code-block:: json
 
@@ -284,6 +262,51 @@ Példa az előszűrő használatára (preFilter):
     "order": "desc"
   }
 
+A lista teljes definíciós leírása az alább látható JSON. Ennek összeállítását segíti a webes felületeten a lista szerkesztő és automatikusan ellenőrzi a szintaxisát az alkalmazás. Hibás szintaxis esetén hibaüzenetet kapunk.
+
+.. code-block:: json
+
+    {
+        "list": {
+          "val1": [
+	      "label1", "label2"
+	  ]
+        },
+        "optionsSchema": "pl.: public",
+        "optionsTable": "egy tábla név",
+        "valueColumn": "a column from the table",
+        "labelColumn": "a column from the table - optional",
+        "filterColumn": "",
+        "pictures": {
+            "an element from the `list`, e.g. val1": "url-string"
+        },
+        "triggerTargetColumn": [""],
+        "Function": "",
+        "disabled": [
+	    "an element from the `list`, e.g. val1"
+	],
+        "preFilterColumn": [
+	    ""
+	],
+        "preFilterValue": [
+	    ""
+	],
+        "preFilterRelation": [
+	    ""
+	],
+        "multiselect": "true or false, default is false",
+        "selected":[
+            "an element from the `list`, e.g. val1"
+        ],
+        "size": "a numeric value"
+        "orderBy": [
+            "column or SQL expression"
+        ],
+        "order": [
+            "ASC or DESC"
+        ],
+        "limit": "numeric value"
+    }
 
 
 Kapcsolt listák kezelése: 
