@@ -45,7 +45,7 @@ An SQL console is available at the top of the page, which can only be used with 
 
 Also available here is a drop-down list of all the tables that start with the name of our project in the SQL database. Of these, the ones marked in red are not handled by the OBM interface because they are not registered as tables accessible to OBM.
 
-By managing Views you can also implement a special function, namely to replace a data table with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
+By managing Views, you can also implement a special function, namely to replace a data table with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
 
 
 .. _data-access:
@@ -297,11 +297,11 @@ Background jobs
 ---------------
 [web] -> [profile] -> [project administration] -> [background processes]
 
-OBM can perform tasks in the background. You can download background process scripts from the git repo available from the page and modify them or write a completely new one based on the template script. The shell processes have a run and a lib file. The scheduler calls our run file which, in the case of a standard php job, executes the tasks in the lib file.
+OBM can perform tasks in the background. You can download background process scripts from the git repo available on the page and modify them or write a completely new one based on the template script. The shell processes have a run and a lib file. The scheduler calls our run file which, in the case of a standard php job, executes the tasks in the lib file.
 
-The scheduler is cron-like, you have to fill in a minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
+The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, and day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
 
-In order to run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
+To run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
 
 ```
 */5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
