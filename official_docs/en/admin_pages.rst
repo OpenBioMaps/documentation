@@ -1,5 +1,8 @@
 .. _project_administration:
 
+Project administration
+**********************
+
 **Pages related to project administration:**
 
 .. toctree::
