@@ -34,8 +34,8 @@ file:
 
 .. code-block:: php
 
-define('ACC_LEVEL','group'); // can be set to 'public' or 'login'
-define('MOD_LEVEL','group');
+  define('ACC_LEVEL','group'); // can be set to 'public' or 'login'
+  define('MOD_LEVEL','group');
 
 The ACC_LEVEL variable defines the default level of data access in the project. It can be public or only accessible to logged in users (login or group). Login is more of a theoretical option, usually group is used in this case.
 
@@ -60,18 +60,18 @@ The *_rules* table can also be regenerated manually:
 
 .. code-block:: sql
 
-DELETE FROM abc_rules WHERE data_table='abc';
-INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
+  DELETE FROM abc_rules WHERE data_table='abc';
+  INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
 ..
 
 - or with a row-by-row group setting:
 
 .. code-block:: sql
 
-DELETE FROM abc_rules WHERE data_table='abc';
-INSERT INTO abc_rules (row_id,sensitivity,data_table,read,write) 
-SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
-FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id)
+  DELETE FROM abc_rules WHERE data_table='abc';
+  INSERT INTO abc_rules (row_id,sensitivity,data_table,read,write) 
+      SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
+      FROM abc a LEFT JOIN system.uploadings s ON (s.id = a.obm_uploading_id)
 
 In the *_rules* table, the *sensitivity* field is used to specify the public availability of a given dataset in closed ('group') projects. The value of *'sensitivity'* may also be 'sensitive' or 'restricted'. These have the same meaning. The 'sensitive' lines can only be read or modified by members of the specified groups.
 

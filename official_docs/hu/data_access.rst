@@ -6,29 +6,22 @@ Adatelérési lehetőségek
 
 * Fájl letöltés
     
-      Támogatott formátumok: 
+  Támogatott formátumok: 
         
-        - Egyszerű szöveges állományok: csv, json
+    - Egyszerű szöveges állományok: csv, json
+    - Kép fájlok kivitele: egyesével, vagy tömegesen
+    - Táblázatkezelő formátumok: ods (Libreoffice), xls (Excel), xlsx (Excel)
+    - Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
         
-        - Kép fájlok kivitele: egyesével, vagy tömegesen
-        
-        - Táblázatkezelő formátumok: ods (Libreoffice), xls (Excel), xlsx (Excel)
-        
-        - Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
-        
-
 * Webes lekérdezés
   
-    - Szöveges szűréssel leválogatás
-    
-    - Térbeli lekérdezéssel leválogatás
+  - Szöveges szűréssel leválogatás
+  - Térbeli lekérdezéssel leválogatás
 
 * Külső alkalmazások
     
-    * API felület használata (pl.: R-csomag)
-    
-    * SQL kapcsolat használata (pl.: QGIS)
-
+  - API felület használata (pl.: R-csomag)
+  - SQL kapcsolat használata (pl.: QGIS)
 
 Adathozzáférés szabályozása
 ===========================
@@ -69,7 +62,6 @@ A *_rules* tábla kézzel is újra generálható:
 
    DELETE FROM abc_rules WHERE data_table='abc';
    INSERT INTO abc_rules (row_id,sensitivity,data_table) SELECT obm_id,'sensitive','abc' FROM abc
-..
 
  - vagy soronkénti csoportbeállítással is:
 
