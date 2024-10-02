@@ -4,7 +4,7 @@ Adatelérés
 Adatelérési lehetőségek
 =======================
 
-  * Fájl letöltés
+* Fájl letöltés
     
       Támogatott formátumok: 
         
@@ -17,13 +17,13 @@ Adatelérési lehetőségek
         - Térbeli formátumok: Esri shape (.shp, .dbf, .cpg, .prj, .shx együttesen), gpx (GPS adatformátum (xml)), sqlite
         
 
-  * Webes lekérdezés
+* Webes lekérdezés
   
     - Szöveges szűréssel leválogatás
     
     - Térbeli lekérdezéssel leválogatás
 
-  * Külső alkalmazások
+* Külső alkalmazások
     
     * API felület használata (pl.: R-csomag)
     
