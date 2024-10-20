@@ -33,7 +33,8 @@ Main properties
 
 Data management policy
 ======================
-The creators of OpenBioMaps, as well as the developers of the software and the maintainers of the OpenBioMaps community services (essentially members of the OpenBioMaps Consortium), do not control the use of data. The developers and maintainers of community services do not collect data on users and do not collect data collected by OpenBioMaps software. They do not reserve any rights to the data collected. Each OpenBioMaps server instance is maintained by an institution and is therefore subject to the rules of that institution. However, we have formulated guiding data management strategies that, in the absence of other provisions, can be applied by anyone. 
+The creators of OpenBioMaps, as well as the developers of the software and the maintainers of the OpenBioMaps community services (essentially members of the OpenBioMaps Consortium), do not control the use of data. The developers and maintainers of community services do not collect data on users and do not collect data collected by OpenBioMaps software. They do not reserve any rights to the data collected. Each OpenBioMaps server instance is maintained by an institution and is therefore subject to the rules of that institution. However, we have formulated guiding data management strategies that, in the absence of other provisions, can be applied by anyone.
+
 * Projects on individual servers can be independently governed. The founder of the project (individual or legal entity) is also the creator of the rules.
 * The project managers are the creators of the project or the professionals they entrust with this task.
 * Users, any person or institution using OpenBioMaps services.
