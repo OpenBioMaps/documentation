@@ -30,6 +30,16 @@ Az OpenBioMaps fontos tulajdonságai
 * Bármilyen nyelvre fordítható felület (jelenleg Magyar, Angol, Román, Spanyol, Portugál és részben Orosz, Német, Horvát, Francia, Cseh, Lengyel és Görög nyelvekre van fordítás). A fordításokhoz bárki hozzájárulhat a https://translate.openbiomaps.org weblate felületen keresztül
 * Közösségi visszajelzéseken alapuló fejlesztés.
 
+Adatkezelés
+===========
+Az OpenBioMaps megalkotói, úgy mint a szoftverek fejlesztői és az OpenBioMaps közösségi szolgáltatások fenntartói (lényegében az OpenBioMaps Konzorcium tagjai) az adatok kezelését nem szabályozza. A fejlesztők és a közössgéi szolgáltatások fenntartói nem gyűjtenek adatokat a felhasználókról és nem gyűjtik az OpenBioMapssal szoftvereket gyűjtőtt adatokat sem. Nem tartanak fenn semmilyen jogot a gyűjtött adatokkal kapcsolatban. Minden egyes OpenBioMaps szerver példány valamilyen intézmény fenntartásában létezik és így annak az intézménynek a szabályai vonatkoznak rá elsősorban. Mindazonáltal irányadó adatkezelési stratégiákat megfogalmaztunk, amelyet egyéb rendelkezések hiányában bárki alkalmazhat. 
+* Az egyes szervereken működő projektek egymástől függetlenül szabályozhatóak. A projekt alapítója (magánszemély, vagy jogi személy) a szabályok létrehozója egyúttal.
+* A projekt gazdák a projekt létrehozói, vagy az általuk ezzel a feldattal megbízott szakemberek.
+* A felhasználók, minden személy, vagy intézmény aki az OpenBioMaps szolgáltatásokat használja.
+* A gyűjtött adatok az adatgyűjtők elidegeníthetetlen szellemi tulajdonát képzik, de a projektet létrehozó személynek vagy intézménynek az általa meghatározott felhasználási joga van hozzá. 
+* A felhasználók csak a személyes adataikról rendelkezhetnek, a projektben gyűjtött adatok kezelésének megszüntetését nem kérhetik a projekt tulajdonostól. 
+* A projekt-ben gyűjtött adatok közzététele a projekt egyéni szabályozása szerint történhet, amelyhez az OBM szerver szoftver eszközöket biztosít. Egy projekt lehet teljesen zárt és teljesen nyitott is, azaz az adatok hozzáférehtősége lehet teljesen kolátozott (még az adatgyűjtő sem fér többé hozzá) és teljesen nyitott is (amikor bárki hozzáfér az adatokhoz és akár módosíthatja is azokat).
+* Az OpenBioMaps megfelelő beállítása amely a gyűjtött adatok és személyes adatok kezelésére is vonatkozik a projekt gazdák felelőssége.  Az OpenBioMaps fejlesztői és az OpenBioMaps közösségi szolgáltatások fenntartói nem vállalnak felelősséget a szervereken kezelt adatokért.
 
 OpenBioMaps folyamatok
 ======================
