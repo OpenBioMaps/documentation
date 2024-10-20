@@ -30,8 +30,8 @@ Az OpenBioMaps fontos tulajdonságai
 * Bármilyen nyelvre fordítható felület (jelenleg Magyar, Angol, Román, Spanyol, Portugál és részben Orosz, Német, Horvát, Francia, Cseh, Lengyel és Görög nyelvekre van fordítás). A fordításokhoz bárki hozzájárulhat a https://translate.openbiomaps.org weblate felületen keresztül
 * Közösségi visszajelzéseken alapuló fejlesztés.
 
-Adatkezelés
-===========
+Adatkezelési szabályzat
+=======================
 Az OpenBioMaps megalkotói, úgy mint a szoftverek fejlesztői és az OpenBioMaps közösségi szolgáltatások fenntartói (lényegében az OpenBioMaps Konzorcium tagjai) az adatok kezelését nem szabályozza. A fejlesztők és a közössgéi szolgáltatások fenntartói nem gyűjtenek adatokat a felhasználókról és nem gyűjtik az OpenBioMapssal szoftvereket gyűjtőtt adatokat sem. Nem tartanak fenn semmilyen jogot a gyűjtött adatokkal kapcsolatban. Minden egyes OpenBioMaps szerver példány valamilyen intézmény fenntartásában létezik és így annak az intézménynek a szabályai vonatkoznak rá elsősorban. Mindazonáltal irányadó adatkezelési stratégiákat megfogalmaztunk, amelyet egyéb rendelkezések hiányában bárki alkalmazhat. 
 * Az egyes szervereken működő projektek egymástől függetlenül szabályozhatóak. A projekt alapítója (magánszemély, vagy jogi személy) a szabályok létrehozója egyúttal.
 * A projekt gazdák a projekt létrehozói, vagy az általuk ezzel a feldattal megbízott szakemberek.
