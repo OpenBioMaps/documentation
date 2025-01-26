@@ -31,4 +31,5 @@ php_flag opcache.enable Off
 
 ## Using pg_top
 On host machine
+
 pg_top -W -d "host=localhost user=biomapsadmin dbname=gisdata"
