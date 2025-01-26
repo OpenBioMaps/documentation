@@ -27,3 +27,8 @@ mapserver
 In the /var/www/html/biomaps/project/YOUR_PROJECT/.htaccess file:
 
 php_flag opcache.enable Off
+
+
+## Using pg_top
+On host machine
+pg_top -W -d "host=localhost user=biomapsadmin dbname=gisdata"
