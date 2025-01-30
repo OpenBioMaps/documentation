@@ -45,6 +45,10 @@ Log in to your template database using *valaki@openbiomaps.org* user name and *a
 
 If you installed the docker in your local computer you can access the services above in localhost.
 
+Update your server and sablon project following this guide:
+
+:doc:New server installation tutorial <../server_install>
+
 
 ## Database access
 
