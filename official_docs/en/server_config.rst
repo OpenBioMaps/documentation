@@ -23,13 +23,17 @@ The system settings for OpenBioMaps can be found in the system_vars.php.inc file
 
 .. code-block:: php
 
-  define("OB_DOMAIN",".../biomaps");
+  # If you use OBM in a local environment without proxy but non-standard http ports, set it true!
+  #define("USE_NON_STANDARD_HTTP_PORTS",false);
 
-  define("OB_SYSDIR","/mnt/data/");
+  define("OB_DOMAIN","localhost/biomaps");
+  
+  # The default is /var/lib/openbiomaps/
+  # define("OB_SYSDIR","/var/lib/openbiomaps/");
 
-  define("OB_TMP","/mnt/data/tmp/");
+  define("OB_TMP","/var/lib/openbiomaps/tmp/");
 
-  define("OB_ROOT","/var/www/html/biomaps/");
+  define("OB_ROOT","/var/www/html/biomaps/root-site");
 
   define("OB_ROOT_SITE","/var/www/html/biomaps/root-site/");
 
@@ -37,7 +41,7 @@ The system settings for OpenBioMaps can be found in the system_vars.php.inc file
 
   define("GISDB_HOST",'localhost');     // for creating new project
 
-  define("MAPSERVER_HOST",'localhost'); // for creating new project
+  define("MAPSERVER_HOST",'mapserver'); // for creating new project
 
   define("OB_RESOURCES","/var/www/html/biomaps/resources/");
 
