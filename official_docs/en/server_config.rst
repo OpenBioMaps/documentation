@@ -26,6 +26,7 @@ The system settings for OpenBioMaps can be found in the system_vars.php.inc file
   # If you use OBM in a local environment without proxy but non-standard http ports, set it true!
   #define("USE_NON_STANDARD_HTTP_PORTS",false);
 
+  # Set it according to the real server address
   define("OB_DOMAIN","localhost/biomaps");
   
   # The default is /var/lib/openbiomaps/
