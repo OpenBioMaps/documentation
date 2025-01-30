@@ -68,6 +68,9 @@ The system settings for OpenBioMaps can be found in the system_vars.php.inc file
   // ask the issue-key from the gitlab-repo mainteners
   define('AUTO_BUGREPORT_ADDRESS','incoming+openbiomaps...'); 
 
+  // mandatory constant for web auth. The same value should be set in the database: biomaps->oauth_clients->web->oauth_secret
+  define('WEB_CLIENT_SECRET','...');
+
 
 apache server
 -------------
