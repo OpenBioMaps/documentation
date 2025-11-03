@@ -1,4 +1,5 @@
 **.rst~
 **.un~
 .gitignore~
-..gitignore.un~
+**/_build/
+**/_build/
