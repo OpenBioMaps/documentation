@@ -33,20 +33,20 @@ Main properties
 
 Data management policy
 ======================
-The creators of OpenBioMaps, as well as the developers of the software and the maintainers of the OpenBioMaps community services (essentially members of the OpenBioMaps Consortium), do not control the use of data. The developers and maintainers of community services do not collect data on users and do not collect data collected by OpenBioMaps software. They do not reserve any rights to the data collected. Each OpenBioMaps server instance is maintained by an institution and is therefore subject to the rules of that institution. However, we have formulated guiding data management strategies that, in the absence of other provisions, can be applied by anyone.
+The creators of OpenBioMaps, as well as the software developers and the maintainers of the OpenBioMaps community services (essentially members of the OpenBioMaps Consortium), do not control the use of the data. The developers and maintainers of community services do not collect user data, nor do they collect data from OpenBioMaps software. They do not reserve any rights to the data collected. Each OpenBioMaps server instance is maintained by an institution and is therefore subject to that institution's rules. However, we have formulated guiding data management strategies that, in the absence of other provisions, can be applied by anyone.
 
 * Projects on individual servers can be independently governed. The founder of the project (individual or legal entity) is also the creator of the rules.
 * The project managers are the creators of the project or the professionals they entrust with this task.
 * Users, any person or institution using OpenBioMaps services.
 * The data collected is the inalienable intellectual property of the data collectors, but the person or institution creating the project has the right to use it as they see fit. 
-* Users can only control their personal data, they cannot ask the project owner to stop the use of the data collected in the project. 
+* Users can only control their personal data; they cannot ask the project owner to stop the use of the data collected in the project. 
 * Public disclosure of data collected in a project can be done according to the project's individual policy, for which the OBM server software provides tools. A project can be both fully closed and fully open, i.e. data access can be fully restricted (even the data collector no longer has access) and fully open (where anyone can access and even modify the data).
 * It is the responsibility of the project managers to ensure that OpenBioMaps is properly configured to handle both the collected data and personal data. The OpenBioMaps developers and OpenBioMaps Community Services maintainers are not responsible for the data handled on the servers.
 
 
 OpenBioMaps overview
 ====================
-OBM tries to provide support for the entire data lifecycle, from data collection to organisation and use.
+OBM aims to support the entire data lifecycle, from data collection to organisation and use.
 
 :doc:`OBM Workflow <../obm_workflow>`
 
@@ -55,25 +55,25 @@ OBM tries to provide support for the entire data lifecycle, from data collection
 
 Getting started
 ===============
-To create your database you will need a server. This can be your server, a rented server, or a server already maintained by someone else to serve OpenBioMaps.
+To create your database, you will need a server. This can be your server, a rented server, or a server already maintained by someone else to serve OpenBioMaps.
 
 It is easiest to create a new database on an existing OpenBioMaps server. Check the list of known servers to see if you have access to one of them. There are dedicated public servers that host many different databases.
 
 If you need more capacity or you want to control access to the entire server, you can install a dedicated server. It's not that complicated. Here is a tutorial: https://openbiomaps.org/documents/en/server_install.html
 
-If you want to create your database project on an existing server, you must have access to a database on that server. Once you have this, you can easily set up your database project there, the steps for which you can see here: https://openbiomaps.org/documents/en/tutorials.html#new-project and
+If you want to create your database project on an existing server, you must have access to a database on that server. Once you have this, you can easily set up your database project there, the steps for which you can see here: https://openbiomaps.org/documents/en/tutorials.html#new-project, and
 here: https://openbiomaps.org/documents/en/new_project.html
 
 
 OpenBioMaps Consortium
 ----------------------
-The OpenBioMaps community has formed a consortium to manage the development of the software and maintain the free services. Membership of the consortium is conditional on a significant contribution to the development or maintenance of the services.
+The OpenBioMaps community has formed a consortium to manage software development and maintain the free services. Membership of the consortium is conditional on a significant contribution to the development or maintenance of the services.
 
 Current OpenBioMaps partners:
 
 **University of Debrecen**
 
-contact: Dr. Miklós Bán
+contact: Dr Miklós Bán
 
 
 **Danube-Ipoly National Park Directorate**
