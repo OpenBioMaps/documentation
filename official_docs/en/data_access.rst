@@ -77,6 +77,7 @@ The *_rules* table can also be regenerated manually:
 In the *_rules* table, the *sensitivity* field specifies the public availability of a dataset in closed ('group') projects. The value of *'sensitivity'* may also be 'sensitive' or 'restricted'. These have the same meaning. The 'sensitive' lines can only be read or modified by members of the specified groups.
 
 The sensitivity value can also be 'no-geom', which means the geometry will not be displayed at the public level.
+
 The sensitivity value can also be 'only-owner', which means only the project owner can access the record.
 
 Access to data can be further controlled by setting rules for each field using the *allowed_columns* module.
