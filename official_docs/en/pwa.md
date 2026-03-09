@@ -6,13 +6,13 @@ What is the OBM PWA application?
 
 Wants to learn more about PWA (Progressive Web Application) apps? Start here: https://web.dev/progressive-web-apps/
 
-Our PWA APP is an online-offline hybrid application for supporting fieldwork. Width this app you can read the online database easily. How does it work? 
+Our PWA app is an online-offline hybrid application to support fieldwork. With this app, you can easily access the online database. How does it work? 
 
-While you are online, you can see data as a layer above the base map. Practically it is a cluster styled layer, where the number of feature points is the label in the cluster symbols. There is a filter/query option on the map to fetch a lot of data from the database. The default filtering option is the viewport, so applying this filter will fetch all records of data from the database that you can see on the map. Practically, it is a bad idea to zoom out to a much larger area than you really need because a huge amount of fetched data can freeze your app. After the fetching is finished, the cluster layer style will have a slight change which indicates that these features are available on your device. The displaying method is still clustered due to displaying numerous features that can freeze the app. When you click on a cluster symbol, the attribution appears in a scrollable modal dialogue, so you can read all attributes of the clicked features.
+While you are online, you can see data as a layer above the base map. Practically, it is a cluster-style layer, where the number of feature points is the label in the cluster symbols. There is a filter/query option on the map to fetch a lot of data from the database. The default filtering option is the viewport, so applying this filter will fetch all records of data from the database that you can see on the map. In practice, it is a bad idea to zoom out to a much larger area than you really need, because fetching a large amount of data can freeze your app. After fetching is finished, the cluster layer style will change slightly, indicating that these features are available on your device. The display method is still clustered because it displays numerous features, which can freeze the app. When you click on a cluster symbol, the attribution appears in a scrollable modal dialogue, so you can read all attributes of the clicked features.
 
-The PWA app runs in the browser but can operate without the browser window. So it looks like a standalone mobile application. The fetched data is stored in offline storage, but the base map actually is not, but maybe can be cached if you browse it before an offline usage.
+The PWA app runs in the browser but can operate without the browser window. So it looks like a standalone mobile application. The fetched data is stored in offline storage, but the base map is not; it can be cached if you browse it before using it offline.
 
-When you visit the app's URL from the CHROME or OPERA browser, it will offer to install it as a desktop app. Use this option to access the offline usage features of the app, and the window size will be a bit larger without the browser frame.
+When you visit the app's URL in CHROME or OPERA, it will offer to install it as a desktop app. Use this option to access the app's offline usage features, and the window will be a bit larger without the browser frame.
 
 Features
 - Show your location (yellow dot)
@@ -21,7 +21,7 @@ Features
 - Turn off-on tracklog
 - Zoom to your location
 - Query features from the online database by drawing a circle, polygon or actual viewport
-- Display fetched data's attributes
+- Display the fetched data's attributes
 
 Limitations
 - It only supports POINT features
@@ -32,7 +32,7 @@ Where is it?
 - https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/
 
 
-Configuration settings for PWA application
+Configuration settings for the PWA application
 ------------------------------------------
 
 Few settings are needed on the project admin interface.
@@ -119,17 +119,17 @@ On the Maps settings page, you have to create a new MapServer layer in the *priv
     END #wms cluster layer
 ```
 
-The *NAME_OF_YOUR_LABELING_COLUMN* is a column name which will be used as a label. Most common, is the species-name column.
+The *NAME_OF_YOUR_LABELING_COLUMN* is the column name used as a label. The most common is the species-name column.
 
-The *YOUR_PROJECT* is the target table name which will used. Most commonm is the base project table.
+The *YOUR_PROJECT* is the target table name which will be used. The most common is the base project table.
 
-MAXSCALEDENOM 100000 means that no features displayed over 1:100.000 zoom level which is generally a good pratcice to prevent overloading your mapserver when it tries to calculates millions of clusters...
+MAXSCALEDENOM 100000 means that no features are displayed over a 1:100.000 zoom level, which is generally a good practice to prevent overloading your mapserver when it tries to calculate millions of clusters...
 
-The CONNECTION string should be set up properly according to your server. If you use a Docker, these settings are most probably good for you, except for the password. Copy and paste the CONNECTION setting from another working layer.
+The CONNECTION string should be configured correctly for your server. If you use Docker, these settings are most probably good for you, except for the password. Copy and paste the CONNECTION setting from another working layer.
 
 *CONNECTION "host=localhost dbname=gisdata password={xxxxx} user=YOUR_PROJECT_admin options='--client_encoding=UTF8'"*
 
-More, you have to create an SQL query on the SQL QUERY SETTINGS page:
+Moreover, you have to create an SQL query on the SQL QUERY SETTINGS page:
 
 ```
 SELECT obm_id, obm_geometry, NAME_OF_YOUR_LABELING_COLUMN %selected% 
@@ -137,13 +137,13 @@ FROM YOUR_PROJECT
 %morefilter%
 WHERE ST_GeometryType(obm_geometry)='ST_Point' AND %qstr%
 ```
-As you can see, there is a predefined filter that uses only POINT data, which is because clustering cannot merge line and polygon data. 
+As you can see, there is a predefined filter that uses only POINT data because clustering cannot merge line and polygon data. 
 
 
 Installation
 ------------
 
-Load the following url at once to make your app ready to use: 
+Load the following URL at once to make your app ready to use: 
 
 https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/setup.php
 
