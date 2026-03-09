@@ -11,7 +11,7 @@ Data retrieval options
   - Plain text files: csv, json
   - Image files export: one by one or in bulk
   - Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
-  - Spatial formats: esri shape (.shp, .dbf, .cpg, .prj, .shx together), gpx (GPS data format (xml)), sqlite
+  - Spatial formats: ESRI shape (.shp, .dbf, .cpg, .prj, .shx together), GPX (GPS data format (XML)), SQLite
 
 * Web query
 
@@ -37,20 +37,20 @@ file:
   define('ACC_LEVEL','group'); // can be set to 'public' or 'login'
   define('MOD_LEVEL','group');
 
-The ACC_LEVEL variable defines the default level of data access in the project. It can be public or only accessible to logged in users (login or group). Login is more of a theoretical option, usually group is used in this case.
+The ACC_LEVEL variable defines the default data access level in the project. It can be public or only accessible to logged-in users (login or group). Login is more of a theoretical option, usually group is used in this case.
 
-MOD_LEVEL is the control for modifying data in a similar way to above. If MOD_LEVEL is public, then anyone can modify the data without logging in! 
+MOD_LEVEL is the control for modifying data in a similar way to the above. If MOD_LEVEL is public, then anyone can modify the data without logging in! 
 
 If the data access (ACC_LEVEL)/download and modify (MOD_LEVEL) levels are "group", then we will have additional control options in the
 
 *_rules* table.
 
-Our *_rules* table has a one-to-one relationship with each data table we want to control by setting the obm_id - row_id foreign key.
+Our *_rules* table has a one-to-one relationship with each data table we want to control, defined by the obm_id-row_id foreign key.
 Data rows for which there is no *_rules* entry are only available to project hosts (for ACC_LEVEL='group').
 
 The functionality of the *_rules* table can be found in the [Project administration] -> [Functions] menu [Create access rules]
 
-Here you can create and modify the trigger function, and enable or disable the trigger which will automatically update our _rules table after each record addition, modification and deletion.
+Here you can create and modify the trigger function, and enable or disable the trigger, which will automatically update our _rules table after each record addition, modification and deletion.
 
 The access to each record can be defined individually if groups are added in the group read and write fields. This can be done automatically by the *_rules* trigger based on the data access settings of the uploading forms, which values are entered in the system.uploadings table based on the uploading forms settings.
 
