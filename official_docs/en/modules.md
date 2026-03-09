@@ -103,13 +103,13 @@ allowed_columns
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
     Parameters:
+  
+.. code-block:: json
+
      {
-       "for_sensitive_data": [...]
-            The columns we want to make visible. Does not show the geometry associated with the data.
-	   "for_no-geom_data": [...]
-            Columns that you want to make visible.
-       "for_general": [...]
-            For the columns, we want to make them visible.
+       "for_sensitive_data": ["The columns we want to make visible. Does not show the geometry associated with the data."]
+	   "for_no-geom_data": ["Columns that you want to make visible."]
+       "for_general": ["For the columns, we want to make them visible."]
      }
 
 bold_yellow
@@ -118,6 +118,9 @@ bold_yellow
 * This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
     Parameters:
+
+.. code-block:: json
+  
      ["column names"]
 
 box_load_coord
@@ -127,6 +130,9 @@ box_load_coord
 
 
     Parameters:
+
+.. code-block:: json
+
      {
        "wgs84": "4326",
        "eov": "23700"
@@ -140,7 +146,10 @@ box_load_last_data
 	* last uploaded rows.
 * On the module page, you can set the number of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
-    Parameters: 
+    Parameters:
+
+.. code-block:: json
+
      ["Number of records in last uploads, default is 10"]
 
 box_custom
@@ -160,7 +169,7 @@ identify_point
 * Identify one or more points on the map.
 * Display in a small bubble some information about the data point that has been previously set.
 
-	Parameters: [column names]
+    Parameters: [column names]
 
 custom_notify
 -------------
