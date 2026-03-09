@@ -10,9 +10,9 @@ Frequently Asked Questions
 
 What is OpenBioMaps?
 --------------------
-OpenBioMaps is a software and services platform for managing biological data. It can be used on its own or as a service. It can be used to create database-based projects that can be used simultaneously by multiple users with different devices and access privilege levels. If you do not wish to maintain your server, you can use it as a service, as some institutions also operate servers that host research or citizen-science projects for no charge.
+OpenBioMaps is a software and services platform for managing biological data. It can be used on its own or as a service. It can be used to create database-based projects that multiple users can access simultaneously across different devices and at different privilege levels. If you do not wish to maintain your server, you can use it as a service, as some institutions also operate servers that host research or citizen-science projects for no charge.
 
-What is OpenBioMaps Consortium?
+What is the OpenBioMaps Consortium?
 -------------------------------
 :doc:`See Consortium <../introduction>`
 
@@ -44,7 +44,7 @@ With the :doc:`PWA application <../pwa>`
 
 How can I sign up for an OpenBioMaps project?
 ---------------------------------------------
-Registration requires an invitation. Any registered member can invite new users. In addition, by default, an invitation request form is available from the login interface, which can be filled in by new hosts to request an invitation to join a project. In addition, there is an OpenID module that allows registration and login with a Google Account.
+Registration requires an invitation. Any registered member can invite new users. In addition, by default, an invitation request form is available in the login interface, which new users can use to request an invitation to join a project. In addition, there is an OpenID module that allows registration and login with a Google Account.
 
 For more information on registration and invitations, please contact the creators or administrators of the database you wish to join.
 
@@ -55,11 +55,11 @@ Yes. The Project Data Service (PDS) allows you to query projects and user data o
 
 Example: https://openbiomaps.org/pds.php?scope=get_project_list
 
-For more information visit the API documentation.
+For more information, visit the API documentation.
 
 What language support is available?
 -----------------------------------
-There are no language restrictions, but OpenBioMaps is currently available in Hungarian, English Romanian, Spanish, and partially in Russian. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
+There are no language restrictions, but OpenBioMaps is currently available in Hungarian, English, Romanian, Spanish, and, to a limited extent, Russian, German, and French. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
 
 Each project can have individual language settings and associated translations.
 
@@ -69,7 +69,7 @@ How can I contribute to OpenBioMaps?
 - By creating/establishing a database project
 - Uploading data to a database project
 - By creating a new OpenBioMaps server
-- Hosting database-project on your server
+- Hosting a database project on your server
 - Adding new languages or improving existing translations
 - Software development
 - Financial support
@@ -87,10 +87,10 @@ Each OpenBioMaps server stores the data in its own database and file system.
 
 Is there any backup solution?
 -----------------------------
-No centralized backup, as there is no centralized data management in OpenBioMaps. Each server has its own backup solution, but some servers use each other's storage capacity for archiving.
+No centralised backup, as OpenBioMaps has no centralised data management. Each server has its own backup solution, but some servers use each other's storage capacity for archiving.
 
 
-I lost my password, how can I get a new one?
+I lost my password. How can I get a new one?
 --------------------------------------------
 Don't worry, it's very easy to get a new password.
 
@@ -101,7 +101,7 @@ There you can enter your login email address. Once you submit it, you will recei
 
 Pink squares appear on the map page
 -----------------------------------
-This may be due to some kind of configuration error, which may be related to the map layers or the settings of the data queries.
+This may be due to a configuration error related to the map layers or the data query settings.
 
 
 What is the RUM?
@@ -110,11 +110,11 @@ RUM is an acronym for database openness classes:
 
 Read - Upload - Modify
 
-Each element can have a value of [-] or [0] or [+].
+Each element can have a value of [-], [0], or [+].
 
 where
 
-[-] is not public, [0] is partially public and the [+] is public
+[-] is not public, [0] is partially public, and [+] is public
 
 and the colors are: [-] black, [0] red and [+] green
 
@@ -125,7 +125,7 @@ e.g.
 
 Is it possible to assign a DOI to databases?
 --------------------------------------------
-Yes, all databases in a finalized state can receive a DOI using the DataCite DOI Service.
+Yes, all databases in a finalised state can receive a DOI using the DataCite DOI Service.
 
 All databases have a DOI metadata page like:
 
@@ -133,14 +133,14 @@ https://dinpi.openbiomaps.org/projects/danubefish/index.php?metadata
 
 Our DOI prefix in DataCite is: 10.18426
 
-The DOI suffixes are automatically generated and they are unique.
+The DOI suffixes are automatically generated and unique.
 
-In every database, it is possible to assign additional DOI-s for datasets.
+In every database, it is possible to assign additional DOI (s) to datasets.
 
 
 Where can I find the list of the existing OpenBioMaps servers?
 --------------------------------------------------------------
-The servers that have registered can be found in the OpenBioMaps database at https://openbiomaps.org/projects/openbiomaps_network.
+Registered servers can be found in the OpenBioMaps database at https://openbiomaps.org/projects/openbiomaps_network.
 
 
 How to use the OpenBioMaps mobile app?
@@ -164,12 +164,12 @@ What data download options are there?
 How/where can I access photos taken in the field with the mobile app?
 ---------------------------------------------------------------------
 
-On the web interface, one by one on the data's data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download. Also via the supervisor interface (located on the administrative functions / system information page).
+On the web interface, one by one on the data page, or in the administrative interface on the files tab. You can also download all the photos in one operation. The PDS API also supports downloading images in one download. Also via the supervisor interface (on the administrative functions/system information page).
 
 How can I delete data?
 ----------------------
-The OBM web interface does not include a data deletion function, but there is still the possibility to delete data if it is deemed necessary.
-Each upload has an entry in the system.uploadings table. Its ID can be referenced to delete all records of an upload from the SQL client at once. If the uploading table is linked to the data table with a foreign key, it is sufficient to delete the uploading metadata row and it will delete the corresponding rows from the data table, but this linkage is not automatically set. It is usually safer to explicitly delete the required rows with an SQL command. If you want to delete all rows of an upload, it is handy to do it with a single command referring to the upload ID:
+The OBM web interface does not include a data deletion function, but it is still possible to delete data if deemed necessary.
+Each upload has an entry in the system.uploadings table. Its ID can be referenced to delete all records of an upload from the SQL client at once. If the uploading table is linked to the data table via a foreign key, deleting the uploading metadata row will automatically delete the corresponding rows in the data table, but this linkage is not automatically set. It is usually safer to explicitly delete the required rows with an SQL command. If you want to delete all rows of an upload, it is handy to do it with a single command referring to the upload ID:
 
 .. code-block:: sql
 
@@ -178,8 +178,8 @@ Each upload has an entry in the system.uploadings table. Its ID can be reference
 
 I can't query/see data which is visible to other users
 -------------------------------------------------------
-The project data is likely restricted access, which is defined as only certain users or groups of users having access to the data. In practice, this setting is enforced by specifying in the data upload form settings which users or user groups will have read or modify access to data uploaded with a particular form. 
-If there is data uploaded where no settings have been made, then by default only the project admins will have access to the data uploaded. The data access setting can be changed subsequently by the project admins using SQL commands, e.g: 
+The project data is likely restricted to certain users or groups, defined as only those users or groups having access to the data. In practice, this setting is enforced by specifying in the data upload form's settings which users or user groups will have read or modify access to data uploaded with that form. 
+If data is uploaded without any settings, by default, only the project admins will have access to it. The data access setting can be changed subsequently by the project admins using SQL commands, e.g: 
 
 .. code-block:: sql
 
