@@ -50,9 +50,9 @@ Data rows for which there is no *_rules* entry are only available to project hos
 
 The functionality of the *_rules* table can be found in the [Project administration] -> [Functions] menu [Create access rules]
 
-Here you can create and modify the trigger function, and enable or disable it, which will automatically update our _rules table after each record addition, modification, and deletion.
+Here you can create and modify the trigger function, and enable or disable it, which will automatically update our _rules table after each record is added, modified, or deleted.
 
-Access to each record can be defined individually when groups are added to the group read and write fields. This can be done automatically by the *_rules* trigger based on the data access settings of the uploading forms, whose values are entered in the `system.uploadings` table based on the uploading forms settings.
+Access to each record can be defined individually when groups are added to the group read/write fields. This can be done automatically by the *_rules* trigger based on the data access settings of the uploading forms, whose values are entered in the `system.uploadings` table based on the uploading forms settings.
 
 The *_rules* table can also be regenerated manually:
 
@@ -75,6 +75,8 @@ The *_rules* table can also be regenerated manually:
       FROM abc a LEFT JOIN "system"."uploadings" s ON (s.id = a.obm_uploading_id)
 
 In the *_rules* table, the *sensitivity* field specifies the public availability of a dataset in closed ('group') projects. The value of *'sensitivity'* may also be 'sensitive' or 'restricted'. These have the same meaning. The 'sensitive' lines can only be read or modified by members of the specified groups.
+
+The sensitivity value can also be 'no-geom', which means the geometry will not be displayed at the public level.
 
 Access to data can be further controlled by setting rules for each field using the *allowed_columns* module.
 If your project access_level is set to 'group' and there are no rows in the *_rules* table, you can still use the *allowed_columns* module to make your data fields publicly accessible or accessible to specified user groups. That is, the 'allowed_columns' module is also the highest level of access control.
