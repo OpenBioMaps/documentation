@@ -93,8 +93,10 @@ additional_columns
         co [0] columns array
         c  [1] column name assoc array
 
-    Parameters:
+Parameters:
+```json
      ["column names"]
+```
 
 allowed_columns
 ---------------
@@ -102,7 +104,7 @@ allowed_columns
 * With this module, you can set which column should be visible at different access levels. 
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
-    Parameters:
+Parameters:
 ```json
      {
        "for_sensitive_data": ["The columns we want to make visible. Does not show the geometry associated with the data."]
@@ -116,7 +118,7 @@ bold_yellow
 * Column names in yellow bold in the result lists. After a query, column names in bold yellow appear in the detailed description attached to the *"Drop-down list "* table.
 * This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
-    Parameters:
+Parameters:
 ```json
      ["column names"]
 ```
@@ -126,8 +128,7 @@ box_load_coord
 * On the map page, a *"position "* block will appear below the map. If you move the cursor around the map, you will see that the coordinate in the *"position "* block is constantly changing, tracking the position of your cursor on the map.
 * Also in the *"position "* block, if you type in the latitude and longitude, clicking on the little black *"lollipop "* will display your point on the map.
 
-
-    Parameters:
+Parameters:
 ```json
      {
        "wgs84": "4326",
@@ -143,7 +144,7 @@ box_load_last_data
 	* last uploaded rows.
 * On the module page, you can set the number of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
-    Parameters:
+Parameters:
 ```json
      ["Number of records in last uploads, default is 10"]
 ```
@@ -153,7 +154,8 @@ box_custom
 Custom box on the map page - only the user-defined version exists.
 The custom module has to be placed in the local/includes/modules/ folder.
 
-    Parameters:
+Parameters:
+
      [A file's basename includes/modules/private folder. E.g. hrsz_query]
 
     Where hrsz_query_Class is a class in local/includes/modules/hrsz_query.php file.
@@ -165,7 +167,10 @@ identify_point
 * Identify one or more points on the map.
 * Display in a small bubble some information about the data point that has been previously set.
 
-    Parameters: [column names]
+Parameters: 
+```json
+["column names"]
+```
 
 custom_notify
 -------------
@@ -338,7 +343,8 @@ Parameters:
     	
         observation_lists
             description: 
-                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job populates the obm_observation_list_id column and the list's start, end, and duration columns. If the uploaded list is incomplete, it is skipped.
+                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job populates 
+				the obm_observation_list_id column and the list's start, end, and duration columns. If the uploaded list is incomplete, it is skipped.
 
             parameters:
                 * list_start_column (string): column name of list start
@@ -360,7 +366,9 @@ Parameters:
 
     	incomplete_observation_lists
             description:
-                If the uploaded list is incomplete, this module processes it. If the difference is less than the tolerance value, the list will be uploaded by the next observation_list process, and a system message will be sent. In another case, when the difference exceeds the tolerance, only a system message is sent; the rest must be processed manually. 
+                If the uploaded list is incomplete, this module processes it. If the difference is less than the tolerance value, the list will be uploaded by the 
+				next observation_list process, and a system message will be sent. In another case, when the difference exceeds the tolerance, only a system message is sent; the rest 
+				must be processed manually. 
                 
             Parameters:
                 * mail_to (int): role_id - who will get the messages
@@ -425,7 +433,7 @@ read_table
 ----------
 Present a SQL table or an SQL view as a rollable HTML table. This table is available through a unique link.
 
-    Parameters: 
+Parameters: 
 ```json
 [
     {
@@ -446,7 +454,7 @@ results_asGPX
 -------------
 Save results as a GPX file.
 
-    Parameters:
+Parameters:
 ```json
 {
     "name": "column", 
@@ -458,7 +466,7 @@ results_asCSV
 -------------
 Save results as a csv file.
 
-    Parameters:
+Parameters:
 ```json
 {
     "sep": ",", 
@@ -482,7 +490,7 @@ results_asKML
 -------------
 Save results as a KML file.
 
-    Parameters:
+Parameters:
 ```json
 {
     "name": "column", 
@@ -535,7 +543,7 @@ text_filter
 -----------
 Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
     
-    Parameters:
+Parameters:
 ```json
 [
     "magyar",
@@ -555,7 +563,7 @@ text_filter2
 -----------
 Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
-    Parameters:
+Parameters:
 ```json
 {}
 ```
@@ -564,7 +572,7 @@ transform_data
 --------------
 Transform fields to improve readability in web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
     
-    Parameters:
+Parameters:
 ```json
 {
     "obm_geometry": "geom",
