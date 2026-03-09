@@ -103,14 +103,13 @@ allowed_columns
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
     Parameters:
-  
-.. code-block:: json
-
+```json
      {
        "for_sensitive_data": ["The columns we want to make visible. Does not show the geometry associated with the data."]
 	   "for_no-geom_data": ["Columns that you want to make visible."]
        "for_general": ["For the columns, we want to make them visible."]
      }
+```
 
 bold_yellow
 -----------
@@ -118,10 +117,9 @@ bold_yellow
 * This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
     Parameters:
-
-.. code-block:: json
-  
+```json
      ["column names"]
+```
 
 box_load_coord
 --------------
@@ -130,13 +128,12 @@ box_load_coord
 
 
     Parameters:
-
-.. code-block:: json
-
+```json
      {
        "wgs84": "4326",
        "eov": "23700"
      }
+```
 
 box_load_last_data
 ------------------
@@ -147,10 +144,9 @@ box_load_last_data
 * On the module page, you can set the number of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
     Parameters:
-
-.. code-block:: json
-
+```json
      ["Number of records in last uploads, default is 10"]
+```
 
 box_custom
 ----------
@@ -328,13 +324,13 @@ In this example, the "shared" "kef_5x5" table contains the polygons we want to u
 job_manager (validation)
 ------------------------
     
-    General description:
+General description:
     	
     	* The job_manager (validation) module is used for managing the background processes of the project. Its parameters are the job names.
         * On the admin page, you can set the time of running (simplified cron style: minute, hour, day), and the job parameters as JSON
     	* Adding a new parameter will register the job in the jobs database table and create the necessary template files in the modules/validation_modules and jobs folders.
 
-    Parameters:
+Parameters:
 
     	* The names of the background processes
     	
@@ -384,6 +380,7 @@ join_tables
 This module enables the display of joined data on the data-sheet page. At the moment, it supports only simple LEFT JOINS on one equation.
     
 Parameters:
+```json
     [
         {
             "table": "teszt_events",
@@ -404,6 +401,7 @@ Parameters:
             ]
         }
     ]
+```
 
 
 list_manager
@@ -428,9 +426,15 @@ read_table
 Present a SQL table or an SQL view as a rollable HTML table. This table is available through a unique link.
 
     Parameters: 
-     [{"table": "schema.table",
-       "label": "somesthing",
-       "orderby": "column"}, ... ]
+```json
+[
+    {
+       "table": "schema.table",
+       "label": "something",
+       "orderby": "column"
+    }, {}
+]
+```
 
 results_asList
 --------------
@@ -443,16 +447,24 @@ results_asGPX
 Save results as a GPX file.
 
     Parameters:
-     {"name": "column", 
-      "description": ["column-1", "column-2", ... ]}
+```json
+{
+    "name": "column", 
+    "description": ["column-1", "column-2"]
+}
+```
 
 results_asCSV
 -------------
 Save results as a csv file.
 
     Parameters:
-     {"sep": ",", 
-      "quote":"\""}
+```json
+{
+    "sep": ",", 
+    "quote":"\""
+}
+```
 
 results_asJSON
 --------------
@@ -471,8 +483,12 @@ results_asKML
 Save results as a KML file.
 
     Parameters:
-     {"name": "column", 
-      "description": ["column-1", "column-2", ... ]}
+```json
+{
+    "name": "column", 
+    "description": ["column-1", "column-2"]
+}
+```
 
 results_buttons
 ---------------
@@ -484,8 +500,12 @@ results_asStable
 ----------------
 Compact results table on the map page.
 	
- Parameters: 
-  [column names]
+ Parameters:
+ ```json
+[
+   "column names"
+]
+```
 
 results_specieslist
 -------------------
@@ -515,8 +535,9 @@ text_filter
 -----------
 Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
     
-    Parameters: 
-    [
+    Parameters:
+```json
+[
     "magyar",
     "obm_taxon",
     "megj::colour_rings",
@@ -527,22 +548,27 @@ Text filters on the map page and for the query API. Create the WHERE part of the
     "d.egyedszam:values():",
     "obm_files_id",
     "faj::autocomplete"
-    ]
+]
+```
 
 text_filter2
 -----------
 Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
-    Parameters: 
-    {...}
+    Parameters:
+```json
+{}
+```
 
 transform_data
 --------------
 Transform fields to improve readability in web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
     
     Parameters:
-    {
-        "obm_geometry": "geom",
-        "obm_uploading_id": "uplid",
-        "tema":"mmm"
-    }
+```json
+{
+    "obm_geometry": "geom",
+    "obm_uploading_id": "uplid",
+    "tema":"mmm"
+}
+```
