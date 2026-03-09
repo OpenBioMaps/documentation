@@ -59,7 +59,7 @@ For more information, visit the API documentation.
 
 What language support is available?
 -----------------------------------
-There are no language restrictions, but OpenBioMaps is currently available in Hungarian, English, Romanian, Spanish, and, to a limited extent, Russian, German, and French. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
+There are no language restrictions, but OpenBioMaps is currently available in Hungarian, English, Romanian, Spanish, Portuguese, and, to a limited extent, Russian, German, and French. Additional languages or translations can be added through the https://translate.openbiomaps.org interface.
 
 Each project can have individual language settings and associated translations.
 
