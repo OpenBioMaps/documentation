@@ -30,27 +30,27 @@ The system settings for OpenBioMaps are in the system_vars.php.inc file. This ca
   define("OB_DOMAIN", "localhost/biomaps");
   
   # The default is /var/lib/openbiomaps/
-  # define("OB_SYSDIR","/var/lib/openbiomaps/");
+  # define("OB_SYSDIR", "/var/lib/openbiomaps/");
 
-  define("OB_TMP","/var/lib/openbiomaps/tmp/");
+  define("OB_TMP", "/var/lib/openbiomaps/tmp/");
 
-  define("OB_ROOT","/var/www/html/biomaps/root-site");
+  define("OB_ROOT", "/var/www/html/biomaps/root-site");
 
-  define("OB_ROOT_SITE","/var/www/html/biomaps/root-site/");
+  define("OB_ROOT_SITE", "/var/www/html/biomaps/root-site/");
 
   define("POSTGRES_PORT", "5432");
 
-  define("GISDB_HOST",'localhost');     // for creating new project
+  define("GISDB_HOST", "localhost");     // for creating new project
 
-  define("MAPSERVER_HOST",'mapserver'); // for creating new project
+  define("MAPSERVER_HOST", "mapserver"); // for creating new project
 
-  define("OB_RESOURCES","/var/www/html/biomaps/resources/");
+  define("OB_RESOURCES", "/var/www/html/biomaps/resources/");
 
-  define('biomapsdb_user','...');
+  define('biomapsdb_user', '...');
 
-  define('biomapsdb_pass','...');
+  define('biomapsdb_pass', '...');
 
-  define('biomapsdb_name','...');
+  define('biomapsdb_name', '...');
 
   define('biomapsdb_host', 'localhost');
 
@@ -58,13 +58,13 @@ The system settings for OpenBioMaps are in the system_vars.php.inc file. This ca
   define('POSTGIS_V', '2.5');
 
   // Default sendmail opetion, can be override in project level in local_vars.php.inc 
-  define('SENDMAIL','smtp'); # sendmail | smtp
+  define('SENDMAIL', 'smtp'); # sendmail | smtp
 
   // memcache type - choose this
   define('CACHE', 'memcache');
 
   // R-Shiny Server ports, for the projects where R Shiny Server should be enabled
-  define('RSERVER_PORT_someproject',7982);
+  define('RSERVER_PORT_someproject', 7982);
 
   // Supported languages
   define('LANGUAGES', 'en, hu, ro');
