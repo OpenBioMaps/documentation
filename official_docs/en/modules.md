@@ -101,15 +101,21 @@ Parameters:
 allowed_columns
 ---------------
 * This is an extension of data access rule settings. The rules control access to complete rows in tables.
-* With this module, you can set which column should be visible at different access levels. 
+* With this module, you can set which column should be visible at different access levels if there is row level restriction by rules ('restricted', 'no-geom').
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
 Parameters:
 ```json
      {
-       "for_sensitive_data": ["The columns we want to make visible. Does not show the geometry associated with the data."]
-	   "for_no-geom_data": ["Columns that you want to make visible."]
-       "for_general": ["For the columns, we want to make them visible."]
+       "for_sensitive_data": [
+			"List of columns we want to make visible for sensitive records."
+		]
+	   "for_no-geom_data": [
+			"List of columns we want to make visible for no-geom rows. If not set, all columns are accessible"
+		]
+       "for_general": [
+			"List of columns, we want to make visible if there are no rules."
+		]
      }
 ```
 
