@@ -1,6 +1,6 @@
-The modules are customizable extensions to the OpenBioMaps web application. There are project-level modules (e.g.: postgres repository creation, photo manager) and there are also modules specific to individual data tables (e.g.: text filters for map page, CSV export).
+The modules are customizable extensions to the OpenBioMaps web application. There are project-level modules (e.g., PostgreSQL repository creation, photo manager), and modules specific to individual data tables (e.g., text filters for the map page, CSV export).
 
-The use of modules can be assigned to different users or user groups.
+Modules can be assigned to different users or user groups.
 
 The modules are linked to module hooks in the application, which are mostly located on the map page and profile tab.
 Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
@@ -48,7 +48,7 @@ No parameters
 
 photos
 ------
-Photo or other attachment boxes.
+Enable the use of photo or other attachment boxes on upload forms and show attached images on the data sheet page.
 
 No parameters
 
@@ -80,7 +80,7 @@ taxon_meta
 ----------
 No parameters
 
-Table level modules
+Table-level modules
 ===================
 
 additional_columns
@@ -98,14 +98,15 @@ additional_columns
 
 allowed_columns
 ---------------
-* Here, you can set which column should be visible at different access levels. 
+* This is an extension of data access rule settings. The rules control access to complete rows in tables.
+* With this module, you can set which column should be visible at different access levels. 
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
     Parameters:
      {
        "for_sensitive_data": [...]
             The columns we want to make visible. Does not show the geometry associated with the data.
-	"for_no-geom_data": [...]
+	   "for_no-geom_data": [...]
             Columns that you want to make visible.
        "for_general": [...]
             For the columns, we want to make them visible.
@@ -320,9 +321,9 @@ job_manager (validation)
     
     General description:
     	
-    	* The job_manager (validation) module is used for managing the background processes of the project. Its parameters are the names of the jobs.
-        * On the admin page you can set the time of running (simplified cron style: minute hour day), and the job parameters as JSON
-    	* Adding a new parameter will register the job in the jobs database table, and create the necessary template files in the modules/validation_modules, jobs folders.
+    	* The job_manager (validation) module is used for managing the background processes of the project. Its parameters are the job names.
+        * On the admin page, you can set the time of running (simplified cron style: minute, hour, day), and the job parameters as JSON
+    	* Adding a new parameter will register the job in the jobs database table and create the necessary template files in the modules/validation_modules and jobs folders.
 
     Parameters:
 
@@ -332,7 +333,7 @@ job_manager (validation)
     	
         observation_lists
             description: 
-                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job completes the obm_obsevation_list_id column, the columns of start, end, and duration of the list. If the uploaded list is not complete the list is skipped.
+                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job populates the obm_observation_list_id column and the list's start, end, and duration columns. If the uploaded list is incomplete, it is skipped.
 
             parameters:
                 * list_start_column (string): column name of list start
@@ -354,7 +355,7 @@ job_manager (validation)
 
     	incomplete_observation_lists
             description:
-                If the uploaded list is incomplete, this module processes it. If the difference is smaller than the tolerance value, then the list will be uploaded by the next observation_list process, but a system message is sent. In another case, when the difference is larger than the tolerance only a system message is sent, the rest has to be processed manually. 
+                If the uploaded list is incomplete, this module processes it. If the difference is less than the tolerance value, the list will be uploaded by the next observation_list process, and a system message will be sent. In another case, when the difference exceeds the tolerance, only a system message is sent; the rest must be processed manually. 
                 
             Parameters:
                 * mail_to (int): role_id - who will get the messages
@@ -371,7 +372,7 @@ job_manager (validation)
 
 join_tables
 -----------
-This module makes it possible to display joined data on the data-sheet-page. At the moment it supports only simple LEFT JOINS on one equation.
+This module enables the display of joined data on the data-sheet page. At the moment, it supports only simple LEFT JOINS on one equation.
     
 Parameters:
     [
@@ -415,7 +416,7 @@ No parameters
 
 read_table
 ----------
-Present a SQL table or an SQL view as a rollable html table. This table is available through a unique link.
+Present a SQL table or an SQL view as a rollable HTML table. This table is available through a unique link.
 
     Parameters: 
      [{"table": "schema.table",
@@ -452,7 +453,7 @@ No parameters
 
 results_asSHP
 -------------
-Results can be saved as SHP files. Separate files are created for the different geometry types. These can be downloaded in a zip archive.
+Results can be saved as SHP files. Separate files are created for each geometry type. These can be downloaded in a zip archive.
 
 No parameters
 
@@ -491,7 +492,7 @@ No parameters
 
 results_table
 -------------
-Create a full html table of the results.
+Create a full HTML table of the results.
     
 No parameters
 
@@ -503,7 +504,7 @@ No parameters
 
 text_filter
 -----------
-Text filters on the map page and for query API. Create the WHERE part of the SQL query string.
+Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
     
     Parameters: 
     [
@@ -528,11 +529,11 @@ Advanced taxon and other text filters. Create the WHERE part of the SQL query st
 
 transform_data
 --------------
-Transform fields to better reading on web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
+Transform fields to improve readability in web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
     
     Parameters:
     {
-        "obm_geometry":"geom",
-        "obm_uploading_id":"uplid",
+        "obm_geometry": "geom",
+        "obm_uploading_id": "uplid",
         "tema":"mmm"
     }
