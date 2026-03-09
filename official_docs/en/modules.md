@@ -16,8 +16,8 @@ You can upload your modules and add them to your project. To develop a module, c
 
 Module access
 -------------
-You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example, the allowed_columns module. Another example is that if we have multiple data tables, we can specify for each table separately which column values we can filter based on when querying, for example, the text_filter module.
-In the **Access** column, we can choose whether our settings are public (everybody) or only logged-in users (logged users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting our predefined groups or even assigning specific persons to a particular setting.
+You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example, the allowed_columns module. Another example is that if we have multiple data tables, we can specify, for each table separately, which column values we can filter by when querying, for example, using the text_filter module.
+In the **Access** column, we can choose whether our settings are public (everybody) or only logged-in users (logged-in users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting predefined groups or assigning specific people to a particular setting.
 
 Drop a module
 -------------
@@ -29,18 +29,18 @@ Once we have our list of modules, we can switch each module on and off.
 
 Parameters for modules
 ----------------------
-Most modules can be directly parameterized with JSON format parameters. Some modules have their administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
+Most modules can be directly parameterised with JSON format parameters. Some modules have their administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
 
 
-Project level modules
+Project-level modules
 =====================
 box_load_selection
 ------------------
 * Allows you to upload your spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
-* The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the name of the shape, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
+* The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the shape name, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
 * Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. To use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
-* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. Project administrators can make these settings in their administration interface of the **box_load_selection** module in the module settings tab.
-* Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that are inside the polygon or also the data that fall under the edges of the polygon.
+* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. Project administrators can make these settings in the administration interface of the **box_load_selection** module, on the module settings tab.
+* Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that is inside the polygon or also the data that falls under the edges of the polygon.
 * For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
 * The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labelled with their names.
 
@@ -56,8 +56,8 @@ create_pg_user
 --------------
 * After enabling the module, the **Create Postgres user** box will appear on the profile page.
 * By enabling the module, users who are granted the right to use the module will be able to create their own Postgres user.
-* By default, the module creates a POSTGRES user with limited access, who can read all database tables in your project. He can only connect to the database from one client program at a time, and his access automatically expires after one year.
-* The created Postgres user will be added to the ***project_name*_user** group, which is the Postgres Group automatically created by the system. With Postgres admin access, you can set additional rights for certain users, e.g. write access to certain tables.
+* By default, the module creates a POSTGRES user with limited access, who can read all database tables in your project. He can connect to the database from only one client program at a time, and his access automatically expires after 1 year.
+* The created Postgres user will be added to the ***project_name*_user** group, which is the Postgres Group automatically created by the system. With Postgres admin access, you can grant additional rights to certain users, e.g., write access to specific tables.
 * Users can renew their access at any time.
 * The Postgres user can be used to connect to the database from QGIS, for example. An example of how to set this up:
 
@@ -87,8 +87,8 @@ additional_columns
 ------------------
 * If a database consists of several data tables, they can be linked by different variables.
 * When queried, all data for an identifier is queried. This function can be ignored by checking *"ignore table JOINS "* on the map page.
-* For example, in some burrow projects we keep the data for parents and offspring in separate tables, if we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
-* use it together with the join_tables module
+* For example, in some burrow projects, we keep the data for parents and offspring in separate tables. If we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
+* Use it together with the join_tables module
         return with an array:
         co [0] columns array
         c  [1] column name assoc array
@@ -98,7 +98,7 @@ additional_columns
 
 allowed_columns
 ---------------
-* Here you can set which column should be visible at different access levels. 
+* Here, you can set which column should be visible at different access levels. 
 * It can be used if the data table has a *"rules "* table and the basic access level of the project is not public.
 
     Parameters:
@@ -133,22 +133,22 @@ box_load_coord
 
 box_load_last_data
 ------------------
-* Create **Quick queries** option on the map page on the right side of the map. There are three options to choose from:
+* Create a **Quick queries** option on the map page on the right side of the map. There are three options to choose from:
 	* last own upload, 
 	* last upload (anyone's) 
 	* last uploaded rows.
-* On the module page you can set the amount of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
+* On the module page, you can set the number of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
 
     Parameters: 
      ["Number of records in last uploads, default is 10"]
 
 box_custom
 ----------
-Custom box on the map page - only user-defined version exists.
+Custom box on the map page - only the user-defined version exists.
 The custom module has to be placed in the local/includes/modules/ folder.
 
     Parameters:
-     [a file's basename includes/modules/private folder. E.g. hrsz_query]
+     [A file's basename includes/modules/private folder. E.g. hrsz_query]
 
     Where hrsz_query_Class is a class in local/includes/modules/hrsz_query.php file.
 
@@ -163,13 +163,13 @@ identify_point
 
 custom_notify
 -------------
-Creates custom Postgres-based notify events. This is just an idea, the module is not ready.
+Creates custom Postgres-based notify events. This is just an idea; the module is not ready.
 
 No parameters
 
 custom_data_check
 -----------------
-Custom data checks of upload data.
+Custom data checks of the upload data.
 
 No parameters
 
@@ -211,11 +211,11 @@ The name of the MapServer layer should be given in parentheses. The string befor
 
 The grid layer is a polygon layer, so you need to create a polygon layer in the Mapfile. Eg: layer_data_grid
 
-The module will create a YOURTABLE_qgrids table for you if it does not already exist, which you can modify according to the grid types you want to apply.
+The module will create a YOURTABLE_qgrids table for you if it does not already exist, and you can modify it to apply the grid types you want.
 
-The module will also create update_grid_geoms trigger and set the comments for you, but most probably you need to modify them.
+The module will also create an update_grid_geoms trigger and set the comments for you, but you will most likely need to modify them.
 
-In the YOURTABLE_qgrids table, set the visible names of the layers in the comment field. These will be the names that users will see in the options list.
+In the YOURTABLE_qgrids table, set the visible names of the layers in the comment field. These are the names users will see in the options list.
 
 ```sql 
 COMMENT ON COLUMN public.YOURTABLE_qgrids.original IS 'original';
@@ -233,7 +233,7 @@ CREATE TRIGGER update_grid_geoms BEFORE INSERT OR UPDATE ON public.tytoalba_qgri
 Trigger on YOURTABLE table:
 
 ```sql
-CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public.YOURTABLE FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
+CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public. YOURTABLE FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
 ```
 
 Function insert_originalgeom_into_qgrids()
@@ -297,7 +297,7 @@ END IF;
 END;
 ```
 
-When you are ready to prepare the _qgrids table, you need to add the existing geometries from the target table if it is not already empty.
+When you are ready to prepare the _qgrids table, add the existing geometries from the target table if it is not already empty.
 
 ```sql
 INSERT INTO YOURTABLE_qgrids (row_id,"original") SELECT obm_id,obm_geometry FROM YOURTABLE;
@@ -311,7 +311,7 @@ FROM (
 WHERE  row_id=foo.obm_id
 ```
 
-In this example, the "shared". "kef_5x5" table contains the polygons we want to use, and we also created a custom polygon called "snap" on the fly.
+In this example, the "shared" "kef_5x5" table contains the polygons we want to use, and we also created a custom polygon, "snap", on the fly.
 
 
 
