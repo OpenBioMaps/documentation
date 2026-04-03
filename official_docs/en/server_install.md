@@ -41,7 +41,6 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
 .. code-block:: php
   
   // `public` data read/mod for everybody
-  // `login` data read/mod only for logined users
   // `group` data read/mod only for group members
   define('ACC_LEVEL','public');
   define('MOD_LEVEL','group');
@@ -51,8 +50,15 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
 .. code-block:: php
   
   // the corresponding language file should be exists
-  // see the language file inclusion in the prepare_vars.php
-  define('LANG','hu'); # en, ro, ru, ...
+  // default language
+  define('LANG','hu');
+
+  // Project languages, the first is the default
+  define('LANGUAGES', array(
+    'en'=>'in English',
+    'hu'=>'magyarul',
+    'ro'=>'română',
+    'ru'=>'русский'));
   
 **Path and URL settings**
 
@@ -61,7 +67,7 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   // On openbiomaps.org is /projects
   // else maybe empty
   define('PATH','/biomaps/resources');
-  define('URL',sprintf("%s%s",$_SERVER['SERVER_NAME'],PATH));
+  define('URL',sprintf("%s%s",'TYPE-YOUR-SERVER-DOMAIN_HERE',PATH));
   
 **mapserver variables**
 
@@ -110,7 +116,6 @@ Several low-level settings coming from the local_vars.php.inc file which can be 
   //define('SMTP_PORT','587');
   
   // *Deprecated features...*
-  //define('TURN_OFF_LAYERS','layer_data_points');
   //define('SHINYURL',false);
   //define('RSERVER',false);
   
@@ -120,6 +125,7 @@ default is map**
 .. code-block:: php
   
   define('LOGINPAGE','map');
+  // *Deprecated feature...*
   define('TRAINING',false);
   
 **MainPage configuration**
@@ -135,6 +141,13 @@ default is map**
     'system_header'=>'off',
     //'restrictaded_pages'=>array('map','id','history','profile','data','table','editrecord','qtable','query','show','LQ','metadata')
   ));
+
+**Docker specific setting for creating email alerts on new uploads**
+
+.. code-block:: php
+  
+  define('OB_PROJECT_DOMAIN',OB_DOMAIN);
+
   
 **Which style folder used**
 
@@ -144,7 +157,7 @@ default is map**
     'template'=>'evolvulus'
   ));
   
-**Footer configuration**
+**Header and Footer configuration**
 
 .. code-block:: php
   
@@ -156,6 +169,14 @@ default is map**
             array('img'=>'unideb_logo.png','size'=>'','url'=>'https://unideb.hu')
         ))
   );
+
+  define('HEADER',array(
+    'links' => 'upload|map|messages|profile|localize',
+    'layout' => 'obm'
+    )
+  );
+
+
   
 **Encrypt hash**
 
@@ -189,7 +210,44 @@ default is map**
 .. code-block:: php
 
   define('PWA_LINK','on');
+
+**Max image size of attachments in bytes**
+.. code-block:: php
   
+  define('ALLOWED_FILE_SIZE',4194304);
+
+**Use temporary_tables.obs_... table for observation list uploadings**
+
+.. code-block:: php
+
+  define('USE_TEMPTABLES_FOR_OBSLISTS','true');
+
+**Data export setting**
+
+.. code-block:: php
+
+  // *Above this limit the data export working instead of normal download*
+  define('DATA_EXPORT_BGPROC_LIMIT',1000);
+
+**Extra schemas for the project**
+
+.. code-block:: php
+  
+  define('PROJECT_SCHEMAS',array('sablon_archive'));
+  
+
+**Security check  - It is turning on are you human? check over the usage limits for the TTL time**
+**It is is working with a REDIS server**
+
+.. code-block:: php
+
+  define('SECURITY_CHECK',true);         // Security chech on
+  define('REDIS_HOST','127.0.0.1');      // Default is 127.0.0.1
+  define('REDIS_PORT','6379');          // Default is 6379
+  define('SECURITY_IP_LIMIT','30');     // Max request / 10 sec / IP; false turn off IP check; Default is 30
+  define('SECURITY_GLOBAL_LIMIT','10'); // Max 10 request / sec together; Default is 10
+  define('SECURITY_ATTACK_TTL','600');  // How long stay in "attack mode" 5 min; Default is 600
+
 **Developer options**
 
 .. code-block:: php
