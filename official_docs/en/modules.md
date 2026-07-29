@@ -201,7 +201,12 @@ No parameters
 
 download_restricted
 -------------------
-Admin-controlled download authorization
+The `download_restricted` module provides an admin-controlled mechanism for managing download authorizations. It replaces standard download buttons with a form that requires users to explain the purpose of their data download request. Administrators can then approve or reject these requests through an admin interface.
+
+Key functionalities include:
+- **Request Form**: Users must fill out a form explaining their download request.
+- **Admin Approval**: Administrators can approve or reject download requests based on the provided justification.
+- **Integration with Results Buttons**: When enabled, it controls the availability of download options in the `results_buttons` module, ensuring that only authorized users can download data.
 
 No parameters
 
@@ -522,6 +527,7 @@ Key functionalities include:
 - **Share Options**: Save and share queries, results, and spatial selections.
 - **Bookmarking**: Bookmark queries for quick access.
 - **Admin Page**: Manage download requests and user permissions for data exports.
+- **Integration with Download Restricted**: If the `download_restricted` module is enabled, the availability of download options will depend on its settings, allowing for controlled access to data exports.
 
 Example configuration:
 ```json
