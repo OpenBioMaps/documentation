@@ -543,10 +543,16 @@ No additional parameters required.
 
 results_asStable
 ----------------
-Compact results table on the map page.
-	
- Parameters:
- ```json
+The `results_asStable` module is a crucial component for displaying query results in a compact table format on the map page. It allows users to specify which columns they want to see in the output, enabling them to filter out fields that are not immediately necessary. This module is particularly useful for quickly reviewing important data without being overwhelmed by too much information.
+
+Key functionalities include:
+- **Customizable Columns**: Users can specify the columns to display, allowing for a tailored view of the data.
+- **Sortable Columns**: Each column in the table can be sorted, providing flexibility in how data is viewed and analyzed.
+- **Record Links**: Includes links for detailed viewing and editing of records, provided the user has the necessary permissions.
+- **Efficient Data Review**: By limiting the number of columns, users can focus on the most critical data for quick assessment.
+
+Parameters:
+```json
 [
    "column names"
 ]
