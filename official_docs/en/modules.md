@@ -507,11 +507,17 @@ Save results as a JSON file.
 
 No parameters
 
-results_asSHP
--------------
-Results can be saved as SHP files. Separate files are created for each geometry type. These can be downloaded in a zip archive.
+results_asTable
+---------------
+The `results_asTable` module displays query results in a full-screen HTML table format. It includes every field of the records, providing a comprehensive view of the data. This module is ideal for users who need to analyze complete datasets directly from the map page.
 
-No parameters
+Key functionalities include:
+- **Full Record Display**: Shows all fields of each record in the query results.
+- **Sortable Columns**: Users can sort the table by any column to organize data as needed.
+- **Record Links**: Provides links for detailed viewing and editing of records, assuming the user has the necessary permissions.
+- **User-Friendly Interface**: Designed for ease of use, allowing users to navigate large datasets efficiently.
+
+No parameters required.
 
 results_asKML
 -------------
