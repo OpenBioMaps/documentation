@@ -588,19 +588,19 @@ transform_data
 The `transform_data` module is designed to transform record values in result areas, enhancing the readability and usability of data in web tables and exports. It supports various transformations such as converting geometries to WKT (Well-Known Text), extracting year from date strings, translating text, and creating links for observation lists.
 
 Key functionalities include:
-- **Geometry Transformation**: Converts geometry data to GeoJSON or WKT format, and provides links for spatial data visualization.
-- **Date Transformation**: Extracts the year from date strings for simplified date representation.
-- **Text Translation**: Translates predefined text constants to user-friendly strings.
-- **Observation List Links**: Generates clickable links for observation list IDs, facilitating quick access to detailed records.
+- **Geometry Transformation**: Converts geometry data to GeoJSON or WKT format, and provides links for spatial data visualization. **geom**: Clickable geometry link to show location on the map. **geom_nolink**: Geometry as simplified WKT text - not clickable. **geom_wkt**: Normal WKT representation of the geometry.
+- **Date Transformation**: **date_yearonly**: Extracts the year from date strings for simplified date representation.
+- **Text Translation**: **translate**: Translates predefined text constants *str_string* to user-friendly strings.
+- **Observation List Links**: **obslistlink**: Generates clickable links for observation list IDs, facilitating quick access to detailed records.
 
-Parameters:
+Parameters example:
 ```json
 {
     "obm_geometry": "geom",
+    "other_geometry": "geom_nolink",
     "obm_uploading_id": "uplid",
-    "tema": "mmm",
-    "date_yearonly": "year",
-    "translate": "text",
-    "obslistlink": "link"
+    "date_time_field": "date_yearonly",
+    "method": "translate",
+    "obm_observation_list_id": "obslistlink"
 }
 ```
