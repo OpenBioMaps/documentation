@@ -18,10 +18,10 @@ Welcome to OpenBioMaps' documentation!
    admin_pages.rst
    data_access.rst
    api.rst
-   server_install.md
-   pwa.md
+   server_install.rst
+   pwa.rst
    mobile_application.rst
-   developer_hints.md
+   developer_hints.rst
    faq.rst
 
 :download:`Download docs as pdf <docs/openbiomaps.pdf>` | :download:`Download docs as epub <docs/openbiomaps.epub>`
