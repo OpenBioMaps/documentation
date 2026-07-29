@@ -515,9 +515,25 @@ Parameters:
 
 results_buttons
 ---------------
-Save and other buttons above the results section, under the map.
+The `results_buttons` module provides a set of interactive buttons for downloading, sharing, and bookmarking data on the map page. It supports various export formats such as CSV, GPX, KML, SHP, and JSON, depending on the enabled modules. The module also includes functionalities for saving queries, results, and spatial selections, as well as sharing data with other OpenBioMaps projects.
 
-No parameters
+Key functionalities include:
+- **Download Options**: Export data in multiple formats (CSV, GPX, KML, SHP, JSON) if the corresponding modules are enabled.
+- **Share Options**: Save and share queries, results, and spatial selections.
+- **Bookmarking**: Bookmark queries for quick access.
+- **Admin Page**: Manage download requests and user permissions for data exports.
+
+Example configuration:
+```json
+{
+    "bookmarks": "off",
+    "sharing": "off",
+    "server_share": "on"
+}
+```
+By default, bookmarks are enabled, while sharing and server sharing are disabled. The download options appear automatically when the individual download modules are enabled.
+
+No additional parameters required.
 
 results_asStable
 ----------------
