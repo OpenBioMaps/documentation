@@ -585,13 +585,22 @@ Parameters:
 
 transform_data
 --------------
-Transform fields to improve readability in web tables and exports.  E.g. In the result list, it can transform geometry to WKT.
-    
+The `transform_data` module is designed to transform record values in result areas, enhancing the readability and usability of data in web tables and exports. It supports various transformations such as converting geometries to WKT (Well-Known Text), extracting year from date strings, translating text, and creating links for observation lists.
+
+Key functionalities include:
+- **Geometry Transformation**: Converts geometry data to GeoJSON or WKT format, and provides links for spatial data visualization.
+- **Date Transformation**: Extracts the year from date strings for simplified date representation.
+- **Text Translation**: Translates predefined text constants to user-friendly strings.
+- **Observation List Links**: Generates clickable links for observation list IDs, facilitating quick access to detailed records.
+
 Parameters:
 ```json
 {
     "obm_geometry": "geom",
     "obm_uploading_id": "uplid",
-    "tema":"mmm"
+    "tema": "mmm",
+    "date_yearonly": "year",
+    "translate": "text",
+    "obslistlink": "link"
 }
 ```
