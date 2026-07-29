@@ -178,14 +178,23 @@ Parameters:
 ["column names"]
 ```
 
-custom_notify
--------------
-Creates custom Postgres-based notify events. This is just an idea; the module is not ready.
+cameratrap_api
+--------------
+The cameratrap_api module is used to communicate between the dashboard and the Nextcloud API. It provides functionalities for managing cameras and analyses, including uploading and downloading images, running analyses, and managing Nextcloud credentials.
 
 No parameters
 
-custom_data_check
+nextcloud_connect
 -----------------
+The nextcloud_connect module is used to connect with a Nextcloud server. It provides functionalities for managing user profiles and issuing JWT tokens for authentication.
+
+No parameters
+
+validation
+----------
+The validation module provides an internal API for validation algorithms. It includes functionalities for managing validation rules, validating records, and logging validation actions.
+
+No parameters
 Custom data checks of the upload data.
 
 No parameters
