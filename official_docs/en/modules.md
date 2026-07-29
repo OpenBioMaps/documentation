@@ -554,9 +554,15 @@ Compact results table on the map page.
 
 results_specieslist
 -------------------
-Species list summary on the map page
+The `results_specieslist` module provides a summary of species found in the current query on the map page. It displays a list of species along with the number of records and individuals for each species. This module is useful for quickly assessing the biodiversity represented in the query results.
 
-No parameters
+Key functionalities include:
+- **Species List**: Displays a list of species names found in the query results.
+- **Record Count**: Shows the number of records associated with each species.
+- **Individual Count**: Indicates the number of individual organisms recorded for each species.
+- **Sorting Options**: Allows sorting the species list alphabetically or by taxonomy.
+
+No parameters required.
 
 results_summary
 ---------------
