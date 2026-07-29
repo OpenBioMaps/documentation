@@ -3,3 +3,4 @@
 .gitignore~
 **/_build/
 **/_build/
+.aider*
