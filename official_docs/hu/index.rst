@@ -18,8 +18,8 @@
    admin_pages.rst
    data_access.rst
    api.rst
-   server_install.rst
-   pwa.rst
+   server_install.md
+   pwa.md
    mobile_application.rst
    developer_hints.rst
    faq.rst
