@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'openbiomaps'
-copyright = u'OpenBioMaps Konzorcium 2015 - 2023'
+copyright = u'OpenBioMaps Konzorcium 2015 - 2026'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
