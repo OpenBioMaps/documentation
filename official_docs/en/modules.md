@@ -560,9 +560,13 @@ No parameters
 
 results_summary
 ---------------
-A summary of results.
+The `results_summary` module provides a concise overview of query results on the map page. It displays the total number of records found based on the current query parameters. This module is particularly useful for quickly assessing the scope of data returned by a query without delving into detailed records.
 
-No parameters
+Key functionalities include:
+- **Record Count**: Displays the total number of distinct records found.
+- **Access Control**: Integrates with user access rules to ensure that sensitive data is only counted if the user has the appropriate permissions.
+
+No parameters required.
 
 results_table
 -------------
