@@ -434,8 +434,15 @@ Parameters:
 
 list_manager
 ------------
+The `list_manager` module is designed to manage lists used for data uploads and queries within the OpenBioMaps platform. It provides a user interface for creating, editing, and saving lists of terms associated with specific database columns and tables. This module is essential for organizing and managing data entries efficiently.
 
-No parameters
+Key functionalities include:
+- **List Creation and Editing**: Users can create new lists or edit existing ones through a modal interface. Lists are associated with specific columns and tables in the database.
+- **Data Integration**: The module integrates with the database to fetch and save list data, ensuring that lists are always up-to-date with the latest entries.
+- **User Interface**: A modal dialog allows users to input list data, which can be saved or generated from existing data.
+- **Error Handling**: Provides feedback and error messages to users if list operations fail, ensuring a smooth user experience.
+
+No parameters required.
 
 massive_edit
 ------------
