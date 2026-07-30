@@ -318,7 +318,7 @@ Examples
 **Authentication**
 -----------------
 Usage example:
-``curl -u mobile:123 http://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=abc123&scope=get_form_data+get_form_list+put_data" | jq``
+``curl -u mobile:123 https://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=mysecretpassword&scope=get_form_data+get_form_list+put_data" | jq``
 
 Specific error messages:
 
@@ -334,27 +334,27 @@ Successful response:
 .. code-block:: json
 
   {
-    "access_token": "2cf59c094cc83498355ee9f520848efab6f71fe0",
+    "access_token": "2cf59c094cc83498355ee9f520848efab6f71fe02",
     "expires_in": 3600,
     "token_type": "Bearer",
     "scope": "get_form_data get_form_list put_data apiprofile",
-    "refresh_token": "e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f"
+    "refresh_token": "e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4fb"
   }
 
 Using refresh token:
 
-``curl -F 'grant_type=refresh_token' -F 'refresh_token=e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f' -F 'client_id=R' http://openbiomaps.org/oauth/token.php | jq``
+``curl -F 'grant_type=refresh_token' -F 'refresh_token=e14dd3e0f13dffb17d36b2acfe9d161fd4ec1d4f3' -F 'client_id=R' https://openbiomaps.org/oauth/token.php | jq``
     
 Returns:
 
 .. code-block:: json
 
   {
-    "access_token":"ccc1d3e0f13dffb17d36b2acfe9d161fd4ec1d4d",
+    "access_token":"ccc1d3e0f13dffb17d36b2acfe9d161fd4ec1d4de",
     "expires_in":3600,
     "token_type":"Bearer",
     "scope":"get_form_data get_form_list",
-    "refresh_token":"a1e1d3e0f13dffb17d36b2acfe9d161fd4ec1d27"
+    "refresh_token":"a1e1d3e0f13dffb17d36b2acfe9d161fd4ec1d27c"
   }
 
 .. _get_form_data_example:
@@ -401,7 +401,7 @@ Successful response:
         "default_value": "...",
         "column": "species",
         "short_name": "Scientific species name",
-        "list": [...],
+        "list": ["..."],
         "control": "nocheck",
         "count": "{}",
         "type": "list",
@@ -425,7 +425,8 @@ Successful response:
         "custom_function": null,
         "column_label": null,
         "field_description": "..."
-       }, {...} ]
+       }
+    ]
    }
   }
 
@@ -434,7 +435,7 @@ Successful response:
 -----------------
 Usage example:
 
-``curl http://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3e&scope=get_form_list"``
+``curl https://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3eb&scope=get_form_list"``
 
 .. code-block:: json
 
@@ -578,7 +579,9 @@ Result of a successful call:
 
 .. code-block:: json
 
-  {"status":"success","data":[{"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"}]}
+  {"status":"success",
+   "data":[
+    {"id":"1","form_id":"95","html":"<div>...",,"task_description":"<div>...","enabled":"t","title":"Gyakorlás I.","qorder":"1","project_table":"dinpi"}]}
 
 ``curl -F 'scope=get_training_questions' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
@@ -586,7 +589,9 @@ Result of a successful call:
 
 .. code-block:: json
 
-  {"status":"success","data":[ {"qid":"1", "training_id":"1", "caption":"...?", "answers":[{"Answer": "...","isRight": "false" } ],"qtype":"multiselect"}]}
+  {"status":"success",
+   "data":[
+    {"qid":"1", "training_id":"1", "caption":"...?", "answers":[{"Answer": "...","isRight": "false" } ],"qtype":"multiselect"}]}
     
 qtype can be multi-select or single select
     
@@ -606,7 +611,12 @@ Result of a successful call:
 
 .. code-block:: json
 
-  {"status":"success","data":{"95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},"96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},"98":{"mean":null,"count":"1","max":null}}}
+  {"status":"success",
+   "data":{
+    "95":{"mean":"0.50000000000000000000","count":"2","max":"0.7"},
+    "96":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},
+    "97":{"mean":"0.70000000000000000000","count":"1","max":"0.7"},
+    "98":{"mean":null,"count":"1","max":null}}}
     
 ``curl -F 'scope=training_toplist' -F 'access_token=5ac3...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
@@ -674,7 +684,7 @@ filename:       (the file name of the output file)
 
 Get the list of active (known) OpenBioMaps servers using query API:
 
-``curl http://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'``
+``curl https://openbiomaps.org/projects/openbiomaps_network/index.php -G -d 'query={"available":"up"}&output=json&filename=results.json'``
 
 Get a filtered table from a non-default table:
 
@@ -687,4 +697,4 @@ LQ:             (display data from a stored query result)
 
 Usage example:
 
-``wget http://openbiomaps.org/projects/checkitout/?report=2@szamossag&output=csv``
+``wget https://openbiomaps.org/projects/checkitout/?report=2@szamossag&output=csv``

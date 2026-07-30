@@ -12,7 +12,7 @@ Tag this image as old:
 
 Point the docker-compose.yml to this old tag:
 
-``` yml
+``` yaml
 ...
 mapserver
     image: openbiomaps/mapserver:old
