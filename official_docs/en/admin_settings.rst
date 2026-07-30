@@ -103,7 +103,7 @@ Translations
         Feel free to create, add and improve translations!
 
 - Local translations:
-        Use the "str_" prefix, followed by some pretty understandable English expressions. E.g.: str_observations, the translation of which must be given in the given active language. In this case, observation.
+        Use the ``str_`` prefix, followed by some pretty understandable English expressions. E.g.: str_observations, the translation of which must be given in the given active language. In this case, observation.
 
 See local translations in action here: 
    https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
