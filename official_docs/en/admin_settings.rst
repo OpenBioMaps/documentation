@@ -12,40 +12,42 @@ Administrative functions can be delegated to user groups.
 
 Database tables and columns
 ---------------------------
-Here you can create and manage SQL tables and views. Tables and table columns created here are registered in the OBM metadata and thus become available through the OBM interfaces. Tables and table fields created via standard SQL clients are not automatically made available to OBM! The names of tables created must not contain accented characters, spaces or other special characters! Avoid using capital letters! The _ character is allowed. It is strongly recommended that you add a description when creating a table. The same rules apply to field names.
+The `Database tables and columns` section allows you to create and manage SQL tables and views. Tables and columns created here are registered in the OBM metadata, making them accessible through the OBM interfaces. Note that tables and fields created via standard SQL clients are not automatically available to OBM.
 
-Here, you can set which columns from each table should be available for form creation and queries in the web interface. 
+### Table and Column Naming
+- **Naming Rules**: Avoid accented characters, spaces, or special characters in table names. Use lowercase letters and underscores (_) for separation. Adding a description when creating a table is strongly recommended.
 
-Also, here you can specify the columns to be specially handled. This means that columns that are used by certain modules without knowing the exact name of the column or on the same basis are available in meta queries. Such privileged columns are the species name, date, data collector, copy number, and location columns. For the location column, the X, and Y coordinate columns and the Postgres geometry column can be specified separately. For date, multiple date columns can be specified, for data collector, multiple columns can be specified. For species names, the column containing the scientific name and national name can be specified separately if available. All other columns must be set to the "data" type.
+### Column Management
+- **Available Columns**: Specify which columns should be available for form creation and queries in the web interface.
+- **Special Columns**: Define columns for special handling, such as species name, date, data collector, and location. These columns are used by certain modules without knowing the exact name.
 
-    - data: for general purpose columns
-    - spatial geometry: this column can be used for map creation
-    - scientific species name: this column can be used in taxon management
-    - alternative names: this column can be used in taxon management
-    - date this column can be used in date filters
-    - no. of individuals: can be used in summary functions
-    - latitude: together with longitude can be used for creating spatial geometry
-    - longitude: together with latitude can be used for creating spatial geometry
-    - citing: used in summary functions
-    - attachment: file attachments column
-    - UTM Zone: used in spatial geometry creation
+### Column Types
+- **Data**: General purpose columns.
+- **Spatial Geometry**: Used for map creation.
+- **Scientific Species Name**: Used in taxon management.
+- **Alternative Names**: Used in taxon management.
+- **Date**: Used in date filters.
+- **Number of Individuals**: Used in summary functions.
+- **Latitude/Longitude**: Used for creating spatial geometry.
+- **Citing**: Used in summary functions.
+- **Attachment**: File attachments column.
+- **UTM Zone**: Used in spatial geometry creation.
 
-There are two special fields in this table: comment, command
+### Special Fields
+- **Comment**: Contains descriptions of the column content (metadata). Adding meta descriptions is recommended.
+- **Command**: Define settings or execute actions (e.g., rename or delete columns).
 
-The 'comment' field should contain descriptions of the content of the columns (metadata). It is strongly recommended to add some meta description for each column!
+### Column Commands
+- **Set SRID**: For `obm_geometry`, set the SRID using `SET srid:4326`.
+- **Use Rules**: For `obm_id`, specify rule usage with `SET use_rules:1`.
+- **Rename Column**: Use `RENAME:new-name`. Note: Renaming can corrupt upload forms.
+- **Drop Column**: Use `DROP`. Note: Deleting can corrupt upload forms; update related forms accordingly.
 
-Width the 'command' field you define some settings or can execute some actions (currently rename or delete) on columns.
+### SQL Console
+An SQL console is available for operators with separate authentication. It provides a drop-down list of all project-related tables in the SQL database. Tables not registered as accessible to OBM are marked in red.
 
-- In the case of the obm_geometry column, you can set the SRID (Spatial Reference System ID) for the column. The value entered must be in the format `SET srid:4326` and will be stored in biomaps/header_names/f_srid and used by the application in the global variable SRID_C.
-- For the obm_id column, you can specify whether the rules table should be used as follows: SET use_rules:1
-- Renaming a column is possible with the RENAME:new-name command syntax. Be careful, if you rename a column, the upload forms will be corrupted!
-- Dropping a column is possible with the DROP command. Be careful, if you delete a column, the upload forms will be corrupted! So you have to update your related upload forms, but the offline clients with already downloaded forms may not be able to synchronise the data.
-
-An SQL console is available at the top of the page, which can only be used with operator status and after separate authentication.
-
-Also available here is a drop-down list of all the tables that start with the name of our project in the SQL database. Of these, the ones marked in red are not handled by the OBM interface because they are not registered as tables accessible to OBM.
-
-By managing Views, you can also implement a special function, namely to replace a data table with a View. In such a case, the system creates a Schema for our project with the same name as the base table and moves our original tables there, for which it also creates the corresponding INSERT/UPDATE/DELETE Rules. This feature can be useful when we have a large data table and there are some flows or triggers that are too slow to use, or we want to create custom versions of our data table to meet some specific user needs.
+### Managing Views
+Replace data tables with Views to create custom versions or improve performance. The system creates a Schema with the same name as the base table, moving original tables and creating corresponding INSERT/UPDATE/DELETE Rules. This is useful for large data tables with slow flows or triggers.
 
 
 .. _data-access:
