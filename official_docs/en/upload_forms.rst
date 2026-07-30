@@ -412,8 +412,8 @@ Columns from other upload-forms can be added here with the following format: for
 The listed column will appear after this column. The data entered in the pseudo-columns will be uploaded using the other form's definition. Using this feature lets uploaders upload data into two tables at once.
 
 
-The relations pseudolanguage definition
------------------------------------
+The relations language definition
+---------------------------------
 
 ( rel_field = rel_statement ) { rel_type = rel_value } , ( rel_field = rel_statement ) { rel_type = rel_value } , ...
 
@@ -456,8 +456,8 @@ rel_value:
              
      Else can be anything - may be ignored - depending on the used function
 
-Examples
-........
+Pseudo column examples
+......................
 
 On the `tarsus_length` column
 

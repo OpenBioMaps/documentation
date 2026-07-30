@@ -65,9 +65,9 @@ The main OBM API interface. Basically designed for R and mobile clients. It uses
 
 Variables
 .........
-- scope:      data methods: see below
-- value:      Most scopes use
-- header:     (put data) JSON list of table columns' names
+- scope:          data methods: see below
+- value:          Most scopes use
+- header:         (put data) JSON list of table columns' names
 - ignore_warning: (put data) ignore upload warnings
 - form_id:        (put_data) set form id
 - data:           (put data) JSON array of uploaded data
@@ -313,11 +313,11 @@ PATCH type scopes
 Update specific settings
 
 
-Examples
-========
-**Authentication**
------------------
-Usage example:
+PDS examples
+============
+**Authentication examples**
+---------------------------
+CURL usage:
 ``curl -u mobile:123 https://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=mysecretpassword&scope=get_form_data+get_form_list+put_data" | jq``
 
 Specific error messages:
@@ -359,9 +359,9 @@ Returns:
 
 .. _get_form_data_example:
 
-**get_form_data**
------------------
-Usage example:
+**get_form_data examples**
+--------------------------
+CURL usage:
 
 ``curl -F 'access_token=c53c9ec690fede4c3' -F 'scope=get_form_data' -F 'value=246' -F 'project=dead_animals' https://openbiomaps.org/projects/dead_animals/v2.3/pds.php | jq``
 
@@ -431,9 +431,9 @@ Successful response:
   }
 
 
-**get_form_list**
------------------
-Usage example:
+**get_form_list examples**
+--------------------------
+CURL usage:
 
 ``curl https://openbiomaps.org/projects/checkitout/pds.php -d "access_token=d4fba6585303bba8da3e6afc1eb9d2399499ef3eb&scope=get_form_list"``
 
@@ -461,9 +461,9 @@ Usage example:
     }]
   }
 
-**Data upload**
----------------
-Usage example:
+**Data upload examples**
+------------------------
+CURL usage:
 
   curl -i -X POST \\ |br|
   -H "Content-Type:application/x-www-form-urlencoded" \\ |br|
@@ -475,7 +475,7 @@ Usage example:
   -d "ignore_warning=1" \\ |br|
   'https://openbiomaps.org/projects/checkitout/v2.5/pds.php'
 
-Javascript example:
+Javascript usage:
 
 .. code-block:: javascript
 
@@ -527,9 +527,9 @@ The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from 
     http://localhost/biomaps/pds.php
 
     
-**get_project_list**
+**get_project_list example**
 --------------------
-Usage example:
+CURL usage:
 
 It is a non-authenticated request on PDS:
 
@@ -571,7 +571,7 @@ Training explanations and examples
 ----------------------------------
 No client from API 2.6.
 
-Examples:
+Curl usage:
 
 ``curl -F 'scope=get_trainings' -F 'access_token=9d45...' -F 'project=dinpi' http://localhost/biomaps/pds.php``
 
