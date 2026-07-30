@@ -21,7 +21,7 @@ The name for the upload form. This should be unique within a project.
 
 You can make a copy of a form by renaming it.
 
-This name can be multilingual if you use the ''str_'' tag. See more about translations :ref:`translations`
+This name can be multilingual if you use the ``str_`` tag. See more about translations :ref:`translations`
 
 Form access
 ...........

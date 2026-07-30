@@ -63,8 +63,8 @@ PDS API
 -------
 The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication. Due to OAUTH processing it is only accept application/x-www-form-urlencoded and multipart/form-data requests!
 
-Variables
-.........
+PDS variables
+.............
 - scope:          data methods: see below
 - value:          Most scopes use
 - header:         (put data) JSON list of table columns' names
@@ -528,7 +528,7 @@ The ZIP file name is 'Sun May 13 08:52:51 CEST 2018.zip' which was created from 
 
     
 **get_project_list example**
---------------------
+----------------------------
 CURL usage:
 
 It is a non-authenticated request on PDS:
@@ -670,8 +670,8 @@ WEB API
 The index.php is also an API service in some cases (?query=) for _GET requests only and for unauthenticated requests.
 This API uses text_filter modules to assemble an SQL query statement.
 
-Variables
-.........
+WEB API variables
+.................
 query:          (API endpoint)
 
 qtable:         (data table for data retrieve)
