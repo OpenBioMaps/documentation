@@ -314,3 +314,12 @@ Here you can set the project name displayed in the header of the project page (s
 
 Data management
 ---------------
+The Data Management section provides tools for managing and summarizing data uploads and observation lists. It includes features for viewing observation lists by uploader, date, and tracklog, as well as summarizing data uploads by user and table.
+
+Key functionalities include:
+- **Observation Lists**: View observation lists filtered by uploader, date, or tracklog. This allows administrators to quickly access and review data submissions.
+- **Data Upload Summary**: Provides a summary of data uploads, showing the number of records uploaded by each user for each table. This is useful for monitoring data contributions and identifying active contributors.
+- **User Activity**: Lists observation lists submitted by users in the last 90 days, helping to track recent activity and engagement.
+- **Tracklogs**: Displays tracklogs submitted in the last 30 days, including details such as start and end times, track names, and associated observation lists.
+
+The interface also includes interactive tables for exploring data, with options for filtering and sorting to facilitate data analysis and review.
