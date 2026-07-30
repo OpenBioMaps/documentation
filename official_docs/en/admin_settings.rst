@@ -54,7 +54,7 @@ Replace data tables with Views to create custom versions or improve performance.
 
 Data access
 -----------
-The `Data access` section provides an overview of the access rules set for the project and their current statuses. It allows administrators to view and manage access levels for different user groups and data tables.
+The `Data access` section provides an overview of the access rules set for the project and their current statuses. It allows administrators to view access levels for different user groups on the project and all managed data tables.
 
 Key functionalities include:
 - **Access Levels**: Define access levels for reading and modifying data. The available levels are "everybody", "logged-in users", and "specified group members".
@@ -67,7 +67,7 @@ Navigation:
 - [web] -> [profile] -> [project administration] -> [data access]
 - [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
 
-This section is crucial for maintaining data security and ensuring that only authorized users have access to sensitive information.
+This section is crucial for checking data security and ensuring that only authorized users have access to sensitive information.
 
 
 
