@@ -194,13 +194,23 @@ A typical simple SQL query looks like this:
 
 Map settings
 ------------
+The `Map settings` section provides comprehensive tools for configuring and managing map layers and spatial data within the OpenBioMaps platform. It includes settings for both the web map interface and the MapServer configuration.
+
 Web Map Layers
 ..............
-OpenLayers settings for web-map interface
+- **OpenLayers Settings**: Configure the web map interface using OpenLayers. This includes setting the map center, zoom levels, and available layers. Users can define which layers are visible by default and customize the map's appearance and behavior.
+
+- **Layer Management**: Manage the layers displayed on the map, including adding, removing, and configuring layers. Each layer can be associated with specific data tables and queries, allowing for dynamic data visualization.
 
 MapServer settings
 ..................
-The raw version of mapfile.  See the MapServer documentation for updating this file.
+- **Mapfile Configuration**: The raw version of the mapfile is available for advanced users who need to update the MapServer configuration. This includes defining data sources, styling, and rendering options for map layers.
+
+- **Spatial Reference Systems**: Configure the spatial reference systems (SRIDs) used by the map layers. This ensures that spatial data is accurately represented and aligned across different datasets.
+
+- **Extent and Projection**: Define the map's extent and projection settings to control how spatial data is displayed. This includes setting the default projection and ensuring compatibility with various spatial data formats.
+
+These settings are crucial for ensuring that spatial data is accurately represented and easily accessible within the OpenBioMaps platform.
 
 
 Members
