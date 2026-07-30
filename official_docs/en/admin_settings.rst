@@ -120,7 +120,16 @@ Users' saved and unfinished files or form data uploads can be found here. Once u
 
 File manager
 ------------
-List of uploaded attachments. Attachments can be managed here. There is a possibility to export all attachments belonging to a data table into one compressed file using the export functionality. Exporting can take a long time due to it using a "Background-Job". When it is ready a link will appear next to the export button to access the produced file.
+The `File manager` section provides a comprehensive interface for managing uploaded attachments within the OpenBioMaps platform. It allows users to view, organize, and export attachments associated with data tables.
+
+Key functionalities include:
+- **Attachment Listing**: Displays a list of all uploaded attachments, allowing users to browse and manage files efficiently.
+- **Export Functionality**: Users can export all attachments related to a specific data table into a single compressed file. This process is handled as a "Background-Job", and a download link is provided once the export is complete.
+- **Filtering and Sorting**: Offers options to filter and sort attachments based on various criteria, such as upload date, file type, and associated data records.
+- **Access Control**: Ensures that only authorized users can manage and export attachments, maintaining data security and integrity.
+- **Interactive Interface**: Provides an intuitive interface for editing file comments, linking files to data records, and managing file associations.
+
+These features facilitate efficient management of attachments, ensuring that users can easily access and organize their data files.
 
 
 SQL query settings
