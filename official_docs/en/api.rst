@@ -2,12 +2,13 @@
 
     <br>
     
-API documentation
-*****************
+PDS API documentation
+*********************
 HTTP methods:  GET, POST
 
 API tools:  Authentication, Data retrieval, Data push, Settings update
 
+This is the first OBM API (1.0, 2.0–2.5), which is scheduled to be phased out from September 2026 and replaced by API v3 (openapi).
 
 API handlers:
 -------------
@@ -318,6 +319,7 @@ PDS examples
 **Authentication examples**
 ---------------------------
 CURL usage:
+
 ``curl -u mobile:123 https://openbiomaps.org/oauth/token.php -d "grant_type=password&username=foo@foobar.hu&password=mysecretpassword&scope=get_form_data+get_form_list+put_data" | jq``
 
 Specific error messages:
