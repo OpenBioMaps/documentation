@@ -5,7 +5,20 @@ Administrative settings
 
 Administrative access
 ---------------------
-Administrative functions can be delegated to user groups.
+The `Administrative access` section allows project administrators to delegate specific administrative functions to user groups. Each function available under the admin_pages can be assigned access rights to different groups created within the project. This enables fine-grained control over who can perform certain administrative tasks.
+
+Key functionalities include:
+- **Function Assignment**: Assign access to specific administrative functions such as database management, data access, and module configuration to user groups.
+- **Group Management**: Create and manage user groups with varying levels of access to administrative functions.
+- **Access Control**: Ensure that only authorized groups have access to sensitive administrative functions, enhancing project security.
+
+Example of access settings for a project:
+- **General**: Basic access for all users.
+- **Mobilapptester**: Access to mobile app testing functions.
+- **Űrlapok**: Access to form management functions.
+- **tesztcsoport**: Access to testing and development functions.
+
+This section is crucial for maintaining a secure and organized administrative structure within the OpenBioMaps platform.
 
 
 .. _database-columns:
