@@ -54,13 +54,20 @@ Replace data tables with Views to create custom versions or improve performance.
 
 Data access
 -----------
-Overview of set access rules and their work statuses.
+The `Data access` section provides an overview of the access rules set for the project and their current statuses. It allows administrators to view and manage access levels for different user groups and data tables.
 
-[web] -> [profile] -> [project administration] -> [data access]
+Key functionalities include:
+- **Access Levels**: Define access levels for reading and modifying data. The available levels are "everybody", "logged-in users", and "specified group members".
+- **Documentation Links**: Provides links to documentation for further information on access settings.
+- **Access Rules by Table**: Displays access rules for each data table, indicating whether restrictions are enabled or disabled.
+- **Restriction Management**: Allows enabling or disabling restrictions based on group access levels and predefined rules.
+- **Trigger Management**: Checks the status of triggers associated with access rules, ensuring they are enabled for proper operation.
 
-[system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+Navigation:
+- [web] -> [profile] -> [project administration] -> [data access]
+- [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
 
-View the general access setting of the project per the data table. This is not configurable here!
+This section is crucial for maintaining data security and ensuring that only authorized users have access to sensitive information.
 
 
 
