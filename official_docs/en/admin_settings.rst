@@ -106,16 +106,22 @@ Upload forms
 
 Functions
 ---------
-Some pre-built triggers can be turned on and off here, and the associated functions can be edited.
+The `Functions` section provides tools for managing SQL rules and triggers associated with project tables. It includes two main tables: Rules and Triggers, which list the rules (e.g., instead of) and triggers associated with the project's tables.
 
-You can also view the status of all triggers and SQL Rules associated with the selected table.
+### Rules and Triggers Tables
+- **Rules Table**: Displays SQL rules associated with each project table, allowing administrators to manage and review rule configurations.
+- **Triggers Table**: Lists triggers for each table, providing an overview of active and inactive triggers.
 
-Built-in triggers:
+### Trigger Functions
+The section allows for the creation, editing, and toggling of three types of trigger functions based on templates:
 
- - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
- - Taxon name auto update: updates the data table on taxon table updating,
- - History: create history lines in the "history table" after updating and deleting rows,
- - Access rules: create a rule line in the "rules table" after inserting a new row. The rules applied are from the form settings.
+- **Taxon List Trigger**: Automatically inserts species names from the species name field into the taxon table. This is useful for projects with continuously expanding species lists, ensuring that new species are added to the taxon table for maintenance and use in forms and search interfaces.
+
+- **History Trigger**: When enabled, this trigger logs every record-level modification in the target table, including the modification timestamp and the number of changes. This is essential for tracking changes and maintaining a history of data modifications.
+
+- **Access Rules Trigger**: Manages row-level access rules for records in project tables. This trigger can automatically restrict access to records based on a sensitive data field value or assign access rights specified in the upload form to groups. It is particularly useful for projects with restricted data access, allowing for differentiated access control for logged-in users.
+
+These triggers are crucial for maintaining data integrity, security, and usability within the OpenBioMaps platform.
 
 
 Species names
