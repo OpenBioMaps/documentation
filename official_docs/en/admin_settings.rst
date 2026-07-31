@@ -8,15 +8,14 @@ Administrative access
 The `Administrative access` section allows project administrators to delegate specific administrative functions to user groups. Each function available under the admin_pages can be assigned access rights to different groups created within the project. This enables fine-grained control over who can perform certain administrative tasks.
 
 Key functionalities include:
-- **Function Assignment**: Assign access to specific administrative functions such as database management, data access, and module configuration to user groups.
-- **Group Management**: Create and manage user groups with varying levels of access to administrative functions.
-- **Access Control**: Ensure that only authorized groups have access to sensitive administrative functions, enhancing project security.
+
+ - **Function Assignment**: Assign access to specific administrative functions such as database management, data access, and module configuration to user groups.
+ - **Access Control**: Ensure that only authorized groups have access to sensitive administrative functions, enhancing project security.
 
 Example of access settings for a project:
-- **General**: Basic access for all users.
-- **Mobilapptester**: Access to mobile app testing functions.
-- **Űrlapok**: Access to form management functions.
-- **tesztcsoport**: Access to testing and development functions.
+ - **User-managers**: User and groups functions.
+ - **Data-curators**: Access to species names, files and data manager.
+ - **Upload-form-editors**: Access to form management functions.
 
 This section is crucial for maintaining a secure and organized administrative structure within the OpenBioMaps platform.
 
@@ -28,33 +27,33 @@ Database tables and columns
 The `Database tables and columns` section allows you to create and manage SQL tables and views. Tables and columns created here are registered in the OBM metadata, making them accessible through the OBM interfaces. Note that tables and fields created via standard SQL clients are not automatically available to OBM.
 
 ### Table and Column Naming
-- **Naming Rules**: Avoid accented characters, spaces, or special characters in table names. Use lowercase letters and underscores (_) for separation. Adding a description when creating a table is strongly recommended.
+ - **Naming Rules**: Avoid accented characters, spaces, or special characters in table names. Use lowercase letters and underscores (_) for separation. Adding a description when creating a table is strongly recommended.
 
 ### Column Management
-- **Available Columns**: Specify which columns should be available for form creation and queries in the web interface.
-- **Special Columns**: Define columns for special handling, such as species name, date, data collector, and location. These columns are used by certain modules without knowing the exact name.
+ - **Available Columns**: Specify which columns should be available for form creation and queries in the web interface.
+ - **Special Columns**: Define columns for special handling, such as species name, date, data collector, and location. These columns are used by certain modules without knowing the exact name.
 
 ### Column Types
-- **Data**: General purpose columns.
-- **Spatial Geometry**: Used for map creation.
-- **Scientific Species Name**: Used in taxon management.
-- **Alternative Names**: Used in taxon management.
-- **Date**: Used in date filters.
-- **Number of Individuals**: Used in summary functions.
-- **Latitude/Longitude**: Used for creating spatial geometry.
-- **Citing**: Used in summary functions.
-- **Attachment**: File attachments column.
-- **UTM Zone**: Used in spatial geometry creation.
+ - **Data**: General purpose columns.
+ - **Spatial Geometry**: Used for map creation.
+ - **Scientific Species Name**: Used in taxon management.
+ - **Alternative Names**: Used in taxon management.
+ - **Date**: Used in date filters.
+ - **Number of Individuals**: Used in summary functions.
+ - **Latitude/Longitude**: Used for creating spatial geometry.
+ - **Citing**: Used in summary functions.
+ - **Attachment**: File attachments column.
+ - **UTM Zone**: Used in spatial geometry creation.
 
 ### Special Fields
-- **Comment**: Contains descriptions of the column content (metadata). Adding meta descriptions is recommended.
-- **Command**: Define settings or execute actions (e.g., rename or delete columns).
+ - **Comment**: Contains descriptions of the column content (metadata). Adding meta descriptions is recommended.
+ - **Command**: Define settings or execute actions (e.g., rename or delete columns).
 
 ### Column Commands
-- **Set SRID**: For `obm_geometry`, set the SRID using `SET srid:4326`.
-- **Use Rules**: For `obm_id`, specify rule usage with `SET use_rules:1`.
-- **Rename Column**: Use `RENAME:new-name`. Note: Renaming can corrupt upload forms.
-- **Drop Column**: Use `DROP`. Note: Deleting can corrupt upload forms; update related forms accordingly.
+ - **Set SRID**: For `obm_geometry`, set the SRID using `SET srid:4326`.
+ - **Use Rules**: For `obm_id`, specify rule usage with `SET use_rules:1`.
+ - **Rename Column**: Use `RENAME:new-name`. Note: Renaming can corrupt upload forms.
+ - **Drop Column**: Use `DROP`. Note: Deleting can corrupt upload forms; update related forms accordingly.
 
 ### SQL Console
 An SQL console is available for operators with separate authentication. It provides a drop-down list of all project-related tables in the SQL database. Tables not registered as accessible to OBM are marked in red.
@@ -70,15 +69,17 @@ Data access
 The `Data access` section provides an overview of the access rules set for the project and their current statuses. It allows administrators to view access levels for different user groups on the project and all managed data tables.
 
 Key functionalities include:
-- **Access Levels**: Define access levels for reading and modifying data. The available levels are "everybody", "logged-in users", and "specified group members".
-- **Documentation Links**: Provides links to documentation for further information on access settings.
-- **Access Rules by Table**: Displays access rules for each data table, indicating whether restrictions are enabled or disabled.
-- **Restriction Management**: Allows enabling or disabling restrictions based on group access levels and predefined rules.
-- **Trigger Management**: Checks the status of triggers associated with access rules, ensuring they are enabled for proper operation.
+
+ - **Access Levels**: Define access levels for reading and modifying data. The available levels are "everybody", "logged-in users", and "specified group members".
+ - **Documentation Links**: Provides links to documentation for further information on access settings.
+ - **Access Rules by Table**: Displays access rules for each data table, indicating whether restrictions are enabled or disabled.
+ - **Restriction Management**: Allows enabling or disabling restrictions based on group access levels and predefined rules.
+ - **Trigger Management**: Checks the status of triggers associated with access rules, ensuring they are enabled for proper operation.
 
 Navigation:
-- [web] -> [profile] -> [project administration] -> [data access]
-- [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+
+ - [web] -> [profile] -> [project administration] -> [data access]
+ - [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
 
 This section is crucial for checking data security and ensuring that only authorized users have access to sensitive information.
 
@@ -102,10 +103,11 @@ Some pre-built triggers can be turned on and off here, and the associated functi
 You can also view the status of all triggers and SQL Rules associated with the selected table.
 
 Built-in triggers:
-    - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
-    - Taxon name auto update: updates the data table on taxon table updating,
-    - History: create history lines in the "history table" after updating and deleting rows,
-    - Access rules: create a rule line in the "rules table" after inserting a new row. The rules applied are from the form settings.
+
+ - Taxon list auto update: Add 'scientific name' and 'alternative names' to the taxon table which is used by the taxon filter,
+ - Taxon name auto update: updates the data table on taxon table updating,
+ - History: create history lines in the "history table" after updating and deleting rows,
+ - Access rules: create a rule line in the "rules table" after inserting a new row. The rules applied are from the form settings.
 
 
 Species names
@@ -145,6 +147,7 @@ File manager
 The `File manager` section provides a comprehensive interface for managing uploaded attachments within the OpenBioMaps platform. It allows users to view, organize, and export attachments associated with data tables.
 
 Key functionalities include:
+
 - **Attachment Listing**: Displays a list of all uploaded attachments, allowing users to browse and manage files efficiently.
 - **Export Functionality**: Users can export all attachments related to a specific data table into a single compressed file. This process is handled as a "Background-Job", and a download link is provided once the export is complete.
 - **Filtering and Sorting**: Offers options to filter and sort attachments based on various criteria, such as upload date, file type, and associated data records.
@@ -373,6 +376,7 @@ Data management
 The Data Management section provides tools for managing and summarizing data uploads and observation lists. It includes features for viewing observation lists by uploader, date, and tracklog, as well as summarizing data uploads by user and table.
 
 Key functionalities include:
+
 - **Observation Lists**: View observation lists filtered by uploader, date, or tracklog. This allows administrators to quickly access and review data submissions.
 - **Data Upload Summary**: Provides a summary of data uploads, showing the number of records uploaded by each user for each table. This is useful for monitoring data contributions and identifying active contributors.
 - **User Activity**: Lists observation lists submitted by users in the last 90 days, helping to track recent activity and engagement.
