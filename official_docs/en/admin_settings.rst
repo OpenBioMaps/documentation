@@ -121,6 +121,8 @@ The section allows for the creation, editing, and toggling of three types of tri
 
 - **Access Rules Trigger**: Manages row-level access rules for records in project tables. This trigger can automatically restrict access to records based on a sensitive data field value or assign access rights specified in the upload form to groups. It is particularly useful for projects with restricted data access, allowing for differentiated access control for logged-in users.
 
+  The rules trigger is especially useful when you want to provide different access levels to logged-in users for individual records. For example, if you have a field in your records that indicates sensitive data, the system can automatically restrict access based on that field's value. Additionally, the access rights specified in the upload form for groups can be applied to the records. If the form lists groups A and B as having read access to the data entered with that form, and group C as having edit rights, these are entered into the rules table via the rules trigger. The rules trigger is only meaningful for projects with restricted data access.
+
 These triggers are crucial for maintaining data integrity, security, and usability within the OpenBioMaps platform.
 
 
