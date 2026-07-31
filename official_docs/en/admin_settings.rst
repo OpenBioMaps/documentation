@@ -8,7 +8,6 @@ Administrative access
 The `Administrative access` section allows project administrators to delegate specific administrative functions to user groups. Each function available under the admin_pages can be assigned access rights to different groups created within the project. This enables fine-grained control over who can perform certain administrative tasks.
 
 Key functionalities include:
-
  - **Function Assignment**: Assign access to specific administrative functions such as database management, data access, and module configuration to user groups.
  - **Access Control**: Ensure that only authorized groups have access to sensitive administrative functions, enhancing project security.
 
@@ -372,11 +371,13 @@ Background jobs
 ---------------
 [web] -> [profile] -> [project administration] -> [background processes]
 
-OBM can perform tasks in the background. You can download background process scripts from the git repo available on the page and modify them or write a completely new one based on the template script. The shell processes have a run and a lib file. The scheduler calls our run file which, in the case of a standard php job, executes the tasks in the lib file.
+JOB management is a feature of the OpenBioMaps web application that allows the system to work on our behalf without any user interaction. Provided that the scheduler is configured on the server (cron – on the host system in a Docker installation), this system-level task scheduler queries the project’s task scheduler every minute, and if a task is defined, it launches it in the background. In this way, there is no direct user interface for running the tasks; we can only ever see the results of tasks that have run in the background. Such tasks may include maintaining species names, validation tasks, automatic exports and imports, cleaning up temporary tables, and analyses, as well as updating materialised views and other similar tasks. These JOBs are, in fact, standalone programmes of varying sizes, mostly written in PHP, but they may be in other languages such as Python, R or Bash scripts. We have pre-written Job applications which can be downloaded via this admin interface from a central Git repository. The admin interface provides a platform for reviewing these jobs, enabling or disabling them, configuring their schedules and parameters, and viewing their run logs. There is also an integrated code editor where you can modify these applications to suit your own requirements. Finally, you can also upload your own JOB applications. The output of the JOBs can be viewed on this administrative page, but full, detailed logs can be read on the server logs administrative tab.
+ 
+In terms of best practice, after loading the JOB but before setting up a schedule, click the ‘Run’ button to run the JOB, wait for it to complete, check the results, and if everything works as expected, then set up the scheduled run. 
 
-The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in both cases, i.e. every minute, hour, and day has a value. The job will not run if not enabled. You can test it without enabling [run]. With [results] you can see the last results of the job.
+The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in all cases, i.e. every minute, hour, and day has a value. 
 
-To run the scheduler, the host must also have a scheduler cron entry for each project job running script. This can be configured by the server administrator. E.g:
+Here is an example of system level cron job in a docker installation:
 
 ```
 */5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
