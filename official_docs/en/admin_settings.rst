@@ -90,6 +90,7 @@ Groups
 The `Groups` section allows administrators to create and manage user groups within the OpenBioMaps platform. These groups are essential for organizing users and controlling access to various functionalities and data.
 
 Key functionalities include:
+
 - **Group Creation**: Create new groups by specifying a group name. This is the first step in organizing users for access management.
 - **User and Group Assignment**: Assign users and other groups to a group, enabling hierarchical group structures. This allows for flexible and scalable access management.
 - **Access Management**: Use groups to manage access and usage control for upload forms, data, modules, and administrative functions. Groups can be assigned specific permissions across different sections of the platform.
