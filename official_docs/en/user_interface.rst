@@ -93,11 +93,7 @@ During the data upload process and from the saved state of interrupted uploads, 
 
 Abort data upload
 -----------------
-The data upload process can be interrupted at any time from the web interface. A backup is automatically created every 2 minutes, but you can create one at any time by clicking the Save button in the redundant menu bar. 
-
-Uploads that have been suspended can be restored by selecting them from the 'Suspended Uploads' list on the profile page.
-
-Completed uploads are automatically deleted from the list.
+This applies to web forms and file uploads when preparing data for upload. Since this process can be prolonged and the connection to the server may be interrupted, which would mean the loss of prepared data, the system is capable of saving the prepared data from the data upload table, which can later be restored at any time to continue our preparation work. The system also automatically creates backups every two minutes. These saved tables can be found on the profile page, where unnecessary backups can also be deleted.
 
 Data upload history page
 ------------------------
