@@ -27,16 +27,7 @@ By default, all registered users can invite additional members.
 
 Messages
 --------
-Internal messages are read and sent here. Our messaging system distinguishes between four message types:
-
-* A system message can be sent by a project or a server process to an individual user. Such a message could, for example, be from a background validation process.
-* A personal message can be sent between users. The message editing interface can be accessed by clicking the Write Message button at the bottom left of the Messages page.
-* Comment Notification - This message type is sent when someone has commented on your data, uploads, or users.
-* News - when uploading data, creating a new project, or sharing polygons, the system creates a news item for everyone to see.
-
-The messages page is available to all logged-in users. Anyone can send messages to project members.
-
-In addition to individual messages, project administrators can send messages to groups or notify users by email.
+Projects have an internal messaging system that can include both automated and personal messages. The system is capable of forwarding messages to the user's email address, which can be set on the profile page. The message sending interface, accessible as a standalone element from the profile page, allows users to search for their messages and create new ones, categorized into five categories: Personal Messages, Sent Messages, System Messages, Ratings and Comments, and News Feed. Administrators can send messages to other users in groups and via email. Regular users can also send messages individually to other users. Client applications can read the user's messages; for example, the mobile application will notify us when project administrators or other users send us messages or when we receive ratings or comments from other users regarding the data we uploaded.
 
 Creation of a new database
 --------------------------
