@@ -79,7 +79,7 @@ Any of the files listed here can be imported by entering a URL (simple GET query
 
 Web form filling
 ----------------
-Data can also be uploaded using a web form. You can add any number of rows to your table when uploading. Data upload can be accelerated using various bulk cell upload functions.
+Web forms are a variant of forms that can only be used on the project's web interface (similar to file uploads), allowing records to be created by filling out a table. By default, the table functions like a spreadsheet application. The field names of our database are in the column headers, and we fill in the rows. A table of arbitrary length can be created, but for very large tables, we recommend using the file upload option, where a table prepared in a spreadsheet application can be uploaded. This interface is typically a tool for preparing and uploading a few dozen, at most a few hundred rows of records. The headers of the required fields are red, while those of the optional fields are gray (the same applies to file uploads). Below the header of each field is a yellow field that serves for bulk filling of the fields. This interface provides several convenience functions for bulk modification of the field contents. It is possible to skip rows or apply various formatting and transformation functions to individual columns.
 
 External applications
 ---------------------
