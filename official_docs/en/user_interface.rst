@@ -136,4 +136,4 @@ The bug submission feature is available from the profile page and the upload pag
    
 The interface sends errors to the OpenBioMaps developer page (https://gitlab.com/groups/openbiomaps/-/issues), from which the user will automatically receive a system response for subsequent events.
 
-The error handler can be made available on a server by specifying the AUTO_BUGREPORT_ADDRESS address in the system_vars.php.inc configuration file. More information about the GitLab Issue handler interface can be found here: https://docs.gitlab.com/ee/user/project/issues/
+The error handler can be made available on a server if the server administrator performs the necessary configurations, which involves setting the AUTO_BUGREPORT_ADDRESS variable in the system_vars.php.inc file. The required value will be provided for servers maintained by the OpenBioMaps consortium, while other servers that require this functionality must provide their own GitLab repository issue board.
