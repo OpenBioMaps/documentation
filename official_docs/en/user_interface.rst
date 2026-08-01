@@ -13,7 +13,7 @@ By entering your registered email address here, you can request a temporary logi
 
 Registration
 ------------
-Registration requires an invitation, which can be requested via the form available on the registration page. In addition, depending on your project settings, you can register using Google or another OpenID-based provider.
+To join OpenBioMaps projects on a server, a user must receive an invitation from another user unless public registration with external service authentication is enabled. Invitations can be requested on the login interface by following the registration link. Project administrators receive the invitation requests. Depending on the project settings, the system may automatically send an invitation in response to the registration request, or one of the project administrators must send the invitation. The invitation email contains a link that the user can click to join the project. During the joining process, the user must confirm their intention to join, accept the terms of the user agreement and the data processing declaration, and finally set a password. Optionally, they can also provide additional information about themselves.
 
 Profile page
 ============
