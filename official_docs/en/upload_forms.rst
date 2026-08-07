@@ -74,7 +74,7 @@ In line with international data-sharing standards (Darwin Core / GBIF), the Open
 
 An **Observation Event** is a predefined spatial and temporal context representing a specific data collection or sampling activity.
 
-  **- Key point:** The event itself is the field activity (the act of sampling), not the organism found.
+ **- Key point:** The event itself is the field activity (the act of sampling), not the organism found.
 
 **Main characteristics:**
 
@@ -84,7 +84,7 @@ It is often associated with a specific methodology or protocol (e.g. 5-minute po
 
 **Handling 'zero observations' (absence):** An Observation Event is created and remains valid in the system even if the researcher did not observe a single species during the survey. 
 
-  - This 'negative data' is crucial for scientific analysis and for documenting sampling effort.
+ - This 'negative data' is crucial for scientific analysis and for documenting sampling effort.
 
 **Hierarchy:** An Observation Event may contain **zero, one or more** individual observations (Observation). The observations recorded during the event share a common identifier: the observation_list_id.
 
@@ -92,7 +92,7 @@ It is often associated with a specific methodology or protocol (e.g. 5-minute po
 
 An **Observation** is the individual detection or recording of a specific taxon (species, genus, etc.) in the field.
 
-  - Essence: This is the biological data itself, evidence of the organism’s presence.
+ - Essence: This is the biological data itself, evidence of the organism’s presence.
 
 **Main characteristics:**
 
@@ -101,13 +101,13 @@ It always includes a location and a date and time.
 
 **Types in the system:**
 
-  **- Event-linked observation:** Species data recorded as part of a structured survey (Observation Event). In this case, the location and time data are inherited from the event or specified within it.
-  **- Opportunistic Observation:** An individual sighting that is not part of a pre-planned protocol or survey, but is recorded immediately on an ad hoc basis (e.g. a rare bird spotted whilst out and about).
+ **- Event-linked observation:** Species data recorded as part of a structured survey (Observation Event). In this case, the location and time data are inherited from the event or specified within it.
+ **- Opportunistic Observation:** An individual sighting that is not part of a pre-planned protocol or survey, but is recorded immediately on an ad hoc basis (e.g. a rare bird spotted whilst out and about).
 
 Summary table for developers and users
 
 | Characteristic | Observation | Event Observation |
-|----------------|-------------|-------------------|
+| -------------- | ----------- | ----------------- |
 | **What does it represent?** | The context of fieldwork/sampling. | The sighting of a specific organism. |
 | **Can it be left blank?** | **Yes.** If, according to the protocol, nothing was found, the event still exists. | **No.** It must always include species and number of individuals. |
 | **Quantitative indicator** | The sampling effort (duration, area size). | Number of individuals, coverage, count. |
