@@ -438,6 +438,9 @@ Field display options
         List elements will be displayed as buttons. Pictures can be used in the buttons. 
           Pictures should be defined for all list elements in the list definition, like in this example:
           If the list has the following values: animals, plants, mushrooms, bats
+    - unfolding list
+        This is a species list generation solution for the mobile app.
+        This option can only be used on autocomplete-type list fields (typically used for the species name field) if the form also contains an individual number field (set at object level in the database table settings). This is because this type enables the mobile application to display the selected (species) names together with their individual numbers in a list, one below the other, and the individual numbers can be modified afterwards. In this case, there is no need to save the record after every single modification; it is sufficient to save it only at the end of the observation event. For this reason, it is preferable to use it on a form treated as an observation event, as in this case the ‘Save observation’ button will effectively serve only as an intermediate save and will not clear the species list we have compiled, complete with individual numbers, from the form.
 
 .. code-block:: json
 
