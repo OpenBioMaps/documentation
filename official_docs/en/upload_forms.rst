@@ -405,6 +405,9 @@ Second step: we establish a simple list of building columns. We turn the column 
         "valueColumn": "building"
     }
 
+
+.. default-values:
+
 Default values
 ..............
 You can predefine a value for a field. There are several dynamic predefined values:
@@ -422,6 +425,8 @@ You can predefine a value for a field. There are several dynamic predefined valu
     If you want an empty input field, you have to specify _input; if you want a selection list, you have to specify _list (it fills the list with the elements of the definition), if you want a geometry selection, you have to specify _geometry, and _datum results in a date selection field.
     
     See in action: https://openbiomaps.org/projects/checkitout/upload/?form=421&type=web
+
+.. api-params:
 
 Field display options 
 .....................
