@@ -106,12 +106,18 @@ It always includes a location and a date and time.
 
 Summary table for developers and users
 
-| Characteristic | Observation | Event Observation |
-| -------------- | ----------- | ----------------- |
-| **What does it represent?** | The context of fieldwork/sampling. | The sighting of a specific organism. |
-| **Can it be left blank?** | **Yes.** If, according to the protocol, nothing was found, the event still exists. | **No.** It must always include species and number of individuals. |
-| **Quantitative indicator** | The sampling effort (duration, area size). | Number of individuals, coverage, count. |
-| **GBIF / DwC equivalent** | Event / Sampling-event data | Occurrence / Occurrence data |
++-----------------------------+--------------------------------------------+-----------------------------------------+
+| Characteristic              | Observation                                | Event Observation                       |
+|=============================|============================================|=========================================|
+| **What does it represent?** | The context of fieldwork/sampling.         | The sighting of a specific organism.    |
++-----------------------------+--------------------------------------------+-----------------------------------------+
+| **Can it be left blank?**   | **Yes.** If, according to the protocol,    | **No.** It must always include species  |
+|                             | nothing was found, the event still exists. | and number of individuals.              |
++-----------------------------+--------------------------------------------+-----------------------------------------+
+| **Quantitative indicator**  | The sampling effort (duration, area size). | Number of individuals, coverage, count. |
++-----------------------------+--------------------------------------------+-----------------------------------------+
+| **GBIF / DwC equivalent**   | Event / Sampling-event data                | Occurrence / Occurrence data            |
++-----------------------------+--------------------------------------------+-----------------------------------------+
 
 A time limit (expressed in minutes) can be set for the observation event; when this limit is reached, the mobile app alerts the user that the time has expired, but otherwise nothing happens, and the user can continue with their observations.
 
