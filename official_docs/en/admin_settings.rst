@@ -13,7 +13,7 @@ Administrators should therefore review changes carefully and test them before
 applying them to a production project.
 
 For an overview of the project administration documentation, see
-:doc:`Project administration <admin_pages>`.
+:doc:`Project administration <../admin_pages>`.
 
 
 .. _administrative-access:
@@ -200,19 +200,17 @@ database backup when appropriate.
 
 SQL console
 -----------
+An SQL console is also available to system administrators. The SQL console can 
+be used to modify or delete project data and database structures. For this reason, 
+access (to the database tables interface) should only be granted to trusted users 
+who have sufficient experience with PostgreSQL and OpenBioMaps system administration 
+tasks.
 
-An SQL console is available to operators through a separate authentication
-step. It provides a list of project-related database tables. Tables that are
-not registered as accessible to OpenBioMaps are marked in red.
+Queries executed in the SQL console can be saved and re-run.
 
-The SQL console can modify or delete project data and database structures.
-Access should be limited to trusted users with sufficient PostgreSQL and
-OpenBioMaps administration experience.
-
-.. TODO: Document the authentication method, the database role used by the
-   console, and the statements that are permitted or blocked. Clarify
-   whether queries have execution-time, transaction, or result-size limits
-   and whether executed statements are recorded in an audit log.
+The console displays the query results in a dynamic table. The results of the query table
+can be exported as a CSV file. If the query results contain more than 1,000 rows, the 
+table is no longer displayed; instead, a CSV export is automatically generated.
 
 
 Managing views
@@ -272,7 +270,7 @@ The documented access levels are:
 
 The effective access to a record may be affected by project-level,
 row-level, and column-level rules. For a detailed overview, see
-:doc:`Data access <data_access>`.
+:doc:`Data access <../data_access>`.
 
 The interface is available through **Profile > Project administration >
 Data access**. Some underlying defaults may also be defined in the project's
@@ -327,7 +325,7 @@ tables. They define the available fields, input controls, validation rules,
 and access settings for a data-collection workflow.
 
 For detailed instructions, see
-:doc:`Upload form management <upload_forms>`.
+:doc:`Upload form management <../upload_forms>`.
 
 
 .. _functions:
@@ -336,7 +334,7 @@ Functions
 =========
 
 The **Functions** section provides tools for reviewing SQL rules and triggers
-associated with project tables. It includes separate lists of the rules and
+associated with project tables and views. It includes separate lists of the rules and
 triggers registered for each table and provides templates for selected
 trigger functions.
 
@@ -347,14 +345,12 @@ trigger types:
 * history triggers; and
 * access-rules triggers.
 
+Furthermore, custom triggers and rules can also be created and configured here.
+
 Database triggers execute automatically when data change. An incorrect
 trigger can reject valid changes, modify data unexpectedly, or weaken access
 control. Test customised trigger functions before enabling them in a
 production project.
-
-.. TODO: Document the permissions required to use this page and distinguish
-   between enabling a PostgreSQL trigger, replacing its trigger function,
-   and changing an OpenBioMaps metadata setting.
 
 
 Taxon-list trigger
@@ -364,9 +360,10 @@ The taxon-list trigger inserts previously unknown scientific names from a
 configured species-name field into the project's taxon table. This can help
 maintain a project whose species list expands as observations are added.
 
-.. TODO: Explain when the trigger runs, how names are normalised, and how
-   duplicates are identified. Clarify whether inserted names are accepted
-   automatically or require taxonomic review.
+The species names added to the taxon table can now be maintained via the taxon name 
+management interface.
+
+:ref:`Administrative settings: species names <species-names>`
 
 
 History trigger
@@ -399,7 +396,7 @@ This trigger is relevant to projects that use group-level or row-level
 access restrictions. Its configuration must be consistent with the
 project's general access settings and rules-table schema.
 
-For more information, see :doc:`Data access <data_access>`.
+For more information, see :doc:`Data access <../data_access>`.
 
 .. TODO: Explain how the trigger handles records created by SQL, the API, or
    another process that has no associated upload form. Document its
@@ -492,7 +489,7 @@ Modules
 Modules extend the functionality available in an OpenBioMaps project. Their
 configuration and access requirements depend on the individual module.
 
-For more information, see :doc:`Modules <modules>`.
+For more information, see :doc:`Modules <../modules>`.
 
 
 .. _interrupted-uploads:
@@ -1019,7 +1016,7 @@ server configuration. The documented sources include:
 * background-job events; and
 * background-job errors.
 
-The interface may provide filtering, searching, and live updates. Logs can
+The interface may provide filtering, searching. Logs can
 contain usernames, record identifiers, query details, file paths, request
 parameters, or other sensitive information. Access and retention should
 follow the server's security and privacy policies.
@@ -1079,6 +1076,8 @@ access, credential exposure, and excessive resource use.
    versioned, updated, and reviewed. Clarify whether local changes are
    overwritten by an update and how a previous version can be restored.
 
+
+For more information, see :doc:`Jobs <../jobs>`.
 
 Scheduling jobs
 ---------------

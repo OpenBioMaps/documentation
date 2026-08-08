@@ -19,25 +19,23 @@ file formats, or accessed from external applications.
 File download
 -------------
 
-Query results and other accessible project data can be downloaded in several
-formats. Depending on the type of data and the project configuration, the
-available formats may include:
+Query results can be downloaded in a variety of formats. Depending on the 
+settings in the project module, the available formats may include:
 
 * text and structured data: CSV and JSON;
-* images, downloaded individually or in bulk;
-* spreadsheets: ODS, XLS, and XLSX;
-* spatial data: ESRI Shapefile, GPX, and SQLite.
+* spreadsheets: ODS, XLS and XLSX;
+* spatial data with text attributes: ESRI Shapefile, KML, GPX and SQLite.
 
-An ESRI Shapefile export may consist of several related files, including
-``.shp``, ``.dbf``, ``.cpg``, ``.prj``, and ``.shx`` files.
+The ESRI Shapefile export may consist of several associated files, including
+``.shp``, ``.dbf``, ``.cpg``, ``.prj`` and ``.shx`` files.
 
-.. TODO: Document where downloads can be started in the web interface and
-   whether the available formats depend on the query, the database table, or
-   the configuration of an export module.
+Users can download images associated with data records individually, whilst project 
+admins can download them in bulk via the administrator interface.
 
-.. TODO: List the supported image formats and explain how images are
-   packaged for bulk download. The structure and spatial capabilities of
-   SQLite exports should also be documented.
+Administrators can export the text fields of data tables in CSV format via the database 
+table management page.
+
+Data export can also be subject to individual authorisation requests using the Export module.
 
 
 Web queries

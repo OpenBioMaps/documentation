@@ -222,14 +222,16 @@ Geometry tester
 ===============
 
 The geometry tester is a separate map-based interface for inspecting and
-editing geometries represented in formats such as JSON and WKT. It can also
+editing geometries represented in formats such as GeoJSON and WKT. It can also
 be used with geometries obtained through OpenStreetMap requests.
 
-.. TODO: Describe where the geometry tester can be opened, which geometry
-   formats and JSON variants it supports, what “OSM calls” means, and whether
-   edited geometries can be exported or transferred directly to another
-   OpenBioMaps interface.
+This application is available in every project if you add /geometest/ to the end of the 
+main URL, provided that the main URL is not overridden by other settings. For example:
 
+https://openbiomaps.org/projects/checkitout/geomtest/
+
+The web-based upload interface also uses this application to select locations on the 
+map and verify users.
 
 Data upload page
 ================
