@@ -23,7 +23,7 @@ server, you can install your own OpenBioMaps server.
 
 For a Docker-based installation, see:
 
-:doc:`Docker installation <../tutorials>`
+:doc:`Docker installation <../docker>`
 
 
 Create an OpenBioMaps project

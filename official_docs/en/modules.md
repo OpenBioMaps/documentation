@@ -1,3 +1,5 @@
+# Modules
+
 The modules are customizable extensions to the OpenBioMaps web application. There are project-level modules (e.g., PostgreSQL repository creation, photo manager), and modules specific to individual data tables (e.g., text filters for the map page, CSV export).
 
 Modules can be assigned to different users or user groups.
@@ -6,36 +8,29 @@ The modules are linked to module hooks in the application, which are mostly loca
 Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
 
 
-Module administration
-=====================
+## Module administration
 The modules can be enabled and configured on the *project_administration -> modules* page.
 
 Add a custom module
--------------------
+
 You can upload your modules and add them to your project. To develop a module, check out the example modules in modules/examples/.
 
-Module access
--------------
+### Module access
 You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example, the allowed_columns module. Another example is that if we have multiple data tables, we can specify, for each table separately, which column values we can filter by when querying, for example, using the text_filter module.
 In the **Access** column, we can choose whether our settings are public (everybody) or only logged-in users (logged-in users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting predefined groups or assigning specific people to a particular setting.
 
-Drop a module
--------------
+### Drop a module
 Currently, there is no such option.
 
-Turn off a module
------------------
+### Turn off a module
 Once we have our list of modules, we can switch each module on and off.
 
-Parameters for modules
-----------------------
+### Parameters for modules
 Most modules can be directly parameterised with JSON format parameters. Some modules have their administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
 
 
-Project-level modules
-=====================
-box_load_selection
-------------------
+## Project-level modules
+### box_load_selection
 * Allows you to upload your spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
 * The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the shape name, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
 * Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. To use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
@@ -46,14 +41,12 @@ box_load_selection
 
 No parameters
 
-photos
-------
+### photos
 Enable the use of photo or other attachment boxes on upload forms and show attached images on the data sheet page.
 
 No parameters
 
-create_pg_user
---------------
+### create_pg_user
 * After enabling the module, the **Create Postgres user** box will appear on the profile page.
 * By enabling the module, users who are granted the right to use the module will be able to create their own Postgres user.
 * By default, the module creates a POSTGRES user with limited access, who can read all database tables in your project. He can connect to the database from only one client program at a time, and his access automatically expires after 1 year.
@@ -65,26 +58,21 @@ create_pg_user
 
 No parameters
 
-computation
------------
+### computation
 No parameters
 
-custom_filetype
----------------
+### custom_filetype
 Custom file preparation. E.g. observado style CSV
 
 No parameters
 
 
-taxon_meta
-----------
+### taxon_meta
 No parameters
 
-Table-level modules
-===================
+## Table-level modules
 
-additional_columns
-------------------
+### additional_columns
 * If a database consists of several data tables, they can be linked by different variables.
 * When queried, all data for an identifier is queried. This function can be ignored by checking *"ignore table JOINS "* on the map page.
 * For example, in some burrow projects, we keep the data for parents and offspring in separate tables. If we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
@@ -98,8 +86,7 @@ Parameters:
      ["column names"]
 ```
 
-allowed_columns
----------------
+### allowed_columns
 * This is an extension of data access rule settings. The rules control access to complete rows in tables.
 * With this module, you can set which column should be visible at different access levels if there is row level restriction by rules ('restricted', 'no-geom').
 * It can be used only if the basic access level of the project is not public, and maybe if the data table has a *"rules "* table.
@@ -119,8 +106,7 @@ Parameters:
      }
 ```
 
-bold_yellow
------------
+### bold_yellow
 * Column names in yellow bold in the result lists. After a query, column names in bold yellow appear in the detailed description attached to the *"Drop-down list "* table.
 * This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
 
@@ -129,8 +115,7 @@ Parameters:
      ["column names"]
 ```
 
-box_load_coord
---------------
+### box_load_coord
 * On the map page, a *"position "* block will appear below the map. If you move the cursor around the map, you will see that the coordinate in the *"position "* block is constantly changing, tracking the position of your cursor on the map.
 * Also in the *"position "* block, if you type in the latitude and longitude, clicking on the little black *"lollipop "* will display your point on the map.
 
@@ -142,8 +127,7 @@ Parameters:
      }
 ```
 
-box_load_last_data
-------------------
+### box_load_last_data
 * Create a **Quick queries** option on the map page on the right side of the map. There are three options to choose from:
 	* last own upload, 
 	* last upload (anyone's) 
@@ -155,8 +139,7 @@ Parameters:
      ["Number of records in last uploads, default is 10"]
 ```
 
-box_custom
-----------
+### box_custom
 Custom box on the map page - only the user-defined version exists.
 The custom module has to be placed in the local/includes/modules/ folder.
 
@@ -168,8 +151,7 @@ Parameters:
 
     This Class should include at least print_box() and print_js() functions.
 
-identify_point
---------------
+### identify_point
 * Identify one or more points on the map.
 * Display in a small bubble some information about the data point that has been previously set.
 
@@ -178,20 +160,17 @@ Parameters:
 ["column names"]
 ```
 
-cameratrap_api
---------------
+### cameratrap_api
 The cameratrap_api module is used to communicate between the dashboard and the Nextcloud API. It provides functionalities for managing cameras and analyses, including uploading and downloading images, running analyses, and managing Nextcloud credentials.
 
 No parameters
 
-nextcloud_connect
------------------
+### nextcloud_connect
 The nextcloud_connect module is used to connect with a Nextcloud server. It provides functionalities for managing user profiles and issuing JWT tokens for authentication.
 
 No parameters
 
-validation
-----------
+### validation
 The validation module provides an internal API for validation algorithms. It includes functionalities for managing validation rules, validating records, and logging validation actions.
 
 No parameters
@@ -199,8 +178,7 @@ Custom data checks of the upload data.
 
 No parameters
 
-download_restricted
--------------------
+### download_restricted
 The `download_restricted` module provides an admin-controlled mechanism for managing download authorizations. It replaces standard download buttons with a form that requires users to explain the purpose of their data download request. Administrators can then approve or reject these requests through an admin interface.
 
 Key functionalities include:
@@ -211,13 +189,11 @@ Key functionalities include:
 No parameters
 
 
-extra_params
-------------
+### extra_params
 Extra input parameters for forms.
 
 
-grid_view
----------
+### grid_view
 View data on a custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
 
 When using grid modules, the original geometry of the data is also taken from the grid module.
@@ -346,8 +322,7 @@ In this example, the "shared" "kef_5x5" table contains the polygons we want to u
 
 
 
-job_manager (validation)
-------------------------
+### job_manager (validation)
     
 General description:
     	
@@ -403,8 +378,7 @@ Parameters:
                     }
                 }
 
-join_tables
------------
+### join_tables
 This module enables the display of joined data on the data-sheet page. At the moment, it supports only simple LEFT JOINS on one equation.
     
 Parameters:
@@ -432,8 +406,7 @@ Parameters:
 ```
 
 
-list_manager
-------------
+### list_manager
 The `list_manager` module is designed to manage lists used for data uploads and queries within the OpenBioMaps platform. It provides a user interface for creating, editing, and saving lists of terms associated with specific database columns and tables. This module is essential for organizing and managing data entries efficiently.
 
 Key functionalities include:
@@ -444,20 +417,17 @@ Key functionalities include:
 
 No parameters required.
 
-massive_edit
-------------
+### massive_edit
 Allows bulk editing of selected data on the map page via the file upload interface
 
 No parameters
 
-move_project
-------------
+### move_project
 Move the project to another server. This is an experimental module.
 
 No parameters
 
-read_table
-----------
+### read_table
 Present a SQL table or an SQL view as a rollable HTML table. This table is available through a unique link.
 
 Parameters: 
@@ -471,14 +441,12 @@ Parameters:
 ]
 ```
 
-results_asList
---------------
+### results_asList
 Create foldable slides-like results output.
 
 No parameters
 
-results_asGPX
--------------
+### results_asGPX
 Save results as a GPX file.
 
 Parameters:
@@ -489,8 +457,7 @@ Parameters:
 }
 ```
 
-results_asCSV
--------------
+### results_asCSV
 Save results as a csv file.
 
 Parameters:
@@ -501,14 +468,12 @@ Parameters:
 }
 ```
 
-results_asJSON
---------------
+### results_asJSON
 Save results as a JSON file.
 
 No parameters
 
-results_asTable
----------------
+### results_asTable
 The `results_asTable` module displays query results in a full-screen HTML table format. It includes every field of the records, providing a comprehensive view of the data. This module is ideal for users who need to analyze complete datasets directly from the map page.
 
 Key functionalities include:
@@ -519,8 +484,7 @@ Key functionalities include:
 
 No parameters required.
 
-results_asKML
--------------
+### results_asKML
 Save results as a KML file.
 
 Parameters:
@@ -531,8 +495,7 @@ Parameters:
 }
 ```
 
-results_buttons
----------------
+### results_buttons
 The `results_buttons` module provides a set of interactive buttons for downloading, sharing, and bookmarking data on the map page. It supports various export formats such as CSV, GPX, KML, SHP, and JSON, depending on the enabled modules. The module also includes functionalities for saving queries, results, and spatial selections, as well as sharing data with other OpenBioMaps projects.
 
 Key functionalities include:
@@ -554,8 +517,7 @@ By default, bookmarks are enabled, while sharing and server sharing are disabled
 
 No additional parameters required.
 
-results_asStable
-----------------
+### results_asStable
 The `results_asStable` module is a crucial component for displaying query results in a compact table format on the map page. It allows users to specify which columns they want to see in the output, enabling them to filter out fields that are not immediately necessary. This module is particularly useful for quickly reviewing important data without being overwhelmed by too much information.
 
 Key functionalities include:
@@ -571,8 +533,7 @@ Parameters:
 ]
 ```
 
-results_specieslist
--------------------
+### results_specieslist
 The `results_specieslist` module provides a summary of species found in the current query on the map page. It displays a list of species along with the number of records and individuals for each species. This module is useful for quickly assessing the biodiversity represented in the query results.
 
 Key functionalities include:
@@ -583,8 +544,7 @@ Key functionalities include:
 
 No parameters required.
 
-results_summary
----------------
+### results_summary
 The `results_summary` module provides a concise overview of query results on the map page. It displays the total number of records found based on the current query parameters. This module is particularly useful for quickly assessing the scope of data returned by a query without delving into detailed records.
 
 Key functionalities include:
@@ -593,20 +553,17 @@ Key functionalities include:
 
 No parameters required.
 
-results_table
--------------
+### results_table
 Create a full HTML table of the results.
     
 No parameters
 
-restricted_data
----------------
+### restricted_data
 Rule-based data restriction
 
 No parameters
 
-text_filter
------------
+### text_filter
 Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
     
 Parameters:
@@ -625,8 +582,7 @@ Parameters:
 ]
 ```
 
-text_filter2
------------
+### text_filter2
 Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
 
 Parameters:
@@ -634,8 +590,7 @@ Parameters:
 {}
 ```
 
-transform_data
---------------
+### transform_data
 The `transform_data` module is designed to transform record values in result areas, enhancing the readability and usability of data in web tables and exports. It supports various transformations such as converting geometries to WKT (Well-Known Text), extracting year from date strings, translating text, and creating links for observation lists.
 
 Key functionalities include:
