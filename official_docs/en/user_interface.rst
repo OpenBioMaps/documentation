@@ -39,9 +39,6 @@ Forgotten password
 Users who have registered an email address can request a temporary login
 link. The link is sent to the email address associated with their account.
 
-.. TODO: Clarify how long the temporary login link remains valid and whether
-   the user must set a new password after using it.
-
 
 Registration and joining a project
 ----------------------------------
@@ -66,11 +63,6 @@ process, the user must:
 
 The user may also be asked to provide additional profile information.
 
-.. TODO: Explain the differences between public registration, external
-   authentication, automatic invitations, and administrator-approved
-   invitations. It should also be clarified whether these are server-level
-   or project-level settings.
-
 
 Profile page
 ============
@@ -94,16 +86,13 @@ An invitation expires two weeks after it is sent. If the recipient does not
 join the project before the invitation expires, a new invitation must be
 sent.
 
-By default, a user can have up to 11 active invitations. A server
+By default, a user can have up to 11 active invitations within a project. A project 
 administrator can change this limit in ``local_vars.php.inc``. If the limit
 is set to ``0``, only project hosts can send invitations.
 
 .. TODO: Confirm whether the invitation limit applies per user, per project,
    or across the entire server. Also confirm whether “project host” is the
    current name of this role in the user interface.
-
-For more information about invitations, see
-:doc:`Invitations <invitations>`.
 
 
 Messages
@@ -133,10 +122,6 @@ mobile application can notify users about messages from project
 administrators or other users, as well as ratings and comments associated
 with records they uploaded.
 
-.. TODO: Confirm that these five category names match the current labels in
-   the web interface. The permissions required to send group messages and
-   email messages should also be documented.
-
 
 Creating a new project
 ----------------------
@@ -145,11 +130,6 @@ A registered user may be allowed to create a new database project. The
 creator becomes the owner of the new project, which is independent of the
 project from which it was created.
 
-.. TODO: Confirm whether every registered user can create a project by
-   default, or whether this depends on server-level permissions or
-   configuration. The meaning and permissions of the “owner” role should
-   also be defined.
-
 For instructions, see
 :doc:`Creating a new OpenBioMaps project <new_project>`.
 
@@ -157,18 +137,13 @@ For instructions, see
 Project administration
 ======================
 
-By default, project administration pages are available to the founder of the
+By default, project administration pages are available to the owner/founder of the
 project. Other administrator users may also have access to administrative
 functions.
 
 Access to individual administration functions can be granted separately.
 For example, a user may receive permission to manage upload forms, map
-settings, or project users without receiving access to every administration
-page.
-
-.. TODO: Clarify the differences between project founder, project owner,
-   project host, and administrator. If these terms refer to the same role,
-   one term should be used consistently throughout the documentation.
+settings.
 
 For an overview of the administration interface, see
 :doc:`Project administration <admin_pages>`.
@@ -177,23 +152,23 @@ For an overview of the administration interface, see
 Map page
 ========
 
-The map page displays spatial project data and provides tools for spatial
-and attribute-based queries. It is available when the project has spatial
-data and the required database and MapServer settings have been configured.
+The map page displays the project’s spatial data and provides tools for 
+spatial and attribute-based queries. It is available if the project contains 
+spatial data (there is a geometric field in at least one PostgreSQL table 
+belonging to the project) and the necessary database and MapServer settings 
+have been configured (a query template has been defined, the MapServer mapfile 
+layer has been set up, and the connection between the PostgreSQL server and 
+MapServer has been established).
 
 Depending on the project configuration, the map may display all accessible
 records or only the results of the current query. Point, line, and polygon
-data can be displayed in separate layers.
+data can be displayed in separate overlay layers.
 
 A project can provide several base maps. OpenStreetMap is the default base
 map, but grids, aerial imagery, sampling locations, or other
 project-specific layers may also be available. Project administrators can
 optionally configure a Google base map if the required Google account and
 API settings are available.
-
-.. TODO: Explain which SQL and MapServer settings are required before the
-   map page becomes available. It should also be clarified whether sampling
-   locations are base maps, overlay layers, or selectable query geometries.
 
 
 Spatial queries
@@ -228,10 +203,6 @@ controls may include:
 
 Spatial and attribute conditions can be used together when supported by the
 project's query interface.
-
-.. TODO: Clarify whether “text query” is the official name used by the web
-   interface, or whether “attribute query” or “non-spatial query” should be
-   used instead.
 
 
 Saving and identifying queries

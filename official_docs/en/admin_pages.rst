@@ -12,5 +12,4 @@ Project administration
    new_project.rst
    data_access.rst
    welcome_page.rst
-   invitations.rst
    modules.md
