@@ -2,218 +2,520 @@
 
 User interfaces
 ***************
-This page contains a description of the user interfaces of the OpenBioMaps web application.
 
-Log in page
-===========
+OpenBioMaps projects can be accessed through a web application and through
+several external applications and programmatic interfaces. The web
+application is the main interface for viewing, collecting, querying, and
+managing project data. Depending on the configuration of a project and the
+permissions of the current user, some of the interfaces described below may
+not be available.
+
+This page provides an overview of the main user interfaces. Detailed
+instructions for configuring individual features are provided in the
+corresponding administration and integration sections of the documentation.
+
+
+Web application
+===============
+
+The OpenBioMaps web application provides access to project data and
+project-specific tools. Its available pages and functions depend on the
+configuration of the project, the installed modules, and the permissions of
+the current user.
+
+
+Login page
+==========
+
+The login page allows registered users to sign in to an OpenBioMaps server.
+Depending on the server configuration, it may also provide options for
+password recovery, registration, and authentication through an external
+service.
+
 
 Forgotten password
 ------------------
-By entering your registered email address here, you can request a temporary login link, 
-which will be sent to you by email.
 
-Registration
-------------
-To join OpenBioMaps projects on a server, a user must receive an invitation from another user 
-unless public registration with external service authentication is enabled. Invitations can be 
-requested on the login interface by following the registration link. Project administrators 
-receive the invitation requests. Depending on the project settings, the system may automatically 
-send an invitation in response to the registration request, or a project administrator send the 
-invitation. The invitation email contains a link that the user can click to join the project. 
-During the joining process, the user must confirm their intention to join, accept the terms 
-of the user agreement and the data processing declaration, and finally set a password. 
-Optionally, they can also provide additional information about themselves.
+Users who have registered an email address can request a temporary login
+link. The link is sent to the email address associated with their account.
+
+.. TODO: Clarify how long the temporary login link remains valid and whether
+   the user must set a new password after using it.
+
+
+Registration and joining a project
+----------------------------------
+
+In the default workflow, a user needs an invitation from an existing user
+before joining an OpenBioMaps project. If public registration or
+authentication through an external service is enabled on the server, a
+different registration workflow may be available.
+
+Where invitation requests are enabled, users can request access by following
+the registration link on the login page. Project administrators receive
+these requests. Depending on the project settings, the system may either
+send an invitation automatically or wait for a project administrator to
+approve the request and send one manually.
+
+The invitation email contains a link for joining the project. During this
+process, the user must:
+
+* confirm that they want to join the project;
+* accept the user agreement and the data processing declaration; and
+* set a password.
+
+The user may also be asked to provide additional profile information.
+
+.. TODO: Explain the differences between public registration, external
+   authentication, automatic invitations, and administrator-approved
+   invitations. It should also be clarified whether these are server-level
+   or project-level settings.
+
 
 Profile page
 ============
-:doc:`Settings related to our profile <../profile>`.
+
+The profile page provides access to personal settings and user-specific
+content, including invitations, messages, saved upload states, and upload
+history.
+
+For more information about profile settings, see
+:doc:`User profile <profile>`.
+
 
 Invitations
 -----------
-By default, all registered users can invite additional members.
 
-The invitation will be sent to the invited person in the selected language. It is also possible 
-to add a personal message to the automatically generated invitation message.
+By default, registered users can invite other people to join a project. The
+invitation is sent in the language selected by the sender, and a personal
+message can be added to the automatically generated invitation.
 
-Invitations sent out will automatically expire after two weeks, i.e. the time the invited person has 
-to join the project. If you want to join later, you will need to send a new invitation.
+An invitation expires two weeks after it is sent. If the recipient does not
+join the project before the invitation expires, a new invitation must be
+sent.
 
-The number of active invitations is limited by default (11), which can be changed in the local_vars.php.inc 
-file. If set to 0, only project hosts can send invitations.
+By default, a user can have up to 11 active invitations. A server
+administrator can change this limit in ``local_vars.php.inc``. If the limit
+is set to ``0``, only project hosts can send invitations.
+
+.. TODO: Confirm whether the invitation limit applies per user, per project,
+   or across the entire server. Also confirm whether “project host” is the
+   current name of this role in the user interface.
+
+For more information about invitations, see
+:doc:`Invitations <invitations>`.
+
 
 Messages
 --------
-Projects have an internal messaging system that can include both automated and 
-personal messages. The system is capable of forwarding messages to the user's email 
-address, which can be set on the profile page. The message sending interface, 
-accessible as a standalone element from the profile page, allows users to search for 
-their messages and create new ones, categorized into five categories: Personal Messages, 
-Sent Messages, System Messages, Ratings and Comments, and News Feed. Administrators can 
-send messages to other users in groups and via email. Regular users can also send messages 
-individually to other users. Client applications can read the user's messages; for example, 
-the mobile application will notify us when project administrators or other users send us 
-messages or when we receive ratings or comments from other users regarding the data we uploaded.
 
-Creation of a new database
---------------------------
-Any registered member can create a new database project, which he/she will own and 
-will be completely independent of the project in which it was created.
+OpenBioMaps projects include an internal messaging system for automated
+notifications and messages exchanged between users. Users can choose on
+their profile page whether messages should also be forwarded to their email
+address.
 
-:doc:`More information about creating a database<../new_project>`
+The messaging interface can be opened from the profile page. It allows users
+to search their messages and create new ones. Messages are organised into
+the following categories:
+
+* Personal Messages;
+* Sent Messages;
+* System Messages;
+* Ratings and Comments; and
+* News Feed.
+
+Project administrators can send messages to groups of users and can also
+send messages by email. Other users can send individual messages to one
+another.
+
+Client applications may also access the user's messages. For example, a
+mobile application can notify users about messages from project
+administrators or other users, as well as ratings and comments associated
+with records they uploaded.
+
+.. TODO: Confirm that these five category names match the current labels in
+   the web interface. The permissions required to send group messages and
+   email messages should also be documented.
+
+
+Creating a new project
+----------------------
+
+A registered user may be allowed to create a new database project. The
+creator becomes the owner of the new project, which is independent of the
+project from which it was created.
+
+.. TODO: Confirm whether every registered user can create a project by
+   default, or whether this depends on server-level permissions or
+   configuration. The meaning and permissions of the “owner” role should
+   also be defined.
+
+For instructions, see
+:doc:`Creating a new OpenBioMaps project <new_project>`.
 
 
 Project administration
 ======================
-By default, project management pages are only accessible to the project founder. 
-In addition, administrator users have access to administrative functions. Finally, 
-access to certain administrative functions can be granted to any user, for example, 
-upload forms and map settings, or user administration.
 
-See the detailed documentation of :doc:`project settings <../admin_pages>`. 
+By default, project administration pages are available to the founder of the
+project. Other administrator users may also have access to administrative
+functions.
+
+Access to individual administration functions can be granted separately.
+For example, a user may receive permission to manage upload forms, map
+settings, or project users without receiving access to every administration
+page.
+
+.. TODO: Clarify the differences between project founder, project owner,
+   project host, and administrator. If these terms refer to the same role,
+   one term should be used consistently throughout the documentation.
+
+For an overview of the administration interface, see
+:doc:`Project administration <admin_pages>`.
 
 
 Map page
 ========
 
-If you have map data and valid settings (SQL, Mapserver), you can view and query the map 
-data from this subpage. Some map settings may differ significantly, for example, only the 
-queried data may be displayed. There may be different base maps, e.g., grids or aerial 
-photos, and sampling locations on a map. You can display point, line, and polygon data 
-(in separate layers). Several base maps can be selected (OSM is the default). In some 
-projects, you can set up a Google base map if the project owners do so by entering some Google 
-account data.
+The map page displays spatial project data and provides tools for spatial
+and attribute-based queries. It is available when the project has spatial
+data and the required database and MapServer settings have been configured.
 
-map queries
------------
-Spatial queries can be triggered by drawing on the map, tapping on the map (info module), or 
-selecting pre-loaded geometries. When drawing a map, a buffer zone can be specified around 
-the drawing pointer. That is, you can query a point by dropping a point in say a 500m radius 
-circle, or around a line in a 10m zone.
+Depending on the project configuration, the map may display all accessible
+records or only the results of the current query. Point, line, and polygon
+data can be displayed in separate layers.
 
-text queries
-------------
-Arbitrary text query options can be set up in each project to query data, which options can 
-include several helper functions such as auto-text completion, list selection, date, time, date 
-interval selection, multiple list item selection, etc...
+A project can provide several base maps. OpenStreetMap is the default base
+map, but grids, aerial imagery, sampling locations, or other
+project-specific layers may also be available. Project administrators can
+optionally configure a Google base map if the required Google account and
+API settings are available.
 
-query storage
--------------
-The result of a query can be stored on the server and referenced by a persistent keyword. A 
-DOI identifier can be requested for these identifiers. The query can also be stored and used 
-to repeat it.
+.. TODO: Explain which SQL and MapServer settings are required before the
+   map page becomes available. It should also be clarified whether sampling
+   locations are base maps, overlay layers, or selectable query geometries.
 
 
-Geometry tester map page
-========================
-This page is designed for testing and editing geometry in various formats (json, wkt, OSM calls).
+Spatial queries
+---------------
+
+Users can start a spatial query by:
+
+* drawing a geometry on the map;
+* selecting a location with the map information tool; or
+* selecting a previously loaded geometry.
+
+A buffer can be applied to the selected or drawn geometry. For example, a
+point query can include records within a 500-metre radius, while a line
+query can include records within a 10-metre corridor.
+
+The available drawing tools, query layers, and buffer options depend on the
+project configuration.
+
+
+Text and attribute queries
+--------------------------
+
+Projects can provide custom query fields for filtering records by their
+attribute values. Depending on the field configuration, the available input
+controls may include:
+
+* text fields;
+* autocomplete fields;
+* single- or multiple-selection lists;
+* date and time fields; and
+* date interval selectors.
+
+Spatial and attribute conditions can be used together when supported by the
+project's query interface.
+
+.. TODO: Clarify whether “text query” is the official name used by the web
+   interface, or whether “attribute query” or “non-spatial query” should be
+   used instead.
+
+
+Saving and identifying queries
+------------------------------
+
+A query result can be stored on the server and assigned a persistent
+identifier. A DOI may also be requested for eligible stored queries. Queries
+can be saved so that they can be repeated later.
+
+.. TODO: Explain the distinction between a saved query, a stored query
+   result, a persistent keyword, and a DOI. The documentation should state
+   whether repeating a query returns the original stored result or executes
+   the query again against the current database contents.
+
+
+Geometry tester
+===============
+
+The geometry tester is a separate map-based interface for inspecting and
+editing geometries represented in formats such as JSON and WKT. It can also
+be used with geometries obtained through OpenStreetMap requests.
+
+.. TODO: Describe where the geometry tester can be opened, which geometry
+   formats and JSON variants it supports, what “OSM calls” means, and whether
+   edited geometries can be exported or transferred directly to another
+   OpenBioMaps interface.
 
 
 Data upload page
 ================
-Any number of forms can be defined for a data table, allowing different data to be loaded
-with different options. For example, some forms may be designed for mobile-only formatting 
-or public data upload, while others may be designed specifically for a particular file 
-type to be imported.
-At any time during the upload process, you can save and download the upload status in 
-CSV format.
+
+The data upload page is used to prepare, validate, and submit records to a
+project database.
+
+A project can define multiple upload forms for the same database table.
+Each form can expose different fields, validation rules, input controls, and
+upload options. For example, one form may be designed for public data
+submission, while another may be optimised for a mobile application or a
+particular import format.
+
+For information about creating and configuring forms, see
+:doc:`Upload form management <upload_forms>`.
+
 
 File upload
 -----------
-Supported formats: 
-        
-- Plain text files: CSV, DSV, TSV, JSON
-- Image files: jpg, tiff (Exif columns are read out)
-- Spreadsheet formats: ods (LibreOffice), xls (Excel), xlsx (Excel)
-- Spatial formats: ESRI shape (.shp, .dbf, .cpg, .prj, .shx combined), GPX (GPS data format 
-  (XML)), SQLite
-- Genetic data files: fasta
-        
-Any of the files listed here can be imported by entering a URL (simple GET query)
 
-Web form filling
-----------------
-Web forms are a variant of forms that can only be used on the project's web interface (similar 
-to file uploads), allowing records to be created by filling out a table. By default, the table 
-functions like a spreadsheet application. The field names of our database are in the column headers,
-and we fill in the rows. A table of arbitrary length can be created, but for very large tables, we
-recommend using the file upload option, where a table prepared 
-in a spreadsheet application can be uploaded. This interface is typically a tool for preparing 
-and uploading a few dozen, at most a few hundred rows of records. The headers of the required 
-fields are red, while those of the optional fields are gray (the same applies to file uploads). 
-Below the header of each field is a yellow field that serves for bulk filling of the fields. 
-This interface provides several convenience functions for bulk modification of the field contents. 
-It is possible to skip rows or apply various formatting and transformation functions to individual 
-columns.
+The upload interface supports the following types of files:
 
-External applications
----------------------
-    
-* Use of API interface (e.g. mobile app, R-package)
-* Use SQL connection (e.g. QGIS)
+* delimited and structured text files: CSV, DSV, TSV, and JSON;
+* images: JPEG and TIFF, including supported Exif metadata;
+* spreadsheets: ODS, XLS, and XLSX;
+* spatial data: ESRI Shapefile components, GPX, and SQLite files; and
+* genetic sequence data: FASTA.
 
-Export data from the upload process
+An ESRI Shapefile upload may consist of the related ``.shp``, ``.dbf``,
+``.cpg``, ``.prj``, and ``.shx`` files.
+
+Supported files can also be imported from a URL using an HTTP GET request.
+
+.. TODO: Document the accepted JSON structure, delimiter and character
+   encoding rules for text files, supported Exif fields, and the required
+   structure of SQLite files. It should also be explained how multi-file
+   Shapefiles are selected or packaged for upload.
+
+.. TODO: Clarify whether URL imports support HTTPS, authentication,
+   redirects, and URL parameters, and whether server-side restrictions are
+   applied to remote URLs.
+
+
+Web form entry
+--------------
+
+Web forms allow users to create records directly in the project web
+interface. The data entry table works similarly to a spreadsheet: database
+fields are displayed as columns and records are entered as rows.
+
+Although the table can contain an arbitrary number of rows, it is primarily
+intended for entering a few dozen or, at most, a few hundred records. For
+larger datasets, preparing a spreadsheet and using the file upload interface
+is recommended.
+
+Required field headers are displayed in red, while optional field headers
+are displayed in grey. A yellow input area below each field header can be
+used to fill multiple rows with the same value.
+
+The interface also provides tools for applying bulk changes, formatting or
+transforming column values, and excluding rows from the upload.
+
+.. TODO: Describe the available bulk-editing, formatting, and transformation
+   functions. It should also be clarified whether an excluded row remains in
+   the saved upload state and can later be restored.
+
+
+Validating and preparing data
+-----------------------------
+
+Before records are submitted, the uploaded or manually entered data can be
+reviewed and corrected in the upload table. The available validation and
+editing tools depend on the upload form and its configured fields.
+
+At any stage of this preparation process, the current contents of the upload
+table can be exported as a CSV file.
+
+
+Saving and resuming an upload
+-----------------------------
+
+Preparing a large upload may take considerable time, and the connection to
+the server may be interrupted before the records are submitted. To prevent
+the prepared data from being lost, the current state of the upload table can
+be saved and restored later.
+
+The system also creates an automatic backup approximately every two minutes.
+Saved and automatically backed-up upload tables are available from the
+profile page, where obsolete backups can be deleted.
+
+.. TODO: Clarify the difference between a manually saved upload state and an
+   automatic backup. The retention period, storage limits, access rules, and
+   conditions under which automatic backups are deleted should also be
+   documented.
+
+
+Upload history
+--------------
+
+Metadata about each completed data upload is recorded automatically. Users
+can access upload history from their profile page and from the datasheet of
+an uploaded record.
+
+.. TODO: List the metadata stored for an upload, explain who can view it, and
+   describe how an upload-history entry is related to individual records.
+
+
+External data submission interfaces
 -----------------------------------
-During the data upload process and from the saved state of interrupted uploads, the data can be 
-exported to a CSV file.
 
-Abort data upload
------------------
-This applies to web forms and file uploads when preparing data for upload. Since this process can 
-be prolonged and the connection to the server may be interrupted, which would mean the loss of 
-prepared data, the system is capable of saving the prepared data from the data upload table, which 
-can later be restored at any time to continue our preparation work. The system also automatically 
-creates backups every two minutes. These saved tables can be found on the profile page, where 
-unnecessary backups can also be deleted.
+Data can also be submitted from external applications. Depending on the
+project configuration and the permissions of the user, this may include:
 
-Data upload history page
-------------------------
-The metadata for each data upload is automatically recorded and can be accessed on the user's 
-profile page or in the datasheet.
+* API clients;
+* mobile data collection applications;
+* the OpenBioMaps R package; and
+* applications using an authorised SQL connection.
+
+For more information, see:
+
+* :doc:`OpenBioMaps API <api>`;
+* :doc:`Client applications <clients>`; and
+* :doc:`Mobile applications <mobile_applications>`.
+
 
 Datasheet page
 ==============
-Each data record has its data sheet, which contains all the associated metadata and data fields 
-for the record. Depending on the settings, the available data content can be restricted in 
-various ways.
 
-Data history page
------------------
-Each data record has its data history sheet, where you can view the changes to the record. This 
-feature only works if the project host has enabled data change records in the project settings.
+Each database record has a datasheet containing its data fields and
+associated metadata. The fields and metadata visible to a user may be
+restricted by project settings and access rules.
+
+.. TODO: Explain how users open a datasheet, which metadata categories it
+   contains, and which project settings or access rules control the visible
+   content.
+
+
+Data history
+------------
+
+A record's data history shows changes made to that record. This page is
+available only if the project host has enabled change logging in the project
+settings.
+
+.. TODO: Document which operations are recorded, whether previous field
+   values and the identity of the editor are displayed, who can access the
+   history, and whether changes can be reverted.
 
 
 Database summary page
 =====================
-Each database includes a summary page with a description and contact details.
+
+Each project includes a database summary page containing a description of
+the project and its contact details.
+
+.. TODO: Describe where the database summary page is available and identify
+   the administrative settings from which its content is obtained. It should
+   also be clarified whether the page contains additional metadata, access
+   conditions, or citation information.
 
 
 Welcome page
 ============
-:doc:`Variable welcome pages can be set for each project <../welcome_page>`.
+
+Each project can provide a configurable welcome page. It can be used to
+introduce the project and direct users to its most important tools and
+information.
+
+For more information, see
+:doc:`Configuring the welcome page <welcome_page>`.
+
+
+Other user interfaces
+=====================
+
+In addition to the web application, OpenBioMaps data and services can be
+accessed through mobile applications, desktop GIS software, statistical
+software, and custom API clients. The interfaces available for a particular
+project depend on its configuration and access rules.
+
+
+Mobile applications
+-------------------
+
+Mobile applications can support field data collection and communication
+with OpenBioMaps projects. The available features depend on the application
+and the project's upload forms and permissions.
+
+For more information, see
+:doc:`Mobile applications <mobile_applications>`.
+
+
+QGIS
+----
+
+The OpenBioMaps QGIS plugin provides access to OpenBioMaps data from QGIS.
+Projects may also provide authorised SQL connections for workflows that
+require direct database access.
+
+For more information about supported client integrations, see
+:doc:`Client applications <clients>`.
+
+
+R
+-
+
+The ``obm`` R package provides tools for querying and working with
+OpenBioMaps data from R.
+
+`obm on CRAN <https://cran.r-project.org/web/packages/obm/index.html>`_
+
+
+API clients
+-----------
+
+The OpenBioMaps API allows authorised applications and scripts to query or
+submit project data. The available operations depend on the API endpoint,
+project configuration, and permissions of the authenticated user.
+
+For more information, see
+:doc:`OpenBioMaps API <api>`.
 
 
 Error reporting
 ===============
-The bug submission feature is available from the profile page and the upload page. Clicking the 
-bug in the bottom-right corner of the screen will open the bug submission interface.
+
+Where error reporting has been configured on the server, the bug-reporting
+interface is available from the profile page and the data upload page.
+Selecting the bug icon in the bottom-right corner of the screen opens a
+simple report form.
 
 .. figure:: images/hiba_1.jpg
    :scale: 100 %
-   :alt: hiding beetle
-   
-   Bug in the bottom right corner
+   :alt: Bug-report icon in the bottom-right corner
+
+   Bug-report icon in the bottom-right corner of the page
 
 .. figure:: images/hiba_2.jpg
    :scale: 100 %
-   :alt: Error sending interface
-   
-   Simple messaging interface
-   
-The interface sends errors to the OpenBioMaps developer page (https://gitlab.com/groups/openbiomaps/-/issues),
-   from which the user will automatically receive a system response for subsequent events.
+   :alt: Error-reporting form
 
-The error handler can be made available on a server if the server administrator performs the 
-necessary configurations, which involves setting the AUTO_BUGREPORT_ADDRESS variable in the
-system_vars.php.inc file. The required value will be provided for servers maintained by the 
-OpenBioMaps consortium, while other servers that require this functionality must provide their 
-own GitLab repository issue board.
+   Error-reporting form
+
+Reports from the official OpenBioMaps services can be forwarded to the
+`OpenBioMaps issue tracker
+<https://gitlab.com/groups/openbiomaps/-/issues>`_. The user may receive
+automated system messages when subsequent events occur in relation to the
+report.
+
+A server administrator can enable an error-reporting service by configuring
+the ``AUTO_BUGREPORT_ADDRESS`` variable in ``system_vars.php.inc``. Servers
+maintained by the OpenBioMaps Consortium can use a value supplied by the
+Consortium. Administrators of other servers must provide and configure
+their own compatible issue tracker.
+
+.. TODO: Confirm the exact behaviour and expected value of
+   ``AUTO_BUGREPORT_ADDRESS``. It should be documented whether reports are
+   always sent to GitLab, what information is included automatically, how
+   authentication is handled, and how users receive updates about their
+   reports.
