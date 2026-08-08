@@ -2,13 +2,30 @@
 
     <br>
     
-PDS API documentation
-*********************
+
+API documentation
+*****************
+
+OpenAPI
+=======
+From API v3.0 - 
+
+`<https://gitlab.com/openbiomaps/api/obm-project-api/#openbiomaps-project-api>`_
+
+Swagger UI example:
+
+`<https://openbiomaps.org/projects/checkitout/api/v3/swagger-ui>`_
+
+
+PDS API
+=======
+From API v1.0 - 2.6
+
 HTTP methods:  GET, POST
 
 API tools:  Authentication, Data retrieval, Data push, Settings update
 
-This is the first OBM API (1.0, 2.0–2.5), which is scheduled to be phased out from September 2026 and replaced by API v3 (openapi).
+This is the first OBM API (1.0, 2.0–2.6), which is scheduled to be phased out from September 2026 and replaced by API v3 (swagger-openapi).
 
 API handlers:
 -------------
@@ -62,7 +79,8 @@ Scopes:
 
 PDS API
 -------
-The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication. Due to OAUTH processing it is only accept application/x-www-form-urlencoded and multipart/form-data requests!
+The main OBM API interface. Basically designed for R and mobile clients. It uses OAUTH for authentication. 
+Due to OAUTH processing it is only accept application/x-www-form-urlencoded and multipart/form-data requests!
 
 PDS variables
 .............

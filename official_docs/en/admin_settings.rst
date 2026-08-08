@@ -239,7 +239,7 @@ external clients.
    should be described.
 
 
-.. _data-access:
+.. _data-access-check:
 
 Data access
 ===========
@@ -285,7 +285,7 @@ Data access**. Some underlying defaults may also be defined in the project's
    between interface settings and configuration-file values are resolved.
 
 
-.. _groups:
+.. _group-settings:
 
 Groups
 ======
@@ -328,7 +328,7 @@ For detailed instructions, see
 :doc:`Upload form management <../upload_forms>`.
 
 
-.. _functions:
+.. _trigger-functions:
 
 Functions
 =========
@@ -437,7 +437,7 @@ and by background jobs that detect or repair taxon names.
    configuration instructions.
 
 
-.. _translations:
+.. _localisation:
 
 Translations
 ============
@@ -481,7 +481,7 @@ https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
    change.
 
 
-.. _modules:
+.. _module-settings:
 
 Modules
 =======
@@ -749,7 +749,7 @@ data, MapServer configuration, and OpenLayers settings.
    choosing an extent and diagnosing layers displayed in the wrong location.
 
 
-.. _members:
+.. _member-settings:
 
 Members
 =======
@@ -1144,7 +1144,7 @@ appropriate.
    ``%PROJECT_TITLE%`` and ``%PROJECT_DESCRIPTION%`` in message templates.
 
 
-.. _data-management:
+.. _data-management-page:
 
 Data management
 ===============
