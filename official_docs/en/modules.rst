@@ -1,4 +1,0 @@
-Modules
-*******
-
-.. mdinclude:: ./modules.md

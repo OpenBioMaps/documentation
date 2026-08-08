@@ -6,6 +6,8 @@
 API documentation
 *****************
 
+.. _new-api:
+
 OpenAPI
 =======
 From API v3.0 - 
@@ -16,6 +18,7 @@ Swagger UI example:
 
 `<https://openbiomaps.org/projects/checkitout/api/v3/swagger-ui>`_
 
+.. _old-api:
 
 PDS API
 =======
@@ -76,6 +79,8 @@ Scopes:
 - get_form_list
 - put_data
 - ...
+
+.. _pds-api:
 
 PDS API
 -------
