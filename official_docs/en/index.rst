@@ -13,15 +13,22 @@ Welcome to OpenBioMaps' documentation!
    :maxdepth: 2
 
    introduction.rst
-   tutorials.rst
+   getting_started.rst
+
    user_interface.rst
-   admin_pages.rst
+   data_management.rst
    data_access.rst
+   data_collection.rst
+   mobile_applications.rst
+   
    api.rst
-   server_install.md
-   pwa.md
-   mobile_application.rst
-   developer_hints.rst
+   clients.rst
+
+   admin_pages.rst
+   server_administration.rst
+
+   development.rst
+   
    faq.rst
 
 :download:`Download docs as pdf <docs/openbiomaps.pdf>` | :download:`Download docs as epub <docs/openbiomaps.epub>`

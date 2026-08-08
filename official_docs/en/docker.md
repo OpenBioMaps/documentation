@@ -536,12 +536,3 @@ docker-compose exec -T biomaps_db bash -c "pg_dump -U biomapsadmin --table publi
 
 * https://gitlab.com/openbiomaps/web-app
 * https://gitlab.com/openbiomaps/docker/obm-composer
-
-
-# Not docker: VirtualBox (outdated!!!)
-
-The VirtualBox edition currently is outdated, not recommended to use it!
-
-1. Download VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
-2. Download the latest .ova image from [http://openbiomaps.org/downloads](http://openbiomaps.org/downloads/virtual-image/)
-3. Read this readme for the next steps: [http://openbiomaps.org/downloads/virtual-image/README](http://openbiomaps.org/downloads/virtual-image/README)
