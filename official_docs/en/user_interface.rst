@@ -32,7 +32,14 @@ Invitations
 -----------
 By default, all registered users can invite additional members.
 
-:doc:`For more information, visit the invitations page <../invitations>`.
+The invitation will be sent to the invited person in the selected language. It is also possible 
+to add a personal message to the automatically generated invitation message.
+
+Invitations sent out will automatically expire after two weeks, i.e. the time the invited person has 
+to join the project. If you want to join later, you will need to send a new invitation.
+
+The number of active invitations is limited by default (11), which can be changed in the local_vars.php.inc 
+file. If set to 0, only project hosts can send invitations.
 
 Messages
 --------
@@ -59,10 +66,10 @@ Project administration
 ======================
 By default, project management pages are only accessible to the project founder. 
 In addition, administrator users have access to administrative functions. Finally, 
-access to certain administrative functions can be granted to any user.
+access to certain administrative functions can be granted to any user, for example, 
+upload forms and map settings, or user administration.
 
-:doc:`Project settings <../admin_pages>`. For example, upload forms and map settings, or user 
-administration.
+See the detailed documentation of :doc:`project settings <../admin_pages>`. 
 
 
 Map page
@@ -95,6 +102,10 @@ The result of a query can be stored on the server and referenced by a persistent
 DOI identifier can be requested for these identifiers. The query can also be stored and used 
 to repeat it.
 
+
+Geometry tester map page
+========================
+This page is designed for testing and editing geometry in various formats (json, wkt, OSM calls).
 
 
 Data upload page
