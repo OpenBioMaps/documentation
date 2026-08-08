@@ -1,114 +1,324 @@
 Data access
 ***********
 
-Data retrieval options
-======================
+OpenBioMaps provides several ways to query, view, and download project
+data. The records and fields available through these interfaces depend on
+the project's access rules and on the permissions of the current user.
 
-* File download
-
-  Supported formats: 
-
-  - Plain text files: csv, json
-  - Image files export: one by one or in bulk
-  - Spreadsheet formats: ods (Libreoffice), xls (Excel), xlsx (Excel)
-  - Spatial formats: ESRI shape (.shp, .dbf, .cpg, .prj, .shx together), GPX (GPS data format (XML)), SQLite
-
-* Web query
-
-  - Text filtered query
-  - Spatial query
-
-* External applications
-  - Use API interface (e.g. R-package)
-  - Use SQL connection (e.g. QGIS)
+This page provides an overview of the available data retrieval methods and
+the mechanisms used to control access to project data.
 
 
-Data access control
-===================
+Retrieving data
+===============
 
-The lowest level of regulation defined at the inception of the project is
+Data can be retrieved through the web application, downloaded in supported
+file formats, or accessed from external applications.
 
-local_vars.php.inc
 
-file:
+File download
+-------------
+
+Query results and other accessible project data can be downloaded in several
+formats. Depending on the type of data and the project configuration, the
+available formats may include:
+
+* text and structured data: CSV and JSON;
+* images, downloaded individually or in bulk;
+* spreadsheets: ODS, XLS, and XLSX;
+* spatial data: ESRI Shapefile, GPX, and SQLite.
+
+An ESRI Shapefile export may consist of several related files, including
+``.shp``, ``.dbf``, ``.cpg``, ``.prj``, and ``.shx`` files.
+
+.. TODO: Document where downloads can be started in the web interface and
+   whether the available formats depend on the query, the database table, or
+   the configuration of an export module.
+
+.. TODO: List the supported image formats and explain how images are
+   packaged for bulk download. The structure and spatial capabilities of
+   SQLite exports should also be documented.
+
+
+Web queries
+-----------
+
+The web application provides tools for filtering and retrieving accessible
+records. Depending on the project configuration, users can perform:
+
+* attribute-based queries using text, lists, dates, and other configured
+  fields;
+* spatial queries using geometries selected or drawn on the map; or
+* combined spatial and attribute-based queries.
+
+For an overview of the query interfaces, see
+:doc:`User interfaces <user_interface>`.
+
+.. TODO: Document how query results can be viewed, refined, saved, cited,
+   and exported. It should also be clarified whether all projects support
+   combined spatial and attribute-based queries.
+
+
+External applications
+---------------------
+
+Project data can also be accessed from external applications:
+
+* the OpenBioMaps API can be used by scripts, the OpenBioMaps R package,
+  and other API clients;
+* an authorised SQL connection can provide direct database access for
+  applications such as QGIS; and
+* supported client applications can provide their own query and download
+  interfaces.
+
+Access through an external application is subject to the project's access
+rules and the permissions associated with the authenticated user or
+connection.
+
+For more information, see:
+
+* :doc:`OpenBioMaps API <api>`; and
+* :doc:`Client applications <clients>`.
+
+
+Controlling access to data
+==========================
+
+OpenBioMaps can control access at several levels:
+
+* project-level settings define the default access and modification policy;
+* row-level rules control access to individual records; and
+* column-level rules control which fields can be viewed or downloaded.
+
+The effective permissions may therefore depend on several settings. Project
+administrators should test the resulting access with users belonging to
+different groups, as well as without authentication where public access is
+enabled.
+
+.. TODO: Provide a complete permission evaluation model showing the exact
+   precedence and interaction of project-level, row-level, column-level, and
+   user-group rules.
+
+
+Project-level access
+--------------------
+
+The default project-level access settings are defined in the
+``local_vars.php.inc`` configuration file:
 
 .. code-block:: php
 
-  define('ACC_LEVEL', 'group'); // can be set to 'public' or 'login'
-  define('MOD_LEVEL', 'group');
+   define('ACC_LEVEL', 'group'); // Can be set to 'public' or 'login'.
+   define('MOD_LEVEL', 'group');
 
-The ACC_LEVEL variable defines the default data access level in the project. It can be public 
-or only accessible to logged-in users (login or group). Login is more of a theoretical option; 
-usually, a group is used instead.
+``ACC_LEVEL`` defines the default level at which project data can be
+accessed. The documented values are:
 
-MOD_LEVEL is the control for modifying data, similar to the above. If MOD_LEVEL is public, then 
-anyone can modify the data without logging in! 
+``public``
+   Data are publicly accessible, subject to any more specific access rules.
 
-If the data access (ACC_LEVEL)/download and modify (MOD_LEVEL) levels are "group", then we will 
-have additional control options in the
+``login``
+   Data are accessible to authenticated users, subject to any more specific
+   access rules.
 
-*_rules* table.
+``group``
+   Access is controlled through project groups and additional access rules.
 
-Our *_rules* table has a one-to-one relationship with each data table we want to control, defined
-by the obm_id-row_id foreign key.
-Data rows for which there is no *_rules* entry are only available to project hosts (for ACC_LEVEL='group').
+``MOD_LEVEL`` defines the default level at which data can be modified. It
+uses a similar access model.
 
-The functionality of the *_rules* table can be found in the [Project administration] -> [Functions] 
-menu [Create access rules]
+Setting ``MOD_LEVEL`` to ``public`` allows data to be modified without
+requiring the user to sign in. This setting should only be used when
+unauthenticated modification is explicitly intended and its security
+implications have been considered.
 
-Here you can create and modify the trigger function, and enable or disable it, which will automatically 
-update our _rules table after each record is added, modified, or deleted.
+.. TODO: Confirm all valid values of ``ACC_LEVEL`` and ``MOD_LEVEL`` and
+   document their exact behaviour. In particular, clarify how ``login``
+   differs from ``group`` and whether additional values are supported.
 
-Access to each record can be defined individually when groups are added to the group read/write fields. 
-This can be done automatically by the *_rules* trigger based on the data access settings of the uploading 
-forms, whose values are entered in the `system.uploadings` table based on the uploading forms settings.
+.. TODO: Explain whether these constants apply to the entire project, how
+   configuration changes take effect, and whether they can be managed
+   through the project administration interface.
 
-The *_rules* table can also be regenerated manually:
 
-- one at a time, without group settings:
+Row-level access
+----------------
+
+When ``ACC_LEVEL`` or ``MOD_LEVEL`` is set to ``group``, access to
+individual records can be controlled through a project-specific
+``*_rules`` table. Here, ``*`` represents the name or prefix used by the
+project.
+
+A rules table is associated with a data table. A data record is linked to
+its corresponding rule through the ``obm_id`` value in the data table and
+the ``row_id`` value in the rules table.
+
+In a project using group-level access, records without a corresponding
+entry in the rules table are available only to project hosts.
+
+.. TODO: Confirm whether a data record can have exactly one corresponding
+   rules-table row or multiple rows. Also confirm whether “project host” is
+   the current name of the role that can access records without a rule.
+
+The rules-table functionality can be configured in the project
+administration interface under **Project administration > Functions >
+Create access rules**. This interface can be used to create or update the
+trigger function and to enable or disable it.
+
+When enabled, the trigger maintains the rules table after records are
+created, modified, or deleted.
+
+.. TODO: Confirm the current labels and location of the access-rules
+   administration interface. Document what happens to existing rules when
+   the trigger is disabled, recreated, or modified.
+
+
+Assigning read and write groups
+-------------------------------
+
+Read and write access can be assigned to individual records through the
+group-related fields of the rules table.
+
+These values can be populated automatically by the rules-table trigger.
+The assigned groups may be derived from the access settings of the upload
+form used to create the record. Information about completed uploads and
+their configured owner and group values is stored in the
+``system.uploadings`` table.
+
+.. TODO: Document the data types and accepted values of the rules table's
+   ``read`` and ``write`` fields. Clarify whether they contain one group,
+   multiple groups, user identifiers, or a combination of these.
+
+.. TODO: Explain how upload-form access settings are transferred to
+   ``system.uploadings`` and then to the rules table. The behaviour for
+   records created outside an upload form, such as through SQL or the API,
+   should also be documented.
+
+
+Regenerating a rules table
+--------------------------
+
+A rules table can also be regenerated manually. The following examples use
+``abc`` as the data table and ``abc_rules`` as its rules table.
+
+The following statements recreate rules without assigning read or write
+groups:
 
 .. code-block:: sql
 
-  DELETE FROM abc_rules WHERE data_table='abc';
-  INSERT INTO abc_rules (row_id, sensitivity, data_table) 
-       SELECT obm_id, 'sensitive', 'abc' FROM "abc"
-..
+   DELETE FROM abc_rules
+   WHERE data_table = 'abc';
 
-- or with a row-by-row group setting:
+   INSERT INTO abc_rules (row_id, sensitivity, data_table)
+   SELECT obm_id, 'sensitive', 'abc'
+   FROM abc;
+
+The following statements derive the group and owner values from the
+corresponding entry in ``system.uploadings``:
 
 .. code-block:: sql
 
-  DELETE FROM abc_rules WHERE data_table='abc';
-  INSERT INTO abc_rules (row_id, sensitivity, data_table, read, write) 
-      SELECT obm_id, 'sensitive', 'abc', s.group, s.owner 
-      FROM abc a LEFT JOIN "system"."uploadings" s ON (s.id = a.obm_uploading_id)
+   DELETE FROM abc_rules
+   WHERE data_table = 'abc';
 
-In the *_rules* table, the *sensitivity* field specifies the public availability of a 
-dataset in closed ('group') projects. The value of *'sensitivity'* may also be 'sensitive' 
-or 'restricted'. These have the same meaning. The 'sensitive' lines can only be read or 
-modified by members of the specified groups.
+   INSERT INTO abc_rules (row_id, sensitivity, data_table, read, write)
+   SELECT a.obm_id, 'sensitive', 'abc', s."group", s.owner
+   FROM abc AS a
+   LEFT JOIN system.uploadings AS s
+       ON s.id = a.obm_uploading_id;
 
-The sensitivity value can also be 'no-geom', which means the geometry will not be displayed 
-at the public level.
+These examples must be adapted to the actual table names, schema, column
+types, and access policy of the project. Administrators should back up the
+existing rules table and verify the generated permissions before using the
+statements in a production database.
 
-The sensitivity value can also be 'only-owner', which means only the project owner can 
-access the record.
+.. TODO: Confirm that the example column names and value types match the
+   current schema. In particular, verify the types of ``sensitivity``,
+   ``read``, ``write``, ``system.uploadings.group``, and
+   ``system.uploadings.owner``.
 
-Access to data can be further controlled by setting rules for each field using the 
-*allowed_columns* module.
-If your project access_level is set to 'group' and there are no rows in the *_rules* table, you 
-can still use the *allowed_columns* module to make your data fields publicly accessible or 
-accessible to specified user groups. That is, the 'allowed_columns' module is also the highest 
-level of access control.
+.. TODO: Explain whether deleting and rebuilding a rules table can
+   temporarily expose or hide data, whether the operation should run inside
+   a transaction, and whether there is an administration command that
+   performs the same task safely.
 
-In each case, the most detailed access rule determines the access to the data if more than one 
-rule could apply.
 
-That is, if we have a 'group' level project and no other rules are specified, then only the 
-project administrators will have access to the data. If table *_rules* is specified, the data 
-is subject to row-level rules, i.e., we can grant broader access to individual rows.
+Sensitivity settings
+--------------------
 
-Finally, with the module allowed_columns, we can control column-level access. Allowed_columns 
-can be used in the group access setting and when using the rules table, by granting permission
-to view (or download) the contents of certain fields from an otherwise queryable row of data 
-in which no field is accessible.
+The ``sensitivity`` field in the rules table affects the public availability
+of a record in a project using group-level access.
+
+The documented values include:
+
+``sensitive``
+   The record can be read or modified only by members of the groups
+   specified by the applicable access rules.
+
+``restricted``
+   This value currently has the same documented meaning as ``sensitive``.
+
+``no-geom``
+   The record may be accessible at the public level, but its geometry is not
+   displayed publicly.
+
+``only-owner``
+   Only the project owner can access the record.
+
+.. TODO: Confirm the complete list of accepted ``sensitivity`` values and
+   define their exact effects on viewing, querying, downloading, and
+   modifying records.
+
+.. TODO: Clarify whether ``restricted`` and ``sensitive`` are true aliases
+   or whether they differ in some interfaces. For ``no-geom``, explain
+   whether geometry is removed, generalised, replaced, or merely hidden in
+   the map. Also define which user is considered the owner for
+   ``only-owner`` records.
+
+
+Column-level access
+-------------------
+
+Access can be further controlled for individual database fields by using the
+``allowed_columns`` module. This module determines which columns can be
+viewed or downloaded by public users or specified user groups.
+
+In a project where ``ACC_LEVEL`` is set to ``group``, the module can be used
+to make selected fields accessible even when the project does not otherwise
+provide general access to every field. It can also restrict the visible
+fields of records that are accessible through row-level rules.
+
+This makes it possible, for example, to allow users to discover that a
+record exists while exposing only an approved subset of its fields.
+
+.. TODO: Document how the ``allowed_columns`` module is enabled and
+   configured, whether it controls queries as well as displayed and
+   downloaded results, and how it treats geometry columns.
+
+.. TODO: Confirm whether ``allowed_columns`` can make fields publicly
+   accessible when a record has no corresponding rules-table entry. This
+   interaction is security-sensitive and should be described with concrete
+   examples.
+
+
+How access rules interact
+-------------------------
+
+If only group-level project access is configured and no more specific rules
+grant access, project data are available only to the administrative role
+that is allowed to bypass those restrictions.
+
+A rules table adds row-level control, allowing different records to be made
+available to different groups. The ``allowed_columns`` module adds
+column-level control, allowing only selected fields of an accessible record
+to be viewed or downloaded.
+
+Where several rules apply, the effective permissions are determined by
+their combined project-, row-, and column-level restrictions. Administrators
+should not assume that a broader rule automatically overrides a more
+specific restriction.
+
+.. TODO: Replace this general description with the exact access-resolution
+   algorithm implemented by OpenBioMaps. Include examples covering public,
+   authenticated, group, owner, row-level, and column-level access, as well
+   as conflicting read and write permissions.
