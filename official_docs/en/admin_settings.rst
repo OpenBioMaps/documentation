@@ -1,410 +1,1177 @@
 Administrative settings
 ***********************
 
+The project administration interface provides tools for configuring an
+OpenBioMaps project, managing its users and data structures, and monitoring
+project-related services. The pages available to an administrator depend on
+the administrator's permissions, the project configuration, the installed
+modules, and the server environment.
+
+This page provides an overview of the administrative settings and tools. Some
+settings affect access to project data or modify the underlying database.
+Administrators should therefore review changes carefully and test them before
+applying them to a production project.
+
+For an overview of the project administration documentation, see
+:doc:`Project administration <admin_pages>`.
+
+
 .. _administrative-access:
 
 Administrative access
----------------------
-The `Administrative access` section allows project administrators to delegate specific administrative functions to user groups. Each function available under the admin_pages can be assigned access rights to different groups created within the project. This enables fine-grained control over who can perform certain administrative tasks.
+=====================
 
-Key functionalities include:
- - **Function Assignment**: Assign access to specific administrative functions such as database management, data access, and module configuration to user groups.
- - **Access Control**: Ensure that only authorized groups have access to sensitive administrative functions, enhancing project security.
+The **Administrative access** section allows project administrators to
+delegate individual administrative functions to user groups. Each function
+available through the project administration interface can be assigned to
+one or more groups.
 
-Example of access settings for a project:
- - **User-managers**: User and groups functions.
- - **Data-curators**: Access to species names, files and data manager.
- - **Upload-form-editors**: Access to form management functions.
+This provides fine-grained control over who can perform administrative
+tasks. For example, a project could define the following groups:
 
-This section is crucial for maintaining a secure and organized administrative structure within the OpenBioMaps platform.
+* **User managers**, with access to user and group management;
+* **Data curators**, with access to species names, attachments, and data
+  management tools; and
+* **Upload form editors**, with access to upload form management.
+
+Grant only the permissions required for each administrative role. Functions
+that change database structures, execute SQL, manage access rules, or edit
+executable code should be restricted to trusted administrators.
+
+.. TODO: Document every assignable administrative function and the
+   permissions it grants. It should also be clarified whether permissions
+   inherited through nested groups are evaluated recursively and whether a
+   user needs to sign in again after their administrative permissions
+   change.
+
 
 .. _database-columns:
 
 Database tables and columns
----------------------------
-The `Database tables and columns` section allows you to create and manage SQL tables and views. Tables and columns created here are registered in the OBM metadata, making them accessible through the OBM interfaces. Note that tables and fields created via standard SQL clients are not automatically available to OBM.
+===========================
 
-### Table and Column Naming
- - **Naming Rules**: Avoid accented characters, spaces, or special characters in table names. Use lowercase letters and underscores (_) for separation. Adding a description when creating a table is strongly recommended.
+The **Database tables and columns** section is used to create and manage the
+SQL tables, views, and columns associated with a project. Objects registered
+through this interface are added to the OpenBioMaps metadata and can
+therefore be made available to upload forms, queries, modules, and other
+OpenBioMaps interfaces.
 
-### Column Management
- - **Available Columns**: Specify which columns should be available for form creation and queries in the web interface.
- - **Special Columns**: Define columns for special handling, such as species name, date, data collector, and location. These columns are used by certain modules without knowing the exact name.
+Tables and columns created directly through a standard SQL client are not
+registered automatically. They must also be added to the relevant
+OpenBioMaps metadata before they can be used through the web application.
 
-### Column Types
- - **Data**: General purpose columns.
- - **Spatial Geometry**: Used for map creation.
- - **Scientific Species Name**: Used in taxon management.
- - **Alternative Names**: Used in taxon management.
- - **Date**: Used in date filters.
- - **Number of Individuals**: Used in summary functions.
- - **Latitude/Longitude**: Used for creating spatial geometry.
- - **Citing**: Used in summary functions.
- - **Attachment**: File attachments column.
- - **UTM Zone**: Used in spatial geometry creation.
+.. TODO: Explain how an existing SQL table or view can be registered without
+   recreating it. Document which metadata tables are modified by this
+   interface and whether database objects created outside the interface can
+   be imported safely.
 
-### Special Fields
- - **Comment**: Contains descriptions of the column content (metadata). Adding meta descriptions is recommended.
- - **Command**: Define settings or execute actions (e.g., rename or delete columns).
 
-### Column Commands
- - **Set SRID**: For `obm_geometry`, set the SRID using `SET srid:4326`.
- - **Use Rules**: For `obm_id`, specify rule usage with `SET use_rules:1`.
- - **Rename Column**: Use `RENAME:new-name`. Note: Renaming can corrupt upload forms.
- - **Drop Column**: Use `DROP`. Note: Deleting can corrupt upload forms; update related forms accordingly.
+Naming tables and columns
+-------------------------
 
-### SQL Console
-An SQL console is available for operators with separate authentication. It provides a drop-down list of all project-related tables in the SQL database. Tables not registered as accessible to OBM are marked in red.
+Use lowercase letters, numbers, and underscores for table and column names.
+Avoid spaces, accented characters, quoted identifiers, and other special
+characters. Names should be descriptive and should remain stable after forms,
+queries, or modules begin using them.
 
-### Managing Views
-Replace data tables with Views to create custom versions or improve performance. The system creates a Schema with the same name as the base table, moving original tables and creating corresponding INSERT/UPDATE/DELETE Rules. This is useful for large data tables with slow flows or triggers.
+A description should be provided whenever a table or column is created.
+These descriptions form part of the project's metadata and help users
+understand the meaning and intended use of the data.
+
+.. TODO: Document the complete naming rules enforced by the interface,
+   including maximum lengths, reserved names, schema handling, and whether a
+   name may begin with a number.
+
+
+Registering available columns
+-----------------------------
+
+Administrators can select which columns are available when creating upload
+forms and query interfaces. A column that exists in PostgreSQL but is not
+registered as available will not automatically appear in these interfaces.
+
+Columns can also be assigned semantic roles. These roles allow OpenBioMaps
+and its modules to identify important fields without relying on a
+project-specific column name. Depending on the project and installed
+modules, roles may identify fields containing:
+
+* a scientific name;
+* an alternative taxon name;
+* an observation date;
+* a data collector;
+* a location or geometry;
+* a count of individuals;
+* latitude and longitude values;
+* a citation; or
+* an attachment.
+
+.. TODO: Provide a complete list of semantic roles and identify which core
+   functions or modules use each role. Clarify whether more than one column
+   can have the same role and whether one column can have multiple roles.
+
+
+Column types
+------------
+
+The administrative interface provides the following documented column
+types or semantic roles:
+
+``Data``
+   A general-purpose data column.
+
+``Spatial Geometry``
+   A geometry column used for maps and spatial operations.
+
+``Scientific Species Name``
+   A scientific-name column used by taxon-management functions.
+
+``Alternative Names``
+   An alternative-name column used by taxon-management functions.
+
+``Date``
+   A date or date-time column used by date filters.
+
+``Number of Individuals``
+   A numeric column used by summary functions.
+
+``Latitude/Longitude``
+   A coordinate column used to create spatial geometry.
+
+``Citing``
+   A citation-related column used by summary functions.
+
+``Attachment``
+   A column that refers to uploaded file attachments.
+
+``UTM Zone``
+   A UTM-zone column used when spatial geometry is created from
+   coordinates.
+
+.. TODO: Confirm that these names match the current labels in the
+   administration interface. Explain how these semantic types relate to
+   PostgreSQL data types and document any required PostgreSQL type for each
+   option.
+
+.. TODO: Clarify how latitude and longitude columns are paired and how the
+   UTM zone, coordinate reference system, and hemisphere are determined
+   during geometry creation.
+
+
+Column descriptions and commands
+--------------------------------
+
+The **Comment** field contains a description of the column's contents. Adding
+a meaningful description is recommended because it contributes to the
+project's metadata.
+
+The **Command** field can be used to perform specific operations or assign
+settings to a column. The documented commands include:
+
+``SET srid:4326``
+   Assign SRID 4326 to the ``obm_geometry`` column. Replace ``4326`` with
+   the spatial reference identifier required by the project.
+
+``SET use_rules:1``
+   Enable access-rule handling for the ``obm_id`` column.
+
+``RENAME:new_name``
+   Rename a column to ``new_name``.
+
+``DROP``
+   Delete the column.
+
+Renaming or deleting a column can invalidate upload forms, query templates,
+modules, views, triggers, and external applications that refer to it. Update
+all dependent configuration before performing either operation, and create a
+database backup when appropriate.
+
+.. TODO: Confirm the exact syntax, case sensitivity, and supported targets of
+   every command. Explain whether commands are executed immediately and
+   whether the interface checks database dependencies before renaming or
+   deleting a column.
+
+.. TODO: Clarify whether ``SET srid`` only changes metadata or transforms
+   existing coordinates. Changing an SRID without transforming coordinate
+   values can result in invalid spatial data.
+
+.. TODO: Explain what ``SET use_rules:1`` changes and whether it creates,
+   enables, or merely registers the project's row-level access rules.
+
+
+SQL console
+-----------
+
+An SQL console is available to operators through a separate authentication
+step. It provides a list of project-related database tables. Tables that are
+not registered as accessible to OpenBioMaps are marked in red.
+
+The SQL console can modify or delete project data and database structures.
+Access should be limited to trusted users with sufficient PostgreSQL and
+OpenBioMaps administration experience.
+
+.. TODO: Document the authentication method, the database role used by the
+   console, and the statements that are permitted or blocked. Clarify
+   whether queries have execution-time, transaction, or result-size limits
+   and whether executed statements are recorded in an audit log.
+
+
+Managing views
+--------------
+
+A data table can be replaced by a view to provide a customised
+representation of its data or to improve a specific workflow. The documented
+process creates a schema with the same name as the original table, moves the
+original table into that schema, and creates a view in its previous
+location. Corresponding ``INSERT``, ``UPDATE``, and ``DELETE`` rules provide
+write operations where configured.
+
+This approach may be useful for large tables affected by expensive
+workflows or triggers. It changes the database structure substantially and
+can affect forms, queries, modules, foreign keys, triggers, backups, and
+external clients.
+
+.. TODO: Document the exact transformation performed when a table is
+   replaced by a view, including object names, ownership, privileges,
+   sequences, indexes, constraints, foreign keys, and generated write rules.
+   A supported rollback procedure should also be provided.
+
+.. TODO: Explain which performance problems this feature is intended to
+   solve. Replacing a table with a view does not by itself improve
+   performance, so the expected view definition and optimisation strategy
+   should be described.
+
 
 .. _data-access:
 
 Data access
------------
-The `Data access` section provides an overview of the access rules set for the project and their current statuses. It allows administrators to view access levels for different user groups on the project and all managed data tables.
+===========
 
-Key functionalities include:
+The **Data access** section summarises the project's access configuration and
+the current state of row-level access rules. Administrators can inspect the
+read and modification levels applied to the project and its managed data
+tables.
 
- - **Access Levels**: Define access levels for reading and modifying data. The available levels are "everybody", "logged-in users", and "specified group members".
- - **Documentation Links**: Provides links to documentation for further information on access settings.
- - **Access Rules by Table**: Displays access rules for each data table, indicating whether restrictions are enabled or disabled.
- - **Restriction Management**: Allows enabling or disabling restrictions based on group access levels and predefined rules.
- - **Trigger Management**: Checks the status of triggers associated with access rules, ensuring they are enabled for proper operation.
+The interface includes:
 
-Navigation:
+* the configured levels for reading and modifying data;
+* the status of access restrictions for individual data tables;
+* controls for enabling or disabling configured restrictions;
+* the status of triggers used to maintain access rules; and
+* links to related documentation.
 
- - [web] -> [profile] -> [project administration] -> [data access]
- - [system] -> [/web-app-path/] -> [/projects/YOURPROJECT/local_vars.php.inc]
+The documented access levels are:
 
-This section is crucial for checking data security and ensuring that only authorized users have access to sensitive information.
+``everybody``
+   Access is not restricted to authenticated users.
+
+``logged-in users``
+   Access requires authentication.
+
+``specified group members``
+   Access is controlled through project groups and more specific rules.
+
+The effective access to a record may be affected by project-level,
+row-level, and column-level rules. For a detailed overview, see
+:doc:`Data access <data_access>`.
+
+The interface is available through **Profile > Project administration >
+Data access**. Some underlying defaults may also be defined in the project's
+``local_vars.php.inc`` configuration file.
+
+.. TODO: Confirm the current navigation labels and map the interface labels
+   ``everybody``, ``logged-in users``, and ``specified group members`` to the
+   corresponding configuration values.
+
+.. TODO: Document which changes can be made directly through this page and
+   which still require editing ``local_vars.php.inc``. Explain how conflicts
+   between interface settings and configuration-file values are resolved.
+
 
 .. _groups:
 
 Groups
-------
-The `Groups` section allows administrators to create and manage user groups within the OpenBioMaps platform. These groups are essential for organizing users and controlling access to various functionalities and data.
+======
 
-Key functionalities include:
+The **Groups** section allows administrators to create and manage groups of
+project users. Groups are used to assign access to data, upload forms,
+modules, and administrative functions.
 
-- **Group Creation**: Create new groups by specifying a group name. This is the first step in organizing users for access management.
-- **User and Group Assignment**: Assign users and other groups to a group, enabling hierarchical group structures. This allows for flexible and scalable access management.
-- **Access Management**: Use groups to manage access and usage control for upload forms, data, modules, and administrative functions. Groups can be assigned specific permissions across different sections of the platform.
-- **Integration with Other Sections**: Groups created here can be utilized in other administrative interfaces, such as form usage, data access and writing permissions, and module usage.
+Administrators can:
 
-This section is crucial for maintaining organized and efficient access control within the OpenBioMaps platform.
+* create a group;
+* add users to or remove users from a group;
+* add groups to other groups where nested groups are supported; and
+* use the resulting groups in other access-management interfaces.
+
+Nested groups can provide a reusable and scalable permission structure. They
+should nevertheless be kept simple enough that administrators can determine
+the effective permissions of an individual user.
+
+.. TODO: Explain the exact behaviour of nested groups, including recursive
+   membership, circular-reference prevention, and permission precedence.
+   Document whether deleting a group removes its references from upload
+   forms, access rules, modules, and administrative permissions.
+
+.. TODO: Clarify whether group names can be changed after a group is used in
+   access rules and whether access rules store a group identifier or its
+   name.
+
 
 .. _upload-forms:
 
 Upload forms
-------------
-:doc:`upload_forms`
+============
+
+Upload forms determine how data can be entered or imported into project
+tables. They define the available fields, input controls, validation rules,
+and access settings for a data-collection workflow.
+
+For detailed instructions, see
+:doc:`Upload form management <upload_forms>`.
+
 
 .. _functions:
 
 Functions
----------
-The `Functions` section provides tools for managing SQL rules and triggers associated with project tables. It includes two main tables: Rules and Triggers, which list the rules (e.g., instead of) and triggers associated with the project's tables.
+=========
 
-### Rules and Triggers Tables
-- **Rules Table**: Displays SQL rules associated with each project table, allowing administrators to manage and review rule configurations.
-- **Triggers Table**: Lists triggers for each table, providing an overview of active and inactive triggers.
+The **Functions** section provides tools for reviewing SQL rules and triggers
+associated with project tables. It includes separate lists of the rules and
+triggers registered for each table and provides templates for selected
+trigger functions.
 
-### Trigger Functions
-The section allows for the creation, editing, and toggling of three types of trigger functions based on templates:
+The interface can create, edit, enable, or disable the following documented
+trigger types:
 
-- **Taxon List Trigger**: Automatically inserts species names from the species name field into the taxon table. This is useful for projects with continuously expanding species lists, ensuring that new species are added to the taxon table for maintenance and use in forms and search interfaces.
+* taxon-list triggers;
+* history triggers; and
+* access-rules triggers.
 
-- **History Trigger**: When enabled, this trigger logs every record-level modification in the target table, including the modification timestamp and the number of changes. This is essential for tracking changes and maintaining a history of data modifications.
+Database triggers execute automatically when data change. An incorrect
+trigger can reject valid changes, modify data unexpectedly, or weaken access
+control. Test customised trigger functions before enabling them in a
+production project.
 
-- **Access Rules Trigger**: Manages row-level access rules for records in project tables. This trigger can automatically restrict access to records based on a sensitive data field value or assign access rights specified in the upload form to groups. It is particularly useful for projects with restricted data access, allowing for differentiated access control for logged-in users.
+.. TODO: Document the permissions required to use this page and distinguish
+   between enabling a PostgreSQL trigger, replacing its trigger function,
+   and changing an OpenBioMaps metadata setting.
 
-  The rules trigger is especially useful when you want to provide different access levels to logged-in users for individual records. For example, if you have a field in your records that indicates sensitive data, the system can automatically restrict access based on that field's value. Additionally, the access rights specified in the upload form for groups can be applied to the records. If the form lists groups A and B as having read access to the data entered with that form, and group C as having edit rights, these are entered into the rules table via the rules trigger. The rules trigger is only meaningful for projects with restricted data access.
 
-These triggers are crucial for maintaining data integrity, security, and usability within the OpenBioMaps platform.
+Taxon-list trigger
+------------------
+
+The taxon-list trigger inserts previously unknown scientific names from a
+configured species-name field into the project's taxon table. This can help
+maintain a project whose species list expands as observations are added.
+
+.. TODO: Explain when the trigger runs, how names are normalised, and how
+   duplicates are identified. Clarify whether inserted names are accepted
+   automatically or require taxonomic review.
+
+
+History trigger
+---------------
+
+The history trigger records changes made to records in the target table.
+The resulting history can be displayed through the record's data-history
+interface.
+
+.. TODO: Document the operations and values recorded by the history trigger.
+   Clarify whether it stores previous and new field values, timestamps,
+   editor identities, transaction identifiers, or only a count of changes.
+   Retention, access, restoration, and storage requirements should also be
+   described.
+
+
+Access-rules trigger
+--------------------
+
+The access-rules trigger maintains row-level access rules for records in a
+project table. It can derive restrictions from a configured sensitivity
+field and can transfer read and write permissions from the upload form used
+to create a record.
+
+For example, if an upload form grants read access to groups A and B and
+write access to group C, the trigger can add those assignments to the
+rules-table entry associated with each record created through that form.
+
+This trigger is relevant to projects that use group-level or row-level
+access restrictions. Its configuration must be consistent with the
+project's general access settings and rules-table schema.
+
+For more information, see :doc:`Data access <data_access>`.
+
+.. TODO: Explain how the trigger handles records created by SQL, the API, or
+   another process that has no associated upload form. Document its
+   behaviour when a record is updated, moved between uploads, or deleted.
+
+.. TODO: Clarify whether enabling the trigger creates rules for existing
+   records or only for subsequent changes. A supported procedure for
+   regenerating and validating all rules should be documented.
+
 
 .. _species-names:
 
 Species names
--------------
-Taxon table management interface.
+=============
 
-Assign species names to the following categories: [accepted name], [synonym name], [common name], [mispelled name].
+The **Species names** section manages the project's taxon table. Species
+names can be assigned to the following documented categories:
 
-The species names in the taxon table (species name database) are used by the "taxon-name-repair-background-jobs" and the search interfaces.
+* accepted name;
+* synonym;
+* common name; and
+* misspelled name.
+
+Names stored in the taxon table are used by taxon-related search interfaces
+and by background jobs that detect or repair taxon names.
+
+.. TODO: Confirm the current category names and correct the source-interface
+   spelling of ``misspelled`` if necessary. Document the relationships
+   allowed between accepted names, synonyms, common names, and misspelled
+   variants.
+
+.. TODO: Explain which taxonomic fields are stored, how names can be
+   imported or exported, and how the interface prevents duplicate or
+   circular synonym relationships.
+
+.. TODO: Identify the current name and behaviour of the
+   ``taxon-name-repair-background-jobs`` functionality and link to its
+   configuration instructions.
+
 
 .. _translations:
 
 Translations
-------------
-- Global translations: global translations can be added and improved in our public translator platform: https://translate.openbiomaps.org.
-        You can also start a new language on this interface, and translations of the mobile app and other OpenBioMaps components can be found here.
-        Feel free to create, add and improve translations!
+============
 
-- Local translations:
-        Use the ``str_`` prefix, followed by some pretty understandable English expressions. E.g.: str_observations, the translation of which must be given in the given active language. In this case, observation.
+OpenBioMaps uses global and project-specific translations.
 
-See local translations in action here: 
-   https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
+
+Global translations
+-------------------
+
+Global translations can be added and improved through the
+`OpenBioMaps translation platform
+<https://translate.openbiomaps.org/>`_. The platform contains translations
+for the web application, mobile applications, and other OpenBioMaps
+components. Contributors can also propose a new language.
+
+.. TODO: Document the account, review, and release workflow of the
+   translation platform. Explain when an accepted global translation becomes
+   available on an OpenBioMaps server.
+
+
+Local translations
+------------------
+
+Local translations allow a project to define project-specific interface
+text. Translation keys use the ``str_`` prefix followed by a descriptive
+English identifier. For example, a project could define
+``str_observations`` and provide its translation in each active language.
+
+A public example is available at:
+
+https://openbiomaps.org/projects/checkitout/upload/?form=426&type=web
+
+.. TODO: Document where local translations are created, how active languages
+   are selected, which components recognise local keys, and what happens
+   when a translation is missing. Clarify whether local translations
+   override global strings that use the same key.
+
+.. TODO: Replace or supplement the public example with a stable screenshot
+   or a description because the linked project and form identifier may
+   change.
+
 
 .. _modules:
 
 Modules
--------
-:doc:`modules <../modules>`.
+=======
+
+Modules extend the functionality available in an OpenBioMaps project. Their
+configuration and access requirements depend on the individual module.
+
+For more information, see :doc:`Modules <modules>`.
+
 
 .. _interrupted-uploads:
 
 Interrupted uploads
--------------------
-Users' saved and unfinished files or form data uploads can be found here. Once uploaded, they can be resumed or discarded. Most of these interrupted uploads can be deleted!
+===================
+
+The **Interrupted uploads** section lists saved or unfinished file uploads
+and web-form data-entry sessions. Depending on their state, an interrupted
+upload can be restored or discarded.
+
+Administrators should verify that an upload is no longer required before
+deleting it. An interrupted upload may contain work that its owner intends
+to resume.
+
+.. TODO: Document who can view, resume, or delete another user's interrupted
+   upload. Explain the difference between a manually saved upload, an
+   automatic backup, and an interrupted upload.
+
+.. TODO: Specify retention periods, storage limits, automatic cleanup rules,
+   and whether deleting an interrupted upload also deletes its uploaded
+   temporary files.
+
 
 .. _file-manager:
 
 File manager
-------------
-The `File manager` section provides a comprehensive interface for managing uploaded attachments within the OpenBioMaps platform. It allows users to view, organize, and export attachments associated with data tables.
+============
 
-Key functionalities include:
+The **File manager** section provides tools for managing attachments uploaded
+to the project. It can be used to browse attachments, review their
+associations with database records, and create exports.
 
-- **Attachment Listing**: Displays a list of all uploaded attachments, allowing users to browse and manage files efficiently.
-- **Export Functionality**: Users can export all attachments related to a specific data table into a single compressed file. This process is handled as a "Background-Job", and a download link is provided once the export is complete.
-- **Filtering and Sorting**: Offers options to filter and sort attachments based on various criteria, such as upload date, file type, and associated data records.
-- **Access Control**: Ensures that only authorized users can manage and export attachments, maintaining data security and integrity.
-- **Interactive Interface**: Provides an intuitive interface for editing file comments, linking files to data records, and managing file associations.
+The documented functions include:
 
-These features facilitate efficient management of attachments, ensuring that users can easily access and organize their data files.
+* listing uploaded attachments;
+* filtering and sorting attachments;
+* editing file comments;
+* linking attachments to data records;
+* managing existing file associations; and
+* exporting the attachments associated with a data table.
+
+A bulk export is processed as a background job. When processing has
+finished, the system provides a link for downloading the resulting archive.
+
+Access to attachment management and export functions should be limited to
+authorised users. Exported files remain subject to the project's data-access
+and privacy requirements.
+
+.. TODO: Confirm the available filters and editable metadata. Document which
+   attachment formats can be previewed and whether changing a file
+   association also updates the corresponding record.
+
+.. TODO: Explain how attachment exports apply row-level and column-level
+   access rules, where generated archives are stored, how long download
+   links remain valid, and who can use them.
+
+.. TODO: Clarify whether deleting a file through this interface is supported
+   and what happens to records, metadata, thumbnails, and backups that refer
+   to the deleted file.
+
 
 .. _sql-query-settings:
 
 SQL query settings
-------------------
-Here you can configure the SQL queries that Mapserver will use to display the map data and the web application will use to display the text results of the queries.
-These are mostly not real SQL commands, but templates for SQL query assembly with approximate SQL syntax.
+==================
 
-In the Mapserver/map file, WMS layers must contain a DATA definition line with a %query% substitution string to use a dynamically generated SQL command based on the SQL template defined here.
+The **SQL query settings** section defines the templates used to assemble
+queries for MapServer layers and for textual query results in the web
+application. These templates resemble SQL but include OpenBioMaps
+placeholders that are replaced dynamically by the query interpreter.
 
-All SQL queries should be connected with one web map layer. In the last column, you can set these connections. In the SQL queries, there are two substitute variables to perform dynamic queries: %qstr% and %morefilters%.
+Each query template should be connected to a web-map layer. In a MapServer
+mapfile, a WMS layer that uses a dynamically generated query must contain a
+``DATA`` definition with the ``%query%`` placeholder.
 
-The query may contain magic words. These are delimited by % characters. These will be dynamically replaced by real SQL strings in the OBM SQL interpreter.
-Some modules may also generate such magic words!
+Query templates can contain placeholders delimited by percent signs. Core
+functions and installed modules may replace these placeholders with SQL
+fragments at runtime.
 
-.. code-block:: SQL
- 
-    SELECT obm_id, %grid_geometry% AS obm_geometry 
-        %selected%
-    FROM %F%checkitout c%F%
-        %uploading_join%
-        %rules_join%
-        %taxon_join%
-        %grid_join%
-        %search_join%
-        %morefilter%
-    WHERE %geometry_type% %envelope% %qstr%
+.. TODO: Provide a complete reference for all supported placeholders,
+   including their valid positions, replacement values, dependencies, and
+   security constraints. The source text refers to both ``%morefilter%`` and
+   ``%morefilters%``; confirm which form is valid.
 
-Use %F% and an alias name around the FROM table. It is necessary to split the query template.
 
-If you want to join another table use the %J% around the JOIN statement. E.g.
+Basic query template
+--------------------
 
-.. code-block:: SQL
+A query template may use placeholders such as ``%qstr%`` for query
+conditions and ``%morefilter%`` for additional filters:
 
-    SELECT n.obm_geometry,n.obm_id,-2 AS date_part,nestbox_type,project_id,beinaction
-        %selected%
-    FROM %F%public_nestbox_data n%F%
-        %J%LEFT JOIN public_nestbox_data_observations o ON o.nestbox_id=n.obm_id%J%
-        %taxon_join%
-        %morefilter%
-    WHERE %envelope% %qstr%
+.. code-block:: sql
 
-Building more complex queries is possible:
+   SELECT obm_id, %grid_geometry% AS obm_geometry
+       %selected%
+   FROM %F%checkitout c%F%
+       %uploading_join%
+       %rules_join%
+       %taxon_join%
+       %grid_join%
+       %search_join%
+       %morefilter%
+   WHERE %geometry_type% %envelope% %qstr%
 
-.. code-block:: SQL
+The ``%F%`` markers identify the primary ``FROM`` relation and its alias so
+that the interpreter can split and extend the template.
 
-    WITH aall AS (
-        SELECT o.obm_id,n.obm_geometry,nestbox_type,project_id,beinaction,
-        COALESCE(extract(days FROM (CURRENT_DATE-datum)::interval),'-1') as  date_part
-            %selected% 
-        FROM %F%public_nestbox_data_observations o%F%
-        %J%LEFT JOIN public_nestbox_data n ON (nestbox_id=n.obm_id) %J%
-        %taxon_join%
-        %morefilter% 
-        WHERE 1=1 %envelope% %qstr% 
-    )
-    SELECT * FROM aall ORDER BY date_part DESC
+.. TODO: Explain why the primary relation must be enclosed in ``%F%``
+   markers, whether schema-qualified and quoted names are supported, and
+   which aliases are available to generated fragments.
 
-A typical simple SQL query looks like this:
 
-.. code-block:: SQL
- 
-    SELECT obm_id, obm_geometry %selected%
-    FROM %F%checkitout c%F%
-        %uploading_join%
-        %rules_join%
-        %taxon_join%
-        %morefilter%
-    WHERE %geometry_type% %envelope% %qstr%
+Adding joins
+------------
+
+Additional joins can be enclosed in ``%J%`` markers:
+
+.. code-block:: sql
+
+   SELECT
+       n.obm_geometry,
+       n.obm_id,
+       -2 AS date_part,
+       nestbox_type,
+       project_id,
+       beinaction
+       %selected%
+   FROM %F%public_nestbox_data n%F%
+       %J%LEFT JOIN public_nestbox_data_observations o
+           ON o.nestbox_id = n.obm_id%J%
+       %taxon_join%
+       %morefilter%
+   WHERE %envelope% %qstr%
+
+.. TODO: Explain how multiple ``%J%`` blocks are processed and whether the
+   interpreter can remove a join when none of the selected fields or filters
+   require it.
+
+
+Complex query templates
+-----------------------
+
+Templates can also use common table expressions and other SQL constructs:
+
+.. code-block:: sql
+
+   WITH aall AS (
+       SELECT
+           o.obm_id,
+           n.obm_geometry,
+           nestbox_type,
+           project_id,
+           beinaction,
+           COALESCE(
+               EXTRACT(DAY FROM (CURRENT_DATE - datum)::interval),
+               '-1'
+           ) AS date_part
+           %selected%
+       FROM %F%public_nestbox_data_observations o%F%
+           %J%LEFT JOIN public_nestbox_data n
+               ON nestbox_id = n.obm_id%J%
+           %taxon_join%
+           %morefilter%
+       WHERE 1 = 1 %envelope% %qstr%
+   )
+   SELECT *
+   FROM aall
+   ORDER BY date_part DESC
+
+A typical simple template has the following form:
+
+.. code-block:: sql
+
+   SELECT obm_id, obm_geometry %selected%
+   FROM %F%checkitout c%F%
+       %uploading_join%
+       %rules_join%
+       %taxon_join%
+       %morefilter%
+   WHERE %geometry_type% %envelope% %qstr%
+
+Query templates affect both correctness and data access. An incorrect join
+or missing access-rule placeholder may expose records or fields that should
+be restricted. Test each query as public, authenticated, and group-specific
+users before making it available.
+
+.. TODO: Document which access-control placeholders are mandatory and
+   whether the application rejects templates that omit them. Explain how
+   parameter values are escaped or bound to prevent SQL injection.
+
+.. TODO: Add a procedure for testing a template, inspecting the generated
+   SQL, diagnosing placeholder errors, and restoring the previous version.
+
 
 .. _map-settings:
 
 Map settings
-------------
-The `Map settings` section provides comprehensive tools for configuring and managing map layers and spatial data within the OpenBioMaps platform. It includes settings for both the web map interface and the MapServer configuration.
+============
 
-Web Map Layers
-..............
-- **OpenLayers Settings**: Configure the web map interface using OpenLayers. This includes setting the map center, zoom levels, and available layers. Users can define which layers are visible by default and customize the map's appearance and behavior.
+The **Map settings** section configures spatial layers in the web map and
+their corresponding MapServer definitions. The web-map and MapServer
+settings must remain consistent so that layers use the intended data source,
+projection, extent, and style.
 
-- **Layer Management**: Manage the layers displayed on the map, including adding, removing, and configuring layers. Each layer can be associated with specific data tables and queries, allowing for dynamic data visualization.
+
+Web-map layers
+--------------
+
+The web-map settings configure the OpenLayers-based map interface.
+Administrators can define settings such as:
+
+* the initial map centre and zoom level;
+* the available base maps and overlay layers;
+* which layers are visible by default;
+* the association between layers, project tables, and query templates; and
+* selected aspects of layer appearance and behaviour.
+
+.. TODO: Document every editable OpenLayers setting, its expected format,
+   default value, and supported coordinate reference system. Explain how
+   layer order, visibility ranges, opacity, legends, and queryability are
+   configured.
+
 
 MapServer settings
-..................
-- **Mapfile Configuration**: The raw version of the mapfile is available for advanced users who need to update the MapServer configuration. This includes defining data sources, styling, and rendering options for map layers.
+------------------
 
-- **Spatial Reference Systems**: Configure the spatial reference systems (SRIDs) used by the map layers. This ensures that spatial data is accurately represented and aligned across different datasets.
+Advanced administrators can edit the project's raw MapServer mapfile. The
+mapfile defines layer data sources, spatial reference systems, extents,
+styles, and rendering options.
 
-- **Extent and Projection**: Define the map's extent and projection settings to control how spatial data is displayed. This includes setting the default projection and ensuring compatibility with various spatial data formats.
+Changes to a mapfile can make project layers unavailable or expose an
+unintended data source. Preserve a working version and validate the edited
+mapfile before deploying changes.
 
-These settings are crucial for ensuring that spatial data is accurately represented and easily accessible within the OpenBioMaps platform.
+.. TODO: Document where the mapfile is stored, whether edits are versioned,
+   how its syntax can be validated, and how a previous configuration can be
+   restored.
+
+.. TODO: Explain which portions of the mapfile are generated by OpenBioMaps
+   and which can be edited safely without being overwritten.
+
+
+Spatial reference systems
+-------------------------
+
+Map layers must use correctly defined spatial reference systems. The
+configured SRID determines how coordinates are interpreted and transformed
+when data from different sources are displayed together.
+
+The map extent and projection settings control the area and coordinate
+system displayed by the web map. They must be compatible with the layer
+data, MapServer configuration, and OpenLayers settings.
+
+.. TODO: Identify the required projection for the web map, the supported
+   source projections, and where transformations occur. Include guidance for
+   choosing an extent and diagnosing layers displayed in the wrong location.
+
 
 .. _members:
 
 Members
--------
-List of members registered in the project. You can change your user status here. These are Normal, Operator, and Suspended. Suspended users do not have access to anything in the project, almost equivalent to deleting a profile.
-Operators have access to all features and data. The database founder does not have to be an operator to have access to everything. Normal users will by default have access to data upload and data query options according to the project's privilege setting. This default can be modified by creating groups and assigning different permissions to groups. See :ref:`Groups<groups>` and :ref:`Administrative access<administrative-access>`.
+=======
 
-Members' group assignments can also be modified here, but a more convenient interface is Group Manager.
+The **Members** section lists the users registered in the project.
+Administrators can manage project membership, status, and group assignments.
 
-The member name is a reference in this interface. Following this link will take you to the user's profile page. With administrative privileges, a tree-user-secret icon (https://forkaweso.me/Fork-Awesome/icon/user-secret/) will appear in the tab title bar - top right. Clicking on this will take you to another user's profile using your own user login details.
+The documented member statuses are:
+
+``Normal``
+   The user receives the project's standard upload and query permissions.
+   More specific group assignments and access rules may modify these
+   permissions.
+
+``Operator``
+   The user has access to all project functions and data.
+
+``Suspended``
+   The user cannot access project functions or data. Suspending a user is
+   similar to disabling their project membership but does not delete their
+   profile.
+
+The project founder has full project access and does not need to be assigned
+the operator status. Group assignments can be changed on this page, although
+the **Groups** interface may be more convenient for managing several users.
+
+For related settings, see :ref:`Groups <groups>` and
+:ref:`Administrative access <administrative-access>`.
+
+.. TODO: Confirm the current status names and define the exact permissions of
+   founders, owners, hosts, operators, and normal users. These role names
+   should be harmonised across the documentation.
+
+.. TODO: Explain whether suspension affects only the current project or the
+   user's server-wide account. Document its effect on API tokens, active
+   sessions, scheduled jobs, record ownership, invitations, and messages.
+
+
+Viewing another user's profile
+------------------------------
+
+A member's name links to their profile page. Administrators with the
+required permission may see a user-secret icon in the upper-right area of
+the page. This function opens another user's profile while the administrator
+remains authenticated with their own account.
+
+The icon used by the interface is documented by
+`Fork Awesome
+<https://forkaweso.me/Fork-Awesome/icon/user-secret/>`_.
+
+This feature can expose personal information and user-specific content.
+Access should be restricted and its use should follow the project's privacy
+and auditing policies.
+
+.. TODO: Clarify whether this function impersonates the user or only allows
+   an administrative view of the profile. Document which actions are
+   permitted, whether the affected user is notified, and whether access is
+   recorded in an audit log.
+
 
 .. _message-templates:
 
 Message templates
------------------
-The messages sent by the system or project must have a template. Global templates are provided for the implemented cases. Please find a list of global templates with short descriptions.
+=================
 
-On this page, global templates can be overridden by their local version, by selecting 
-a template -> editing -> and saving it. The templates can have variables that 
-are substituted with the provided strings, at the moment of sending the message. 
-For each template, these variables are defined in the code. 
+Messages sent automatically by the system or a project are generated from
+templates. OpenBioMaps provides global templates for implemented message
+types, and a project can create local versions that override them.
 
-Variables are marked with %var%. A few global variables are defined, which can 
-be used anywhere in the template. 
+To customise a global template, select it, edit its contents, and save it as
+a local version. Templates may contain variables that are replaced when the
+message is sent. The variables supported by an individual template are
+defined by the function, module, or background job that sends it.
 
-Including other templates are supported. For example, if you define a footer for 
-your project, this can be included by appending the @footer@ string to the end 
-of the template.
+New templates can also be created for custom modules and background jobs.
 
-New templates for custom modules or jobs can also be defined here.
+.. TODO: Document the template fields, supported message formats, language
+   handling, fallback order, and procedure for reverting a local override to
+   the global version.
 
-Global variables
-................
-* `%PROJECT_TABLE%` - the name of the project
-* `%PROJECT_TITLE%` - the short description of the project
-* `%PROJECT_DESCRIPTION%` - the long description of the project
-* `%USER_NAME%` - the name of the user
-* `%URL%`
-* `%OB_DOMAIN%`
-* `%DOMAIN%` - the domain name defined in the "projects" table
-* `%PROTOCOL%` - the protocol defined in the "projects" table 
+.. TODO: Explain whether template content is escaped and which HTML or
+   markup is permitted. Template editing should be assessed for risks such
+   as unsafe links, HTML injection, and unintended disclosure of variables.
+
+
+Variables and included templates
+--------------------------------
+
+Variables are written between percent signs, for example ``%USER_NAME%``.
+The following global variables are documented:
+
+``%PROJECT_TABLE%``
+   The project's database identifier or table name.
+
+``%PROJECT_TITLE%``
+   The project's short description.
+
+``%PROJECT_DESCRIPTION%``
+   The project's long description.
+
+``%USER_NAME%``
+   The name of the recipient or relevant user.
+
+``%URL%``
+   A URL associated with the message.
+
+``%OB_DOMAIN%``
+   The OpenBioMaps domain associated with the message.
+
+``%DOMAIN%``
+   The domain name defined in the ``projects`` table.
+
+``%PROTOCOL%``
+   The protocol defined in the ``projects`` table.
+
+One template can include another template. For example, appending
+``@footer@`` includes the template named ``footer``.
+
+.. TODO: Confirm the exact meaning and availability of each global variable.
+   In particular, distinguish ``%PROJECT_TABLE%``, ``%OB_DOMAIN%``,
+   ``%DOMAIN%``, and ``%URL%``.
+
+.. TODO: Document whether included templates can themselves include other
+   templates, how missing variables or templates are handled, and whether
+   recursive inclusion is prevented.
+
 
 Predefined templates
-....................
-User-related messages:
-* `welcome_to` - welcome to the project
-* `change_email_address` - a confirmation link, for changing the user's email address
-* `dropmyaccount` - Confirmation email of dropping the account
-* `create_new_project` - confirmation message of creating a new project
-* `invitation` - invitation email
-* `invitation_accomplished` - notification about the accomplished invitation
-* `invitation_request` - message to admins about the invitation request
-* `lostpw` - lost password
+--------------------
 
-Miscellaneous:
-* `new_gitlab_issue` - a copy of a submitted bug report
-* `new_shared_polygon` - Project or system news about a new shared polygon
-* `new_upload_news` - Project news about a new upload
-* `new_upload_report` - Notification for the admins about a new upload
-* `footer` - A general mail footer 
-* `interconnect_request` - 
+The documented user-related templates are:
 
-Evaluation notifications:
-* `data_evaluation_commenters` - This message is sent when a record, previously commented by the user, gets a new comment.
-* `data_evaluation_owner` - This message is sent to the owner if a record uploaded by him gets a comment.
-* `upload_evaluation_commenters` - This message is sent when an upload, previously commented by the user, gets a new comment.
-* `upload_evaluation_owner` - This message is sent when an upload of the user gets a comment.
-* `user_evaluation_commenters` - This message is sent when a user, previously commented by the user, gets a new comment.
-* `user_evaluation_owner` - This message is sent when the user itself gets the comment.
+``welcome_to``
+   Welcomes a user to the project.
 
-Messages sent by modules:
-* `dlr_new_request` - Notification for project admins about a new download request. - ['username', 'requestid', 'request_message']
-* `dlr_request_registered` - Notification for the user that his download request was registered.
-* `incomplete_list_processed` - 
-* `incomplete_list_unprocessed` - 
+``change_email_address``
+   Sends a confirmation link for changing a user's email address.
+
+``dropmyaccount``
+   Confirms a request to delete an account.
+
+``create_new_project``
+   Confirms the creation of a project.
+
+``invitation``
+   Sends an invitation to join a project.
+
+``invitation_accomplished``
+   Reports that an invitation has been accepted.
+
+``invitation_request``
+   Notifies administrators about a request for an invitation.
+
+``lostpw``
+   Supports password recovery.
+
+The documented general-purpose templates are:
+
+``new_gitlab_issue``
+   Contains a copy of a submitted bug report.
+
+``new_shared_polygon``
+   Announces a newly shared polygon.
+
+``new_upload_news``
+   Announces a new upload in the project news.
+
+``new_upload_report``
+   Notifies administrators about a new upload.
+
+``footer``
+   Provides a general message footer.
+
+``interconnect_request``
+   Supports an interconnection request.
+
+The documented evaluation-notification templates are:
+
+``data_evaluation_commenters``
+   Notifies previous commenters when a record receives a new comment.
+
+``data_evaluation_owner``
+   Notifies the owner when a record they uploaded receives a comment.
+
+``upload_evaluation_commenters``
+   Notifies previous commenters when an upload receives a new comment.
+
+``upload_evaluation_owner``
+   Notifies the owner when their upload receives a comment.
+
+``user_evaluation_commenters``
+   Notifies previous commenters when a user receives a new comment.
+
+``user_evaluation_owner``
+   Notifies a user when they receive a comment.
+
+The documented module-related templates are:
+
+``dlr_new_request``
+   Notifies project administrators about a new download request. The
+   documented variables are ``username``, ``requestid``, and
+   ``request_message``.
+
+``dlr_request_registered``
+   Confirms to a user that their download request has been registered.
+
+``incomplete_list_processed``
+   Reports that an incomplete list has been processed.
+
+``incomplete_list_unprocessed``
+   Reports that an incomplete list could not be processed.
+
+.. TODO: Verify that all template identifiers are current and add the
+   variables available to each template. The purposes of
+   ``interconnect_request``, ``incomplete_list_processed``, and
+   ``incomplete_list_unprocessed`` require further explanation.
+
+.. TODO: Clarify whether ``dropmyaccount`` deletes a server-wide account or
+   only project membership, and whether ``create_new_project`` is a
+   confirmation request or a notification after creation.
+
 
 .. _server-info:
 
 Server info
------------
-The `Server info` section provides comprehensive details about the server's current status and configuration. It includes:
+===========
 
-- **Application Version**: Displays the current version of the OpenBioMaps application.
-- **Storage Usage**: Shows the disk usage of project files, including attachments and uploads.
-- **System Load**: Provides the server load averages over 1, 5, and 15 minutes, normalized by the number of CPU cores.
-- **Memory Usage**: Displays the amount of free memory available on the server.
-- **Supervisor Link**: Offers a direct link to the Supervisor project administration interface for further server management.
+The **Server info** section displays selected information about the
+OpenBioMaps server and the resources used by the project. Depending on the
+server configuration, it may include:
 
-This information is crucial for administrators to monitor server performance and ensure optimal operation.
+* the installed OpenBioMaps application version;
+* disk usage by project files, attachments, and uploads;
+* load averages for the previous 1, 5, and 15 minutes;
+* server load normalised by the number of CPU cores;
+* available memory; and
+* a link to the Supervisor administration interface.
+
+These values can help administrators identify resource constraints and
+provide diagnostic information to server operators. Access to detailed
+server information should be restricted because version and infrastructure
+details may be security-sensitive.
+
+.. TODO: Confirm which values are available to project administrators and
+   which require server-level privileges. Document the units, update
+   interval, data source, warning thresholds, and interpretation of each
+   metric.
+
+.. TODO: Clarify whether the Supervisor link is always available, which
+   Supervisor product it refers to, and how access to that external
+   interface is authenticated.
+
 
 .. _server-logs:
 
 Server logs
------------
-The `Server logs` section allows administrators to view and manage logs generated by the system. It includes:
+===========
 
-- **Log Sources**: Administrators can select from different log sources such as system logs, mapserver logs, job events, and job errors.
-- **Filtering and Searching**: Provides options to filter logs by specific criteria and search for particular entries.
-- **Access Control**: Ensures that only authorized users can view logs, maintaining security and privacy.
-- **Real-time Updates**: Supports real-time log updates for continuous monitoring of server activities.
+The **Server logs** section provides access to logs made available by the
+server configuration. The documented sources include:
 
-These features help in diagnosing issues, tracking system activities, and maintaining security compliance.
+* application or system logs;
+* MapServer logs;
+* background-job events; and
+* background-job errors.
+
+The interface may provide filtering, searching, and live updates. Logs can
+contain usernames, record identifiers, query details, file paths, request
+parameters, or other sensitive information. Access and retention should
+follow the server's security and privacy policies.
+
+.. TODO: Confirm the available log sources and whether live updates are
+   currently supported. Document the location, format, time zone, rotation,
+   retention, and maximum result size of each log.
+
+.. TODO: Explain which personal or confidential data can appear in logs and
+   how administrators can download, redact, or delete log content. It should
+   also be stated whether viewing logs is itself audited.
+
 
 .. _background-jobs:
 
 Background jobs
+===============
+
+Background jobs allow a project to execute scheduled or manually initiated
+tasks without continuous user interaction. They can be used for operations
+such as:
+
+* maintaining species-name data;
+* validating records;
+* importing or exporting data;
+* cleaning temporary tables;
+* running analyses; and
+* refreshing materialised views.
+
+A background job is a standalone program. OpenBioMaps jobs are commonly
+written in PHP, but the server may also support programs written in Python,
+R, Bash, or another installed language.
+
+The administration interface can be used to:
+
+* install predefined jobs from a central Git repository;
+* upload a project-specific job;
+* review installed jobs;
+* configure job parameters and schedules;
+* enable or disable jobs;
+* start a job manually;
+* inspect recent output and execution status; and
+* edit job source code where this function is enabled.
+
+Detailed logs are available through the **Server logs** section.
+
+Editing or uploading a job is equivalent to installing executable code on
+the server. These functions must be restricted to trusted administrators,
+and custom jobs should be reviewed for command injection, unsafe file
+access, credential exposure, and excessive resource use.
+
+.. TODO: Document the required package structure, manifest, entry point,
+   supported languages, execution user, working directory, environment
+   variables, dependencies, timeout, and resource limits of a job.
+
+.. TODO: Explain how jobs from the central repository are authenticated,
+   versioned, updated, and reviewed. Clarify whether local changes are
+   overwritten by an update and how a previous version can be restored.
+
+
+Scheduling jobs
 ---------------
-[web] -> [profile] -> [project administration] -> [background processes]
 
-JOB management is a feature of the OpenBioMaps web application that allows the system to work on our behalf without any user interaction. Provided that the scheduler is configured on the server (cron – on the host system in a Docker installation), this system-level task scheduler queries the project’s task scheduler every minute, and if a task is defined, it launches it in the background. In this way, there is no direct user interface for running the tasks; we can only ever see the results of tasks that have run in the background. Such tasks may include maintaining species names, validation tasks, automatic exports and imports, cleaning up temporary tables, and analyses, as well as updating materialised views and other similar tasks. These JOBs are, in fact, standalone programmes of varying sizes, mostly written in PHP, but they may be in other languages such as Python, R or Bash scripts. We have pre-written Job applications which can be downloaded via this admin interface from a central Git repository. The admin interface provides a platform for reviewing these jobs, enabling or disabling them, configuring their schedules and parameters, and viewing their run logs. There is also an integrated code editor where you can modify these applications to suit your own requirements. Finally, you can also upload your own JOB applications. The output of the JOBs can be viewed on this administrative page, but full, detailed logs can be read on the server logs administrative tab.
+The server's system-level scheduler must first be configured. In a Docker
+installation, this is typically a cron process on the host. It periodically
+invokes the scheduler for the project, which starts any jobs that are due.
 
-In terms of best practice, after loading the JOB but before setting up a schedule, click the ‘Run’ button to run the JOB, wait for it to complete, check the results, and if everything works as expected, then set up the scheduled run.
+Before scheduling a newly installed or modified job:
 
-The scheduler is cron-like, you have to fill in minute - hour - day fields, which can be * in all cases, i.e. every minute, hour, and day has a value.
+#. review its configuration and source;
+#. use **Run** to execute it manually;
+#. wait for the execution to finish;
+#. inspect its result and logs; and
+#. configure the recurring schedule only after the test succeeds.
 
-Here is an example of system level cron job in a docker installation:
+The project scheduler uses cron-like minute, hour, and day fields. An
+asterisk means every valid value in the corresponding field.
 
-```
-*/5 * * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
-```
+.. TODO: Document all scheduler fields and their accepted cron syntax,
+   including ranges, lists, steps, month, weekday, and time zone. Clarify
+   whether overlapping executions of the same job are prevented.
+
+
+System-level Docker example
+---------------------------
+
+The following example invokes a project's scheduler from the host:
+
+.. code-block:: console
+
+   */5 * * * * /usr/local/bin/docker-compose -f /srv/docker/openbiomaps/docker-compose.yml exec -u www-data -T app php /var/www/html/biomaps/root-site/projects/myproject/jobs.php
+
+Replace the Compose file, service, project path, and execution user with
+values appropriate for the installation.
+
+.. TODO: Verify this command against the currently supported Docker
+   installation. Newer installations may use ``docker compose`` rather than
+   ``docker-compose``.
+
+.. TODO: State the recommended invocation interval and explain whether
+   running this command every five minutes prevents jobs with one-minute
+   schedules from running at their intended time. Include logging and
+   failure-notification recommendations for the host-level cron task.
+
 
 .. _project-description:
 
 Project description
--------------------
-Here you can set the project name displayed in the header of the project page (short description) and the long description of the project for each language.
+===================
+
+The **Project description** section defines the project name displayed in
+the page header and the longer project description. Separate values can be
+provided for each active language.
+
+The short and long descriptions may also be used in project metadata,
+message templates, and summary pages. They should therefore identify the
+project clearly and provide current contact or contextual information where
+appropriate.
+
+.. TODO: Document the supported formatting, maximum lengths, fallback
+   language, and every interface in which the short and long descriptions
+   appear. Clarify whether these values correspond exactly to
+   ``%PROJECT_TITLE%`` and ``%PROJECT_DESCRIPTION%`` in message templates.
+
 
 .. _data-management:
 
 Data management
----------------
-The Data Management section provides tools for managing and summarizing data uploads and observation lists. It includes features for viewing observation lists by uploader, date, and tracklog, as well as summarizing data uploads by user and table.
+===============
 
-Key functionalities include:
+The **Data management** section provides summaries of uploads and
+observation lists. It can help administrators review recent submissions,
+identify contributors, and navigate between related records, uploads, and
+tracklogs.
 
-- **Observation Lists**: View observation lists filtered by uploader, date, or tracklog. This allows administrators to quickly access and review data submissions.
-- **Data Upload Summary**: Provides a summary of data uploads, showing the number of records uploaded by each user for each table. This is useful for monitoring data contributions and identifying active contributors.
-- **User Activity**: Lists observation lists submitted by users in the last 90 days, helping to track recent activity and engagement.
-- **Tracklogs**: Displays tracklogs submitted in the last 30 days, including details such as start and end times, track names, and associated observation lists.
+The documented functions include:
 
-The interface also includes interactive tables for exploring data, with options for filtering and sorting to facilitate data analysis and review.
+* listing observation lists by uploader, date, or tracklog;
+* summarising the number of records uploaded by each user and to each table;
+* displaying observation lists submitted during the previous 90 days; and
+* displaying tracklogs submitted during the previous 30 days.
+
+Interactive tables provide filtering and sorting where supported.
+
+.. TODO: Define an ``observation list`` and explain how it relates to an
+   upload, individual records, and a tracklog. Document the links and actions
+   available from each summary.
+
+.. TODO: Confirm whether the 90-day and 30-day intervals are fixed,
+   configurable, or merely defaults. Explain which time zone and timestamp
+   are used to select recent activity.
+
+.. TODO: Clarify whether summaries include deleted, rejected, or partially
+   completed uploads and how row-level access restrictions affect the values
+   shown to an administrator.
