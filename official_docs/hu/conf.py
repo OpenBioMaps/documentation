@@ -55,7 +55,7 @@ templates_path = ['_templates']
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenBioMaps'
+project = u'OBM'
 copyright = u'OpenBioMaps Consortium 2015–2026'
 author = u'OpenBioMaps Consortium'
 
@@ -136,7 +136,7 @@ html_css_files = [
 html_title = 'OpenBioMaps documentation'
 
 # A shorter title for the navigation bar.
-html_short_title = 'OBM'
+html_short_title = 'OpenBioMaps'
 
 # The name of an image file relative to this directory to place at the top of
 # the sidebar.

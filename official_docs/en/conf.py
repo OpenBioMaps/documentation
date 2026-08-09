@@ -55,7 +55,7 @@ templates_path = ['_templates']
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenBioMaps'
+project = u'OBM'
 copyright = u'OpenBioMaps Consortium 2015–2026'
 author = u'OpenBioMaps Consortium'
 
