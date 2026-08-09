@@ -1,25 +1,52 @@
 {% extends '!layout.html' %}
 
 {% block header %}
-    <table style='background-color:#eeeeee;padding:10px;margin:0;width:100%'>
-    <tr>
-        <td rowspan='2' style='vertical-align:bottom'>
-            <a href='http://openbiomaps.org' style='border:0'><img src="_images/OpenBioMaps_small.png"></a>
-        </td>
-        <td style='vertical-align:top;text-align:right'>
-            <a href='http://openbiomaps.org' target='_blank'>Kezdőlap</a> | 
-            <a href='http://openbiomaps.org/community/' target='_blank'>Közösség</a> | 
-            <a href='faq.html'>GYIK</a> | 
-            <a href='https://gitlab.com/groups/openbiomaps/-/issues'>Ügyek</a> | 
-            <a href='https://twitter.com/OpenBioMaps' target='_blank'>Twitter</a> | 
-            <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs" class="fa fa-github">Dokumentáció szerkesztése</a>
-        </td>
-    </tr>
-    <tr>
-         <td style="padding: 0px 10px 0px 0px; text-align: right; vertical-align: bottom;">
-          <a href="http://openbiomaps.org/documents/en/"><img src="_static/flagicons/en.png" alt="en" title="in English" border="0" /></a>
-          <a href="http://openbiomaps.org/documents/hu/"><img src="_static/flagicons/hu.png" alt="hu" title="Magyarul" border="0" /></a>
-         </td>
-    </tr>
+    <table style="background-color: #eeeeee; padding: 10px; margin: 0; width: 100%;">
+        <tr>
+            <td rowspan="2" style="vertical-align: bottom;">
+                <a href="https://openbiomaps.org/" style="border: 0;">
+                    <img
+                        src="{{ pathto('_images/OpenBioMaps_small.png', 1) }}"
+                        alt="OpenBioMaps"
+                    />
+                </a>
+            </td>
+            <td style="vertical-align: top; text-align: right;">
+                <nav aria-label="Documentation links">
+                    <a href="https://openbiomaps.org/" target="_blank" rel="noopener noreferrer">Home</a> |
+                    <a href="https://openbiomaps.org/community/" target="_blank" rel="noopener noreferrer">Community</a> |
+                    <a href="{{ pathto('faq') }}">FAQ</a> |
+                    <a href="https://gitlab.com/groups/openbiomaps/-/issues" target="_blank" rel="noopener noreferrer">Issues</a> |
+                    <a href="https://github.com/OpenBioMaps/documentation/tree/master/official_docs/en" target="_blank" rel="noopener noreferrer" class="fa fa-github">Documentation source</a>
+                </nav>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0 10px 0 0; text-align: right; vertical-align: bottom;">
+                <nav aria-label="Documentation languages">
+                    <a href="https://openbiomaps.org/documents/en/" lang="en" hreflang="en">
+                        <img
+                            src="{{ pathto('_static/flagicons/en.png', 1) }}"
+                            alt="English"
+                            title="English"
+                        />
+                    </a>
+                    <a href="https://openbiomaps.org/documents/hu/" lang="hu" hreflang="hu">
+                        <img
+                            src="{{ pathto('_static/flagicons/hu.png', 1) }}"
+                            alt="Magyar"
+                            title="Magyar"
+                        />
+                    </a>
+                    <a href="https://openbiomaps.org/documents/ro/" lang="ro" hreflang="ro">
+                        <img
+                            src="{{ pathto('_static/flagicons/ro.png', 1) }}"
+                            alt="Română"
+                            title="Română"
+                        />
+                    </a>
+                </nav>
+            </td>
+        </tr>
     </table>
 {% endblock %}
