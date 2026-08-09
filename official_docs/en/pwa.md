@@ -4,15 +4,32 @@ PWA application
 What is the OBM PWA application?
 --------------------------------
 
-Wants to learn more about PWA (Progressive Web Application) apps? Start here: https://web.dev/progressive-web-apps/
+Wants to learn more about PWA (Progressive Web Application) apps? 
 
-Our PWA app is an online-offline hybrid application to support fieldwork. With this app, you can easily access the online database. How does it work? 
+Start here: [https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
 
-While you are online, you can see data as a layer above the base map. Practically, it is a cluster-style layer, where the number of feature points is the label in the cluster symbols. There is a filter/query option on the map to fetch a lot of data from the database. The default filtering option is the viewport, so applying this filter will fetch all records of data from the database that you can see on the map. In practice, it is a bad idea to zoom out to a much larger area than you really need, because fetching a large amount of data can freeze your app. After fetching is finished, the cluster layer style will change slightly, indicating that these features are available on your device. The display method is still clustered because it displays numerous features, which can freeze the app. When you click on a cluster symbol, the attribution appears in a scrollable modal dialogue, so you can read all attributes of the clicked features.
+Our PWA app is an online-offline hybrid application to support fieldwork. With this app, you 
+can easily access the online database. How does it work? 
 
-The PWA app runs in the browser but can operate without the browser window. So it looks like a standalone mobile application. The fetched data is stored in offline storage, but the base map is not; it can be cached if you browse it before using it offline.
+While you are online, you can see data as a layer above the base map. Practically, it is a 
+cluster-style layer, where the number of feature points is the label in the cluster symbols. 
+There is a filter/query option on the map to fetch a lot of data from the database. The default 
+filtering option is the viewport, so applying this filter will fetch all records of data from 
+the database that you can see on the map. In practice, it is a bad idea to zoom out to a much 
+larger area than you really need, because fetching a large amount of data can freeze your app.
+After fetching is finished, the cluster layer style will change slightly, indicating that 
+these features are available on your device. The display method is still clustered because it 
+displays numerous features, which can freeze the app. When you click on a cluster symbol, the 
+attribution appears in a scrollable modal dialogue, so you can read all attributes of the 
+clicked features.
 
-When you visit the app's URL in CHROME or OPERA, it will offer to install it as a desktop app. Use this option to access the app's offline usage features, and the window will be a bit larger without the browser frame.
+The PWA app runs in the browser but can operate without the browser window. So it looks like a 
+standalone mobile application. The fetched data is stored in offline storage, but the base map 
+is not; it can be cached if you browse it before using it offline.
+
+When you visit the app's URL in CHROME or OPERA, it will offer to install it as a desktop app. 
+Use this option to access the app's offline usage features, and the window will be a bit larger 
+without the browser frame.
 
 Features
 - Show your location (yellow dot)
@@ -119,13 +136,19 @@ On the Maps settings page, you have to create a new MapServer layer in the *priv
     END #wms cluster layer
 ```
 
-The *NAME_OF_YOUR_LABELING_COLUMN* is the column name used as a label. The most common is the species-name column.
+The *NAME_OF_YOUR_LABELING_COLUMN* is the column name used as a label. The most common is the 
+species-name column.
 
-The *YOUR_PROJECT* is the target table name which will be used. The most common is the base project table.
+The *YOUR_PROJECT* is the target table name which will be used. The most common is the base 
+project table.
 
-MAXSCALEDENOM 100000 means that no features are displayed over a 1:100.000 zoom level, which is generally a good practice to prevent overloading your mapserver when it tries to calculate millions of clusters...
+MAXSCALEDENOM 100000 means that no features are displayed over a 1:100.000 zoom level, which is 
+generally a good practice to prevent overloading your mapserver when it tries to calculate 
+millions of clusters...
 
-The CONNECTION string should be configured correctly for your server. If you use Docker, these settings are most probably good for you, except for the password. Copy and paste the CONNECTION setting from another working layer.
+The CONNECTION string should be configured correctly for your server. If you use Docker, these 
+settings are most probably good for you, except for the password. Copy and paste the CONNECTION 
+setting from another working layer.
 
 *CONNECTION "host=localhost dbname=gisdata password={xxxxx} user=YOUR_PROJECT_admin options='--client_encoding=UTF8'"*
 
@@ -137,7 +160,8 @@ FROM YOUR_PROJECT
 %morefilter%
 WHERE ST_GeometryType(obm_geometry)='ST_Point' AND %qstr%
 ```
-As you can see, there is a predefined filter that uses only POINT data because clustering cannot merge line and polygon data. 
+As you can see, there is a predefined filter that uses only POINT data because clustering cannot 
+merge line and polygon data. 
 
 
 Installation
