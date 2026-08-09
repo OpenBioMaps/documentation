@@ -1,3 +1,6 @@
+:author: Miklós Bán
+:date: 2026-08-08
+
 .. _user-interfaces:
 
 User interfaces

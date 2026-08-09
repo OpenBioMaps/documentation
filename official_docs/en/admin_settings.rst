@@ -1,3 +1,6 @@
+:author: Miklós Bán
+:date: 2026-08-08
+
 Administrative settings
 ***********************
 
@@ -489,6 +492,12 @@ Modules
 Modules extend the functionality available in an OpenBioMaps project. Their
 configuration and access requirements depend on the individual module.
 
+Modules extend the functionality available in an OpenBioMaps project. Their 
+configuration and access requirements depend on the individual module.
+Modules often provide basic functions, such as text search interfaces on the map 
+page; in other cases, they provide tools specific to certain tasks. The behaviour 
+of modules can often be customised.
+
 For more information, see :doc:`Modules <../modules>`.
 
 
@@ -815,6 +824,8 @@ and auditing policies.
 Message templates
 =================
 
+The message template editor is currently unavailable.
+
 Messages sent automatically by the system or a project are generated from
 templates. OpenBioMaps provides global templates for implemented message
 types, and a project can create local versions that override them.
@@ -1030,10 +1041,10 @@ follow the server's security and privacy policies.
    also be stated whether viewing logs is itself audited.
 
 
-.. _background-jobs:
+.. _background-job-settings:
 
-Background jobs
-===============
+Background job settings
+=======================
 
 Background jobs allow a project to execute scheduled or manually initiated
 tasks without continuous user interaction. They can be used for operations

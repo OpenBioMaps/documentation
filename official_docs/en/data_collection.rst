@@ -1,3 +1,6 @@
+:author: Miklós Bán
+:date: 2026-08-09
+
 Data collection
 ***************
 
@@ -286,6 +289,8 @@ OpenBioMaps projects may use taxon-related semantic column roles,
 autocomplete sources, extensible lists, and background validation jobs to
 support these workflows.
 
+Read more about `Superspecies <https://gitlab.com/superspecies/>`_.
+
 .. TODO: Explain whether “superspecies” is the current name of a specific
    OpenBioMaps taxon database, module, table, or autocomplete service. If it
    is an implementation-specific term, replace it with its current official
@@ -348,7 +353,7 @@ The ``obm_geometry`` field is commonly used for the spatial geometry of a
 record. Depending on the collection, it may contain a point, line, or
 polygon. The project should also document:
 
-* the coordinate reference system;
+* the coordinate reference system - default is WGS84;
 * the method used to obtain the location;
 * coordinate uncertainty or spatial precision;
 * whether coordinates have been transformed or generalised;
