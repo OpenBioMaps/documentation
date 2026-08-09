@@ -3,9 +3,34 @@
 Upload form management
 ======================
 
+Upload forms define how users and external clients can submit data to a
+project. A form specifies its destination table, availability, access
+settings, supported clients, fields, validation rules, default values, and
+relationships between fields.
+
+.. TODO: Add an introductory workflow explaining how to create, test,
+   publish, copy, block, and retire an upload form.
+
+.. TODO: Explain which administrative permission is required to manage
+   upload forms and provide the current navigation path to this page.
+
+.. TODO: Clarify which settings are shared by web, file-upload, API, and
+   mobile clients, and identify settings that are supported only by a
+   particular client.
+
+
 List of available forms
 -----------------------
+
 Existing forms can be selected for editing, deletion, or blocking.
+
+.. TODO: Explain the difference between deleting and blocking a form,
+   including their effects on existing records, saved uploads, published
+   versions, API clients, and mobile applications.
+
+.. TODO: Document the information and actions displayed in the list of
+   available forms, including any filters, status indicators, version
+   information, and access settings.
 
 
 Form header definition
@@ -13,494 +38,1197 @@ Form header definition
 
 Destination table
 .................
-Which project table does the upload form apply to?
+
+Select the project table to which data submitted through the upload form
+will be written.
+
+.. TODO: Explain which tables are available for selection, whether the
+   destination table can be changed after a form has been used, and what
+   happens to existing form definitions if a table is renamed or replaced
+   by a view.
+
 
 Name of the form
 ................
-The name for the upload form. This should be unique within a project.
 
-You can make a copy of a form by renaming it.
+Enter a name for the upload form. The name should be unique within the
+project.
 
-This name can be multilingual if you use the ``str_`` tag. See more about translations :ref:`translations`
+A form can be copied by renaming it.
+
+The name can be multilingual when a translation key with the ``str_`` prefix
+is used. For more information, see :ref:`Translations <localisation>`.
+
+.. TODO: Confirm whether renaming a form always creates a copy or whether
+   this behaviour depends on the form's publication state. Explain which
+   settings and versions are included in the copy.
+
+.. TODO: Document the permitted characters, maximum length, uniqueness
+   rules, and stability requirements for form names. Clarify whether API
+   clients refer to a form by its name or by an internal identifier.
+
 
 Form access
 ...........
-Define who can see/use the form:
 
-- public (anyone), 
-- all logged-in users, 
-- only specified groups
-	
-If "only specified groups" is chosen, the list of available users/groups select field will be active, allowing users or groups to be selected for access to this form.
+Define who can view and use the form:
+
+* public users;
+* all logged-in users; or
+* only specified groups.
+
+If **only specified groups** is selected, the user and group selection field
+becomes active, allowing access to be granted to selected users or groups.
+
+.. TODO: Confirm the current labels used by the administration interface
+   and whether access can be assigned directly to individual users as well
+   as groups.
+
+.. TODO: Explain whether public form access permits unauthenticated data
+   submission and how the uploader, ownership, read access, write access,
+   rate limiting, and abuse prevention are handled in that case.
+
+.. TODO: Clarify whether nested group membership grants access to the form
+   and how changes to group membership affect active or saved uploads.
+
 
 Data access
 ...........
-Uploaded data will only be available to the specified groups here. By default, data can be read and edited by the uploader.
+
+Data uploaded through the form will be available only to the groups
+specified here. By default, the uploader can read and edit the uploaded
+data.
+
+.. TODO: Document how the form's data-access settings are transferred to
+   the project's row-level access rules, including the exact meaning and
+   format of read and write assignments.
+
+.. TODO: Confirm the behaviour when no group is selected and whether the
+   uploader is always granted read and write access.
+
+.. TODO: Explain how these settings interact with ``ACC_LEVEL``,
+   ``MOD_LEVEL``, sensitivity settings, the access-rules trigger, and the
+   ``allowed_columns`` module. Include examples for public, logged-in, and
+   group-restricted projects.
+
+.. TODO: Document what happens when the form's data-access settings are
+   changed. Clarify whether the new settings affect only subsequent uploads
+   or also update existing records.
+
 
 Form type
 .........
-There should be at least one of the following three options:
 
-web form, file upload form, API (externally accessible form, e.g. mobile app)
+At least one of the following form types must be selected:
+
+* web form;
+* file-upload form; or
+* API form, for access by external clients such as the mobile application.
+
+.. TODO: Explain the capabilities and limitations of each form type,
+   including whether several types can be enabled simultaneously.
+
+.. TODO: Document authentication, version selection, and compatibility
+   requirements for API clients and mobile applications.
+
 
 Form description
 ................
-A shorter or longer description of the form. This can be used to give instructions to uploaders.
+
+Enter a short or detailed description of the form. The description can
+provide instructions to contributors.
+
+.. TODO: Explain where the description is displayed in web, file-upload,
+   API, and mobile interfaces; whether it supports translations or markup;
+   and whether there is a maximum length.
+
 
 Form SRID
 .........
-Any kind of spatial reference can be chosen for the uploaded which is available at https://spatialreference.org/. The default SRID is "epsg:4326 (WGS84)". If a list of spatial references is specified here, uploaders can choose only from these options. 
-Use the following format to define a list of available references: "4326:wgs84,23700:eov". It is a comma-separated list of EPSG reference IDs and visible labels.
+
+Select the spatial reference system used by data submitted through the form.
+Spatial reference systems can be looked up at
+https://spatialreference.org/. The default is EPSG:4326 (WGS 84).
+
+If a list of spatial reference systems is specified, uploaders can select
+only from the listed options. Define the list as comma-separated EPSG
+identifiers and visible labels, using the following format:
+
+.. code-block:: text
+
+   4326:wgs84,23700:eov
+
+.. TODO: Confirm whether the form SRID describes the coordinates supplied
+   by the uploader, the storage SRID of the destination geometry column, or
+   both. Explain when and how coordinate transformation is performed.
+
+.. TODO: Document how the form SRID affects WKT geometry, latitude and
+   longitude fields, imported spatial files, web-map drawing, and mobile
+   application coordinates.
+
+.. TODO: Confirm the accepted syntax and validation of the SRID list,
+   including whether spaces, translated labels, non-EPSG authorities, or
+   case-sensitive labels are supported.
+
 
 Form grouping
-..............
-The form can be organised into groups in the form choose interface on the web form. The group names can be defined or chosen here.
-This option is not available on the mobile app yet.
+.............
 
-Form publish
-............
-A form can be locked by publishing it (orange publish button in the form-header area). Any updates to a published form create a new version. The old versions are available for API clients (mobile app). A draft version can be created from the published forms for testing (create a draft version button at the bottom of the page). The draft version is only available to the creator of the draft (by default). The draft version can be published to the form's published branch.
+Forms can be organised into groups in the web form-selection interface.
+Group names can be defined or selected here.
+
+This option is not currently available in the mobile application.
+
+.. TODO: Explain how form groups are created, ordered, renamed, translated,
+   and removed. Clarify whether grouping affects access or only
+   presentation.
+
+.. TODO: Confirm whether form grouping remains unsupported in the current
+   mobile application version.
+
+
+Form publication
+................
+
+A form can be locked by publishing it with the orange publish button in the
+form-header area. Updating a published form creates a new version. Previous
+versions remain available to API clients such as the mobile application.
+
+A draft can be created from a published form for testing by using the
+**Create a draft version** button at the bottom of the page. By default, the
+draft is available only to its creator. The draft can subsequently be
+published to the form's published branch.
+
+.. TODO: Define the complete form-versioning model, including drafts,
+   published versions, branches, version identifiers, and the meaning of
+   locking a form.
+
+.. TODO: Explain whether publishing takes effect immediately and how web,
+   file-upload, API, and mobile clients select or cache a form version.
+
+.. TODO: Document who can view and test a draft, how draft access can be
+   changed, and whether more than one draft can exist for a form.
+
+.. TODO: Explain how an administrator can compare versions, revert to an
+   earlier version, retire a published version, or resolve submissions made
+   with an old version.
+
 
 Observation event settings
 ..........................
 
-If you don't know, what does it mean observation event, see more information about
-what is the difference between an the occasional and event based observation:
+For an explanation of observation events and the difference between
+occasional and event-based observations, see
+:doc:`Observation events and occasional observations <observation_events>`.
 
-:doc:`Observation events vs. occasional observations <../observation_events>`
+A time limit, expressed in minutes, can be set for an observation event.
+When the limit is reached, the mobile application alerts the user that the
+time has expired. The alert does not end the event, and the user can
+continue recording observations.
 
-A time limit (expressed in minutes) can be set for the observation event; when this limit is 
-reached, the mobile app alerts the user that the time has expired, but otherwise nothing happens, 
-and the user can continue with their observations.
+A **forced observation event** means that the form can be launched only in
+event mode. If observation-event support is enabled but not forced, the user
+can choose between event mode and occasional-observation mode.
 
-A 'forced observation event' means that the form can only be launched in event mode. If this option is 
-enabled but not set to 'forced', the user has the option to use the form in either event mode or ad hoc 
-observation mode.
+.. TODO: Document all observation-event settings and explain how event
+   identifiers, start and end times, shared field values, and individual
+   observations are stored.
+
+.. TODO: Explain whether the time limit is advisory in every supported
+   client and what happens when the application is offline, suspended, or
+   restarted during an event.
+
+.. TODO: Confirm the current labels for enabling and forcing observation
+   events and identify which settings are supported by the web interface,
+   API, and mobile application.
 
 
-.. tracklog:
+.. _tracklog:
 
 Tracklog
 ........
-Automatic recording of the route log whilst using the form. This may also be mandatory or optional. Tracklog recording is only available in event mode.
+
+This option enables automatic route-log recording while the form is being
+used. Tracklog recording can be mandatory or optional and is available only
+in event mode.
+
+.. TODO: Explain how frequently locations are recorded, which location
+   permissions are required, and how offline recording, accuracy, battery
+   use, and interrupted events are handled.
+
+.. TODO: Document where tracklogs are stored, who can access them, how they
+   are linked to events and observations, and whether their access rules
+   differ from those of the submitted records.
+
+.. TODO: Add a privacy and security note explaining that tracklogs may
+   reveal a contributor's movements and can therefore constitute personal
+   or sensitive data.
 
 
-.. periodic-notification:
+.. _periodic-notification:
 
 Periodic notification
 .....................
-At specified intervals (minutes), the app will alert the observer to record a new observation. Meanwhile, the counter runs continuously. When the user records an observation, the timer will always restart.
+
+At the specified interval, in minutes, the application reminds the observer
+to record a new observation. The timer runs continuously and restarts
+whenever the user records an observation.
+
+.. TODO: Confirm whether periodic notifications are available only in the
+   mobile application and whether they operate while the application is in
+   the background.
+
+.. TODO: Explain when the first interval begins, what happens when a
+   notification is dismissed, and whether recording or editing an
+   observation restarts the timer.
 
 
 Form column definitions
 -----------------------
 
+The column-definition section specifies which destination-table columns
+appear on the form and how submitted values are displayed and validated.
+
+.. TODO: Explain how database-column metadata and data types determine the
+   initial form-column settings.
+
+.. TODO: Document how changes to destination-table columns affect existing
+   draft and published form versions.
+
+
 Included
 ........
-If checked, the column will appear on the form.
-    
+
+If selected, the column appears on the form.
+
+.. TODO: Explain whether a non-included column can still receive a default,
+   generated, or API-supplied value.
+
+
 Column order
 ............
-It is a small empty input box (by default) next to the "included" option.
+
+The small input field next to the **Included** option defines the order of
+the column on the form. It is empty by default.
+
+.. TODO: Document the accepted values, ordering direction, treatment of
+   duplicate or missing values, and whether order can be changed by
+   drag-and-drop.
+
 
 Column
 ......
-There are two strings here: The visible name of the column (it can be edited to make it unique to a form) and the original name of the column.
-    
+
+Two names are displayed: the visible name of the column, which can be edited
+for the form, and the original database-column name.
+
+.. TODO: Explain whether the visible name supports ``str_`` translation
+   keys and how it is presented in file templates, validation messages,
+   exports, API definitions, and mobile clients.
+
+.. TODO: Clarify whether changing the visible name affects only the form or
+   also modifies database metadata.
+
+
 Obligatory
 ..........
-Three options are available here: yes, no, soft-error
 
-- Yes (colour: burgundy), then the form cannot be submitted without filling in the column cell.
-- No (colour: grey), then the form can be submitted with an empty cell in the  rows with this column.
-- Soft-error (colour: pink), allows empty cells or differences from restrictions, but the uploader should confirm this for every affected line.
-    
+Three options are available: **yes**, **no**, and **soft error**.
+
+``Yes`` (burgundy)
+   The form cannot be submitted without a value in this column.
+
+``No`` (grey)
+   The form can be submitted with an empty value in this column.
+
+``Soft error`` (pink)
+   Empty values or values that do not satisfy a restriction can be
+   submitted, but the uploader must confirm every affected row.
+
+.. TODO: Explain how confirmation of a soft error works in web forms, file
+   uploads, API clients, and the mobile application.
+
+.. TODO: Document whether a soft-error confirmation is recorded in the
+   database or upload metadata and whether administrators can distinguish
+   confirmed values from values that passed validation.
+
+.. TODO: Clarify how form-level obligatory settings interact with database
+   ``NOT NULL`` constraints, column relations, and hidden or read-only
+   fields.
+
+
 Column description
 ..................
-Short description of the field.
-    
+
+Enter a short description of the field.
+
+.. TODO: Explain where column descriptions are displayed, whether they
+   support translations or markup, and whether they are inherited from
+   database-column comments.
+
+
 Column type
 ...........
-- text: arbitrary text - minimum and maximum lengths can be specified.     
-- numeric: arbitrary number - minimum and maximum lengths can be specified
-- list: drop-down list, with one selectable item by default
-- true-false: boolean false/true value. The order of the value can be controlled in the list definition field. e.g. "false, true"
-- date: Separated by any character in order of year, month, day. Stored in the database as a date type.
-- date and time: after a blank frame, the date is in hour:minute:second format. If a second is missing, the program automatically treats it as 00 and warns you to accept it. If the minute is missing, the program will automatically treat it as 00, but warn to accept it. Stored in the database as a datetime type.
-- time: (timetominutes): hours:minutes format, which the program converts to an integer value. Stored in the database as an integer.
-- time: hours:minutes. As time is typed in the database.
-- time interval: (timeinterval) Pl: 2014-02-25 12:00:00 2014-02-25 13:00:00. Stored in database as timeinterval type.
-- autocomplete: generates an autocomplete list from the SQL table column specified in the list_definition field. The syntax is table_name.column. The table is searched (by default) in the public schema in the "gisdata" database.
-- autocompletelist: Similar to the autocomplete field, just here it is possible to autocomplete multiple values into a single field
-- photo id: if the photo module is enabled, the program enters the uploaded photo IDs here.
-- geometry: point: WKT POINT()
-- geometry: line: WKT LINE()
-- geometry: polygon: WKT POLYGON()
-- geometry: any: WKT (See different geometry types in action: https://openbiomaps.org/projects/checkitout/upload/?form=736&type=web)
-- colour rings: allows you to specify a colour ring combination, where you can create red, pink, green, light green, orange, yellow, blue, light blue, white, black, brown, purple, violet and metal ring combinations. The section in square brackets codes the maximum number of rings that can be specified on the different leg sections, followed by the individual colour codes of the possible colours. Eg: [XX],Blue:B, red:R, green:G
-        Allowed colours and markings: 
-            R = 'red'
-            P = 'pink'
-            G = 'green'
-            g = 'lightgreen'
-            O = 'orange'
-            Y = 'yellow'
-            B = 'blue'
-            b = 'lightblue'
-            W = 'white'
-            K = 'black'
-            N = 'brown'
-            U = 'purple'
-            V = 'violet'
-            M = 'silver'
 
-   See in action: https://openbiomaps.org/projects/checkitout/upload/?form=939&type=web
+The following form column types are available:
 
-        
+``text``
+   Arbitrary text. Minimum and maximum lengths can be specified.
+
+``numeric``
+   A numeric value. Minimum and maximum values or lengths can be specified.
+
+``list``
+   A drop-down list with one selectable item by default.
+
+``true-false``
+   A Boolean false/true value. The order of the values can be controlled in
+   the list-definition field, for example ``false, true``.
+
+``date``
+   A date with the year, month, and day separated by an accepted character.
+   It is stored using a database date type.
+
+``date and time``
+   A date followed by a space and a time in
+   ``hour:minute:second`` format. If seconds are omitted, the application
+   automatically treats them as ``00`` and asks the uploader to accept the
+   change. If minutes are omitted, the application treats them as ``00``
+   and also asks for confirmation. The value is stored using a database
+   date-time type.
+
+``time (timetominutes)``
+   A value in ``hours:minutes`` format that the application converts to an
+   integer. It is stored using a database integer type.
+
+``time``
+   A value in ``hours:minutes`` format that is stored using a database time
+   type.
+
+``time interval (timeinterval)``
+   A time interval, for example
+   ``2014-02-25 12:00:00 2014-02-25 13:00:00``. It is stored using a
+   database time-interval type.
+
+``autocomplete``
+   Generates autocomplete suggestions from the SQL table column specified
+   in the list-definition field. The documented shorthand syntax is
+   ``table_name.column``. By default, the table is searched for in the
+   ``public`` schema of the ``gisdata`` database.
+
+``autocompletelist``
+   Similar to ``autocomplete``, but allows multiple autocomplete values to
+   be entered in one field.
+
+``photo id``
+   If the photo module is enabled, the application stores uploaded photo
+   identifiers in this field.
+
+``geometry: point``
+   A point geometry represented as WKT ``POINT(...)``.
+
+``geometry: line``
+   A line geometry represented as WKT ``LINESTRING(...)``.
+
+``geometry: polygon``
+   A polygon geometry represented as WKT ``POLYGON(...)``.
+
+``geometry: any``
+   A geometry represented in WKT using a supported geometry type. See
+   `an example form
+   <https://openbiomaps.org/projects/checkitout/upload/?form=736&type=web>`_.
+
+``colour rings``
+   Allows a colour-ring combination to be specified. The section in square
+   brackets defines the maximum number of rings that can be specified for
+   the different leg sections. It is followed by the individual codes and
+   labels of the available colours, for example
+   ``[XX],Blue:B,red:R,green:G``.
+
+   The documented colour codes are:
+
+   * ``R`` — red;
+   * ``P`` — pink;
+   * ``G`` — green;
+   * ``g`` — light green;
+   * ``O`` — orange;
+   * ``Y`` — yellow;
+   * ``B`` — blue;
+   * ``b`` — light blue;
+   * ``W`` — white;
+   * ``K`` — black;
+   * ``N`` — brown;
+   * ``U`` — purple;
+   * ``V`` — violet; and
+   * ``M`` — silver.
+
+   See `an example colour-ring form
+   <https://openbiomaps.org/projects/checkitout/upload/?form=939&type=web>`_.
+
+.. TODO: Confirm the current names of all available column types and map
+   each form type to its required PostgreSQL data type.
+
+.. TODO: Clarify whether the numeric minimum and maximum settings constrain
+   numeric values, character lengths, or both.
+
+.. TODO: Document the accepted input formats, time zones, ranges, and
+   storage types for date, date-time, time, and interval fields. PostgreSQL
+   has no built-in type named ``datetime`` or ``timeinterval``, so identify
+   the exact database types used.
+
+.. TODO: Confirm the exact WKT geometry names accepted for line fields. The
+   standard WKT geometry type is ``LINESTRING``, while the source interface
+   may use the label ``LINE``.
+
+.. TODO: Document how form geometry types interact with the form SRID,
+   destination-column SRID, geometry collections, multipart geometries,
+   three-dimensional coordinates, and invalid geometries.
+
+.. TODO: Explain the autocomplete shorthand and JSON formats, database
+   connection used for lookups, applicable permissions, result limits,
+   matching behaviour, and SQL-injection protections.
+
+.. TODO: Document the storage format and attachment relationship used by
+   ``photo id``.
+
+.. TODO: Verify the syntax, storage representation, supported leg sections,
+   and complete colour set of the ``colour rings`` type. Clarify whether
+   ``purple`` and ``violet`` are intentionally separate values.
+
+
 Input control
 .............
-checks the number of characters entered
 
-- no check
-- min - max
-- regular expression
-- spatial
-- custom check
-    
+Input controls check values entered into the field. The available options
+are:
+
+* no check;
+* minimum and maximum;
+* regular expression;
+* spatial; and
+* custom check.
+
+.. TODO: Document the configuration syntax and behaviour of every input
+   control, including client-side and server-side validation.
+
+.. TODO: Explain whether minimum and maximum constraints refer to length,
+   numeric value, date, or another property depending on the column type.
+
+.. TODO: Document the regular-expression dialect, delimiters, flags,
+   escaping rules, and whether the expression must match the complete
+   value.
+
+.. TODO: Explain the available spatial and custom checks and add tested
+   examples. Identify where custom validation code is stored and who is
+   permitted to edit it.
+
+
 List definition
 ...............
-First of all, if you wish to use a list during data upload, you have to change the "Type" to list, autocomplete or autocomplete list.
 
-You can define several lists here, e.g., simple/multiple-choice or autocomplete lists. You can define the list with specifications of elements, or you can use elements from other data tables, or you can define rules and terms to filter those elements.
+To use a list during data submission, set the column type to ``list``,
+``autocomplete``, or ``autocompletelist``.
 
-If our list has only a couple of elements, we can create a simple specification. See below - in this case, we define the list values that we can choose from a roll-down menu during data upload. These values ("female", "male") will be stored in your database.
+List definitions can describe simple or multiple-choice lists, autocomplete
+sources, values obtained from other database tables, and rules for filtering
+those values.
 
-.. code-block:: json
-
-    {
-      "list": {
-        "female":[],
-        "male":[]
-       }
-    }
-
-If more labels mean the same value (eg, "F", "f", "female" mean "female"), we can define which labels belong to which value. During data upload, only the value will be stored in your database, not the different labels. This became remarkable during file upload when you have data from previous years from many observers. They may have used different labels for the same value, but using different labels for the same value is non-rewarding either during a query or when analysing your data.
+A short list can be defined directly. In the following example, uploaders
+can select ``female`` or ``male`` from a drop-down list. The selected value
+is stored in the database.
 
 .. code-block:: json
 
-    {
-      "list": {
-        "female":[
-        	"F",
-        	"f",
-        	"female"],
-        "male":[
-                "M",
-        	"m",
-        	"male"]
-       }
-    }
+   {
+     "list": {
+       "female": [],
+       "male": []
+     }
+   }
 
-GOOD TO KNOW!
-
-  A list can be specified not only in JSON, but also in plain text format, for easier creation. In this case, all values must be entered on separate lines. When you save the form, the list is automatically converted from plain text to JSON, which you can then edit in JSON format.
-
-
-The values in the list can also come from an SQL table. In this case, we need to specify the path to the table (schema name (optionsSchema), table name (optionsTable)), and the column name we want to use as the value (valueColumn) and the label (labelColumn).
-
-We can also filter the table's values according to specified criteria. In this case, we need to specify which columns (preFilterColumn) to filter against and which values to filter by (preFilterValue). Example of using a prefilter:
-
-.. code-block:: json
- 
-    {
-        "optionsTable": "milvus_taxon",
-        "valueColumn": "word",
-        "preFilterColumn": [
-            "lang",
-            "status"
-        ],
-        "preFilterValue": [
-            "obm_taxon",
-            [
-                "accepted",
-                "undefined"
-            ]
-        ],
-        "orderBy": "taxon_db",
-        "order": "desc"
-    }
-
-The full definition of the list is JSON, shown below. It is compiled in the web interface using the list editor and automatically checked for syntax by the application. If the syntax is incorrect, an error message is returned.
+Several input labels can be mapped to the same stored value. For example,
+``F``, ``f``, and ``female`` can all be interpreted as the stored value
+``female``. This is particularly useful during file upload when data from
+different contributors or years use different labels for the same concept.
 
 .. code-block:: json
 
-    {
-        "list": {
-          "val1": [
-	      "label1", "label2"
-	  ]
-        },
-        "optionsSchema": "e.g. public",
-        "optionsTable": "a table name",
-        "valueColumn": "a column from the table",
-        "labelColumn": "a column from the table - optional",
-        "filterColumn": "",
-        "pictures": {
-            "an element from the `list`, e.g. val1": "url-string"
-        },
-        "triggerTargetColumn": [""],
-        "Function": "",
-        "disabled": [
-	    "an element from the `list`, e.g. val1"
-	],
-        "preFilterColumn": [
-	    ""
-	],
-        "preFilterValue": [
-	    ""
-	],
-        "preFilterRelation": [
-	    ""
-	],
-        "multiselect": "true or false, default is false",
-        "selected":[
-            "an element from the `list`, e.g. val1"
-        ],
-        "size": "a numeric value"
-        "orderBy": [
-            "column or SQL expression"
-        ],
-        "order": [
-            "ASC or DESC"
-        ],
-        "limit": "numeric value"
-    }
+   {
+     "list": {
+       "female": [
+         "F",
+         "f",
+         "female"
+       ],
+       "male": [
+         "M",
+         "m",
+         "male"
+       ]
+     }
+   }
 
-Joint lists 
-............
-Create a list in a column (starter column), which determines the list of your chosen column ("list in the list"). First of all, you have to create a background table (animal_taxons) that contains data on which groups include which other groups. For example, this table can show which genre belongs to which family and/or which families belong to which order, such as vertebrates (animal_supergroup) containing amphibians, reptiles, birds, mammals (animal_group_name), and invertebrates (animal_supergroup) including cnidaria, insects (animal_group_name), etc.
+A list can also be entered in plain-text format, with one value on each
+line. When the form is saved, the application converts the plain-text list
+to JSON. The resulting JSON can then be edited directly.
 
-You can add your code of "joint list" in the "list definition" field. The first part of the code determines which column will be affected by the "starter column" (you have to type it in the JSON field of the starter column):
+.. TODO: Clarify how list keys, labels, and aliases are displayed and
+   matched. Document case sensitivity, whitespace handling, duplicate
+   labels, empty values, and translation support.
+
+.. TODO: Explain how multiselect and ``autocompletelist`` values are stored
+   in the destination column and which PostgreSQL column types are
+   supported.
+
+List values can also come from an SQL table. Specify the schema
+(``optionsSchema``), table (``optionsTable``), stored-value column
+(``valueColumn``), and, where required, visible-label column
+(``labelColumn``).
+
+Values can be filtered using ``preFilterColumn`` and ``preFilterValue``.
+The following example applies prefilters:
 
 .. code-block:: json
 
-    {
-        "triggerTargetColumn": [
-            "affected_list_name"
-        ],
-        "Function": "select_list",
-        "optionsSchema": "shared",
-        "optionsTable": "animal_taxons",
-        "valueColumn": "animal_group_name",
-        "labelColumn": "animal_group_name",
-        "labelAsValue": true
-    }
+   {
+     "optionsTable": "milvus_taxon",
+     "valueColumn": "word",
+     "preFilterColumn": [
+       "lang",
+       "status"
+     ],
+     "preFilterValue": [
+       "obm_taxon",
+       [
+         "accepted",
+         "undefined"
+       ]
+     ],
+     "orderBy": "taxon_db",
+     "order": "desc"
+   }
 
-Code explanation:
-	"Function" - always "select_list"
-	"optionsSchema" - always "shared"
-	"optionsTable" - "background_table_name"
-	"valueColumn" - column from the background table, which you use for the list, where the code is in (starter_column)
-	"labelColumn" - create the list in the affected column based on the starter column
+The complete list definition uses JSON. It can be assembled with the list
+editor in the web interface and is checked for valid syntax by the
+application. If the syntax is invalid, the application returns an error
+message.
 
-The next step is to determine in our affected column, from which column it should take the values out (you have to type it in the JSON field of the affected column):
-
-.. code-block:: json
-
-    {
-        "optionsTable": "animal_taxons",
-        "valueColumn": "animal_group_name",
-        "labelColumn": "animal_group_name",
-        "filterColumn": "animal_supergroup",
-        "Function": "select_list",
-        "optionsSchema": "shared"
-    }
-
-Code explanation (only the new variables are explained here):
-	"filterColumn" - determine which was the starter column
-
-With the "joint list" option, you can also connect more than 2 columns.
+The following example lists the documented properties:
 
 .. code-block:: json
 
-    {
-        "optionsSchema": "shared",
-        "optionsTable": "animal_taxons",
-        "filterColumn": "animal_supergroup",
-        "Function": "select_list",
-        "valueColumn": "animal_group_name",
-        "triggerTargetColumn": [
-            "species"
-        ],
-        "labelColumn": "animal_group_name"
-    }
+   {
+     "list": {
+       "val1": [
+         "label1",
+         "label2"
+       ]
+     },
+     "optionsSchema": "e.g. public",
+     "optionsTable": "a table name",
+     "valueColumn": "a column from the table",
+     "labelColumn": "a column from the table - optional",
+     "filterColumn": "",
+     "pictures": {
+       "an element from the list, e.g. val1": "url-string"
+     },
+     "triggerTargetColumn": [
+       ""
+     ],
+     "Function": "",
+     "disabled": [
+       "an element from the list, e.g. val1"
+     ],
+     "preFilterColumn": [
+       ""
+     ],
+     "preFilterValue": [
+       ""
+     ],
+     "preFilterRelation": [
+       ""
+     ],
+     "multiselect": "true or false, default is false",
+     "selected": [
+       "an element from the list, e.g. val1"
+     ],
+     "size": "a numeric value",
+     "orderBy": [
+       "column or SQL expression"
+     ],
+     "order": [
+       "ASC or DESC"
+     ],
+     "limit": "numeric value"
+   }
 
-"triggerTargetColumn" all the time triggers the next column. "filterColumn" always marks the previous column. "valueColumn" and "labelColumn" always mark the actual column.
+.. TODO: Replace the illustrative complete definition with one or more
+   valid, executable examples. Placeholder values such as ``e.g. public``
+   and type descriptions represented as strings cannot be copied directly
+   into a working form.
 
-Other examples:
-1. Determine buildings inside the settlement. We collect data from species breeding in artificial nestboxes. We would like to create an autocomplete list for the settlement column and a simple list for the building column. Our background table (tytoalba_buildings) contains the nestboxes spatial distribution: on which buildings in which settlement. The column in our background table contains a large number of possible values, but not all buildings occur in all settlements. Therefore, we would like to create a filtered list of buildings based on the settlement list.
+.. TODO: Provide a reference table for every supported property, including
+   its type, default, permitted values, applicable form-column types, and
+   supported clients.
 
-FIRST STEP: We establish the autocomplete list of settlement columns. We turn the column type to autocomplete, then we determine which values we need from our background table, and also we point to the building column:
+.. TODO: Clarify whether ``Function`` is intentionally case-sensitive while
+   the other property names begin with lowercase letters.
+
+.. TODO: Explain the behaviour and accepted syntax of ``labelAsValue``,
+   ``filterColumn``, ``pictures``, ``disabled``, ``preFilterRelation``,
+   ``multiselect``, ``selected``, ``size``, ``orderBy``, ``order``, and
+   ``limit``.
+
+.. TODO: Confirm whether ``orderBy`` and ``order`` accept either a string or
+   an array. The examples on this page currently demonstrate both forms.
+
+.. TODO: Document how table and column identifiers or SQL expressions are
+   validated. In particular, explain the security restrictions applied to
+   ``orderBy`` and any other property that may contain an SQL expression.
+
+.. TODO: Explain whether list queries apply project row- and column-level
+   access rules and which database user executes them.
+
+
+Joint lists
+...........
+
+A joint list uses the value selected in one column, called the starter
+column, to determine the available values in another column. This creates a
+dependent or cascading list.
+
+First, create a lookup table containing the relationships between the list
+levels. For example, an ``animal_taxons`` table could describe which animal
+groups belong to each supergroup. Vertebrates could contain amphibians,
+reptiles, birds, and mammals, while invertebrates could contain cnidarians
+and insects.
+
+In the list definition of the starter column, specify the target column:
 
 .. code-block:: json
 
-    {
-        "triggerTargetColumn": [
-            "building"
-        ],
-        "Function": "select_list",
-        "optionsSchema": "public",
-        "optionsTable": "tytoalba_buildings",
-        "valueColumn": "settlement"
-    }
+   {
+     "triggerTargetColumn": [
+       "affected_list_name"
+     ],
+     "Function": "select_list",
+     "optionsSchema": "shared",
+     "optionsTable": "animal_taxons",
+     "valueColumn": "animal_group_name",
+     "labelColumn": "animal_group_name",
+     "labelAsValue": true
+   }
 
-Second step: we establish a simple list of building columns. We turn the column type to list, then we determine the value of our list and filter based on the settlement column:
+The properties used in this example are:
+
+``Function``
+   Uses the documented value ``select_list``.
+
+``optionsSchema``
+   Identifies the schema containing the lookup table. This example uses
+   ``shared``.
+
+``optionsTable``
+   Identifies the lookup table.
+
+``valueColumn``
+   Identifies the column providing the values for the starter list.
+
+``labelColumn``
+   Identifies the column providing the visible labels.
+
+``triggerTargetColumn``
+   Identifies the form column whose list must be updated.
+
+In the affected column, define which lookup-table column provides its values
+and which column is used to filter them:
 
 .. code-block:: json
 
-    {
-        "optionsTable": "tytoalba_buildings",
-        "filterColumn": "settlement",
-        "Function": "select_list",
-        "valueColumn": "building"
-    }
+   {
+     "optionsTable": "animal_taxons",
+     "valueColumn": "animal_group_name",
+     "labelColumn": "animal_group_name",
+     "filterColumn": "animal_supergroup",
+     "Function": "select_list",
+     "optionsSchema": "shared"
+   }
+
+Here, ``filterColumn`` identifies the lookup-table column that is matched
+against the value selected in the preceding form column.
+
+Joint lists can connect more than two form columns:
+
+.. code-block:: json
+
+   {
+     "optionsSchema": "shared",
+     "optionsTable": "animal_taxons",
+     "filterColumn": "animal_supergroup",
+     "Function": "select_list",
+     "valueColumn": "animal_group_name",
+     "triggerTargetColumn": [
+       "species"
+     ],
+     "labelColumn": "animal_group_name"
+   }
+
+In a chain of joint lists, ``triggerTargetColumn`` identifies the next form
+column, ``filterColumn`` identifies the lookup-table column used to match
+the preceding selection, and ``valueColumn`` and ``labelColumn`` define the
+current list.
+
+.. TODO: Verify the descriptions of ``valueColumn`` and ``labelColumn`` in
+   starter and affected columns. Add an example lookup table with sample
+   rows so that the direction of each relationship is unambiguous.
+
+.. TODO: Explain how the selected value from the starter form column is
+   mapped to ``filterColumn`` and whether the form-column name must match a
+   lookup-table column name.
+
+.. TODO: Document how joint lists handle empty selections, changed parent
+   values, duplicate options, multiple parent values, multiselect fields,
+   autocomplete fields, and chains longer than two levels.
+
+.. TODO: Confirm whether ``optionsSchema`` must always be ``shared`` for
+   joint lists. The examples later on this page use ``public``, indicating
+   that other schemas may be supported.
 
 
-.. default-values:
+Joint-list example: buildings within a settlement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose a project collects data about species breeding in artificial nest
+boxes. A lookup table named ``tytoalba_buildings`` records which buildings
+occur in each settlement. The settlement field should provide an
+autocomplete list, and the building field should show only buildings in the
+selected settlement.
+
+First, configure the settlement column as an autocomplete field and identify
+the building column as its target:
+
+.. code-block:: json
+
+   {
+     "triggerTargetColumn": [
+       "building"
+     ],
+     "Function": "select_list",
+     "optionsSchema": "public",
+     "optionsTable": "tytoalba_buildings",
+     "valueColumn": "settlement"
+   }
+
+Next, configure the building column as a list and filter its values using the
+selected settlement:
+
+.. code-block:: json
+
+   {
+     "optionsTable": "tytoalba_buildings",
+     "filterColumn": "settlement",
+     "Function": "select_list",
+     "valueColumn": "building"
+   }
+
+.. TODO: Confirm whether the second definition inherits ``optionsSchema``
+   from the starter column or whether ``optionsSchema`` was omitted
+   accidentally.
+
+.. TODO: Add example rows from ``tytoalba_buildings`` and show the visible
+   result after a settlement is selected.
+
+
+.. _default-values:
 
 Default values
 ..............
-You can predefine a value for a field. There are several dynamic predefined values:
-    - _autocomplete
-    - _input
-    - _list
-    - _geometry
-    - _login_name
-    - _email
-    - _boolean
-    - _attacment
-    - _datum
-    - _auto_geometry
 
-    If you want an empty input field, you have to specify _input; if you want a selection list, you have to specify _list (it fills the list with the elements of the definition), if you want a geometry selection, you have to specify _geometry, and _datum results in a date selection field.
-    
-    See in action: https://openbiomaps.org/projects/checkitout/upload/?form=421&type=web
+A predefined value can be assigned to a field. The documented dynamic
+default values are:
 
-.. api-params:
+* ``_autocomplete``;
+* ``_input``;
+* ``_list``;
+* ``_geometry``;
+* ``_login_name``;
+* ``_email``;
+* ``_boolean``;
+* ``_attacment``;
+* ``_datum``; and
+* ``_auto_geometry``.
 
-Field display options 
+For example, ``_input`` produces an empty input field, ``_list`` fills a
+selection list using the list definition, ``_geometry`` provides geometry
+selection, and ``_datum`` provides date selection.
+
+See `an example form
+<https://openbiomaps.org/projects/checkitout/upload/?form=421&type=web>`_.
+
+.. TODO: Confirm the complete and current list of dynamic default values and
+   describe the result of each one in every supported client.
+
+.. TODO: Verify whether ``_attacment`` is intentionally spelled with one
+   ``h`` for compatibility with the implementation or is a typographical
+   error that should be changed to ``_attachment``.
+
+.. TODO: Verify whether ``_datum`` is the current documented identifier and
+   explain how it differs from a literal date or a current-date default.
+
+.. TODO: Explain how to define literal default values and how values that
+   begin with an underscore are escaped.
+
+.. TODO: Clarify when defaults are evaluated, whether users can overwrite
+   them, and how they interact with sticky, hidden, read-only, and once-only
+   fields.
+
+.. TODO: Document what ``_login_name`` and ``_email`` produce for an
+   unauthenticated submission and whether these values should be considered
+   trusted identity information.
+
+
+.. _api-params:
+
+Field display options
 .....................
-    - sticky
-        This has real significance in the mobile application. If this option is selected, the field will retain its value when new rows start.
-    - hidden
-        The field is not displayed.
-    - read only
-        The field value cannot be modified.
-    - once
-        The field was displayed only once in the observation list in the mobile app at the end of the observation
-        (This option will be used in the web form to pull out a field from the table over the table. Currently, using the default value option does this for the web form.)
-    - list elements as buttons
-        List elements will be displayed as buttons. Pictures can be used in the buttons. 
-          Pictures should be defined for all list elements in the list definition, like in this example:
-          If the list has the following values: animals, plants, mushrooms, bats
-    - unfolding list
-        This is a species list generation solution for the mobile app.
-        This option can only be used on autocomplete-type list fields (typically used for the species name field) if the form also contains an individual number field (set at object level in the database table settings). This is because this type enables the mobile application to display the selected (species) names together with their individual numbers in a list, one below the other, and the individual numbers can be modified afterwards. In this case, there is no need to save the record after every single modification; it is sufficient to save it only at the end of the observation event. For this reason, it is preferable to use it on a form treated as an observation event, as in this case the ‘Save observation’ button will effectively serve only as an intermediate save and will not clear the species list we have compiled, complete with individual numbers, from the form.
+
+The following display options are documented:
+
+``sticky``
+   Primarily used by the mobile application. When selected, the field
+   retains its value when a new row is started.
+
+``hidden``
+   The field is not displayed.
+
+``read only``
+   The field value cannot be modified.
+
+``once``
+   In the mobile application, the field is displayed only once for an
+   observation list, at the end of the observation.
+
+   This option is intended to allow a field to be moved outside the
+   repeating table in the web form. Currently, a similar result can be
+   achieved in the web form by using a default value.
+
+``list elements as buttons``
+   Displays list elements as buttons. Images can be used on the buttons.
+   Images should be defined for all list elements in the list definition.
+
+``unfolding list``
+   Provides a species-list workflow for the mobile application. This option
+   can be used only with an autocomplete field, typically a scientific-name
+   field, when the form also contains a number-of-individuals field assigned
+   the corresponding semantic role in the database-table settings.
+
+   The mobile application displays the selected species names and their
+   individual counts in a list. Counts can be modified without saving a
+   separate record after every change. The option is therefore most useful
+   in an observation-event form, where **Save observation** acts as an
+   intermediate save and does not clear the accumulated species list.
+
+The following list definition associates images with example button values:
 
 .. code-block:: json
 
-    {
-        "pictures": {
-            "animals": "http://....png",
-            "plants": "http://....png",
-            "mushrooms": "http://....png",
-            "bats": "http://....png"
-        }
-    }
-    
+   {
+     "pictures": {
+       "animals": "http://....png",
+       "plants": "http://....png",
+       "mushrooms": "http://....png",
+       "bats": "http://....png"
+     }
+   }
+
+.. TODO: Confirm why this section uses the ``api-params`` reference label
+   and whether these options are represented as API parameters.
+
+.. TODO: Document which display options are available in web, file-upload,
+   API, and mobile clients and how unsupported options are treated.
+
+.. TODO: Explain whether hidden and read-only fields can be changed by a
+   direct API request or file upload. Display restrictions must not be
+   treated as server-side access controls without validation.
+
+.. TODO: Define the exact scope and lifecycle of a sticky value, including
+   new observations, new events, form changes, application restarts, and
+   different users on the same device.
+
+.. TODO: Clarify the current implementation and intended web-form behaviour
+   of the ``once`` option.
+
+.. TODO: Explain image URL requirements, supported formats, caching,
+   authentication, alternative text, and behaviour when an image is
+   unavailable. Replace the ``http://....png`` placeholders with safe,
+   working examples.
+
+.. TODO: Document how the unfolding list identifies the number-of-
+   individuals field and how it stores, updates, and validates the resulting
+   observations.
+
+
 Column relations
 ................
-You can specify how to check or modify the value entered from the table for a value in another column. e.g.: for the weight column, if the sex column is female, the values can take min 20 and max 30 numeric values (sex=female) {minmax(20:30)}
 
-Check the contents of columns depending on the contents of other columns
+Column relations check or modify the value of one field according to the
+value of another field. For example, a weight field can be restricted to a
+numeric range of 20 to 30 when the sex field contains ``female``:
 
-See in action: https://openbiomaps.org/projects/checkitout/upload/?form=938&type=web
+.. code-block:: text
 
-Pseudo columns
+   (sex=female) {minmax(20:30)}
+
+See `an example form
+<https://openbiomaps.org/projects/checkitout/upload/?form=938&type=web>`_.
+
+.. TODO: Explain where relations are configured in the administration
+   interface and whether a relation belongs to the field being checked or
+   the field that triggers it.
+
+.. TODO: Document when relations are evaluated in web forms, file uploads,
+   API requests, and mobile applications, and whether validation is repeated
+   on the server.
+
+.. TODO: Explain how multiple relations are combined, how conflicts are
+   resolved, and whether evaluation order is significant.
+
+
+Pseudo-columns
 ..............
-Columns from other upload-forms can be added here with the following format: form-name:column1,column2,columnN
-The listed column will appear after this column. The data entered in the pseudo-columns will be uploaded using the other form's definition. Using this feature lets uploaders upload data into two tables at once.
+
+Columns from other upload forms can be added using the following format:
+
+.. code-block:: text
+
+   form-name:column1,column2,columnN
+
+The listed columns appear after the column containing this definition.
+Values entered in the pseudo-columns are uploaded using the other form's
+definition. This allows data to be submitted to two tables in one workflow.
+
+.. TODO: Explain where the pseudo-column definition is entered and add a
+   complete example using two forms and two related destination tables.
+
+.. TODO: Document how records written through the two forms are linked,
+   ordered, validated, committed, and rolled back. Clarify what happens if
+   one insert succeeds and the other fails.
+
+.. TODO: Explain whether pseudo-columns support nested pseudo-forms,
+   attachments, geometry, access rules, published form versions, file
+   uploads, APIs, and mobile applications.
+
+.. TODO: Clarify how naming conflicts and obligatory fields in the referenced
+   form are handled.
 
 
 The relations language definition
 ---------------------------------
 
-( rel_field = rel_statement ) { rel_type = rel_value } , ( rel_field = rel_statement ) { rel_type = rel_value } , ...
+The documented general syntax of the relations language is:
 
-IF an other cell value (rel_field) match to (rel_statement) THEN  this cell (rel_type) value should be (rel_value)
+.. code-block:: text
 
-rel_type is a function related to the field type
+   (rel_field=rel_statement) {rel_type(rel_value)}, (rel_field=rel_statement) {rel_type(rel_value)}, ...
 
-     datum:          year            extract year component from a datum string
-     
-     text, numeric:   minmax          min-max range check
-     
-     any type:       obligatory      change obligatory setting                
-                     inequality      check inequality with these symbols: <>= between the index and current field. Causing an error message.
-		     
-rel_statement can be a regexp-based function. In this case, the statement should start with !! and followed by a regexp expression e.g.  !!^(\d{2})$ 
+The intended interpretation is:
 
-     If the statement is regexp rel_value also can be a function
-     
-     .       which means replacing the current cell value with matched string from the matched string from the rel_field
-     
-     .+      means append the current cell value to the matched string from the rel_field 
-     
-     +.      means append matched string from the rel_field to the current cell value  
+.. code-block:: text
 
-rel_value:
+   IF another field (rel_field) matches rel_statement,
+   THEN apply rel_type with rel_value to the current field.
 
-     IF rel_type is inequality according to php comparison operators
-     
-             +<.
-	     
-             +<=.
-	     
-             +>=.
-	     
-             +=.
-	     
-             +<>.
-             
-	     WHERE + is the matched rel_field value and . is the current cell value
-             
-     Else can be anything - may be ignored - depending on the used function
+``rel_type`` is a function associated with the current field type. The
+documented functions are:
 
-Pseudo column examples
-......................
+``year``
+   For date fields, extracts the year component from a date string.
 
-On the `tarsus_length` column
+``minmax``
+   For text or numeric fields, performs a minimum and maximum range check.
 
-	(clutch_size=!!^([123])$) {obligatory(1)}
+``obligatory``
+   For any field type, changes whether the current field is obligatory.
 
-This means it will be mandatory to fill the tarsus length if the nest size is 1, 2 or 3
+``inequality``
+   For any field type, compares the related field and the current field
+   using a supported comparison operator. A failed comparison produces a
+   validation error.
 
-On the `end_date` column. If the `found_date` field is not empty, check that the `end_date` is greater than the `found_date`. If yes, return TRUE; else, return FALSE, which causes an upload error.
+A regular-expression statement begins with ``!!`` followed by a regular
+expression, for example:
 
-    (found_date=!!^(.+)$) {inequality(+>=.)}
+.. code-block:: text
 
-On a date field which does not contain the year part. If the `year` column is not empty, then the `date` field will be updated with this year (numbers)
+   !!^(\d{2})$
 
-    (year=!!^(d{4})$) {set(.)}
+When ``rel_statement`` is a regular expression, ``rel_value`` can use a
+replacement function based on the matched value:
 
-On the `ring_number` field. If the recapture's value is “1”, then the `ring_number` will be obligatory.
+``.``
+   Replaces the current field value with the string matched in
+   ``rel_field``.
 
-    (recapture=1) {obligatory(1)}
+``.+``
+   Appends the current field value to the string matched in ``rel_field``.
 
-On the `english_name` column. If `scientific_name` is empty, 'english_name' will be required.
+``+.``
+   Appends the string matched in ``rel_field`` to the current field value.
 
-    (scientific_name=!!(^$)) {obligatory(1)}
+For an ``inequality`` relation, the documented expressions use ``+`` for the
+matched value of ``rel_field`` and ``.`` for the current field value:
 
-On the `amount_type` field. If the `number_of_individuals` is greater than 50, then the `amount_type` will be the “estimated value”, else if less than or equal to 50, then the “exact value”.
+.. code-block:: text
 
-    (number_of_individuals>50) {set(estimated value)},(egyedszam<=50) {set(exact value)}
+   +<.
+   +<=.
+   +>=.
+   +=.
+   +<>.
+
+For other relation types, ``rel_value`` can contain another value or may be
+ignored, depending on the function.
+
+.. TODO: Verify the formal grammar shown above against the current parser.
+   The original description used both ``rel_type=rel_value`` and
+   ``rel_type(rel_value)`` notation, while all examples use the latter.
+
+.. TODO: Provide a complete list of supported relation functions and the
+   field types, arguments, return values, and error behaviour of each one.
+   The examples below use ``set``, but it is not included in the documented
+   function list.
+
+.. TODO: Document escaping and quoting rules for field names and values that
+   contain spaces, commas, parentheses, braces, equals signs, non-ASCII
+   characters, or regular-expression metacharacters.
+
+.. TODO: Confirm the supported regular-expression engine and explain capture
+   groups, replacement syntax, delimiters, modifiers, Unicode behaviour,
+   and invalid-expression handling.
+
+.. TODO: Clarify the meaning of the ``.``, ``.+``, and ``+.`` replacement
+   operators and add tested examples showing the resulting values.
+
+.. TODO: Confirm whether ``<>`` means “not equal” and whether ``!=`` is also
+   supported.
+
+.. TODO: Explain how dates, numeric strings, null values, and locale-specific
+   decimal separators are compared.
+
+
+Relation examples
+.................
+
+Making a field obligatory
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the ``tarsus_length`` column:
+
+.. code-block:: text
+
+   (clutch_size=!!^([123])$) {obligatory(1)}
+
+This makes ``tarsus_length`` obligatory when ``clutch_size`` is ``1``,
+``2``, or ``3``.
+
+.. TODO: Confirm whether the regular expression intentionally permits only
+   one-character values and whether ``clutch_size`` is treated as text or a
+   number.
+
+
+Comparing two dates
+~~~~~~~~~~~~~~~~~~~
+
+On the ``end_date`` column:
+
+.. code-block:: text
+
+   (found_date=!!^(.+)$) {inequality(+>=.)}
+
+If ``found_date`` is not empty, the relation checks whether ``end_date`` is
+greater than or equal to ``found_date``. A false result produces an upload
+error.
+
+.. TODO: Verify the direction of the comparison. According to the
+   documented placeholders, ``+>=.`` appears to mean
+   ``found_date >= end_date``, which conflicts with the accompanying
+   description that ``end_date`` must be greater than or equal to
+   ``found_date``. Replace the example only after testing the parser.
+
+
+Adding a year to a date
+~~~~~~~~~~~~~~~~~~~~~~~
+
+On a date field that does not contain a year:
+
+.. code-block:: text
+
+   (year=!!^(d{4})$) {set(.)}
+
+If the ``year`` column is not empty and contains four digits, the date field
+is updated with that year.
+
+.. TODO: Verify this example. A regular expression for four digits would
+   conventionally use ``\d{4}``, but the documented expression is
+   ``d{4}``. Confirm whether the backslash was lost during documentation
+   formatting.
+
+.. TODO: Explain how ``set(.)`` combines the year with the existing date
+   value. The current example does not specify the input format or resulting
+   value clearly.
+
+
+Requiring a ring number
+~~~~~~~~~~~~~~~~~~~~~~~
+
+On the ``ring_number`` field:
+
+.. code-block:: text
+
+   (recapture=1) {obligatory(1)}
+
+If ``recapture`` has the value ``1``, ``ring_number`` becomes obligatory.
+
+
+Requiring an alternative name
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the ``english_name`` column:
+
+.. code-block:: text
+
+   (scientific_name=!!(^$)) {obligatory(1)}
+
+If ``scientific_name`` is empty, ``english_name`` becomes obligatory.
+
+.. TODO: Confirm whether the parentheses around ``^$`` are required or
+   merely create a capture group.
+
+
+Setting a value according to a count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the ``amount_type`` field:
+
+.. code-block:: text
+
+   (number_of_individuals>50) {set(estimated value)},(egyedszam<=50) {set(exact value)}
+
+If the number of individuals is greater than 50, ``amount_type`` is set to
+``estimated value``. If it is 50 or less, ``amount_type`` is set to
+``exact value``.
+
+.. TODO: Verify the conditional syntax. The general grammar documents
+   ``rel_field=rel_statement``, but this example places ``>`` and ``<=``
+   between the field and value.
+
+.. TODO: Confirm whether ``egyedszam`` should be
+   ``number_of_individuals``. The example currently uses different field
+   names for the two branches.
+
+.. TODO: Explain whether values containing spaces, such as
+   ``estimated value``, must be quoted or escaped.
+
+.. TODO: Add tested examples for ``minmax``, ``year``, regular-expression
+   replacement, several conditions on one field, and relations involving
+   empty or null values.
