@@ -24,13 +24,17 @@ List of available forms
 
 Existing forms can be selected for editing, deletion, or blocking.
 
-.. TODO: Explain the difference between deleting and blocking a form,
-   including their effects on existing records, saved uploads, published
-   versions, API clients, and mobile applications.
+Data cannot be uploaded using blocked forms, and these forms are not visible 
+to clients in the list of forms. Offline clients cannot upload data using deleted 
+forms, and deleted forms cannot be restored.
+By editing forms, you can change their scope (web, API or file upload), their 
+relationship with database table fields, their description and access rules, as well 
+as whether they operate in observation event or ad hoc mode.
 
-.. TODO: Document the information and actions displayed in the list of
-   available forms, including any filters, status indicators, version
-   information, and access settings.
+Blocked forms appear with a grey background in the list.
+
+Forms can also be set to read-only, which is indicated by a padlock icon in the list. 
+(To do this, set the value of the ‘active’ field in the ‘project_forms’ table to 3.)
 
 
 Form header definition
@@ -42,30 +46,30 @@ Destination table
 Select the project table to which data submitted through the upload form
 will be written.
 
-.. TODO: Explain which tables are available for selection, whether the
-   destination table can be changed after a form has been used, and what
-   happens to existing form definitions if a table is renamed or replaced
-   by a view.
+You can only select SQL tables registered by OpenBioMaps within the project, 
+which contain the basic OpenBioMaps fields such as obm_id, obm_uploading_id, etc.
+The selected table cannot be changed afterwards, as the form fields are linked 
+to the fields in the selected table.
+
+The forms are sensitive to changes in the table structure. For this reason, it is 
+strongly advised not to edit the tables using a tool other than OpenBioMaps, as 
+this will cause the form to lose its link to the fields. In such cases, saving the 
+changes to the form may resolve the inconsistency, but clients will not be able to 
+upload the offline data!
 
 
 Name of the form
 ................
 
 Enter a name for the upload form. The name should be unique within the
-project.
+project (as the name is part of the unique identifier of the forms).
 
-A form can be copied by renaming it.
+A form can be copied by renaming it. In this case, the original form retains its 
+original name; in other words, it is not possible to rename a form, only to create 
+a new one, which affects the operation of offline clients!
 
 The name can be multilingual when a translation key with the ``str_`` prefix
 is used. For more information, see :ref:`Translations <localisation>`.
-
-.. TODO: Confirm whether renaming a form always creates a copy or whether
-   this behaviour depends on the form's publication state. Explain which
-   settings and versions are included in the copy.
-
-.. TODO: Document the permitted characters, maximum length, uniqueness
-   rules, and stability requirements for form names. Clarify whether API
-   clients refer to a form by its name or by an internal identifier.
 
 
 Form access
