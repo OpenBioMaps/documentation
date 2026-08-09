@@ -3,32 +3,76 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OpenBioMaps' documentation!
-======================================
+Welcome to OpenBioMaps documentation!
+=====================================
 
+OpenBioMaps is a platform for collecting, managing, sharing, and publishing
+biodiversity data.
 
-**Contents:**
+New users should begin with the introduction and the getting-started guide.
+Contributors and data managers can continue with the data-collection,
+data-management, and data-access documentation. Project and server
+administrators should use the administration sections. Developers and
+external-client authors can find technical information under integration and
+development.
+
+Start here
+----------
 
 .. toctree::
    :maxdepth: 2
 
-   introduction.rst
-   getting_started.rst
+   introduction
+   getting_started
 
-   user_interface.rst
-   data_management.rst
-   data_access.rst
-   data_collection.rst
-   mobile_applications.rst
-   
-   api.rst
-   clients.rst
+Using OpenBioMaps
+-----------------
 
-   admin_pages.rst
-   server_administration.rst
+.. toctree::
+   :maxdepth: 2
 
-   development.rst
-   
-   faq.rst
+   user_interface
+   data_collection
+   data_management
+   data_access
+   mobile_applications
 
-:download:`Download docs as pdf <docs/openbiomaps.pdf>` | :download:`Download docs as epub <docs/openbiomaps.epub>`
+Integration and external clients
+--------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   api
+   clients
+
+Administration
+--------------
+
+.. toctree::
+   :maxdepth: 2
+
+   admin_pages
+   server_administration
+
+Development and contribution
+----------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   development
+
+Help
+----
+
+.. toctree::
+   :maxdepth: 2
+
+   faq
+
+Offline documentation
+---------------------
+
+:download:`Download the documentation as PDF <docs/openbiomaps.pdf>` |
+:download:`Download the documentation as EPUB <docs/openbiomaps.epub>`
