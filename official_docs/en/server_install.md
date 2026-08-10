@@ -7,10 +7,10 @@ Most installations should use the Docker-based environment. After installing
 the server, use the Supervisor interface to manage low-level system and
 project configuration.
 
-> **Important:** The examples below are configuration examples, not a
-> complete configuration file. Review every value before using it. Do not
-> commit passwords, client secrets, encryption keys, or other credentials to
-> a source-code repository.
+> **Important:** The values below are configuration examples, not a complete
+> configuration file. Review every value before using it. Do not commit
+> passwords, client secrets, encryption keys, or other credentials to a
+> source-code repository.
 
 ## Installing OpenBioMaps with Docker
 
@@ -58,7 +58,306 @@ reason to change them. Do not copy a complete configuration from another
 project without reviewing project names, URLs, database credentials, and
 security-related values.
 
+The values in the following sections are examples. Values such as passwords,
+host names, project names, domains, and secrets must be replaced with values
+appropriate for the installation.
+
 ## Database connection
 
-These constants define the project's PostgreSQL connection:
+These settings define the project's PostgreSQL connection.
 
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `gisdb_user` | `YOUR_PROJECT_ADMIN` | PostgreSQL user used by the project. |
+| `gisdb_pass` | `xxxxxxx` | Password of the PostgreSQL user. Replace it with a strong, random password and keep it secret. |
+| `gisdb_name` | `POSTGRES_DB_NAME` | Name of the PostgreSQL database containing the project. |
+| `gisdb_host` | `POSTGRES_HOST_NAME` | PostgreSQL server host name. In a container-based installation this is usually the database service name. |
+
+## Project SQL table name
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `PROJECTTABLE` | `your_database_table_name` | Name of the project's primary SQL table and project identifier. In installations following the standard directory layout, it may alternatively be derived from the project directory name. |
+
+The value must match the project created by the installer or Supervisor.
+Changing it on an existing project can prevent OpenBioMaps from finding the
+project's data and configuration.
+
+## Project data restrictions
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `ACC_LEVEL` | `public` | Controls data access. `public` allows everybody to read data; `group` restricts access to project group members. |
+| `MOD_LEVEL` | `group` | Controls data modification. `public` allows everybody to modify data; `group` restricts modification to project group members. |
+
+Use the most restrictive setting appropriate for the project and verify the
+result with both authenticated and unauthenticated users.
+
+## Language settings
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `LANG` | `hu` | Default project language. A corresponding language file must exist. |
+| `LANGUAGES` | `en: in English`, `hu: magyarul`, `ro: română`, `ru: русский` | Languages offered by the project and their displayed labels. The first entry is the default language used by components that rely on the order of this list. |
+
+Keep `LANG` consistent with the configured project languages.
+
+## Path and URL settings
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `PATH` | `/biomaps/resources` | URL path under which project resources are available. On `openbiomaps.org` this is commonly `/projects`; in another installation it may be empty or use a deployment-specific path. |
+| `URL` | `TYPE-YOUR-SERVER-DOMAIN_HERE` followed by `PATH` | Full base URL for project resources. Replace the domain placeholder and include the correct scheme, host, optional port, and deployment path. |
+
+For example, if the server base URL is `https://example.org` and `PATH` is
+`/biomaps/resources`, the resulting `URL` is
+`https://example.org/biomaps/resources`.
+
+## MapServer and MapCache settings
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `PRIVATE_MAPSERV` | `URL/private/proxy.php` | Project URL of the private MapServer proxy. It is constructed from `URL`. |
+| `PUBLIC_MAPSERV` | `URL/public/proxy.php` | Project URL of the public MapServer proxy. It is constructed from `URL`. |
+| `PRIVATE_MAPCACHE` | `URL/private/cache.php` | Project URL of the private MapCache proxy. It is constructed from `URL`. |
+| `PUBLIC_MAPCACHE` | `URL/public/cache.php` | Project URL of the public MapCache proxy. It is constructed from `URL`. |
+| `MAPSERVER` | `http://localhost/cgi-bin/mapserv.fcgi` | MapServer endpoint for a standalone installation. |
+| `MAPSERVER` | `http://mapserver/cgi-bin/mapserv` | MapServer endpoint for a Docker installation. Use this instead of the standalone value when the `mapserver` service is available through the Docker network. |
+| `MAPCACHE` | `http://localhost/mapcache` | MapCache endpoint. Using MapCache requires additional server configuration; see the MapServer documentation. |
+| `MAP` | `PMAP` | Name of the map object used by the project. |
+| `PRIVATE_MAPFILE` | `private.map` | Private MapServer mapfile used by the project. This setting is retained for compatibility and may move to PostgreSQL-managed project settings in a future version. |
+
+Configure only one `MAPSERVER` value. The correct value depends on whether
+MapServer runs locally or as a separate Docker service.
+
+## Invitations
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `INVITATIONS` | `0` | Maximum number of active invitations a user may have at the same time. When set to `0`, only administrators can send invitations. The documented default is `11`. |
+
+## Mail settings
+
+These optional settings are used when no suitable local mail agent is
+available.
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `SMTP_AUTH` | `true` | Enables SMTP authentication. |
+| `SMTP_HOST` | `mail.your-smtp-server.org` | SMTP server host name. |
+| `SMTP_USERNAME` | `MAIL USER` | User name used to authenticate with the SMTP server. |
+| `SMTP_PASSWORD` | `xxxxxx` | SMTP password. Keep it secret and do not commit it to the repository. |
+| `SMTP_PORT` | `PORT-NUMBER` | SMTP server port. Select the port appropriate for the server's encryption and authentication configuration. |
+| `SMTP_SENDER` | `mail_user@your-smtp-server.org` | Sender address used for outgoing project mail. |
+| `SMTP_SECURE` | `tls` | Optional SMTP transport security mode. |
+
+A historical Google SMTP example used the following values:
+
+| Variable | Historical example value |
+| --- | --- |
+| `SMTP_HOST` | `smtp.gmail.com` |
+| `SMTP_USERNAME` | `your-user@gmail.com` |
+| `SMTP_PASSWORD` | `xxxxxxxxx` |
+| `SMTP_SECURE` | `tls` |
+| `SMTP_PORT` | `587` |
+
+The historical Google example may no longer work without additional provider
+configuration and should not be copied without reviewing Google's current
+authentication requirements.
+
+The following mail-adjacent settings are deprecated and should not be used
+for new projects:
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `SHINYURL` | `false` | Deprecated Shiny URL setting. |
+| `RSERVER` | `false` | Deprecated R server setting. |
+
+## Page displayed after login
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `LOGINPAGE` | `map` | Page loaded after login. Supported documented choices are `profile`, `mainpage`, and `map`. The default is `map`. |
+| `TRAINING` | `false` | Deprecated training-mode setting. Do not use it for new projects. |
+
+## Main page configuration
+
+`MAINPAGE` groups settings that control the layout and content of the project
+main page.
+
+| Key | Example value | Description |
+| --- | --- | --- |
+| `template` | `gridbox` | Main-page template. `intropage` is another documented template value. |
+| `content1` | `map` | Content of the first main area. Documented values include `map`, `upload-table`, and `slideshow`. |
+| `sidebar1` | `column_dinpi.altema\|custom_countries\|members\|uploads\|data\|species\|species_stat` | Pipe-separated list of sidebar components. Common components include `members`, `uploads`, `data`, `species`, and `species_stat`; project-specific components may also be included. |
+| `system_footer` | `on` | Displays the system footer when set to `on`. |
+| `system_header` | `off` | Hides the system header when set to `off`. |
+| `custom_skeleton` | `1` | Optional custom page-skeleton selector. It is disabled in the example configuration. |
+| `restrictaded_pages` | `map`, `id`, `history`, `profile`, `data`, `table`, `editrecord`, `qtable`, `query`, `show`, `LQ`, `metadata` | Optional list of pages subject to restriction. The key is spelled `restrictaded_pages` for compatibility with the application. It is disabled in the example configuration. |
+
+Project-specific sidebar components must exist and be correctly configured
+before they are added to `sidebar1`.
+
+## Docker project domain
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `OB_PROJECT_DOMAIN` | Value of `OB_DOMAIN` | Docker-specific project domain used when creating email alerts for new uploads. The value is inherited from the system-level `OB_DOMAIN` setting. |
+
+## Style configuration
+
+`STYLE` selects the project style.
+
+| Key | Example value | Description |
+| --- | --- | --- |
+| `template` | `evolvulus` | Name of the style or template directory used by the project. The named style must be installed. |
+
+## Footer configuration
+
+`FOOTER` controls links, language selection, and partner logos displayed in
+the project footer.
+
+| Key | Example value | Description |
+| --- | --- | --- |
+| `links` | `map\|upload\|about\|terms\|usage\|privacy` | Pipe-separated list of footer links. |
+| `languages` | `languages` | Enables or identifies the language selector in the footer. |
+| `partners` | OpenBioMaps and University of Debrecen entries | List of partner-logo definitions. |
+
+Each item in `partners` can contain the following fields:
+
+| Field | Example value | Description |
+| --- | --- | --- |
+| `img` | `obm_logo.png` | Image file displayed for the partner. |
+| `size` | `110` | Optional display size. An empty value leaves the size unspecified. |
+| `url` | `https://openbiomaps.org` | Destination URL opened from the partner logo. |
+
+The example configuration contains these partners:
+
+| Image | Size | URL |
+| --- | --- | --- |
+| `obm_logo.png` | `110` | `https://openbiomaps.org` |
+| `unideb_logo.png` | empty | `https://unideb.hu` |
+
+## Header configuration
+
+`HEADER` controls links and the layout of the project header.
+
+| Key | Example value | Description |
+| --- | --- | --- |
+| `links` | `upload\|map\|messages\|profile\|localize` | Pipe-separated list of links displayed in the header. |
+| `layout` | `obm` | Header layout used by the project. |
+
+## Encryption hash
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `MyHASH` | `password-string` | Secret value used by modules such as `read_table` to encrypt or obscure table names and related values. Replace it with a strong random value, keep it stable for an existing project, and do not publish it. |
+
+Changing `MyHASH` in an existing project may invalidate values previously
+created with the old secret.
+
+## Custom cache settings
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `CACHE_HOST` | Value of the `CACHE_HOST` environment variable, otherwise `localhost` | Host running the cache service. |
+| `CACHE_PORT` | Value of the `CACHE_PORT` environment variable, otherwise `11211` | Port of the cache service. Port `11211` is commonly used by Memcached. |
+
+In Docker installations, use the cache service name rather than `localhost`
+when the cache runs in another container.
+
+## OpenID Connect login
+
+`OPENID_CONNECT` contains one or more identity-provider definitions. The
+example configures Google.
+
+| Provider/key | Example value | Description |
+| --- | --- | --- |
+| Provider name | `google` | Internal identifier of the OpenID Connect provider. |
+| `client_id` | `xxxxx.apps.googleusercontent.com` | Client identifier issued by the provider. |
+| `client_secret` | `xxxxxxx` | Client secret issued by the provider. Keep it secret and do not commit it to the repository. |
+| `provider_url` | `https://accounts.google.com/` | Base URL of the OpenID Connect provider. |
+| `OPENID_CONNECT_CERT_PATH` | `/etc/ssl/certs/ca-certificates.crt` | Path to the trusted CA certificate bundle used to validate TLS connections to the provider. |
+
+Register the exact OpenBioMaps redirect URI with the provider and verify that
+the application can read the configured CA certificate bundle.
+
+## PWA link
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `PWA_LINK` | `on` | Enables the Progressive Web App link on the project main page. |
+
+## Custom pages
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `CUSTOM_PAGES` | `mysite`, `my_other_site` | List of custom page identifiers available in the project. Each referenced custom page must be implemented in the appropriate project location. |
+
+## Attachment image size
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `ALLOWED_FILE_SIZE` | `4194304` | Maximum permitted image attachment size in bytes. The example value is 4 MiB. |
+
+The effective upload limit may also be constrained by PHP, the web server,
+reverse proxy, or other infrastructure settings.
+
+## Temporary tables for observation-list uploads
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `USE_TEMPTABLES_FOR_OBSLISTS` | `true` | Enables use of tables named like `temporary_tables.obs_*` during observation-list uploads. In the documented configuration this value is stored as the string `true`, not as a Boolean value. |
+
+The database user must have the required permissions on the temporary-table
+schema.
+
+## Background data export
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `DATA_EXPORT_BGPROC_LIMIT` | `1000` | Number of records above which data export is processed as a background job instead of a normal direct download. |
+
+Background exports require the project's job runner to be configured and
+running.
+
+## Additional project schemas
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `PROJECT_SCHEMAS` | `sablon_archive` | List of additional PostgreSQL schemas associated with the project. |
+
+Ensure that the project database user has the required privileges on every
+listed schema.
+
+## Security and automated-request checks
+
+These settings enable request-rate checks backed by Redis. When the defined
+limits are exceeded, OpenBioMaps can enter an attack-protection mode and
+display an “Are you human?” check for the configured lifetime.
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `SECURITY_CHECK` | `true` | Enables the security check. |
+| `REDIS_HOST` | `127.0.0.1` | Redis server host. The documented default is `127.0.0.1`. In Docker, use the Redis service name if Redis runs in another container. |
+| `REDIS_PORT` | `6379` | Redis server port. The documented default is `6379`. |
+| `SECURITY_IP_LIMIT` | `30` | Maximum number of requests allowed from one IP address per 10 seconds. Set it to `false` to disable the per-IP check. The documented default is `30`. |
+| `SECURITY_GLOBAL_LIMIT` | `10` | Maximum total request rate per second. The documented default is `10`. |
+| `SECURITY_ATTACK_TTL` | `600` | Time in seconds for which attack-protection mode remains active. The documented default is `600` seconds. |
+
+Choose limits based on expected traffic, proxy configuration, and the number
+of users sharing an apparent source IP. If OpenBioMaps is behind a reverse
+proxy, verify that the application receives the correct client IP addresses.
+
+## Developer options
+
+These options are intended for development and troubleshooting rather than
+normal production use.
+
+| Variable | Example value | Description |
+| --- | --- | --- |
+| `branch` | `testing` | Selects another Git branch, such as the testing branch. Production projects should normally use the supported production branch. |
+| `DEBUG_PDS` | `true` | Enables additional logging for PDS actions. Disable verbose debug logging after troubleshooting because it may increase log volume or expose sensitive operational details. |
+
+After enabling a developer option, monitor the application logs and revert
+the option when it is no longer needed.
