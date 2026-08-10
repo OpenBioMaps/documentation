@@ -60,7 +60,7 @@ Data input
 ==========
 OpenBioMaps way
 ---------------
-Data can be loaded into the data tables via the upload forms or via any SQL client. When data is entered using the upload forms, the data is recorded as an upload event in the system.uploading table and the upload metadata is available with the data.
+Data can be loaded into the data tables via the upload forms or via any SQL client. When data is entered using the upload forms, the data is recorded as an upload event in the system.uploadings table and the upload metadata is available with the data.
 
 SQL ways
 --------
