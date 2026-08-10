@@ -1,617 +1,1281 @@
 # Modules
 
-The modules are customizable extensions to the OpenBioMaps web application. There are project-level modules (e.g., PostgreSQL repository creation, photo manager), and modules specific to individual data tables (e.g., text filters for the map page, CSV export).
+Modules are configurable extensions to the OpenBioMaps web application. They
+can add user-interface components, data-processing functions, export formats,
+administrative tools, APIs, or integrations with external services.
 
-Modules can be assigned to different users or user groups.
+There are two main module scopes:
 
-The modules are linked to module hooks in the application, which are mostly located on the map page and profile tab.
-Most modules can be configured with simple parameters (JSON), but some modules have a custom administrative interface.
+- **Project-level modules** provide functions that apply to the whole project,
+  such as spatial-shape management, attachment support, or PostgreSQL user
+  creation.
+- **Table-level modules** apply to a particular data table, such as map-page
+  filters, result displays, data transformations, or export formats.
 
+Modules are connected to hooks in the application. Most user-facing hooks are
+located on the map page and the profile page, although modules can also add
+administration pages, APIs, background jobs, and upload-related functions.
+
+Most modules accept parameters in JSON format. Some modules instead provide a
+dedicated administration interface, and some require both JSON parameters and
+additional database or MapServer configuration.
+
+> **Version compatibility:** The available modules and their parameters can
+> change between OpenBioMaps releases. The module administration page of the
+> installed application is the authoritative list of modules available to a
+> project. Check the module source and release notes before copying a
+> configuration from another installation.
 
 ## Module administration
-The modules can be enabled and configured on the *project_administration -> modules* page.
 
-Add a custom module
+Modules can be enabled and configured on the **Project administration →
+Modules** page.
 
-You can upload your modules and add them to your project. To develop a module, check out the example modules in modules/examples/.
+A module can usually be:
+
+- added to the project;
+- assigned to users or groups;
+- configured with JSON parameters;
+- enabled or disabled; and
+- opened through a module-specific administration page, if one is provided.
+
+Module names and JSON keys are case-sensitive. Validate JSON before saving it.
+JSON does not allow comments or trailing commas.
+
+### Adding a custom module
+
+Custom modules can be uploaded and added to a project. Developers should use
+the example modules in `resources/includes/modules/examples/` as a starting
+point and compare their implementation with modules included in the installed
+OpenBioMaps release.
+
+Custom module code must be reviewed before deployment. A module runs as part
+of the application and may have access to project data, the authenticated
+user's session, and database connections.
 
 ### Module access
-You can add each module to your list several times. This allows us to give each module multiple access levels. This is important for modules where we want to give different access to different users or groups, for example, the allowed_columns module. Another example is that if we have multiple data tables, we can specify, for each table separately, which column values we can filter by when querying, for example, using the text_filter module.
-In the **Access** column, we can choose whether our settings are public (everybody) or only logged-in users (logged-in users) can use the given option. In the **Group Access** column, we can further refine our access options by selecting predefined groups or assigning specific people to a particular setting.
 
-### Drop a module
-Currently, there is no such option.
+The same module can be added more than once with different access settings or
+parameters. This allows administrators to provide different configurations
+to different users, groups, or tables.
 
-### Turn off a module
-Once we have our list of modules, we can switch each module on and off.
+For example:
 
-### Parameters for modules
-Most modules can be directly parameterised with JSON format parameters. Some modules have their administrative tab, through which administrative tasks related to the module can be performed. An example is the box_load_selection module.
+- `allowed_columns` can expose different columns to different groups; and
+- `text_filter` can provide table-specific filter columns in a project that
+  contains multiple data tables.
 
+The **Access** column controls the general audience of a module instance. The
+available choices include public access and access restricted to logged-in
+users.
+
+The **Group access** column further restricts the module instance to selected
+project groups or individual users.
+
+When several instances of the same module apply to one user, test which
+configuration is selected or combined by the installed OpenBioMaps version.
+Avoid overlapping access rules unless their behaviour is understood.
+
+### Enabling and disabling modules
+
+Each configured module instance can be enabled or disabled. Disabling a
+module preserves its configuration but prevents it from being used.
+
+After changing a module's status, test the relevant page with users from each
+affected access group. Some modules also create database objects or retain
+module-specific settings when disabled.
+
+### Removing modules
+
+The module administration interface does not currently provide a general
+option for removing an installed module from the application.
+
+A configured module instance may be disabled. Do not manually delete module
+files or database objects unless the module's removal procedure is known and
+a backup is available.
+
+### Module parameters
+
+Most modules accept JSON parameters directly on the module administration
+page. Other modules provide a dedicated administration tab for module-specific
+tasks. `box_load_selection` is an example of a module with its own
+administrative interface.
+
+Examples in this document use placeholders such as `YOURTABLE`, `column_name`,
+and `schema.table`. Replace these placeholders with identifiers from the
+project.
 
 ## Project-level modules
-### box_load_selection
-* Allows you to upload your spatial shapes (points, lines, polygons). These are usually SHP files, but can also be other standard spatial data formats.
-* The uploaded spatial shapes can be used by users for data queries or data uploads. In both cases, the spatial object can be used to refer to the shape name, either to spatially delimit the data query or to specify the spatial location of the uploaded data record.
-* Uploaded spatial objects can be shared with other users, who can decide whether they want to use these shapes. By default, newly uploaded spatial shapes are not visible to other users. To use objects uploaded by others, you need to allow queries or data uploads. Project owners can set these permissions for each user for each spatial object.
-* Users can access spatial shapes via the **"Shared Geometries "** module block found in the module section at the bottom of their profile page. Project administrators can make these settings in the administration interface of the **box_load_selection** module, on the module settings tab.
-* Once the module is activated, the **"Spatial query "** box appears on the **Map** page. Here you will see a drop-down list of the names of the spatial shapes available to you, from which you can perform a spatial query on the database. In the case of a polygon, you can choose to query only the data that is inside the polygon or also the data that falls under the edges of the polygon.
-* For web and file uploads, if the *"obm_geometry "* column type is used for coordinate capture, clicking on the map marker icon in a pop-up window will display a drop-down menu with *"geometry from list "*, in which you can select the required spatial shape by name, for which the application will load the WKT coordinate into the corresponding geometry field of the upload form.
-* The spatial shapes available for upload will also be downloaded by the mobile app and will be semi-transparently drawn on the map in the upload forms, labelled with their names.
 
-No parameters
+### `box_load_selection`
 
-### photos
-Enable the use of photo or other attachment boxes on upload forms and show attached images on the data sheet page.
+The `box_load_selection` module manages reusable spatial shapes.
 
-No parameters
+It provides the following functions:
 
-### create_pg_user
-* After enabling the module, the **Create Postgres user** box will appear on the profile page.
-* By enabling the module, users who are granted the right to use the module will be able to create their own Postgres user.
-* By default, the module creates a POSTGRES user with limited access, who can read all database tables in your project. He can connect to the database from only one client program at a time, and his access automatically expires after 1 year.
-* The created Postgres user will be added to the ***project_name*_user** group, which is the Postgres Group automatically created by the system. With Postgres admin access, you can grant additional rights to certain users, e.g., write access to specific tables.
-* Users can renew their access at any time.
-* The Postgres user can be used to connect to the database from QGIS, for example. An example of how to set this up:
+- Users can upload points, lines, and polygons. ESRI Shapefile is commonly
+  used, but other standard spatial formats may also be supported.
+- Uploaded shapes can be used to define the spatial extent of a data query.
+- A shape can provide the geometry of a record during web or file upload.
+- Shapes can be shared with other users.
+- Shapes available to the user can be downloaded and displayed by the mobile
+  application.
 
-![Add PostGis connection to OpenBioMaps in QGIS](images/qgis_connect.jpg)
+Newly uploaded shapes are not visible to other users by default. Project
+administrators can grant users permission to use each shape for queries or
+data uploads.
 
-No parameters
+Users can manage shared shapes through the **Shared geometries** module block
+on their profile page. Project administrators can manage these permissions
+through the `box_load_selection` administration tab.
 
-### computation
-No parameters
+When the module is enabled, a **Spatial query** box appears on the map page.
+Users can select an available shape and run a spatial query against it. For
+polygon geometries, the interface may allow users to choose whether records
+intersecting the polygon boundary are included.
 
-### custom_filetype
-Custom file preparation. E.g. observado style CSV
+If an upload form uses an `obm_geometry` field, its map control can offer a
+**Geometry from list** option. Selecting a named shape inserts its WKT
+geometry into the upload field.
 
-No parameters
+The mobile application can display available upload shapes semi-transparently
+on form maps, labelled with their names.
 
+**Parameters:** None. The module uses its dedicated administration interface.
 
-### taxon_meta
-No parameters
+### `photos`
+
+The `photos` module enables photo and other attachment fields on upload forms
+and displays attached images on record data-sheet pages.
+
+File-size limits, permitted file types, storage, access control, and backup
+requirements must also be configured at the application and server levels.
+
+**Parameters:** None.
+
+### `create_pg_user`
+
+The `create_pg_user` module allows authorised users to create personal
+PostgreSQL accounts.
+
+When the module is enabled:
+
+- a **Create PostgreSQL user** box appears on the profile page for authorised
+  users;
+- users can create and renew their own database account;
+- the generated account is assigned to the project's PostgreSQL user group;
+  and
+- the account can be used by database clients such as QGIS.
+
+By default, the generated account:
+
+- has read access to the project's database tables;
+- is limited to one simultaneous client connection; and
+- expires after one year.
+
+The generated account is added to the PostgreSQL group named after the
+project, commonly in the form `PROJECT_user`. A database administrator can
+grant additional permissions, such as write access to selected tables, but
+should follow the principle of least privilege.
+
+Users can renew their access before or after expiry, subject to the installed
+module's rules.
+
+The following screenshot shows an example PostgreSQL/PostGIS connection in
+QGIS:
+
+![Adding an OpenBioMaps PostGIS connection in QGIS](images/qgis_connect.jpg)
+
+Do not expose PostgreSQL to the public internet without appropriate firewall,
+TLS, authentication, and access-control settings.
+
+**Parameters:** None. Current releases may provide a dedicated administration
+page.
+
+### `computation`
+
+The `computation` module provides project-specific computation functions.
+
+Its exact behaviour depends on the installed module version and project
+configuration. Review the module implementation before enabling it in a
+production project.
+
+**Parameters:** None documented.
+
+### `custom_filetype`
+
+The `custom_filetype` module supports project-specific preparation of custom
+download formats, such as an Observado-style CSV file.
+
+The output format and any required custom implementation depend on the
+project.
+
+**Parameters:** None documented.
+
+### `taxon_meta`
+
+The `taxon_meta` module provides taxon-related metadata functions.
+
+Its user interface, required database structure, and configuration should be
+verified against the installed module version.
+
+**Parameters:** None documented.
 
 ## Table-level modules
 
-### additional_columns
-* If a database consists of several data tables, they can be linked by different variables.
-* When queried, all data for an identifier is queried. This function can be ignored by checking *"ignore table JOINS "* on the map page.
-* For example, in some burrow projects, we keep the data for parents and offspring in separate tables. If we want to get all the data for a burrow, we can specify the *"odu_asonosito "* column as the "join" variable.
-* Use it together with the join_tables module
-        return with an array:
-        co [0] columns array
-        c  [1] column name assoc array
+### `additional_columns`
 
-Parameters:
+The `additional_columns` module defines columns used to associate records
+across multiple data tables.
+
+When tables are connected through a shared identifier, queries can include
+the related records for that identifier. Users can bypass these joins by
+selecting **Ignore table joins** on the map page.
+
+For example, a project may store parent and offspring records in separate
+tables and use a shared burrow identifier as the join column.
+
+Use this module together with `join_tables`.
+
+The module returns:
+
+- an array of columns at index `0`; and
+- an associative array of column names at index `1`.
+
+**Parameters:**
+
 ```json
-     ["column names"]
+[
+  "column_name_1",
+  "column_name_2"
+]
 ```
 
-### allowed_columns
-* This is an extension of data access rule settings. The rules control access to complete rows in tables.
-* With this module, you can set which column should be visible at different access levels if there is row level restriction by rules ('restricted', 'no-geom').
-* It can be used only if the basic access level of the project is not public, and maybe if the data table has a *"rules "* table.
+### `allowed_columns`
 
-Parameters:
-```json
-     {
-       "for_sensitive_data": [
-			"List of columns we want to make visible for sensitive records."
-		]
-	   "for_no-geom_data": [
-			"List of columns we want to make visible for no-geom rows. If not set, all columns are accessible"
-		]
-       "for_general": [
-			"List of columns we want to make visible if there are no rules. If not set, all columns are restricted."
-		]
-     }
-```
+The `allowed_columns` module supplements row-level data-access rules with
+column-level restrictions.
 
-### bold_yellow
-* Column names in yellow bold in the result lists. After a query, column names in bold yellow appear in the detailed description attached to the *"Drop-down list "* table.
-* This module is also used to specify which data should be displayed in the **"Recorded data "** summary labels in the mobile application.
+Row-level rules determine which records a user can access. This module
+determines which columns remain visible when a record is subject to a
+`restricted` or `no-geom` rule, or when no matching rule exists.
 
-Parameters:
-```json
-     ["column names"]
-```
+The module is intended for projects whose base access level is not public and
+whose data tables use the corresponding rules table.
 
-### box_load_coord
-* On the map page, a *"position "* block will appear below the map. If you move the cursor around the map, you will see that the coordinate in the *"position "* block is constantly changing, tracking the position of your cursor on the map.
-* Also in the *"position "* block, if you type in the latitude and longitude, clicking on the little black *"lollipop "* will display your point on the map.
+**Parameters:**
 
-Parameters:
-```json
-     {
-       "wgs84": "4326",
-       "eov": "23700"
-     }
-```
-
-### box_load_last_data
-* Create a **Quick queries** option on the map page on the right side of the map. There are three options to choose from:
-	* last own upload, 
-	* last upload (anyone's) 
-	* last uploaded rows.
-* On the module page, you can set the number of last uploaded rows to be queried. For the other two options, the module always returns 1 row.
-
-Parameters:
-```json
-     ["Number of records in last uploads, default is 10"]
-```
-
-### box_custom
-Custom box on the map page - only the user-defined version exists.
-The custom module has to be placed in the local/includes/modules/ folder.
-
-Parameters:
-
-     [A file's basename includes/modules/private folder. E.g. hrsz_query]
-
-    Where hrsz_query_Class is a class in local/includes/modules/hrsz_query.php file.
-
-    This Class should include at least print_box() and print_js() functions.
-
-### identify_point
-* Identify one or more points on the map.
-* Display in a small bubble some information about the data point that has been previously set.
-
-Parameters: 
-```json
-["column names"]
-```
-
-### cameratrap_api
-The cameratrap_api module is used to communicate between the dashboard and the Nextcloud API. It provides functionalities for managing cameras and analyses, including uploading and downloading images, running analyses, and managing Nextcloud credentials.
-
-No parameters
-
-### nextcloud_connect
-The nextcloud_connect module is used to connect with a Nextcloud server. It provides functionalities for managing user profiles and issuing JWT tokens for authentication.
-
-No parameters
-
-### validation
-The validation module provides an internal API for validation algorithms. It includes functionalities for managing validation rules, validating records, and logging validation actions.
-
-No parameters
-Custom data checks of the upload data.
-
-No parameters
-
-### download_restricted
-The `download_restricted` module provides an admin-controlled mechanism for managing download authorizations. It replaces standard download buttons with a form that requires users to explain the purpose of their data download request. Administrators can then approve or reject these requests through an admin interface.
-
-Key functionalities include:
-- **Request Form**: Users must fill out a form explaining their download request.
-- **Admin Approval**: Administrators can approve or reject download requests based on the provided justification.
-- **Integration with Results Buttons**: When enabled, it controls the availability of download options in the `results_buttons` module, ensuring that only authorized users can download data.
-
-No parameters
-
-
-### extra_params
-Extra input parameters for forms.
-
-
-### grid_view
-View data on a custom polygon grid. E.g UTM 2.5km, UTM 10KM, KEF grid, snap to grid, ...
-
-When using grid modules, the original geometry of the data is also taken from the grid module.
-
-    Methods: print_box(), default_grid_geom(), get_grid_layer()
-
-    Parameters: layer_options
-
-Parameters example: 
-    
 ```json
 {
-    "layer_options": [
-        "kef_5 (layer_data_grid)",
-        "original (layer_data_points)"
-     ]
+  "for_sensitive_data": [
+    "column_visible_for_sensitive_records"
+  ],
+  "for_no-geom_data": [
+    "column_visible_for_records_without_geometry_access"
+  ],
+  "for_general": [
+    "column_visible_when_no_rule_matches"
+  ]
 }
 ```
-The layer_options contains the data view modes and their options that users can choose, i.e. which layer should be associated with which MapServer layer.
 
-The name of the MapServer layer should be given in parentheses. The string before the parentheses is the corresponding column name of the YOURTABLE_qgrids table, i.e. the column containing the desired grid geometry is linked to the MapServer layer that manages it.
+Parameter meanings:
 
-The grid layer is a polygon layer, so you need to create a polygon layer in the Mapfile. Eg: layer_data_grid
+- `for_sensitive_data` lists columns visible for sensitive records.
+- `for_no-geom_data` lists columns visible for `no-geom` records. If this key
+  is omitted, all columns are accessible for those records.
+- `for_general` lists columns visible when no rule matches. If this key is
+  omitted, all columns are restricted in that case.
 
-The module will create a YOURTABLE_qgrids table for you if it does not already exist, and you can modify it to apply the grid types you want.
+Test the effective permissions with public, authenticated, group-member, and
+administrator accounts. Column restrictions must not be treated as a
+replacement for correct database and API access control.
 
-The module will also create an update_grid_geoms trigger and set the comments for you, but you will most likely need to modify them.
+### `bold_yellow`
 
-In the YOURTABLE_qgrids table, set the visible names of the layers in the comment field. These are the names users will see in the options list.
+The `bold_yellow` module identifies important fields in result summaries.
 
-```sql 
-COMMENT ON COLUMN public.YOURTABLE_qgrids.original IS 'original';
-COMMENT ON COLUMN public.YOURTABLE_qgrids.kef5 IS 'KEF 5x5';
+Configured columns are highlighted in bold yellow in detailed result lists.
+The mobile application also uses this configuration to select values shown in
+the **Collected data** summary labels.
+
+**Parameters:**
+
+```json
+[
+  "column_name_1",
+  "column_name_2"
+]
 ```
 
-Example trigger functions:
+### `box_load_coord`
 
-Trigger on YOURTABLE_qgrids. Arguments are in the function:
+The `box_load_coord` module adds a **Position** block below the map.
 
-```sql    
-CREATE TRIGGER update_grid_geoms BEFORE INSERT OR UPDATE ON public.tytoalba_qgrids FOR EACH ROW EXECUTE PROCEDURE public.update_qgrid_geoms_arg('0.1', '0.1', 't', 't', 't', 't', '0.05');
+The block:
+
+- displays the coordinates of the current pointer position; and
+- allows a user to enter latitude and longitude values and place the
+  corresponding point on the map.
+
+The parameters map user-facing coordinate-system names to EPSG codes.
+
+**Parameters:**
+
+```json
+{
+  "wgs84": "4326",
+  "eov": "23700"
+}
 ```
 
-Trigger on YOURTABLE table:
+Only configure coordinate systems supported by the project and its mapping
+components.
+
+### `box_load_last_data`
+
+The `box_load_last_data` module adds a **Quick queries** box to the map page.
+
+It provides queries for:
+
+- the current user's most recent upload;
+- the most recent upload by any user; and
+- the most recently uploaded records.
+
+The first two options return one record. The parameter controls the number of
+records returned by the third option. The documented default is 10.
+
+**Parameters:**
+
+```json
+[
+  10
+]
+```
+
+### `box_custom`
+
+The `box_custom` module loads a project-specific custom box on the map page.
+
+The custom implementation must be placed in the project's
+`local/includes/modules/` directory. Its class must provide at least the
+`print_box()` and `print_js()` methods.
+
+For a custom module stored in:
+
+`local/includes/modules/hrsz_query.php`
+
+the parameter contains the file's base name:
+
+```json
+[
+  "hrsz_query"
+]
+```
+
+The corresponding class is expected to be named `hrsz_query_Class`.
+
+Custom module code must validate input, escape output, enforce permissions,
+and use parameterised database queries.
+
+### `identify_point`
+
+The `identify_point` module allows users to identify one or more points on the
+map and displays selected attribute values in a map popup.
+
+**Parameters:**
+
+```json
+[
+  "column_name_1",
+  "column_name_2"
+]
+```
+
+Only include columns that the module's intended audience is permitted to
+access.
+
+### `cameratrap_api`
+
+The `cameratrap_api` module provides communication between a camera-trap
+dashboard and the Nextcloud API.
+
+Its functions include:
+
+- managing cameras and analyses;
+- uploading and downloading images;
+- starting analyses; and
+- managing the Nextcloud credentials required by the integration.
+
+The module creates or uses module-specific database objects. Review its SQL
+installation file and access requirements before enabling it.
+
+**Parameters:** None documented.
+
+### `nextcloud_connect`
+
+The `nextcloud_connect` module connects OpenBioMaps to a Nextcloud server. It
+provides user-profile integration and issues JWT tokens for authentication.
+
+Nextcloud URLs, credentials, signing secrets, token lifetimes, and TLS
+validation must be configured securely through the mechanisms expected by the
+installed release.
+
+**Parameters:** None documented.
+
+### `validation`
+
+The `validation` module provides an internal API and administration interface
+for data-validation algorithms.
+
+Its functions include:
+
+- managing validation rules;
+- validating records; and
+- logging validation actions.
+
+Project-specific validation implementations may perform additional checks on
+uploaded data.
+
+**Parameters:** None documented. Additional rules are managed through the
+module's administration interface and validation components.
+
+### `download_restricted`
+
+The `download_restricted` module introduces an administrator-controlled
+download-authorisation workflow.
+
+Instead of receiving immediate access to a download, users submit a request
+describing the intended use of the data. Administrators can approve or reject
+the request through the module administration interface.
+
+The module provides:
+
+- a download-request form;
+- an administrator approval workflow; and
+- integration with `results_buttons`.
+
+When it is used with `results_buttons`, export options are made available only
+to users whose request and permissions allow the download.
+
+Enabling this module does not remove the need for server-side access checks.
+Test direct export URLs and APIs to verify that download restrictions cannot
+be bypassed.
+
+**Parameters:** None. The module uses its dedicated administration interface.
+
+### `extra_params`
+
+The `extra_params` extension supplies additional input parameters to forms.
+
+The exact syntax and availability of this extension must be checked against
+the installed OpenBioMaps release because a standalone module with this name
+may not be present in every version.
+
+**Parameters:** No stable parameter format is documented here.
+
+### `grid_view`
+
+The `grid_view` module displays data using alternative polygon grids. Examples
+include UTM grids, KEF grids, snapped points, and dynamically generated grid
+polygons.
+
+When a grid view is active, the geometry supplied by the module is used in
+place of the record's original geometry for the relevant display.
+
+The module implementation exposes methods including:
+
+- `print_box()`;
+- `default_grid_geom()`; and
+- `get_grid_layer()`.
+
+#### Parameters
+
+```json
+{
+  "layer_options": [
+    "kef_5 (layer_data_grid)",
+    "original (layer_data_points)"
+  ]
+}
+```
+
+Each `layer_options` entry associates a geometry column with a MapServer
+layer:
+
+- the text before the parentheses is a column in `YOURTABLE_qgrids`; and
+- the text inside the parentheses is the corresponding MapServer layer name.
+
+In the example:
+
+- `kef_5` is a geometry column in `YOURTABLE_qgrids`;
+- `layer_data_grid` is the MapServer polygon layer used to display it;
+- `original` stores the source geometry; and
+- `layer_data_points` displays the original points.
+
+A grid geometry requires a compatible MapServer layer. For example,
+`layer_data_grid` must be a polygon layer if it displays polygon grids.
+
+#### Grid table
+
+The module creates `YOURTABLE_qgrids` if it does not already exist. The table
+can then be extended with the geometry columns required by the project.
+
+The module may also create an `update_grid_geoms` trigger and initial column
+comments. These generated objects normally require project-specific review
+and modification.
+
+Set the user-facing names of grid options as column comments:
 
 ```sql
-CREATE TRIGGER qgrids BEFORE INSERT OR DELETE OR UPDATE ON public. YOURTABLE FOR EACH ROW EXECUTE PROCEDURE insert_originalgeom_into_qgrids()
+COMMENT ON COLUMN public.YOURTABLE_qgrids.original IS 'Original';
+COMMENT ON COLUMN public.YOURTABLE_qgrids.kef_5 IS 'KEF 5×5';
 ```
 
-Function insert_originalgeom_into_qgrids()
+Keep SQL identifiers consistent. For example, do not configure `kef_5` in the
+module and create a column named `kef5`.
+
+#### Trigger on the grid table
+
+The following example invokes a project-specific grid-update function:
+
+```sql
+CREATE TRIGGER update_grid_geoms
+BEFORE INSERT OR UPDATE ON public.YOURTABLE_qgrids
+FOR EACH ROW
+EXECUTE PROCEDURE public.update_qgrid_geoms_arg(
+  '0.1',
+  '0.1',
+  't',
+  't',
+  't',
+  't',
+  '0.05'
+);
+```
+
+> **Important:** The number and order of trigger arguments must exactly match
+> the installed definition of `update_qgrid_geoms_arg()`. The historical
+> example function below reads argument indexes up to `TG_ARGV[8]`, while the
+> example trigger above supplies only seven arguments. Do not deploy these
+> examples unchanged. Inspect the installed `grid_view.sql` and the database
+> function, then provide every required argument.
+
+#### Trigger on the source table
+
+The source table requires a trigger to copy changes into the grid table:
+
+```sql
+CREATE TRIGGER qgrids
+BEFORE INSERT OR DELETE OR UPDATE ON public.YOURTABLE
+FOR EACH ROW
+EXECUTE PROCEDURE insert_originalgeom_into_qgrids();
+```
+
+An example function body is:
 
 ```sql
 BEGIN
-  IF tg_op = 'INSERT' THEN
-    EXECUTE format('INSERT INTO %I_qgrids (row_id,original) SELECT %L,%L::geometry',TG_TABLE_NAME,NEW.obm_id,NEW.obm_geometry);
+  IF TG_OP = 'INSERT' THEN
+    EXECUTE format(
+      'INSERT INTO %I_qgrids (row_id, original) SELECT %L, %L::geometry',
+      TG_TABLE_NAME,
+      NEW.obm_id,
+      NEW.obm_geometry
+    );
     RETURN NEW;
-END IF;
+  END IF;
 
-  IF tg_op = 'UPDATE' THEN
-    EXECUTE format('UPDATE %I_qgrids SET "original"=%L::geometry WHERE row_id=%L', TG_TABLE_NAME,NEW.obm_geometry,NEW.obm_id);
+  IF TG_OP = 'UPDATE' THEN
+    EXECUTE format(
+      'UPDATE %I_qgrids SET original = %L::geometry WHERE row_id = %L',
+      TG_TABLE_NAME,
+      NEW.obm_geometry,
+      NEW.obm_id
+    );
     RETURN NEW;
-END IF;
+  END IF;
 
-IF tg_op = 'DELETE' THEN
-    EXECUTE format('DELETE FROM %I_qgrids WHERE row_id=%L',TG_TABLE_NAME,OLD.obm_id);
+  IF TG_OP = 'DELETE' THEN
+    EXECUTE format(
+      'DELETE FROM %I_qgrids WHERE row_id = %L',
+      TG_TABLE_NAME,
+      OLD.obm_id
+    );
     RETURN OLD;
-END IF;
+  END IF;
+
+  RETURN NULL;
 END;
 ```
 
-Function update_qgrid_geoms_arg()
+This is only the body of a trigger function, not a complete
+`CREATE FUNCTION` statement.
+
+#### Grid-update function
+
+The following historical example demonstrates the intended operations:
 
 ```sql
 DECLARE
-    snap_x numeric := TG_ARGV[0];
-    snap_y numeric := TG_ARGV[1];
-    kef5 boolean := TG_ARGV[2];
-    utm10 boolean := TG_ARGV[5];
-    snap boolean := TG_ARGV[6];
-    snap_polygon boolean := TG_ARGV[7];
-    snap_polygon_size numeric := TG_ARGV[8];
+  snap_x numeric := TG_ARGV[0];
+  snap_y numeric := TG_ARGV[1];
+  kef5 boolean := TG_ARGV[2];
+  utm10 boolean := TG_ARGV[5];
+  snap boolean := TG_ARGV[6];
+  snap_polygon boolean := TG_ARGV[7];
+  snap_polygon_size numeric := TG_ARGV[8];
 BEGIN
+  IF TG_OP = 'UPDATE' THEN
+    IF kef5 THEN
+      EXECUTE format(
+        'SELECT geometry FROM shared."kef_5x5" WHERE ST_Within(%L::geometry, geometry)',
+        NEW.original
+      )
+      INTO NEW.kef_5;
+    END IF;
 
-IF tg_op = 'UPDATE' THEN
-    IF kef5 THEN
-        EXECUTE FORMAT('SELECT geometry FROM shared."kef_5x5" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_5";
-    END IF;
     IF snap THEN
-        EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,%L,%L)',NEW.original,snap_x,snap_y) INTO NEW."snap";
+      EXECUTE format(
+        'SELECT ST_SnapToGrid(%L::geometry, %L, %L)',
+        NEW.original,
+        snap_x,
+        snap_y
+      )
+      INTO NEW.snap;
     END IF;
+
     IF snap_polygon THEN
-        EXECUTE FORMAT('SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)',NEW.original,snap_x,snap_y,snap_polygon_size) INTO NEW."snap_polygon";
+      EXECUTE format(
+        'SELECT ST_Expand(ST_SnapToGrid(%L::geometry, %L, %L), %L)',
+        NEW.original,
+        snap_x,
+        snap_y,
+        snap_polygon_size
+      )
+      INTO NEW.snap_polygon;
     END IF;
+
     RETURN NEW;
-END IF;
-IF tg_op = 'INSERT' THEN
+  END IF;
+
+  IF TG_OP = 'INSERT' THEN
     IF kef5 THEN
-        EXECUTE FORMAT('SELECT geometry FROM shared."kef_5x5" WHERE st_within(%L::geometry,geometry)',NEW.original) INTO NEW."kef_5";
+      EXECUTE format(
+        'SELECT geometry FROM shared."kef_5x5" WHERE ST_Within(%L::geometry, geometry)',
+        NEW.original
+      )
+      INTO NEW.kef_5;
     END IF;
+
     IF snap THEN
-        EXECUTE FORMAT('SELECT st_SnapToGrid(%L::geometry,%L,%L)',NEW.original,snap_x,snap_y) INTO NEW."snap";
+      EXECUTE format(
+        'SELECT ST_SnapToGrid(%L::geometry, %L, %L)',
+        NEW.original,
+        snap_x,
+        snap_y
+      )
+      INTO NEW.snap;
     END IF;
+
     IF snap_polygon THEN
-        EXECUTE FORMAT('SELECT st_expand(st_SnapToGrid(%L::geometry,%L,%L),%L)',NEW.original,snap_x,snap_y,snap_polygon_size) INTO NEW."snap_polygon";
+      EXECUTE format(
+        'SELECT ST_Expand(ST_SnapToGrid(%L::geometry, %L, %L), %L)',
+        NEW.original,
+        snap_x,
+        snap_y,
+        snap_polygon_size
+      )
+      INTO NEW.snap_polygon;
     END IF;
+
     RETURN NEW;
-END IF;
+  END IF;
+
+  RETURN NEW;
 END;
 ```
 
-When you are ready to prepare the _qgrids table, add the existing geometries from the target table if it is not already empty.
+This is also only a function body. The `utm10` variable is declared but is
+not used by the shown implementation. Review and complete the function for
+the project's required grid types.
+
+#### Initial population
+
+After the grid table and triggers are ready, existing source geometries can be
+copied into an empty grid table:
 
 ```sql
-INSERT INTO YOURTABLE_qgrids (row_id,"original") SELECT obm_id,obm_geometry FROM YOURTABLE;
+INSERT INTO YOURTABLE_qgrids (row_id, original)
+SELECT obm_id, obm_geometry
+FROM YOURTABLE;
+```
 
-UPDATE YOURTABLE_qgrids SET "snap"=foo.obm_geometry FROM (SELECT st_SnapToGrid(obm_geometry,0.13,0.09) as obm_geometry,obm_id FROM YOURTABLE) AS foo WHERE row_id=obm_id
+Example update for a snapped geometry:
 
-UPDATE YOURTABLE_qgrids SET "kef_5"=foo.obm_geometry
+```sql
+UPDATE YOURTABLE_qgrids AS q
+SET snap = source.snapped_geometry
 FROM (
-    SELECT d.obm_id,k.obm_geometry FROM YOURTABLE d LEFT JOIN shared."kef_5x5" k ON (st_within(d.obm_geometry,k.obm_geometry) )
-) as foo
-WHERE  row_id=foo.obm_id
+  SELECT
+    obm_id,
+    ST_SnapToGrid(obm_geometry, 0.13, 0.09) AS snapped_geometry
+  FROM YOURTABLE
+) AS source
+WHERE q.row_id = source.obm_id;
 ```
 
-In this example, the "shared" "kef_5x5" table contains the polygons we want to use, and we also created a custom polygon, "snap", on the fly.
+Example update using polygons from a shared grid table:
 
+```sql
+UPDATE YOURTABLE_qgrids AS q
+SET kef_5 = source.grid_geometry
+FROM (
+  SELECT
+    data.obm_id,
+    grid.obm_geometry AS grid_geometry
+  FROM YOURTABLE AS data
+  LEFT JOIN shared.kef_5x5 AS grid
+    ON ST_Within(data.obm_geometry, grid.obm_geometry)
+) AS source
+WHERE q.row_id = source.obm_id;
+```
 
+In this example, `shared.kef_5x5` contains the predefined grid polygons.
+Another geometry, such as `snap`, can be generated dynamically.
 
-### job_manager (validation)
-    
-General description:
-    	
-    	* The job_manager (validation) module is used for managing the background processes of the project. Its parameters are the job names.
-        * On the admin page, you can set the time of running (simplified cron style: minute, hour, day), and the job parameters as JSON
-    	* Adding a new parameter will register the job in the jobs database table and create the necessary template files in the modules/validation_modules and jobs folders.
+Run schema changes and bulk updates in a test environment first. Create a
+database backup, verify spatial indexes, and check the behaviour for null,
+invalid, boundary, and non-point geometries.
 
-Parameters:
+### `job_manager` validation jobs
 
-    	* The names of the background processes
-    	
-    Published jobs:
-    	
-        observation_lists
-            description: 
-                This job processes and copies the observation lists collected and uploaded by the mobile app. The observations land in a temporary table, where this job populates 
-				the obm_observation_list_id column and the list's start, end, and duration columns. If the uploaded list is incomplete, it is skipped.
+The validation job manager configures background processes for a project.
 
-            parameters:
-                * list_start_column (string): column name of list start
-                * list_end_column (string): column name of list end
-                * list_duration_column (string): column name of list duration
-                * only_time (boolean): store whole timestamp or just time
-                * time_as_int (boolean): convert time to minutes
-                
-                {
-                    "tablename": {
-                        "list_start_column": "time_of_start",
-                        "list_end_column": "time_of_end",
-                        "list_duration_column": "duration",
-                        "only_time": true,
-                        "time_as_int": true
-                        }
-                    }
-                }
+On its administration page, administrators can configure:
 
-    	incomplete_observation_lists
-            description:
-                If the uploaded list is incomplete, this module processes it. If the difference is less than the tolerance value, the list will be uploaded by the 
-				next observation_list process, and a system message will be sent. In another case, when the difference exceeds the tolerance, only a system message is sent; the rest 
-				must be processed manually. 
-                
-            Parameters:
-                * mail_to (int): role_id - who will get the messages
-                * diff_tolerance (int): tolerance of difference
-                * days_offset (int): number of days to wait until the list is processed
-                
-                {
-                    "tablename": {
-                        "mail_to": 1265,
-                        "diff_tolerance": 2,
-                        "days_offset": 2
-                    }
-                }
+- a simplified schedule containing minute, hour, and day values; and
+- job-specific parameters in JSON format.
 
-### join_tables
-This module enables the display of joined data on the data-sheet page. At the moment, it supports only simple LEFT JOINS on one equation.
-    
-Parameters:
+Adding a job registers it in the project's jobs table and can create template
+files in the validation-module and jobs directories.
+
+The availability and exact name of this component may depend on the installed
+validation module. Background jobs run only if the project's `jobs.php`
+runner is scheduled on the server.
+
+**Parameters:** A list of background-job names.
+
+#### `observation_lists`
+
+The `observation_lists` job processes observation lists uploaded by the
+mobile application.
+
+Uploaded observations initially arrive in a temporary table. The job:
+
+- populates `obm_observation_list_id`;
+- calculates or copies the list start, end, and duration values; and
+- copies complete lists into their target table.
+
+Incomplete lists are skipped for later processing.
+
+Job parameters:
+
+- `list_start_column`: column storing the list start;
+- `list_end_column`: column storing the list end;
+- `list_duration_column`: column storing the duration;
+- `only_time`: whether to store only the time instead of the full timestamp;
+- `time_as_int`: whether to convert the time or duration to minutes.
+
+Example:
+
 ```json
-    [
-        {
-            "table": "teszt_events",
-            "join_on": [
-                {
-                    "ref_field": "obm_id",
-                    "join_field": "patient_id"
-                }
-            ]
-        },
-        {
-            "table": "teszt_masik",
-            "join_on": [
-                {
-                    "ref_field": "obm_id",
-                    "join_field": "fid"
-                }
-            ]
-        }
-    ]
+{
+  "YOURTABLE": {
+    "list_start_column": "time_of_start",
+    "list_end_column": "time_of_end",
+    "list_duration_column": "duration",
+    "only_time": true,
+    "time_as_int": true
+  }
+}
 ```
 
+#### `incomplete_observation_lists`
 
-### list_manager
-The `list_manager` module is designed to manage lists used for data uploads and queries within the OpenBioMaps platform. It provides a user interface for creating, editing, and saving lists of terms associated with specific database columns and tables. This module is essential for organizing and managing data entries efficiently.
+The `incomplete_observation_lists` job handles lists that remain incomplete.
 
-Key functionalities include:
-- **List Creation and Editing**: Users can create new lists or edit existing ones through a modal interface. Lists are associated with specific columns and tables in the database.
-- **Data Integration**: The module integrates with the database to fetch and save list data, ensuring that lists are always up-to-date with the latest entries.
-- **User Interface**: A modal dialog allows users to input list data, which can be saved or generated from existing data.
-- **Error Handling**: Provides feedback and error messages to users if list operations fail, ensuring a smooth user experience.
+If the difference between the expected and received observations is within
+the configured tolerance, the list can be processed by the next
+`observation_lists` run and a system message is sent.
 
-No parameters required.
+If the difference exceeds the tolerance, the job sends a system message but
+leaves the list for manual processing.
 
-### massive_edit
-Allows bulk editing of selected data on the map page via the file upload interface
+Job parameters:
 
-No parameters
+- `mail_to`: numeric role ID whose members receive the message;
+- `diff_tolerance`: permitted difference before manual processing is required;
+- `days_offset`: number of days to wait before processing the incomplete list.
 
-### move_project
-Move the project to another server. This is an experimental module.
+Example:
 
-No parameters
+```json
+{
+  "YOURTABLE": {
+    "mail_to": 1265,
+    "diff_tolerance": 2,
+    "days_offset": 2
+  }
+}
+```
 
-### read_table
-Present a SQL table or an SQL view as a rollable HTML table. This table is available through a unique link.
+Test notification recipients and job scheduling before relying on this
+workflow in production.
 
-Parameters: 
+### `join_tables`
+
+The `join_tables` module displays related records on a data-sheet page.
+
+The current documented implementation supports simple `LEFT JOIN` operations
+with one equality condition per joined table.
+
+**Parameters:**
+
 ```json
 [
-    {
-       "table": "schema.table",
-       "label": "something",
-       "orderby": "column"
-    }, {}
+  {
+    "table": "events",
+    "join_on": [
+      {
+        "ref_field": "obm_id",
+        "join_field": "patient_id"
+      }
+    ]
+  },
+  {
+    "table": "measurements",
+    "join_on": [
+      {
+        "ref_field": "obm_id",
+        "join_field": "record_id"
+      }
+    ]
+  }
 ]
 ```
 
-### results_asList
-Create foldable slides-like results output.
+For each joined table:
 
-No parameters
+- `table` is the table to join;
+- `ref_field` is the field in the current record; and
+- `join_field` is the matching field in the joined table.
 
-### results_asGPX
-Save results as a GPX file.
+Use this module together with `additional_columns` where required. Ensure that
+join fields are indexed and that users are authorised to access data from
+every joined table.
 
-Parameters:
+### `list_manager`
+
+The `list_manager` module manages reusable term lists for data uploads and
+queries.
+
+It provides:
+
+- creation and editing of lists;
+- association of lists with database tables and columns;
+- generation of list contents from existing data;
+- storage of list data in the database; and
+- user feedback when a list operation fails.
+
+The module uses a modal dialog for editing list values. Access to its
+administrative functions should be limited to users who are permitted to
+change upload and query vocabularies.
+
+**Parameters:** None. The module uses its own user interface and
+module-specific database objects.
+
+### `massive_edit`
+
+The `massive_edit` module allows authorised users to edit multiple selected
+records from the map page through the file-upload interface.
+
+Bulk changes can affect many records. Verify permissions, create a backup, and
+test the edited file on a small selection before applying a large update.
+
+**Parameters:** None.
+
+### `move_project`
+
+The `move_project` module moves a project to another OpenBioMaps server.
+
+This is an experimental module. Before using it, create and verify backups and
+check the compatibility of application versions, database extensions,
+project files, users, modules, MapServer configuration, and secrets on the
+destination server.
+
+**Parameters:** None documented.
+
+### `read_table`
+
+The `read_table` module exposes a SQL table or view as a scrollable HTML table
+through a unique link.
+
+**Parameters:**
+
+```json
+[
+  {
+    "table": "schema.table_name",
+    "label": "Displayed table name",
+    "orderby": "column_name"
+  }
+]
+```
+
+Each entry contains:
+
+- `table`: schema-qualified table or view name;
+- `label`: user-facing label; and
+- `orderby`: column used for the default ordering.
+
+A unique or difficult-to-guess link is not sufficient access control. Verify
+that the module enforces the intended project, group, and record-level
+permissions.
+
+### `results_asList`
+
+The `results_asList` module displays query results as collapsible,
+slide-like entries.
+
+**Parameters:** None.
+
+### `results_asGPX`
+
+The `results_asGPX` module exports query results as a GPX file.
+
+**Parameters:**
+
 ```json
 {
-    "name": "column", 
-    "description": ["column-1", "column-2"]
+  "name": "name_column",
+  "description": [
+    "description_column_1",
+    "description_column_2"
+  ]
 }
 ```
 
-### results_asCSV
-Save results as a csv file.
+The `name` column supplies the GPX feature name. Values from the
+`description` columns are included in the feature description.
 
-Parameters:
+Only geometries compatible with the installed GPX exporter can be exported.
+
+### `results_asCSV`
+
+The `results_asCSV` module exports query results as a CSV file.
+
+**Parameters:**
+
 ```json
 {
-    "sep": ",", 
-    "quote":"\""
+  "sep": ",",
+  "quote": "\""
 }
 ```
 
-### results_asJSON
-Save results as a JSON file.
+- `sep` defines the field separator.
+- `quote` defines the field-enclosure character.
 
-No parameters
+Choose settings compatible with the software used to open the export. The
+export must still enforce all applicable row- and column-level access rules.
 
-### results_asTable
-The `results_asTable` module displays query results in a full-screen HTML table format. It includes every field of the records, providing a comprehensive view of the data. This module is ideal for users who need to analyze complete datasets directly from the map page.
+### `results_asJSON`
 
-Key functionalities include:
-- **Full Record Display**: Shows all fields of each record in the query results.
-- **Sortable Columns**: Users can sort the table by any column to organize data as needed.
-- **Record Links**: Provides links for detailed viewing and editing of records, assuming the user has the necessary permissions.
-- **User-Friendly Interface**: Designed for ease of use, allowing users to navigate large datasets efficiently.
+The `results_asJSON` module exports query results as JSON.
 
-No parameters required.
+**Parameters:** None.
 
-### results_asKML
-Save results as a KML file.
+### `results_asTable`
 
-Parameters:
+The `results_asTable` module displays query results as a full-screen HTML
+table containing all available fields.
+
+It provides:
+
+- full record display;
+- sortable columns; and
+- links for viewing or editing records when the user has the required
+  permissions.
+
+Displaying every available field can be expensive for large result sets and
+may expose fields that should be restricted. Configure access-control modules
+and test the output for each user group.
+
+**Parameters:** None.
+
+### `results_asKML`
+
+The `results_asKML` module exports query results as a KML file.
+
+**Parameters:**
+
 ```json
 {
-    "name": "column", 
-    "description": ["column-1", "column-2"]
+  "name": "name_column",
+  "description": [
+    "description_column_1",
+    "description_column_2"
+  ]
 }
 ```
 
-### results_buttons
-The `results_buttons` module provides a set of interactive buttons for downloading, sharing, and bookmarking data on the map page. It supports various export formats such as CSV, GPX, KML, SHP, and JSON, depending on the enabled modules. The module also includes functionalities for saving queries, results, and spatial selections, as well as sharing data with other OpenBioMaps projects.
+The `name` column supplies the KML feature name. Values from the
+`description` columns are included in the feature description.
 
-Key functionalities include:
-- **Download Options**: Export data in multiple formats (CSV, GPX, KML, SHP, JSON) if the corresponding modules are enabled.
-- **Share Options**: Save and share queries, results, and spatial selections.
-- **Bookmarking**: Bookmark queries for quick access.
-- **Admin Page**: Manage download requests and user permissions for data exports.
-- **Integration with Download Restricted**: If the `download_restricted` module is enabled, the availability of download options will depend on its settings, allowing for controlled access to data exports.
+### `results_buttons`
+
+The `results_buttons` module adds controls for downloading, saving, sharing,
+and bookmarking query results on the map page.
+
+Available download formats depend on the corresponding enabled export
+modules. These may include CSV, GPX, KML, SHP, and JSON.
+
+The module can provide:
+
+- download buttons;
+- saved queries and results;
+- saved spatial selections;
+- bookmarks;
+- sharing with users or other OpenBioMaps projects; and
+- integration with `download_restricted`.
 
 Example configuration:
+
 ```json
 {
-    "bookmarks": "off",
-    "sharing": "off",
-    "server_share": "on"
+  "bookmarks": "off",
+  "sharing": "off",
+  "server_share": "on"
 }
 ```
-By default, bookmarks are enabled, while sharing and server sharing are disabled. The download options appear automatically when the individual download modules are enabled.
 
-No additional parameters required.
+Configuration keys:
 
-### results_asStable
-The `results_asStable` module is a crucial component for displaying query results in a compact table format on the map page. It allows users to specify which columns they want to see in the output, enabling them to filter out fields that are not immediately necessary. This module is particularly useful for quickly reviewing important data without being overwhelmed by too much information.
+- `bookmarks` enables or disables query bookmarks;
+- `sharing` enables or disables general sharing; and
+- `server_share` enables or disables sharing with another server or project.
 
-Key functionalities include:
-- **Customizable Columns**: Users can specify the columns to display, allowing for a tailored view of the data.
-- **Sortable Columns**: Each column in the table can be sorted, providing flexibility in how data is viewed and analyzed.
-- **Record Links**: Includes links for detailed viewing and editing of records, provided the user has the necessary permissions.
-- **Efficient Data Review**: By limiting the number of columns, users can focus on the most critical data for quick assessment.
+The documented defaults enable bookmarks and disable sharing and server
+sharing. Download buttons appear when their corresponding export modules are
+enabled.
 
-Parameters:
+When `download_restricted` is active, download availability also depends on
+the request and approval workflow.
+
+### `results_asStable`
+
+The `results_asStable` module displays a compact, sortable result table on the
+map page.
+
+Unlike a full result table, it displays only the configured columns. It can
+also include links to view or edit records when the user has the required
+permissions.
+
+**Parameters:**
+
 ```json
 [
-   "column names"
+  "column_name_1",
+  "column_name_2"
 ]
 ```
 
-### results_specieslist
-The `results_specieslist` module provides a summary of species found in the current query on the map page. It displays a list of species along with the number of records and individuals for each species. This module is useful for quickly assessing the biodiversity represented in the query results.
+The module name uses the historical spelling `results_asStable`; do not rename
+it in the configuration.
 
-Key functionalities include:
-- **Species List**: Displays a list of species names found in the query results.
-- **Record Count**: Shows the number of records associated with each species.
-- **Individual Count**: Indicates the number of individual organisms recorded for each species.
-- **Sorting Options**: Allows sorting the species list alphabetically or by taxonomy.
+### `results_specieslist`
 
-No parameters required.
+The `results_specieslist` module summarises the species present in the current
+query result.
 
-### results_summary
-The `results_summary` module provides a concise overview of query results on the map page. It displays the total number of records found based on the current query parameters. This module is particularly useful for quickly assessing the scope of data returned by a query without delving into detailed records.
+It can display:
 
-Key functionalities include:
-- **Record Count**: Displays the total number of distinct records found.
-- **Access Control**: Integrates with user access rules to ensure that sensitive data is only counted if the user has the appropriate permissions.
+- species names;
+- the number of records for each species;
+- the number of recorded individuals; and
+- alphabetical or taxonomic sorting options.
 
-No parameters required.
+The columns used for species names and individual counts depend on the
+project's schema and module implementation.
 
-### results_table
-Create a full HTML table of the results.
-    
-No parameters
+**Parameters:** None documented.
 
-### restricted_data
-Rule-based data restriction
+### `results_summary`
 
-No parameters
+The `results_summary` module displays the total number of distinct records
+returned by the current query.
 
-### spa_integration
-Integrates Single Page Application to the project
+It integrates with access rules so that restricted records are counted only
+when the user is permitted to access them.
 
-Admin settings needed.
+A summary count can itself disclose sensitive information. Test the module
+with restricted records and each relevant access level.
 
-### text_filter
-Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
-    
-Parameters:
+**Parameters:** None.
+
+### `results_table`
+
+The `results_table` extension creates a full HTML table from query results.
+
+Depending on the OpenBioMaps release, this functionality may be provided by a
+module with another implementation name, such as `results_asTable` or
+`results_asHtmlTable`. Use the exact module name shown by the installed module
+administration page.
+
+**Parameters:** None documented.
+
+### `restricted_data`
+
+The `restricted_data` module applies rule-based restrictions to project data.
+
+The project must have correctly configured access rules and related database
+objects. Test restrictions through the map page, data-sheet page, exports,
+APIs, and direct module links.
+
+**Parameters:** None.
+
+### `spa_integration`
+
+The `spa_integration` module integrates a single-page application with an
+OpenBioMaps project.
+
+It requires module-specific administration settings. Routing,
+authentication, authorisation, static-resource paths, and direct browser
+navigation must be tested after configuration.
+
+**Parameters:** Managed through the module administration interface.
+
+### `text_filter`
+
+The `text_filter` module adds text filters to the map page and the query API.
+It constructs the filtering portion of the SQL query from configured columns
+and filter operators.
+
+Example:
+
 ```json
 [
-    "magyar",
-    "obm_taxon",
-    "megj::colour_rings",
-    "obm_datum",
-    "obm_uploading_date",
-    "obm_uploader_user",
-    "d.szamossag:nested(d.egyedszam):autocomplete",
-    "d.egyedszam:values():",
-    "obm_files_id",
-    "faj::autocomplete"
+  "common_name",
+  "obm_taxon",
+  "notes::colour_rings",
+  "obm_datum",
+  "obm_uploading_date",
+  "obm_uploader_user",
+  "data.abundance:nested(data.count):autocomplete",
+  "data.count:values():",
+  "obm_files_id",
+  "species::autocomplete"
 ]
 ```
 
-### text_filter2
-Advanced taxon and other text filters. Create the WHERE part of the SQL query string.
+Entries can contain a column reference followed by module-specific modifiers,
+such as:
 
-Parameters:
+- `autocomplete`;
+- `values()`;
+- `nested(...)`; or
+- a label or secondary field separated with `::`.
+
+The syntax is compact and version-dependent. Copy known working expressions
+carefully, use only trusted database identifiers, and test every filter
+through both the map page and query API.
+
+### `text_filter2`
+
+The `text_filter2` module provides advanced taxonomic and general text
+filters. Like `text_filter`, it contributes conditions to the SQL query.
+
+**Parameters:**
+
 ```json
 {}
 ```
 
-### transform_data
-The `transform_data` module is designed to transform record values in result areas, enhancing the readability and usability of data in web tables and exports. It supports various transformations such as converting geometries to WKT (Well-Known Text), extracting year from date strings, translating text, and creating links for observation lists.
+Further settings may be managed through the module's user interface or
+project-specific configuration.
 
-Key functionalities include:
-- **Geometry Transformation**: Converts geometry data to GeoJSON or WKT format, and provides links for spatial data visualization. **geom**: Clickable geometry link to show location on the map. **geom_nolink**: Geometry as simplified WKT text - not clickable. **geom_wkt**: Normal WKT representation of the geometry.
-- **Date Transformation**: **date_yearonly**: Extracts the year from date strings for simplified date representation.
-- **Text Translation**: **translate**: Translates predefined text constants *str_string* to user-friendly strings.
-- **Observation List Links**: **obslistlink**: Generates clickable links for observation list IDs, facilitating quick access to detailed records.
+### `transform_data`
 
-Parameters example:
+The `transform_data` module transforms record values before they are displayed
+in result areas or included in supported exports.
+
+Available transformations include:
+
+- `geom`: creates a clickable geometry link that opens the location on the
+  map;
+- `geom_nolink`: displays simplified WKT without a link;
+- `geom_wkt`: displays the normal WKT representation;
+- `date_yearonly`: extracts the year from a date;
+- `translate`: translates predefined text constants into user-facing text;
+- `obslistlink`: creates a link from an observation-list identifier; and
+- `uplid`: applies the upload-identifier transformation supported by the
+  module.
+
+Example:
+
 ```json
 {
-    "obm_geometry": "geom",
-    "other_geometry": "geom_nolink",
-    "obm_uploading_id": "uplid",
-    "date_time_field": "date_yearonly",
-    "method": "translate",
-    "obm_observation_list_id": "obslistlink"
+  "obm_geometry": "geom",
+  "other_geometry": "geom_nolink",
+  "obm_uploading_id": "uplid",
+  "date_time_field": "date_yearonly",
+  "method": "translate",
+  "obm_observation_list_id": "obslistlink"
 }
 ```
+
+Each key is a database column and each value is the transformation applied to
+that column.
+
+Transformations affect presentation, not the underlying stored value. Verify
+that transformed links and values do not reveal restricted data.
+
+## Modules requiring additional documentation
+
+The current OpenBioMaps repository contains modules that are not yet described
+in detail on this page. Depending on the installed version, these may include:
+
+- `custom_data_check`;
+- `ebp`;
+- `fill_stable_with_column`;
+- `ioc_bird_list`;
+- `natura2000`;
+- `results_asHtmlTable`;
+- `results_asPDF`;
+- `results_asSHP`;
+- `service_envimap`;
+- `snap_to_grid`; and
+- `turnstile`.
+
+Do not infer a module's behaviour or parameter format solely from its file
+name. Review its source, module metadata, SQL installation file, access
+checks, and administration interface before enabling it.
+
+## Deployment checklist
+
+Before enabling a module in production:
+
+1. Confirm that the module is included in the installed OpenBioMaps version.
+2. Validate its JSON parameters.
+3. Identify any required modules, database objects, MapServer layers, jobs,
+   external services, or PHP extensions.
+4. Review module access and group access.
+5. Test with public, authenticated, group-member, and administrator accounts.
+6. Test direct URLs, exports, and APIs for access-control bypasses.
+7. Check application, PHP, PostgreSQL, and background-job logs.
+8. Back up the project before enabling modules that alter database objects or
+   perform bulk updates.
+9. Document the configuration and the procedure for disabling or rolling back
+   the module.
+10. Repeat the tests after an OpenBioMaps upgrade.
