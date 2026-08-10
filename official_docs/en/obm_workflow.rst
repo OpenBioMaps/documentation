@@ -76,9 +76,9 @@ PostgreSQL and registered in the OpenBioMaps metadata. Registered tables can
 then be used by upload forms, query templates, modules, administrative
 tools, and other application components.
 
-A table or view created with an SQL client is not necessarily registered
-automatically. It must be added to the relevant OpenBioMaps metadata before
-the application can use it safely and consistently.
+A table or view created with an SQL client is not registered automatically. 
+It must be added to the relevant OpenBioMaps metadata before the application 
+can use it safely and consistently.
 
 The administration interface should be preferred for supported table
 operations because it can update both the PostgreSQL object and the
@@ -153,7 +153,7 @@ these can include fields for:
 ``obm_files_id``
    A reference or references associated with uploaded attachments.
 
-A historical table definition can resemble the following example:
+A basic table definition can resemble the following example:
 
 .. code-block:: sql
 
@@ -424,6 +424,10 @@ Database triggers still execute unless they are disabled, but their
 behaviour can depend on values normally supplied by the application. A
 record inserted without ``obm_uploading_id`` or another expected field can
 therefore produce incomplete metadata or access rules.
+
+When importing data directly, the best practice is to create an empty upload, 
+assign the upload ID (``obm_uploading_id``) to the uploaded data afterwards, 
+and specify the direct upload method and source in the upload metadata.
 
 Before a direct import:
 

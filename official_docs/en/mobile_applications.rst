@@ -11,6 +11,17 @@ range from Progressive Web Apps (PWAs) to native mobile applications.
 Offline application for Android and iOS devices
 ================================================
 
+.. TODO:  További fejlesztések szükségesek még:                                                                                                                                             Meg kellene adni az alkalmazás hivatalos nevét, valamint a Google Play és App Store hivatkozásokat.                                                                        
+   Hasznos lenne képernyőképekkel bemutatni a szerver- és projektválasztást, a szinkronizálást, valamint az observation event kezelését.                                      
+   Pontosítani kellene, hogyan működik a szerverválasztás, és hozzáadható-e egyedi OpenBioMaps-szerver.                                                                       
+   Dokumentálni kellene a szinkronizálási hibák kezelését és azt, hogy mikor biztonságos törölni a szinkronizált adatokat az eszközről.                                       
+   Jó lenne részletesen leírni a mentési és exportálási formátumokat, illetve azok visszaállítását.                                                                           
+   Érdemes lenne méréssel alátámasztott ajánlást adni a GPS idő- és távolságszűrőinek akkumulátorhasználatáról.                                                               
+   Pontosítani kellene, milyen Android- és iOS-verziókat támogat az alkalmazás.                                                                                               
+   Az adatvédelmi és jogosultsági információkat — különösen a helyadatok, csatolmányok és hibakeresési mentések kezelését — külön szakaszban is érdemes lenne összefoglalni.  
+
+
+
 Overview
 --------
 

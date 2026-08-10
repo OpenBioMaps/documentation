@@ -56,7 +56,7 @@ Features
 
 - Display the user's current location as a yellow dot.
 - Display GPS accuracy as a grey circle around the location marker.
-- Record and display a track log.
+- Display a track log.
 - Start and stop track logging.
 - Zoom to the user's current location.
 - Query point features from the online database by drawing a circle or

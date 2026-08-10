@@ -12,6 +12,15 @@ The appropriate option depends on how much customisation the project requires.
 The built-in main page is suitable for common layouts, while a custom page or
 a single-page application can provide a fully customised interface.
 
+.. TODO:  Érdemes pontosan megadni a main page editor és a custom page adminisztrációs oldal menüútvonalát.                                                                          
+   Jó lenne felsorolni a MAINPAGE támogatott sablonjait és konfigurációs kulcsait.                                                                                            
+   A custom page alkalmazás létrehozásához hasznos lenne egy minimális HTML/JavaScript-példa.                                                                                 
+   Pontosítani kellene, melyik routerfájlt és milyen módon kell módosítani SPA használatakor.                                                                                 
+   Dokumentálni kellene, hogy a custom page és az SPA hogyan fér hozzá az OpenBioMaps API-hoz és a bejelentkezett felhasználó munkamenetéhez.                                 
+   Érdemes biztonsági útmutatást adni a hozzáférés-vezérlésről, a külső JavaScript-függőségekről és a tartalombiztonsági szabályokról.                                        
+   Ellenőrizni kell, hogy a nyitolap_7.jpg, nyitolap_8.jpg és nyitolap_9.jpg képfájlok ténylegesen megtalálhatók-e a dokumentáció images könyvtárában.                        
+   Hasznos lenne minden képnél feltüntetni, hogy a három megoldás közül melyiket és milyen lényeges beállításokat mutatja. 
+
 Built-in main page
 ------------------
 

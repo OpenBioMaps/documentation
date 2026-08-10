@@ -18,14 +18,13 @@ only member.
 Before creating a project
 -------------------------
 
-Before completing the form, determine:
+Before completing the form, please consider the following:
 
 * the purpose and scope of the project;
-* the information that the project will collect;
+* the information that the project will manage;
 * the required database tables and relationships;
 * who should be able to view, submit, and modify data;
-* whether any personal or sensitive biodiversity data will be processed;
-* the coordinate reference system used by the project; and
+* whether any personal or sensitive biodiversity data will be processed; and
 * the people responsible for project administration and data management.
 
 For guidance on planning the data structure and governance of a project,
@@ -54,7 +53,7 @@ Use a short name consisting of lowercase letters, numbers, and underscores.
 Avoid spaces, accented characters, punctuation, and quoted SQL identifiers.
 Choose the identifier carefully because changing it after the project has
 been created can affect URLs, database objects, configuration files, API
-clients, and external integrations.
+clients, and external integrations - so it is almost impossible.
 
 .. TODO: Confirm the exact permitted characters, minimum and maximum length,
    uniqueness scope, and reserved identifiers. Document whether the project

@@ -563,6 +563,11 @@ Rule-based data restriction
 
 No parameters
 
+### spa_integration
+Integrates Single Page Application to the project
+
+Admin settings needed.
+
 ### text_filter
 Text filters on the map page and for the query API. Create the WHERE part of the SQL query string.
     
