@@ -74,15 +74,19 @@ Main properties
 * Links to external biodiversity databases and platforms such as GBIF and iNaturalist.
 
 
-OpenBioMaps workflow
-====================
-The OpenBioMaps workflow connects field data collection, data management,
-validation, analysis, publication, and reuse.
+Technical implementation
+========================
 
-:doc:`OBM Workflow <../obm_workflow>`
+For a technical description of how OpenBioMaps connects project
+configuration, PostgreSQL database objects, metadata, upload workflows,
+access rules, queries, and external clients, see:
 
-:download:`Query scheme (pdf) <docs/query_scheme.pdf>` 
-:download:`Query scheme (odp) <docs/query_scheme.odp>`
+:doc:`OpenBioMaps data flow and database integration <obm_workflow>`
+
+The following diagrams provide an overview of the query scheme:
+
+:download:`Query scheme (PDF) <docs/query_scheme.pdf>` |
+:download:`Query scheme (ODP) <docs/query_scheme.odp>`
 
 OpenBioMaps Consortium
 ======================
