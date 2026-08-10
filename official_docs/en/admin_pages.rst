@@ -13,3 +13,4 @@ Project administration
    data_access.rst
    welcome_page.rst
    modules.md
+   jobs.rst
