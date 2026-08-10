@@ -1,15 +1,19 @@
-PWA application
-===============
+Map-query application
+=====================
 
-What is the OBM PWA application?
---------------------------------
+What is the OBM Map-query application?
+--------------------------------------
+
+The Map-query app is an online-offline hybrid application (so called progressive web application) 
+to support fieldwork. With this app, you can easily access the online database, query data and show 
+spatial location. This is mobile application which is using the brwoser enginge. This app mostly uses 
+network conntection but able to work offline as well.
 
 Wants to learn more about PWA (Progressive Web Application) apps? 
 
 Start here: [https://web.dev/progressive-web-apps/](https://web.dev/progressive-web-apps/)
 
-Our PWA app is an online-offline hybrid application to support fieldwork. With this app, you 
-can easily access the online database. How does it work? 
+How does it work? 
 
 While you are online, you can see data as a layer above the base map. Practically, it is a 
 cluster-style layer, where the number of feature points is the label in the cluster symbols. 
@@ -23,7 +27,7 @@ displays numerous features, which can freeze the app. When you click on a cluste
 attribution appears in a scrollable modal dialogue, so you can read all attributes of the 
 clicked features.
 
-The PWA app runs in the browser but can operate without the browser window. So it looks like a 
+The PWA-MAP app runs in the browser but can operate without the browser window. So it looks like a 
 standalone mobile application. The fetched data is stored in offline storage, but the base map 
 is not; it can be cached if you browse it before using it offline.
 
@@ -46,7 +50,7 @@ Limitations
 - Fetching a large number of records (>50.000) can cause problems for offline storing and more...
 
 Where is it?
-- https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/
+- https://YOUR_SERVER/projects/YOUR_PROJECT/pwa-map/
 
 
 Configuration settings for the PWA application
@@ -169,7 +173,7 @@ Installation
 
 Load the following URL at once to make your app ready to use: 
 
-https://YOUR_SERVER/projects/YOUR_PROJECT/pwa/setup.php
+https://YOUR_SERVER/projects/YOUR_PROJECT/pwa-map/setup.php
 
 **Make sure you connect using https (secure connection), otherwise the application will not work properly!**
 
