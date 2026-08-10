@@ -29,7 +29,7 @@ For common problems encountered after a new installation or an update, see:
 For system-level settings, Supervisor, PHP, MapServer, and recommended cron
 jobs, see:
 
-[Server configuration](server_config.html)
+[Server configuration](server_administration.html)
 
 ## Project-level configuration
 
