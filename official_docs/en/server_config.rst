@@ -90,6 +90,11 @@ PHP
 ---
 - memcache settings
 
+
+PostgreSQL server
+-----------------
+- ...
+
 cron
 ----
 There are some recommended cron jobs to set up (examples):
