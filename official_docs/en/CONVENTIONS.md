@@ -2,23 +2,23 @@
 
 ## Purpose
 
-Translate the OpenBioMaps documentation from English to Hungarian.
+Translate the OpenBioMaps documentation from English to Romanian.
 
 The English documentation is the source of truth.
-The Hungarian documentation must preserve the structure and technical meaning
+The Romanian documentation must preserve the structure and technical meaning
 of the English documentation.
 
 ## General translation rules
 
-- Translate human-readable English text into natural, precise Hungarian.
-- Do not translate literally when that would produce unnatural Hungarian.
+- Translate human-readable English text into natural, precise Romanian.
+- Do not translate literally when that would produce unnatural Romanian.
 - Preserve the technical meaning exactly.
 - Do not add information that is not present in the English source.
 - Do not remove information from the English source.
 - Do not summarize or simplify the source text.
 - Keep terminology consistent throughout the documentation.
-- Use established Hungarian technical terminology where appropriate.
-- When there is no well-established Hungarian equivalent, retain the English
+- Use established Romanian technical terminology where appropriate.
+- When there is no well-established Romanian equivalent, retain the English
   technical term rather than inventing an unnatural translation.
 
 ## Sphinx RST
@@ -47,13 +47,13 @@ be changed.
 
 For example:
 
-    :doc:`Adminisztrációs beállítások <../admin_settings#database-columns>`
+    :doc:`Setări administrative <../admin_settings#database-columns>`
 
 is allowed.
 
 But this is NOT allowed:
 
-    :doc:`Adminisztrációs beállítások <../admin_beallitasok#database-columns>`
+    :doc:`Setări administrative <../setari_administrative#database-columns>`
 
 ## RST directives
 
@@ -143,7 +143,7 @@ This includes:
 - configuration files
 - regular expressions
 
-Do not modify code merely to make comments or variable names Hungarian.
+Do not modify code merely to make comments or variable names Romanian.
 
 Code examples must remain executable.
 
@@ -184,117 +184,117 @@ OpenBioMaps
 - Do not translate the product name.
 
 project
-- Use: projekt
+- Use: proiect
 
 database
-- Use: adatbázis
+- Use: bază de date
 
 table
-- Use: tábla
+- Use: tabel
 
 field
-- Use: mező
-- In database-specific contexts, "mező" is preferred over "oszlop" unless
+- Use: câmp
+- In database-specific contexts, "câmp" is preferred over "coloană" unless
   the source explicitly refers to a database column.
 
 column
-- Use: oszlop
+- Use: coloană
 
 record
-- Use: rekord
+- Use: înregistrare
 
 observation
-- Use: megfigyelés
+- Use: observație
 
 event
-- Use: esemény
+- Use: eveniment
 
 sampling event
-- Use: mintavételi esemény
+- Use: eveniment de eșantionare
 
 taxon
 - Use: taxon
 
 species
-- Use: faj
+- Use: specie
 
 individual
-- Use: egyed
+- Use: individ
 
 data management
-- Use: adatkezelés
+- Use: gestionarea datelor
 
 data collection
-- Use: adatgyűjtés
+- Use: colectarea datelor
 
 data entry
-- Use: adatrögzítés
+- Use: introducerea datelor
 
 data upload
-- Use: adatfeltöltés
+- Use: încărcarea datelor
 
 form
-- Use: űrlap
+- Use: formular
 
 upload form
-- Use: feltöltési űrlap
+- Use: formular de încărcare
 
 user
-- Use: felhasználó
+- Use: utilizator
 
 user group
-- Use: felhasználói csoport
+- Use: grup de utilizatori
 
 access rights
-- Use: hozzáférési jogosultságok
+- Use: drepturi de acces
 
 permission
-- Use: jogosultság
+- Use: permisiune
 
 administrator
-- Use: adminisztrátor
+- Use: administrator
 
 administrative settings
-- Use: adminisztrációs beállítások
+- Use: setări administrative
 
 project administrator
-- Use: projektadminisztrátor
+- Use: administrator de proiect
 
 map
-- Use: térkép
+- Use: hartă
 
 layer
-- Use: réteg
+- Use: strat
 
 spatial data
-- Use: térbeli adatok
+- Use: date spațiale
 
 geometry
-- Use: geometria
+- Use: geometrie
 
 coordinate system
-- Use: koordináta-rendszer
+- Use: sistem de coordonate
 
 attribute
-- Use: attribútum
+- Use: atribut
 
 query
-- Use: lekérdezés
+- Use: interogare
 
 filter
-- Use: szűrő
+- Use: filtru
 
 field type
-- Use: mezőtípus
+- Use: tip de câmp
 
 metadata
-- Use: metaadat
+- Use: metadate
 
 translation
-- Use: fordítás
+- Use: traducere
 
 documentation
-- Use: dokumentáció
+- Use: documentație
 
 ## Technical terminology
 
@@ -302,7 +302,7 @@ Prefer internationally established technical terms when appropriate.
 
 Do not translate names of technologies, software, standards, protocols,
 programming languages, or database systems unless there is a standard
-Hungarian name.
+Romanian name.
 
 Examples:
 
@@ -328,7 +328,7 @@ must remain unchanged.
 
 ## Capitalization
 
-Follow normal Hungarian capitalization rules.
+Follow normal Romanian capitalization rules.
 
 Do not mechanically preserve English title capitalization.
 
@@ -336,13 +336,13 @@ English:
 
     Data Management
 
-Hungarian:
+Romanian:
 
-    Adatkezelés
+    Gestionarea datelor
 
 not:
 
-    AdatKezelés
+    Gestionarea Datelor
 
 ## Headings
 
@@ -355,8 +355,8 @@ For example:
 
 becomes:
 
-    Adatkezelés
-    ***********
+    Gestionarea datelor
+    *******************
 
 Do not change the heading hierarchy.
 
@@ -391,7 +391,7 @@ For example:
 
 may become:
 
-    **fontos**
+    **important**
 
 and:
 
@@ -417,12 +417,12 @@ Example:
 
 may become:
 
-    Kattintson a **Save** gombra.
+    Faceți clic pe butonul **Save**.
 
 if "Save" is the actual English interface label.
 
-Do not invent a Hungarian UI label unless the OpenBioMaps interface itself
-uses that Hungarian label.
+Do not invent a Romanian UI label unless the OpenBioMaps interface itself
+uses that Romanian label.
 
 ## Names
 
@@ -449,7 +449,7 @@ or dates merely because the surrounding text is translated.
 
 ## Cross-reference integrity
 
-The Hungarian documentation must preserve all cross-reference targets from
+The Romanian documentation must preserve all cross-reference targets from
 the English documentation.
 
 Never rename a target merely because the visible text has been translated.
@@ -465,16 +465,16 @@ Before considering a translated file complete, check for:
 
 ## Translation quality
 
-The Hungarian text should read as professional technical documentation.
+The Romanian text should read as professional technical documentation.
 
 Prefer:
 
-    Az esemény akkor is létrejön, ha a mintavétel során nem találtak
-    egyetlen egyedet sem.
+    Evenimentul este creat chiar dacă, în timpul eșantionării, nu a fost
+    găsit niciun individ.
 
 over:
 
-    Az esemény még mindig létezik, ha a protokoll szerint semmit nem találtak.
+    Evenimentul încă există dacă, potrivit protocolului, nu s-a găsit nimic.
 
 Avoid machine-translation artifacts such as:
 
@@ -482,12 +482,12 @@ Avoid machine-translation artifacts such as:
 - unnatural word order
 - excessive passive constructions
 - inconsistent terminology
-- English sentence structure copied into Hungarian
+- English sentence structure copied into Romanian
 
 ## Consistency
 
 If the same English term occurs repeatedly with the same meaning, use the same
-Hungarian translation throughout the documentation.
+Romanian translation throughout the documentation.
 
 Do not introduce synonyms merely to make the text stylistically varied.
 
@@ -531,12 +531,12 @@ Do not create a translation summary.
 
 Do not modify the English source file.
 
-The Hungarian translation must be written to the corresponding file in the
-Hungarian documentation tree.
+The Romanian translation must be written to the corresponding file in the
+Romanian documentation tree.
 
 Example:
 
     en/data_management.rst
-    hu/data_management.rst
+    ro/data_management.rst
 
 The file name must remain identical unless explicitly instructed otherwise.
