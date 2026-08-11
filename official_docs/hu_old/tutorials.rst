@@ -1,4 +1,0 @@
-Útmutatók
-*********
-
-.. mdinclude:: ./tutorials.md
