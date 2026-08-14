@@ -1,65 +1,64 @@
-# OpenBioMaps Documentation Translation Conventions
+# Соглашения по переводу документации OpenBioMaps
 
-## Purpose
+## Назначение
 
-Translate the OpenBioMaps documentation from English to Romanian.
+Переводить документацию OpenBioMaps с английского языка на русский.
 
-The English documentation is the source of truth.
-The Romanian documentation must preserve the structure and technical meaning
-of the English documentation.
+Английская документация является первоисточником.
+Русская документация должна сохранять структуру и технический смысл
+английской документации.
 
-## General translation rules
+## Общие правила перевода
 
-- Translate human-readable English text into natural, precise Romanian.
-- Do not translate literally when that would produce unnatural Romanian.
-- Preserve the technical meaning exactly.
-- Do not add information that is not present in the English source.
-- Do not remove information from the English source.
-- Do not summarize or simplify the source text.
-- Keep terminology consistent throughout the documentation.
-- Use established Romanian technical terminology where appropriate.
-- When there is no well-established Romanian equivalent, retain the English
-  technical term rather than inventing an unnatural translation.
+- Переводите предназначенный для чтения человеком английский текст на
+  естественный и точный русский язык.
+- Не переводите дословно, если это приводит к неестественным формулировкам
+  на русском языке.
+- В точности сохраняйте технический смысл.
+- Не добавляйте информацию, отсутствующую в английском исходном тексте.
+- Не удаляйте информацию из английского исходного текста.
+- Не пересказывайте и не упрощайте исходный текст.
+- Последовательно используйте одинаковую терминологию во всей документации.
+- Используйте устоявшуюся русскую техническую терминологию, где это уместно.
+- Если общепринятого русского эквивалента не существует, сохраняйте
+  английский технический термин вместо создания неестественного перевода.
 
 ## Sphinx RST
 
-Preserve all Sphinx syntax.
+Сохраняйте весь синтаксис Sphinx.
 
-Never modify:
+Никогда не изменяйте:
 
-- directive names
-- role names
-- labels
-- reference targets
-- document targets
-- anchors
-- substitution names
-- option names
+- имена директив;
+- имена ролей;
+- метки;
+- цели ссылок;
+- цели документов;
+- якоря;
+- имена подстановок;
+- имена параметров.
 
-For example, preserve:
+Например, сохраняйте:
 
     :ref:`translations`
 
     :doc:`Administrative settings <../admin_settings#database-columns>`
 
-The visible text of a reference may be translated, but its target must not
-be changed.
+Видимый текст ссылки можно переводить, но её цель изменять нельзя.
 
-For example:
+Например, допустимо:
 
-    :doc:`Setări administrative <../admin_settings#database-columns>`
+    :doc:`Административные настройки <../admin_settings#database-columns>`
 
-is allowed.
+Но следующий вариант недопустим:
 
-But this is NOT allowed:
+    :doc:`Административные настройки <../administrativnye_nastroyki#database-columns>`
 
-    :doc:`Setări administrative <../setari_administrative#database-columns>`
+## Директивы RST
 
-## RST directives
+Не переводите имена директив.
 
-Do not translate directive names.
-
-Examples:
+Примеры:
 
     .. note::
     .. warning::
@@ -70,101 +69,103 @@ Examples:
     .. list-table::
     .. csv-table::
 
-The content of a directive should be translated when it is human-readable.
+Содержимое директивы следует переводить, если это предназначенный для
+чтения человеком текст.
 
-Directive options must not be translated.
+Параметры директив переводить нельзя.
 
-For example:
+Например:
 
     .. code-block:: javascript
        :linenos:
 
-must remain structurally unchanged.
+должно сохраняться без структурных изменений.
 
-## RST labels
+## Метки RST
 
-Never translate or modify labels.
+Никогда не переводите и не изменяйте метки.
 
-For example:
-
-    .. _translations:
-
-must remain exactly:
+Например:
 
     .. _translations:
 
-even if the surrounding text is translated.
+должно оставаться в точности:
+
+    .. _translations:
+
+даже если окружающий текст переведён.
 
 ## Markdown
 
-Preserve Markdown syntax.
+Сохраняйте синтаксис Markdown.
 
-Do not modify:
+Не изменяйте:
 
-- heading levels
-- links
-- URLs
-- image paths
-- anchors
-- HTML tags
-- code fences
-- table structure
+- уровни заголовков;
+- ссылки;
+- URL-адреса;
+- пути к изображениям;
+- якоря;
+- HTML-теги;
+- ограждения блоков кода;
+- структуру таблиц.
 
-Translate only the human-readable content.
+Переводите только предназначенное для чтения человеком содержимое.
 
-## Links
+## Ссылки
 
-Preserve all URLs exactly.
+Сохраняйте все URL-адреса без изменений.
 
-For example:
+Например:
 
     https://openbiomaps.org
 
-must never be translated or modified.
+никогда нельзя переводить или изменять.
 
-For links, translate the visible link text but preserve the target.
+В ссылках переводите видимый текст, но сохраняйте цель.
 
-## Code
+## Код
 
-Never translate code.
+Никогда не переводите код.
 
-This includes:
+К коду относятся:
 
-- SQL
-- PostgreSQL
-- PostGIS
-- JavaScript
-- PHP
-- Python
-- shell commands
-- CSS
-- JSON
-- YAML
-- configuration files
-- regular expressions
+- SQL;
+- PostgreSQL;
+- PostGIS;
+- JavaScript;
+- PHP;
+- Python;
+- команды оболочки;
+- CSS;
+- JSON;
+- YAML;
+- конфигурационные файлы;
+- регулярные выражения.
 
-Do not modify code merely to make comments or variable names Romanian.
+Не изменяйте код только ради перевода комментариев или имён переменных на
+русский язык.
 
-Code examples must remain executable.
+Примеры кода должны оставаться исполняемыми.
 
-## File paths and identifiers
+## Пути к файлам и идентификаторы
 
-Never translate or modify:
+Никогда не переводите и не изменяйте:
 
-- file names
-- directory names
-- database names
-- schema names
-- table names
-- column names
-- variable names
-- function names
-- class names
-- API endpoints
-- configuration keys
-- command names
+- имена файлов;
+- имена каталогов;
+- имена баз данных;
+- имена схем;
+- имена таблиц;
+- имена столбцов;
+- имена переменных;
+- имена функций;
+- имена классов;
+- конечные точки API;
+- ключи конфигурации;
+- имена команд.
 
-Examples:
+Например:
 
     project_forms
     system.uploadings
@@ -173,138 +174,139 @@ Examples:
     PostgreSQL
     PostGIS
 
-must remain unchanged.
+должны оставаться без изменений.
 
-## OpenBioMaps terminology
+## Терминология OpenBioMaps
 
-Use the following terminology consistently.
+Последовательно используйте следующую терминологию.
 
 OpenBioMaps
-- Always: OpenBioMaps
-- Do not translate the product name.
+- Всегда: OpenBioMaps
+- Не переводите название продукта.
 
 project
-- Use: proiect
+- Используйте: проект
 
 database
-- Use: bază de date
+- Используйте: база данных
 
 table
-- Use: tabel
+- Используйте: таблица
 
 field
-- Use: câmp
-- In database-specific contexts, "câmp" is preferred over "coloană" unless
-  the source explicitly refers to a database column.
+- Используйте: поле
+- В контексте базы данных предпочитайте термин «поле», если в исходном
+  тексте явно не имеется в виду столбец базы данных.
 
 column
-- Use: coloană
+- Используйте: столбец
 
 record
-- Use: înregistrare
+- Используйте: запись
 
 observation
-- Use: observație
+- Используйте: наблюдение
 
 event
-- Use: eveniment
+- Используйте: событие
 
 sampling event
-- Use: eveniment de eșantionare
+- Используйте: событие отбора проб
 
 taxon
-- Use: taxon
+- Используйте: таксон
 
 species
-- Use: specie
+- Используйте: вид
 
 individual
-- Use: individ
+- Используйте: особь
 
 data management
-- Use: gestionarea datelor
+- Используйте: управление данными
 
 data collection
-- Use: colectarea datelor
+- Используйте: сбор данных
 
 data entry
-- Use: introducerea datelor
+- Используйте: ввод данных
 
 data upload
-- Use: încărcarea datelor
+- Используйте: загрузка данных
 
 form
-- Use: formular
+- Используйте: форма
 
 upload form
-- Use: formular de încărcare
+- Используйте: форма загрузки
 
 user
-- Use: utilizator
+- Используйте: пользователь
 
 user group
-- Use: grup de utilizatori
+- Используйте: группа пользователей
 
 access rights
-- Use: drepturi de acces
+- Используйте: права доступа
 
 permission
-- Use: permisiune
+- Используйте: разрешение
 
 administrator
-- Use: administrator
+- Используйте: администратор
 
 administrative settings
-- Use: setări administrative
+- Используйте: административные настройки
 
 project administrator
-- Use: administrator de proiect
+- Используйте: администратор проекта
 
 map
-- Use: hartă
+- Используйте: карта
 
 layer
-- Use: strat
+- Используйте: слой
 
 spatial data
-- Use: date spațiale
+- Используйте: пространственные данные
 
 geometry
-- Use: geometrie
+- Используйте: геометрия
 
 coordinate system
-- Use: sistem de coordonate
+- Используйте: система координат
 
 attribute
-- Use: atribut
+- Используйте: атрибут
 
 query
-- Use: interogare
+- Используйте: запрос
 
 filter
-- Use: filtru
+- Используйте: фильтр
 
 field type
-- Use: tip de câmp
+- Используйте: тип поля
 
 metadata
-- Use: metadate
+- Используйте: метаданные
 
 translation
-- Use: traducere
+- Используйте: перевод
 
 documentation
-- Use: documentație
+- Используйте: документация
 
-## Technical terminology
+## Техническая терминология
 
-Prefer internationally established technical terms when appropriate.
+При необходимости отдавайте предпочтение международно признанным
+техническим терминам.
 
-Do not translate names of technologies, software, standards, protocols,
-programming languages, or database systems unless there is a standard
-Romanian name.
+Не переводите названия технологий, программного обеспечения, стандартов,
+протоколов, языков программирования и систем управления базами данных, если
+для них не существует общепринятого русского названия.
 
-Examples:
+Например:
 
 PostgreSQL
 PostGIS
@@ -324,219 +326,222 @@ GitLab
 Docker
 GBIF
 
-must remain unchanged.
+должны оставаться без изменений.
 
-## Capitalization
+## Регистр букв
 
-Follow normal Romanian capitalization rules.
+Соблюдайте обычные правила использования прописных и строчных букв в
+русском языке.
 
-Do not mechanically preserve English title capitalization.
+Не воспроизводите механически английский регистр букв в заголовках.
 
-English:
+Английский вариант:
 
     Data Management
 
-Romanian:
+Русский вариант:
 
-    Gestionarea datelor
+    Управление данными
 
-not:
+а не:
 
-    Gestionarea Datelor
+    Управление Данными
 
-## Headings
+## Заголовки
 
-Translate headings while preserving their RST or Markdown level.
+Переводите заголовки, сохраняя их уровень в RST или Markdown.
 
-For example:
+Например:
 
     Data management
     ***************
 
-becomes:
+преобразуется в:
 
-    Gestionarea datelor
-    *******************
+    Управление данными
+    ******************
 
-Do not change the heading hierarchy.
+Не изменяйте иерархию заголовков.
 
-## Tables
+## Таблицы
 
-Preserve table structure exactly.
+В точности сохраняйте структуру таблиц.
 
-Translate:
+Переводите:
 
-- column headings
-- cell text
+- заголовки столбцов;
+- текст ячеек.
 
-Do not modify:
+Не изменяйте:
 
-- separators
-- alignment markers
-- directives
-- links
-- code
-- identifiers
+- разделители;
+- маркеры выравнивания;
+- директивы;
+- ссылки;
+- код;
+- идентификаторы.
 
-Pay particular attention to Markdown tables because changing the number or
-position of separators can make the table invalid.
+Обращайте особое внимание на таблицы Markdown, поскольку изменение количества
+или положения разделителей может сделать таблицу недействительной.
 
-## Inline markup
+## Встроенная разметка
 
-Preserve inline markup.
+Сохраняйте встроенную разметку.
 
-For example:
-
-    **important**
-
-may become:
+Например:
 
     **important**
 
-and:
+может быть преобразовано в:
+
+    **важно**
+
+а:
 
     `project_forms`
 
-must remain:
+должно оставаться без изменений.
 
-    `project_forms`
+Не удаляйте и без необходимости не перемещайте разметку.
 
-Do not remove or relocate markup unnecessarily.
+## Терминология пользовательского интерфейса
 
-## UI terminology
+Когда в исходном тексте упоминается кнопка, пункт меню, поле, флажок или
+другой элемент интерфейса, переводите описательный текст естественным
+образом.
 
-When the source refers to a button, menu item, field, checkbox, or other
-interface element, translate the descriptive text naturally.
+Если точная английская подпись элемента интерфейса важна для его
+идентификации, при необходимости сохраняйте английскую подпись.
 
-If the exact English UI label is important for identifying an interface
-element, retain the English label in parentheses when useful.
-
-Example:
+Например:
 
     Click the **Save** button.
 
-may become:
+может быть переведено как:
 
-    Faceți clic pe butonul **Save**.
+    Нажмите кнопку **Save**.
 
-if "Save" is the actual English interface label.
+если «Save» является фактической английской подписью элемента интерфейса.
 
-Do not invent a Romanian UI label unless the OpenBioMaps interface itself
-uses that Romanian label.
+Не придумывайте русскую подпись элемента интерфейса, если такая подпись не
+используется в самом интерфейсе OpenBioMaps.
 
-## Names
+## Имена и названия
 
-Do not translate:
+Не переводите:
 
-- personal names
-- organization names
-- project names
-- software names
-- database names
-- scientific names
+- имена людей;
+- названия организаций;
+- названия проектов;
+- названия программного обеспечения;
+- имена баз данных;
+- научные названия.
 
-Scientific taxon names should remain unchanged and italicization should be
-preserved where present.
+Научные названия таксонов должны оставаться без изменений. Сохраняйте
+курсивное начертание, если оно присутствует в исходном тексте.
 
-## Numbers and units
+## Числа и единицы измерения
 
-Do not change numerical values.
+Не изменяйте числовые значения.
 
-Preserve units unless there is a clear localization requirement.
+Сохраняйте единицы измерения, если только их локализация явно не требуется.
 
-Do not change decimal values, coordinate values, EPSG codes, version numbers,
-or dates merely because the surrounding text is translated.
+Не изменяйте десятичные значения, координаты, коды EPSG, номера версий и даты
+только потому, что окружающий текст переводится.
 
-## Cross-reference integrity
+## Целостность перекрёстных ссылок
 
-The Romanian documentation must preserve all cross-reference targets from
-the English documentation.
+Русская документация должна сохранять все цели перекрёстных ссылок из
+английской документации.
 
-Never rename a target merely because the visible text has been translated.
+Никогда не переименовывайте цель только потому, что видимый текст ссылки
+переведён.
 
-Before considering a translated file complete, check for:
+Перед завершением перевода файла проверьте:
 
-- :ref:
-- :doc:
-- :download:
-- labels
-- internal anchors
-- relative paths
+- :ref:;
+- :doc:;
+- :download:;
+- метки;
+- внутренние якоря;
+- относительные пути.
 
-## Translation quality
+## Качество перевода
 
-The Romanian text should read as professional technical documentation.
+Русский текст должен читаться как профессиональная техническая
+документация.
 
-Prefer:
+Предпочитайте:
 
-    Evenimentul este creat chiar dacă, în timpul eșantionării, nu a fost
-    găsit niciun individ.
+    Событие создаётся даже в том случае, если во время отбора проб не было
+    обнаружено ни одной особи.
 
-over:
+вместо:
 
-    Evenimentul încă există dacă, potrivit protocolului, nu s-a găsit nimic.
+    Событие всё ещё существует, если согласно протоколу ничего не нашли.
 
-Avoid machine-translation artifacts such as:
+Избегайте признаков машинного перевода, таких как:
 
-- unnecessary anglicisms
-- unnatural word order
-- excessive passive constructions
-- inconsistent terminology
-- English sentence structure copied into Romanian
+- ненужные англицизмы;
+- неестественный порядок слов;
+- чрезмерное использование пассивных конструкций;
+- непоследовательная терминология;
+- копирование структуры английских предложений.
 
-## Consistency
+## Последовательность
 
-If the same English term occurs repeatedly with the same meaning, use the same
-Romanian translation throughout the documentation.
+Если один и тот же английский термин неоднократно используется в одном и том
+же значении, используйте во всей документации один и тот же русский перевод.
 
-Do not introduce synonyms merely to make the text stylistically varied.
+Не вводите синонимы только ради стилистического разнообразия текста.
 
-Technical documentation benefits from terminological consistency.
+Для технической документации важна терминологическая последовательность.
 
-## What must never be changed
+## Что нельзя изменять
 
-The following must remain unchanged unless the change is required to fix an
-existing error:
+Следующие элементы должны оставаться без изменений, если только изменение не
+требуется для исправления существующей ошибки:
 
-- code
-- URLs
-- file paths
-- database identifiers
-- schema names
-- table names
-- column names
-- function names
-- variable names
-- API endpoints
-- Sphinx labels
-- Sphinx targets
-- directive names
-- directive options
-- Markdown syntax
-- RST syntax
-- image paths
-- downloadable file names
-- version numbers
-- EPSG codes
+- код;
+- URL-адреса;
+- пути к файлам;
+- идентификаторы базы данных;
+- имена схем;
+- имена таблиц;
+- имена столбцов;
+- имена функций;
+- имена переменных;
+- конечные точки API;
+- метки Sphinx;
+- цели Sphinx;
+- имена директив;
+- параметры директив;
+- синтаксис Markdown;
+- синтаксис RST;
+- пути к изображениям;
+- имена загружаемых файлов;
+- номера версий;
+- коды EPSG.
 
-## Output requirements
+## Требования к результату
 
-The translated file must remain valid Sphinx RST or Markdown.
+Переведённый файл должен оставаться корректным документом Sphinx RST или
+Markdown.
 
-Do not add translator comments.
+Не добавляйте комментарии переводчика.
 
-Do not add explanations outside the translated document.
+Не добавляйте пояснения за пределами переведённого документа.
 
-Do not create a translation summary.
+Не создавайте резюме перевода.
 
-Do not modify the English source file.
+Не изменяйте английский исходный файл.
 
-The Romanian translation must be written to the corresponding file in the
-Romanian documentation tree.
+Русский перевод должен быть записан в соответствующий файл в дереве русской
+документации.
 
-Example:
+Например:
 
     en/data_management.rst
-    ro/data_management.rst
+    ru/data_management.rst
 
-The file name must remain identical unless explicitly instructed otherwise.
+Имя файла должно оставаться без изменений, если явно не указано иное.
