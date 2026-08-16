@@ -5,21 +5,22 @@ Sampling at a nest box site
 ***************************
 
 This example describes a possible database structure and data-entry workflow
-for monitoring breeding activity at a nest box site. It illustrates how
-stable entities, time-dependent information, and observations can be stored
-in related tables instead of being combined in a single, very wide table.
+for monitoring breeding activity at a nest box site. This example illustrates 
+a possible database structure and data entry workflow for monitoring nesting 
+activity at a nest box site. Our example provides a useful framework, for 
+instance, if we wish to monitor changes in breeding success at a nesting site 
+over several years, or if we are conducting behavioural studies and wish to 
+measure the behavioural responses or breeding success of selected individuals 
+in relation to other individuals and across different years.
+It illustrates how stable entities, time-dependent information, and observations 
+can be stored in related tables instead of being combined in a single, very 
+wide table or into spreadsheets.
 
 For general guidance on planning a data collection and representing its
 entities and relationships, see :doc:`Data collection <data_collection>`.
 For an explanation of the distinction between observation events and
 occasional observations, see
 :doc:`Observation events and occasional observations <observation_events>`.
-
-.. TODO: Add a short statement defining the scientific questions that this
-   example is intended to support, such as nest box occupancy, breeding
-   success, maintenance history, or changes in nest box use over time. This
-   would make it easier to assess whether the proposed fields and
-   relationships are sufficient.
 
 
 Defining the main entities
@@ -289,12 +290,7 @@ virtual table containing the nest boxes that should be displayed. For
 example, the view could be named ``current_nest_boxes``.
 
 For information about managing views, see
-:ref:`Managing views <database-columns>`.
-
-.. TODO: Add a dedicated Sphinx reference label to the “Managing views”
-   section of ``admin_settings.rst`` and update the reference above. The
-   current ``database-columns`` target points to the broader parent
-   section.
+:ref:`Managing views <managing-views>`.
 
 .. TODO: Add the complete definition of the ``current_nest_boxes`` view and
    explain how it selects the latest valid status record. Use a portable
@@ -351,13 +347,9 @@ unique identifier while displaying its more familiar painted field
 identifier.
 
 The OpenBioMaps form editor supports list values obtained from database
-tables. See the :ref:`List definition <manage-upload-forms>` and joint-list
+tables. See the :ref:`List definition <list-definition>` and joint-list
 sections of :doc:`Upload form management <upload_forms>`.
 
-.. TODO: Add a stable Sphinx reference label directly to the “List
-   definition” section of ``upload_forms.rst`` and update the reference
-   above. The existing ``manage-upload-forms`` target points to the entire
-   page.
 
 .. TODO: Provide the complete JSON list definition used by the nest box
    field, including ``optionsSchema``, ``optionsTable``, ``valueColumn``,
