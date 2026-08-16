@@ -4,17 +4,9 @@
 Sampling at a nest box site
 ***************************
 
-This example describes a possible database structure and data-entry workflow
-for monitoring breeding activity at a nest box site. This example illustrates 
-a possible database structure and data entry workflow for monitoring nesting 
-activity at a nest box site. Our example provides a useful framework, for 
-instance, if we wish to monitor changes in breeding success at a nesting site 
-over several years, or if we are conducting behavioural studies and wish to 
-measure the behavioural responses or breeding success of selected individuals 
-in relation to other individuals and across different years.
-It illustrates how stable entities, time-dependent information, and observations 
-can be stored in related tables instead of being combined in a single, very 
-wide table or into spreadsheets.
+This example outlines a possible database structure and data entry workflow for monitoring nesting activity at a (nestbox breeder) bird colony. Our example provides a useful framework, for instance, if we wish to track changes in breeding success at a nesting site over several years, or if we are conducting behavioural research and wish to measure the behavioural responses or breeding success of selected individuals in comparison with other individuals, as well as across different years and under different management treatments.
+
+It demonstrates how static data, time-dependent information and observations can be stored in interlinked tables, rather than attempting to manage them in a single, very wide table or in spreadsheet programmes.
 
 For general guidance on planning a data collection and representing its
 entities and relationships, see :doc:`Data collection <data_collection>`.
