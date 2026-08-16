@@ -1,29 +1,535 @@
 Sampling at a nest box site
 ***************************
 
-In order to work at a nest box site, we will need a database structure that is suitable for recording both the nest boxes themselves and the breeding activity that takes place within them. If any maintenance work is carried out on the nesting boxes, our structure must also be able to handle this. What does this mean in more detail? It means that we will store different types of information in separate tables. We will have one table for the nesting boxes, another for the breeding events and a third for the maintenance work. These are, of course, linked to one another, but it is not recommended that they be managed in a single, very wide table; instead, they should be organised into three smaller tables.
-Our first task should be to create a nest box register. In this register, we need to be able to track what information is recorded for each nest box, i.e. how we identify it in the field. We need to know when it was installed, and whether it is still in place or has perhaps been removed for any reason. In the event that the same identification number might accidentally be assigned to two nesting boxes, we should also introduce an internal identifier which is guaranteed to be unique for each nesting box. Of course, it would be better if we could ensure that a field identifier, say number 102, does not appear on two separate nesting boxes, but this cannot be guaranteed in large nesting box colonies. Alternatively, an additional identifier could be fitted to the nest boxes, which can only be read at close range – for example, a number engraved on a small metal plate, which we would manufacture individually, ensuring that no two are the same. If we use such a system, we would store both identifiers in our nest box register.
-Another factor to bear in mind is that a nest box may not always be in place. It may be brought in during refurbishment work and left out for a season. This means that the nest box’s active status will not be a simple binary value, but a combination of a date and a status, and we will need more than one such record to be able to determine retrospectively when the nest box was active and when it was not. For this reason, our nest box register must consist of two tables. One of these tables need not store any status identifiers, only the nest’s unique (though not necessarily one-of-a-kind) identifier, possibly its date of manufacture, and information relating to the nest, such as the material it is made of. In this table, a UNIQUE constraint must be applied to the nest’s unique identifier (see postgres unique key
-https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS).
-I will refer to this table as the *nest base table* from now on.
-The nest’s unique identifier will also appear in the second table of our nest register, but here it does not
-need to be unique; however, it must be linked to this table in such a way that the database does not allow
-us to enter a non-existent nest identifier. This is achieved by using a foreign key (see:
-https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK).
-This table (hereinafter referred to as the *nest register*) will contain records of nest installations and other nest-related information that changes over time; in other words, a new row may be added for each nest every year. This table must certainly contain at least one date field and almost certainly a field indicating the nest box’s status. Furthermore, it is important to include a spatial location field, i.e. a GPS coordinate field.
-In this way, if our nest box colony consists of 200 nest boxes, the size of the *nest box master table* will remain unchanged over the years (provided we do not install any new nest boxes), whilst the *nest box register* table may grow by as many as 200 rows a year, or even a multiple of that. This growth is not a problem. It contains the precise history of our nest box colony, and by querying the latest values, we can obtain the current status for every unique identifier.
-The next data table we need to create is the *breeding events* table, which will function similarly to the nest box event log. This will also contain a foreign key, which establishes a unique link to the nest identifier. It will also contain at least one date field, as well as several additional fields for processing breeding events. What does ‘processable’ mean? It means that data treated as numbers are stored in numeric fields.
-In other words, if, for example, the number of eggs is a piece of data we wish to process, then it must definitely be created as a numeric field
-in the database table, so that values such as ‘approx. 8 eggs’ or ‘eggs’ cannot be entered into it.
-If our database definition specifies an integer, then during data entry following fieldwork, only numbers are guaranteed to be entered into this field; in other words, the data entry clerk must make a decision if something is unclear in the field log or whilst in the field. This decision can still be made at this stage, but half a year or years later it will no longer be possible; in most cases, the data will simply have to be omitted from the analysis!
-I’ll only briefly touch on the third event table; here, the foreign key relationship will no longer be linked to the nest, but will likely also be linked to the breeding events table. This should be named *brood-management*.
-From the description so far, it is clear that PostgreSQL guarantees consistency, which is essential for long-term data management in such a complex project. The role of OpenBioMaps, meanwhile, is to provide the tools that make it easy for us to use PostgreSQL. Let’s take a look at these now.
-What might we need out in the field? First of all, we need to locate the nesting boxes. To do this, we need a map, which we can generate from the nesting box register table. OpenBioMaps does this for us; we simply need to set up a data query on the table and configure the map to use this query for display. From there, the various OpenBioMaps client applications can display the map we’ll need in the field. At present, I recommend using the OBM pwa-map (`../pwa-app`) application for fieldwork, but it will soon be possible to query the database and display maps using the data collection mobile app (`../mobil-applications`) as well. When querying the map in this way, it is important that we only see the active nest boxes. To do this, we need to visit the OpenBioMaps database management interface and create a PostgreSQL view; this means we will have a virtual table containing only the current nest boxes. Let’s call it, for example, *odú-aktuális*.
-We’d like to record several types of events, but at least four different types in our four tables (*nest-base table*, *nest-register*, *nest-events*, *brood-management*). We’ll therefore need at least four forms for data entry. I won’t go into simple forms just yet; let’s look at a more complex situation instead. This involves recording a nest box event. In this case, selecting the correct nest box ID in the field is a difficult problem, because the nest box’s field ID probably does not guarantee that we are recording the event for the correct nest box; moreover, it is even possible that we might mistype the field ID. For this reason, we need a list of currently active nesting boxes in the field so that we can select from that list only, and ideally view this on a map at the same time to ensure we select the correct nesting box. We can also use the view we created earlier for this list, so all we’ll need to do is use the ID visible on the nest in the field to select its unique ID. The OBM form editor can do this for us. In the form field for the nest box list, we use the current nest box status view so that the entered value is the nest box’s unique identifier, whilst the displayed value is the nest box’s painted field identifier.
-When recording events, we will need a species name field. Here, we will certainly need a species list. We can provide this species list to the list editor in a simplified format, with one species name per line, and the editor will generate a JSON list that can be used by the OBM forms. It would also be worth including a coordinates field so that we still have the chance to correct any typos in nest box identifiers retrospectively by cross-referencing the locations. This coordinates field does not even need to be visible, but under no circumstances should it be editable. There should be an automatic observer field here, for which we can set up additional observer fields if several observers are working together in the field. In this case, it is helpful if we can select the additional observers from a single field using a multiple-select list. It is also advisable to create the observation date as a read-only field, so that retrospective data entry (such as with hidden or read-only geometry fields) can be filtered out.
-It is worth creating separate fields for the observed objects to define the relationship between them. E.g. Are there any eggs in the nest? (mandatory) [yes | no] -> enter the number of eggs [number] (optional); Are there any chicks in the nest? (mandatory) -> enter the number of chicks [number] (optional). OBM can handle field behaviour based on relationships; for example, if there are eggs, it makes entering the number of eggs mandatory, but the mobile app is not yet able to implement this.
-What the app can already do, however, is organise the selectable options in drop-down menus based on the value selected from the previous drop-down list. For example, if there is a question asking whether the nest is active [yes | no], then depending on the answer given, the next field will display options such as [eggs | chicks], or [abandoned | predated | empty | other contents | nest not found].
+This example describes a possible database structure and data-entry workflow
+for monitoring breeding activity at a nest box site. It illustrates how
+stable entities, time-dependent information, and observations can be stored
+in related tables instead of being combined in a single, very wide table.
+
+For general guidance on planning a data collection and representing its
+entities and relationships, see :doc:`Data collection <data_collection>`.
+For an explanation of the distinction between observation events and
+occasional observations, see
+:doc:`Observation events and occasional observations <observation_events>`.
+
+.. TODO: Add a short statement defining the scientific questions that this
+   example is intended to support, such as nest box occupancy, breeding
+   success, maintenance history, or changes in nest box use over time. This
+   would make it easier to assess whether the proposed fields and
+   relationships are sufficient.
+
+
+Defining the main entities
+==========================
+
+To work at a nest box site, we need a database structure suitable for
+recording both the nest boxes themselves and the breeding activity that
+takes place within them. If maintenance work is carried out on the nest
+boxes, the structure must also be able to represent it.
+
+Different types of information should therefore be stored in separate
+tables. We will have one table for the nest boxes, another for their
+time-dependent status and location, a third for breeding events, and a
+fourth for brood-management or maintenance activities. These tables are
+linked to one another, but it is not recommended that they be managed in a
+single, very wide table. Instead, they should be organised into several
+smaller related tables.
+
+.. TODO: Add an entity-relationship diagram showing the four proposed
+   tables, their primary keys, their foreign keys, and the cardinality of
+   each relationship.
+
+.. TODO: Clarify whether nest box maintenance and brood management describe
+   the same type of activity. If they are separate concepts, use separate
+   tables or explain which operations belong to each concept.
+
+
+Creating the nest box register
+==============================
+
+Our first task is to create a nest box register. We need to track the
+information recorded for each nest box, including how the box is identified
+in the field, when it was installed, and whether it is still present or has
+been removed.
+
+If the same field identification number might accidentally be assigned to
+two nest boxes, we should also introduce an internal identifier that is
+guaranteed to be unique for each nest box. It would be preferable to ensure
+that a field identifier, such as number 102, does not appear on two separate
+nest boxes, but this may be difficult to guarantee in a large nest box
+colony.
+
+Alternatively, an additional identifier could be attached to each nest box
+and designed to be readable only at close range. For example, it could be a
+number engraved on an individually manufactured metal plate, ensuring that
+no two plates are the same. If such a system is used, both the field
+identifier and the unique identifier should be stored in the nest box
+register.
+
+Stable identifiers should not be inferred solely from labels, coordinates,
+or other values that may change. For more information about identifiers and
+relationships between tables, see
+:ref:`Tables and relationships <data-collection-tables-and-relationships>`.
+
+.. TODO: Add the ``data-collection-tables-and-relationships`` reference
+   label to the “Tables and relationships” section of ``data_collection.rst``
+   if that section does not already provide a stable Sphinx target.
+   Alternatively, replace the reference above with a document-level link.
+
+.. TODO: Specify whether the internal nest box identifier is generated by
+   PostgreSQL or supplied by the project. Include example values and explain
+   which identifier is displayed to field workers and which identifier is
+   used in foreign-key relationships.
+
+
+Separating stable and time-dependent information
+================================================
+
+A nest box may not always be active or even present at the site. It may be
+removed for refurbishment and left out for an entire season. Its status
+therefore cannot always be represented by a single Boolean value. Instead,
+the status must be associated with a date or time interval, and more than
+one status record may be required to determine retrospectively when the nest
+box was active and when it was not.
+
+For this reason, our nest box register consists of two related tables:
+
+* a *nest base* table containing stable information about each physical nest
+  box; and
+* a *nest register* table containing time-dependent information about the
+  box, such as installation, status, and location.
+
+The *nest base* table does not need to store status information. It stores
+the nest box's unique identifier and may also contain its date of
+manufacture and properties such as the material from which it is made.
+
+A ``UNIQUE`` constraint must be applied to the unique nest box identifier.
+For information about PostgreSQL unique constraints, see
+`Unique constraints in the PostgreSQL documentation
+<https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS>`_.
+
+The same unique nest box identifier also appears in the *nest register*
+table. It does not need to be unique in this table because one nest box can
+have several status records. However, the database must not allow a record
+to refer to a nest box that does not exist in the *nest base* table. This
+relationship is enforced with a foreign key. For more information, see
+`Foreign key constraints in the PostgreSQL documentation
+<https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK>`_.
+
+The *nest register* table contains records of nest box installations and
+other information that changes over time. A new row may, for example, be
+added for each nest box every year. This table must contain at least one
+date field and will normally also contain a field indicating the nest box's
+status. It is also important to include a spatial location field, such as an
+OpenBioMaps geometry column containing the recorded GPS location.
+
+For guidance on creating project tables, registering columns, and assigning
+semantic roles, see
+:ref:`Database tables and columns <database-columns>`. For general spatial
+data guidance, see the
+:ref:`Location and geometry <data-collection-location-and-geometry>`
+section of the data-collection documentation.
+
+.. TODO: Add the ``data-collection-location-and-geometry`` reference label
+   to the “Location and geometry” section of ``data_collection.rst`` if a
+   stable target is not already available. Alternatively, use a
+   document-level reference.
+
+.. TODO: Define the proposed status vocabulary, for example ``installed``,
+   ``active``, ``temporarily removed``, ``damaged``, ``replaced``, and
+   ``permanently removed``. Explain which transitions are valid and whether
+   the list is extensible.
+
+.. TODO: Decide whether each status record represents a point-in-time
+   observation, a state beginning on a particular date, or an explicit time
+   interval with start and end dates. Document how the current status is
+   selected when several records exist for one nest box.
+
+.. TODO: Explain whether moving a nest box creates a new nest-register
+   record for the same physical box or a new nest-base record. Also explain
+   how replacement of one physical box by another at the same field
+   location is represented.
+
+If the colony contains 200 nest boxes, the size of the *nest base* table
+will remain unchanged over the years, provided that no new physical boxes
+are added. The *nest register* table, however, may grow by 200 rows per year
+or even more. This growth is expected and is not a problem. The table
+contains the history of the colony, and querying the most recent applicable
+record for each unique identifier provides its current status.
+
+.. TODO: Add an executable PostgreSQL example that returns the current
+   status record for each nest box. The example should define how ties,
+   missing dates, future dates, and multiple changes on the same date are
+   handled.
+
+
+Recording breeding events
+=========================
+
+The next table is the *breeding events* table. It functions similarly to an
+event log and contains a foreign key linking each breeding event to the
+unique identifier of the relevant nest box. It must contain at least one
+observation date or date-time field, together with the additional fields
+required to describe and analyse the breeding event.
+
+The fields must be defined according to how their values will be processed.
+Data intended to be treated as numbers must be stored in numeric database
+columns. For example, if the number of eggs is required for analysis, it
+should be stored in an integer field. Values such as ``approximately 8
+eggs`` or ``eggs`` must not be accepted in that field.
+
+If the database column is defined as an integer, data entry following
+fieldwork can accept only valid integer values. If a field note is unclear,
+the data collector or data-entry operator must make and document an
+appropriate decision while the necessary context is still available. Half
+a year or several years later, the ambiguity may no longer be resolvable,
+and the value may have to be omitted from an analysis.
+
+For more information about quantities, units, explicit non-detections, and
+sampling effort, see :doc:`Data collection <data_collection>`.
+
+.. TODO: Provide a proposed minimum set of breeding-event fields, including
+   the event identifier, nest box identifier, observation date and time,
+   observer, taxon, breeding status, egg count, chick count, evidence,
+   comments, and validation status.
+
+.. TODO: Explain how uncertain counts should be represented. For example,
+   consider storing the numeric count separately from a count type or
+   uncertainty field rather than allowing approximate text in the numeric
+   field.
+
+.. TODO: Clarify whether one row represents an entire visit to a nest box,
+   one taxon observation during a visit, or one breeding-status
+   observation. If a visit can contain several observations, consider
+   separating the sampling event from the individual observations as
+   described in :doc:`Observation events and occasional observations
+   <observation_events>`.
+
+.. TODO: Explain how completed visits with no breeding activity or with no
+   detected animal are retained. Such records must not be inferred solely
+   from the absence of a breeding-event row.
+
+
+Recording brood-management and maintenance activities
+=====================================================
+
+The fourth table records brood-management or maintenance activities. Its
+relationships may differ from those of the other tables. Some operations
+may relate directly to a physical nest box, while others may relate to a
+specific breeding event. The table will therefore probably need a foreign
+key to the *nest base* table and may also need a foreign key to the
+*breeding events* table.
+
+This table is referred to here as the *brood-management* table.
+
+.. TODO: Define the activities stored in the *brood-management* table, such
+   as cleaning, repair, replacement, egg removal, ringing, measurement, or
+   relocation. Distinguish routine nest box maintenance from interventions
+   affecting a particular brood.
+
+.. TODO: Decide which relationships are mandatory. For example, every
+   maintenance record may require a nest box identifier, while only
+   brood-specific interventions require a breeding-event identifier.
+
+.. TODO: Include fields needed to document the reason for an intervention,
+   the responsible person, the date and time, permits or authorisations,
+   the action performed, its outcome, and any supporting evidence.
+
+
+Implementing the structure in OpenBioMaps
+=========================================
+
+PostgreSQL constraints help guarantee consistency, which is essential for
+long-term data management in a complex project. OpenBioMaps provides the
+tools needed to configure and use the PostgreSQL structure through project
+interfaces.
+
+The project tables and columns should be created and registered through the
+OpenBioMaps administration interface. For instructions and relevant
+warnings, see :ref:`Database tables and columns <database-columns>`.
+
+.. TODO: Add example table definitions listing each proposed column, its
+   PostgreSQL data type, whether it is nullable, and its primary-key,
+   unique-key, or foreign-key constraints.
+
+.. TODO: Add instructions for creating these tables through the OpenBioMaps
+   administration interface rather than only showing raw SQL.
+
+.. TODO: Explain the deletion and update behaviour of every foreign key.
+   Avoid cascading deletion of historical observations unless that is an
+   explicit and carefully reviewed project requirement.
+
+
+Displaying active nest boxes on a field map
+===========================================
+
+In the field, observers first need to locate the nest boxes. A map can be
+generated from the *nest register* table. OpenBioMaps can display this data
+after a query has been configured for the relevant table and connected to a
+map layer.
+
+For an overview of SQL query templates and map configuration, see
+:ref:`SQL query settings <sql-query-settings>` and
+:ref:`Map settings <map-settings>`.
+
+The resulting map can be displayed by compatible OpenBioMaps clients. The
+OpenBioMaps progressive web application can be used for fieldwork, and
+supported mobile clients may also provide database-query and map-display
+functions. See :doc:`Progressive web application <pwa>` and
+:doc:`Mobile applications <mobile_applications>` for current client
+capabilities.
+
+Only currently active nest boxes should normally appear on the operational
+field map. One possible implementation is to create a PostgreSQL view that
+returns only the current active record for each nest box. This creates a
+virtual table containing the nest boxes that should be displayed. For
+example, the view could be named ``current_nest_boxes``.
+
+For information about managing views, see
+:ref:`Managing views <database-columns>`.
+
+.. TODO: Add a dedicated Sphinx reference label to the “Managing views”
+   section of ``admin_settings.rst`` and update the reference above. The
+   current ``database-columns`` target points to the broader parent
+   section.
+
+.. TODO: Add the complete definition of the ``current_nest_boxes`` view and
+   explain how it selects the latest valid status record. Use a portable
+   lowercase SQL identifier containing only letters and underscores.
+
+.. TODO: Explain how access rules are applied to the view and its map layer.
+   Verify that the query template contains all placeholders required to
+   enforce project, row-level, and column-level access restrictions. See
+   :doc:`Data access <data_access>`.
+
+.. TODO: Document the offline behaviour of the recommended field client,
+   including when the map and nest box list are synchronised and how stale
+   data are detected.
+
+
+Creating the upload forms
+=========================
+
+At least four types of records must be entered into the four tables:
+
+* stable nest box information in the *nest base* table;
+* time-dependent nest box information in the *nest register* table;
+* observations in the *breeding events* table; and
+* interventions in the *brood-management* table.
+
+We therefore need at least four upload forms. A project may create
+additional forms when different workflows, clients, user groups, or
+validation requirements apply to the same table.
+
+For detailed instructions on configuring and publishing forms, see
+:doc:`Upload form management <upload_forms>`.
+
+.. TODO: Add a table listing each proposed form, its destination table,
+   intended users, supported clients, form type, access settings, and
+   whether it is used in occasional-observation or observation-event mode.
+
+.. TODO: Explain how draft and published form versions should be tested
+   before field deployment, especially when offline mobile clients may
+   continue to use an older published version.
+
+
+Selecting the correct nest box
+==============================
+
+Recording a breeding event requires the observer to select the correct nest
+box. A painted field identifier may not uniquely identify a physical box,
+and it may also be mistyped. The form should therefore provide a list of
+currently active nest boxes from which the observer can select.
+
+Ideally, the observer should be able to view the same nest boxes on a map to
+confirm the selection. The ``current_nest_boxes`` view described above can
+serve as the source of the list. The form can store the nest box's stable
+unique identifier while displaying its more familiar painted field
+identifier.
+
+The OpenBioMaps form editor supports list values obtained from database
+tables. See the :ref:`List definition <manage-upload-forms>` and joint-list
+sections of :doc:`Upload form management <upload_forms>`.
+
+.. TODO: Add a stable Sphinx reference label directly to the “List
+   definition” section of ``upload_forms.rst`` and update the reference
+   above. The existing ``manage-upload-forms`` target points to the entire
+   page.
+
+.. TODO: Provide the complete JSON list definition used by the nest box
+   field, including ``optionsSchema``, ``optionsTable``, ``valueColumn``,
+   ``labelColumn``, ordering, and any required filter.
+
+.. TODO: Ensure that the visible label is unambiguous. If painted field
+   identifiers can be duplicated, display additional context such as the
+   site name, compartment, current status, or abbreviated stable
+   identifier.
+
+.. TODO: Explain how the map selection and form selection are connected in
+   each supported client. Do not imply that this interaction is available
+   unless it has been tested in the relevant web, PWA, and mobile versions.
+
+
+Selecting a species
+===================
+
+A breeding-event form will normally need a taxon or species-name field. The
+field should use a controlled and documented taxonomic list. For a short
+project-specific list, one species name can be entered per line in the form
+list editor, which converts the values to a JSON list used by the form.
+
+For a larger or maintained taxonomic reference, an autocomplete source is
+usually more appropriate than a static list. See the taxon-information
+guidance in :doc:`Data collection <data_collection>` and the autocomplete
+and list-definition sections of
+:doc:`Upload form management <upload_forms>`.
+
+.. TODO: Identify the taxonomic reference used by this example and store a
+   stable taxon identifier in addition to the displayed name where
+   possible.
+
+.. TODO: Explain how unknown, uncertain, or newly submitted taxon names are
+   handled and validated without silently replacing the originally
+   submitted value.
+
+
+Recording coordinates, observers, and dates
+===========================================
+
+It is useful to record the coordinates of each breeding event even when the
+nest box has an existing registered position. The independently recorded
+location may help identify an incorrectly selected nest box by comparing the
+event location with the registered location.
+
+The geometry field may be hidden from the user or displayed as read-only,
+but display settings alone must not be treated as security or integrity
+controls. The submitted value must also be checked and handled correctly on
+the server.
+
+An observer field can be populated automatically for the signed-in user.
+Additional observer fields may be required when several people work
+together. A multiple-selection list can be used when several additional
+observers must be selected in one field.
+
+The observation date can also be populated automatically and made
+read-only. However, the observation time must remain distinct from the
+database insertion or upload time. Projects must also provide an explicit
+workflow for legitimate retrospective data entry.
+
+For more information, see the observer, date and time, and location sections
+of :doc:`Data collection <data_collection>`. For form defaults and display
+options, see :ref:`Default values <default-values>` and
+:ref:`Field display options <api-params>`.
+
+.. TODO: Clarify whether the automatically populated user represents the
+   observer, recorder, uploader, or another role. Store these roles
+   separately when they differ.
+
+.. TODO: Define how multiple observers are stored. A related
+   event-observer table may be more suitable than a delimited list when
+   individual observers must be queried, attributed, or assigned roles.
+
+.. TODO: Specify whether coordinates represent the nest box, the observer,
+   or the actual observation. Also record coordinate accuracy, acquisition
+   method, SRID, and any transformation or generalisation applied to the
+   submitted geometry.
+
+.. TODO: Avoid using a read-only observation date merely to identify
+   retrospective data entry. Store the observation timestamp and submission
+   timestamp separately and compare them explicitly when this distinction
+   is important.
+
+
+Using related fields
+====================
+
+Separate fields should be created for observations that need to be queried
+or analysed independently. Relationships between these fields can then be
+used to control validation.
+
+For example:
+
+* ``Are there eggs in the nest?`` — obligatory Boolean field;
+* ``Number of eggs`` — optional integer field that becomes obligatory when
+  eggs are present;
+* ``Are there chicks in the nest?`` — obligatory Boolean field; and
+* ``Number of chicks`` — optional integer field that becomes obligatory
+  when chicks are present.
+
+OpenBioMaps can change field behaviour according to the value of another
+field. For example, if eggs are present, the number-of-eggs field can become
+obligatory. Client support for such relations may differ, so the behaviour
+must be tested in every intended interface and validation should also occur
+on the server.
+
+For details of the relation syntax, see the column-relations section of
+:doc:`Upload form management <upload_forms>`.
+
+.. TODO: Add tested relation definitions for the egg and chick fields.
+   Document how zero, missing, unknown, and not-counted values are
+   distinguished.
+
+.. TODO: Confirm which relations are currently supported by the web form,
+   file upload, API, PWA, and mobile application. If a client does not
+   support a relation, explain the server-side validation or alternative
+   form design used to preserve data consistency.
+
+
+Using dependent lists
+=====================
+
+Supported clients can organise selectable options according to a value
+chosen in a preceding list. For example, a form may first ask whether the
+nest is active:
+
+* if the answer is ``yes``, the following field may offer ``eggs`` or
+  ``chicks``; and
+* if the answer is ``no``, the following field may offer ``abandoned``,
+  ``predated``, ``empty``, ``other contents``, or ``nest not found``.
+
+This can be implemented with a joint or dependent list. For configuration
+details and examples, see the joint-list section of
+:doc:`Upload form management <upload_forms>`.
+
+.. TODO: Add the lookup-table rows and complete JSON definitions for both
+   fields so that the example can be reproduced.
+
+.. TODO: Review the proposed vocabulary. Some values describe nest box
+   status, some describe breeding status, and others describe observation
+   failure. Consider storing these concepts in separate fields rather than
+   combining them into one list.
+
+.. TODO: Define what happens when the observer changes the first answer
+   after selecting a dependent value. The previous value must be cleared or
+   revalidated to prevent an inconsistent combination.
+
+
+Testing the workflow
+====================
+
+Before using the forms for production fieldwork, submit realistic test
+records through every intended client. Tests should include new and existing
+nest boxes, duplicated field labels, moved or temporarily removed boxes,
+empty nests, uncertain counts, multiple observers, unavailable GPS
+positions, retrospective entry, and interrupted or offline submissions.
+
+Verify that the resulting records can be queried and joined without relying
+on undocumented assumptions. Also confirm that public, authenticated, and
+group-specific users receive the intended form and data access.
+
+For a broader pre-publication checklist, see the practical checklist in
+:doc:`Data collection <data_collection>`. For form publication and
+versioning, see :doc:`Upload form management <upload_forms>`, and for
+project permissions see :doc:`Data access <data_access>`.
+
+.. TODO: Add a small reproducible test dataset and list the expected result
+   of each validation, query, map, and access-control test.
 
 
 Sampling at fixed sampling sites along fixed transects
 ******************************************************
+
+.. TODO: Add a worked example for repeated sampling at fixed sites along
+   fixed transects. Distinguish stable sites and transects from sampling
+   events, individual observations, explicit non-detections, tracklogs, and
+   measures of sampling effort.
