@@ -1,3 +1,6 @@
+:author: Miklós Bán
+:date: 2026-08-16
+
 Sampling at a nest box site
 ***************************
 
@@ -485,7 +488,7 @@ nest is active:
 * if the answer is ``yes``, the following field may offer ``eggs`` or
   ``chicks``; and
 * if the answer is ``no``, the following field may offer ``abandoned``,
-  ``predated``, ``empty``, ``other contents``, or ``nest not found``.
+  ``predated``, ``empty``, ``other contents``, or ``nestbox not found``.
 
 This can be implemented with a joint or dependent list. For configuration
 details and examples, see the joint-list section of
