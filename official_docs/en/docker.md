@@ -21,7 +21,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
 ```
-docker-compose version 1.29.2, build f46880fe
+Docker Compose version v5.5.1
 
 
 Visit this page for further information about installing docker:
