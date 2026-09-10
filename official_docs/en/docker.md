@@ -37,9 +37,9 @@ In one step:
 
 ## Visit your OBM app
 
-[http://YOUR_SERVER_NAME:9080/](http://YOUR_SERVER_NAME:9080/)
+[http://YOUR_SERVER_NAME/](http://YOUR_SERVER_NAME/)
 
-[http://YOUR_SERVER_NAME:9080/projects/sablon/](http://YOUR_SERVER_NAME:9080/projects/sablon/)
+[http://YOUR_SERVER_NAME/projects/sablon/](http://YOUR_SERVER_NAME/projects/sablon/)
 
 Log in to your template database using *valaki@openbiomaps.org* user name and *abc123* password. After the first login, please change this default password!
 
@@ -53,14 +53,6 @@ Update your server and sablon project following this guide:
 ## Database access
 
 You can access your Postgres database on the following pre-configured online database manager applications. However, it depends on your host-docker relationship.
-
-!PhpPgAdmin is not available currently!
-
-*Phppgadmin: [http://YOUR_SERVER_NAME:9881/](http://YOUR_SERVER_NAME:9881/)*
-
-  PhpPgadmin notes:
-  
-  It is a very friendly tool, but unfortunately, it is currently not maintained, so we have to create our edition or wait for someone else...
 
 Adminer: [http://YOUR_SERVER_NAME:9882/](http://YOUR_SERVER_NAME:9882/)
 
