@@ -81,40 +81,61 @@ For further information, see:
 
 [Docker post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)
 
-## Download OpenBioMaps Docker
-
-Clone or otherwise obtain the OpenBioMaps Docker installation repository on the server.
-
-The installation directory should contain the OpenBioMaps Docker installation scripts and configuration files.
-
-Before starting the installation, review the configuration in `.env` and make sure that the server can provide the required HTTP/HTTPS ports.
-
-## Configure the server
-
-The OpenBioMaps installer detects suitable server addresses and available HTTP/HTTPS ports.
-
-During installation, the detected server address is presented to the administrator for confirmation. The address can be an externally accessible IP address, a fully qualified domain name, or another address appropriate for the particular server configuration.
-
-Additional server-specific configuration may be required depending on the deployment, for example:
-
-* DNS and domain configuration
-* SSL/TLS certificates
-* SMTP/mail server configuration
-* firewall configuration
-* reverse proxy configuration
-* external access to the selected HTTP/HTTPS ports
-
 ## Start the OpenBioMaps installation
 
-Run the OpenBioMaps installer from the installation directory:
+The OpenBioMaps Docker installation is started directly by the installation script. It is not necessary to clone the Docker repository manually.
+
+### Download and run the installer
+
+On the server where OpenBioMaps is to be installed, run:
 
 ```bash
 curl -s https://gitlab.com/openbiomaps/docker/obm-composer/-/raw/master/install.sh > /tmp/install.sh && sudo bash /tmp/install.sh
 ```
 
-Follow the prompts displayed by the installer.
+The installer will guide you through the installation process.
 
-The installer creates the required Docker configuration, starts the required services, initializes the databases, and performs the OpenBioMaps post-installation steps.
+### Configure the server
+
+During the installation, the installer detects the server addresses available on the host, including:
+
+* local IP address
+* public IP address, if available
+* fully qualified hostname, if available
+
+It presents the detected addresses and proposes a suitable default server address. The administrator can accept the proposed address or enter another address appropriate for the deployment.
+
+The installer also detects available HTTP and HTTPS ports. If the standard ports (`80` and `443`) are already in use, alternative free ports can be selected.
+
+The generated configuration is written to the installation `.env` file. This includes the selected server address and HTTP/HTTPS ports, as well as the passwords and other values required by the Docker environment.
+
+### Server-specific configuration
+
+Depending on the deployment, additional configuration may be required outside the OpenBioMaps installer, for example:
+
+* DNS configuration for the OpenBioMaps domain
+* firewall rules
+* SSL/TLS certificates
+* SMTP/mail server configuration
+* reverse proxy configuration
+* external access to the selected HTTP/HTTPS ports
+
+These settings depend on the server and network environment and are not required for every installation.
+
+### Installation process
+
+After the configuration has been confirmed, the installer:
+
+1. prepares the Docker environment;
+2. starts the required Docker services;
+3. waits for the databases to become available;
+4. initializes the OpenBioMaps databases;
+5. performs the required post-installation operations;
+6. installs or updates the built-in OpenBioMaps projects and other system components;
+7. records the successful completion of the installation.
+
+The installation is complete when the installer reports successful completion.
+
 
 ## Visit your OBM app
 
