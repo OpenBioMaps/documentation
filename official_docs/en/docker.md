@@ -1,39 +1,120 @@
 
 # Virtual server with Docker
 
-It is the currently supported up-to-date virtual environment release of OpenBioMaps.
+This is the currently supported Docker-based installation of OpenBioMaps.
 
-It is good for testing, and developing, and in a production environment as well.
+The Docker installation can be used for **testing, development, and production environments**. The installation scripts configure the OpenBioMaps services and their dependencies in a Docker Compose environment.
 
-For using obm-docker 4 steps are needed:
-1. Install docker-compose
-2. Get the obm-docker image
-3. Configure your docker according to the host's speciality (e.g. SSL, SMTP)
-4. Start your docker environment
+## Installation overview
 
+A new OpenBioMaps Docker installation consists of the following main steps:
 
-## Prepare/Install Docker & Compose
+1. **Prepare the server and install Docker Engine and Docker Compose**
+2. **Download the OpenBioMaps Docker installation files**
+3. **Configure the installation for the server**
+4. **Run the OpenBioMaps installer**
 
-```console
-sudo curl -L https://github.com/docker/compose/releases/download/v5.5.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+The installer detects the available Docker Compose implementation and supports both the current Docker Compose plugin (`docker compose`) and the legacy standalone Compose command (`docker-compose`).
 
-sudo chmod +x /usr/local/bin/docker-compose
+## Prepare Docker and Docker Compose
 
+A Linux server with a supported Docker installation is required.
+
+For a new Debian installation, the recommended method is to install Docker Engine from the official Docker APT repository. This also provides the Docker Compose plugin.
+
+For current installation instructions, see the official Docker documentation:
+
+[Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/)
+
+After installing Docker, verify that the Docker daemon is running:
+
+```bash
+sudo systemctl status docker
+```
+
+Test the Docker installation:
+
+```bash
+sudo docker run hello-world
+```
+
+Install the Docker Compose plugin if it was not installed together with Docker Engine:
+
+```bash
+sudo apt update
+sudo apt install docker-compose-plugin
+```
+
+Check the installed Compose version:
+
+```bash
+docker compose version
+```
+
+The expected command is:
+
+```text
+docker compose version
+```
+
+not the older standalone:
+
+```text
 docker-compose --version
 ```
-Docker Compose version v5.5.1
 
+For further information about Docker Compose installation, see:
 
-Visit this page for further information about installing docker:
+[Install the Docker Compose plugin](https://docs.docker.com/compose/install/linux/)
 
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+### Optional: use Docker without `sudo`
 
+By default, Docker commands require root privileges. If Docker should be available to the current user without `sudo`, add the user to the `docker` group:
 
-## Install / Setup an OpenBioMaps instance
+```bash
+sudo usermod -aG docker $USER
+```
 
-In one step:
+Log out and log in again for the group membership to take effect.
 
-``curl -s https://gitlab.com/openbiomaps/docker/obm-composer/-/raw/master/install.sh > /tmp/install.sh && sudo bash /tmp/install.sh``
+For further information, see:
+
+[Docker post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)
+
+## Download OpenBioMaps Docker
+
+Clone or otherwise obtain the OpenBioMaps Docker installation repository on the server.
+
+The installation directory should contain the OpenBioMaps Docker installation scripts and configuration files.
+
+Before starting the installation, review the configuration in `.env` and make sure that the server can provide the required HTTP/HTTPS ports.
+
+## Configure the server
+
+The OpenBioMaps installer detects suitable server addresses and available HTTP/HTTPS ports.
+
+During installation, the detected server address is presented to the administrator for confirmation. The address can be an externally accessible IP address, a fully qualified domain name, or another address appropriate for the particular server configuration.
+
+Additional server-specific configuration may be required depending on the deployment, for example:
+
+* DNS and domain configuration
+* SSL/TLS certificates
+* SMTP/mail server configuration
+* firewall configuration
+* reverse proxy configuration
+* external access to the selected HTTP/HTTPS ports
+
+## Start the OpenBioMaps installation
+
+Run the OpenBioMaps installer from the installation directory:
+
+```bash
+curl -s https://gitlab.com/openbiomaps/docker/obm-composer/-/raw/master/install.sh > /tmp/install.sh && sudo bash /tmp/install.sh
+```
+
+Follow the prompts displayed by the installer.
+
+The installer creates the required Docker configuration, starts the required services, initializes the databases, and performs the OpenBioMaps post-installation steps.
 
 ## Visit your OBM app
 
