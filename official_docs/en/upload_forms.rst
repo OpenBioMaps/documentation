@@ -58,6 +58,8 @@ changes to the form may resolve the inconsistency, but clients will not be able 
 upload the offline data!
 
 
+.. _name-of-the-form:
+
 Name of the form
 ................
 
@@ -71,6 +73,7 @@ a new one, which affects the operation of offline clients!
 The name can be multilingual when a translation key with the ``str_`` prefix
 is used. For more information, see :ref:`Translations <localisation>`.
 
+.. _form-access:
 
 Form access
 ...........
@@ -95,6 +98,7 @@ becomes active, allowing access to be granted to selected users or groups.
 .. TODO: Clarify whether nested group membership grants access to the form
    and how changes to group membership affect active or saved uploads.
 
+.. _form-data-access:
 
 Data access
 ...........
@@ -119,6 +123,7 @@ data.
    changed. Clarify whether the new settings affect only subsequent uploads
    or also update existing records.
 
+.. _form-type:
 
 Form type
 .........
@@ -135,6 +140,7 @@ At least one of the following form types must be selected:
 .. TODO: Document authentication, version selection, and compatibility
    requirements for API clients and mobile applications.
 
+.. _form-description:
 
 Form description
 ................
@@ -146,6 +152,7 @@ provide instructions to contributors.
    API, and mobile interfaces; whether it supports translations or markup;
    and whether there is a maximum length.
 
+.. _form-srid:
 
 Form SRID
 .........
@@ -174,6 +181,7 @@ identifiers and visible labels, using the following format:
    including whether spaces, translated labels, non-EPSG authorities, or
    case-sensitive labels are supported.
 
+.. _form-groupping:
 
 Form grouping
 .............
@@ -190,6 +198,7 @@ This option is not currently available in the mobile application.
 .. TODO: Confirm whether form grouping remains unsupported in the current
    mobile application version.
 
+.. _form-publish:
 
 Form publication
 ................
@@ -217,6 +226,7 @@ published to the form's published branch.
    earlier version, retire a published version, or resolve submissions made
    with an old version.
 
+.. _observationevents:
 
 Observation event settings
 ..........................
@@ -299,6 +309,7 @@ appear on the form and how submitted values are displayed and validated.
 .. TODO: Document how changes to destination-table columns affect existing
    draft and published form versions.
 
+.. _form-column-included:
 
 Included
 ........
@@ -308,6 +319,7 @@ If selected, the column appears on the form.
 .. TODO: Explain whether a non-included column can still receive a default,
    generated, or API-supplied value.
 
+.. _form-column-order:
 
 Column order
 ............
@@ -319,6 +331,7 @@ the column on the form. It is empty by default.
    duplicate or missing values, and whether order can be changed by
    drag-and-drop.
 
+.. _form-column:
 
 Column
 ......
@@ -333,6 +346,7 @@ for the form, and the original database-column name.
 .. TODO: Clarify whether changing the visible name affects only the form or
    also modifies database metadata.
 
+.. _form-column-obligatory:
 
 Obligatory
 ..........
@@ -360,6 +374,7 @@ Three options are available: **yes**, **no**, and **soft error**.
    ``NOT NULL`` constraints, column relations, and hidden or read-only
    fields.
 
+.. _form-column-description:
 
 Column description
 ..................
@@ -370,6 +385,7 @@ Enter a short description of the field.
    support translations or markup, and whether they are inherited from
    database-column comments.
 
+.. _form-column-type:
 
 Column type
 ...........
@@ -499,6 +515,7 @@ The following form column types are available:
    and complete colour set of the ``colour rings`` type. Clarify whether
    ``purple`` and ``violet`` are intentionally separate values.
 
+.. _input-control:
 
 Input control
 .............
@@ -526,6 +543,7 @@ are:
    examples. Identify where custom validation code is stored and who is
    permitted to edit it.
 
+.. _list-definition:
 
 List definition
 ...............
@@ -971,6 +989,7 @@ The following list definition associates images with example button values:
    individuals field and how it stores, updates, and validates the resulting
    observations.
 
+.. _column-relations:
 
 Column relations
 ................
@@ -997,6 +1016,7 @@ See `an example form
 .. TODO: Explain how multiple relations are combined, how conflicts are
    resolved, and whether evaluation order is significant.
 
+.. _pseudo-columns:
 
 Pseudo-columns
 ..............

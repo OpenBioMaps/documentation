@@ -38,9 +38,27 @@ The list may not include every independently operated OpenBioMaps server.
 Projects and registration
 =========================
 
+Should I set up my own server, or can I use an existing OpenBioMaps server?
+---------------------------------------------------------------------------
+If you have sufficient server capacity and feel it is necessary for your project 
+to run on a dedicated computer that is completely separate from everything else, 
+then set up your own server. To do this, you will need a physical server or a virtual 
+machine. Your server must have a permanent internet connection, with a static IP 
+address or its own domain name. You will also need to configure SSL on the server. 
+Furthermore, the machine must have at least 8Gb of RAM, 4 processors and 200Gb of 
+storage. We do not recommend running an OBM server on a machine with a capacity lower 
+than this.
+
+If you do not wish to run your own server but would like to host your project on a 
+server operated by one of the OpenBioMaps networks, you will need to contact the 
+operators of your chosen server.
+
+There are servers that automatically accept all projects related to nature conservation 
+and biodiversity research, but even in such cases, we recommend contacting the operators 
+so that we can help you select the most suitable server for your project.
+
 How can I find or create a database project?
 --------------------------------------------
-
 Existing projects can be found through the project list of an OpenBioMaps
 server or through information provided by the organisation operating that
 server.
@@ -53,7 +71,6 @@ your account.
 
 How can I register for an OpenBioMaps project?
 ----------------------------------------------
-
 Registration normally requires an invitation. Depending on the project
 configuration, existing members or only administrators may be permitted to
 invite new users.
@@ -74,7 +91,6 @@ Data upload and access
 
 How can I upload data?
 ----------------------
-
 The standard method is to use a project-specific data upload form. Forms can
 be used through the web interface and, when supported by the project, through
 an OpenBioMaps mobile application.
@@ -89,7 +105,6 @@ validation and upload workflows.
 
 How can I access data?
 ----------------------
-
 Depending on the project configuration and your permissions, data can be
 accessed in several ways:
 
@@ -107,7 +122,6 @@ See :doc:`Data access <data_access>`, :doc:`API documentation <api>`, and
 
 Which data download options are available?
 ------------------------------------------
-
 Available download methods depend on the modules enabled for the project and
 the current user's permissions. They may include:
 
@@ -122,7 +136,6 @@ remain subject to the project's row-level and column-level access rules.
 
 Why can other users see data that I cannot query?
 -------------------------------------------------
-
 The records are probably restricted to specific users or groups. A project's
 upload-form settings can define who receives read or modification access to
 records uploaded with that form.
@@ -165,7 +178,6 @@ Mobile access
 
 How can I retrieve data with a mobile device?
 ---------------------------------------------
-
 The :doc:`PWA map-query application <pwa>` can query project records and make
 previously fetched records available offline. Its availability and
 configuration depend on the project.
@@ -175,7 +187,6 @@ OpenBioMaps also provides mobile applications for field data collection. See
 
 How do I use the OpenBioMaps mobile application?
 ------------------------------------------------
-
 The offline mobile application is designed for Android and iOS devices. To
 begin using it:
 
@@ -202,7 +213,6 @@ instructions and limitations.
 
 How can I access photos captured with the mobile application?
 -------------------------------------------------------------
-
 Depending on your permissions and the project's configuration, attachments
 can be accessed:
 
@@ -222,7 +232,6 @@ Developer interfaces and clients
 
 Is there a programmable interface for developers?
 --------------------------------------------------
-
 Yes. OpenBioMaps provides APIs for accessing project and user data, subject to
 authentication and project permissions.
 
@@ -236,7 +245,6 @@ authentication requirements, parameters, and response formats.
 
 Where can I find the OpenBioMaps R package?
 -------------------------------------------
-
 The development version of the OpenBioMaps R package is available in the
 `OpenBioMaps obm.r repository <https://github.com/OpenBioMaps/obm.r>`_.
 
@@ -249,7 +257,6 @@ Languages and contributions
 
 Which languages does OpenBioMaps support?
 -----------------------------------------
-
 OpenBioMaps is designed to support translated user interfaces and
 project-specific content. The completeness of each translation can differ
 between application components and releases.
@@ -266,7 +273,6 @@ Translations can be contributed through the
 
 How can I contribute to OpenBioMaps?
 ------------------------------------
-
 You can contribute by:
 
 * creating or maintaining an OpenBioMaps database project;
@@ -284,7 +290,6 @@ the contribution requirements of the corresponding source-code repository.
 
 Do I have to pay to use OpenBioMaps?
 ------------------------------------
-
 OpenBioMaps software is open source and can be used without a software licence
 fee. However, operating a server, developing project-specific features,
 hosting data, providing support, and maintaining infrastructure may involve
@@ -302,7 +307,6 @@ Storage, backup, and account recovery
 
 Where does OpenBioMaps store data?
 ----------------------------------
-
 Each OpenBioMaps server stores its project data in its own PostgreSQL
 databases and file storage. This can include database records, attachments,
 project configuration, map files, logs, and generated exports.
@@ -312,7 +316,6 @@ from every server.
 
 Is there a backup solution?
 ---------------------------
-
 There is no centralised backup service for all OpenBioMaps installations
 because data management is decentralised. Each server operator is responsible
 for implementing, monitoring, and testing an appropriate backup procedure.
@@ -334,7 +337,6 @@ successfully in a test environment.
 
 I have lost my password. How can I set a new one?
 -------------------------------------------------
-
 Use the **Lost password** link on the login page.
 
 Enter the email address associated with your account and submit the form. If
@@ -357,7 +359,6 @@ Troubleshooting
 
 Why do pink squares appear on the map?
 --------------------------------------
-
 Pink squares usually indicate that a map tile or layer could not be rendered.
 Possible causes include:
 
@@ -378,7 +379,6 @@ Data management
 
 How can I delete data?
 ----------------------
-
 The standard OpenBioMaps web interface may not provide a general-purpose
 record deletion function. When deletion is necessary, an authorised database
 administrator can remove records through SQL or another supported
@@ -421,7 +421,6 @@ RUM openness model
 
 What is RUM?
 ------------
-
 RUM is part of the RUM/FILH model for describing the operational capabilities
 and openness of biodiversity databases. See the publication
 `RUM/FILH: a standardized operational capability model for biodiversity
@@ -462,7 +461,6 @@ DOIs and citation
 
 Can a DOI be assigned to a database?
 ------------------------------------
-
 Yes. A database or a defined dataset in a sufficiently stable and documented
 state can be assigned a DOI through the DataCite DOI service, subject to the
 procedure of the organisation operating the OpenBioMaps server.

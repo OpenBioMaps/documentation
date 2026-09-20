@@ -86,7 +86,7 @@ associated metadata. Direct SQL changes can leave metadata, forms, queries,
 triggers, or modules referring to an object that no longer exists.
 
 For further information, see
-:ref:`Database tables and columns <database-columns>`.
+:ref:`Database tables and columns <sql-columns-vs-openbiomaps-columns>`.
 
 .. TODO: Document the exact metadata tables and columns used to register a
    project table or view in the current OpenBioMaps version.
@@ -197,6 +197,7 @@ external clients may depend on it.
    ``obm_files_id`` contains one identifier, several identifiers, or a
    reference to another table.
 
+.. _sql_column-type-vs-openbiomaps-columns:
 
 PostgreSQL types and OpenBioMaps types
 ......................................
@@ -235,10 +236,12 @@ validate existing values automatically.
    definitions.
 
 
-Column identifiers and visible names
-....................................
+.. _sql_column-name-vs-openbiomaps-columns:
 
-PostgreSQL identifiers should use lowercase letters, numbers, and
+SQL column names and OBM names
+..............................
+
+PostgreSQL column (and table) names should use lowercase letters, numbers, and
 underscores. Avoid spaces, accented characters, quoted identifiers, and
 other special characters. OpenBioMaps metadata can associate a separate
 visible name with a column, so a database-safe identifier does not have to
@@ -268,6 +271,7 @@ For further information about local translations, see
    PostgreSQL identifiers in forms, exports, API responses, or error
    messages.
 
+.. _column-order:
 
 Column order
 ............

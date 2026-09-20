@@ -48,7 +48,7 @@ executable code should be restricted to trusted administrators.
    change.
 
 
-.. _database-columns:
+.. _sql-columns-vs-openbiomaps-columns:
 
 Database tables and columns
 ===========================
@@ -77,7 +77,8 @@ Avoid spaces, accented characters, quoted identifiers, and other special
 characters. Names should be descriptive and should remain stable after forms,
 queries, or modules begin using them.
 
-A description should be provided whenever a table or column is created.
+A description (Table comment or Column comment) should be provided whenever a
+table or column is created.
 These descriptions form part of the project's metadata and help users
 understand the meaning and intended use of the data.
 
@@ -85,6 +86,7 @@ understand the meaning and intended use of the data.
    including maximum lengths, reserved names, schema handling, and whether a
    name may begin with a number.
 
+.. _database-columns:
 
 Registering available columns
 -----------------------------
@@ -112,6 +114,7 @@ modules, roles may identify fields containing:
    functions or modules use each role. Clarify whether more than one column
    can have the same role and whether one column can have multiple roles.
 
+.. _column-type:
 
 Column types
 ------------
@@ -159,6 +162,7 @@ types or semantic roles:
    UTM zone, coordinate reference system, and hemisphere are determined
    during geometry creation.
 
+.. _column-commands:
 
 Column descriptions and commands
 --------------------------------
@@ -200,6 +204,7 @@ database backup when appropriate.
 .. TODO: Explain what ``SET use_rules:1`` changes and whether it creates,
    enables, or merely registers the project's row-level access rules.
 
+.. _sql_console:
 
 SQL console
 -----------
@@ -215,6 +220,7 @@ The console displays the query results in a dynamic table. The results of the qu
 can be exported as a CSV file. If the query results contain more than 1,000 rows, the 
 table is no longer displayed; instead, a CSV export is automatically generated.
 
+.. _sql_views:
 
 Managing views
 --------------
