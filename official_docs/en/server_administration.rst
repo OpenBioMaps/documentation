@@ -884,6 +884,66 @@ Create a separate entry for each project that needs background processing.
 Monitor exit status and logs, and prevent concurrent executions if a job can
 run longer than the scheduling interval.
 
+.. _central-background-worker:
+
+Central background task worker
+------------------------------
+
+The central background task worker processes project-scoped tasks from the
+database. Email delivery is currently its only registered task type. This
+service is separate from the project ``jobs.php`` runner described above;
+keep that runner scheduled for projects that use traditional background jobs.
+
+In the reference ``obm-composer`` installation, run these commands from the
+directory containing ``docker-compose.yml``:
+
+.. code-block:: console
+
+   docker compose up -d background-worker
+   docker compose ps background-worker
+   docker compose logs -f background-worker
+
+The service runs continuously as ``www-data``. It uses the application image,
+the Compose ``.env`` file, and read-only mounts for the system and project
+configuration. It depends on ``biomaps_db``. Compose restarts it unless stopped
+and allows 90 seconds for graceful shutdown.
+
+To make one pass through currently runnable projects, use:
+
+.. code-block:: console
+
+   docker compose run --rm background-worker php /var/www/html/biomaps/root-site/supervisor_cli.php worker --once
+
+For a non-Docker installation, use the supplied systemd unit to run
+the worker continuously. From the web-app checkout,
+install the unit and adjust ``WorkingDirectory``, ``ExecStart``, ``User``, and
+``Group`` to match the server. The optional ``EnvironmentFile`` points to
+``/etc/openbiomaps/openbiomaps.env`` for variables needed by
+``system_vars.php.inc``.
+
+.. code-block:: console
+
+   sudo install -m 0644 server_confs_templates/etc/systemd/system/openbiomaps-worker.service /etc/systemd/system/openbiomaps-worker.service
+   sudoedit /etc/systemd/system/openbiomaps-worker.service
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now openbiomaps-worker.service
+   sudo systemctl status openbiomaps-worker.service
+   sudo journalctl -u openbiomaps-worker.service -f
+
+The unit runs ``php root-site/supervisor_cli.php worker`` as ``www-data``,
+restarts on failure, and allows 90 seconds for shutdown. Use
+``sudo systemctl stop openbiomaps-worker.service`` to stop it. For a
+manual single pass from the web-app directory, run
+``php root-site/supervisor_cli.php worker --once``.
+The dispatcher stops claiming tasks on ``SIGTERM`` or ``SIGINT`` and forwards
+shutdown to its active project worker.
+
+Expired claims become runnable again after 15 minutes. A task can therefore
+run more than once if the worker stops after an external action but before its
+result is recorded. Check the :doc:`email queue <email_queue>` for delivery
+status and attempts. For task-handler interfaces and implementation details,
+see the `developer background-worker guide <https://gitlab.com/openbiomaps/web-app/-/blob/master/docs/developer_docs/background-worker.md>`_.
+
 Operational checks
 ==================
 

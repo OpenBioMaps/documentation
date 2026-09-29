@@ -933,6 +933,69 @@ fundal. Monitorizați starea de ieșire și jurnalele și împiedicați execuți
 concurente dacă o activitate poate rula mai mult decât intervalul de
 programare.
 
+.. _central-background-worker:
+
+Workerul central pentru activități de fundal
+--------------------------------------------
+
+Workerul central procesează activități asociate proiectelor, stocate în
+baza de date. În prezent, trimiterea e-mailurilor este singurul tip de
+activitate înregistrat. Serviciul este separat de executorul ``jobs.php`` al
+fiecărui proiect, descris mai sus. Păstrați programarea ``jobs.php`` pentru
+proiectele care folosesc activitățile de fundal tradiționale.
+
+În instalarea de referință ``obm-composer``, rulați din directorul care
+conține ``docker-compose.yml``:
+
+.. code-block:: console
+
+   docker compose up -d background-worker
+   docker compose ps background-worker
+   docker compose logs -f background-worker
+
+Serviciul rulează continuu ca ``www-data``. Folosește imaginea aplicației,
+fișierul Compose ``.env`` și volume montate doar pentru citire pentru
+configurația sistemului și a proiectelor. Depinde de ``biomaps_db``. Compose
+îl repornește dacă nu este oprit și permite 90 de secunde pentru oprirea
+controlată.
+
+Pentru o singură parcurgere a proiectelor cu activități pregătite:
+
+.. code-block:: console
+
+   docker compose run --rm background-worker php /var/www/html/biomaps/root-site/supervisor_cli.php worker --once
+
+Pentru o instalare fără Docker, folosiți unitatea systemd furnizată în
+locul rulării comenzii permanente într-un terminal. Instalați unitatea din
+directorul sursă web-app și adaptați valorile ``WorkingDirectory``,
+``ExecStart``, ``User`` și ``Group`` la server. ``EnvironmentFile`` opțional
+indică ``/etc/openbiomaps/openbiomaps.env`` pentru variabilele necesare
+fișierului ``system_vars.php.inc``.
+
+.. code-block:: console
+
+   sudo install -m 0644 server_confs_templates/etc/systemd/system/openbiomaps-worker.service /etc/systemd/system/openbiomaps-worker.service
+   sudoedit /etc/systemd/system/openbiomaps-worker.service
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now openbiomaps-worker.service
+   sudo systemctl status openbiomaps-worker.service
+   sudo journalctl -u openbiomaps-worker.service -f
+
+Unitatea rulează ``php root-site/supervisor_cli.php worker`` ca ``www-data``,
+repornește după erori și permite 90 de secunde pentru oprire. Opriți-o cu
+``sudo systemctl stop openbiomaps-worker.service``. Pentru o singură
+parcurgere manuală din directorul web-app, rulați
+``php root-site/supervisor_cli.php worker --once``. La ``SIGTERM`` sau ``SIGINT``,
+dispatcherul nu mai preia activități și transmite oprirea workerului activ
+al proiectului.
+
+Activitățile cu blocaje expirate redevin executabile după 15 minute. Astfel,
+o activitate poate fi executată de mai multe ori dacă workerul se oprește
+după o acțiune externă, dar înainte de înregistrarea rezultatului. Verificați
+starea livrării și încercările în :doc:`coada de e-mail <email_queue>`.
+Interfețele și detaliile de implementare sunt descrise în `ghidul pentru
+dezvoltatori al workerului <https://gitlab.com/openbiomaps/web-app/-/blob/master/docs/developer_docs/background-worker.md>`_.
+
 Verificări operaționale
 =======================
 

@@ -921,6 +921,70 @@ Minden háttérfeldolgozást igénylő projekthez hozzon létre külön bejegyz�
 Figyelje a kilépési állapotot és a naplókat, és akadályozza meg az egyidejű
 végrehajtást, ha egy feladat a két futás közötti időnél tovább tarthat.
 
+.. _central-background-worker:
+
+Központi háttérfeladat-worker
+-----------------------------
+
+A központi háttérfeladat-worker projekthez tartozó, adatbázisban tárolt
+feladatokat dolgoz fel. Jelenleg csak az emailküldés regisztrált feladattípus.
+Ez külön szolgáltatás a fent ismertetett projektenkénti ``jobs.php``
+futtatótól. A hagyományos háttérfolyamatokat használó projekteknél a
+``jobs.php`` ütemezését továbbra is meg kell tartani.
+
+A referencia ``obm-composer`` telepítésben a ``docker-compose.yml`` fájlt
+tartalmazó könyvtárból futtassa:
+
+.. code-block:: console
+
+   docker compose up -d background-worker
+   docker compose ps background-worker
+   docker compose logs -f background-worker
+
+A szolgáltatás folyamatosan, ``www-data`` felhasználóként fut. Az alkalmazás
+lemezképét, a Compose ``.env`` fájlját, valamint a rendszer- és
+projektkonfiguráció csak olvasható csatolásait használja. A ``biomaps_db``
+szolgáltatástól függ. A Compose leállításig újraindítja, és 90 másodpercet ad
+a szabályos leállásra.
+
+Az éppen futtatható projekteken egyszeri végighaladáshoz:
+
+.. code-block:: console
+
+   docker compose run --rm background-worker php /var/www/html/biomaps/root-site/supervisor_cli.php worker --once
+
+Docker nélküli telepítésben a tartós parancsot a mellékelt systemd
+egységgel futtassa. A web-app forráskönyvtárából telepítse az egységfájlt,
+majd igazítsa a ``WorkingDirectory``, ``ExecStart``, ``User`` és ``Group``
+értékeket a kiszolgálóhoz. Az opcionális ``EnvironmentFile`` az
+``/etc/openbiomaps/openbiomaps.env`` fájlra mutat, amely a
+``system_vars.php.inc`` által igényelt változókat adhatja meg.
+
+.. code-block:: console
+
+   sudo install -m 0644 server_confs_templates/etc/systemd/system/openbiomaps-worker.service /etc/systemd/system/openbiomaps-worker.service
+   sudoedit /etc/systemd/system/openbiomaps-worker.service
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now openbiomaps-worker.service
+   sudo systemctl status openbiomaps-worker.service
+   sudo journalctl -u openbiomaps-worker.service -f
+
+Az egység ``www-data`` felhasználóként futtatja a
+``php root-site/supervisor_cli.php worker`` parancsot, hiba esetén újraindul,
+és 90 másodpercet ad a leállásra. Leállításhoz használja a
+``sudo systemctl stop openbiomaps-worker.service`` parancsot. Egyszeri kézi
+futtatáshoz a web-app könyvtárában adja ki a
+``php root-site/supervisor_cli.php worker --once`` parancsot. A dispatcher ``SIGTERM`` vagy ``SIGINT`` jelzés után
+nem vesz fel új feladatot, és továbbítja a leállítást az aktív
+projekt-workernek.
+
+A 15 percnél régebbi zárolású feladatok újra futtathatók. Emiatt egy feladat
+többször is végrehajtódhat, ha a worker egy külső művelet után, de az eredmény
+rögzítése előtt áll le. A kézbesítés állapota és kísérletei az
+:doc:`emailküldési sorban <email_queue>` ellenőrizhetők. A feladatkezelő
+interfészeket és a megvalósítást a `fejlesztői háttérworker-leírás
+<https://gitlab.com/openbiomaps/web-app/-/blob/master/docs/developer_docs/background-worker.md>`_ ismerteti.
+
 Üzemeltetési ellenőrzések
 ========================
 

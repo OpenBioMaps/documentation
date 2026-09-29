@@ -14,3 +14,4 @@ Projektadminisztráció
    welcome_page.rst
    modules.md
    jobs.rst
+   email_queue.rst
