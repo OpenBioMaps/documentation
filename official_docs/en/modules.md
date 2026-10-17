@@ -85,6 +85,21 @@ After changing a module's status, test the relevant page with users from each
 affected access group. Some modules also create database objects or retain
 module-specific settings when disabled.
 
+### Module dependencies
+
+A module can declare other modules as dependencies. Required modules must be
+enabled before the dependent module can be enabled. Conversely, a required
+module cannot be disabled while an enabled module depends on it.
+
+The application checks these rules in the modules' installation and removal
+lifecycle hooks. If a check fails, the requested state change is rejected and
+the module administration page displays the error. Disable dependent modules
+before disabling their requirements.
+
+Module authors declare dependencies with the `Dependencies` list in the module
+metadata. The dependency must be available and enabled in the scope required by
+the dependent module.
+
 ### Removing modules
 
 The module administration interface does not currently provide a general
@@ -98,7 +113,7 @@ a backup is available.
 
 Most modules accept JSON parameters directly on the module administration
 page. Other modules provide a dedicated administration tab for module-specific
-tasks. `box_load_selection` is an example of a module with its own
+tasks. `geometry_management` is an example of a module with its own
 administrative interface.
 
 Examples in this document use placeholders such as `YOURTABLE`, `column_name`,
@@ -107,39 +122,32 @@ project.
 
 ## Project-level modules
 
-### `box_load_selection`
+### `protocol_installer`
 
-The `box_load_selection` module manages reusable spatial shapes.
+The `protocol_installer` module lets project masters install collection
+protocols from a configured public catalogue. Its administration page guides
+table and column mapping, list configuration, plan review, installation, and
+supported upgrades. See the [protocol installer guide](protocol_installer.md)
+for setup, permissions, recovery, and package authoring.
 
-It provides the following functions:
+**Parameters:** None. The catalogue is configured by the server administrator.
 
-- Users can upload points, lines, and polygons. ESRI Shapefile is commonly
-  used, but other standard spatial formats may also be supported.
-- Uploaded shapes can be used to define the spatial extent of a data query.
-- A shape can provide the geometry of a record during web or file upload.
-- Shapes can be shared with other users.
-- Shapes available to the user can be downloaded and displayed by the mobile
-  application.
+### `geometry_management`
+
+The `geometry_management` module manages reusable spatial shapes. Users can
+upload points, lines, and polygons, share them with other users, and use them
+as record geometries during web or file uploads. Available upload geometries
+can also be downloaded and displayed by the mobile application.
 
 Newly uploaded shapes are not visible to other users by default. Project
-administrators can grant users permission to use each shape for queries or
-data uploads.
-
-Users can manage shared shapes through the **Shared geometries** module block
-on their profile page. Project administrators can manage these permissions
-through the `box_load_selection` administration tab.
-
-When the module is enabled, a **Spatial query** box appears on the map page.
-Users can select an available shape and run a spatial query against it. For
-polygon geometries, the interface may allow users to choose whether records
-intersecting the polygon boundary are included.
+administrators can grant permission to use each shape for queries or data
+uploads. Users manage shared shapes through the **Shared geometries** block on
+their profile page; project administrators manage permissions through the
+`geometry_management` administration tab.
 
 If an upload form uses an `obm_geometry` field, its map control can offer a
 **Geometry from list** option. Selecting a named shape inserts its WKT
 geometry into the upload field.
-
-The mobile application can display available upload shapes semi-transparently
-on form maps, labelled with their names.
 
 **Parameters:** None. The module uses its dedicated administration interface.
 
@@ -222,6 +230,22 @@ verified against the installed module version.
 **Parameters:** None documented.
 
 ## Table-level modules
+
+### `box_load_selection`
+
+The `box_load_selection` module uses reusable geometries for spatial queries
+on the map page. It can be enabled, configured, and access-restricted
+independently for each project table. It depends on the project-level
+`geometry_management` module; enable `geometry_management` first.
+
+When enabled for the current table, a **Spatial query** box appears on the map
+page. Users can select an available project geometry and run a spatial query
+against it. For polygon geometries, the interface may allow users to choose
+whether records intersecting the polygon boundary are included.
+
+**Parameters:** An optional JSON list can restrict the available spatial
+relationships. If omitted, the module offers `contains`, `intersects`,
+`crosses`, and `disjoint` where applicable.
 
 ### `additional_columns`
 

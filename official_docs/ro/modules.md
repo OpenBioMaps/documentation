@@ -94,6 +94,21 @@ După modificarea stării unui modul, testați pagina relevantă cu utilizatori
 din fiecare grup de acces afectat. Unele module creează și obiecte în baza de
 date sau păstrează setări specifice modulului atunci când sunt dezactivate.
 
+### Dependențele modulelor
+
+Un modul poate declara alte module drept dependențe. Modulele necesare trebuie
+activate înainte ca modulul dependent să poată fi activat. În mod corespunzător,
+un modul necesar nu poate fi dezactivat cât timp un modul activ depinde de el.
+
+Aplicația verifică aceste reguli în hook-urile ciclului de viață pentru
+instalarea și eliminarea modulelor. Dacă verificarea eșuează, modificarea de
+stare solicitată este respinsă, iar pagina de administrare a modulelor afișează
+eroarea. Dezactivați modulele dependente înainte de a dezactiva cerințele lor.
+
+Autorii modulelor declară dependențele în lista `Dependencies` din metadatele
+modulului. Dependența trebuie să fie disponibilă și activată în domeniul cerut
+de modulul dependent.
+
 ### Eliminarea modulelor
 
 Interfața de administrare a modulelor nu oferă în prezent o opțiune generală
@@ -107,7 +122,7 @@ procedura de eliminare a modulului și este disponibilă o copie de siguranță.
 
 Majoritatea modulelor acceptă parametri JSON direct pe pagina de administrare
 a modulelor. Alte module oferă o filă de administrare dedicată sarcinilor
-specifice modulului. `box_load_selection` este un exemplu de modul cu
+specifice modulului. `geometry_management` este un exemplu de modul cu
 interfață administrativă proprie.
 
 Exemplele din acest document utilizează substituenți precum `YOURTABLE`,
@@ -116,43 +131,23 @@ identificatori din proiect.
 
 ## Module la nivel de proiect
 
-### `box_load_selection`
+### `geometry_management`
 
-Modulul `box_load_selection` gestionează forme spațiale reutilizabile.
-
-Acesta oferă următoarele funcții:
-
-- Utilizatorii pot încărca puncte, linii și poligoane. ESRI Shapefile este
-  utilizat frecvent, dar pot fi acceptate și alte formate spațiale standard.
-- Formele încărcate pot fi utilizate pentru definirea extinderii spațiale a
-  unei interogări de date.
-- O formă poate furniza geometria unei înregistrări în timpul încărcării prin
-  web sau fișier.
-- Formele pot fi partajate cu alți utilizatori.
-- Formele disponibile utilizatorului pot fi descărcate și afișate de
-  aplicația mobilă.
+Modulul `geometry_management` gestionează forme spațiale reutilizabile.
+Utilizatorii pot încărca puncte, linii și poligoane, le pot partaja cu alți
+utilizatori și le pot folosi drept geometrie a unei înregistrări la încărcarea
+prin web sau fișier. Geometriile disponibile pentru încărcare pot fi descărcate
+și afișate și de aplicația mobilă.
 
 Formele încărcate recent nu sunt vizibile implicit altor utilizatori.
-Administratorii de proiect pot acorda utilizatorilor permisiunea de a utiliza
-fiecare formă pentru interogări sau încărcări de date.
-
-Utilizatorii pot gestiona formele partajate prin blocul modulului
-**Shared geometries** de pe pagina profilului. Administratorii de proiect pot
-gestiona aceste permisiuni prin fila de administrare
-`box_load_selection`.
-
-Atunci când modulul este activat, pe pagina hărții apare o casetă
-**Spatial query**. Utilizatorii pot selecta o formă disponibilă și pot
-executa o interogare spațială în raport cu aceasta. Pentru geometriile
-poligonale, interfața poate permite utilizatorilor să aleagă dacă sunt
-incluse înregistrările care intersectează limita poligonului.
+Administratorii de proiect pot acorda permisiunea de a utiliza fiecare formă
+pentru interogări sau încărcări de date. Utilizatorii gestionează formele
+partajate prin blocul **Shared geometries** de pe pagina profilului, iar
+administratorii gestionează permisiunile prin fila `geometry_management`.
 
 Dacă un formular de încărcare utilizează un câmp `obm_geometry`, controlul
 hărții acestuia poate oferi opțiunea **Geometry from list**. Selectarea unei
 forme denumite inserează geometria WKT a acesteia în câmpul de încărcare.
-
-Aplicația mobilă poate afișa semi-transparent pe hărțile formularelor formele
-disponibile pentru încărcare, etichetate cu numele acestora.
 
 **Parametri:** Niciunul. Modulul utilizează interfața sa de administrare
 dedicată.
@@ -239,6 +234,24 @@ configurația trebuie verificate în raport cu versiunea instalată a modulului.
 **Parametri:** Niciunul documentat.
 
 ## Module la nivel de tabel
+
+### `box_load_selection`
+
+Modulul `box_load_selection` utilizează geometriile reutilizabile pentru
+interogări spațiale pe pagina hărții. Poate fi activat, configurat și limitat
+prin reguli de acces separat pentru fiecare tabel al proiectului. Acesta depinde
+de modulul `geometry_management` la nivel de proiect; activați mai întâi
+`geometry_management`.
+
+Când este activat pentru tabelul curent, pe pagina hărții apare o casetă
+**Spatial query**. Utilizatorii pot selecta o geometrie disponibilă în proiect
+și pot executa o interogare spațială în raport cu aceasta. Pentru geometriile
+poligonale, interfața poate permite includerea înregistrărilor care
+intersectează limita poligonului.
+
+**Parametri:** O listă JSON opțională poate restricționa relațiile spațiale
+disponibile. Dacă lista este omisă, modulul oferă `contains`, `intersects`,
+`crosses` și `disjoint`, acolo unde sunt aplicabile.
 
 ### `additional_columns`
 

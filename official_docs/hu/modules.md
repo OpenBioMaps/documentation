@@ -54,6 +54,14 @@ Minden konfigurált modulpéldány engedélyezhető vagy letiltható. Egy modul 
 
 Egy modul állapotának módosítása után tesztelje az érintett oldalt minden érintett hozzáférési csoport felhasználóival. Egyes modulok adatbázis-objektumokat is létrehoznak, vagy letiltásuk után is megőrzik modulspecifikus beállításaikat.
 
+### Modulfüggőségek
+
+Egy modul más modulokat függőségként jelölhet meg. A függő modul csak akkor engedélyezhető, ha a szükséges modulok már engedélyezve vannak. Egy szükséges modul pedig nem tiltható le, amíg engedélyezett modul függ tőle.
+
+Az alkalmazás ezeket a szabályokat a modulok telepítési és eltávolítási életciklus-hookjaiban ellenőrzi. Sikertelen ellenőrzés esetén a kért állapotváltozás nem történik meg, és a moduladminisztrációs oldal megjeleníti a hibát. A szükséges modul letiltása előtt tiltsa le a tőle függő modulokat.
+
+A modulfejlesztők a modul metaadatainak `Dependencies` listájában deklarálják a függőségeket. A szükséges modulnak a függő modul által igényelt hatókörben elérhetőnek és engedélyezettnek kell lennie.
+
 ### Modulok eltávolítása
 
 A moduladminisztrációs felület jelenleg nem biztosít általános lehetőséget egy telepített modul alkalmazásból való eltávolítására.
@@ -62,33 +70,19 @@ Egy konfigurált modulpéldány letiltható. Ne törölje kézzel a modul fájlj
 
 ### Modulparaméterek
 
-A legtöbb modul közvetlenül a moduladminisztrációs oldalon fogad JSON-paramétereket. Más modulok külön adminisztrációs lapot biztosítanak a modulspecifikus feladatokhoz. A `box_load_selection` példa egy saját adminisztrációs felülettel rendelkező modulra.
+A legtöbb modul közvetlenül a moduladminisztrációs oldalon fogad JSON-paramétereket. Más modulok külön adminisztrációs lapot biztosítanak a modulspecifikus feladatokhoz. A `geometry_management` példa egy saját adminisztrációs felülettel rendelkező modulra.
 
 A dokumentumban szereplő példák olyan helyőrzőket használnak, mint a `YOURTABLE`, a `column_name` és a `schema.table`. Cserélje le ezeket a helyőrzőket a projekt azonosítóira.
 
 ## Projektszintű modulok
 
-### `box_load_selection`
+### `geometry_management`
 
-A `box_load_selection` modul újrafelhasználható térbeli alakzatokat kezel.
+A `geometry_management` modul újrafelhasználható térbeli alakzatokat kezel. A felhasználók pontokat, vonalakat és poligonokat tölthetnek fel, megoszthatják őket más felhasználókkal, valamint webes vagy fájlból történő feltöltéskor rekordgeometriaként használhatják őket. Az elérhető feltöltési geometriákat a mobilalkalmazás is letöltheti és megjelenítheti.
 
-A következő funkciókat biztosítja:
-
-- A felhasználók pontokat, vonalakat és poligonokat tölthetnek fel. Az ESRI Shapefile általánosan használt formátum, de más szabványos térbeli formátumok is támogatottak lehetnek.
-- A feltöltött alakzatok felhasználhatók egy adatlekérdezés térbeli kiterjedésének meghatározására.
-- Egy alakzat megadhatja egy rekord geometriáját webes vagy fájlból történő feltöltés során.
-- Az alakzatok megoszthatók más felhasználókkal.
-- A felhasználó számára elérhető alakzatokat a mobilalkalmazás letöltheti és megjelenítheti.
-
-Az újonnan feltöltött alakzatok alapértelmezés szerint nem láthatók más felhasználók számára. A projektadminisztrátorok minden alakzat esetében jogosultságot adhatnak a felhasználóknak annak lekérdezésekhez vagy adatfeltöltésekhez való használatára.
-
-A felhasználók a profiloldaluk **Megosztott geometriák** modulblokkjában kezelhetik a megosztott alakzatokat. A projektadminisztrátorok a `box_load_selection` adminisztrációs lapján kezelhetik ezeket a jogosultságokat.
-
-A modul engedélyezésekor egy **Térbeli lekérdezés** mező jelenik meg a térképoldalon. A felhasználók kiválaszthatnak egy elérhető alakzatot, és térbeli lekérdezést futtathatnak rajta. Poligongeometriák esetén a felület lehetővé teheti annak kiválasztását, hogy a poligon határát metsző rekordok szerepeljenek-e a lekérdezésben.
+Az újonnan feltöltött alakzatok alapértelmezés szerint nem láthatók más felhasználók számára. A projektadminisztrátorok jogosultságot adhatnak az egyes alakzatok lekérdezésekhez vagy adatfeltöltésekhez való használatára. A felhasználók a profiloldaluk **Megosztott geometriák** blokkjában kezelik a megosztott alakzatokat; a projektadminisztrátorok a `geometry_management` adminisztrációs lapján kezelik a jogosultságokat.
 
 Ha egy feltöltési űrlap `obm_geometry` mezőt használ, annak térképvezérlője felkínálhatja a **Geometria listából** lehetőséget. Egy elnevezett alakzat kiválasztása beilleszti annak WKT-geometriáját a feltöltési mezőbe.
-
-A mobilalkalmazás a feltöltéshez elérhető alakzatokat félig átlátszóan, a nevükkel feliratozva jelenítheti meg az űrlapok térképein.
 
 **Paraméterek:** Nincsenek. A modul a saját adminisztrációs felületét használja.
 
@@ -154,6 +148,14 @@ Felhasználói felületét, szükséges adatbázis-struktúráját és konfigur�
 **Paraméterek:** Nincsenek dokumentálva.
 
 ## Táblaszintű modulok
+
+### `box_load_selection`
+
+A `box_load_selection` modul az újrafelhasználható geometriákat térképi térbeli lekérdezésekhez használja. Projekttáblánként külön engedélyezhető, paraméterezhető és hozzáféréshez köthető. A modul a projektszintű `geometry_management` modultól függ; először a `geometry_management` modult kell engedélyezni.
+
+Ha az aktuális táblán engedélyezve van, egy **Térbeli lekérdezés** mező jelenik meg a térképoldalon. A felhasználók kiválaszthatnak egy elérhető projektgeometriát, és térbeli lekérdezést futtathatnak rajta. Poligongeometriák esetén a felület lehetővé teheti annak kiválasztását, hogy a poligon határát metsző rekordok szerepeljenek-e a lekérdezésben.
+
+**Paraméterek:** Egy opcionális JSON-lista korlátozhatja az elérhető térbeli kapcsolatokat. Ha nincs megadva, a modul – ahol alkalmazható – a `contains`, `intersects`, `crosses` és `disjoint` kapcsolatokat kínálja fel.
 
 ### `additional_columns`
 
