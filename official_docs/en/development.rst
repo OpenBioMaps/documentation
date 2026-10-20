@@ -10,3 +10,10 @@ Developer hints
 ---------------
 :doc:`hints <../developer_hints>`
 
+Protocol package reference
+--------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   protocol_package_format

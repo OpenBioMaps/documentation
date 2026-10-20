@@ -76,6 +76,201 @@ A dokumentumban szereplő példák olyan helyőrzőket használnak, mint a `YOUR
 
 ## Projektszintű modulok
 
+.. _protocol-installer-guide:
+
+### `protocol_installer`
+
+A `protocol_installer` modul lehetővé teszi, hogy a projektgazdák adatgyűjtési
+protokollokat telepítsenek egy beállított nyilvános katalógusból. A modul
+adminisztrációs oldala végigvezeti őket a táblák és oszlopok megfeleltetésén,
+a listák beállításán, a terv áttekintésén, a telepítésen és a támogatott
+frissítéseken.
+
+**Paraméterek:** Nincsenek. A katalógust a szerveradminisztrátor állítja be.
+
+A telepítő egyetlen beállított nyilvános GitLab-tárolóból olvas deklaratív
+YAML-csomagokat. Az 1. verzió kötelező előírásait a
+:doc:`csomagformátum leírása <protocol_package_format>`
+rögzíti. A közzétett protokollokat a
+[share-your-protocol tárolóban](https://gitlab.com/openbiomaps/share-your-protocol)
+tartják karban.
+
+#### A protokollforrás beállítása
+
+Állítsa be a következő szerverkonstansokat az
+`/etc/openbiomaps/system_vars.php.inc` fájlban:
+
+```php
+define('PROTOCOL_INSTALLER_GITLAB_PROJECT', 'openbiomaps/share-your-protocol');
+define('PROTOCOL_INSTALLER_GITLAB_REF', 'main');
+define('PROTOCOL_INSTALLER_GITLAB_CATALOGUE_PATH', 'catalog.yml');
+```
+
+A projekt értéke GitLab `csoport/projekt` útvonal, nem URL. A Git-hivatkozás
+és a katalógus útvonala opcionális; alapértékük `main`, illetve `catalog.yml`.
+A tárolónak nyilvánosnak kell lennie; ez a kiadás nem használ GitLab-hitelesítést.
+Engedélyezze a projektben a `protocol_installer` modult a moduladminisztrációban.
+
+#### Protokoll telepítése
+
+1. Projektgazdaként nyissa meg az **Adatgyűjtési protokollok**
+   (**Data collection protocols**) oldalt.
+   A katalógus jelzi, hogy az egyes protokollok telepítve vannak-e, melyik
+   verziójuk van telepítve, és elérhető-e újabb verzió. Válassza a **Telepítés** (**Install**)
+   vagy a legújabb verzióra történő **Frissítés** (**Upgrade to**) lehetőséget, majd tekintse át
+   a követelményeket. A korábbi katalógusverziók az **Egyéb katalógusverziók**
+   (**Other catalogue versions**) alatt érhetők el.
+2. Minden logikai táblát rendeljen hozzá egy elérhető projekttáblához, vagy
+   hozzon létre új táblát. A `project_main` tábla mindig a nyilvántartott
+   főtáblának felel meg. Minden oszlophoz válasszon kompatibilis meglévő
+   oszlopot, vagy hozzon létre újat. Ha a terv táblák vagy feltöltési űrlapok
+   létrehozását tartalmazza, az ezekhez szükséges jogosultságokkal is
+   rendelkeznie kell.
+3. Állítsa be a listákat és az űrlapneveket. A rögzített listáknál válasszon
+   beágyazott vagy a projekt kifejezéstábláját használó megoldást. Minden
+   projektspecifikus listát állítson be `list_definition` JSON-nal vagy meglévő
+   kifejezésforrással. Ellenőrizze a webes és API-űrlapok beállításait és
+   hozzáférési értékeit.
+4. Tekintse át az összes műveletet, ütközést és figyelmeztetést. Oldjon fel
+   minden blokkoló ütközést, és a megfeleltetések módosítása után készítse újra
+   a tervet. Külön erősítse meg a telepítést. Az eredmény hivatkozásokat ad a
+   telepített űrlapokra, és megjeleníti a mentett megfeleltetéseket.
+
+#### Protokoll frissítése
+
+Egy protokoll projektenként egyszer telepíthető. Az ismételt beküldés a meglévő
+telepítést adja vissza. Frissítéshez válassza ugyanannak a protokollnak egy újabb
+verzióját. A varázsló megjeleníti a telepített verziót, zárolja a meglévő
+megfeleltetéseket és helyi beállításokat, és csak új objektumok létrehozását
+tervezi. Megerősítés előtt tekintse át az ütközéseket és a műveleteket. A
+meglévő űrlapok, oszlopok, listák és rekordok megmaradnak.
+
+A telepített űrlap új mezőkkel bővíthető, ha a korábbi mezői és definíciójának
+egyéb tulajdonságai változatlanok maradnak. Az új mezők a meglévő helyi mezők
+után kerülnek, megőrizve az űrlap azonosítóját, hozzáférési beállításait és a
+mezők jelenlegi sorrendjét. Egy korábbi mező módosítása vagy eltávolítása,
+illetve más meglévő csomagelem módosítása továbbra is blokkolja az automatikus
+frissítést.
+
+#### Frissítés kézi befejezése
+
+Ütköző frissítésnél a terv felsorolja a kézi feladatokat, és ahol elérhető,
+megjeleníti a régi és a célként megadott definíciót. Végezze el a módosításokat
+a projektben, ellenőrizze az adatokat és az űrlapokat, rendelje a kézzel
+létrehozott táblákat és oszlopokat a meglévő célobjektumokhoz, majd készítse
+újra a tervet. Ezután a projektgazda bejelölheti a kézi befejezésről szóló
+nyilatkozatot, és választhatja a **Frissítés megjelölése befejezettként**
+(**Mark upgrade complete**) műveletet. A szerver ismét ellenőrzi az áttekintett tervet: megköveteli a
+céltáblák és céloszlopok meglétét, ellenőrzi az új űrlapokat és az importált
+kifejezéseket, és elutasítja a még végrehajtandó létrehozási műveleteket vagy
+az egyéb blokkoló ütközéseket.
+
+A nyilatkozat a `manual_upgrade_history` mezőben rögzíti az adminisztrátort,
+az időpontot, a verziókat és a tudomásul vett ütközéseket. Frissíti a mentett
+csomagverziót és megfeleltetéseket, de a kézzel létrehozott objektumokat nem
+jelöli a telepítő által létrehozottként. Az objektumleltárból nem ellenőrizhető
+definícióváltozásokért továbbra is az adminisztrátor felel.
+
+#### Frissítés folytatása
+
+Ha egy frissítés megszakad, válassza ki a protokollt, majd a **Rögzített
+frissítés folytatása** (**Resume recorded upgrade**) lehetőséget. A helyreállítás a mentett csomagot és
+tervet használja akkor is, ha később másik katalógusrevíziót választottak ki.
+Fejezze be a rögzített frissítést, mielőtt újabbat indítana, vagy fejlesztői
+módban eltávolítaná a protokollt.
+
+#### A protokoll kompatibilitása és biztonsága
+
+A meglévő oszlopok tárolási típusának és kapacitásának kompatibilisnek kell
+lennie. A tervező nem alakítja át a meglévő adatokat, és nem módosítja a
+meglévő oszlopdefiníciókat. Ellenőrzi a kezelt rendszeroszlopokat, a geometriai
+követelményeket, a mezőtípusokat, a listaforrásokat, a metaadatokat és az
+űrlapnevek ütközéseit. Más űrlapot vagy metaadatrekordot soha nem ír felül.
+Az új fizikai nevek nem ütközhetnek meglévő relációk nevével.
+
+Korlátozott hosszúságú, meglévő `varchar(n)` oszlophoz a csomagban
+`data_type: varchar` típust adjon meg, legfeljebb `n` értékű `max_length`
+beállítással. A csomag korlátlan hosszúságú `text` oszlopa nem rendelhető
+korlátozott `varchar(n)` oszlophoz, mert a későbbi értékek meghaladhatnák a
+céloszlop méretkorlátját.
+
+Kifejezések importálásakor ütközést jelent, ha egy kódhoz eltérő címke vagy
+tulajdonos tartozik; a megosztott kifejezéseket a telepítő nem módosítja
+észrevétlenül. Tervezés előtt ellenőrzi a YAML-t és a hivatkozásokat, majd
+végrehajtás előtt ismét ellenőrzi az aktuális objektumleltárt.
+
+#### Telepítési napló és helyreállítás
+
+A GIS- és a metaadat-adatbázis tranzakciói külön véglegesülnek. A
+`public.protocol_installations` telepítési rekordja tárolja a protokoll
+azonosítóját, verzióját, GitLab-revízióját, ellenőrzőösszegét, a csomag
+pillanatképét, a megfeleltetéseket, a tervet, a fázisok állapotát, a létrehozott
+objektumokat és az esetleges hibát. Az űrlapok csak a metaadatfázis befejezése
+után válnak aktívvá.
+
+Ha a telepítés megszakad, ellenőrizze a protokollhoz és projekthez tartozó
+`status`, `gis_status`, `metadata_status` és `error` mezőket. Nyissa meg újra
+ugyanazt a csomagot a varázslóban, és válassza a **Rögzített telepítés
+folytatása** (**Resume recorded installation**) lehetőséget. A helyreállítás a mentett tervet és kizárólag a
+telepítéshez tartozó objektumokat használja. Tartsa elérhetően az eredeti
+csomagrevíziót a telepítés befejezéséig; a részlegesen létrehozott objektumokat
+ne távolítsa el kézzel. Ha a csomag azonosítója vagy verziója eltér, válassza
+a rögzített verziót.
+
+#### Protokoll eltávolítása és az 1. verzió korlátai
+
+Fejlesztői módban a rögzített telepítés eltávolítása előnézettel és
+megerősítéssel végezhető el. A művelet eltávolítja a telepítés által
+létrehozott táblákat, oszlopokat, űrlapokat, importált kifejezéseket, a
+naplóbejegyzést és a GIS-adatbázis tulajdonjelölőit. Az újrahasznált
+projektobjektumok megmaradnak. Más űrlapok függőségei blokkolják az eltávolítást.
+Az éles környezetben történő eltávolítás és a nem kizárólag bővítést végző
+automatikus protokollfrissítés későbbi fejlesztés tárgya. Az általános
+adatimport, a csomagokhoz tartozó hookok, a függőségek és a szabványosított
+exportok nem részei az 1. verziónak.
+
+#### Protokollcsomag készítése és közzététele
+
+1. Adjon a protokollnak stabil, fordított DNS-jelölésű `protocol_id`
+   azonosítót és `protocol_version` verziót. Tartsa változatlanul a táblák,
+   oszlopok, űrlapok és listák logikai azonosítóit. A javasolt fizikai nevek
+   csak ajánlások; a hivatkozásokban logikai azonosítókat kell használni.
+   A közzétett frissítéseknek meg kell őrizniük a meglévő definíciókat, az új
+   elemeket pedig új logikai azonosítókkal kell hozzáadniuk. A meglévő űrlapok
+   és listadefiníciók megmaradnak.
+2. Minden táblát `project_main` vagy `create` típussal adjon meg a hordozható
+   oszlopaival, listáival, valamint webes és API-űrlapjaival együtt. Az
+   alkalmazás által kezelt mezőkhöz használja a `system.geometry` és
+   `system.files` azonosítókat. Csak a
+   :doc:`formátumleírásban <protocol_package_format>`
+   felsorolt típusokat és beállításokat használja.
+3. Tudatosan válassza meg a listák kezelését. A `fixed` lista beágyazva
+   maradhat, vagy importálható a projekt kifejezéstáblájába. A tárolt érték
+   a `code`, a webes és API-űrlapokon megjelenő szöveg a `label`. A `project`
+   listát telepítéskor helyben kell beállítani. A `table` lista egy deklarált
+   tábla oszlopaira hivatkozik. A csomag nem tartalmazhat PHP-t, SQL-t,
+   hitelesítő adatokat vagy fizikai projektazonosítókat.
+4. Adja hozzá a YAML útvonalát az ugyanabban a GitLab-tárolóban lévő
+   `catalog.yml` fájlhoz. A katalógusbejegyzés azonosítójának és verziójának
+   egyeznie kell a csomagéval. Az útvonalak a tároló gyökeréhez képest
+   relatívak, és nem léphetnek ki abból. Véglegesítse mindkét fájlt egy
+   commitban, és ellenőrizze, hogy a kiválasztott ág tartalmazza őket.
+   A telepítő rögzíti ezt a commitot, és a telepítési naplóba menti a csomag
+   ellenőrzőösszegét.
+
+#### Fejlesztői regressziós ellenőrzések
+
+Az adatbázistesztek előtt futtassa a
+`tools/sync-sablon-from-resources.sh --apply` parancsot a web-app tárolóban a
+tesztadatok frissítéséhez; a `projects/sablon` könyvtárat ne szerkessze kézzel.
+Futtassa a csomagokat, tervezést, objektumleltárt és végrehajtást ellenőrző
+célzott PHPUnit-teszteket a Docker-tesztkörnyezetben. A böngészős alaptesztek
+a nyilvános és projektútvonalakat ellenőrzik. Teljes próbaüzemhez telepítsen
+protokollokat egy új, erre kijelölt projektbe és egy meglévő rekordokat
+tartalmazó projektbe, majd nyisson meg egy webes űrlapot, és kérjen le egy
+API-űrlapot a mobilklienssel. Ellenőrizze, hogy a rögzített lista a kódját
+tárolja mind a beágyazott, mind a kifejezéstáblát használó változatban.
+
 ### `geometry_management`
 
 A `geometry_management` modul újrafelhasználható térbeli alakzatokat kezel. A felhasználók pontokat, vonalakat és poligonokat tölthetnek fel, megoszthatják őket más felhasználókkal, valamint webes vagy fájlból történő feltöltéskor rekordgeometriaként használhatják őket. Az elérhető feltöltési geometriákat a mobilalkalmazás is letöltheti és megjelenítheti.

@@ -122,15 +122,166 @@ project.
 
 ## Project-level modules
 
+.. _protocol-installer-guide:
+
 ### `protocol_installer`
 
 The `protocol_installer` module lets project masters install collection
 protocols from a configured public catalogue. Its administration page guides
 table and column mapping, list configuration, plan review, installation, and
-supported upgrades. See the [protocol installer guide](protocol_installer.md)
-for setup, permissions, recovery, and package authoring.
+supported upgrades.
 
 **Parameters:** None. The catalogue is configured by the server administrator.
+
+The installer reads declarative YAML from one configured public GitLab repository.
+The :doc:`package format <protocol_package_format>`
+is the normative version 1 contract. Published protocols are maintained in the
+[share-your-protocol repository](https://gitlab.com/openbiomaps/share-your-protocol).
+
+#### Configuring the protocol source
+
+Set these server constants in `/etc/openbiomaps/system_vars.php.inc`:
+
+```php
+define('PROTOCOL_INSTALLER_GITLAB_PROJECT', 'openbiomaps/share-your-protocol');
+define('PROTOCOL_INSTALLER_GITLAB_REF', 'main');
+define('PROTOCOL_INSTALLER_GITLAB_CATALOGUE_PATH', 'catalog.yml');
+```
+
+The project value is a GitLab `group/project` path, not a URL. The ref and
+catalogue path are optional and default to `main` and `catalog.yml`. The
+repository must be public; this release does not authenticate to GitLab.
+Enable `protocol_installer` for the project through module administration.
+
+#### Installing a protocol
+
+1. Open **Data collection protocols** as a project master. The catalogue shows
+   whether each protocol is installed, its installed version, and whether a
+   newer version is available. Choose **Install** or **Upgrade to** the latest
+   version, then inspect its requirements. Earlier catalogue versions remain
+   available under **Other catalogue versions**.
+2. Map every logical table to an accessible project table or create a new one.
+   A `project_main` table always maps to the registered main table. For each
+   column choose a compatible existing column or create it. Table creation and
+   upload-form permissions are required when the plan uses those operations.
+3. Configure lists and form names. Choose an embedded or terms-backed fixed
+   list and configure each project-specific list via `list_definition` JSON
+   or an existing terms source. Check web and API form settings and access values.
+4. Review all operations, conflicts, and warnings. Resolve every blocking
+   conflict and rebuild the plan after a mapping change. Confirm installation
+   explicitly. The result links to installed forms and shows the saved mapping.
+
+#### Upgrading a protocol
+
+The same protocol can be installed once per project. A repeated submission
+returns the existing installation. To upgrade, select a newer version of the
+same protocol. The wizard shows the installed version, locks existing mappings
+and local settings, and plans only new objects. Review conflicts and operations
+before confirming. Existing forms, columns, lists, and records remain in place.
+
+An installed form can gain fields when its earlier fields and other definition
+properties remain unchanged. The new fields are appended after existing local
+fields, preserving the form identity, access settings, and current field order.
+Changing or removing an earlier field, or changing other existing package
+elements, still blocks the automatic upgrade.
+
+#### Completing an upgrade manually
+
+For a conflicting upgrade, the plan lists each manual task and shows the old
+and target definitions where available. Complete the changes in the project,
+check data and forms, map manually created tables and columns to their existing
+destinations, and rebuild the plan. A project master can then check the manual
+completion declaration and select **Mark upgrade complete**. The server checks
+the reviewed plan again, requires target tables and columns to exist, checks
+new forms and imported terms, and rejects pending create operations or unrelated
+blocking conflicts.
+
+The declaration records the administrator, time, versions,
+and acknowledged conflicts in `manual_upgrade_history`; it advances the saved
+package version and mappings without claiming manually created objects as
+installer-owned. Definition changes that cannot be verified from inventory
+remain the administrator's responsibility.
+
+#### Resuming an upgrade
+
+If an upgrade stops, select that protocol and choose **Resume recorded upgrade**.
+Recovery uses the saved package and plan, even if a different catalogue revision
+is selected later. Finish a recorded upgrade before starting another one or
+uninstalling the protocol in development mode.
+
+#### Protocol compatibility and safety
+
+Existing columns must have compatible storage type and capacity. The planner
+does not convert existing data or change existing column definitions. It checks
+managed system columns, geometry requirements, field types, list sources,
+metadata, and form-name collisions. An unrelated form or metadata record is
+never overwritten. New physical names cannot collide with existing relations.
+
+For a bounded existing `varchar(n)` column, declare `data_type: varchar` with
+`max_length` no greater than `n` in the package. An unbounded `text` package
+column cannot be mapped to bounded `varchar(n)` because future values could
+exceed the destination's limit.
+
+For terms import, a code with a different label or owner is a conflict; shared
+terms are not silently changed. The installer validates YAML and references
+before planning, then checks the current inventory again before execution.
+
+#### Installation journal and recovery
+
+The GIS and metadata databases commit separately. The installation record in
+`public.protocol_installations` stores the protocol identity, version, GitLab
+revision, checksum, package snapshot, mappings, plan, phase statuses, created
+objects, and any error. Forms become active only after metadata completion.
+
+If installation stops, inspect `status`, `gis_status`, `metadata_status`, and
+`error` for the protocol and project. Reopen the same package in the wizard and
+choose **Resume recorded installation**. Recovery uses the saved plan and only
+installation-owned objects. Keep the original package revision available until
+the installation is complete; do not manually remove partially created objects.
+If the package identity or version differs, select the recorded version.
+
+#### Uninstalling a protocol and version 1 limitations
+
+Development mode offers a preview and confirmed uninstall for a recorded
+installation. It removes its owned tables, columns, forms, imported terms,
+journal entry, and GIS ownership markers. Reused project objects remain.
+Dependencies from other forms block removal. Production uninstall and automatic
+non-additive protocol version upgrades are deferred. Generic data imports,
+package hooks, dependencies, and standardized exports are outside version 1.
+
+#### Authoring and publishing a protocol package
+
+1. Give the protocol a stable reverse-DNS `protocol_id` and a
+   `protocol_version`. Keep logical table, column, form, and list IDs stable.
+   Change suggested physical names only as hints; references must use logical
+   IDs. Published updates must retain existing definitions and add new elements
+   with new logical IDs. Existing forms and list definitions are preserved.
+2. Declare each table as `project_main` or `create`, its portable columns,
+   lists, and web/API forms. Use `system.geometry` and `system.files` for the
+   application's managed fields. Use only the types and settings listed in the
+   :doc:`format contract <protocol_package_format>`.
+3. Choose list ownership deliberately. A `fixed` list can stay embedded or be
+   imported into the project terms table. Its `code` is stored and its `label`
+   is shown in both web and API forms. A `project` list is configured locally
+   during installation. A `table` list refers to columns of a declared table.
+   The package must not contain PHP, SQL, credentials, or physical project IDs.
+4. Add the YAML path to `catalog.yml` in the same GitLab repository. The
+   catalogue entry's ID and version must match the package. Paths are relative
+   to the repository root; they cannot leave it. Commit both files and test
+   that the selected branch contains them. The installer pins that commit and
+   records the package checksum in its installation journal.
+
+#### Developer regression checks
+
+Before database tests, run `tools/sync-sablon-from-resources.sh --apply` in the
+web-app repository to refresh the test fixture; do not edit `projects/sablon`
+manually. Run the focused package, planning, inventory, and execution PHPUnit
+tests in the Docker test environment. The browser smoke suite checks public
+and project routes. For a full pilot, install protocols into a new dedicated
+project and a project containing
+existing records, then open a web form and retrieve an API form through the
+mobile client. Verify that a fixed list stores its code with both embedded
+and terms-backed choices.
 
 ### `geometry_management`
 

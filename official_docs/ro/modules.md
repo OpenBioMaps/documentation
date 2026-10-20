@@ -131,6 +131,198 @@ identificatori din proiect.
 
 ## Module la nivel de proiect
 
+.. _protocol-installer-guide:
+
+### `protocol_installer`
+
+Modulul `protocol_installer` permite responsabililor de proiect să instaleze
+protocoale de colectare a datelor dintr-un catalog public configurat. Pagina
+sa de administrare îi ghidează prin asocierea tabelelor și coloanelor,
+configurarea listelor, examinarea planului, instalare și actualizările
+acceptate.
+
+**Parametri:** Niciunul. Catalogul este configurat de administratorul serverului.
+
+Programul de instalare citește pachete YAML declarative dintr-un singur
+repository GitLab public configurat. Specificația
+:doc:`formatului pachetului <protocol_package_format>`
+stabilește cerințele obligatorii pentru versiunea 1. Protocoalele publicate
+sunt întreținute în
+[repository-ul share-your-protocol](https://gitlab.com/openbiomaps/share-your-protocol).
+
+#### Configurarea sursei protocoalelor
+
+Configurați următoarele constante de server în
+`/etc/openbiomaps/system_vars.php.inc`:
+
+```php
+define('PROTOCOL_INSTALLER_GITLAB_PROJECT', 'openbiomaps/share-your-protocol');
+define('PROTOCOL_INSTALLER_GITLAB_REF', 'main');
+define('PROTOCOL_INSTALLER_GITLAB_CATALOGUE_PATH', 'catalog.yml');
+```
+
+Valoarea proiectului este o cale GitLab `grup/proiect`, nu un URL. Referința
+Git și calea catalogului sunt opționale, cu valorile implicite `main` și
+`catalog.yml`. Repository-ul trebuie să fie public; această versiune nu
+utilizează autentificarea GitLab. Activați `protocol_installer` pentru
+proiect din pagina de administrare a modulelor.
+
+#### Instalarea unui protocol
+
+1. Ca responsabil de proiect, deschideți **Protocoale de colectare a datelor**
+   (**Data collection protocols**). Catalogul arată dacă fiecare protocol
+   este instalat, versiunea instalată și dacă este disponibilă o versiune mai
+   nouă. Alegeți **Instalare** (**Install**) sau **Actualizare la**
+   (**Upgrade to**) cea mai recentă versiune, apoi examinați cerințele.
+   Versiunile anterioare din catalog rămân disponibile la **Alte versiuni din
+   catalog** (**Other catalogue versions**).
+2. Asociați fiecare tabel logic cu un tabel accesibil al proiectului sau
+   creați unul nou. Un tabel `project_main` este întotdeauna asociat cu
+   tabelul principal înregistrat. Pentru fiecare coloană alegeți o coloană
+   existentă compatibilă sau creați-o. Dacă planul include crearea de tabele
+   ori formulare de încărcare, sunt necesare permisiunile corespunzătoare.
+3. Configurați listele și numele formularelor. Alegeți o listă fixă încorporată
+   sau bazată pe tabelul de termeni și configurați fiecare listă specifică
+   proiectului prin JSON `list_definition` sau printr-o sursă de termeni
+   existentă. Verificați setările formularelor web și API și valorile de acces.
+4. Examinați toate operațiile, conflictele și avertismentele. Rezolvați toate
+   conflictele blocante și regenerați planul după modificarea asocierilor.
+   Confirmați explicit instalarea. Rezultatul oferă legături către formularele
+   instalate și afișează asocierile salvate.
+
+#### Actualizarea unui protocol
+
+Același protocol poate fi instalat o singură dată pe proiect. O solicitare
+repetată returnează instalarea existentă. Pentru actualizare, selectați o
+versiune mai nouă a aceluiași protocol. Asistentul afișează versiunea instalată,
+blochează asocierile și setările locale existente și planifică doar obiecte
+noi. Examinați conflictele și operațiile înainte de confirmare. Formularele,
+coloanele, listele și înregistrările existente sunt păstrate.
+
+Un formular instalat poate primi câmpuri noi dacă cele anterioare și celelalte
+proprietăți ale definiției sale rămân neschimbate. Câmpurile noi sunt adăugate
+după câmpurile locale existente, păstrând identitatea formularului, setările
+de acces și ordinea curentă a câmpurilor. Modificarea sau eliminarea unui câmp
+anterior ori modificarea altor elemente existente ale pachetului blochează în
+continuare actualizarea automată.
+
+#### Finalizarea manuală a unei actualizări
+
+Pentru o actualizare cu conflicte, planul enumeră fiecare sarcină manuală și
+afișează definițiile vechi și cele țintă, acolo unde sunt disponibile. Efectuați
+modificările în proiect, verificați datele și formularele, asociați tabelele și
+coloanele create manual cu destinațiile lor existente și regenerați planul.
+Responsabilul de proiect poate apoi bifa declarația de finalizare manuală și
+selecta **Marcare actualizare ca finalizată** (**Mark upgrade complete**).
+Serverul verifică din nou planul examinat, impune existența tabelelor și
+coloanelor țintă, verifică formularele noi și termenii importați și respinge
+operațiile de creare încă neexecutate sau alte conflicte blocante.
+
+Declarația înregistrează administratorul, momentul, versiunile și conflictele
+asumate în `manual_upgrade_history`. Actualizează versiunea pachetului și
+asocierile salvate fără a atribui programului de instalare obiectele create
+manual. Modificările definițiilor care nu pot fi verificate din inventar
+rămân responsabilitatea administratorului.
+
+#### Reluarea unei actualizări
+
+Dacă o actualizare se întrerupe, selectați protocolul și alegeți **Reluare
+actualizare înregistrată** (**Resume recorded upgrade**). Recuperarea
+utilizează pachetul și planul salvate, chiar dacă ulterior este selectată o
+altă revizie a catalogului. Finalizați actualizarea înregistrată înainte de
+a începe alta sau de a dezinstala protocolul în modul de dezvoltare.
+
+#### Compatibilitatea și siguranța protocolului
+
+Coloanele existente trebuie să aibă tipuri de stocare și capacități compatibile.
+Planificatorul nu convertește datele existente și nu modifică definițiile
+coloanelor existente. Verifică coloanele de sistem gestionate, cerințele de
+geometrie, tipurile câmpurilor, sursele listelor, metadatele și coliziunile
+numelor de formulare. Nu suprascrie niciodată un formular sau o înregistrare
+de metadate fără legătură cu instalarea. Numele fizice noi nu pot intra în
+conflict cu relațiile existente.
+
+Pentru o coloană existentă `varchar(n)` cu lungime limitată, declarați în
+pachet `data_type: varchar` cu `max_length` cel mult egal cu `n`. O coloană
+`text` fără limită de lungime din pachet nu poate fi asociată cu o coloană
+`varchar(n)` limitată, deoarece valorile viitoare ar putea depăși limita
+destinației.
+
+La importul termenilor, un cod cu altă etichetă sau alt proprietar reprezintă
+un conflict; termenii partajați nu sunt modificați implicit. Programul de
+instalare validează YAML-ul și referințele înainte de planificare, apoi
+verifică din nou inventarul curent înainte de execuție.
+
+#### Jurnalul de instalare și recuperarea
+
+Tranzacțiile bazelor de date GIS și de metadate sunt confirmate separat.
+Înregistrarea instalării din `public.protocol_installations` stochează
+identitatea protocolului, versiunea, revizia GitLab, suma de control, copia
+pachetului, asocierile, planul, stările fazelor, obiectele create și eventualele
+erori. Formularele devin active numai după finalizarea fazei de metadate.
+
+Dacă instalarea se întrerupe, examinați `status`, `gis_status`,
+`metadata_status` și `error` pentru protocolul și proiectul respectiv.
+Redeschideți același pachet în asistent și alegeți **Reluare instalare
+înregistrată** (**Resume recorded installation**). Recuperarea utilizează
+planul salvat și numai obiectele care aparțin instalării. Păstrați disponibilă
+revizia originală a pachetului până la finalizarea instalării; nu eliminați
+manual obiectele create parțial. Dacă identitatea sau versiunea pachetului
+diferă, selectați versiunea înregistrată.
+
+#### Dezinstalarea unui protocol și limitele versiunii 1
+
+Modul de dezvoltare oferă o previzualizare și dezinstalare cu confirmare pentru
+o instalare înregistrată. Elimină tabelele, coloanele, formularele și termenii
+importați care îi aparțin, înregistrarea din jurnal și marcajele de proprietate
+din baza de date GIS. Obiectele reutilizate ale proiectului sunt păstrate.
+Dependențele altor formulare blochează eliminarea. Dezinstalarea în producție
+și actualizările automate ale protocoalelor care nu se limitează la adăugări
+sunt amânate pentru versiuni ulterioare. Importurile generice de date,
+hook-urile pachetelor, dependențele și exporturile standardizate nu fac parte
+din versiunea 1.
+
+#### Crearea și publicarea unui pachet de protocol
+
+1. Atribuiți protocolului un `protocol_id` stabil în notație DNS inversă și
+   o versiune `protocol_version`. Păstrați stabile identificatoarele logice
+   ale tabelelor, coloanelor, formularelor și listelor. Numele fizice sugerate
+   sunt doar recomandări; referințele trebuie să utilizeze identificatoare
+   logice. Actualizările publicate trebuie să păstreze definițiile existente
+   și să adauge elemente noi cu identificatoare logice noi. Formularele și
+   definițiile listelor existente sunt păstrate.
+2. Declarați fiecare tabel ca `project_main` sau `create`, împreună cu
+   coloanele portabile, listele și formularele web/API. Utilizați
+   `system.geometry` și `system.files` pentru câmpurile gestionate de
+   aplicație. Folosiți numai tipurile și setările enumerate în
+   :doc:`specificația formatului <protocol_package_format>`.
+3. Alegeți cu atenție modul de gestionare a listelor. O listă `fixed` poate
+   rămâne încorporată sau poate fi importată în tabelul de termeni al
+   proiectului. Valoarea `code` este stocată, iar `label` este afișată în
+   formularele web și API. O listă `project` este configurată local în timpul
+   instalării. O listă `table` face referire la coloanele unui tabel declarat.
+   Pachetul nu trebuie să conțină PHP, SQL, date de autentificare sau
+   identificatoare fizice de proiect.
+4. Adăugați calea YAML în `catalog.yml` din același repository GitLab.
+   Identificatorul și versiunea intrării din catalog trebuie să corespundă
+   pachetului. Căile sunt relative la rădăcina repository-ului și nu pot ieși
+   din aceasta. Înregistrați ambele fișiere într-un commit și verificați că
+   ramura selectată le conține. Programul de instalare fixează acel commit și
+   înregistrează suma de control a pachetului în jurnalul de instalare.
+
+#### Verificări de regresie pentru dezvoltatori
+
+Înainte de testele bazei de date, rulați
+`tools/sync-sablon-from-resources.sh --apply` în repository-ul web-app pentru
+a actualiza datele de test; nu editați manual `projects/sablon`. Rulați testele
+PHPUnit specifice pentru pachete, planificare, inventar și execuție în mediul
+Docker de testare. Suita de teste de bază în browser verifică rutele publice
+și cele ale proiectelor. Pentru un test pilot complet, instalați protocoale
+într-un proiect nou dedicat și într-un proiect cu înregistrări existente, apoi
+deschideți un formular web și preluați un formular API prin clientul mobil.
+Verificați că o listă fixă stochează codul atât pentru opțiunile încorporate,
+cât și pentru cele bazate pe tabelul de termeni.
+
 ### `geometry_management`
 
 Modulul `geometry_management` gestionează forme spațiale reutilizabile.
